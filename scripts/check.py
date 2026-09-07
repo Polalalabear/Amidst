@@ -21,6 +21,13 @@ EXPECTED_DOCS = {
     "glossary.md",
     "open_questions.md",
 }
+REQUIRED_README_MARKERS = {
+    "planning and specification",
+    "繁體中文",
+    "docs/00_Project_Map.md",
+    "docs/08_Repository_and_Data_Publication_Policy.md",
+    "python3 -B scripts/check.py",
+}
 REQUIRED_RULE_MARKERS = {
     "python3 -B scripts/check.py",
     "Never modify `main` directly.",
@@ -61,6 +68,16 @@ def main() -> int:
         for marker in sorted(REQUIRED_RULE_MARKERS):
             if marker not in instruction_text:
                 errors.append(f"AGENTS.md is missing rule marker: {marker}")
+
+    readme = ROOT / "README.md"
+    if not readme.is_file():
+        errors.append("missing README.md")
+    else:
+        check_markdown(readme, errors)
+        readme_text = readme.read_text(encoding="utf-8")
+        for marker in sorted(REQUIRED_README_MARKERS):
+            if marker not in readme_text:
+                errors.append(f"README.md is missing marker: {marker}")
 
     # The first bootstrap step intentionally runs before docs/ exists. Once any
     # documentation is added, require the complete planning-document set.
