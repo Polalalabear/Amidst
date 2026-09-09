@@ -18,8 +18,30 @@ EXPECTED_DOCS = {
     "06_Retrieval_Specification.md",
     "07_Technical_Decisions.md",
     "08_Repository_and_Data_Publication_Policy.md",
+    "09_Data_Types_and_Exchange_Formats.md",
     "glossary.md",
+    "internal_guide.md",
     "open_questions.md",
+}
+REQUIRED_INTERNAL_GUIDE_MARKERS = {
+    "## Decision Status",
+    "## Information Review Mechanisms",
+    "## Publication Workflow",
+    "## 繁體中文",
+    "python3 -B scripts/check.py",
+}
+REQUIRED_DATA_TYPE_GUIDE_MARKERS = {
+    "Document status: `PROPOSED`",
+    "## Blender and Spatial Data",
+    "## Video Asset and Stream Metadata",
+    "## Video Event Record",
+    "## ASAM OpenLABEL Compatibility Candidate",
+}
+REQUIRED_BILINGUAL_DOC_MARKERS = {
+    "[English](#english)",
+    "[繁體中文](#繁體中文)",
+    "## English",
+    "## 繁體中文",
 }
 REQUIRED_README_MARKERS = {
     "planning and specification",
@@ -90,6 +112,32 @@ def main() -> int:
                 errors.append(f"missing documentation file: docs/{missing}")
             for path in sorted(DOCS.glob("*.md")):
                 check_markdown(path, errors)
+                document_text = path.read_text(encoding="utf-8")
+                for marker in sorted(REQUIRED_BILINGUAL_DOC_MARKERS):
+                    if marker not in document_text:
+                        errors.append(
+                            f"{path.relative_to(ROOT)} is missing bilingual marker: "
+                            f"{marker}"
+                        )
+
+            internal_guide = DOCS / "internal_guide.md"
+            if internal_guide.is_file():
+                guide_text = internal_guide.read_text(encoding="utf-8")
+                for marker in sorted(REQUIRED_INTERNAL_GUIDE_MARKERS):
+                    if marker not in guide_text:
+                        errors.append(
+                            f"docs/internal_guide.md is missing marker: {marker}"
+                        )
+
+            data_type_guide = DOCS / "09_Data_Types_and_Exchange_Formats.md"
+            if data_type_guide.is_file():
+                guide_text = data_type_guide.read_text(encoding="utf-8")
+                for marker in sorted(REQUIRED_DATA_TYPE_GUIDE_MARKERS):
+                    if marker not in guide_text:
+                        errors.append(
+                            "docs/09_Data_Types_and_Exchange_Formats.md "
+                            f"is missing marker: {marker}"
+                        )
 
     if errors:
         print("Validation failed:")
