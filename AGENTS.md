@@ -70,11 +70,13 @@ failure prevents a reliable result.
 
 1. When documentation ownership or relevant specifications are unclear, start
    with `docs/00_Project_Map.md`.
-2. Read the core specification(s) directly related to the task.
-3. Consult `docs/glossary.md` when shared terminology affects the change.
-4. Consult `docs/open_questions.md` when work may depend on an unresolved
+2. For project work, consult `docs/internal_guide.md` for decision routing and
+   information-review workflow.
+3. Read the core specification(s) directly related to the task.
+4. Consult `docs/glossary.md` when shared terminology affects the change.
+5. Consult `docs/open_questions.md` when work may depend on an unresolved
    cross-document decision.
-5. Do not read or rewrite unrelated documents without a task-specific reason.
+6. Do not read or rewrite unrelated documents without a task-specific reason.
 
 `docs/glossary.md` owns shared terminology. Keep a local unresolved issue in its
 own specification when it affects only that document or module; register or
