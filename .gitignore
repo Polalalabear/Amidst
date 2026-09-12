@@ -1,0 +1,52 @@
+# macOS
+.DS_Store
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+config/local.*
+config/private.*
+
+# Private datasets
+data/raw/
+data/private/
+dataset/raw/
+dataset/private/
+
+# Surveillance media
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Blender source, working, and generated scenes
+blender/source/
+blender/working/
+blender/output/
+*.blend
+*.blend1
+
+# Model artifacts
+models/private/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.weights
+
+# Experiment artifacts
+experiments/private/
+runs/
+outputs/
+artifacts/
+logs/
