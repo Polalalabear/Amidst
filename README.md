@@ -111,6 +111,31 @@ Read [AGENTS.md](AGENTS.md) before making a repository change. Contributors and
 reviewers can use the [Internal Project Guide](docs/internal_guide.md) for
 decision routing, information review, and the change workflow.
 
+#### Agent Getting Started
+
+When assigning repository work to a coding agent:
+
+1. Ask it to read [AGENTS.md](AGENTS.md), the
+   [Project Map](docs/00_Project_Map.md), and the directly relevant
+   specification before editing.
+2. Require a pre-change record covering the requirement, impact scope, short
+   plan, acceptance criteria, and failure cases.
+3. Keep `OPEN` and `PROPOSED` decisions unresolved unless a human explicitly
+   confirms them. The repository is not yet ready for product implementation.
+4. Have the agent create a task-specific branch, make only the smallest viable
+   change, preserve unrelated work, and update only directly related
+   documentation.
+5. Before adding a file to Git, classify it under the
+   [Repository and Data Publication Policy](docs/08_Repository_and_Data_Publication_Policy.md).
+   Never add secrets, private surveillance data, or sensitive site assets.
+6. After each complete step, run `python3 -B scripts/check.py` and report any
+   unresolved failure exactly. Push, open a pull request, inspect CI, or merge
+   only when publication is explicitly requested.
+
+If the task depends on a conflicting document, an unresolved architecture
+decision, sensitive-data publication, destructive migration, or overwriting
+existing work, the agent must stop and request human direction.
+
 #### Run validation
 
 From the repository root, run:
@@ -290,6 +315,27 @@ Amidst 不把評估留到展示前才進行，而是將它納入系統設計。�
 修改儲存庫前，請先閱讀 [AGENTS.md](AGENTS.md)。貢獻者與審查者可參考
 [內部專案導讀](docs/internal_guide.md)，了解決策如何分流、哪些資訊需要
 審查，以及完整的變更流程。
+
+#### Agent 快速開始
+
+將儲存庫工作交給 coding agent 時：
+
+1. 要求它在修改前閱讀 [AGENTS.md](AGENTS.md)、
+   [專案地圖](docs/00_Project_Map.md)及與任務直接相關的規格。
+2. 要求它先記錄需求、影響範圍、簡短計畫、驗收條件與失敗情況。
+3. 除非人員明確確認，否則保留 `OPEN` 與 `PROPOSED` 決策；目前儲存庫尚未
+   準備進入產品實作。
+4. 讓 agent 建立任務專用分支，只做最小可行修改、保留無關工作，並只更新
+   與任務直接相關的文件。
+5. 將檔案加入 Git 前，依
+   [儲存庫與資料發布政策](docs/08_Repository_and_Data_Publication_Policy.md)
+   完成分類；不得加入秘密、私人監控資料或敏感場域資產。
+6. 每個完整步驟後執行 `python3 -B scripts/check.py`，並如實回報尚未解決的
+   失敗。只有收到明確發布要求時，才可推送分支、建立 pull request、檢查
+   CI 或合併。
+
+若任務涉及文件衝突、尚未解決的架構決策、敏感資料發布、破壞性遷移，或
+可能覆寫既有工作，agent 必須停止並請人員決定。
 
 #### 執行驗證
 

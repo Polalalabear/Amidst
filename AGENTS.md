@@ -247,3 +247,62 @@ Stop and request a human decision when:
 When stopping, report the blocking issue, affected scope, available options,
 trade-offs, and the recommended minimal option. Never continue by making an
 implicit project decision.
+
+## Blender Scene Rules
+
+Codex may inspect Blender scenes using Blender Python (`bpy`).
+
+### Source scenes
+
+Files under:
+
+blender/source/
+
+are immutable source assets.
+
+Never modify, overwrite, rename, or delete them.
+
+### Working scenes
+
+All scene modifications must be performed on copies under:
+
+blender/working/
+
+### Generated scenes
+
+Final generated Blender files must be written to:
+
+blender/output/
+
+### Allowed scene modifications
+
+Unless explicitly authorized:
+
+- object names
+- collections
+- parent-child hierarchy
+- custom properties
+- annotation metadata
+
+### Prohibited modifications
+
+Do not modify:
+
+- mesh geometry
+- transforms
+- materials
+- UVs
+- modifiers
+- rigs
+- constraints
+
+unless explicitly requested.
+
+### Annotation uncertainty
+
+Do not guess semantic labels.
+
+Ambiguous objects must be marked:
+
+category = Unknown
+annotation_status = needs_review
