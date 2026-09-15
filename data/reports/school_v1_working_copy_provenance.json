@@ -1,0 +1,17 @@
+{
+  "report_kind": "blender_working_copy_provenance",
+  "repository_classification": "REVIEW_REQUIRED",
+  "scene_id": "school",
+  "scene_version": "v1",
+  "source_scene": "blender/source/school_v1.blend",
+  "source_sha256": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+  "source_size_bytes": 469957621,
+  "working_scene": "blender/working/school_v1_working.blend",
+  "initial_working_sha256": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+  "initial_working_size_bytes": 469957621,
+  "copy_timestamp_utc": "2026-09-13T03:00:48Z",
+  "copy_method": "byte-for-byte filesystem copy",
+  "checksums_identical": true,
+  "source_modified": false,
+  "blender_scene_saved": false
+}

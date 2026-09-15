@@ -1,0 +1,165 @@
+{
+  "schema_name": "amidst.first_dataset_slice_tasks",
+  "schema_version": "0.1.0",
+  "contract_id": "amidst.school.first-dataset-slice/0.1.0",
+  "repository_classification": "REVIEW_REQUIRED",
+  "status": "CONFIRMED",
+  "approval_basis": "Explicit human instructions to finalize the first-dataset-slice contract and approve texture-agnostic rendering on 2026-09-14.",
+  "entity_reference": "stable_instance_id",
+  "semantic_category_required": false,
+  "ground_truth_authority": "Blender-derived evaluated camera and geometry state",
+  "semantic_baseline": {
+    "category": "Unknown",
+    "annotation_status": "needs_review",
+    "rule": "Named semantic categories are outside this contract and must not be inferred."
+  },
+  "render_resource_policy": {
+    "policy_id": "amidst.school.texture-agnostic-render/0.1.0",
+    "resource_policy": "texture_agnostic",
+    "authoritative_visual_fidelity": false,
+    "geometry_spatial_ground_truth_authoritative": true,
+    "readiness_rule": "zero unresolved resources required by the approved render policy",
+    "legacy_missing_resources_may_remain": true
+  },
+  "eligible_task_object": {
+    "required_object_types": ["CURVE", "FONT", "MESH"],
+    "requirements": [
+      "has an authoritative stable instance_id",
+      "is render-enabled in the evaluated scene",
+      "has a finite evaluated world-space bounding box",
+      "is visible under visibility_definition/1.0.0"
+    ],
+    "excluded": [
+      "cameras",
+      "lights",
+      "empties",
+      "armatures",
+      "objects without renderable evaluated geometry",
+      "objects excluded from render by object, collection, or view-layer state"
+    ]
+  },
+  "spatial_conventions": {
+    "version": "amidst.school.first-slice-spatial/1.0.0",
+    "scene_units": {
+      "blender_unit_system": "METRIC",
+      "blender_scale_length": 1.0,
+      "canonical_length_unit": "meter",
+      "mismatch_behavior": "invalidate_sample"
+    },
+    "camera_relative_coordinate_frame": {
+      "id": "camera_cv",
+      "handedness": "right_handed",
+      "origin": "camera_optical_center",
+      "x_axis": "camera local +X; positive is image-right",
+      "y_axis": "camera local -Y; positive is image-down",
+      "z_axis": "camera local -Z; positive is forward from the camera",
+      "world_to_camera_cv": "diag(1,-1,-1,1) multiplied by inverse(camera.matrix_world)"
+    },
+    "object_anchor": {
+      "definition": "arithmetic mean of the eight evaluated local bounding-box corners after transformation by object.matrix_world",
+      "coordinate_frame_for_distance": "Blender world",
+      "coordinate_frame_for_relations": "camera_cv",
+      "invalid_when": [
+        "evaluated bounding box is unavailable",
+        "any transformed corner or anchor component is non-finite",
+        "camera-relative anchor z is not strictly positive"
+      ]
+    },
+    "distance": {
+      "definition": "Euclidean distance from camera optical center to object_anchor",
+      "unit": "meter",
+      "eligible_set_for_nearest_object": "visible eligible task objects",
+      "serialization": "round to nine decimal places using round-half-even; normalize negative zero to zero"
+    },
+    "relations": {
+      "left_of": "subject.x < object.x - relation_deadband_m",
+      "right_of": "subject.x > object.x + relation_deadband_m",
+      "in_front_of": "subject.z < object.z - relation_deadband_m",
+      "behind": "subject.z > object.z + relation_deadband_m",
+      "pair_requirements": "both objects must be visible eligible task objects",
+      "deadband_behavior": "if the relevant absolute axis delta is less than or equal to relation_deadband_m, invalidate that relation task with relation_within_deadband"
+    }
+  },
+  "visibility_definition": {
+    "version": "amidst.school.first-slice-visibility/1.0.0",
+    "sampling_grid": "one camera ray through every final-resolution pixel center",
+    "geometry": "evaluated render-enabled geometry in the active view layer",
+    "visible_pixel": "the object's evaluated surface is the nearest ray hit, within ray_hit_distance_epsilon_m",
+    "minimum_visible_pixel_count": 16,
+    "visible_object": "visible_pixel_count is greater than or equal to 16",
+    "total_projected_pixel_count": "pixel-center rays that hit the target when all other eligible occluding geometry is omitted from the visibility query",
+    "occluded_pixel_count": "total_projected_pixel_count minus visible_pixel_count",
+    "occlusion_fraction": "occluded_pixel_count divided by total_projected_pixel_count",
+    "occlusion_states": {
+      "not_projected": "total_projected_pixel_count equals 0",
+      "fully_occluded": "total_projected_pixel_count is positive and visible_pixel_count equals 0",
+      "partially_occluded": "visible_pixel_count is positive and less than total_projected_pixel_count",
+      "unoccluded": "visible_pixel_count equals total_projected_pixel_count"
+    },
+    "unsupported_material_behavior": "If alpha blending, holdout, transmission, refraction, or another material effect makes geometric first-hit visibility disagree with the rendered observation, invalidate the sample with unsupported_photometric_visibility."
+  },
+  "numeric_tolerances": {
+    "ray_hit_distance_epsilon_m": 0.000001,
+    "distance_tie_epsilon_m": 0.000001,
+    "relation_deadband_m": 0.0001,
+    "finite_values_required": true,
+    "serialized_decimal_places": 9
+  },
+  "tie_breaking": {
+    "nearest_object": "All objects within distance_tie_epsilon_m of the minimum form the tie set; select the lexicographically smallest instance_id and record the sorted tie_instance_ids.",
+    "collection_order": "Sort instance IDs lexicographically; sort relation records by relation, subject_instance_id, object_instance_id.",
+    "ray_hit": "Hits within ray_hit_distance_epsilon_m are ordered by lexicographic instance_id and the selected ID is recorded."
+  },
+  "tasks": [
+    {"task": "visible_objects", "canonical_answer": "lexicographically sorted array of visible instance_ids"},
+    {"task": "nearest_object", "canonical_answer": "selected instance_id, distance_m, and sorted tie_instance_ids"},
+    {"task": "distance_to_object", "canonical_answer": "target instance_id and camera-to-anchor distance_m"},
+    {"task": "left_of", "canonical_answer": "boolean relation result for the ordered subject/object pair"},
+    {"task": "right_of", "canonical_answer": "boolean relation result for the ordered subject/object pair"},
+    {"task": "in_front_of", "canonical_answer": "boolean relation result for the ordered subject/object pair"},
+    {"task": "behind", "canonical_answer": "boolean relation result for the ordered subject/object pair"}
+  ],
+  "valid_sample_conditions": [
+    "source and derived-scene checksums match metadata provenance",
+    "the stable-ID registry matches the evaluated scene with exactly 2777 unique IDs",
+    "the selected camera is one of the 29 eligible cameras and all required parameters are finite",
+    "all resources required by the approved render-resource policy exist and match its provenance; recorded legacy resources excluded by the texture-agnostic policy may remain unavailable",
+    "rendered observation, evaluated Blender state, visibility evidence, and exported ground truth agree",
+    "all task inputs satisfy their eligibility and deadband rules",
+    "the authoritative contract, schema, render config, semantic baseline, and resource manifest versions are recorded"
+  ],
+  "invalid_sample_reasons": [
+    "checksum_mismatch",
+    "stable_id_mismatch",
+    "invalid_camera",
+    "missing_or_unapproved_required_resource",
+    "non_finite_geometry_or_camera_value",
+    "object_not_task_eligible",
+    "insufficient_visible_pixels",
+    "relation_within_deadband",
+    "unsupported_photometric_visibility",
+    "render_ground_truth_mismatch",
+    "contract_or_provenance_mismatch",
+    "generation_failure"
+  ],
+  "output_naming": {
+    "dataset_version": "school_v1_first_slice_v0_1_0",
+    "sample_ordinal": "zero-based, six ASCII decimal digits",
+    "frame_id_pattern": "frame_000000",
+    "sample_id_pattern": "school_v1_first_slice_v0_1_0_frame_000000",
+    "valid_sample_directory": "<dataset_root>/<generation_run_id>/frame_000000/",
+    "invalid_sample_directory": "<dataset_root>/<generation_run_id>/rejected/frame_000000/",
+    "required_files": ["image.png", "metadata.json"],
+    "optional_files": ["image_gt.png"],
+    "authoritative_ground_truth_file": "metadata.json",
+    "overwrite_policy": "never overwrite an existing generation run or sample directory; allocate a new generation_run_id",
+    "version_change_policy": "Any incompatible task, spatial, visibility, schema, or rendering change requires a new semantic version and output root."
+  },
+  "rules": [
+    "The task field is canonical; a natural-language question is optional.",
+    "Named semantic categories are not required for this ID-based first slice.",
+    "The confirmed texture-agnostic policy bypasses legacy object-material image nodes with one non-semantic neutral view-layer override; it does not claim original visual fidelity.",
+    "Ground truth must remain machine-readable in metadata.json and must not exist only in image_gt.png.",
+    "A failed or inconsistent sample is preserved as invalid evidence and is never silently repaired or relabeled valid."
+  ]
+}

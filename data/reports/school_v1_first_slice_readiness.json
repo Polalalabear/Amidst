@@ -1,0 +1,546 @@
+{
+  "blockers": [
+    "derived_scene_render_policy_provenance_recorded",
+    "five_legacy_resources_remain_recorded_unavailable",
+    "object_transforms_and_inventory_unchanged",
+    "raw_external_resource_paths_approved_intentional",
+    "render_resource_policy_authoritative",
+    "source_output_provenance_recorded",
+    "zero_unresolved_resources_required_by_approved_render_policy"
+  ],
+  "broken_material_image_nodes": [],
+  "checks": {
+    "camera_count_is_30": true,
+    "current_scene_matches_locked_render_values": true,
+    "dataset_images_generated": false,
+    "derived_scene_render_policy_provenance_recorded": false,
+    "deterministic_render_configuration_approved": true,
+    "eligible_camera_count_is_29": true,
+    "eligible_cameras_have_finite_valid_parameters": true,
+    "excluded_helper_camera_has_no_id": true,
+    "five_legacy_resources_remain_recorded_unavailable": false,
+    "material_image_nodes_have_datablocks": true,
+    "metadata_schema_approved": true,
+    "object_transforms_and_inventory_unchanged": false,
+    "raw_external_resource_paths_approved_intentional": false,
+    "raw_external_resource_paths_preserved": true,
+    "render_engine_and_settings_recorded": true,
+    "render_resource_policy_authoritative": false,
+    "scene_units_recorded": true,
+    "semantic_baseline_human_approved": true,
+    "semantic_baseline_intentionally_category_agnostic": true,
+    "semantic_registry_structurally_consistent": true,
+    "source_checksum_unchanged": true,
+    "source_output_provenance_recorded": false,
+    "spatial_conventions_authoritative": true,
+    "stable_ids_match_authoritative_registry": true,
+    "stable_ids_unique": true,
+    "task_contract_approved": true,
+    "zero_missing_external_render_resources": false,
+    "zero_unresolved_resources_required_by_approved_render_policy": false
+  },
+  "counts": {
+    "broken_material_image_node_count": 0,
+    "camera_count": 30,
+    "eligible_camera_count": 29,
+    "external_resource_count": 447,
+    "invalid_eligible_camera_count": 0,
+    "legacy_missing_external_resource_count": 5,
+    "missing_external_resource_count": 5,
+    "missing_render_resource_count": 5,
+    "runtime_required_missing_resource_count": 5,
+    "stable_ids_verified": 2777,
+    "total_objects": 2778
+  },
+  "eligible_cameras": [
+    {
+      "instance_id": "amidst:school:object:b66c753f-36df-5b3b-8ee5-5b78457be62b",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_AUDITORIUM_FRONT",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:c1a2fdbc-2c41-509c-9026-2053bf37875f",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_AUDITORIUM_REAR",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:4445c47f-eaa6-5960-a38b-63da7b42aea0",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_BATHROOM",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:fa6450dd-1479-56e8-9ac0-54482357c52f",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_CLASS101",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:80cbfb25-d80c-5d7a-9e2b-c9a9ff6ce71e",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_CLASS102",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:83e70587-0257-590c-b74f-454d222c84a2",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_CLASS103",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:3c348bee-3ee9-5a4a-819c-8299d5f28795",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_CLASS104",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:63f28cac-e220-5ee9-9c30-cd4d191f416d",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_CORRIDOR_01",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:44bfc39e-f2fe-57bf-99fe-81188e8af20e",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 22.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_CORRIDOR_02",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:0ea62d82-5d58-548b-9500-872391811c3b",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_CORRIDOR_03",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:78b5b6fb-6932-50b0-b3ce-ba8e4bbbec2b",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_CORRIDOR_04",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:4e4036f4-3485-5ada-bdfb-d4f9a6b9e60a",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_MAIN_ENTRANCE",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:bde45aef-b309-5bd0-9340-8b7f2f36b9b2",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_MEETINGROOM",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:0094fcdc-aa24-5215-8dca-ff2c3f78ce9e",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_RESTAURANT_01",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:0ab45975-7163-53b4-b83b-5773b35c2bfc",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_RESTAURANT_02",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:0bd82446-6bb6-5b09-aec0-a10baf85160d",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_SIDE_ENTRANCE",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:6d04cac5-582a-59e8-b7df-66c8e0e34cd6",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_1F_STORAGE",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:3c212034-0339-5b32-92cf-fd55194f466b",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_BATHROOM",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:75890bdd-2ef5-501c-85f3-81847eda950d",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_CLASS201",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:ec815423-56c6-51ae-92e9-e054cc5d631c",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_CLASS202",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:c1fbc570-8cce-52d3-8b91-47fa235f39b1",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_CLASS203",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:28644263-2903-54ad-9fd1-37cd32305960",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_CLASS204",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:90e01ff3-dc01-5398-b417-22b3916a284a",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_CORRIDOR_01",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:8d1e54a2-04ad-5046-9df2-788dae2a5f94",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_CORRIDOR_02",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:be8e0742-3fa0-5ecc-9021-f50fd2313a72",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_CORRIDOR_03",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:24dbd994-1ce7-500d-94ad-88e1ab1e65f7",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_CORRIDOR_04",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:65b283c3-5a67-54d1-bd2b-d31af611b2f7",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_GALLERY_01",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:d4235a27-04cc-5893-a1db-01841e74d1bf",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_GALLERY_02",
+      "projection_type": "PERSP"
+    },
+    {
+      "instance_id": "amidst:school:object:25fac2a0-32a9-580d-87df-ee1433896d34",
+      "invalid_parameters": [],
+      "numeric_parameters": {
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "lens": 24.0,
+        "sensor_height": 24.0,
+        "sensor_width": 36.0,
+        "shift_x": 0.0,
+        "shift_y": 0.0
+      },
+      "object_name_locator": "CAM_2F_MEETINGROOM",
+      "projection_type": "PERSP"
+    }
+  ],
+  "excluded_camera": {
+    "instance_id": null,
+    "invalid_parameters": [
+      "lens"
+    ],
+    "numeric_parameters": {
+      "clip_end": 1000.0,
+      "clip_start": 1.0,
+      "lens": Infinity,
+      "sensor_height": 24.0,
+      "sensor_width": 36.0,
+      "shift_x": 0.0,
+      "shift_y": 0.0
+    },
+    "object_name_locator": "skp_camera_Last_Saved_SketchUp_View",
+    "projection_type": "PERSP"
+  },
+  "images_generated": false,
+  "instance_registry": "/Users/polalabear/Developer/amidst/data/annotations/instance_registry/school.json",
+  "invalid_eligible_cameras": [],
+  "metadata_schema": "/Users/polalabear/Developer/amidst/data/metadata/first_dataset_slice_metadata_schema_v0_1_0.json",
+  "render_config": "/Users/polalabear/Developer/amidst/data/metadata/first_dataset_slice_render_config_v0_1_0.json",
+  "render_resource_policy": "/Users/polalabear/Developer/amidst/data/metadata/first_dataset_slice_render_resource_policy_v0_1_0.json",
+  "render_settings": {
+    "color_depth": "8",
+    "color_mode": "RGBA",
+    "engine": "BLENDER_EEVEE",
+    "file_format": "PNG",
+    "film_transparent": false,
+    "fps": 24,
+    "resolution_percentage": 100,
+    "resolution_x": 1920,
+    "resolution_y": 1080
+  },
+  "repository_classification": "REVIEW_REQUIRED",
+  "scene_id": "school",
+  "scene_mutated": false,
+  "scene_units": {
+    "length_unit": "METERS",
+    "scale_length": 1.0,
+    "system": "METRIC"
+  },
+  "scene_version": "v1",
+  "schema_name": "amidst.first_dataset_slice_readiness",
+  "schema_version": "0.1.0",
+  "semantic_sidecar": "/Users/polalabear/Developer/amidst/data/annotations/semantic/school_v1_semantic_baseline_v0_1_0.json",
+  "source_scene": "/Users/polalabear/Developer/amidst/blender/source/school_v1.blend",
+  "source_scene_sha256": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+  "status": "REVIEW_REQUIRED",
+  "task_contract": "/Users/polalabear/Developer/amidst/data/metadata/first_dataset_slice_tasks_v0_1_0.json",
+  "texture_policy_validation": "/Users/polalabear/Developer/amidst/data/reports/school_v1_texture_agnostic_scene_validation.json",
+  "validated_at_utc": "2026-09-14T11:10:44.928109+00:00",
+  "validated_output_scene": "/Users/polalabear/Developer/amidst/blender/output/school_v1_ids_policy_1_0_1_r2.blend",
+  "validated_output_scene_sha256": "532243c70b3cce6d9710a804f29a3ffe76cee779a80a888dc875600fc095beb4"
+}

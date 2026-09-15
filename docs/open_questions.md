@@ -56,6 +56,33 @@ ID rather than duplicating the entire discussion.
 | OQ-014 | What offline, streaming, or real-time behavior is actually required? | Affects architecture, datasets, latency metrics, and ADRs | PRD, Architecture, Evaluation, ADRs | OPEN | TODO |
 | OQ-015 | Which machine-readable data contracts, external standards, and time/interval semantics should Amidst adopt? | Shared Blender, video, event, evidence, Retrieval, and evaluation records need compatible versioned contracts | Architecture, Dataset, Spatial, Retrieval, Evaluation, ADRs | OPEN | Peter |
 
+### Confirmed Partial Resolutions
+
+- OQ-004: `CONFIRMED` only for stable `school` object identity. The versioned
+  sidecar registry is authoritative and Blender `instance_id` properties are
+  mirrors. Policy 1.0.1 also confirms the `school_v1` objective-disambiguation
+  and reviewed-bootstrap sidecars plus exclusion of the imported saved-view
+  helper camera. Other Blender semantic, coordinate, camera, and export
+  authorities remain `OPEN`.
+- OQ-015: `CONFIRMED` only for contract
+  `amidst.school.object-id/1.0.1`, its unchanged base-fingerprint algorithm
+  v1.0.0, namespace UUID
+  `1601a7c1-19ac-555d-9962-05e4503ac6bd`, UUIDv5 format, canonical
+  fingerprinting, approved override/bootstrap resolution, remaining
+  collision/ambiguity failure, and permanent tombstones. The scoped
+  `school_v1` first-slice contracts are also `CONFIRMED`: task contract
+  `amidst.school.first-dataset-slice/0.1.0`, metadata schema
+  `amidst.first-dataset-slice.metadata/0.1.0`, spatial/visibility contracts
+  `amidst.school.first-slice-spatial/1.0.0` and
+  `amidst.school.first-slice-visibility/1.0.0`, render config
+  `amidst.school.first-slice-render/0.1.0`, and category-agnostic semantic
+  baseline `school.v1.semantic/0.1.0`. Resource policy
+  `amidst.school.texture-agnostic-render/0.1.0` confirms that the five preserved
+  legacy missing images are not runtime requirements and that visual fidelity
+  is non-authoritative. Other schemas, external-standard choices,
+  and general time/interval semantics remain `OPEN`; this partial resolution
+  does not close OQ-015.
+
 ### Decision Record Template
 
 Use this detail block only when the table cannot hold the resolution context.
@@ -140,6 +167,29 @@ For material technical trade-offs, link an ADR in
 | OQ-013 | Agent 可以做什麼、使用哪些工具、參數如何授權？ | OPEN | Peter |
 | OQ-014 | 實際需要離線、串流還是即時行為？ | OPEN | Peter |
 | OQ-015 | Amidst 應採用哪些資料契約、外部標準與時間區間語意？ | OPEN | Peter |
+
+### 已確認的部分決議
+
+- OQ-004：只有 `school` 穩定物件 identity 子範圍為 `CONFIRMED`。版本化
+  sidecar registry 是權威來源，Blender `instance_id` property 是鏡像；policy
+  1.0.1 也確認 `school_v1` objective-disambiguation／reviewed-bootstrap sidecar
+  及 imported saved-view helper camera 排除。其他 Blender 語意、座標、相機
+  與 export authority 仍為 `OPEN`。
+- OQ-015：只有 `amidst.school.object-id/1.0.1` 契約、不變的 base-fingerprint
+  algorithm v1.0.0、namespace UUID
+  `1601a7c1-19ac-555d-9962-05e4503ac6bd`、UUIDv5 格式、canonical
+  fingerprint、已核准 override／bootstrap 解歧、剩餘 collision／ambiguity
+  失敗規則與永久 tombstone 為 `CONFIRMED`。限定 `school_v1` 的首批資料契約
+  也已確認：task contract `amidst.school.first-dataset-slice/0.1.0`、metadata
+  schema `amidst.first-dataset-slice.metadata/0.1.0`、spatial／visibility contract
+  `amidst.school.first-slice-spatial/1.0.0` 與
+  `amidst.school.first-slice-visibility/1.0.0`、render config
+  `amidst.school.first-slice-render/0.1.0`，以及 category-agnostic semantic
+  baseline `school.v1.semantic/0.1.0`。Resource policy
+  `amidst.school.texture-agnostic-render/0.1.0` 確認保留的五個 legacy missing
+  images 不是 runtime requirements，且 visual fidelity 不具權威性。其他
+  schema、外部標準選擇與一般時間／
+  區間語意仍為 `OPEN`，此部分決議不關閉 OQ-015。
 
 ### 決策紀錄與審查流程
 

@@ -1,0 +1,70 @@
+{
+  "schema_name": "amidst.instance_id_determinism_check",
+  "schema_version": "1.1.0",
+  "repository_classification": "REVIEW_REQUIRED",
+  "status": "READY_FOR_PERSISTENT_ID_ASSIGNMENT",
+  "policy_id": "amidst.school.object-id/1.0.1",
+  "base_fingerprint_policy_id": "amidst.school.object-id/1.0.0",
+  "scene_id": "school",
+  "scene_version": "v1",
+  "comparison_method": "byte_for_byte_canonical_artifact_comparison",
+  "run_inputs": {
+    "existing_registry": null,
+    "source_scene": "blender/source/school_v1.blend",
+    "working_scene": "blender/working/school_v1_working.blend",
+    "automatic_disambiguation": "data/annotations/instance_registry/school_v1_disambiguation.json",
+    "identity_bootstrap": "data/annotations/instance_registry/school_v1_identity_bootstrap.json"
+  },
+  "scene_integrity": {
+    "expected_source_sha256": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+    "source_sha256_after_runs": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+    "working_sha256_after_runs": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+    "blend_saved": false,
+    "custom_properties_unchanged": true,
+    "scene_state_unchanged": true
+  },
+  "artifacts": [
+    {
+      "path": "data/annotations/instance_registry/school.json",
+      "sha256": "e5e638b5e3cc0f647288f14ccb7ad890afc768bc2f0244ec1ef838112a4daabf",
+      "rerun_byte_identical": true
+    },
+    {
+      "path": "data/reports/school_v1_id_assignment.json",
+      "sha256": "ae89d0f7461db453aa49d6d6f16a60ce09ad5654e7f2c1a61ec4ee4830e9bdb3",
+      "rerun_byte_identical": true
+    },
+    {
+      "path": "data/reports/school_v1_id_collisions.json",
+      "sha256": "c4361ec2b846a56f835861173ec8187426a7f4ad2122817b45a80d0dd9c86ffa",
+      "rerun_byte_identical": true
+    },
+    {
+      "path": "data/reports/school_v1_id_assignment.md",
+      "sha256": "39ea95903e8f93579ecde711e124867045b54f76ff6c7d5edd597f66838c821f",
+      "rerun_byte_identical": true
+    }
+  ],
+  "counts_identical": true,
+  "object_to_instance_id_mapping_identical": true,
+  "canonical_fingerprints_identical": true,
+  "registry_semantic_content_identical": true,
+  "collision_report_identical": true,
+  "counts": {
+    "total_objects": 2778,
+    "excluded_objects": 1,
+    "eligible_objects": 2777,
+    "proposed_ids": 2777,
+    "normally_assigned_ids": 2641,
+    "automatically_disambiguated_ids": 5,
+    "human_bootstrap_ids": 131,
+    "observed_base_duplicate_fingerprint_groups": 45,
+    "duplicate_fingerprint_blockers": 0,
+    "duplicate_id_groups": 0,
+    "unresolved_ambiguous_objects": 0,
+    "assignment_failures": 0,
+    "unsupported_objects": 0
+  },
+  "blocking_findings": [],
+  "safe_for_persistent_assignment": true
+}

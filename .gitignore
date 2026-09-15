@@ -15,6 +15,7 @@ __pycache__/
 !.env.example
 config/local.*
 config/private.*
+local/
 
 # Private datasets
 data/raw/

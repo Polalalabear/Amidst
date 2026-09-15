@@ -1,0 +1,125 @@
+{
+  "scene_id": "school",
+  "current_base": "school_v1.blend",
+  "manifest_status": "PROPOSED",
+  "repository_classification": "REVIEW_REQUIRED",
+  "stable_identity": {
+    "status": "CONFIRMED",
+    "policy_id": "amidst.school.object-id/1.0.1",
+    "base_fingerprint_policy_id": "amidst.school.object-id/1.0.0",
+    "namespace_uuid": "1601a7c1-19ac-555d-9962-05e4503ac6bd",
+    "instance_id_format": "amidst:school:object:<uuid-v5>",
+    "registry_authority": "sidecar",
+    "registry": "data/annotations/instance_registry/school.json",
+    "registry_status": "mirrored_to_working_and_output_verified",
+    "blender_custom_properties_role": "mirror_only",
+    "persistent_assignment_status": "completed",
+    "approved_identity_layers": {
+      "automatic_disambiguation": {
+        "path": "data/annotations/instance_registry/school_v1_disambiguation.json",
+        "status": "confirmed_applied_dry_run",
+        "object_count": 5,
+        "discriminator": "hierarchy.child_fingerprints"
+      },
+      "human_bootstrap": {
+        "path": "data/annotations/instance_registry/school_v1_identity_bootstrap.json",
+        "status": "confirmed_applied_dry_run",
+        "object_count": 131,
+        "assignment_method": "human_reviewed_bootstrap"
+      }
+    },
+    "eligibility_exclusions": [
+      {
+        "scene_version": "v1",
+        "object_locator": "skp_camera_Last_Saved_SketchUp_View",
+        "object_type": "CAMERA",
+        "status": "CONFIRMED",
+        "reason": "non_authoritative_imported_saved_view_helper"
+      }
+    ],
+    "previous_dry_run": {
+      "policy_id": "amidst.school.object-id/1.0.0",
+      "status": "REVIEW_REQUIRED",
+      "assignment_report": "data/reports/school_v1_id_assignment.json",
+      "collision_report": "data/reports/school_v1_id_collisions.json",
+      "determinism_report": "data/reports/school_v1_id_determinism.json",
+      "deterministic_rerun_identical": true,
+      "counts": {
+        "eligible_objects": 2778,
+        "proposed_ids": 2641,
+        "duplicate_fingerprint_groups": 45,
+        "duplicate_id_groups": 0,
+        "ambiguous_objects": 136,
+        "assignment_failures": 1,
+        "unsupported_objects": 0
+      },
+      "blocking_reasons": [
+        "duplicate_canonical_fingerprints",
+        "non_finite_camera_lens"
+      ]
+    },
+    "current_dry_run": {
+      "policy_id": "amidst.school.object-id/1.0.1",
+      "base_fingerprint_policy_id": "amidst.school.object-id/1.0.0",
+      "status": "READY_FOR_PERSISTENT_ID_ASSIGNMENT",
+      "assignment_report": "data/reports/school_v1_id_assignment.json",
+      "collision_report": "data/reports/school_v1_id_collisions.json",
+      "determinism_report": "data/reports/school_v1_id_determinism.json",
+      "deterministic_rerun_identical": true,
+      "counts": {
+        "total_objects": 2778,
+        "excluded_objects": 1,
+        "eligible_objects": 2777,
+        "proposed_ids": 2777,
+        "normally_assigned_ids": 2641,
+        "automatically_disambiguated_ids": 5,
+        "human_bootstrap_ids": 131,
+        "duplicate_fingerprint_blockers": 0,
+        "duplicate_id_groups": 0,
+        "unresolved_ambiguous_objects": 0,
+        "assignment_failures": 0,
+        "unsupported_objects": 0
+      },
+      "blocking_reasons": []
+    }
+  },
+  "versions": [
+    {
+      "version": "v1",
+      "file": "school_v1.blend",
+      "source_path": "blender/source/school_v1.blend",
+      "source_sha256": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+      "immutable_source": true,
+      "status": "active",
+      "working_copy": {
+        "file": "school_v1_working.blend",
+        "path": "blender/working/school_v1_working.blend",
+        "initial_sha256": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+        "provenance_report": "data/reports/school_v1_working_copy_provenance.json",
+        "status": "instance_ids_persisted_and_validated"
+      },
+      "render_generation": {
+        "status": "blocked",
+        "reason": "five_missing_external_image_resources"
+      },
+      "inspection": {
+        "status": "completed_with_findings",
+        "blender_version": "5.2.1 LTS",
+        "inventory": "data/scene_inventory/school_v1_objects.csv",
+        "validation_report": "data/reports/school_v1_validation.json",
+        "summary": {
+          "object_count": 2778,
+          "camera_count": 30,
+          "missing_instance_id_count": 2778,
+          "duplicate_instance_id_count": 0,
+          "hierarchy_issue_count": 0,
+          "semantic_metadata_object_count": 0,
+          "unlabeled_object_count": 2778,
+          "ambiguous_object_name_count": 2354,
+          "external_resource_count": 447,
+          "missing_resource_count": 5
+        }
+      }
+    }
+  ]
+}

@@ -84,7 +84,8 @@ The following fields are candidates for records that cross module boundaries:
 | `quality_flags` | string array | Explicit missing, ambiguous, partial, stale, or review-needed conditions | PROPOSED |
 
 Namespace convention, identifier format, schema registry, and compatibility
-policy are `OPEN`.
+policy remain `OPEN` generally. The confirmed `school` Blender-object identity
+contract below is a scoped exception and does not settle other record types.
 
 ### Time Representation
 
@@ -128,6 +129,91 @@ Before using a Blender file, record:
 
 Blender scene units affect displayed values and must not be treated as proof of
 physical scale without independent verification.
+
+#### Confirmed school object identity contract
+
+The `school` Blender-object identity contract is
+`amidst.school.object-id/1.0.1`; the canonical base fingerprint and normal-ID
+derivation remain `1.0.0`:
+
+- authoritative namespace UUID:
+  `1601a7c1-19ac-555d-9962-05e4503ac6bd`;
+- identifier format: `amidst:school:object:<uuid-v5>`;
+- UUID input: the policy's canonical SHA-256 identity fingerprint, encoded as
+  `amidst.school.object-id/1.0.0:<fingerprint>`;
+- canonical encoding: Unicode NFC strings in UTF-8; finite floats encoded as
+  lowercase `float.hex()` strings; explicit nulls; deterministic arrays;
+  JSON keys sorted by Unicode code point, no insignificant whitespace, and no
+  trailing newline;
+- eligible `school_v1` types: `MESH`, `ARMATURE`, `CURVE`, `EMPTY`, `CAMERA`,
+  and `FONT`, using the type-specific signatures approved by ADR-008;
+- object names are excluded from fingerprint and UUID generation;
+- duplicate fingerprints, duplicate IDs, ambiguity, unsupported types, and
+  non-determinism are fatal validation results; and
+- canonical registry path:
+  `data/annotations/instance_registry/school.json`.
+
+The `school_v1` amendment adds two canonical, scene-version-specific inputs:
+
+- `school_v1_disambiguation.json` contains the five approved
+  `hierarchy.child_fingerprints` records;
+- `school_v1_identity_bootstrap.json` contains 131 reviewed opaque mappings
+  with discriminator format `bootstrap:` plus exactly three ASCII decimal
+  digits, unique within each duplicate-fingerprint group.
+
+Bootstrap locators are NFC UTF-8 sorted only to construct and serialize the
+explicit initial mapping; locator text is excluded from the resolved-identity
+payload. The resolved fingerprint is SHA-256 over canonical JSON with exactly
+`base_fingerprint`, `disambiguation_method`, and `disambiguation_token`.
+UUIDv5 then uses the unchanged name
+`amidst.school.object-id/1.0.0:<resolved-fingerprint>`. Missing or conflicting
+records invalidate assignment. The imported saved-view camera
+`skp_camera_Last_Saved_SketchUp_View` is an explicit policy-1.0.1 eligibility
+exclusion and remains unmodified in the Blender scene.
+
+Registry identity records are authoritative and versioned. Blender
+`instance_id` custom properties are mirrors, not independent identity records.
+Registry serialization is canonical; deterministic identity content excludes
+run timestamps. Retired IDs remain as permanent tombstones and are never
+reused.
+
+#### Confirmed school_v1 first-slice contracts
+
+The following artifacts are `CONFIRMED` for the scoped `school_v1` first
+synthetic dataset slice. Their repository-publication classification remains
+`REVIEW_REQUIRED`; this confirmation does not authorize Git publication:
+
+- `data/annotations/semantic/school_v1_semantic_baseline_v0_1_0.json` keeps
+  all unreviewed entities at `Unknown` / `needs_review` and defines the required
+  fields for a future human-reviewed record; its schema and annotation version
+  are `0.1.0` / `school.v1.semantic/0.1.0`;
+- `data/metadata/first_dataset_slice_tasks_v0_1_0.json` defines the seven
+  canonical task identifiers, object eligibility, spatial/visibility versions,
+  tolerances, ties, invalidation, and output naming under contract
+  `amidst.school.first-dataset-slice/0.1.0`;
+- `data/metadata/first_dataset_slice_metadata_schema_v0_1_0.json` makes
+  `metadata.json` authoritative for scene checksums, camera pose/intrinsics,
+  visible IDs, distances, relations, task answers, validity, and provenance;
+  and
+- `data/metadata/first_dataset_slice_render_config_v0_1_0.json` records current
+  and locked Blender 5.2.1 build, EEVEE, output, colour, seed, platform, and
+  camera settings under `amidst.school.first-slice-render/0.1.0`; and
+- `data/metadata/first_dataset_slice_render_resource_policy_v0_1_0.json`
+  records policy `amidst.school.texture-agnostic-render/0.1.0`, source/input/
+  derived checksums, the neutral material override, preserved unavailable
+  legacy resources, authorized datablock changes, and
+  `authoritative_visual_fidelity = false`.
+
+The authoritative schema ID is
+`amidst.first-dataset-slice.metadata/0.1.0`. Output dataset version is
+`school_v1_first_slice_v0_1_0`; directories use zero-based six-digit
+`frame_000000` names, are immutable once written, and preserve rejected sample
+evidence separately. A generator may run only after the full readiness report
+has zero blockers, regardless of these files' confirmed status.
+For this policy the resource gate is "zero unresolved resources required by the
+approved render policy". Historical image datablocks may remain missing when
+they are preserved, recorded, and unreachable from the active overridden render
+path.
 
 #### Camera fields
 
@@ -408,7 +494,8 @@ Event、Evidence、Retrieval 與評估可以互相連接。
 跨模組候選欄位包括 `schema_name`、`schema_version`、`record_id`、
 `record_kind`、`created_at`、`producer`、`provenance` 與
 `quality_flags`。命名空間、ID 格式、schema registry 與相容政策仍為
-`OPEN`。
+整體 `OPEN`；下方已確認的 `school` Blender 物件識別契約是限定範圍的例外，
+不代表其他 record type 已定案。
 
 ### 時間表示
 
@@ -438,6 +525,79 @@ Blender 顯示單位本身不能證明實體比例。相機資料可評估 focal
 水平／垂直 FOV、sensor size／fit、render size、lens shift、clip distance、
 intrinsic matrix、distortion、校正日期／證據與 zone 關聯；視覺對齊不能
 冒充真實校正。
+
+#### 已確認的 school 物件識別契約
+
+`school` Blender 物件識別契約為 `amidst.school.object-id/1.0.1`；canonical
+base fingerprint 與一般 ID derivation 維持 `1.0.0`：
+
+- 權威 namespace UUID：`1601a7c1-19ac-555d-9962-05e4503ac6bd`；
+- 識別碼格式：`amidst:school:object:<uuid-v5>`；
+- UUID 輸入為 policy 的 canonical SHA-256 identity fingerprint，字串格式是
+  `amidst.school.object-id/1.0.0:<fingerprint>`；
+- canonical encoding 採 Unicode NFC UTF-8 字串、有限 float 的小寫
+  `float.hex()` 字串、明確 null、確定性 array；JSON key 依 Unicode code
+  point 排序，不含無意義空白及結尾換行；
+- `school_v1` 適用型別為 `MESH`、`ARMATURE`、`CURVE`、`EMPTY`、
+  `CAMERA`、`FONT`，並使用 ADR-008 核准的各型別 signature；
+- object name 不得參與 fingerprint 或 UUID 產生；
+- 重複 fingerprint、重複 ID、歧義、不支援型別與非確定性都是致命驗證
+  結果；以及
+- canonical registry path 為
+  `data/annotations/instance_registry/school.json`。
+
+`school_v1` 修正新增兩個 canonical、場景版本限定 input：
+
+- `school_v1_disambiguation.json` 保存五筆已核准的
+  `hierarchy.child_fingerprints` 紀錄；
+- `school_v1_identity_bootstrap.json` 保存 131 筆已審閱 opaque mapping；
+  discriminator 格式固定為 `bootstrap:` 加三位 ASCII 十進位數字，並在各
+  duplicate-fingerprint group 內唯一。
+
+Bootstrap locator 只在建立與序列化初始明示 mapping 時以 NFC UTF-8 排序，
+locator 文字不進入 resolved-identity payload。Resolved fingerprint 是恰含
+`base_fingerprint`、`disambiguation_method`、`disambiguation_token` 的
+canonical JSON 之 SHA-256；UUIDv5 使用不變的
+`amidst.school.object-id/1.0.0:<resolved-fingerprint>` name。紀錄缺漏或衝突
+都會使指派無效。Imported saved-view camera
+`skp_camera_Last_Saved_SketchUp_View` 是 policy 1.0.1 明確 eligibility exclusion，
+Blender 場景內的 camera 本身維持不變。
+
+Registry identity record 具有權威性且需版本化；Blender `instance_id` custom
+property 只是鏡像，不是獨立 identity record。Registry 使用 canonical
+serialization，確定性 identity 內容不含執行 timestamp。已退役 ID 永久保留
+tombstone，不得重用。
+
+#### 已確認的 school_v1 首批資料契約
+
+以下產物在 `school_v1` 首批合成資料的限定範圍內為 `CONFIRMED`；其 Git 發布
+分類仍為 `REVIEW_REQUIRED`，技術確認不等於授權發布：
+
+- `data/annotations/semantic/school_v1_semantic_baseline_v0_1_0.json` 讓所有
+  未審閱實體維持 `Unknown`／`needs_review`，並列出未來人工審閱紀錄的必要
+  欄位；schema／annotation 版本為 `0.1.0`／`school.v1.semantic/0.1.0`；
+- `data/metadata/first_dataset_slice_tasks_v0_1_0.json` 定義七個 canonical
+  task identifier、物件 eligibility、空間／visibility 版本、tolerance、tie、
+  invalidation 與輸出命名，契約為
+  `amidst.school.first-dataset-slice/0.1.0`；
+- `data/metadata/first_dataset_slice_metadata_schema_v0_1_0.json` 規定
+  `metadata.json` 承載場景 checksum、camera pose／intrinsics、visible ID、
+  距離、關係、task answer、validity 與 provenance 的權威資料；以及
+- `data/metadata/first_dataset_slice_render_config_v0_1_0.json` 將場景現值、
+  Blender 5.2.1 build、EEVEE、輸出、色彩、seed、平台與 camera 設定鎖定在
+  `amidst.school.first-slice-render/0.1.0`；以及
+- `data/metadata/first_dataset_slice_render_resource_policy_v0_1_0.json` 記錄
+  `amidst.school.texture-agnostic-render/0.1.0`、source／input／derived checksum、
+  neutral material override、保留的 unavailable legacy resources、核准的
+  datablock changes 與 `authoritative_visual_fidelity = false`。
+
+權威 schema ID 為 `amidst.first-dataset-slice.metadata/0.1.0`，輸出 dataset
+version 為 `school_v1_first_slice_v0_1_0`。目錄採從零開始的六位數
+`frame_000000`，寫入後不可覆寫，失效樣本證據另行保存。不論契約狀態是否
+已確認，完整 readiness report 未達零 blocker 前，generator 都不得執行。
+此政策的資源 gate 是「approved render policy 所需資源無未解項目」。歷史
+image datablock 可維持 missing，但必須保留、記錄，且 active overridden render
+path 不可到達它們。
 
 `PROPOSED`：以 glTF 2.0 作為 runtime geometry 候選，Amidst 語意放在
 有版本的 sidecar manifest。glTF 2.0 使用右手座標、線性單位為公尺、角度
