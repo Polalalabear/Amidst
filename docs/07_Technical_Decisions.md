@@ -35,6 +35,7 @@ approved technical trade-offs belong here.
 | ADR-007 | Modular architecture before unnecessary distributed architecture | PROPOSED | TODO | Architecture | TODO |
 | ADR-008 | Deterministic Blender object IDs with an authoritative sidecar registry | CONFIRMED | Peter | Spatial, data formats, dataset, Blender tooling | New object type or future-version migration |
 | ADR-009 | Category-agnostic geometric contract for the school_v1 first synthetic slice | CONFIRMED | Peter | Dataset, spatial, data formats, Blender validation | New task, camera model, visibility model, or incompatible schema change |
+| ADR-010 | Repository-relative migration manifests and environment-scoped replay | CONFIRMED | Peter | Data formats, dataset, publication, handoff, tooling | Path-contract incompatibility or approved cross-platform determinism rule |
 
 Topics marked `PROPOSED` are not confirmed decisions. Human review must either
 complete an ADR, keep it `PROPOSED`, defer it, reject it, or remove it.
@@ -227,6 +228,9 @@ the readiness gate or publication review.
   policy. The five preserved legacy image references need not be reconstructed.
 - Generation remains blocked until the derived texture-agnostic scene passes a
   fresh-process invariant and runtime-dependency validation.
+- The derived scene passed that gate on 2026-09-15. The first bounded pilot run
+  then stopped at its 50-attempt limit with 1 accepted and 49 rejected samples;
+  it remains `REVIEW_REQUIRED` without changing the confirmed contract.
 - Verification checks exact contract versions, 2,777 stable IDs, 29 valid
   eligible cameras, locked render settings, resource records, scene checksums,
   and authorized path-change provenance.
@@ -244,6 +248,68 @@ the readiness gate or publication review.
 - Spatial contract: `05_Spatial_Model_Specification.md`
 - Machine schema: `09_Data_Types_and_Exchange_Formats.md`
 - Open decision scope: `open_questions.md` OQ-015
+
+### ADR-010 — Repository-Relative Migration Manifests and Environment-Scoped Replay
+
+Status: `CONFIRMED`
+
+Owner: Peter (default responsible person)
+
+Decision date: 2026-09-15
+
+Affected requirements / artifacts: portable paths, migration manifests,
+private Blender transfer, diagnostic continuation, and repository handoff.
+
+#### Context and Options
+
+The active Blender diagnostic must move between hosts without treating a local
+filesystem path as artifact identity. Copying the full Codex worktree would
+carry a host-specific `.git` pointer; hard-coded absolute paths would fail on a
+different operating system. The considered options were copying the worktree
+unchanged, rewriting every path after transfer, or cloning Git and restoring a
+checksum-verified logical overlay. The third option preserves Git integrity,
+historical evidence, and private-asset classification.
+
+#### Decision
+
+- Portable records use repository-root-relative POSIX paths. Runtime launchers
+  resolve them against an explicitly selected local root.
+- Stable IDs and SHA-256 identify artifacts; physical source roots, drive
+  letters, hostnames, and Codex worktree Git pointers are excluded.
+- The destination is created by cloning Git, overlaying recorded uncommitted
+  files, and restoring `PRIVATE_ONLY` assets through an approved private
+  channel under the same logical layout.
+- `scripts/migration_manifest.py` records the Git checkpoint, dirty-state
+  digest, source environment, classification, byte size, and checksum and
+  verifies the restored target without modifying it.
+- Historical records are immutable. New v0.1.1 diagnostic records use
+  `path_base = repository_root`; old absolute provenance is not rewritten.
+- A changed OS, architecture, Blender build, GPU backend/device, or driver is a
+  distinct determinism environment. Cross-environment acceptance remains open
+  under OQ-016 and cannot change Ground Truth.
+
+#### Consequences and Verification
+
+The same logical package can be verified under different physical roots, and
+private assets remain outside Git. Migration requires a separate approved
+transfer for those assets and may require rerunning environment-sensitive
+evidence. Verification consists of manifest creation, verification from a
+different root, repository checks, JSON validation, and environment-scoped
+render comparisons.
+
+#### Revisit Condition
+
+- A required consumer cannot resolve repository-relative POSIX paths.
+- A symlink, external asset store, or multi-repository artifact becomes
+  necessary.
+- Human review confirms a stronger cross-platform pixel-determinism contract.
+
+#### References
+
+- Data path contract: `09_Data_Types_and_Exchange_Formats.md`
+- Publication policy: `08_Repository_and_Data_Publication_Policy.md`
+- Dataset boundary: `04_Dataset_Specification.md`
+- Open determinism decision: `open_questions.md` OQ-016
 
 ### ADR Template
 
@@ -367,6 +433,7 @@ Affected requirements / artifacts: `TODO`
 | ADR-007 | 不必要的分散式架構前，先採模組化架構 | PROPOSED |
 | ADR-008 | 使用權威 sidecar registry 的確定性 Blender 物件 ID | CONFIRMED |
 | ADR-009 | school_v1 首批合成資料採 category-agnostic 幾何契約 | CONFIRMED |
+| ADR-010 | Repository-relative migration manifest 與 environment-scoped replay | CONFIRMED |
 
 標示為 `PROPOSED` 的項目都不是已確認決策。人員審查後應完成 ADR、維持
 提案、延後、否決或移除。
@@ -458,9 +525,45 @@ legacy image references 不需重建，但 derived texture-agnostic scene 必須
 通過 fresh-process invariant 與 runtime-dependency validation。契約確認也不
 等同 Git 發布核准。
 
+此 gate 已於 2026-09-15 通過。首個 bounded pilot run 隨後在 50-attempt
+上限停止，結果為 1 accepted、49 rejected，因此維持 `REVIEW_REQUIRED`；此結果
+不改變已確認的 contract。
+
 若新增 task、改變 anchor／visibility／relation 語意、需要 material-aware
 transparency、Blender build／platform 驗證失敗，或 schema／輸出 layout 發生
 不相容變更，必須重新檢視此決策。
+
+### ADR-010 — Repository-Relative Migration Manifest 與 Environment-Scoped Replay
+
+狀態：`CONFIRMED`
+
+負責人：Peter（預設負責人）
+
+決策日期：2026-09-15
+
+目前 Blender diagnostic 必須能移往其他主機，但本機 filesystem path 不能
+成為 artifact identity。直接複製 Codex worktree 會帶走綁定來源主機的 `.git`
+pointer；逐檔改寫路徑也會破壞歷史 evidence。因此決定在目標機器重新 clone
+Git，再依 checksum manifest 覆蓋未提交檔案，並以核准的私人管道恢復
+`PRIVATE_ONLY` asset。
+
+- 可攜紀錄使用 repository-root-relative POSIX path，只在 runtime 以明確的
+  local root 解析。
+- Stable ID 與 SHA-256 是 artifact identity；manifest 不記錄實體 source root、
+  drive letter、hostname 或 Codex worktree Git pointer。
+- `scripts/migration_manifest.py` 記錄 Git checkpoint、dirty-state digest、來源
+  environment、分類、byte size 與 checksum，並以唯讀方式驗證目標。
+- 歷史紀錄維持不可變；新的 v0.1.1 diagnostic record 使用
+  `path_base = repository_root`，不回寫舊 absolute provenance。
+- OS、architecture、Blender build、GPU backend／device 或 driver 改變時，視為
+  不同 determinism environment。跨環境驗收依 OQ-016 維持 `OPEN`，不得因此
+  修改 Ground Truth。
+
+此做法讓相同 logical package 可在不同實體 root 驗證，也讓私人資產繼續留在
+Git 之外；代價是私人檔需要獨立核准搬運，environment-sensitive evidence 可能
+必須重跑。若必要 consumer 無法處理 POSIX relative path、需要 symlink／外部
+artifact store／multi-repository asset，或人員確認更強的跨平台 pixel contract，
+必須重新檢視本 ADR。
 
 ### ADR 應記錄的內容
 

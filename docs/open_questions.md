@@ -55,6 +55,7 @@ ID rather than duplicating the entire discussion.
 | OQ-013 | What may the Agent do, which tools may it call, and how are parameters authorized? | Defines safety and Agent/Retrieval responsibility | PRD, Architecture, Retrieval, Evaluation | OPEN | TODO |
 | OQ-014 | What offline, streaming, or real-time behavior is actually required? | Affects architecture, datasets, latency metrics, and ADRs | PRD, Architecture, Evaluation, ADRs | OPEN | TODO |
 | OQ-015 | Which machine-readable data contracts, external standards, and time/interval semantics should Amidst adopt? | Shared Blender, video, event, evidence, Retrieval, and evaluation records need compatible versioned contracts | Architecture, Dataset, Spatial, Retrieval, Evaluation, ADRs | OPEN | Peter |
+| OQ-016 | Which deterministic texture-agnostic shading/illumination, observation-usability, and cross-environment pixel rules should govern the first slice? | The v0.1.1 diagnostic is environment-sensitive; migration adds a new OS/backend tuple that must not be mixed with the source run without an approved comparison | Dataset, Spatial, Data Formats, Render Config, ADRs | OPEN | Peter |
 
 ### Confirmed Partial Resolutions
 
@@ -82,6 +83,18 @@ ID rather than duplicating the entire discussion.
   is non-authoritative. Other schemas, external-standard choices,
   and general time/interval semantics remain `OPEN`; this partial resolution
   does not close OQ-015.
+- OQ-016 blocks a second pilot. Diagnostic
+  `data/reports/render_diagnostics/school_v1_observation_render_diagnostic_v0_1_0.json`
+  proves that the prior accepted image is pixel-identical to a fresh render but
+  has no pixels above the proposed 0.10 visibility threshold and only
+  0.011764705 P1-P99 luminance range. The v0.1.1 render-only policy and derived
+  scene were subsequently authorized for diagnostic evidence, but its
+  29-camera sweep and thresholds are not yet complete. Treatment of nearly
+  single-object camera views and the acceptance boundary for pixel, PNG-byte,
+  and cross-environment determinism remain `OPEN`. Whether decoded pixels must
+  match exactly across different OS, architecture, Blender build, backend,
+  device, or driver tuples is not yet authoritative; source-host and
+  destination-host statistics must remain separate.
 
 ### Decision Record Template
 
@@ -167,6 +180,7 @@ For material technical trade-offs, link an ADR in
 | OQ-013 | Agent 可以做什麼、使用哪些工具、參數如何授權？ | OPEN | Peter |
 | OQ-014 | 實際需要離線、串流還是即時行為？ | OPEN | Peter |
 | OQ-015 | Amidst 應採用哪些資料契約、外部標準與時間區間語意？ | OPEN | Peter |
+| OQ-016 | 首批資料應採哪些 deterministic texture-agnostic shading／illumination、observation-usability 與跨環境 pixel 規則？ | OPEN | Peter |
 
 ### 已確認的部分決議
 
@@ -190,6 +204,16 @@ For material technical trade-offs, link an ADR in
   images 不是 runtime requirements，且 visual fidelity 不具權威性。其他
   schema、外部標準選擇與一般時間／
   區間語意仍為 `OPEN`，此部分決議不關閉 OQ-015。
+- OQ-016 會阻擋第二次 pilot。診斷
+  `data/reports/render_diagnostics/school_v1_observation_render_diagnostic_v0_1_0.json`
+  證明先前 accepted image 與 fresh render 的 pixels 完全相同，但沒有 pixels
+  高於 proposed `0.10` 可視門檻，且 P1-P99 luminance range 只有
+  `0.011764705`。其後已核准 v0.1.1 render-only policy 與 derived scene 供
+  diagnostic evidence，但 29-camera sweep 與門檻尚未完成。幾乎由單一物件
+  佔滿畫面的 camera 處理方式，以及 pixel、PNG bytes 與跨環境 determinism
+  的驗收邊界皆維持 `OPEN`。不同 OS、architecture、Blender build、backend、
+  device 或 driver tuple 的 decoded pixels 是否必須完全相同尚不具權威性；
+  來源與目標主機的 statistics 必須分開。
 
 ### 決策紀錄與審查流程
 

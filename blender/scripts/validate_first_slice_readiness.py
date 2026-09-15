@@ -627,10 +627,10 @@ def main() -> None:
                 "",
                 "## Blockers",
                 "",
-                *[f"- `{blocker}`" for blocker in blockers],
-                "",
+                *([f"- `{blocker}`" for blocker in blockers] or ["- None"]),
             ]
-        ),
+        )
+        + "\n",
         encoding="utf-8",
     )
     print(json.dumps({"status": status, "blocker_count": len(blockers), **report["counts"]}, sort_keys=True))

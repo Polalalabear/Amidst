@@ -163,6 +163,20 @@ failures can be attributed correctly.
 - Annotation schema compatibility: `TODO`.
 - Benchmark freeze and supersession process: `TODO`.
 
+#### Cross-platform reproducibility boundary
+
+Repository and artifact references use the confirmed portable path contract in
+`09_Data_Types_and_Exchange_Formats.md`. Dataset or diagnostic provenance must
+also record the OS/architecture, Blender version and build hash, render backend,
+device/driver where relevant, config ID/hash, scene SHA-256, resource-policy
+ID/hash, and producer version.
+
+A destination host is a new determinism environment. Its samples and camera
+statistics must not be mixed with the source-host run until the approved repeat
+comparison passes. Whether decoded pixels must be identical across different
+operating systems remains `OPEN` under OQ-016; a mismatch is review evidence,
+not permission to alter Ground Truth or thresholds.
+
 For synthetic records derived from the `school` Blender scene, the object
 identity contract is `amidst.school.object-id/1.0.1`; its canonical base
 fingerprint and normal-object UUID derivation remain version `1.0.0`. Every populated record
@@ -218,6 +232,45 @@ object names, IDs, or categories, and explicitly records
 `authoritative_visual_fidelity = false`. The slice is authoritative only for
 geometry/spatial ground truth. Readiness requires zero unresolved resources
 required by this policy, not zero historical missing image datablocks.
+
+#### Current observation-render diagnostic boundary
+
+Status: v0.1.0 invalidity is `CONFIRMED`; v0.1.1 is authorized for diagnostic
+evidence only, while thresholds and cross-environment acceptance remain `OPEN`
+under OQ-016.
+
+The `run_pilot_0001` image for camera
+`amidst:school:object:0ab45975-7163-53b4-b83b-5773b35c2bfc` is pixel-identical
+to a fresh EEVEE `bpy.ops.render.render()` result, so it is not a stale image or
+the output of a different camera. It is nevertheless
+`OBSERVATION_RENDER_INVALID`: mean luminance is `0.074615002`, P1-P99 range is
+only `0.011764705`, and no pixel exceeds the proposed diagnostic visibility
+threshold `0.10`. The threshold remains diagnostic evidence and is not yet an
+authoritative sample-validity rule.
+
+At render time the scene has zero render-enabled lights, a low grey World, and
+one neutral material override. The matching ID AOV shows that one object covers
+`99.4442998%` of the image. These conditions remove almost all visible contrast;
+the historical accepted count is therefore one, while the valid accepted count
+after diagnostic review is zero.
+
+The saved Layout viewport is Material Preview using the viewport-only
+`forest.exr` studio light with scene lights and scene World disabled. It is not
+an F12 or `bpy.ops.render.render()` observation. Solid, Material Preview, and
+Rendered viewport screenshots may also contain viewport lighting, overlays,
+selection state, UI colour handling, window scaling, and workspace state.
+Consequently, scripted GUI selection plus an operating-system screenshot may be
+retained as human diagnostic evidence, but it must not be used as authoritative
+`image.png` or as proof that observation pixels match Ground Truth. The dataset
+observation must come from a versioned deterministic render path whose exact
+scene, camera, view layer, render state, and provenance are recorded.
+
+The diagnostic-only v0.1.1 shading/illumination policy and non-overwriting r2
+derived scene are approved and fresh-process validated. The 29-camera sweep,
+threshold proposal, repeat comparison, and cross-environment acceptance remain
+incomplete under OQ-016, so a second pilot is not authorized. This work does not
+modify the existing geometry, stable-ID, camera-pose, visibility, occlusion, or
+spatial-relation Ground Truth rules.
 
 ### Annotation Quality Control
 
@@ -355,6 +408,19 @@ Benchmark manifest 要連結資料集版本、情境、真值層與評估器版�
 要定義識別方式、不可變性、schema 相容性，以及 benchmark 凍結與取代流程。
 標註品質檢查需記錄抽樣／涵蓋範圍、驗收規則、審查者與提報方式。
 
+#### 跨平台重現邊界
+
+Repository 與 artifact reference 採
+`09_Data_Types_and_Exchange_Formats.md` 已確認的可攜路徑契約。Dataset 或
+diagnostic provenance 另須記錄 OS／architecture、Blender version／build hash、
+render backend、適用時的 device／driver、config ID／hash、scene SHA-256、
+resource-policy ID／hash 與 producer version。
+
+目標主機視為新的 determinism environment；通過核准的 repeat comparison 前，
+不得把其 sample 或 camera statistics 與來源主機 run 混合。不同作業系統的
+decoded pixels 是否必須完全相同，依 OQ-016 維持 `OPEN`；mismatch 是待審證據，
+不得用來修改 Ground Truth 或門檻。
+
 由 `school` Blender 場景產生的合成紀錄，物件識別契約採
 `amidst.school.object-id/1.0.1`；canonical base fingerprint 與一般物件的
 UUID derivation 仍維持 `1.0.0`。每筆引用場景物件的實際紀錄都必須保留
@@ -402,6 +468,40 @@ paths，不以 object name／ID／category 編碼外觀，並明確記錄
 `authoritative_visual_fidelity = false`。此 slice 只對 geometry／spatial
 ground truth 具權威性。Readiness 要求的是 approved policy 所需資源無未解
 項目，而不是歷史 missing image datablock 必須為零。
+
+#### 目前 observation render 的診斷界線
+
+狀態：v0.1.0 invalidity 為 `CONFIRMED`；v0.1.1 僅核准產生 diagnostic
+evidence，threshold 與跨環境驗收依 OQ-016 維持 `OPEN`。
+
+`run_pilot_0001` 中 camera
+`amidst:school:object:0ab45975-7163-53b4-b83b-5773b35c2bfc` 的 image，與重新
+執行 EEVEE `bpy.ops.render.render()` 所得 pixels 完全相同，因此不是 stale
+image，也不是選錯 camera。然而它仍是 `OBSERVATION_RENDER_INVALID`：mean
+luminance 為 `0.074615002`、P1-P99 range 只有 `0.011764705`，且沒有 pixel
+超過 proposed diagnostic visibility threshold `0.10`。此 threshold 目前只作
+診斷證據，尚未成為具權威性的 sample-validity 規則。
+
+正式 render 時場景沒有 render-enabled light，只有低亮度灰色 World 與單一
+neutral material override。相符的 ID AOV 顯示單一物件佔畫面
+`99.4442998%`，因此幾乎沒有可辨識對比。歷史 accepted count 雖為 1，經此
+診斷後的有效 accepted count 為 0。
+
+儲存於 Layout 的 viewport 是 Material Preview，使用 viewport-only
+`forest.exr` studio light，並關閉 scene lights 與 scene World；它不是 F12 或
+`bpy.ops.render.render()` observation。Solid、Material Preview 或 Rendered
+viewport 的系統截圖還可能包含 viewport lighting、overlay、selection state、
+UI colour handling、視窗縮放與 workspace state。因此，自動點選 GUI 再取得
+作業系統截圖只能保留為人工診斷證據，不得作為權威 `image.png`，也不能單獨
+證明 observation pixels 與 Ground Truth 來自完全相同的狀態。資料集 observation
+必須由 versioned deterministic render path 產生，並記錄精確 scene、camera、
+view layer、render state 與 provenance。
+
+Diagnostic-only v0.1.1 shading／illumination policy 與不覆寫的 r2 derived
+scene 已核准，並通過 fresh-process validation。29-camera sweep、threshold
+proposal、repeat comparison 與跨環境驗收依 OQ-016 尚未完成，因此未授權第二次
+pilot。此工作不修改既有 geometry、stable ID、camera pose、visibility、
+occlusion 或 spatial-relation Ground Truth 規則。
 
 ### 隱私、儲存與公開樣本
 

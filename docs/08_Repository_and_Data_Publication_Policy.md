@@ -276,6 +276,20 @@ amidst/
 Application code must use documented paths and configuration rather than
 hard-coded private or Google Drive paths.
 
+### Migration Artifacts
+
+Portable migration source code and placeholder-only inventory examples are
+`PUBLIC_ALLOWED` after normal review. A populated checksum manifest is
+`REVIEW_REQUIRED` because filenames and the combined inventory may disclose
+project state. Its classification does not make any listed file publishable:
+`.blend` and other sensitive source assets remain `PRIVATE_ONLY`, while render
+evidence keeps its own classification.
+
+Do not include Codex worktree `.git` pointer files, credentials, caches, host
+names, physical source roots, or private storage URLs. Transfer private assets
+only through an approved private or encrypted channel. Moving to a new host is
+not permission to upload project data to a new external service.
+
 ### Publication Review Checklist
 
 Before intentionally publishing any data, media, model artifact, experiment
@@ -441,6 +455,18 @@ environment 等私人目錄；不得寫入私人儲存或 Google Drive URL。
 原始碼、文件、schema 與小型合成 fixture 可由 Git 管理；大型／敏感資料、
 真實 Blender 檔、模型與原始輸出留在核准的私人儲存。設定只能透過環境
 變數、秘密管理工具或未追蹤的本地檔提供。
+
+### 遷移產物
+
+可攜式遷移程式與只有 placeholder 的 inventory example 通過一般審查後屬
+`PUBLIC_ALLOWED`。填入實際檔案與 checksum 的 manifest 為
+`REVIEW_REQUIRED`，因為檔名與合併後的清單可能揭露專案狀態。Manifest 的
+分類不會改變其所列檔案的分類：`.blend` 與其他敏感來源仍為
+`PRIVATE_ONLY`，render evidence 也維持各自原有分類。
+
+不得納入 Codex worktree 的 `.git` pointer、credential、cache、hostname、
+實體 source root 或私人儲存 URL。私人資產只能透過核准的私人或加密管道
+搬運；轉換主機不代表已授權把專案資料上傳到新的外部服務。
 
 ### 發布審查清單
 

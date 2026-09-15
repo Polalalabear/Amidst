@@ -171,6 +171,33 @@ observation.
 8. Report exact failures; do not weaken tests or hide errors with fake success.
 9. Commit only files directly related to the task.
 
+### Cross-Platform Continuation
+
+Use [10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md)
+for the platform-specific executable commands, formal test suite, and Blender
+runtime lock. This section owns the workflow boundary rather than duplicating
+those commands.
+
+For a repository or Blender task that moves to another operating system:
+
+1. Stop writers and record the last complete immutable output.
+2. Record the branch, commit, dirty-state digest, logical file inventory,
+   classification, byte size, checksum, and source execution environment with
+   `scripts/migration_manifest.py`.
+3. Clone the repository on the destination. Do not copy a Codex worktree
+   `.git` pointer because it refers to the source host's Git metadata.
+4. Overlay the recorded uncommitted files and restore private assets under the
+   same repository-relative layout through an approved private channel.
+5. Verify the manifest from the destination root before resuming work.
+6. Treat a new OS, architecture, Blender build, GPU backend/device, or driver as
+   a new determinism environment. Keep its results separate until the approved
+   comparison passes.
+
+POSIX-style paths in records are portable. Shell or PowerShell launchers may
+resolve them from a machine-specific root at runtime, but that absolute root
+must stay in ignored local configuration. Historical reports are evidence and
+must not be bulk-edited to replace old machine paths.
+
 ### Publication Workflow
 
 Publication requires an explicit request. When requested:
@@ -386,6 +413,29 @@ OPEN 問題
 
 8. 如實回報錯誤；不得弱化測試或用假成功掩蓋問題。
 9. 只提交與任務直接相關的檔案。
+
+### 跨平台接續
+
+平台限定的可執行指令、正式測試套件與 Blender runtime lock 以
+[10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md)
+為準；本節只負責工作流程邊界，不重複維護指令。
+
+當 repository 或 Blender 任務要移到另一個作業系統：
+
+1. 停止仍在寫入的程序，記錄最後一個完整且不可變的輸出。
+2. 以 `scripts/migration_manifest.py` 記錄 branch、commit、dirty-state digest、
+   logical file inventory、分類、byte size、checksum 與來源執行環境。
+3. 在目標機器重新 clone；不得複製 Codex worktree 的 `.git` pointer，因為它
+   指向來源主機的 Git metadata。
+4. 覆蓋清單中的未提交檔案，並透過核准的私人管道，把私人資產放回相同的
+   repository-relative layout。
+5. 從目標 repository root 驗證 manifest，通過後才繼續工作。
+6. 新的 OS、architecture、Blender build、GPU backend／device 或 driver 都視為
+   新的 determinism environment；通過核准的比較前，不得混合兩邊結果。
+
+紀錄內使用 POSIX-style 相對路徑。Shell／PowerShell 可在 runtime 從機器限定
+root 解析，但該絕對 root 只能放在 ignored local config。歷史報告屬證據，
+不得批次替換其中的舊 machine path。
 
 ### 發布流程
 

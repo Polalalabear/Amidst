@@ -52,6 +52,33 @@ retention rules, or a complete annotation ontology.
 6. Preserve empty, unknown, ambiguous, partial, stale, and unavailable states.
 7. Prefer backward-compatible extension fields over silent reinterpretation.
 
+### Portable Path Contract
+
+Status: `CONFIRMED` for repository and migration records created after
+2026-09-15.
+
+- Serialize project files relative to the repository root and use `/` as the
+  separator on every operating system.
+- A portable path must not begin with `/`, a drive letter, `..`, or `.git`.
+  Resolve it against an explicitly selected repository root only at runtime.
+- Keep stable IDs and SHA-256 values as artifact identity. A local absolute
+  path is execution context, not an identifier and must not enter a portable
+  record.
+- Preserve Blender-native `//` references as Blender-relative provenance.
+  Do not rewrite unavailable legacy references merely to make migration pass.
+- A source code or empty manifest template may be `PUBLIC_ALLOWED`; a populated
+  migration manifest is `REVIEW_REQUIRED`, and listed `.blend` files remain
+  `PRIVATE_ONLY`.
+- Existing historical evidence with machine paths remains immutable. New
+  records should use `path_base = repository_root`; if a historical machine
+  path must be cited, label it as historical provenance rather than an active
+  location.
+
+The portable manifest contract is `amidst.migration_manifest/0.1.0`. It records
+logical paths, classification, byte size, SHA-256, source execution environment,
+and Git checkpoint without serializing the physical source roots. This scoped
+contract does not settle the general schema decisions tracked by OQ-015.
+
 ### Candidate Artifact Set
 
 | Artifact | Candidate serialization | Role | Initial repository class | Status |
@@ -473,6 +500,29 @@ Event、Evidence、Retrieval 與評估可以互相連接。
 5. 大型或私人媒體只使用授權的 opaque ID，不把私人位置放進公開紀錄。
 6. 保留 unknown、ambiguous、partial、stale 與 unavailable。
 7. 優先以向後相容的擴充欄位演進，不得默默改變既有語意。
+
+### 可攜式路徑契約
+
+狀態：2026-09-15 之後建立的 repository 與 migration record 採
+`CONFIRMED`。
+
+- 專案檔案一律以 repository root 為基準，且跨作業系統統一用 `/` 序列化。
+- 可攜路徑不得以 `/`、磁碟代號、`..` 或 `.git` 開頭；只有 runtime 才能以
+  明確選定的 repository root 解析成本機絕對路徑。
+- 以 stable ID 與 SHA-256 識別產物；本機絕對路徑只是執行環境，不是 ID，
+  不得寫入可攜紀錄。
+- Blender 原生 `//` reference 保留為 Blender-relative provenance；不得為了
+  通過遷移而改寫 unavailable legacy reference。
+- 程式與空白 manifest template 可為 `PUBLIC_ALLOWED`；填入實際檔案的
+  migration manifest 是 `REVIEW_REQUIRED`，其中列出的 `.blend` 仍為
+  `PRIVATE_ONLY`。
+- 含 machine path 的既有歷史證據維持不可變。新紀錄使用
+  `path_base = repository_root`；必要時引用舊路徑，必須標為歷史 provenance，
+  不得當作目前位置。
+
+可攜 manifest 契約為 `amidst.migration_manifest/0.1.0`，記錄 logical path、
+分類、byte size、SHA-256、來源執行環境與 Git checkpoint，但不序列化實體
+source root。本限定契約不會關閉 OQ-015 的一般 schema 決策。
 
 ### 候選產物
 

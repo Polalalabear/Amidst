@@ -1,0 +1,5 @@
+# Amidst developer/test dependency lock.
+#
+# The formal repository test suite uses only the Python standard library.
+# This intentionally empty lock prevents an implicit PyPI dependency while
+# still providing one stable install command on macOS and Windows.

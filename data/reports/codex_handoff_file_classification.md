@@ -143,3 +143,131 @@ checkpoint Blender first-slice pipeline handoff
 
 The `.blend` files, private note, cache, and `.DS_Store` must remain untracked.
 The invalid output must not be included in any implementation or dataset input.
+
+## Post-checkpoint continuation artifacts
+
+The following files were created or changed after commit
+`5bd109a4a5a4eb58d8492d093f406d986581b444` while completing the authorized
+texture-agnostic derived-scene validation. The earlier scoped publication
+approval does not cover these versions; nothing in this section is approved for
+commit or push without a new human publication review.
+
+| Path | Handoff class | Publication class | Reason |
+| --- | --- | --- | --- |
+| `docs/CODEX_HANDOFF.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Current continuation status and validation commands |
+| `docs/07_Technical_Decisions.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Records evidence that the confirmed ADR-009 gate passed |
+| `blender/scripts/validate_texture_agnostic_scene.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Canonicalizes configured shader inputs to Blender float32 storage |
+| `blender/scripts/validate_first_slice_readiness.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Emits an explicit no-blockers summary |
+| `blender/scene_manifest.json` | `NEEDS_HUMAN_REVIEW` | `REVIEW_REQUIRED` | Populated derived-scene checksum and readiness state |
+| `data/metadata/first_dataset_slice_render_config_v0_1_0.json` | `NEEDS_HUMAN_REVIEW` | `REVIEW_REQUIRED` | Populated current readiness state |
+| `data/metadata/first_dataset_slice_render_resource_policy_v0_1_0.json` | `NEEDS_HUMAN_REVIEW` | `REVIEW_REQUIRED` | Scene-specific runtime resource policy and checksums |
+| `data/reports/school_v1_texture_agnostic_scene_creation.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Machine-readable creation and provenance evidence |
+| `data/reports/school_v1_texture_agnostic_scene_creation.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Human-readable creation summary |
+| `data/reports/school_v1_texture_agnostic_scene_validation.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Authoritative fresh-process invariant validation |
+| `data/reports/school_v1_texture_agnostic_scene_validation.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Human-readable invariant-validation summary |
+| `data/reports/school_v1_texture_agnostic_scene_validation_failed_float32_tolerance_2026_09_15.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Preserved failed validation evidence before validator correction |
+| `data/reports/school_v1_texture_agnostic_scene_validation_failed_float32_tolerance_2026_09_15.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Human-readable preserved failure evidence |
+| `data/reports/school_v1_first_slice_readiness.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Current zero-blocker readiness evidence |
+| `data/reports/school_v1_first_slice_readiness.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Current human-readable readiness summary |
+| `blender/output/school_v1_first_slice_texture_agnostic_v0_1_0.blend` | `SHOULD_REMAIN_LOCAL` | `PRIVATE_ONLY` | Validated derived binary scene; identified portably by SHA-256 |
+
+The post-checkpoint derived `.blend` has SHA-256
+`e349646c27fb343341a372b1e6d97b1a66f304f52c62721400e1833cdcd4d933` and
+must remain untracked under the existing repository policy.
+
+### Pilot-generation continuation
+
+These later versions are also outside the 2026-09-15 checkpoint publication
+approval:
+
+| Path | Handoff class | Publication class | Reason |
+| --- | --- | --- | --- |
+| `.gitignore` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Keeps generated pilot datasets local under the raw-experiment-output policy |
+| `blender/scripts/generate_first_dataset_slice.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Deterministic bounded pilot generator source; cleanup correction is not yet validated by a second run |
+| `data/reports/school_v1_first_slice_pilot_run_pilot_0001.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Machine-readable failed pilot summary |
+| `data/reports/school_v1_first_slice_pilot_run_pilot_0001.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Human-readable failed pilot summary |
+| `data/reports/school_v1_first_slice_pilot_run_pilot_0001_failure_analysis.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Root-cause and next-decision evidence |
+| `data/reports/school_v1_first_slice_pilot_run_pilot_0001_failure_analysis.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Human-readable failure analysis |
+| `data/datasets/school_v1_first_slice_v0_1_0/run_pilot_0001/` | `SHOULD_REMAIN_LOCAL` | `PRIVATE_ONLY` | Raw generated images and frame-level scene/GT evidence; preserved locally and ignored by Git |
+
+The pilot dataset directory must not be staged. A small sanitized example would
+require a separate human content review and a public-example location.
+
+### Observation-render diagnostic continuation
+
+These files and later modified versions are outside every prior scoped
+publication approval. They must not be staged or pushed without a new human
+review.
+
+| Path | Handoff class | Publication class | Reason |
+| --- | --- | --- | --- |
+| `blender/scripts/diagnose_observation_render.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Reproducible one-camera F12/AOV/state/luminance diagnostic source |
+| `blender/scripts/validate_texture_agnostic_scene.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Rejects neutral overrides whose Principled Weight is not 1.0 |
+| `blender/scripts/generate_first_dataset_slice.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Refuses generation when the full neutral-material validation fails |
+| `docs/open_questions.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | OQ-016 records the unresolved cross-contract render-policy decision |
+| `docs/CODEX_HANDOFF.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Warns that the older readiness report predates the invalid observation finding |
+| `blender/scene_manifest.json` | `NEEDS_HUMAN_REVIEW` | `REVIEW_REQUIRED` | Records zero valid accepted samples after the scene-specific observation diagnostic |
+| `data/reports/school_v1_first_slice_pilot_run_pilot_0001_failure_analysis.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Preserves historical acceptance separately from post-diagnostic invalidity |
+| `data/reports/school_v1_first_slice_pilot_run_pilot_0001_failure_analysis.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Human-readable post-diagnostic pilot status |
+| `data/reports/render_diagnostics/school_v1_observation_render_diagnostic_v0_1_0.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Machine-readable render state, luminance, controlled checks, and blocker |
+| `data/reports/render_diagnostics/school_v1_observation_render_diagnostic_v0_1_0.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Human-readable diagnostic and required decision |
+| `data/reports/render_diagnostics/school_v1_camera_0ab45975_separated_pipeline_baseline_v0_1_0/` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Canonical baseline normal/AOV/repeat/state evidence for human review |
+| Other `data/reports/render_diagnostics/school_v1_camera_0ab45975_*candidate*` and failed-attempt directories | `INVALID/DEPRECATED_ARTIFACT` | `REVIEW_REQUIRED` | Preserved negative diagnostic evidence; not authoritative pipeline inputs |
+
+The generated render-diagnostic images contain only the synthetic
+texture-agnostic scene view, but remain `REVIEW_REQUIRED` because they expose
+scene-specific spatial evidence. No diagnostic image or report is approved for
+public publication by this classification entry.
+
+### Cross-platform portability continuation
+
+The following new or modified versions are classified but are not approved for
+commit or publication by this record:
+
+| Path | Handoff class | Publication class | Reason |
+| --- | --- | --- | --- |
+| `scripts/migration_manifest.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Generic checksum manifest creation and verification; serializes no physical source roots |
+| `scripts/check.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Rejects machine-specific absolute user paths in active source and configuration files |
+| `scripts/aggregate_render_policy_v0_1_1.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Emits an explicit repository-root path base for future aggregates |
+| `blender/scripts/create_texture_agnostic_scene_v0_1_1.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Emits portable logical scene references for future evidence |
+| `blender/scripts/validate_texture_agnostic_scene_v0_1_1.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Emits portable logical scene references for future validation evidence |
+| `blender/scripts/diagnose_render_policy_v0_1_1.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Requires formal diagnostic outputs to stay below the repository root |
+| `blender/scripts/diagnose_render_policy_v0_1_1_camera.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Emits an explicit repository-root path base for future camera records |
+| `docs/04_Dataset_Specification.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Cross-environment dataset and diagnostic provenance boundary |
+| `docs/07_Technical_Decisions.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | ADR-010 records the explicitly approved portable migration approach |
+| `docs/08_Repository_and_Data_Publication_Policy.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Migration artifact classification and private-transfer boundary |
+| `docs/09_Data_Types_and_Exchange_Formats.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Repository-relative path and migration-manifest contract |
+| `docs/internal_guide.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Cross-platform continuation procedure |
+| `docs/open_questions.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Keeps cross-environment pixel acceptance `OPEN` under OQ-016 |
+| `docs/CODEX_HANDOFF.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Records the stopped 16/29 macOS checkpoint and destination boundary |
+| `local/migration_inventory_v0_1_1.json` | `SHOULD_REMAIN_LOCAL` | `REVIEW_REQUIRED` | Populated logical transfer inventory; ignored and not approved for publication |
+| `local/migration_manifest_v0_1_1.json` | `SHOULD_REMAIN_LOCAL` | `REVIEW_REQUIRED` | Populated checksums and source environment; ignored and not approved for publication |
+| `blender/source/school_v1.blend` | `SHOULD_REMAIN_LOCAL` | `PRIVATE_ONLY` | Immutable private source asset |
+| `blender/working/school_v1_working.blend` | `SHOULD_REMAIN_LOCAL` | `PRIVATE_ONLY` | Private working asset |
+| `blender/output/school_v1_ids_policy_1_0_1_r2.blend` | `SHOULD_REMAIN_LOCAL` | `PRIVATE_ONLY` | Validated stable-ID input required by v0.1.1 validation |
+| `blender/output/school_v1_first_slice_texture_agnostic_v0_1_1_r2.blend` | `SHOULD_REMAIN_LOCAL` | `PRIVATE_ONLY` | Validated destination diagnostic scene |
+
+Existing populated reports, metadata, and diagnostic images retain
+`REVIEW_REQUIRED`; existing `.blend` files retain `PRIVATE_ONLY`. The migration
+does not grant publication approval or authorize an external upload.
+
+### Cross-platform test and dependency continuation
+
+The following source, lock, test, and documentation files contain no populated
+scene evidence and are classified `PUBLIC_ALLOWED`:
+
+| Path | Handoff class | Publication class | Reason |
+| --- | --- | --- | --- |
+| `requirements-dev.lock.txt` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Explicitly locks the formal suite to zero third-party Python packages |
+| `scripts/test.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Standard-library formal test entry point |
+| `tests/test_migration_manifest.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Synthetic temporary-file tests for path and checksum behavior |
+| `tests/test_repository_contracts.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Repository setup, documentation, and lock contract tests |
+| `blender/runtime_dependencies.lock.json` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Version-only Blender embedded-runtime lock without machine or scene data |
+| `blender/scripts/check_runtime_dependencies.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Read-only exact runtime verifier |
+| `docs/10_Cross_Platform_Setup_and_Testing.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Separate macOS and Windows setup, test, and verification commands |
+| `docs/00_Project_Map.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Routes setup and testing work to the new supporting document |
+| `docs/internal_guide.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Links the continuation workflow to executable platform instructions |
+| `docs/CODEX_HANDOFF.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Separates shell and PowerShell verification syntax and records the incomplete image |
+
+The user-local `~/.zshrc` PATH entry is machine configuration, stays outside
+the repository and migration manifest, and is not a publication artifact.

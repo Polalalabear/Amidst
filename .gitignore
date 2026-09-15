@@ -20,6 +20,7 @@ local/
 # Private datasets
 data/raw/
 data/private/
+data/datasets/
 dataset/raw/
 dataset/private/
 

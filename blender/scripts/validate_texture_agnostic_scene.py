@@ -6,8 +6,8 @@ from __future__ import annotations
 import argparse
 from datetime import datetime, timezone
 import json
-import math
 from pathlib import Path
+import struct
 import sys
 from typing import Any
 
@@ -145,7 +145,8 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def close(actual: float, expected: float) -> bool:
-    return math.isclose(float(actual), expected, rel_tol=0.0, abs_tol=1e-12)
+    expected_float32 = struct.unpack("!f", struct.pack("!f", float(expected)))[0]
+    return float(actual) == expected_float32
 
 
 def validate_override_material(material: Any) -> list[str]:
@@ -167,10 +168,14 @@ def validate_override_material(material: Any) -> list[str]:
         "Roughness": 0.8,
         "IOR": 1.45,
         "Alpha": 1.0,
+        "Weight": 1.0,
         "Transmission Weight": 0.0,
     }
     for name, expected in expected_inputs.items():
-        socket = shader.inputs.get(name)
+        socket = next(
+            (item for item in shader.inputs if item.identifier == name),
+            None,
+        )
         if socket is None:
             failures.append(f"neutral_override_missing_input:{name}")
             continue

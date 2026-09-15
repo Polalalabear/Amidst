@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import sys
 
 
@@ -19,11 +20,13 @@ EXPECTED_DOCS = {
     "07_Technical_Decisions.md",
     "08_Repository_and_Data_Publication_Policy.md",
     "09_Data_Types_and_Exchange_Formats.md",
+    "10_Cross_Platform_Setup_and_Testing.md",
     "glossary.md",
     "internal_guide.md",
     "open_questions.md",
 }
 REQUIRED_INTERNAL_GUIDE_MARKERS = {
+    "## Cross-Platform Continuation",
     "## Decision Status",
     "## Information Review Mechanisms",
     "## Publication Workflow",
@@ -33,6 +36,7 @@ REQUIRED_INTERNAL_GUIDE_MARKERS = {
 REQUIRED_DATA_TYPE_GUIDE_MARKERS = {
     "Document status: `PROPOSED`",
     "## Blender and Spatial Data",
+    "## Portable Path Contract",
     "## Video Asset and Stream Metadata",
     "## Video Event Record",
     "## ASAM OpenLABEL Compatibility Candidate",
@@ -62,6 +66,34 @@ REQUIRED_RULE_MARKERS = {
     "Ground Truth is an evaluation authority",
     "Do not force push",
 }
+PORTABILITY_SCAN_ROOTS = (
+    ROOT / "docs",
+    ROOT / "scripts",
+    ROOT / "blender/scripts",
+    ROOT / "data/metadata",
+)
+REQUIRED_PROJECT_FILES = (
+    ROOT / "requirements-dev.lock.txt",
+    ROOT / "scripts/test.py",
+    ROOT / "tests/test_migration_manifest.py",
+    ROOT / "tests/test_repository_contracts.py",
+    ROOT / "blender/runtime_dependencies.lock.json",
+    ROOT / "blender/scripts/check_runtime_dependencies.py",
+)
+REQUIRED_SETUP_GUIDE_MARKERS = {
+    "### macOS",
+    "### Windows (PowerShell)",
+    "### macOS 使用方式",
+    "### Windows 使用方式（PowerShell）",
+    "python3 -B scripts/test.py",
+    "py -3 -B scripts/test.py",
+}
+PORTABILITY_SUFFIXES = {".json", ".md", ".py", ".ps1", ".sh", ".toml", ".yaml", ".yml"}
+MACHINE_PATH_PATTERNS = (
+    re.compile(r"/Users/[^/\s]+/"),
+    re.compile(r"/Volumes/[^/\s]+/"),
+    re.compile(r"\b[A-Za-z]:[\\/]Users[\\/][^\\/\s]+[\\/]"),
+)
 
 
 def check_markdown(path: Path, errors: list[str]) -> None:
@@ -75,8 +107,30 @@ def check_markdown(path: Path, errors: list[str]) -> None:
             )
 
 
+def check_portable_active_files(errors: list[str]) -> None:
+    for scan_root in PORTABILITY_SCAN_ROOTS:
+        if not scan_root.is_dir():
+            continue
+        for path in sorted(candidate for candidate in scan_root.rglob("*") if candidate.is_file()):
+            if path == Path(__file__).resolve():
+                continue
+            if path.suffix.casefold() not in PORTABILITY_SUFFIXES:
+                continue
+            text = path.read_text(encoding="utf-8")
+            for line_number, line in enumerate(text.splitlines(), start=1):
+                if any(pattern.search(line) for pattern in MACHINE_PATH_PATTERNS):
+                    errors.append(
+                        "machine-specific absolute path in active file: "
+                        f"{path.relative_to(ROOT)}:{line_number}"
+                    )
+
+
 def main() -> int:
     errors: list[str] = []
+
+    for path in REQUIRED_PROJECT_FILES:
+        if not path.is_file():
+            errors.append(f"missing project file: {path.relative_to(ROOT)}")
 
     if ROOT.name.casefold() != "amidst":
         errors.append(f"unexpected repository directory: {ROOT}")
@@ -138,6 +192,18 @@ def main() -> int:
                             "docs/09_Data_Types_and_Exchange_Formats.md "
                             f"is missing marker: {marker}"
                         )
+
+            setup_guide = DOCS / "10_Cross_Platform_Setup_and_Testing.md"
+            if setup_guide.is_file():
+                guide_text = setup_guide.read_text(encoding="utf-8")
+                for marker in sorted(REQUIRED_SETUP_GUIDE_MARKERS):
+                    if marker not in guide_text:
+                        errors.append(
+                            "docs/10_Cross_Platform_Setup_and_Testing.md "
+                            f"is missing marker: {marker}"
+                        )
+
+    check_portable_active_files(errors)
 
     if errors:
         print("Validation failed:")
