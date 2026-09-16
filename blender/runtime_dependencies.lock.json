@@ -21,6 +21,11 @@
       "verified_on": "2026-09-15",
       "note": "Exact versions verified in the installed Blender background runtime."
     },
+    "linux_x86_64": {
+      "status": "OPEN",
+      "verified_on": null,
+      "note": "Target lock only; record the distribution and kernel and verify the exact Blender runtime before producing evidence."
+    },
     "windows_x86_64": {
       "status": "OPEN",
       "verified_on": null,

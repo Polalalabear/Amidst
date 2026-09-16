@@ -16,7 +16,7 @@ project-relevant paths classified in
 checkpoint and explicitly excludes `local/`, caches, `.DS_Store`, credentials,
 and every `.blend` artifact.
 
-Checkpoint date: 2026-09-15
+Checkpoint date: 2026-09-16
 
 This file records repository-safe, reproducible state only. Machine-specific
 details belong in the ignored `local/CODEX_PRIVATE_HANDOFF.md` file.
@@ -24,7 +24,9 @@ details belong in the ignored `local/CODEX_PRIVATE_HANDOFF.md` file.
 ### Repository state
 
 - Branch: `codex/blender-inspection-v1`
-- Published handoff checkpoint: `5bd109a4a5a4eb58d8492d093f406d986581b444`.
+- Published handoff checkpoint before this task: `5bd109a4a5a4eb58d8492d093f406d986581b444`.
+- Portable setup/test base awaiting the authorized push at task start:
+  `a467336644486b94419cf9f904a6840bc67e0145`.
 - Upstream: `origin/codex/blender-inspection-v1`.
 - Working tree: dirty by design with post-handoff derived-scene validation
   records; no current change is staged.
@@ -36,24 +38,37 @@ details belong in the ignored `local/CODEX_PRIVATE_HANDOFF.md` file.
 
 Status: `REVIEW_REQUIRED`; no dataset generation is authorized.
 
-- The macOS v0.1.1 r2 per-camera loop is stopped with 16 of 29 immutable
-  `statistics.json` records complete and one additional image without a
-  completed statistics record under
+- The macOS v0.1.1 r2 sweep is complete with 29 of 29 unique immutable
+  `statistics.json` records under
   `data/reports/render_diagnostics/school_v1_render_policy_v0_1_1_r2/`.
-- No r2 aggregate, threshold proposal, or three-camera repeat result exists.
-  Do not represent the partial sweep as a completed diagnostic.
+- The pre-resume image without a record remains preserved. Its successful retry
+  is stored in a separate non-overwriting directory.
+- The raw aggregate is
+  `data/reports/school_v1_render_policy_v0_1_1_camera_statistics_raw.json`.
+  All 29 renders succeeded and every record preserves the scene checksum and
+  runtime invariants.
+- Three fresh-process repeats are complete. Strict decoded-pixel identity passes
+  for 1 of 3 cameras and fails for 2: one camera differs at 1 pixel and the
+  other at 2 pixels, with maximum channel difference `1/255`. The confirmed
+  exact decoded-pixel requirement is therefore not satisfied.
+- The formal result is `DIAGNOSTIC_COMPLETE_DETERMINISM_FAILED` in
+  `data/reports/school_v1_render_policy_v0_1_1_camera_statistics.json`, with a
+  human report in `data/reports/school_v1_render_policy_v0_1_1_diagnostic.md`.
+- A composition threshold is only `PROPOSED`: occupancy below `0.95` and at
+  least 3 visible stable-ID objects. It flags the same 7 cameras under both
+  clauses and has no decision effect until Peter confirms it.
 - The validated private r2 derived scene is
   `blender/output/school_v1_first_slice_texture_agnostic_v0_1_1_r2.blend`,
   SHA-256
   `5aa0e4a54f20b9dba0d79067562711677b897ea6e246ed03e9aa8c0782cd2fed`.
-- Preserve the macOS partial directory as one environment-scoped run. A
+- Preserve the macOS directory as one environment-scoped completed diagnostic. A
   destination with a different OS, architecture, Blender build, backend,
   device, or driver must use a new output directory and rerun all 29 cameras;
-  do not append Windows results to the 16 macOS records.
+  do not append Windows or Linux results to the macOS records.
 - New v0.1.1 records use repository-relative POSIX paths with
   `path_base = repository_root`. Existing reports containing historical
   machine paths remain unchanged.
-- Local inventory `local/migration_inventory_v0_1_1.json` expands to 256
+- Local inventory `local/migration_inventory_v0_1_1.json` expands to 293
   non-cache file records in `local/migration_manifest_v0_1_1.json`. The
   manifest passed verification against the current repository/private overlay
   with zero failures; both files remain ignored and `REVIEW_REQUIRED`.
@@ -83,6 +98,14 @@ Windows (PowerShell):
 
 ```powershell
 py -3 -B scripts/migration_manifest.py verify --manifest local/migration_manifest_v0_1_1.json --target-root .
+```
+
+Linux (Bash):
+
+```bash
+python3 -B scripts/migration_manifest.py verify \
+  --manifest local/migration_manifest_v0_1_1.json \
+  --target-root .
 ```
 
 ### Current milestone and status
@@ -123,8 +146,9 @@ Not completed:
 - the authorized pilot did not reach 10 accepted samples within 50 attempts;
 - the one historically accepted image is pixel-identical to a fresh render but
   is `OBSERVATION_RENDER_INVALID`, leaving zero valid accepted samples;
-- the v0.1.1 r2 diagnostic sweep stopped at 16 of 29 cameras before aggregate,
-  threshold, and repeat-comparison evidence was produced;
+- the v0.1.1 r2 diagnostic evidence collection is complete, but strict decoded-
+  pixel determinism passed only 1 of 3 repeats and the threshold is still
+  `PROPOSED`;
 - two target-only occlusion count mismatches and one AOV/ray audit mismatch
   require review; and
 - the corrected cleanup path has not been executed in a new run because the
@@ -216,8 +240,10 @@ and must not be used to authorize generation. Run `run_pilot_0001` reached its
 50-attempt limit with 1 historically accepted and 49 rejected samples; the
 accepted image is now `OBSERVATION_RENDER_INVALID`, so valid accepted count is
 zero. The v0.1.1 replacement render policy is approved for diagnostic use and
-its derived scene passed fresh-process validation, but the sweep, threshold,
-and cross-environment acceptance evidence are incomplete under OQ-016. Two
+its derived scene passed fresh-process validation. The sweep and repeat
+collection are complete, but exact decoded-pixel determinism failed and the
+composition threshold remains proposed; cross-environment acceptance remains
+open under OQ-016. Two
 target-only occlusion-count mismatches and one AOV/ray audit mismatch remain unresolved. A
 generator cleanup defect caused the later 46 pre-render rejections; the code is
 corrected but has not been rerun because the attempt authorization is
@@ -247,13 +273,15 @@ report require a new human publication decision before commit or push.
 
 ### Exact next authorized task
 
-Do not run a dataset pilot. Preserve the stopped 16-camera macOS partial run,
-create and verify a migration manifest, restore the private r2 scene by its
-logical path and SHA-256, and start a separate destination-environment
-29-camera diagnostic. Only after that sweep, its threshold proposal, and three
-fresh-process repeat comparisons are complete may observation validity be
-reviewed. The substantive GT mismatches remain outside this migration task; a
-later pilot still requires separate authorization and a new immutable run ID.
+Do not run a dataset pilot. Peter must decide whether to keep or change the
+confirmed decoded-pixel identity requirement and must accept, revise, or reject
+the proposed composition threshold. For Windows or Linux handoff, clone the
+branch, restore the private r2 scene and `REVIEW_REQUIRED` overlay, verify the
+migration manifest and runtime lock, and record the exact destination OS,
+architecture, Blender build, backend, device, and driver. Any destination
+diagnostic must use a new environment-scoped output directory. The substantive
+GT mismatches remain outside this migration task; a later pilot still requires
+separate authorization and a new immutable run ID.
 
 ### Safety boundaries
 
@@ -328,23 +356,36 @@ Checkpoint 日期：2026-09-15
 
 狀態：`REVIEW_REQUIRED`；未授權 dataset generation。
 
-- macOS v0.1.1 r2 per-camera loop 已停止，29 台 camera 中有 16 份完整且不可
-  覆寫的 `statistics.json`，另有一張未完成 statistics record 的 image，位於
+- macOS v0.1.1 r2 sweep 已完成，29 台 camera 都有唯一且不可覆寫的
+  `statistics.json`，位於
   `data/reports/render_diagnostics/school_v1_render_policy_v0_1_1_r2/`。
-- 尚無 r2 aggregate、threshold proposal 或三台 camera repeat 結果，不得把
-  partial sweep 表示成完成的 diagnostic。
+- 續跑前只有 image、沒有 record 的失敗證據維持不變；成功 retry 存在另一個
+  不覆寫的 directory。
+- Raw aggregate 為
+  `data/reports/school_v1_render_policy_v0_1_1_camera_statistics_raw.json`；29 次
+  render 全部成功，scene checksum 與 runtime invariants 皆未變。
+- 三次 fresh-process repeat 已完成；嚴格 decoded-pixel identity 只有 1/3 通過。
+  兩筆失敗分別只有 1 與 2 個 pixel 不同，最大 channel 差異為 `1/255`，但仍不
+  符合已確認的 exact decoded-pixel requirement。
+- 正式結果為
+  `data/reports/school_v1_render_policy_v0_1_1_camera_statistics.json` 的
+  `DIAGNOSTIC_COMPLETE_DETERMINISM_FAILED`；人類可讀報告為
+  `data/reports/school_v1_render_policy_v0_1_1_diagnostic.md`。
+- Composition threshold 只維持 `PROPOSED`：largest occupancy 小於 `0.95` 且
+  至少 3 個可見 stable-ID objects。兩個條件在本次都標出相同 7 台 camera；
+  Peter 確認前沒有決策效力。
 - 已驗證的私人 r2 derived scene 為
   `blender/output/school_v1_first_slice_texture_agnostic_v0_1_1_r2.blend`，
   SHA-256 為
   `5aa0e4a54f20b9dba0d79067562711677b897ea6e246ed03e9aa8c0782cd2fed`。
-- macOS partial directory 應保存為單一 environment-scoped run。目標機器的
+- macOS directory 應保存為單一 environment-scoped 完整診斷。目標機器的
   OS、architecture、Blender build、backend、device 或 driver 不同時，必須在
-  新 output directory 重跑全部 29 台 camera；不得把 Windows 結果接到 16 份
+  新 output directory 重跑全部 29 台 camera；不得把 Windows 或 Linux 結果接到
   macOS record 後面。
 - 新的 v0.1.1 record 使用 repository-relative POSIX path 與
   `path_base = repository_root`；含歷史 machine path 的舊報告維持不變。
 - 本機 inventory `local/migration_inventory_v0_1_1.json` 展開後，在
-  `local/migration_manifest_v0_1_1.json` 形成 256 筆非 cache 檔案紀錄；
+  `local/migration_manifest_v0_1_1.json` 形成 293 筆非 cache 檔案紀錄；
   manifest 已針對目前 repository／private overlay 驗證，0 failure。兩者維持
   ignored 且為 `REVIEW_REQUIRED`。
 
@@ -371,6 +412,14 @@ Windows（PowerShell）：
 
 ```powershell
 py -3 -B scripts/migration_manifest.py verify --manifest local/migration_manifest_v0_1_1.json --target-root .
+```
+
+Linux（Bash）：
+
+```bash
+python3 -B scripts/migration_manifest.py verify \
+  --manifest local/migration_manifest_v0_1_1.json \
+  --target-root .
 ```
 
 ### 目前里程碑與權威產物
@@ -432,12 +481,13 @@ deterministic EEVEE F12 render 或 Ground Truth 使用的 scene state 相同。�
 render path 產生。已確認診斷與量測位於
 `data/reports/render_diagnostics/school_v1_observation_render_diagnostic_v0_1_0.json`。
 
-下一步不得執行 dataset pilot。保留已停止的 16-camera macOS partial run，建立
-並驗證 migration manifest，依 logical path 與 SHA-256 恢復私人 r2 scene，再以
-新的 destination-environment output directory 完整執行 29-camera diagnostic。
-Sweep、threshold proposal 與三次 fresh-process repeat comparison 完成後，才能
-審查 observation validity。三筆 substantive GT mismatch 不在本遷移任務內；
-新 pilot 仍需另行授權並使用新的 immutable run ID。
+下一步不得執行 dataset pilot。Peter 必須決定是否維持已確認的 decoded-pixel
+identity requirement，並接受、修改或拒絕 proposed composition threshold。
+Windows／Linux 交接時，應 clone branch、恢復私人 r2 scene 與 `REVIEW_REQUIRED`
+overlay、驗證 migration manifest 與 runtime lock，並記錄目標 OS、architecture、
+Blender build、backend、device 與 driver。任何目標端 diagnostic 都必須使用新的
+environment-scoped output directory。三筆 substantive GT mismatch 不在本遷移
+任務內；新 pilot 仍需另行授權並使用新的 immutable run ID。
 
 ### 安全界線
 

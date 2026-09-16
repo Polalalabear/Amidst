@@ -75,16 +75,20 @@ PORTABILITY_SCAN_ROOTS = (
 REQUIRED_PROJECT_FILES = (
     ROOT / "requirements-dev.lock.txt",
     ROOT / "scripts/test.py",
+    ROOT / "scripts/finalize_render_policy_v0_1_1.py",
     ROOT / "tests/test_migration_manifest.py",
     ROOT / "tests/test_repository_contracts.py",
+    ROOT / "tests/test_render_policy_review.py",
     ROOT / "blender/runtime_dependencies.lock.json",
     ROOT / "blender/scripts/check_runtime_dependencies.py",
 )
 REQUIRED_SETUP_GUIDE_MARKERS = {
     "### macOS",
     "### Windows (PowerShell)",
+    "### Linux (Bash)",
     "### macOS 使用方式",
     "### Windows 使用方式（PowerShell）",
+    "### Linux 使用方式（Bash）",
     "python3 -B scripts/test.py",
     "py -3 -B scripts/test.py",
 }

@@ -264,10 +264,31 @@ scene evidence and are classified `PUBLIC_ALLOWED`:
 | `tests/test_repository_contracts.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Repository setup, documentation, and lock contract tests |
 | `blender/runtime_dependencies.lock.json` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Version-only Blender embedded-runtime lock without machine or scene data |
 | `blender/scripts/check_runtime_dependencies.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Read-only exact runtime verifier |
-| `docs/10_Cross_Platform_Setup_and_Testing.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Separate macOS and Windows setup, test, and verification commands |
+| `docs/10_Cross_Platform_Setup_and_Testing.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Separate macOS, Windows, and Linux version, setup, test, and verification commands |
 | `docs/00_Project_Map.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Routes setup and testing work to the new supporting document |
 | `docs/internal_guide.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Links the continuation workflow to executable platform instructions |
 | `docs/CODEX_HANDOFF.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Separates shell and PowerShell verification syntax and records the incomplete image |
 
 The user-local `~/.zshrc` PATH entry is machine configuration, stays outside
 the repository and migration manifest, and is not a publication artifact.
+
+### Completed macOS r2 diagnostic and destination handoff
+
+| Path | Handoff class | Publication class | Reason |
+| --- | --- | --- | --- |
+| `scripts/finalize_render_policy_v0_1_1.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Generic non-overwriting sweep/repeat finalizer with no populated scene data |
+| `tests/test_render_policy_review.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Synthetic test preserving proposal status and human decision authority |
+| `blender/runtime_dependencies.lock.json` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Adds an unverified Linux target profile without machine data |
+| `tests/test_repository_contracts.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Checks Windows and Linux setup/profile markers |
+| `scripts/check.py` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Requires the finalizer, its test, and Linux documentation markers |
+| `docs/04_Dataset_Specification.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Records completed evidence collection and failed strict determinism without changing the dataset contract |
+| `docs/open_questions.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Keeps the repeat and proposed composition decisions open under OQ-016 |
+| `docs/CODEX_HANDOFF.md` | `SHOULD_COMMIT` | `PUBLIC_ALLOWED` | Records the completed macOS diagnostic and Windows/Linux handoff boundary |
+| `data/reports/render_diagnostics/school_v1_render_policy_v0_1_1_r2/` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | 29 primary camera records, preserved incomplete image, retry, and three repeat records/images |
+| `data/reports/school_v1_render_policy_v0_1_1_camera_statistics_raw.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Complete raw 29-camera aggregate and repeat selection |
+| `data/reports/school_v1_render_policy_v0_1_1_camera_statistics.json` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Formal completed diagnostic with strict determinism failure |
+| `data/reports/school_v1_render_policy_v0_1_1_diagnostic.md` | `GENERATED_BUT_PROJECT_RELEVANT` | `REVIEW_REQUIRED` | Human-readable result and proposed composition threshold |
+
+The explicit push request authorizes the task-related `PUBLIC_ALLOWED` source,
+tests, locks, and documentation. It does not authorize committing or publishing
+the populated `REVIEW_REQUIRED` reports or images listed above.

@@ -88,10 +88,14 @@ ID rather than duplicating the entire discussion.
   proves that the prior accepted image is pixel-identical to a fresh render but
   has no pixels above the proposed 0.10 visibility threshold and only
   0.011764705 P1-P99 luminance range. The v0.1.1 render-only policy and derived
-  scene were subsequently authorized for diagnostic evidence, but its
-  29-camera sweep and thresholds are not yet complete. Treatment of nearly
-  single-object camera views and the acceptance boundary for pixel, PNG-byte,
-  and cross-environment determinism remain `OPEN`. Whether decoded pixels must
+  scene were subsequently authorized for diagnostic evidence. Its 29-camera
+  sweep completed with 29 successes and unchanged scene invariants, but only 1
+  of 3 fresh-process repeats met the confirmed exact decoded-pixel requirement.
+  The two failures differ by 1 and 2 pixels respectively, at most `1/255` in a
+  channel. A composition rule of occupancy below `0.95` and at least 3 visible
+  stable-ID objects is `PROPOSED` and flags 7 cameras. Treatment of those views
+  and the acceptance boundary for pixel, PNG-byte, and cross-environment
+  determinism remain `OPEN`. Whether decoded pixels must
   match exactly across different OS, architecture, Blender build, backend,
   device, or driver tuples is not yet authoritative; source-host and
   destination-host statistics must remain separate.
@@ -209,8 +213,12 @@ For material technical trade-offs, link an ADR in
   證明先前 accepted image 與 fresh render 的 pixels 完全相同，但沒有 pixels
   高於 proposed `0.10` 可視門檻，且 P1-P99 luminance range 只有
   `0.011764705`。其後已核准 v0.1.1 render-only policy 與 derived scene 供
-  diagnostic evidence，但 29-camera sweep 與門檻尚未完成。幾乎由單一物件
-  佔滿畫面的 camera 處理方式，以及 pixel、PNG bytes 與跨環境 determinism
+  diagnostic evidence。29-camera sweep 已有 29 次成功且 scene invariants 未變，
+  但三次 fresh-process repeat 只有 1 次符合已確認的 exact decoded-pixel
+  requirement；另兩次分別差 1 與 2 個 pixel，最大 channel 差異為 `1/255`。
+  Occupancy 小於 `0.95` 且至少 3 個可見 stable-ID objects 的 composition rule
+  維持 `PROPOSED`，並標出 7 台 camera。這些 camera 的處理方式，以及 pixel、
+  PNG bytes 與跨環境 determinism
   的驗收邊界皆維持 `OPEN`。不同 OS、architecture、Blender build、backend、
   device 或 driver tuple 的 decoded pixels 是否必須完全相同尚不具權威性；
   來源與目標主機的 statistics 必須分開。

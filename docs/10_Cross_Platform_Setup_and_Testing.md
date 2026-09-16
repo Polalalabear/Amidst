@@ -7,7 +7,20 @@
 ## English
 
 Document status: `CONFIRMED` for the commands and the verified macOS profile;
-Windows runtime verification remains `OPEN` until it passes on the destination.
+Windows and Linux runtime verification remain `OPEN` until they pass on each
+destination.
+
+### Version matrix
+
+| Profile | OS version | Architecture | Blender | Embedded Python | Status |
+| --- | --- | --- | --- | --- | --- |
+| macOS source | Darwin 25.6.0 | arm64 | 5.2.1 LTS, build `9e2066aef7ef` | 3.13.13 | `CONFIRMED` |
+| Windows target | Record the exact Windows edition and build with `Get-ComputerInfo` | x86_64 | 5.2.1 LTS, build `9e2066aef7ef` required | 3.13.13 required | `OPEN` |
+| Linux target | Record distribution and `uname -a` output | x86_64 | 5.2.1 LTS, build `9e2066aef7ef` required | 3.13.13 required | `OPEN` |
+
+The standalone repository tools require Python 3.9 or newer. Exact destination
+OS, driver, GPU device, and standalone Python versions are evidence fields, not
+assumptions; record them before a diagnostic run.
 
 This guide owns the executable setup and test commands for repository migration.
 Repository records continue to use POSIX-style relative paths. Installation
@@ -58,6 +71,9 @@ the local `$BlenderDir` value; never serialize it into project evidence. Add the
 directory to the user PATH and current PowerShell session:
 
 ```powershell
+$PSVersionTable.PSVersion
+Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber, OsArchitecture
+py -3 --version
 $BlenderDir = Join-Path $env:ProgramFiles 'Blender Foundation\Blender 5.2'
 if (-not (Test-Path (Join-Path $BlenderDir 'blender.exe'))) { throw 'Blender 5.2 executable not found' }
 $UserPath = [Environment]::GetEnvironmentVariable('Path', 'User')
@@ -82,7 +98,39 @@ Verify a transferred overlay from the destination repository root:
 py -3 -B scripts/migration_manifest.py verify --manifest local/migration_manifest_v0_1_1.json --target-root .
 ```
 
-Do not continue a macOS diagnostic run by appending Windows output. A change in
+### Linux (Bash)
+
+Use an x86_64 Blender 5.2.1 LTS archive whose runtime matches
+`blender/runtime_dependencies.lock.json`. Keep the extracted installation path
+in local shell configuration; the example directory may be changed locally:
+
+```bash
+uname -a
+python3 --version
+export BLENDER_DIR="$HOME/opt/blender-5.2.1-linux-x64"
+if [[ ! -x "$BLENDER_DIR/blender" ]]; then echo "Blender 5.2 executable not found" >&2; exit 1; fi
+export PATH="$BLENDER_DIR:$PATH"
+blender --version
+```
+
+Run the repository suite and verify the Blender-embedded dependencies:
+
+```bash
+python3 -m pip install --requirement requirements-dev.lock.txt
+python3 -B scripts/check.py
+python3 -B scripts/test.py
+blender --background --factory-startup --python blender/scripts/check_runtime_dependencies.py
+```
+
+Verify a transferred overlay from the destination repository root:
+
+```bash
+python3 -B scripts/migration_manifest.py verify \
+  --manifest local/migration_manifest_v0_1_1.json \
+  --target-root .
+```
+
+Do not continue a macOS diagnostic run by appending Windows or Linux output. A change in
 OS, architecture, Blender build, backend, device, or driver creates a distinct
 determinism environment and requires a new output directory and a complete
 approved comparison run.
@@ -91,8 +139,19 @@ approved comparison run.
 
 ## 繁體中文
 
-文件狀態：指令與已驗證的 macOS profile 為 `CONFIRMED`；Windows runtime 必須
-在目標機器通過檢查後才能確認，目前維持 `OPEN`。
+文件狀態：指令與已驗證的 macOS profile 為 `CONFIRMED`；Windows 與 Linux
+runtime 必須在各自目標機器通過檢查後才能確認，目前維持 `OPEN`。
+
+### 版本矩陣
+
+| Profile | OS 版本 | Architecture | Blender | Embedded Python | 狀態 |
+| --- | --- | --- | --- | --- | --- |
+| macOS 來源 | Darwin 25.6.0 | arm64 | 5.2.1 LTS，build `9e2066aef7ef` | 3.13.13 | `CONFIRMED` |
+| Windows 目標 | 以 `Get-ComputerInfo` 記錄實際 edition 與 build | x86_64 | 必須為 5.2.1 LTS，build `9e2066aef7ef` | 必須為 3.13.13 | `OPEN` |
+| Linux 目標 | 記錄 distribution 與 `uname -a` | x86_64 | 必須為 5.2.1 LTS，build `9e2066aef7ef` | 必須為 3.13.13 | `OPEN` |
+
+獨立 repository 工具需要 Python 3.9 以上。目標 OS、driver、GPU device 與獨立
+Python 的精確版本都屬於證據欄位，不得預先假設；diagnostic 前必須記錄。
 
 本文件負責 repository 遷移時的可執行設定與測試指令。Repository 紀錄仍使用
 POSIX-style 相對路徑。安裝路徑與 PATH 調整屬於機器本機設定，不得寫入 report、
@@ -139,6 +198,9 @@ python3 -B scripts/migration_manifest.py verify \
 該絕對路徑序列化進專案證據。把目錄加入使用者 PATH 與目前 PowerShell session：
 
 ```powershell
+$PSVersionTable.PSVersion
+Get-ComputerInfo | Select-Object WindowsProductName, WindowsVersion, OsBuildNumber, OsArchitecture
+py -3 --version
 $BlenderDir = Join-Path $env:ProgramFiles 'Blender Foundation\Blender 5.2'
 if (-not (Test-Path (Join-Path $BlenderDir 'blender.exe'))) { throw 'Blender 5.2 executable not found' }
 $UserPath = [Environment]::GetEnvironmentVariable('Path', 'User')
@@ -163,6 +225,38 @@ $BlenderExe = Join-Path $BlenderDir 'blender.exe'
 py -3 -B scripts/migration_manifest.py verify --manifest local/migration_manifest_v0_1_1.json --target-root .
 ```
 
-不得在 Windows output 後接續 macOS diagnostic run。OS、architecture、Blender
+### Linux 使用方式（Bash）
+
+使用 x86_64 Blender 5.2.1 LTS archive，且 runtime 必須符合
+`blender/runtime_dependencies.lock.json`。解壓縮位置屬本機 shell 設定；範例
+directory 可依實際安裝位置調整：
+
+```bash
+uname -a
+python3 --version
+export BLENDER_DIR="$HOME/opt/blender-5.2.1-linux-x64"
+if [[ ! -x "$BLENDER_DIR/blender" ]]; then echo "Blender 5.2 executable not found" >&2; exit 1; fi
+export PATH="$BLENDER_DIR:$PATH"
+blender --version
+```
+
+執行 repository suite 並驗證 Blender embedded dependencies：
+
+```bash
+python3 -m pip install --requirement requirements-dev.lock.txt
+python3 -B scripts/check.py
+python3 -B scripts/test.py
+blender --background --factory-startup --python blender/scripts/check_runtime_dependencies.py
+```
+
+從目標 repository root 驗證搬運後的 overlay：
+
+```bash
+python3 -B scripts/migration_manifest.py verify \
+  --manifest local/migration_manifest_v0_1_1.json \
+  --target-root .
+```
+
+不得以 Windows 或 Linux output 接續 macOS diagnostic run。OS、architecture、Blender
 build、backend、device 或 driver 任一改變，都形成新的 determinism environment；
 必須使用新的 output directory，並重新執行完整且已核准的比較流程。

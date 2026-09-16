@@ -42,6 +42,7 @@ class RepositoryContractTests(unittest.TestCase):
         self.assertEqual(lock["schema_version"], "0.1.0")
         self.assertEqual(lock["versions"]["blender"], "5.2.1 LTS")
         self.assertEqual(lock["profiles"]["macos_arm64"]["status"], "CONFIRMED")
+        self.assertEqual(lock["profiles"]["linux_x86_64"]["status"], "OPEN")
         self.assertEqual(lock["profiles"]["windows_x86_64"]["status"], "OPEN")
 
     def test_setup_guide_has_separate_platform_instructions(self) -> None:
@@ -51,10 +52,13 @@ class RepositoryContractTests(unittest.TestCase):
         for marker in (
             "### macOS",
             "### Windows (PowerShell)",
+            "### Linux (Bash)",
             "### macOS 使用方式",
             "### Windows 使用方式（PowerShell）",
+            "### Linux 使用方式（Bash）",
             "python3 -B scripts/test.py",
             "py -3 -B scripts/test.py",
+            "python3 -B scripts/test.py",
             "$BlenderExe",
         ):
             with self.subTest(marker=marker):

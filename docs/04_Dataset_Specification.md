@@ -266,9 +266,11 @@ observation must come from a versioned deterministic render path whose exact
 scene, camera, view layer, render state, and provenance are recorded.
 
 The diagnostic-only v0.1.1 shading/illumination policy and non-overwriting r2
-derived scene are approved and fresh-process validated. The 29-camera sweep,
-threshold proposal, repeat comparison, and cross-environment acceptance remain
-incomplete under OQ-016, so a second pilot is not authorized. This work does not
+derived scene are approved and fresh-process validated. The 29-camera sweep and
+three repeat comparisons are complete: all cameras rendered without changing
+the scene, but exact decoded-pixel identity passed only 1 of 3 repeats. A
+composition threshold is `PROPOSED`, and cross-environment acceptance remains
+`OPEN` under OQ-016, so a second pilot is not authorized. This work does not
 modify the existing geometry, stable-ID, camera-pose, visibility, occlusion, or
 spatial-relation Ground Truth rules.
 
@@ -498,9 +500,11 @@ UI colour handling、視窗縮放與 workspace state。因此，自動點選 GUI
 view layer、render state 與 provenance。
 
 Diagnostic-only v0.1.1 shading／illumination policy 與不覆寫的 r2 derived
-scene 已核准，並通過 fresh-process validation。29-camera sweep、threshold
-proposal、repeat comparison 與跨環境驗收依 OQ-016 尚未完成，因此未授權第二次
-pilot。此工作不修改既有 geometry、stable ID、camera pose、visibility、
+scene 已核准，並通過 fresh-process validation。29-camera sweep 與三次 repeat
+comparison 已完成：所有 camera 都成功 render 且未改變 scene，但 exact
+decoded-pixel identity 只有 1/3 通過。Composition threshold 維持 `PROPOSED`，
+跨環境驗收依 OQ-016 仍為 `OPEN`，因此未授權第二次 pilot。此工作不修改既有
+geometry、stable ID、camera pose、visibility、
 occlusion 或 spatial-relation Ground Truth 規則。
 
 ### 隱私、儲存與公開樣本
