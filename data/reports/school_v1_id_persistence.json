@@ -1,0 +1,58 @@
+{
+  "base_fingerprint_policy_id": "amidst.school.object-id/1.0.0",
+  "blend_saved": true,
+  "blender_version": "5.2.1 LTS",
+  "duplicate_ids": [],
+  "eligible_objects": 2777,
+  "excluded_object_has_no_id": true,
+  "excluded_objects": [
+    "skp_camera_Last_Saved_SketchUp_View"
+  ],
+  "failed_output_artifacts": [
+    {
+      "external_resource_path_changes": 441,
+      "failure_reason": "Blender save copy used relative path remapping; fresh registry fingerprint validation failed at Bolt.012",
+      "path": "/Users/polalabear/Developer/amidst/blender/output/INVALID_school_v1_ids_policy_1_0_1_path_remapped.blend",
+      "sha256": "511fc8071746c5ef55e8d5e8cc456195ad928038a4b551c3eb3cedd4e7242838",
+      "status": "INVALID_PRESERVED_FOR_REVIEW"
+    }
+  ],
+  "ids_expected": 2777,
+  "ids_verified": 2777,
+  "ids_written": 2777,
+  "inventory_comparison": "/Users/polalabear/Developer/amidst/data/reports/school_v1_id_scene_comparison.json",
+  "missing_ids": [],
+  "objective_scene_state": {
+    "fresh_output_sha256": "9dd33ee13bf5e103e5c62ba921f98dfc077aafb169779735d245edc40ca09761",
+    "fresh_working_sha256": "9dd33ee13bf5e103e5c62ba921f98dfc077aafb169779735d245edc40ca09761",
+    "initial_digest_scope": "in-process scene snapshot including host-resolved external-resource paths",
+    "post_write_in_memory_sha256": "5312dbc7e78ed2e0e5f6e99fc63bb852603e3d1105c3405fc424682f34689f52",
+    "pre_write_sha256": "5312dbc7e78ed2e0e5f6e99fc63bb852603e3d1105c3405fc424682f34689f52",
+    "relocation_invariant_reference_sha256": "9dd33ee13bf5e103e5c62ba921f98dfc077aafb169779735d245edc40ca09761",
+    "relocation_invariant_scope": "objective scene snapshot retaining source-stored Blender paths and excluding host-absolute resolved_path values"
+  },
+  "output_checksum": "532243c70b3cce6d9710a804f29a3ffe76cee779a80a888dc875600fc095beb4",
+  "output_created": true,
+  "output_ids_verified": 2777,
+  "output_scene": "/Users/polalabear/Developer/amidst/blender/output/school_v1_ids_policy_1_0_1_r2.blend",
+  "policy_id": "amidst.school.object-id/1.0.1",
+  "policy_version": "1.0.1",
+  "registry": "/Users/polalabear/Developer/amidst/data/annotations/instance_registry/school.json",
+  "registry_mismatches": [],
+  "registry_version": "1.1.0",
+  "render_generation_status": "blocked_five_missing_external_image_resources",
+  "repository_classification": "REVIEW_REQUIRED",
+  "schema_name": "amidst.instance_id_persistence",
+  "schema_version": "1.0.0",
+  "semantic_properties_written": 0,
+  "source_checksum": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+  "source_scene": "/Users/polalabear/Developer/amidst/blender/source/school_v1.blend",
+  "status": "READY_FOR_SEMANTIC_ANNOTATION",
+  "total_objects": 2778,
+  "unauthorized_scene_differences": [],
+  "unexpected_ids": [],
+  "working_post_write_checksum": "3f7aec572938f42444741725116bcfbf941b666eb55c068902e3e31c42a3ba5a",
+  "working_pre_write_checksum": "cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1",
+  "working_scene": "/Users/polalabear/Developer/amidst/blender/working/school_v1_working.blend",
+  "write_timestamp_utc": "2026-09-13T14:36:43.303704+00:00"
+}

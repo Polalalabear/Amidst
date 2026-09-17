@@ -171,6 +171,40 @@ observation.
 8. Report exact failures; do not weaken tests or hide errors with fake success.
 9. Commit only files directly related to the task.
 
+### Cross-Platform Continuation
+
+Use [10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md)
+for the platform-specific executable commands, formal test suite, and Blender
+runtime lock. This section owns the workflow boundary rather than duplicating
+those commands.
+
+For a repository or Blender task that moves to another operating system:
+
+1. Stop writers and record the last complete immutable output.
+2. Record the branch, commit, dirty-state digest, logical file inventory,
+   classification, byte size, checksum, and source execution environment with
+   `scripts/migration_manifest.py`.
+3. Clone the repository on the destination. Do not copy a Codex worktree
+   `.git` pointer because it refers to the source host's Git metadata.
+4. Overlay the recorded uncommitted repository files and restore private
+   assets through an approved private channel. Bind each private asset class to
+   the same logical alias; its physical destination path may differ by host.
+5. Configure `AMIDST_BLENDER_SOURCE_ROOT`, `AMIDST_BLENDER_TEXTURE_ROOT`,
+   `AMIDST_BLENDER_WORK_ROOT`, and `AMIDST_BLENDER_OUTPUT_ROOT`, or use the
+   ignored `local/asset_roots.json` equivalent.
+6. Run `scripts/check_asset_roots.py`, then verify the v0.2.0 manifest with the
+   destination repository and logical-root bindings before resuming work.
+7. Treat a new OS, architecture, Blender build, GPU backend/device, or driver as
+   a new determinism environment. Keep its results separate until the approved
+   comparison passes.
+
+Repository files use repository-relative POSIX paths. External private assets
+use `asset://<root-alias>/<relative-path>` plus byte size and SHA-256. Shell or
+PowerShell resolves each alias from a machine-specific root at runtime, but the
+absolute root and symlink or junction target must stay in ignored local
+configuration. Historical reports and v0.1.0 manifests remain immutable
+evidence and must not be bulk-edited to adopt the current contract.
+
 ### Publication Workflow
 
 Publication requires an explicit request. When requested:
@@ -386,6 +420,35 @@ OPEN 問題
 
 8. 如實回報錯誤；不得弱化測試或用假成功掩蓋問題。
 9. 只提交與任務直接相關的檔案。
+
+### 跨平台接續
+
+平台限定的可執行指令、正式測試套件與 Blender runtime lock 以
+[10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md)
+為準；本節只負責工作流程邊界，不重複維護指令。
+
+當 repository 或 Blender 任務要移到另一個作業系統：
+
+1. 停止仍在寫入的程序，記錄最後一個完整且不可變的輸出。
+2. 以 `scripts/migration_manifest.py` 記錄 branch、commit、dirty-state digest、
+   logical file inventory、分類、byte size、checksum 與來源執行環境。
+3. 在目標機器重新 clone；不得複製 Codex worktree 的 `.git` pointer，因為它
+   指向來源主機的 Git metadata。
+4. 覆蓋清單中的未提交 repository 檔案，並透過核准的私人管道恢復私人資產；
+   各類資產必須綁定相同 logical alias，但不同主機的實體目的路徑可以不同。
+5. 設定 `AMIDST_BLENDER_SOURCE_ROOT`、`AMIDST_BLENDER_TEXTURE_ROOT`、
+   `AMIDST_BLENDER_WORK_ROOT`、`AMIDST_BLENDER_OUTPUT_ROOT`，或使用 ignored 的
+   `local/asset_roots.json`。
+6. 先執行 `scripts/check_asset_roots.py`，再以目標 repository 與 logical-root
+   bindings 驗證 v0.2.0 manifest；通過後才繼續工作。
+7. 新的 OS、architecture、Blender build、GPU backend／device 或 driver 都視為
+   新的 determinism environment；通過核准的比較前，不得混合兩邊結果。
+
+Repository 檔案使用 repository-relative POSIX path；外部私人資產使用
+`asset://<root-alias>/<relative-path>`、byte size 與 SHA-256。Shell／PowerShell
+會在 runtime 從機器限定 root 解析 alias，但 absolute root 與 symlink／junction
+target 只能留在 ignored local config。歷史報告與 v0.1.0 manifest 屬不可變證據，
+不得批次改寫成目前契約。
 
 ### 發布流程
 

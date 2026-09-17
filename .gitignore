@@ -15,10 +15,12 @@ __pycache__/
 !.env.example
 config/local.*
 config/private.*
+local/
 
 # Private datasets
 data/raw/
 data/private/
+data/datasets/
 dataset/raw/
 dataset/private/
 

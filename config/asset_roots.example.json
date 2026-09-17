@@ -1,0 +1,22 @@
+{
+  "roots": {
+    "blender-output": {
+      "access": "task_scoped_write",
+      "path": "<absolute-local-output-root>"
+    },
+    "blender-source": {
+      "access": "read_only",
+      "path": "<absolute-local-source-root>"
+    },
+    "blender-textures": {
+      "access": "read_only",
+      "path": "<absolute-local-texture-root>"
+    },
+    "blender-working": {
+      "access": "task_scoped_write",
+      "path": "<absolute-local-working-root>"
+    }
+  },
+  "schema_name": "amidst.local_asset_roots",
+  "schema_version": "0.1.0"
+}

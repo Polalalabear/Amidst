@@ -55,6 +55,50 @@ ID rather than duplicating the entire discussion.
 | OQ-013 | What may the Agent do, which tools may it call, and how are parameters authorized? | Defines safety and Agent/Retrieval responsibility | PRD, Architecture, Retrieval, Evaluation | OPEN | TODO |
 | OQ-014 | What offline, streaming, or real-time behavior is actually required? | Affects architecture, datasets, latency metrics, and ADRs | PRD, Architecture, Evaluation, ADRs | OPEN | TODO |
 | OQ-015 | Which machine-readable data contracts, external standards, and time/interval semantics should Amidst adopt? | Shared Blender, video, event, evidence, Retrieval, and evaluation records need compatible versioned contracts | Architecture, Dataset, Spatial, Retrieval, Evaluation, ADRs | OPEN | Peter |
+| OQ-016 | Which deterministic texture-agnostic shading/illumination, observation-usability, and cross-environment pixel rules should govern the first slice? | The v0.1.1 diagnostic is environment-sensitive; migration adds a new OS/backend tuple that must not be mixed with the source run without an approved comparison | Dataset, Spatial, Data Formats, Render Config, ADRs | OPEN | Peter |
+
+### Confirmed Partial Resolutions
+
+- OQ-004: `CONFIRMED` only for stable `school` object identity. The versioned
+  sidecar registry is authoritative and Blender `instance_id` properties are
+  mirrors. Policy 1.0.1 also confirms the `school_v1` objective-disambiguation
+  and reviewed-bootstrap sidecars plus exclusion of the imported saved-view
+  helper camera. Other Blender semantic, coordinate, camera, and export
+  authorities remain `OPEN`.
+- OQ-015: `CONFIRMED` only for contract
+  `amidst.school.object-id/1.0.1`, its unchanged base-fingerprint algorithm
+  v1.0.0, namespace UUID
+  `1601a7c1-19ac-555d-9962-05e4503ac6bd`, UUIDv5 format, canonical
+  fingerprinting, approved override/bootstrap resolution, remaining
+  collision/ambiguity failure, and permanent tombstones. The scoped
+  `school_v1` first-slice contracts are also `CONFIRMED`: task contract
+  `amidst.school.first-dataset-slice/0.1.0`, metadata schema
+  `amidst.first-dataset-slice.metadata/0.1.0`, spatial/visibility contracts
+  `amidst.school.first-slice-spatial/1.0.0` and
+  `amidst.school.first-slice-visibility/1.0.0`, render config
+  `amidst.school.first-slice-render/0.1.0`, and category-agnostic semantic
+  baseline `school.v1.semantic/0.1.0`. Resource policy
+  `amidst.school.texture-agnostic-render/0.1.0` confirms that the five preserved
+  legacy missing images are not runtime requirements and that visual fidelity
+  is non-authoritative. Other schemas, external-standard choices,
+  and general time/interval semantics remain `OPEN`; this partial resolution
+  does not close OQ-015.
+- OQ-016 blocks a second pilot. Diagnostic
+  `data/reports/render_diagnostics/school_v1_observation_render_diagnostic_v0_1_0.json`
+  proves that the prior accepted image is pixel-identical to a fresh render but
+  has no pixels above the proposed 0.10 visibility threshold and only
+  0.011764705 P1-P99 luminance range. The v0.1.1 render-only policy and derived
+  scene were subsequently authorized for diagnostic evidence. Its 29-camera
+  sweep completed with 29 successes and unchanged scene invariants, but only 1
+  of 3 fresh-process repeats met the confirmed exact decoded-pixel requirement.
+  The two failures differ by 1 and 2 pixels respectively, at most `1/255` in a
+  channel. A composition rule of occupancy below `0.95` and at least 3 visible
+  stable-ID objects is `PROPOSED` and flags 7 cameras. Treatment of those views
+  and the acceptance boundary for pixel, PNG-byte, and cross-environment
+  determinism remain `OPEN`. Whether decoded pixels must
+  match exactly across different OS, architecture, Blender build, backend,
+  device, or driver tuples is not yet authoritative; source-host and
+  destination-host statistics must remain separate.
 
 ### Decision Record Template
 
@@ -140,6 +184,44 @@ For material technical trade-offs, link an ADR in
 | OQ-013 | Agent 可以做什麼、使用哪些工具、參數如何授權？ | OPEN | Peter |
 | OQ-014 | 實際需要離線、串流還是即時行為？ | OPEN | Peter |
 | OQ-015 | Amidst 應採用哪些資料契約、外部標準與時間區間語意？ | OPEN | Peter |
+| OQ-016 | 首批資料應採哪些 deterministic texture-agnostic shading／illumination、observation-usability 與跨環境 pixel 規則？ | OPEN | Peter |
+
+### 已確認的部分決議
+
+- OQ-004：只有 `school` 穩定物件 identity 子範圍為 `CONFIRMED`。版本化
+  sidecar registry 是權威來源，Blender `instance_id` property 是鏡像；policy
+  1.0.1 也確認 `school_v1` objective-disambiguation／reviewed-bootstrap sidecar
+  及 imported saved-view helper camera 排除。其他 Blender 語意、座標、相機
+  與 export authority 仍為 `OPEN`。
+- OQ-015：只有 `amidst.school.object-id/1.0.1` 契約、不變的 base-fingerprint
+  algorithm v1.0.0、namespace UUID
+  `1601a7c1-19ac-555d-9962-05e4503ac6bd`、UUIDv5 格式、canonical
+  fingerprint、已核准 override／bootstrap 解歧、剩餘 collision／ambiguity
+  失敗規則與永久 tombstone 為 `CONFIRMED`。限定 `school_v1` 的首批資料契約
+  也已確認：task contract `amidst.school.first-dataset-slice/0.1.0`、metadata
+  schema `amidst.first-dataset-slice.metadata/0.1.0`、spatial／visibility contract
+  `amidst.school.first-slice-spatial/1.0.0` 與
+  `amidst.school.first-slice-visibility/1.0.0`、render config
+  `amidst.school.first-slice-render/0.1.0`，以及 category-agnostic semantic
+  baseline `school.v1.semantic/0.1.0`。Resource policy
+  `amidst.school.texture-agnostic-render/0.1.0` 確認保留的五個 legacy missing
+  images 不是 runtime requirements，且 visual fidelity 不具權威性。其他
+  schema、外部標準選擇與一般時間／
+  區間語意仍為 `OPEN`，此部分決議不關閉 OQ-015。
+- OQ-016 會阻擋第二次 pilot。診斷
+  `data/reports/render_diagnostics/school_v1_observation_render_diagnostic_v0_1_0.json`
+  證明先前 accepted image 與 fresh render 的 pixels 完全相同，但沒有 pixels
+  高於 proposed `0.10` 可視門檻，且 P1-P99 luminance range 只有
+  `0.011764705`。其後已核准 v0.1.1 render-only policy 與 derived scene 供
+  diagnostic evidence。29-camera sweep 已有 29 次成功且 scene invariants 未變，
+  但三次 fresh-process repeat 只有 1 次符合已確認的 exact decoded-pixel
+  requirement；另兩次分別差 1 與 2 個 pixel，最大 channel 差異為 `1/255`。
+  Occupancy 小於 `0.95` 且至少 3 個可見 stable-ID objects 的 composition rule
+  維持 `PROPOSED`，並標出 7 台 camera。這些 camera 的處理方式，以及 pixel、
+  PNG bytes 與跨環境 determinism
+  的驗收邊界皆維持 `OPEN`。不同 OS、architecture、Blender build、backend、
+  device 或 driver tuple 的 decoded pixels 是否必須完全相同尚不具權威性；
+  來源與目標主機的 statistics 必須分開。
 
 ### 決策紀錄與審查流程
 

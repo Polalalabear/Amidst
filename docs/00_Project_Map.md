@@ -68,6 +68,8 @@ boundary, and operating environment still require human confirmation.
 | Document | Responsibility | Review outcome |
 | --- | --- | --- |
 | [09_Data_Types_and_Exchange_Formats.md](09_Data_Types_and_Exchange_Formats.md) | Proposed cross-layer data types and interchange-format guidance | Reviewed candidate contracts without prematurely fixing schemas |
+| [10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md) | Executable macOS and Windows setup, test, dependency-lock, and migration-verification commands | Reproducible platform-specific continuation without machine paths in project records |
+| [問題記錄.md](問題記錄.md) | Concise record of the portable Blender asset-root problem, implemented solution, and remaining verification boundary | Shared implementation summary without private paths or assets |
 | [internal_guide.md](internal_guide.md) | Internal contributor orientation, decision routing, and review workflow | Consistent execution without duplicating authoritative decisions |
 | [glossary.md](glossary.md) | Shared vocabulary | Agreed working definitions |
 | [open_questions.md](open_questions.md) | Cross-cutting unresolved decisions | Assigned and resolved questions |
@@ -89,6 +91,8 @@ additional core specifications.
 | Query, retrieval, evidence, provenance, or result state | [06_Retrieval_Specification.md](06_Retrieval_Specification.md) | [glossary.md](glossary.md), [open_questions.md](open_questions.md) |
 | Technology choice or architectural trade-off | [07_Technical_Decisions.md](07_Technical_Decisions.md) | Affected core specification(s) |
 | File classification, private storage, sanitization, or publication | [08_Repository_and_Data_Publication_Policy.md](08_Repository_and_Data_Publication_Policy.md) | Affected data/spatial specification |
+| Cross-platform setup, test suite, Blender runtime lock, or migration verification | [10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md) | [internal_guide.md](internal_guide.md), [08_Repository_and_Data_Publication_Policy.md](08_Repository_and_Data_Publication_Policy.md) |
+| Portable Blender asset-root implementation summary or migration issue history | [問題記錄.md](問題記錄.md) | [10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md), [07_Technical_Decisions.md](07_Technical_Decisions.md) |
 | Shared terminology ambiguity | [glossary.md](glossary.md) | Specification that owns the behavior |
 | Cross-document unresolved decision | [open_questions.md](open_questions.md) | All affected specifications |
 | Internal workflow, decision status, or information review | [internal_guide.md](internal_guide.md) | [AGENTS.md](../AGENTS.md), affected authoritative document |
@@ -215,6 +219,8 @@ Immediate review questions:
 | [技術決策](07_Technical_Decisions.md) | 決策紀錄與重新檢視條件 |
 | [發布政策](08_Repository_and_Data_Publication_Policy.md) | 公開／私人分類與發布控制 |
 | [資料型別與交換格式](09_Data_Types_and_Exchange_Formats.md) | 跨層資料型別與格式候選方案 |
+| [跨平台設定與測試](10_Cross_Platform_Setup_and_Testing.md) | macOS／Windows 設定、正式測試、依賴鎖定與遷移驗證指令 |
+| [問題記錄](問題記錄.md) | Blender 資產路徑、跨機器搬移與保護機制的精簡實作紀錄 |
 | [內部專案導讀](internal_guide.md) | 協作、決策分流與審查流程 |
 | [術語表](glossary.md) | 共用詞彙 |
 | [未決問題](open_questions.md) | 跨文件待決事項 |
@@ -232,6 +238,8 @@ Immediate review questions:
 - 影片、事件或交換格式：先讀[資料型別與交換格式](09_Data_Types_and_Exchange_Formats.md)。
 - 查詢、證據或來源追溯：先讀[資料檢索規格](06_Retrieval_Specification.md)。
 - 公開與私人資料：先讀[發布政策](08_Repository_and_Data_Publication_Policy.md)。
+- 跨平台設定、測試、Blender runtime lock 或遷移驗證：先讀[跨平台設定與測試](10_Cross_Platform_Setup_and_Testing.md)。
+- Blender 資產根目錄與遷移問題摘要：先讀[問題記錄](問題記錄.md)。
 - 跨文件決策：查閱[未決問題](open_questions.md)。
 
 ### 決策、阻塞事項與階段完成條件

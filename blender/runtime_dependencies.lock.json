@@ -1,0 +1,35 @@
+{
+  "schema_name": "amidst.blender_runtime_dependencies_lock",
+  "schema_version": "0.1.0",
+  "document_status": "CONFIRMED",
+  "versions": {
+    "blender": "5.2.1 LTS",
+    "blender_build_hash": "9e2066aef7ef",
+    "embedded_python": "3.13.13",
+    "numpy": "2.3.4",
+    "openimageio": "3.1.13.1"
+  },
+  "required_modules": [
+    "bpy",
+    "mathutils",
+    "numpy",
+    "OpenImageIO"
+  ],
+  "profiles": {
+    "macos_arm64": {
+      "status": "CONFIRMED",
+      "verified_on": "2026-09-15",
+      "note": "Exact versions verified in the installed Blender background runtime."
+    },
+    "linux_x86_64": {
+      "status": "OPEN",
+      "verified_on": null,
+      "note": "Target lock only; record the distribution and kernel and verify the exact Blender runtime before producing evidence."
+    },
+    "windows_x86_64": {
+      "status": "OPEN",
+      "verified_on": null,
+      "note": "Target lock only; verify on the destination before producing comparable evidence."
+    }
+  }
+}
