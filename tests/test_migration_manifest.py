@@ -64,6 +64,30 @@ class EntryExpansionTests(unittest.TestCase):
             self.assertEqual(records[0]["path"], "private/asset.bin")
             self.assertEqual(records[0]["classification"], "PRIVATE_ONLY")
 
+    def test_external_root_uses_logical_uri_without_physical_path(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / "school_v1.blend"
+            source.write_bytes(b"blend")
+
+            records = migration_manifest.expand_entries(
+                [
+                    {
+                        "classification": "PRIVATE_ONLY",
+                        "root_alias": "blender-source",
+                        "path": "school_v1.blend",
+                    }
+                ],
+                [migration_manifest.RootBinding("blender-source", root)],
+            )
+
+            self.assertEqual(
+                records[0]["logical_uri"],
+                "asset://blender-source/school_v1.blend",
+            )
+            self.assertEqual(records[0]["relative_path"], "school_v1.blend")
+            self.assertNotIn(str(root), json.dumps(records))
+
 
 class ManifestVerificationTests(unittest.TestCase):
     def _write_manifest(self, path: Path, target: Path) -> None:
@@ -102,6 +126,71 @@ class ManifestVerificationTests(unittest.TestCase):
             with redirect_stdout(output):
                 self.assertEqual(migration_manifest.verify_manifest(options), 1)
             self.assertIn("content_mismatch", output.getvalue())
+
+    def test_logical_manifest_verifies_at_a_different_physical_root(self) -> None:
+        with TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            source_root = base / "source-root"
+            target_root = base / "target-root"
+            source_root.mkdir()
+            target_root.mkdir()
+            (source_root / "scene.blend").write_bytes(b"same-scene")
+            (target_root / "scene.blend").write_bytes(b"same-scene")
+            records = migration_manifest.expand_entries(
+                [
+                    {
+                        "classification": "PRIVATE_ONLY",
+                        "root_alias": "blender-source",
+                        "path": "scene.blend",
+                    }
+                ],
+                [migration_manifest.RootBinding("blender-source", source_root)],
+            )
+            manifest = base / "manifest.json"
+            manifest.write_text(
+                json.dumps(
+                    {
+                        "schema_name": migration_manifest.SCHEMA_NAME,
+                        "schema_version": migration_manifest.SCHEMA_VERSION,
+                        "entries": records,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            options = argparse.Namespace(
+                manifest=manifest,
+                target_root=[f"blender-source={target_root}"],
+            )
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(migration_manifest.verify_manifest(options), 0)
+
+    def test_legacy_v0_1_manifest_remains_supported(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "payload").mkdir()
+            payload = root / "payload" / "file.txt"
+            payload.write_text("legacy", encoding="utf-8")
+            manifest = root / "legacy.json"
+            manifest.write_text(
+                json.dumps(
+                    {
+                        "schema_name": migration_manifest.SCHEMA_NAME,
+                        "schema_version": "0.1.0",
+                        "entries": [
+                            {
+                                "path": "payload/file.txt",
+                                "classification": "PUBLIC_ALLOWED",
+                                "size_bytes": payload.stat().st_size,
+                                "sha256": migration_manifest.sha256_file(payload),
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            options = argparse.Namespace(manifest=manifest, target_root=[root])
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(migration_manifest.verify_manifest(options), 0)
 
 
 if __name__ == "__main__":

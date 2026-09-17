@@ -60,6 +60,9 @@ class RepositoryContractTests(unittest.TestCase):
             "py -3 -B scripts/test.py",
             "python3 -B scripts/test.py",
             "$BlenderExe",
+            "AMIDST_BLENDER_SOURCE_ROOT",
+            "scripts/check_asset_roots.py",
+            "amidst.migration_manifest/0.2.0",
         ):
             with self.subTest(marker=marker):
                 self.assertIn(marker, guide)

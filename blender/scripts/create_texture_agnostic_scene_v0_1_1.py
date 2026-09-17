@@ -48,6 +48,7 @@ from render_policy_v0_1_1 import (  # noqa: E402
     principled_input_record,
     unlink_policy_lights,
 )
+from asset_paths import logical_uri_for_path, root_path  # noqa: E402
 from validate_first_slice_readiness import render_config_differences  # noqa: E402
 
 
@@ -137,7 +138,8 @@ def write_json_new(path: Path, value: dict[str, Any]) -> None:
 
 
 def canonical_scene_path(kind: str, path: Path) -> str:
-    return f"blender/{kind}/{path.name}"
+    root_name = "blender-source" if kind == "source" else "blender-output"
+    return logical_uri_for_path(root_name, path, repo_root=REPOSITORY_ROOT)
 
 
 def main() -> None:
@@ -147,7 +149,8 @@ def main() -> None:
     source_path = args.source_scene.resolve()
     if Path(bpy.data.filepath).resolve() != input_path:
         raise RuntimeError("Loaded scene does not match --input-scene")
-    if output_path.name != OUTPUT_NAME or output_path.parent.name != "output":
+    output_root = root_path("blender-output", repo_root=REPOSITORY_ROOT)
+    if output_path.name != OUTPUT_NAME or output_path.parent != output_root:
         raise RuntimeError(f"Unexpected versioned output path: {output_path}")
     if output_path.exists():
         raise RuntimeError(f"Refusing to overwrite derived scene: {output_path}")

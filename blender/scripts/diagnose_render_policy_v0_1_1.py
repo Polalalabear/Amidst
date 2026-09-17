@@ -26,6 +26,11 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_paths import (  # noqa: E402
+    AssetPathError,
+    logical_uri_for_path,
+    portable_repository_reference,
+)
 from assign_instance_ids import file_sha256  # noqa: E402
 from create_texture_agnostic_scene import load_json, scene_invariant_digests  # noqa: E402
 from generate_first_dataset_slice import (  # noqa: E402
@@ -110,15 +115,17 @@ def decoded_pixel_digest(path: Path) -> str:
 
 def report_path(path: Path) -> str:
     try:
-        return path.resolve().relative_to(REPOSITORY_ROOT).as_posix()
-    except ValueError as error:
-        raise RuntimeError(
-            f"Diagnostic evidence must be below the repository root: {path.name}"
-        ) from error
+        return portable_repository_reference(path, repo_root=REPOSITORY_ROOT)
+    except AssetPathError:
+        return logical_uri_for_path(
+            "blender-output", path, repo_root=REPOSITORY_ROOT
+        )
 
 
 def canonical_scene_path(path: Path) -> str:
-    return f"blender/output/{path.name}"
+    return logical_uri_for_path(
+        "blender-output", path, repo_root=REPOSITORY_ROOT
+    )
 
 
 def luminance_metrics(path: Path) -> dict[str, Any]:

@@ -288,6 +288,32 @@ historical evidence, and private-asset classification.
   distinct determinism environment. Cross-environment acceptance remains open
   under OQ-016 and cannot change Ground Truth.
 
+#### Confirmed Amendment — External Local Asset Roots
+
+Decision date: 2026-09-17
+
+To avoid duplicating large private Blender assets across Git worktrees,
+repository files continue to use repository-relative POSIX paths while private
+Blender source, texture, working, and output roots may be configured outside a
+worktree. Runtime resolution uses stable aliases (`blender-source`,
+`blender-textures`, `blender-working`, and `blender-output`) through local
+configuration or environment variables. Physical roots remain local execution
+context and must not enter portable records.
+
+Manifest contract `amidst.migration_manifest/0.2.0` adds `root_alias`,
+`relative_path`, and an `asset://<root-alias>/<relative-path>` logical URI.
+Content size and SHA-256 remain authoritative. The verifier remains compatible
+with v0.1.0 repository-root manifests. A configured root may itself be a local
+symlink or Windows junction, but nested links that escape the configured root
+are rejected.
+
+Shared source and texture roots are read-only and checksum guarded. Working and
+output roots are writable only through task-specific namespaces. An atomic
+task lock prevents two writers from using the same task output; a stale lock is
+preserved for explicit recovery rather than deleted automatically. These rules
+do not authorize publication, change Ground Truth, or permit overwriting any
+source or historical output.
+
 #### Consequences and Verification
 
 The same logical package can be verified under different physical roots, and
@@ -558,6 +584,27 @@ Git，再依 checksum manifest 覆蓋未提交檔案，並以核准的私人管�
 - OS、architecture、Blender build、GPU backend／device 或 driver 改變時，視為
   不同 determinism environment。跨環境驗收依 OQ-016 維持 `OPEN`，不得因此
   修改 Ground Truth。
+
+#### 已確認修正 — 外部本機資產根目錄
+
+決策日期：2026-09-17
+
+為避免大型私人 Blender 資產在多個 Git worktree 重複保存，repository檔案仍
+使用repository-relative POSIX path；私人Blender source、texture、working與
+output則可設定在worktree外。Runtime透過本機設定或環境變數解析穩定alias：
+`blender-source`、`blender-textures`、`blender-working`、`blender-output`。
+實體root只屬於本機執行環境，不得進入可攜紀錄。
+
+Manifest契約`amidst.migration_manifest/0.2.0`新增`root_alias`、
+`relative_path`與`asset://<root-alias>/<relative-path>` logical URI；內容大小與
+SHA-256仍是權威驗證依據。Verifier繼續相容v0.1.0 repository-root manifest。
+Configured root本身可為本機symlink或Windows junction，但會拒絕逃出root的
+nested link。
+
+共用source與texture root必須唯讀並以checksum guard；working與output只能在
+task-specific namespace寫入。Atomic task lock禁止兩個writer共用相同task
+output；stale lock保留供明確復原，不得自動刪除。本修正不授權發布、不修改
+Ground Truth，也不允許覆寫source或歷史output。
 
 此做法讓相同 logical package 可在不同實體 root 驗證，也讓私人資產繼續留在
 Git 之外；代價是私人檔需要獨立核准搬運，environment-sensitive evidence 可能

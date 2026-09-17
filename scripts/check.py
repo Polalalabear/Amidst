@@ -73,13 +73,18 @@ PORTABILITY_SCAN_ROOTS = (
     ROOT / "data/metadata",
 )
 REQUIRED_PROJECT_FILES = (
+    ROOT / "config/asset_roots.example.json",
     ROOT / "requirements-dev.lock.txt",
+    ROOT / "scripts/check_asset_roots.py",
     ROOT / "scripts/test.py",
     ROOT / "scripts/finalize_render_policy_v0_1_1.py",
     ROOT / "tests/test_migration_manifest.py",
+    ROOT / "tests/test_asset_paths.py",
     ROOT / "tests/test_repository_contracts.py",
     ROOT / "tests/test_render_policy_review.py",
     ROOT / "blender/runtime_dependencies.lock.json",
+    ROOT / "blender/scripts/asset_guards.py",
+    ROOT / "blender/scripts/asset_paths.py",
     ROOT / "blender/scripts/check_runtime_dependencies.py",
 )
 REQUIRED_SETUP_GUIDE_MARKERS = {
@@ -91,6 +96,9 @@ REQUIRED_SETUP_GUIDE_MARKERS = {
     "### Linux 使用方式（Bash）",
     "python3 -B scripts/test.py",
     "py -3 -B scripts/test.py",
+    "AMIDST_BLENDER_SOURCE_ROOT",
+    "scripts/check_asset_roots.py",
+    "amidst.migration_manifest/0.2.0",
 }
 PORTABILITY_SUFFIXES = {".json", ".md", ".py", ".ps1", ".sh", ".toml", ".yaml", ".yml"}
 MACHINE_PATH_PATTERNS = (

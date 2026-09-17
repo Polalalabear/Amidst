@@ -25,6 +25,12 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_paths import (  # noqa: E402
+    AssetPathError,
+    logical_uri_for_path,
+    portable_repository_reference,
+    root_path,
+)
 from assign_instance_ids import (  # noqa: E402
     AUTOMATIC_METHOD,
     BASE_FINGERPRINT_POLICY_ID,
@@ -68,7 +74,9 @@ def script_args() -> argparse.Namespace:
     parser.add_argument(
         "--source-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/source/school_v1.blend",
+        default=root_path(
+            "blender-source", "school_v1.blend", repo_root=REPOSITORY_ROOT
+        ),
     )
     parser.add_argument("--expected-source-sha256", default=SOURCE_SHA256)
     parser.add_argument("--expected-pre-write-sha256")
@@ -101,7 +109,11 @@ def script_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/output/school_v1_ids_policy_1_0_1.blend",
+        default=root_path(
+            "blender-output",
+            "school_v1_ids_policy_1_0_1.blend",
+            repo_root=REPOSITORY_ROOT,
+        ),
     )
     parser.add_argument(
         "--report",
@@ -127,6 +139,18 @@ def load_json(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         fail(f"Expected a JSON object: {path}")
     return value
+
+
+def scene_reference(path: Path) -> str:
+    for root_name in ("blender-working", "blender-output"):
+        try:
+            return logical_uri_for_path(
+                root_name, path, repo_root=REPOSITORY_ROOT
+            )
+        except AssetPathError:
+            continue
+    fail("Scene is outside the configured working and output roots")
+    raise AssertionError("unreachable")
 
 
 def strict_registry(path: Path) -> dict[str, Any]:
@@ -625,11 +649,15 @@ def main() -> None:
             "policy_id": POLICY_ID,
             "policy_version": POLICY_VERSION,
             "base_fingerprint_policy_id": BASE_FINGERPRINT_POLICY_ID,
-            "registry": str(args.registry.resolve()),
+            "registry": portable_repository_reference(
+                args.registry, repo_root=REPOSITORY_ROOT
+            ),
             "registry_version": registry["schema_version"],
-            "source_scene": str(source_path),
+            "source_scene": logical_uri_for_path(
+                "blender-source", source_path, repo_root=REPOSITORY_ROOT
+            ),
             "source_checksum": SOURCE_SHA256,
-            "working_scene": str(open_path),
+            "working_scene": scene_reference(open_path),
             "working_pre_write_checksum": pre_checksum,
             "working_post_write_checksum": post_checksum,
             "output_scene": None,
@@ -712,7 +740,9 @@ def main() -> None:
         report["objective_scene_state"][
             "relocation_invariant_reference_sha256"
         ] = objective_digest
-        report["inventory_comparison"] = str(args.inventory_comparison.resolve())
+        report["inventory_comparison"] = portable_repository_reference(
+            args.inventory_comparison, repo_root=REPOSITORY_ROOT
+        )
         report["objective_scene_state"]["fresh_working_sha256"] = objective_digest
 
         output_path = args.output_scene.resolve()
@@ -720,6 +750,9 @@ def main() -> None:
             fail(f"Refusing to overwrite existing output scene: {output_path}")
         if source_path.parent in output_path.parents:
             fail("Refusing to write output under the immutable source directory")
+        output_root = root_path("blender-output", repo_root=REPOSITORY_ROOT)
+        if output_path.parent != output_root:
+            fail("Output scene must be written directly under configured output root")
         output_path.parent.mkdir(parents=True, exist_ok=True)
         working_checksum_before_copy = file_sha256(open_path)
         save_blend(output_path, copy=True)
@@ -728,7 +761,9 @@ def main() -> None:
         output_checksum = file_sha256(output_path)
         if file_sha256(source_path) != SOURCE_SHA256:
             fail("Immutable source checksum changed while creating output")
-        report["output_scene"] = str(output_path)
+        report["output_scene"] = logical_uri_for_path(
+            "blender-output", output_path, repo_root=REPOSITORY_ROOT
+        )
         report["output_checksum"] = output_checksum
         report["output_created"] = True
         report["status"] = "OUTPUT_CREATED_PENDING_FRESH_VALIDATION"

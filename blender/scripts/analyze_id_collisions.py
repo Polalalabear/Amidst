@@ -23,6 +23,7 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_paths import root_path  # noqa: E402
 from assign_instance_ids import (  # noqa: E402
     BASE_FINGERPRINT_POLICY_ID,
     POLICY_ID,
@@ -658,10 +659,13 @@ def main() -> None:
     working_path = Path(bpy.data.filepath).resolve()
     if not working_path.is_file():
         raise SystemExit("The open Blender file does not exist on disk")
-    if (REPOSITORY_ROOT / "blender/source") in working_path.parents:
+    source_root = root_path("blender-source", repo_root=REPOSITORY_ROOT)
+    if working_path == source_root or source_root in working_path.parents:
         raise SystemExit("Refusing to inspect an immutable source scene directly")
 
-    source_path = REPOSITORY_ROOT / "blender/source/school_v1.blend"
+    source_path = root_path(
+        "blender-source", "school_v1.blend", repo_root=REPOSITORY_ROOT
+    )
     source_hash = file_sha256(source_path)
     working_hash_before = file_sha256(working_path)
     if source_hash != SOURCE_SHA256 or working_hash_before != SOURCE_SHA256:

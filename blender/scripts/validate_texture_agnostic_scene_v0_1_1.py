@@ -19,6 +19,7 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_paths import logical_uri_for_path  # noqa: E402
 from assign_instance_ids import file_sha256, load_identity_layer  # noqa: E402
 from create_texture_agnostic_scene import (  # noqa: E402
     load_json,
@@ -215,7 +216,9 @@ def write_json(path: Path, value: dict[str, Any]) -> None:
 
 
 def canonical_scene_path(path: Path) -> str:
-    return f"blender/output/{path.name}"
+    return logical_uri_for_path(
+        "blender-output", path, repo_root=REPOSITORY_ROOT
+    )
 
 
 def main() -> None:

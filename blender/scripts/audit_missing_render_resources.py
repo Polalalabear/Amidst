@@ -16,6 +16,10 @@ import bpy
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from asset_paths import logical_uri_for_path, root_path  # noqa: E402
 TARGETS = (
     "__Brick-antique_.jpg",
     "__Brick-antique__1.jpg",
@@ -91,7 +95,8 @@ def main() -> None:
     scene_path = Path(bpy.data.filepath).resolve()
     if not scene_path.is_file():
         raise RuntimeError("No saved Blender scene is open")
-    if (REPOSITORY_ROOT / "blender/source") in scene_path.parents:
+    source_root = root_path("blender-source", repo_root=REPOSITORY_ROOT)
+    if scene_path == source_root or source_root in scene_path.parents:
         raise RuntimeError("Refusing to inspect the immutable source scene directly")
     registry = json.loads(args.registry.read_text(encoding="utf-8"))
     if registry.get("policy_id") != "amidst.school.object-id/1.0.1":
@@ -171,7 +176,7 @@ def main() -> None:
                 "render_enabled_object_count": len(render_objects),
                 "render_enabled_objects": render_objects,
                 "appears_to_affect_render_output": bool(render_objects or other_usage),
-                "approved_search_roots": [str(REPOSITORY_ROOT)],
+                "approved_search_roots": ["repository"],
                 "exact_repository_matches": repository_matches,
                 "exact_original_asset_found": exact_found,
                 "verified_asset_sha256": (
@@ -216,13 +221,15 @@ def main() -> None:
         "inspected_at_utc": datetime.now(timezone.utc).isoformat(),
         "scene_id": "school",
         "scene_version": "v1",
-        "inspected_scene": str(scene_path),
+        "inspected_scene": logical_uri_for_path(
+            "blender-working", scene_path, repo_root=REPOSITORY_ROOT
+        ),
         "inspected_scene_sha256": file_sha256(scene_path),
-        "immutable_source_scene": "blender/source/school_v1.blend",
+        "immutable_source_scene": "asset://blender-source/school_v1.blend",
         "immutable_source_sha256": registry["source_sha256"],
         "stable_id_policy": registry["policy_id"],
         "search_scope": {
-            "roots": [str(REPOSITORY_ROOT)],
+            "roots": ["repository"],
             "external_locations_searched": False,
             "visually_similar_substitution_allowed": False,
         },

@@ -74,9 +74,16 @@ Status: `CONFIRMED` for repository and migration records created after
   path must be cited, label it as historical provenance rather than an active
   location.
 
-The portable manifest contract is `amidst.migration_manifest/0.1.0`. It records
-logical paths, classification, byte size, SHA-256, source execution environment,
-and Git checkpoint without serializing the physical source roots. This scoped
+The current portable manifest contract is
+`amidst.migration_manifest/0.2.0`. Repository files retain repository-relative
+POSIX paths. Private Blender assets outside a worktree use a stable root alias,
+root-relative POSIX path, and logical URI of the form
+`asset://<root-alias>/<relative-path>`. The confirmed aliases are
+`blender-source`, `blender-textures`, `blender-working`, and
+`blender-output`. Physical roots, symlink targets, drive letters, and hostnames
+are never serialized. Classification, byte size, SHA-256, source execution
+environment, and Git checkpoint remain explicit. The verifier remains
+backward-compatible with v0.1.0 repository-root manifests. This scoped
 contract does not settle the general schema decisions tracked by OQ-015.
 
 ### Candidate Artifact Set
@@ -520,9 +527,14 @@ Event、Evidence、Retrieval 與評估可以互相連接。
   `path_base = repository_root`；必要時引用舊路徑，必須標為歷史 provenance，
   不得當作目前位置。
 
-可攜 manifest 契約為 `amidst.migration_manifest/0.1.0`，記錄 logical path、
-分類、byte size、SHA-256、來源執行環境與 Git checkpoint，但不序列化實體
-source root。本限定契約不會關閉 OQ-015 的一般 schema 決策。
+目前可攜manifest契約為`amidst.migration_manifest/0.2.0`。Repository檔案仍
+使用repository-relative POSIX path；worktree外的私人Blender資產使用穩定
+root alias、root-relative POSIX path，以及
+`asset://<root-alias>/<relative-path>` logical URI。已確認alias為
+`blender-source`、`blender-textures`、`blender-working`及`blender-output`。
+實體root、symlink target、drive letter與hostname都不得序列化；分類、byte
+size、SHA-256、來源執行環境與Git checkpoint仍須明示。Verifier繼續相容
+v0.1.0 repository-root manifest。本限定契約不會關閉OQ-015的一般schema決策。
 
 ### 候選產物
 

@@ -3,7 +3,7 @@
 
 Run through Blender, for example:
 
-    blender -b blender/source/school_v1.blend \
+    blender -b "$AMIDST_BLENDER_SOURCE_ROOT/school_v1.blend" \
       --python blender/scripts/validate_scene.py -- \
       --report data/reports/school_v1_validation.json
 
@@ -24,6 +24,14 @@ import sys
 from typing import Any, Iterable
 
 import bpy
+
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from asset_paths import logical_uri_for_path  # noqa: E402
 
 
 SEMANTIC_PROPERTY_KEYS = (
@@ -366,7 +374,9 @@ def collect_validation(scene_id: str, scene_version: str) -> dict[str, Any]:
         "scene_id": scene_id,
         "scene_version": scene_version,
         "source_file": source_path.name,
-        "source_path": str(source_path),
+        "source_path": logical_uri_for_path(
+            "blender-source", source_path, repo_root=REPOSITORY_ROOT
+        ),
         "source_sha256": _sha256(source_path),
         "blender_version": bpy.app.version_string,
         "scene_name": bpy.context.scene.name,

@@ -26,6 +26,7 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_paths import root_path  # noqa: E402
 from assign_instance_ids import file_sha256  # noqa: E402
 from create_texture_agnostic_scene import (  # noqa: E402
     OVERRIDE_MATERIAL,
@@ -61,9 +62,10 @@ def script_args() -> argparse.Namespace:
     parser.add_argument(
         "--scene",
         type=Path,
-        default=(
-            REPOSITORY_ROOT
-            / "blender/output/school_v1_first_slice_texture_agnostic_v0_1_0.blend"
+        default=root_path(
+            "blender-output",
+            "school_v1_first_slice_texture_agnostic_v0_1_0.blend",
+            repo_root=REPOSITORY_ROOT,
         ),
     )
     parser.add_argument(

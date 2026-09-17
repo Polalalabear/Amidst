@@ -19,6 +19,11 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_paths import (  # noqa: E402
+    logical_uri_for_path,
+    portable_repository_reference,
+    root_path,
+)
 from assign_instance_ids import file_sha256, load_identity_layer  # noqa: E402
 from persist_instance_ids import (  # noqa: E402
     EXCLUDED_CAMERA,
@@ -34,7 +39,9 @@ def script_args() -> argparse.Namespace:
     parser.add_argument(
         "--source-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/source/school_v1.blend",
+        default=root_path(
+            "blender-source", "school_v1.blend", repo_root=REPOSITORY_ROOT
+        ),
     )
     parser.add_argument(
         "--registry",
@@ -273,7 +280,8 @@ def main() -> None:
     scene_path = Path(bpy.data.filepath).resolve()
     if not scene_path.is_file():
         raise RuntimeError("No saved Blender scene is open")
-    if (REPOSITORY_ROOT / "blender/source") in scene_path.parents:
+    source_root = root_path("blender-source", repo_root=REPOSITORY_ROOT)
+    if scene_path == source_root or source_root in scene_path.parents:
         raise RuntimeError("Refusing to validate the immutable source scene directly")
 
     source_path = args.source_scene.resolve()
@@ -547,17 +555,35 @@ def main() -> None:
         "validated_at_utc": datetime.now(timezone.utc).isoformat(),
         "scene_id": "school",
         "scene_version": "v1",
-        "source_scene": str(source_path),
+        "source_scene": logical_uri_for_path(
+            "blender-source", source_path, repo_root=REPOSITORY_ROOT
+        ),
         "source_scene_sha256": source_checksum,
-        "validated_output_scene": str(scene_path),
+        "validated_output_scene": logical_uri_for_path(
+            "blender-output", scene_path, repo_root=REPOSITORY_ROOT
+        ),
         "validated_output_scene_sha256": current_scene_sha256,
-        "instance_registry": str(args.registry.resolve()),
-        "semantic_sidecar": str(args.semantic_sidecar.resolve()),
-        "task_contract": str(args.task_contract.resolve()),
-        "metadata_schema": str(args.metadata_schema.resolve()),
-        "render_config": str(args.render_config.resolve()),
-        "render_resource_policy": str(args.render_resource_policy.resolve()),
-        "texture_policy_validation": str(args.texture_policy_validation.resolve()),
+        "instance_registry": portable_repository_reference(
+            args.registry, repo_root=REPOSITORY_ROOT
+        ),
+        "semantic_sidecar": portable_repository_reference(
+            args.semantic_sidecar, repo_root=REPOSITORY_ROOT
+        ),
+        "task_contract": portable_repository_reference(
+            args.task_contract, repo_root=REPOSITORY_ROOT
+        ),
+        "metadata_schema": portable_repository_reference(
+            args.metadata_schema, repo_root=REPOSITORY_ROOT
+        ),
+        "render_config": portable_repository_reference(
+            args.render_config, repo_root=REPOSITORY_ROOT
+        ),
+        "render_resource_policy": portable_repository_reference(
+            args.render_resource_policy, repo_root=REPOSITORY_ROOT
+        ),
+        "texture_policy_validation": portable_repository_reference(
+            args.texture_policy_validation, repo_root=REPOSITORY_ROOT
+        ),
         "checks": checks,
         "counts": {
             "total_objects": len(scene.objects),

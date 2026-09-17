@@ -23,6 +23,14 @@ from typing import Any
 import bpy
 
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from asset_paths import logical_uri_for_path, root_path  # noqa: E402
+
+
 POLICY_ID = "amidst.school.object-id/1.0.1"
 POLICY_VERSION = "1.0.1"
 BASE_FINGERPRINT_POLICY_ID = "amidst.school.object-id/1.0.0"
@@ -652,12 +660,16 @@ def resolved_identity(
 
 def arguments() -> argparse.Namespace:
     raw = sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else []
-    root = Path(__file__).resolve().parents[2]
+    root = REPOSITORY_ROOT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--scene-id", default="school")
     parser.add_argument("--scene-version", default="v1")
-    parser.add_argument("--source-scene", type=Path, default=root / "blender/source/school_v1.blend")
+    parser.add_argument(
+        "--source-scene",
+        type=Path,
+        default=root_path("blender-source", "school_v1.blend", repo_root=root),
+    )
     parser.add_argument("--expected-source-sha256", default=SOURCE_SHA256)
     parser.add_argument("--registry", type=Path, default=root / "data/annotations/instance_registry/school.json")
     parser.add_argument("--existing-registry", type=Path)
@@ -741,8 +753,9 @@ def main() -> None:
     source_path = args.source_scene.resolve()
     if source_path == working_path or source_path.parent == working_path.parent:
         raise RuntimeError("Dry run must load a working scene, not the immutable source scene")
-    if "blender/working" not in working_path.as_posix():
-        raise RuntimeError(f"Loaded scene is not under blender/working: {working_path}")
+    working_root = root_path("blender-working", repo_root=REPOSITORY_ROOT)
+    if working_path != working_root and working_root not in working_path.parents:
+        raise RuntimeError("Loaded scene is outside the configured working root")
     source_hash = file_sha256(source_path)
     if source_hash != args.expected_source_sha256 or source_hash != SOURCE_SHA256:
         raise RuntimeError(f"Immutable source checksum mismatch: {source_hash}")
@@ -1168,9 +1181,13 @@ def main() -> None:
         "namespace_uuid": str(NAMESPACE_UUID),
         "scene_id": args.scene_id,
         "scene_version": args.scene_version,
-        "source_scene": str(source_path),
+        "source_scene": logical_uri_for_path(
+            "blender-source", source_path, repo_root=REPOSITORY_ROOT
+        ),
         "source_sha256": source_hash,
-        "working_scene": str(working_path),
+        "working_scene": logical_uri_for_path(
+            "blender-working", working_path, repo_root=REPOSITORY_ROOT
+        ),
         "working_sha256_before": working_hash_before,
         "working_sha256_after": working_hash_after,
         "counts": counts,

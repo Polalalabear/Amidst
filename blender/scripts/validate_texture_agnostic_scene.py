@@ -19,6 +19,7 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_paths import root_path  # noqa: E402
 from assign_instance_ids import file_sha256, load_identity_layer  # noqa: E402
 from audit_missing_render_resources import image_nodes  # noqa: E402
 from create_texture_agnostic_scene import (  # noqa: E402
@@ -45,19 +46,24 @@ def script_args() -> argparse.Namespace:
     parser.add_argument(
         "--derived-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/output" / OUTPUT_NAME,
+        default=root_path(
+            "blender-output", OUTPUT_NAME, repo_root=REPOSITORY_ROOT
+        ),
     )
     parser.add_argument(
         "--source-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/source/school_v1.blend",
+        default=root_path(
+            "blender-source", "school_v1.blend", repo_root=REPOSITORY_ROOT
+        ),
     )
     parser.add_argument(
         "--input-scene",
         type=Path,
-        default=(
-            REPOSITORY_ROOT
-            / "blender/output/school_v1_ids_policy_1_0_1_r2.blend"
+        default=root_path(
+            "blender-output",
+            "school_v1_ids_policy_1_0_1_r2.blend",
+            repo_root=REPOSITORY_ROOT,
         ),
     )
     parser.add_argument(
@@ -254,7 +260,8 @@ def main() -> None:
     expected_scene = args.derived_scene.resolve()
     if scene_path != expected_scene:
         raise RuntimeError(f"Loaded scene does not match --derived-scene: {scene_path}")
-    if (REPOSITORY_ROOT / "blender/source") in scene_path.parents:
+    source_root = root_path("blender-source", repo_root=REPOSITORY_ROOT)
+    if scene_path == source_root or source_root in scene_path.parents:
         raise RuntimeError("Refusing to validate the immutable source scene directly")
 
     policy = load_json(args.policy.resolve())

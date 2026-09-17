@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import atexit
 from datetime import datetime, timezone
 from decimal import Decimal, ROUND_HALF_EVEN
 import hashlib
@@ -30,6 +31,12 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_guards import (  # noqa: E402
+    TaskOutputLock,
+    snapshot_source,
+    verify_source_unchanged,
+)
+from asset_paths import logical_uri, logical_uri_for_path, root_path  # noqa: E402
 from assign_instance_ids import file_sha256, load_identity_layer  # noqa: E402
 from create_texture_agnostic_scene import (  # noqa: E402
     OUTPUT_NAME,
@@ -101,17 +108,25 @@ def script_args() -> argparse.Namespace:
     parser.add_argument(
         "--derived-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/output" / OUTPUT_NAME,
+        default=root_path(
+            "blender-output", OUTPUT_NAME, repo_root=REPOSITORY_ROOT
+        ),
     )
     parser.add_argument(
         "--dataset-root",
         type=Path,
-        default=REPOSITORY_ROOT / "data/datasets" / DATASET_VERSION,
+        default=root_path(
+            "blender-output",
+            f"datasets/{DATASET_VERSION}",
+            repo_root=REPOSITORY_ROOT,
+        ),
     )
     parser.add_argument(
         "--source-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/source/school_v1.blend",
+        default=root_path(
+            "blender-source", "school_v1.blend", repo_root=REPOSITORY_ROOT
+        ),
     )
     parser.add_argument(
         "--registry",
@@ -954,7 +969,7 @@ def build_metadata(
             "scene_version": "v1",
             "source_scene": "school_v1.blend",
             "source_scene_sha256": source_scene_sha256,
-            "output_scene": "blender/output/" + OUTPUT_NAME,
+            "output_scene": logical_uri("blender-output", OUTPUT_NAME),
             "output_scene_sha256": scene_sha256,
         },
         "sample_id": sample_id,
@@ -1224,14 +1239,20 @@ def main() -> None:
     run_root = args.dataset_root.resolve() / args.generation_run_id
     if run_root.exists():
         raise RuntimeError(f"Refusing to overwrite existing generation run: {run_root}")
-    run_root.mkdir(parents=True, exist_ok=False)
-    rejected_root = run_root / "rejected"
-    rejected_root.mkdir()
     if args.report.exists() or args.human_report.exists():
         raise RuntimeError("Refusing to overwrite an existing pilot report")
+    output_lock = TaskOutputLock(args.dataset_root.resolve(), args.generation_run_id)
+    output_lock.acquire()
+    atexit.register(output_lock.release)
+    rejected_root = run_root / "rejected"
+    rejected_root.mkdir()
 
     started = datetime.now(timezone.utc)
-    source_checksum = file_sha256(args.source_scene.resolve())
+    source_path = args.source_scene.resolve()
+    source_snapshot = snapshot_source(
+        source_path, logical_uri("blender-source", "school_v1.blend")
+    )
+    source_checksum = source_snapshot.sha256
     registry_checksum = file_sha256(registry_path)
     resource_policy_checksum = file_sha256(resource_policy_path)
     invariants_before = scene_invariant_digests(scene, registry)
@@ -1437,6 +1458,7 @@ def main() -> None:
             cleanup_aov(scene, view_layer, material, aov_state)
 
     invariants_after = scene_invariant_digests(scene, registry)
+    verify_source_unchanged(source_path, source_snapshot)
     scene_checksum_after = file_sha256(scene_path)
     invariant_match = invariants_after == invariants_before
     checksum_match = scene_checksum_after == scene_checksum_before == EXPECTED_SCENE_SHA256
@@ -1485,7 +1507,9 @@ def main() -> None:
         "generator_version": GENERATOR_VERSION,
         "dataset_version": DATASET_VERSION,
         "generation_run_id": args.generation_run_id,
-        "dataset_output_path": str(run_root.relative_to(REPOSITORY_ROOT)),
+        "dataset_output_path": logical_uri_for_path(
+            "blender-output", run_root, repo_root=REPOSITORY_ROOT
+        ),
         "attempt_limit": args.max_attempts,
         "attempts": attempts,
         "accepted_samples": len(accepted_records),
@@ -1523,7 +1547,7 @@ def main() -> None:
             "relation_deadband_m": RELATION_DEADBAND_M,
             "serialized_decimal_places": SERIALIZED_PLACES,
         },
-        "input_scene": "blender/output/" + OUTPUT_NAME,
+        "input_scene": logical_uri("blender-output", OUTPUT_NAME),
         "input_scene_sha256": scene_checksum_before,
         "post_run_scene_sha256": scene_checksum_after,
         "scene_checksum_unchanged": checksum_match,
@@ -1568,6 +1592,8 @@ def main() -> None:
         ),
         flush=True,
     )
+    output_lock.release()
+    atexit.unregister(output_lock.release)
     if status != "PILOT_DATASET_READY":
         raise SystemExit(1)
 

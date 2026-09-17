@@ -18,6 +18,7 @@ REPOSITORY_ROOT = SCRIPT_DIR.parents[1]
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from asset_paths import logical_uri_for_path, root_path  # noqa: E402
 from assign_instance_ids import (  # noqa: E402
     SOURCE_SHA256,
     SUPPORTED_TYPES,
@@ -63,20 +64,25 @@ def script_args() -> argparse.Namespace:
     parser.add_argument(
         "--input-scene",
         type=Path,
-        default=(
-            REPOSITORY_ROOT
-            / "blender/output/school_v1_ids_policy_1_0_1_r2.blend"
+        default=root_path(
+            "blender-output",
+            "school_v1_ids_policy_1_0_1_r2.blend",
+            repo_root=REPOSITORY_ROOT,
         ),
     )
     parser.add_argument(
         "--output-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/output" / OUTPUT_NAME,
+        default=root_path(
+            "blender-output", OUTPUT_NAME, repo_root=REPOSITORY_ROOT
+        ),
     )
     parser.add_argument(
         "--source-scene",
         type=Path,
-        default=REPOSITORY_ROOT / "blender/source/school_v1.blend",
+        default=root_path(
+            "blender-source", "school_v1.blend", repo_root=REPOSITORY_ROOT
+        ),
     )
     parser.add_argument(
         "--registry",
@@ -289,8 +295,11 @@ def main() -> None:
         raise RuntimeError(f"Loaded scene does not match --input-scene: {open_path}")
     if input_path == source_path or source_path.parent in input_path.parents:
         raise RuntimeError("Refusing to mutate the immutable source scene")
-    if output_path.parent != (REPOSITORY_ROOT / "blender/output").resolve():
-        raise RuntimeError("Derived scene must be written directly under blender/output")
+    output_root = root_path("blender-output", repo_root=REPOSITORY_ROOT)
+    if output_path.parent != output_root:
+        raise RuntimeError(
+            "Derived scene must be written directly under configured output root"
+        )
     if output_path.exists():
         raise RuntimeError(f"Refusing to overwrite existing derived scene: {output_path}")
     if output_path.name != OUTPUT_NAME:
@@ -452,11 +461,17 @@ def main() -> None:
         "resource_policy": "texture_agnostic",
         "authoritative_visual_fidelity": False,
         "geometry_spatial_ground_truth_authoritative": True,
-        "source_scene": "blender/source/school_v1.blend",
+        "source_scene": logical_uri_for_path(
+            "blender-source", source_path, repo_root=REPOSITORY_ROOT
+        ),
         "source_scene_sha256": source_checksum,
-        "input_scene": str(input_path.relative_to(REPOSITORY_ROOT)),
+        "input_scene": logical_uri_for_path(
+            "blender-output", input_path, repo_root=REPOSITORY_ROOT
+        ),
         "input_scene_sha256": input_checksum,
-        "derived_scene": str(output_path.relative_to(REPOSITORY_ROOT)),
+        "derived_scene": logical_uri_for_path(
+            "blender-output", output_path, repo_root=REPOSITORY_ROOT
+        ),
         "derived_scene_sha256": output_checksum,
         "blender_version": bpy.app.version_string,
         "blender_build_hash": bpy.app.build_hash.decode("ascii"),
@@ -492,9 +507,13 @@ def main() -> None:
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "repository_classification": "REVIEW_REQUIRED",
         "policy_id": POLICY_ID,
-        "input_scene": str(input_path),
+        "input_scene": logical_uri_for_path(
+            "blender-output", input_path, repo_root=REPOSITORY_ROOT
+        ),
         "input_scene_sha256": input_checksum,
-        "derived_scene": str(output_path),
+        "derived_scene": logical_uri_for_path(
+            "blender-output", output_path, repo_root=REPOSITORY_ROOT
+        ),
         "derived_scene_sha256": output_checksum,
         "stable_ids_verified_before_save": identity["ids_verified"],
         "object_count": before["object_count"],

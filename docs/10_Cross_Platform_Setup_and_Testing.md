@@ -34,6 +34,65 @@ its embedded Python. Their exact verified versions are locked in
 `blender/runtime_dependencies.lock.json`; do not install replacements into the
 standalone project Python.
 
+### Shared external Blender roots
+
+Status: the resolver, guards, lock, and manifest v0.2.0 behavior are
+`CONFIRMED`; the physical Windows and Linux profiles remain `OPEN` until run on
+those systems.
+
+Large private assets may be stored once outside all Git worktrees. Runtime
+paths are selected in this order: environment variable, ignored
+`local/asset_roots.json`, then the compatible repository-local fallback.
+
+| Logical root | Environment variable | Access |
+| --- | --- | --- |
+| `blender-source` | `AMIDST_BLENDER_SOURCE_ROOT` | read-only |
+| `blender-textures` | `AMIDST_BLENDER_TEXTURE_ROOT` | read-only |
+| `blender-working` | `AMIDST_BLENDER_WORK_ROOT` | task-scoped write |
+| `blender-output` | `AMIDST_BLENDER_OUTPUT_ROOT` | task-scoped write |
+
+Copy `config/asset_roots.example.json` to ignored
+`local/asset_roots.json` only when environment variables are unsuitable, and
+replace every placeholder with an absolute local path. Never add the populated
+file to Git. A symlink or junction under `local/` is optional for browsing;
+scripts use the resolver rather than depending on that link.
+
+Run the health check after configuring all four roots:
+
+```bash
+python3 -B scripts/check_asset_roots.py \
+  --require-read-only-source \
+  --probe-output
+```
+
+The output probe acquires an atomic task lock, writes and removes a disposable
+probe, and releases the lock. It never prints physical roots. Source tools also
+compare SHA-256 before and after writes to derived files. A stale
+`.amidst-task.lock` is evidence of an interrupted writer; inspect its process
+and run context and do not delete it automatically.
+
+Contract `amidst.migration_manifest/0.2.0` binds logical aliases at runtime and serializes only logical
+URIs, root-relative paths, sizes, classifications, and SHA-256 values:
+
+```bash
+python3 -B scripts/migration_manifest.py create \
+  --source-root repository=. \
+  --source-root "blender-source=$AMIDST_BLENDER_SOURCE_ROOT" \
+  --git-root . \
+  --entry PUBLIC_ALLOWED:docs \
+  --logical-entry PRIVATE_ONLY:blender-source:school_v1.blend \
+  --output local/migration_manifest_v0_2_0.json
+
+python3 -B scripts/migration_manifest.py verify \
+  --manifest local/migration_manifest_v0_2_0.json \
+  --target-root repository=. \
+  --target-root "blender-source=$AMIDST_BLENDER_SOURCE_ROOT"
+```
+
+Existing v0.1.0 manifests remain supported with the original
+`--target-root .` command. A populated manifest remains `REVIEW_REQUIRED`, and
+the `.blend` content it identifies remains `PRIVATE_ONLY`.
+
 ### macOS
 
 The verified installation is Blender 5.2.1 LTS in the standard application
@@ -45,6 +104,26 @@ if [[ -d "/Applications/Blender.app/Contents/MacOS" ]]; then
 fi
 ```
 
+Choose one private storage root and keep these values only in local shell
+configuration:
+
+```zsh
+export AMIDST_PRIVATE_STORAGE_ROOT="/path/to/amidst-private/blender"
+export AMIDST_BLENDER_SOURCE_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/source"
+export AMIDST_BLENDER_TEXTURE_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/textures"
+export AMIDST_BLENDER_WORK_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/working"
+export AMIDST_BLENDER_OUTPUT_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/output"
+mkdir -p "$AMIDST_BLENDER_WORK_ROOT" "$AMIDST_BLENDER_OUTPUT_ROOT"
+chmod -R a-w "$AMIDST_BLENDER_SOURCE_ROOT" "$AMIDST_BLENDER_TEXTURE_ROOT"
+```
+
+The source and texture directories must already contain the approved private
+assets before the health check. An optional ignored browsing link is:
+
+```zsh
+ln -s "$AMIDST_PRIVATE_STORAGE_ROOT" local/blender_assets
+```
+
 Open a new shell, or load the updated configuration with `source ~/.zshrc`, then
 verify setup and run the repository suite:
 
@@ -54,6 +133,7 @@ python3 -m pip install --requirement requirements-dev.lock.txt
 python3 -B scripts/check.py
 python3 -B scripts/test.py
 blender --background --factory-startup --python blender/scripts/check_runtime_dependencies.py
+python3 -B scripts/check_asset_roots.py --require-read-only-source --probe-output
 ```
 
 Verify a transferred overlay from the destination repository root:
@@ -82,6 +162,25 @@ $env:Path = "$BlenderDir;$env:Path"
 blender --version
 ```
 
+Configure the private roots for the current PowerShell session. Persist them
+with the normal user-environment mechanism only after verifying the values:
+
+```powershell
+$AssetBase = 'D:\amidst-private\blender'
+$env:AMIDST_BLENDER_SOURCE_ROOT = Join-Path $AssetBase 'source'
+$env:AMIDST_BLENDER_TEXTURE_ROOT = Join-Path $AssetBase 'textures'
+$env:AMIDST_BLENDER_WORK_ROOT = Join-Path $AssetBase 'working'
+$env:AMIDST_BLENDER_OUTPUT_ROOT = Join-Path $AssetBase 'output'
+New-Item -ItemType Directory -Force -Path $env:AMIDST_BLENDER_WORK_ROOT, $env:AMIDST_BLENDER_OUTPUT_ROOT | Out-Null
+if (-not (Test-Path $env:AMIDST_BLENDER_SOURCE_ROOT)) { throw 'Private Blender source root is missing' }
+if (-not (Test-Path $env:AMIDST_BLENDER_TEXTURE_ROOT)) { throw 'Private Blender texture root is missing' }
+```
+
+Configure the source and texture directories with an explicit read-only NTFS
+ACL appropriate to the local account, then inspect it with `Get-Acl`. A Windows
+directory junction under `local/` is optional; the resolver does not require
+Developer Mode or symlink privileges.
+
 Run the repository suite and verify the Blender-embedded dependencies:
 
 ```powershell
@@ -90,6 +189,7 @@ py -3 -B scripts/check.py
 py -3 -B scripts/test.py
 $BlenderExe = Join-Path $BlenderDir 'blender.exe'
 & $BlenderExe --background --factory-startup --python blender/scripts/check_runtime_dependencies.py
+py -3 -B scripts/check_asset_roots.py --require-read-only-source --probe-output
 ```
 
 Verify a transferred overlay from the destination repository root:
@@ -113,6 +213,18 @@ export PATH="$BLENDER_DIR:$PATH"
 blender --version
 ```
 
+Configure external private roots and make shared source inputs read-only:
+
+```bash
+export AMIDST_PRIVATE_STORAGE_ROOT="/path/to/amidst-private/blender"
+export AMIDST_BLENDER_SOURCE_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/source"
+export AMIDST_BLENDER_TEXTURE_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/textures"
+export AMIDST_BLENDER_WORK_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/working"
+export AMIDST_BLENDER_OUTPUT_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/output"
+mkdir -p "$AMIDST_BLENDER_WORK_ROOT" "$AMIDST_BLENDER_OUTPUT_ROOT"
+chmod -R a-w "$AMIDST_BLENDER_SOURCE_ROOT" "$AMIDST_BLENDER_TEXTURE_ROOT"
+```
+
 Run the repository suite and verify the Blender-embedded dependencies:
 
 ```bash
@@ -120,6 +232,7 @@ python3 -m pip install --requirement requirements-dev.lock.txt
 python3 -B scripts/check.py
 python3 -B scripts/test.py
 blender --background --factory-startup --python blender/scripts/check_runtime_dependencies.py
+python3 -B scripts/check_asset_roots.py --require-read-only-source --probe-output
 ```
 
 Verify a transferred overlay from the destination repository root:
@@ -163,6 +276,61 @@ OpenImageIO 由 Blender embedded Python 提供；精確版本鎖定於
 `blender/runtime_dependencies.lock.json`，不得在獨立的專案 Python 中另外安裝
 替代版本。
 
+### 共用的外部Blender根目錄
+
+Resolver、guard、lock與manifest v0.2.0行為為`CONFIRMED`；Windows與Linux的
+實體profile仍須在各目標系統實際執行後才能確認，目前維持`OPEN`。
+
+大型私人資產可以只保存一份並置於所有Git worktree之外。Runtime依序使用
+環境變數、ignored的`local/asset_roots.json`，最後才使用相容的repository內
+fallback。
+
+| Logical root | 環境變數 | 存取模式 |
+| --- | --- | --- |
+| `blender-source` | `AMIDST_BLENDER_SOURCE_ROOT` | 唯讀 |
+| `blender-textures` | `AMIDST_BLENDER_TEXTURE_ROOT` | 唯讀 |
+| `blender-working` | `AMIDST_BLENDER_WORK_ROOT` | task-scoped write |
+| `blender-output` | `AMIDST_BLENDER_OUTPUT_ROOT` | task-scoped write |
+
+只有在環境變數不合適時，才把`config/asset_roots.example.json`複製為ignored的
+`local/asset_roots.json`，並把所有placeholder替換成該機器的absolute path；
+填入後的檔案不得加入Git。`local/`下的symlink或junction只供人工瀏覽，腳本
+使用resolver，不依賴該link。
+
+設定四個root後執行：
+
+```bash
+python3 -B scripts/check_asset_roots.py \
+  --require-read-only-source \
+  --probe-output
+```
+
+Output probe會取得atomic task lock、寫入並刪除一次性probe，再釋放lock，且不
+輸出任何實體root。Source工具另外以寫入derived file前後的SHA-256確認source
+未變。Stale `.amidst-task.lock`代表writer曾中斷；必須先檢查process與run
+context，不得自動刪除。
+
+契約`amidst.migration_manifest/0.2.0`只序列化logical URI、root-relative
+path、大小、分類與SHA-256：
+
+```bash
+python3 -B scripts/migration_manifest.py create \
+  --source-root repository=. \
+  --source-root "blender-source=$AMIDST_BLENDER_SOURCE_ROOT" \
+  --git-root . \
+  --entry PUBLIC_ALLOWED:docs \
+  --logical-entry PRIVATE_ONLY:blender-source:school_v1.blend \
+  --output local/migration_manifest_v0_2_0.json
+
+python3 -B scripts/migration_manifest.py verify \
+  --manifest local/migration_manifest_v0_2_0.json \
+  --target-root repository=. \
+  --target-root "blender-source=$AMIDST_BLENDER_SOURCE_ROOT"
+```
+
+既有v0.1.0 manifest繼續支援原本的`--target-root .`。填入內容的manifest仍為
+`REVIEW_REQUIRED`，其所識別的`.blend`內容仍為`PRIVATE_ONLY`。
+
 ### macOS 使用方式
 
 已驗證的安裝為標準 application bundle 內的 Blender 5.2.1 LTS。將 executable
@@ -174,6 +342,25 @@ if [[ -d "/Applications/Blender.app/Contents/MacOS" ]]; then
 fi
 ```
 
+選擇單一私人儲存root，以下值只放在本機shell設定：
+
+```zsh
+export AMIDST_PRIVATE_STORAGE_ROOT="/path/to/amidst-private/blender"
+export AMIDST_BLENDER_SOURCE_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/source"
+export AMIDST_BLENDER_TEXTURE_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/textures"
+export AMIDST_BLENDER_WORK_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/working"
+export AMIDST_BLENDER_OUTPUT_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/output"
+mkdir -p "$AMIDST_BLENDER_WORK_ROOT" "$AMIDST_BLENDER_OUTPUT_ROOT"
+chmod -R a-w "$AMIDST_BLENDER_SOURCE_ROOT" "$AMIDST_BLENDER_TEXTURE_ROOT"
+```
+
+執行health check前，source與texture目錄必須已有核准的私人資產。可選的ignored
+瀏覽link為：
+
+```zsh
+ln -s "$AMIDST_PRIVATE_STORAGE_ROOT" local/blender_assets
+```
+
 開啟新的 shell，或執行 `source ~/.zshrc` 載入更新，然後驗證設定並執行測試：
 
 ```zsh
@@ -182,6 +369,7 @@ python3 -m pip install --requirement requirements-dev.lock.txt
 python3 -B scripts/check.py
 python3 -B scripts/test.py
 blender --background --factory-startup --python blender/scripts/check_runtime_dependencies.py
+python3 -B scripts/check_asset_roots.py --require-read-only-source --probe-output
 ```
 
 從目標 repository root 驗證搬運後的 overlay：
@@ -209,6 +397,24 @@ $env:Path = "$BlenderDir;$env:Path"
 blender --version
 ```
 
+為目前PowerShell session設定私人root；確認內容無誤後，才使用一般user
+environment機制保存：
+
+```powershell
+$AssetBase = 'D:\amidst-private\blender'
+$env:AMIDST_BLENDER_SOURCE_ROOT = Join-Path $AssetBase 'source'
+$env:AMIDST_BLENDER_TEXTURE_ROOT = Join-Path $AssetBase 'textures'
+$env:AMIDST_BLENDER_WORK_ROOT = Join-Path $AssetBase 'working'
+$env:AMIDST_BLENDER_OUTPUT_ROOT = Join-Path $AssetBase 'output'
+New-Item -ItemType Directory -Force -Path $env:AMIDST_BLENDER_WORK_ROOT, $env:AMIDST_BLENDER_OUTPUT_ROOT | Out-Null
+if (-not (Test-Path $env:AMIDST_BLENDER_SOURCE_ROOT)) { throw 'Private Blender source root is missing' }
+if (-not (Test-Path $env:AMIDST_BLENDER_TEXTURE_ROOT)) { throw 'Private Blender texture root is missing' }
+```
+
+Source與texture目錄要依本機account設定明確的唯讀NTFS ACL，並以`Get-Acl`
+檢查。`local/`下的Windows directory junction是選配；resolver不要求Developer
+Mode或symlink權限。
+
 執行 repository suite 並驗證 Blender embedded dependencies：
 
 ```powershell
@@ -217,6 +423,7 @@ py -3 -B scripts/check.py
 py -3 -B scripts/test.py
 $BlenderExe = Join-Path $BlenderDir 'blender.exe'
 & $BlenderExe --background --factory-startup --python blender/scripts/check_runtime_dependencies.py
+py -3 -B scripts/check_asset_roots.py --require-read-only-source --probe-output
 ```
 
 從目標 repository root 驗證搬運後的 overlay：
@@ -240,6 +447,18 @@ export PATH="$BLENDER_DIR:$PATH"
 blender --version
 ```
 
+設定外部私人root，並把共用source input設成唯讀：
+
+```bash
+export AMIDST_PRIVATE_STORAGE_ROOT="/path/to/amidst-private/blender"
+export AMIDST_BLENDER_SOURCE_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/source"
+export AMIDST_BLENDER_TEXTURE_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/textures"
+export AMIDST_BLENDER_WORK_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/working"
+export AMIDST_BLENDER_OUTPUT_ROOT="$AMIDST_PRIVATE_STORAGE_ROOT/output"
+mkdir -p "$AMIDST_BLENDER_WORK_ROOT" "$AMIDST_BLENDER_OUTPUT_ROOT"
+chmod -R a-w "$AMIDST_BLENDER_SOURCE_ROOT" "$AMIDST_BLENDER_TEXTURE_ROOT"
+```
+
 執行 repository suite 並驗證 Blender embedded dependencies：
 
 ```bash
@@ -247,6 +466,7 @@ python3 -m pip install --requirement requirements-dev.lock.txt
 python3 -B scripts/check.py
 python3 -B scripts/test.py
 blender --background --factory-startup --python blender/scripts/check_runtime_dependencies.py
+python3 -B scripts/check_asset_roots.py --require-read-only-source --probe-output
 ```
 
 從目標 repository root 驗證搬運後的 overlay：
