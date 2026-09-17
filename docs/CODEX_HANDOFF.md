@@ -10,13 +10,14 @@ Handoff status: `ACCOUNT_TRANSFER_COMPLETED` (human-confirmed 2026-09-15)
 
 Project milestone status: `REVIEW_REQUIRED`
 
-Checkpoint publication status: `APPROVED_FOR_PUBLICATION` for the 50 current
-project-relevant paths classified in
-`data/reports/codex_handoff_file_classification.md`. Approval is scoped to this
-checkpoint and explicitly excludes `local/`, caches, `.DS_Store`, credentials,
-and every `.blend` artifact.
+Checkpoint publication status: `APPROVED_FOR_PUBLICATION` for the previously
+classified 50 project-relevant paths. The portable asset-root source,
+placeholder config, tests, and directly affected documentation are separately
+classified `PUBLIC_ALLOWED`, and the human explicitly requested their upload on
+2026-09-17. This excludes `local/`, populated migration manifests, caches,
+`.DS_Store`, credentials, reports awaiting review, and every `.blend` artifact.
 
-Checkpoint date: 2026-09-16
+Checkpoint date: 2026-09-17
 
 This file records repository-safe, reproducible state only. Machine-specific
 details belong in the ignored `local/CODEX_PRIVATE_HANDOFF.md` file.
@@ -25,8 +26,9 @@ details belong in the ignored `local/CODEX_PRIVATE_HANDOFF.md` file.
 
 - Branch: `codex/blender-inspection-v1`
 - Published handoff checkpoint before this task: `5bd109a4a5a4eb58d8492d093f406d986581b444`.
-- Portable setup/test base awaiting the authorized push at task start:
-  `a467336644486b94419cf9f904a6840bc67e0145`.
+- Portable setup/test base: `a467336644486b94419cf9f904a6840bc67e0145`.
+- Portable asset-root implementation checkpoint:
+  `b78b3865165c621d8ebf9d07c2bb6f24b65ba956`.
 - Upstream: `origin/codex/blender-inspection-v1`.
 - Working tree: dirty by design with post-handoff derived-scene validation
   records; no current change is staged.
@@ -58,7 +60,7 @@ Status: `REVIEW_REQUIRED`; no dataset generation is authorized.
   least 3 visible stable-ID objects. It flags the same 7 cameras under both
   clauses and has no decision effect until Peter confirms it.
 - The validated private r2 derived scene is
-  `blender/output/school_v1_first_slice_texture_agnostic_v0_1_1_r2.blend`,
+  `asset://blender-output/school_v1_first_slice_texture_agnostic_v0_1_1_r2.blend`,
   SHA-256
   `5aa0e4a54f20b9dba0d79067562711677b897ea6e246ed03e9aa8c0782cd2fed`.
 - Preserve the macOS directory as one environment-scoped completed diagnostic. A
@@ -71,15 +73,18 @@ Status: `REVIEW_REQUIRED`; no dataset generation is authorized.
 - Local inventory `local/migration_inventory_v0_1_1.json` expands to 293
   non-cache file records in `local/migration_manifest_v0_1_1.json`. The
   manifest passed verification against the current repository/private overlay
-  with zero failures; both files remain ignored and `REVIEW_REQUIRED`.
+  with zero failures under the historical v0.1.0 contract; both files remain
+  ignored, immutable, and `REVIEW_REQUIRED`.
 
-Create a local, non-overwriting transfer inventory with
-`scripts/migration_manifest.py create`, using the current repository worktree
-as the first `--source-root` and the private Blender layout as an additional
-root. Classify code and documentation as `PUBLIC_ALLOWED`, populated reports
-and metadata as `REVIEW_REQUIRED`, and every `.blend` as `PRIVATE_ONLY`.
-After cloning on the destination, run `verify` against its repository root.
-Never copy the Codex worktree `.git` pointer.
+For a new transfer, create a non-overwriting v0.2.0 manifest with the
+`repository`, `blender-source`, `blender-textures`, `blender-working`, and
+`blender-output` root aliases. Repository records remain relative; private
+assets use `asset://<root-alias>/<relative-path>`, byte size, and SHA-256.
+Classify code and documentation as `PUBLIC_ALLOWED`, populated reports and
+metadata as `REVIEW_REQUIRED`, and every `.blend` as `PRIVATE_ONLY`. After
+cloning, configure the destination roots, run `scripts/check_asset_roots.py`,
+and verify the manifest with the same aliases. Never copy the Codex worktree
+`.git` pointer or serialize physical root and link-target paths.
 
 Use the platform-specific setup, test, Blender runtime, and migration commands
 in [10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md).
@@ -90,22 +95,36 @@ macOS:
 
 ```sh
 python3 -B scripts/migration_manifest.py verify \
-  --manifest local/migration_manifest_v0_1_1.json \
-  --target-root .
+  --manifest local/migration_manifest_v0_2_0.json \
+  --target-root repository=. \
+  --target-root "blender-source=$AMIDST_BLENDER_SOURCE_ROOT" \
+  --target-root "blender-textures=$AMIDST_BLENDER_TEXTURE_ROOT" \
+  --target-root "blender-working=$AMIDST_BLENDER_WORK_ROOT" \
+  --target-root "blender-output=$AMIDST_BLENDER_OUTPUT_ROOT"
 ```
 
 Windows (PowerShell):
 
 ```powershell
-py -3 -B scripts/migration_manifest.py verify --manifest local/migration_manifest_v0_1_1.json --target-root .
+py -3 -B scripts/migration_manifest.py verify `
+  --manifest local/migration_manifest_v0_2_0.json `
+  --target-root repository=. `
+  --target-root "blender-source=$env:AMIDST_BLENDER_SOURCE_ROOT" `
+  --target-root "blender-textures=$env:AMIDST_BLENDER_TEXTURE_ROOT" `
+  --target-root "blender-working=$env:AMIDST_BLENDER_WORK_ROOT" `
+  --target-root "blender-output=$env:AMIDST_BLENDER_OUTPUT_ROOT"
 ```
 
 Linux (Bash):
 
 ```bash
 python3 -B scripts/migration_manifest.py verify \
-  --manifest local/migration_manifest_v0_1_1.json \
-  --target-root .
+  --manifest local/migration_manifest_v0_2_0.json \
+  --target-root repository=. \
+  --target-root "blender-source=$AMIDST_BLENDER_SOURCE_ROOT" \
+  --target-root "blender-textures=$AMIDST_BLENDER_TEXTURE_ROOT" \
+  --target-root "blender-working=$AMIDST_BLENDER_WORK_ROOT" \
+  --target-root "blender-output=$AMIDST_BLENDER_OUTPUT_ROOT"
 ```
 
 ### Current milestone and status
@@ -191,11 +210,11 @@ Important Blender artifacts:
 
 | Scene role | Path | SHA-256 | Disposition |
 | --- | --- | --- | --- |
-| Immutable source | `blender/source/school_v1.blend` | `cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1` | Never modify |
-| Working scene | `blender/working/school_v1_working.blend` | `3f7aec572938f42444741725116bcfbf941b666eb55c068902e3e31c42a3ba5a` | Local/private; IDs persisted |
-| Validated stable-ID output | `blender/output/school_v1_ids_policy_1_0_1_r2.blend` | `532243c70b3cce6d9710a804f29a3ffe76cee779a80a888dc875600fc095beb4` | Validated input used for the derived scene |
-| Invalid preserved output | `blender/output/INVALID_school_v1_ids_policy_1_0_1_path_remapped.blend` | `511fc8071746c5ef55e8d5e8cc456195ad928038a4b551c3eb3cedd4e7242838` | Invalid/deprecated; preserve for review, never use as input |
-| Validated texture-agnostic derived output | `blender/output/school_v1_first_slice_texture_agnostic_v0_1_0.blend` | `e349646c27fb343341a372b1e6d97b1a66f304f52c62721400e1833cdcd4d933` | Local/private; first-slice readiness input |
+| Immutable source | `asset://blender-source/school_v1.blend` | `cbfef8c84295253323890be5d9ffae186c46481f9dde8a6509ce897c49a34fa1` | Never modify |
+| Working scene | `asset://blender-working/school_v1_working.blend` | `3f7aec572938f42444741725116bcfbf941b666eb55c068902e3e31c42a3ba5a` | Local/private; IDs persisted |
+| Validated stable-ID output | `asset://blender-output/school_v1_ids_policy_1_0_1_r2.blend` | `532243c70b3cce6d9710a804f29a3ffe76cee779a80a888dc875600fc095beb4` | Validated input used for the derived scene |
+| Invalid preserved output | `asset://blender-output/INVALID_school_v1_ids_policy_1_0_1_path_remapped.blend` | `511fc8071746c5ef55e8d5e8cc456195ad928038a4b551c3eb3cedd4e7242838` | Invalid/deprecated; preserve for review, never use as input |
+| Validated texture-agnostic derived output | `asset://blender-output/school_v1_first_slice_texture_agnostic_v0_1_0.blend` | `e349646c27fb343341a372b1e6d97b1a66f304f52c62721400e1833cdcd4d933` | Local/private; first-slice readiness input |
 
 ### Approved decisions
 
@@ -285,8 +304,8 @@ separate authorization and a new immutable run ID.
 
 ### Safety boundaries
 
-- Never modify, rename, delete, or overwrite `blender/source/` or any source
-  `.blend`.
+- Never modify, rename, delete, or overwrite `asset://blender-source/` or any
+  source `.blend`.
 - All Blender mutations require an authorized derived/working copy. Never
   overwrite validated historical outputs.
 - Do not use the invalid path-remapped output as an input or repair it silently.
@@ -312,7 +331,8 @@ Run these first from the repository root:
 python3 -B scripts/check.py
 git diff --check
 find blender data -type f -name '*.json' -print0 | xargs -0 -n1 python3 -m json.tool >/dev/null
-shasum -a 256 blender/source/school_v1.blend blender/working/school_v1_working.blend blender/output/school_v1_ids_policy_1_0_1_r2.blend blender/output/INVALID_school_v1_ids_policy_1_0_1_path_remapped.blend blender/output/school_v1_first_slice_texture_agnostic_v0_1_0.blend
+python3 -B scripts/check_asset_roots.py --require-read-only-source --probe-output
+shasum -a 256 "$AMIDST_BLENDER_SOURCE_ROOT/school_v1.blend" "$AMIDST_BLENDER_WORK_ROOT/school_v1_working.blend" "$AMIDST_BLENDER_OUTPUT_ROOT/school_v1_ids_policy_1_0_1_r2.blend" "$AMIDST_BLENDER_OUTPUT_ROOT/INVALID_school_v1_ids_policy_1_0_1_path_remapped.blend" "$AMIDST_BLENDER_OUTPUT_ROOT/school_v1_first_slice_texture_agnostic_v0_1_0.blend"
 git status --short
 git diff --cached --name-status
 ```
@@ -321,8 +341,8 @@ For a non-mutating current readiness refresh, use the validated texture-agnostic
 derived output. It is expected to remain `READY_FOR_FIRST_DATASET_SLICE`:
 
 ```sh
-blender --background blender/output/school_v1_first_slice_texture_agnostic_v0_1_0.blend --python blender/scripts/validate_texture_agnostic_scene.py
-blender --background blender/output/school_v1_first_slice_texture_agnostic_v0_1_0.blend --python blender/scripts/validate_first_slice_readiness.py
+blender --background "$AMIDST_BLENDER_OUTPUT_ROOT/school_v1_first_slice_texture_agnostic_v0_1_0.blend" --python blender/scripts/validate_texture_agnostic_scene.py
+blender --background "$AMIDST_BLENDER_OUTPUT_ROOT/school_v1_first_slice_texture_agnostic_v0_1_0.blend" --python blender/scripts/validate_first_slice_readiness.py
 ```
 
 <a id="繁體中文"></a>
@@ -333,11 +353,13 @@ Handoff 狀態：`ACCOUNT_TRANSFER_COMPLETED`（human 已於 2026-09-15 確認�
 
 專案里程碑狀態：`REVIEW_REQUIRED`
 
-Checkpoint publication 狀態：目前分類報告中的 50 個 project-relevant paths
-已獲 `APPROVED_FOR_PUBLICATION`。核准只適用本 checkpoint，且明確排除
-`local/`、cache、`.DS_Store`、credential 與全部 `.blend`。
+Checkpoint publication 狀態：先前分類的 50 個 project-relevant paths 已獲
+`APPROVED_FOR_PUBLICATION`。Portable asset-root source、placeholder config、測試
+與直接受影響文件另行分類為 `PUBLIC_ALLOWED`，human 已於 2026-09-17 明確要求
+上傳。此授權排除 `local/`、填入內容的 migration manifest、cache、`.DS_Store`、
+credential、尚待審查的 report 與全部 `.blend`。
 
-Checkpoint 日期：2026-09-15
+Checkpoint 日期：2026-09-17
 
 本檔只記錄可安全進入 repository、可重現的資訊。機器限定內容放在被忽略的
 `local/CODEX_PRIVATE_HANDOFF.md`。
@@ -346,6 +368,9 @@ Checkpoint 日期：2026-09-15
 
 - Branch：`codex/blender-inspection-v1`
 - 已發布 checkpoint：`5bd109a4a5a4eb58d8492d093f406d986581b444`。
+- Portable setup／test base：`a467336644486b94419cf9f904a6840bc67e0145`。
+- Portable asset-root 實作 checkpoint：
+  `b78b3865165c621d8ebf9d07c2bb6f24b65ba956`。
 - Upstream：`origin/codex/blender-inspection-v1`。
 - Working tree 刻意保留接手後的 derived-scene validation 變更，目前無 staged
   files。
@@ -375,7 +400,7 @@ Checkpoint 日期：2026-09-15
   至少 3 個可見 stable-ID objects。兩個條件在本次都標出相同 7 台 camera；
   Peter 確認前沒有決策效力。
 - 已驗證的私人 r2 derived scene 為
-  `blender/output/school_v1_first_slice_texture_agnostic_v0_1_1_r2.blend`，
+  `asset://blender-output/school_v1_first_slice_texture_agnostic_v0_1_1_r2.blend`，
   SHA-256 為
   `5aa0e4a54f20b9dba0d79067562711677b897ea6e246ed03e9aa8c0782cd2fed`。
 - macOS directory 應保存為單一 environment-scoped 完整診斷。目標機器的
@@ -386,15 +411,17 @@ Checkpoint 日期：2026-09-15
   `path_base = repository_root`；含歷史 machine path 的舊報告維持不變。
 - 本機 inventory `local/migration_inventory_v0_1_1.json` 展開後，在
   `local/migration_manifest_v0_1_1.json` 形成 293 筆非 cache 檔案紀錄；
-  manifest 已針對目前 repository／private overlay 驗證，0 failure。兩者維持
-  ignored 且為 `REVIEW_REQUIRED`。
+  歷史 v0.1.0 manifest 已針對目前 repository／private overlay 驗證，0 failure。
+  兩者維持 ignored、不可變且為 `REVIEW_REQUIRED`。
 
-以 `scripts/migration_manifest.py create` 建立不覆寫的 local transfer
-inventory：第一個 `--source-root` 指向目前 repository worktree，另一個 root
-指向私人 Blender layout。Code／documentation 分類為 `PUBLIC_ALLOWED`，填入
-實際內容的 report／metadata 為 `REVIEW_REQUIRED`，所有 `.blend` 為
-`PRIVATE_ONLY`。在目標機器 clone 後，從其 repository root 執行 `verify`；
-不得複製 Codex worktree 的 `.git` pointer。
+新的 transfer 必須建立不覆寫的 v0.2.0 manifest，使用 `repository`、
+`blender-source`、`blender-textures`、`blender-working`、`blender-output` alias。
+Repository 紀錄維持相對路徑；私人資產以
+`asset://<root-alias>/<relative-path>`、byte size 與 SHA-256 表示。
+Code／documentation 分類為 `PUBLIC_ALLOWED`，填入內容的 report／metadata 為
+`REVIEW_REQUIRED`，所有 `.blend` 為 `PRIVATE_ONLY`。目標機器 clone 後須設定
+各 root、執行 `scripts/check_asset_roots.py`，再以相同 alias 驗證 manifest。
+不得複製 Codex worktree 的 `.git` pointer，也不得序列化實體 root 或 link target。
 
 平台限定的設定、測試、Blender runtime 與遷移指令以
 [10_Cross_Platform_Setup_and_Testing.md](10_Cross_Platform_Setup_and_Testing.md)
@@ -404,22 +431,36 @@ macOS：
 
 ```sh
 python3 -B scripts/migration_manifest.py verify \
-  --manifest local/migration_manifest_v0_1_1.json \
-  --target-root .
+  --manifest local/migration_manifest_v0_2_0.json \
+  --target-root repository=. \
+  --target-root "blender-source=$AMIDST_BLENDER_SOURCE_ROOT" \
+  --target-root "blender-textures=$AMIDST_BLENDER_TEXTURE_ROOT" \
+  --target-root "blender-working=$AMIDST_BLENDER_WORK_ROOT" \
+  --target-root "blender-output=$AMIDST_BLENDER_OUTPUT_ROOT"
 ```
 
 Windows（PowerShell）：
 
 ```powershell
-py -3 -B scripts/migration_manifest.py verify --manifest local/migration_manifest_v0_1_1.json --target-root .
+py -3 -B scripts/migration_manifest.py verify `
+  --manifest local/migration_manifest_v0_2_0.json `
+  --target-root repository=. `
+  --target-root "blender-source=$env:AMIDST_BLENDER_SOURCE_ROOT" `
+  --target-root "blender-textures=$env:AMIDST_BLENDER_TEXTURE_ROOT" `
+  --target-root "blender-working=$env:AMIDST_BLENDER_WORK_ROOT" `
+  --target-root "blender-output=$env:AMIDST_BLENDER_OUTPUT_ROOT"
 ```
 
 Linux（Bash）：
 
 ```bash
 python3 -B scripts/migration_manifest.py verify \
-  --manifest local/migration_manifest_v0_1_1.json \
-  --target-root .
+  --manifest local/migration_manifest_v0_2_0.json \
+  --target-root repository=. \
+  --target-root "blender-source=$AMIDST_BLENDER_SOURCE_ROOT" \
+  --target-root "blender-textures=$AMIDST_BLENDER_TEXTURE_ROOT" \
+  --target-root "blender-working=$AMIDST_BLENDER_WORK_ROOT" \
+  --target-root "blender-output=$AMIDST_BLENDER_OUTPUT_ROOT"
 ```
 
 ### 目前里程碑與權威產物
@@ -491,7 +532,7 @@ environment-scoped output directory。三筆 substantive GT mismatch 不在本�
 
 ### 安全界線
 
-不得修改 `blender/source/`、覆寫歷史 output、猜測 semantic category、靜默替換
+不得修改 `asset://blender-source/`、覆寫歷史 output、猜測 semantic category、靜默替換
 resource、從名稱重建 ID、或未經獨立授權變更 geometry／transform／material
 structure／UV／modifier／rig／constraint。Observation、Blender state 與 Ground
 Truth 不一致時必須使 sample invalid，保留證據並記錄原因。

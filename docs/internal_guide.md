@@ -186,17 +186,24 @@ For a repository or Blender task that moves to another operating system:
    `scripts/migration_manifest.py`.
 3. Clone the repository on the destination. Do not copy a Codex worktree
    `.git` pointer because it refers to the source host's Git metadata.
-4. Overlay the recorded uncommitted files and restore private assets under the
-   same repository-relative layout through an approved private channel.
-5. Verify the manifest from the destination root before resuming work.
-6. Treat a new OS, architecture, Blender build, GPU backend/device, or driver as
+4. Overlay the recorded uncommitted repository files and restore private
+   assets through an approved private channel. Bind each private asset class to
+   the same logical alias; its physical destination path may differ by host.
+5. Configure `AMIDST_BLENDER_SOURCE_ROOT`, `AMIDST_BLENDER_TEXTURE_ROOT`,
+   `AMIDST_BLENDER_WORK_ROOT`, and `AMIDST_BLENDER_OUTPUT_ROOT`, or use the
+   ignored `local/asset_roots.json` equivalent.
+6. Run `scripts/check_asset_roots.py`, then verify the v0.2.0 manifest with the
+   destination repository and logical-root bindings before resuming work.
+7. Treat a new OS, architecture, Blender build, GPU backend/device, or driver as
    a new determinism environment. Keep its results separate until the approved
    comparison passes.
 
-POSIX-style paths in records are portable. Shell or PowerShell launchers may
-resolve them from a machine-specific root at runtime, but that absolute root
-must stay in ignored local configuration. Historical reports are evidence and
-must not be bulk-edited to replace old machine paths.
+Repository files use repository-relative POSIX paths. External private assets
+use `asset://<root-alias>/<relative-path>` plus byte size and SHA-256. Shell or
+PowerShell resolves each alias from a machine-specific root at runtime, but the
+absolute root and symlink or junction target must stay in ignored local
+configuration. Historical reports and v0.1.0 manifests remain immutable
+evidence and must not be bulk-edited to adopt the current contract.
 
 ### Publication Workflow
 
@@ -427,15 +434,21 @@ OPEN 問題
    logical file inventory、分類、byte size、checksum 與來源執行環境。
 3. 在目標機器重新 clone；不得複製 Codex worktree 的 `.git` pointer，因為它
    指向來源主機的 Git metadata。
-4. 覆蓋清單中的未提交檔案，並透過核准的私人管道，把私人資產放回相同的
-   repository-relative layout。
-5. 從目標 repository root 驗證 manifest，通過後才繼續工作。
-6. 新的 OS、architecture、Blender build、GPU backend／device 或 driver 都視為
+4. 覆蓋清單中的未提交 repository 檔案，並透過核准的私人管道恢復私人資產；
+   各類資產必須綁定相同 logical alias，但不同主機的實體目的路徑可以不同。
+5. 設定 `AMIDST_BLENDER_SOURCE_ROOT`、`AMIDST_BLENDER_TEXTURE_ROOT`、
+   `AMIDST_BLENDER_WORK_ROOT`、`AMIDST_BLENDER_OUTPUT_ROOT`，或使用 ignored 的
+   `local/asset_roots.json`。
+6. 先執行 `scripts/check_asset_roots.py`，再以目標 repository 與 logical-root
+   bindings 驗證 v0.2.0 manifest；通過後才繼續工作。
+7. 新的 OS、architecture、Blender build、GPU backend／device 或 driver 都視為
    新的 determinism environment；通過核准的比較前，不得混合兩邊結果。
 
-紀錄內使用 POSIX-style 相對路徑。Shell／PowerShell 可在 runtime 從機器限定
-root 解析，但該絕對 root 只能放在 ignored local config。歷史報告屬證據，
-不得批次替換其中的舊 machine path。
+Repository 檔案使用 repository-relative POSIX path；外部私人資產使用
+`asset://<root-alias>/<relative-path>`、byte size 與 SHA-256。Shell／PowerShell
+會在 runtime 從機器限定 root 解析 alias，但 absolute root 與 symlink／junction
+target 只能留在 ignored local config。歷史報告與 v0.1.0 manifest 屬不可變證據，
+不得批次改寫成目前契約。
 
 ### 發布流程
 

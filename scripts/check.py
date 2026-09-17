@@ -21,6 +21,7 @@ EXPECTED_DOCS = {
     "08_Repository_and_Data_Publication_Policy.md",
     "09_Data_Types_and_Exchange_Formats.md",
     "10_Cross_Platform_Setup_and_Testing.md",
+    "問題記錄.md",
     "glossary.md",
     "internal_guide.md",
     "open_questions.md",
