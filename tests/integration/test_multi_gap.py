@@ -18,10 +18,17 @@ from amidst.domain.navigation import (
     NavigationGraphConfig,
     NavigationNode,
 )
-from amidst.domain.observation import ProjectedPoint
+from amidst.domain.observation import Observation, ProjectedPoint
 from amidst.domain.pipeline import PipelineConfig
 from amidst.domain.search import GraphSearchPolicy, MovementConstraints
-from amidst.domain.stream import BoundGapEvent, OcclusionState, RawProjectedFrameSample
+from amidst.domain.stream import (
+    AggregationPolicy,
+    BoundGapEvent,
+    BoundObservation,
+    ObservationAggregation,
+    OcclusionState,
+    RawProjectedFrameSample,
+)
 from amidst.domain.topology import (
     CameraTopologyConfig,
     CameraTopologyNode,
@@ -347,6 +354,83 @@ def test_real_cv_producer_contract_does_not_claim_a_real_cv_inference_implementa
     samples = tuple(sample.model_copy(update={"data_kind": "REAL_CV"}) for sample in _stream())
     with pytest.raises(EventAggregationError, match="REAL_CV inference is deferred"):
         _run(samples)
+
+
+def test_explicit_sampling_gap_policy_is_saved_and_accepted_by_event_inference() -> None:
+    samples = (_sample("CAM_A", 1), _sample("CAM_A", 21))
+    policy = AggregationPolicy(max_visible_sample_gap_s=2)
+    aggregation = aggregate_frames(samples, policy)
+    assert aggregation.policy == policy
+    assert ObservationAggregation.model_validate_json(aggregation.model_dump_json()) == aggregation
+    gaps = reconstruct_gaps(aggregation, _pipeline(), dataset_id="test", random_seed=SEED)
+    assert len(gaps) == 1
+    assert gaps[0].event.time_range == (1, 21)
+
+
+def test_external_aggregation_cannot_merge_visible_samples_across_an_explicit_gap(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def forbidden(*args: object, **kwargs: object) -> None:
+        raise AssertionError("forged partition must not reach graph")
+
+    monkeypatch.setattr(event_module, "reconstruct_input", forbidden)
+    samples = (_sample("CAM_A", 0), _sample("CAM_A", 1, visible=False), _sample("CAM_A", 2))
+    canonical = aggregate_frames(samples)
+    first = canonical.observations[0]
+    projected = tuple(
+        ProjectedPoint.model_validate(
+            sample.projected_point.model_dump()
+            | {
+                "observation_id": "forged_merge",
+            }
+        )
+        for sample in (samples[0], samples[2])
+        if sample.projected_point is not None
+    )
+    merged = Observation.model_validate(
+        first.observation.model_dump()
+        | {
+            "observation_id": "forged_merge",
+            "end_time": 2,
+            "projected_path": projected,
+        }
+    )
+    forged = ObservationAggregation(
+        samples=canonical.samples,
+        observations=(
+            BoundObservation(
+                binding=first.binding,
+                observation=merged,
+                sample_ids=(samples[0].sample_id, samples[2].sample_id),
+            ),
+        ),
+    )
+    with pytest.raises(EventAggregationError, match="canonical partition"):
+        reconstruct_gaps(forged, _pipeline(), dataset_id="test", random_seed=SEED)
+
+
+def test_external_aggregation_cannot_add_artificial_splits_to_continuous_visibility() -> None:
+    samples = (_sample("CAM_A", 0), _sample("CAM_A", 2))
+    genuine = aggregate_frames(samples)
+    forged = ObservationAggregation(
+        samples=genuine.samples,
+        observations=(
+            aggregate_frames((samples[0],)).observations[0],
+            aggregate_frames((samples[1],)).observations[0],
+        ),
+    )
+    with pytest.raises(EventAggregationError, match="canonical partition"):
+        reconstruct_gaps(forged, _pipeline(), dataset_id="test", random_seed=SEED)
+
+
+def test_external_aggregation_cannot_reorder_canonical_samples_or_observations() -> None:
+    aggregation = aggregate_frames(_stream())
+    reordered = ObservationAggregation(
+        samples=tuple(reversed(aggregation.samples)),
+        observations=aggregation.observations,
+    )
+    with pytest.raises(EventAggregationError, match="canonical partition"):
+        reconstruct_gaps(reordered, _pipeline(), dataset_id="test", random_seed=SEED)
 
 
 @pytest.mark.parametrize(

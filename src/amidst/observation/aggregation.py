@@ -225,4 +225,4 @@ def aggregate_frames(
             ),
         )
     )
-    return ObservationAggregation(samples=canonical, observations=ordered)
+    return ObservationAggregation(samples=canonical, observations=ordered, policy=policy)

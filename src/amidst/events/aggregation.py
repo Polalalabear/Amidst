@@ -8,7 +8,7 @@ from time import monotonic
 
 from amidst.domain.pipeline import InferenceInput, PipelineConfig
 from amidst.domain.stream import BoundGapEvent, ObservationAggregation
-from amidst.observation.aggregation import validate_stream_model
+from amidst.observation.aggregation import aggregate_frames, validate_stream_model
 from amidst.pipeline import reconstruct_input
 
 
@@ -35,6 +35,9 @@ def reconstruct_gaps(
     """
     aggregation = validate_stream_model(aggregation, ObservationAggregation)
     pipeline = validate_stream_model(pipeline, PipelineConfig)
+    canonical = aggregate_frames(aggregation.samples, aggregation.policy)
+    if canonical != aggregation:
+        raise EventAggregationError("observation aggregation must preserve its canonical partition")
     if not isinstance(dataset_id, str) or not dataset_id:
         raise EventAggregationError("dataset_id must be nonempty")
     if isinstance(random_seed, bool) or not isinstance(random_seed, int):

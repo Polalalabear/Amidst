@@ -121,6 +121,7 @@ class BoundObservation(DomainModel):
 class ObservationAggregation(DomainModel):
     samples: tuple[RawProjectedFrameSample, ...]
     observations: tuple[BoundObservation, ...]
+    policy: AggregationPolicy = AggregationPolicy()
 
     @model_validator(mode="after")
     def consistent_bindings(self) -> Self:
