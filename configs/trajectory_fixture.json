@@ -1,0 +1,12 @@
+{
+  "trajectory_id": "fixture_piecewise_linear_01",
+  "target_id": "sim_person_01",
+  "scene_id": "SYNTHETIC_TEST_FIXTURE",
+  "random_seed": 42,
+  "sample_rate_hz": 10,
+  "keyframes": [
+    {"timestamp": 0.0, "position": [0.0, 0.0, 0.0], "floor_id": "FIXTURE_1F", "zone_id": "fixture_corridor", "semantic_region": "corridor"},
+    {"timestamp": 2.0, "position": [2.0, 0.0, 0.0], "floor_id": "FIXTURE_1F", "zone_id": "fixture_corner", "semantic_region": "corridor"},
+    {"timestamp": 4.0, "position": [2.0, 2.0, 0.0], "floor_id": "FIXTURE_1F", "zone_id": "fixture_exit", "semantic_region": "corridor"}
+  ]
+}
