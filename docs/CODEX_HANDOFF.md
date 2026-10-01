@@ -12,7 +12,7 @@
 - Branch：`main`。
 - 接續起點 HEAD：`58a809956cdfe444509e0d676ec2e8f6f382370c`（M4）。
 - Remote：`https://github.com/Polalalabear/amidst.git`。本輪未 push。
-- M5 已提交於 `1dcce12`、M6 已提交於 `7e952ae`、M7 已提交於 `94ee2cd`；M8 deterministic graph engine 為本輪最後一個 milestone。
+- M5 已提交於 `1dcce12`、M6 已提交於 `7e952ae`、M7 已提交於 `94ee2cd`、M8 已提交於 `d6620b4`；M8 deterministic graph engine 為本輪最後一個 milestone。
 - 使用 `uv`、`pyproject.toml`、`uv.lock`；不要改用 requirements.txt。
 - Blender CLI：`/Applications/Blender.app/Contents/MacOS/blender`，5.2.1 LTS，build `9e2066aef7ef`。
 - 舊 sandbox writable root 若仍是 `admist`，相關執行可能需要正常權限升級；這不是產品錯誤。所有 shell 指令明確指定正確 workdir。
@@ -125,6 +125,7 @@ c3638c5 chore: add read-only floor and stair geometry audit
 1dcce12 feat: add observation domain models
 7e952ae feat: add planar inverse projection
 94ee2cd feat: add deterministic navigation topology
+d6620b4 feat: add bounded trajectory graph search
 ```
 
 ### 接續順序與待決策事項
