@@ -7,6 +7,7 @@ from pydantic import Field, model_validator
 from amidst.domain.common import DomainModel
 from amidst.domain.navigation import NavigationGraphConfig
 from amidst.domain.observation import Observation
+from amidst.domain.reconstruction import ReconstructionPolicy
 from amidst.domain.search import GraphSearchPolicy, MovementConstraints
 from amidst.domain.topology import CameraTopologyConfig
 
@@ -21,6 +22,7 @@ class InferenceInput(DomainModel):
     topology: CameraTopologyConfig
     movement: MovementConstraints
     search_policy: GraphSearchPolicy
+    reconstruction_policy: ReconstructionPolicy = ReconstructionPolicy()
 
     @model_validator(mode="after")
     def consistent_identity(self) -> Self:

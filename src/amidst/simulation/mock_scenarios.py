@@ -11,6 +11,7 @@ import math
 from pathlib import Path
 
 from amidst.domain.common import Provenance, Vec3
+from amidst.domain.evaluation import AABBObstacle, ConstraintConfig
 from amidst.domain.ground_truth import PathKeyframe, TrajectoryConfig
 from amidst.domain.navigation import (
     CrossFloorPolicy,
@@ -34,6 +35,13 @@ from amidst.storage.json_files import write_json
 
 SEED = 20261001
 SCENARIO_IDS = ("single_path", "branching_top_k", "temporal_slack", "simplified_stair")
+
+
+def fixture_constraints() -> ConstraintConfig:
+    """An explicit synthetic wall clear of authorized routes, not school geometry."""
+    return ConstraintConfig(max_speed_m_s=1.0, obstacles=(AABBObstacle(
+        obstacle_id="SYNTHETIC_WALL", minimum=(5, 1, -1), maximum=(15, 4, 2),
+    ),))
 
 
 def _observation(scenario: str, name: str, node: NavigationNode, time: float) -> Observation:
@@ -178,6 +186,7 @@ def export_scenarios(destination: Path) -> None:
         write_json(folder / "inference.json", scenario.model_dump(mode="json"))
         truth = sample_trajectory(ground_truth_config(scenario))
         write_json(folder / "ground_truth.json", truth.model_dump(mode="json"))
+    write_json(destination / "constraints.json", fixture_constraints().model_dump(mode="json"))
     write_json(destination / "manifest.json", {
         "data_kind": "SYNTHETIC_TEST_FIXTURE", "random_seed": SEED,
         "scenarios": list(SCENARIO_IDS), "coverage_distance": "ADE",

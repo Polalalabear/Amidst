@@ -42,7 +42,7 @@ def reconstruct_input(
     """Return graph evidence and its timed alternatives before any evaluation."""
     inputs = InferenceInput.model_validate(inputs.model_dump(mode="python"))
     result = generate_candidates(inputs, max_paths=max_paths, clock=clock)
-    event = BlindGapReconstructor().reconstruct_gap(
+    event = BlindGapReconstructor(inputs.reconstruction_policy).reconstruct_gap(
         inputs.start_observation, inputs.end_observation, result,
     )
     return result, event

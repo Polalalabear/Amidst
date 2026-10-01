@@ -1,0 +1,20 @@
+{
+  "corridor_tolerance_m": 1e-06,
+  "max_speed_m_s": 1.0,
+  "navigation_graph": null,
+  "obstacles": [
+    {
+      "maximum": [
+        15.0,
+        4.0,
+        2.0
+      ],
+      "minimum": [
+        5.0,
+        1.0,
+        -1.0
+      ],
+      "obstacle_id": "SYNTHETIC_WALL"
+    }
+  ]
+}

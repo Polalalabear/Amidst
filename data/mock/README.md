@@ -21,6 +21,9 @@ Camera Topology 與 movement/search schemas。`ground_truth.json` 另存，只�
 `D=ADE`、epsilon `1e-6 m`，K 計算不同 route，不把 dwell timing alternatives 另算一條；
 此設定只適用 regression fixtures，不固定正式 benchmark 的 distance／epsilon。
 碰撞評估只支援顯式 AABB 幾何與連續線段；這些 fixtures 不提供 school mesh。
+`constraints.json` 有一個不與合法路徑相交的 synthetic wall box；正向碰撞／constraint
+違規的 numeric regression cases 另外放在 unit tests。Inference JSON 也保存 timing policy，
+runner 會完整儲存 movement／search／reconstruction／evaluation／constraint configs。
 
 在空目錄重新生成，JSON 可逐位元重現，已有檔案會拒絕覆寫：
 
@@ -43,6 +46,9 @@ parameterized stair interface. Maximum speed is 1m/s. Ground Truth includes the
 1e-6m; K counts distinct routes with their primary timing hypothesis. This is
 not a formal benchmark choice. Collision checks use explicit AABB obstacles
 and continuous segments, not a Blender mesh or clearance certification.
+`constraints.json` includes one synthetic wall box clear of authorized routes;
+positive collision/constraint examples live in unit tests. Timing policy is
+serialized in inference input, and run metadata preserves every effective config.
 
 Regenerate into an empty directory with the command above; existing files are
 refused, and JSON bytes are reproducible. Blender-derived producers can replace

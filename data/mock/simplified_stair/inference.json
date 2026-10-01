@@ -164,6 +164,11 @@
     "spatial_context_id": "SYNTHETIC:simplified_stair"
   },
   "random_seed": 20261001,
+  "reconstruction_policy": {
+    "direct_path_slack_tolerance_s": 1.0,
+    "endpoint_tolerance_m": 1e-06,
+    "include_dwell_hypotheses": true
+  },
   "search_policy": {
     "max_branch_factor": 8,
     "max_candidate_paths": 3,

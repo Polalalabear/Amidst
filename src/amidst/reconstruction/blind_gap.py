@@ -8,15 +8,15 @@ import math
 from itertools import accumulate, pairwise
 from typing import Literal
 
-from pydantic import Field, ValidationError
+from pydantic import ValidationError
 
-from amidst.domain.common import DomainModel, PositiveFinite, Provenance, Vec3
+from amidst.domain.common import DomainModel, Provenance, Vec3
 from amidst.domain.observation import Observation
+from amidst.domain.reconstruction import ReconstructionPolicy as ReconstructionPolicy
 from amidst.domain.trajectory import (
     CandidateTrajectory,
     Event,
     HypothesisKind,
-    NonNegativeFinite,
     ReconstructionResult,
     SegmentKind,
     TimedTrajectoryPoint,
@@ -27,14 +27,6 @@ from amidst.domain.trajectory import (
 
 class ReconstructionInputError(ValueError):
     """Evidence or candidates do not satisfy the reconstruction contract."""
-
-
-class ReconstructionPolicy(DomainModel):
-    """Explicit deterministic timing choices; no learned or behavioral prior."""
-
-    direct_path_slack_tolerance_s: NonNegativeFinite = 1.0
-    endpoint_tolerance_m: PositiveFinite = 1e-6
-    include_dwell_hypotheses: bool = Field(default=True, strict=True)
 
 
 def _check_embedded_contract(value: object) -> None:
