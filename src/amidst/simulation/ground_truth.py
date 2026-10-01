@@ -177,6 +177,10 @@ print('BLENDER_GROUND_TRUTH_EXPORT_OK')
             )
         sample_payload["position"] = position
     payload["sample_source"] = "BLENDER_EVALUATED"
+    if blend_path is not None:
+        assert source_fingerprint is not None
+        payload["source_asset_name"] = blend_path.name
+        payload["source_asset_sha256"] = source_fingerprint[0]
     return GroundTruthTrajectory.model_validate(payload)
 
 
@@ -228,6 +232,8 @@ def export_ground_truth_csv(
             "scene_id",
             "data_kind",
             "sample_source",
+            "source_asset_name",
+            "source_asset_sha256",
             "random_seed",
             "sample_rate_hz",
             "timestamp",
@@ -251,6 +257,8 @@ def export_ground_truth_csv(
                 trajectory.scene_id,
                 trajectory.data_kind,
                 trajectory.sample_source,
+                trajectory.source_asset_name,
+                trajectory.source_asset_sha256,
                 trajectory.random_seed,
                 trajectory.sample_rate_hz,
                 sample.timestamp,

@@ -33,3 +33,9 @@ Decision: Keep `blender/school_v2.blend` immutable. Use a separate local, Git-ig
 Decision: Use Blender camera local +X right, +Y up, -Z forward and top-left continuous pixels with half-open image bounds. Extract a normalized rigid world pose and intrinsics from `view_frame(scene)` with actual resolution, pixel aspect, sensor fit and shift; audit sensor-angle fields are not image calibration.
 
 決策：採 Blender Camera local +X 向右、+Y 向上、-Z 向前，以及左上原點、半開影像邊界的連續像素座標。由 `view_frame(scene)` 配合實際解析度、pixel aspect、sensor fit、shift 抽取內參，並正規化剛體世界姿態；audit 的感光器角度不直接當作影像校正值。
+
+## Synthetic visibility and source binding / 合成可見性與來源綁定
+
+Decision: Use point raycasts against a fixed-frame evaluated VIEWPORT Mesh snapshot, excluding only annotation geometry and explicitly owned proxies. Query allowed colliders directly, preserving thin obstacles. This is not rendered-pixel equivalence: render-only modifiers, transparency and image usability are outside this validation. Bind motion, camera catalog and visibility geometry to the same source asset SHA-256 before exporting observations; publish 2D evidence separately from Ground Truth.
+
+決策：以固定 frame 的 evaluated VIEWPORT Mesh 快照進行點 raycast，只排除語意幾何與明確自有 proxy；直接查詢可用碰撞物，保留薄障礙物。此驗證不等於渲染像素結果，render-only modifier、透明度與影像可用性不在本次驗證範圍。匯出前以相同來源 SHA-256 綁定軌跡、相機與可見性場景，2D Evidence 與 Ground Truth 分開儲存。

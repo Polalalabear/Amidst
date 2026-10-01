@@ -49,6 +49,8 @@ class GroundTruthTrajectory(DomainModel):
     sample_rate_hz: PositiveInt
     data_kind: Literal["SYNTHETIC"] = "SYNTHETIC"
     sample_source: Literal["BLENDER_EVALUATED", "CONFIGURATION_SAMPLER"] = "CONFIGURATION_SAMPLER"
+    source_asset_name: str | None = None
+    source_asset_sha256: str | None = None
     samples: tuple[GroundTruthSample, ...] = Field(min_length=2)
 
     @model_validator(mode="after")
