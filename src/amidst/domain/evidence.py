@@ -33,7 +33,7 @@ class ObservationFrame(DomainModel):
     provenance: Literal[Provenance.OBSERVED] | None
     gap_reason: GapReason | None = None
     occluder_id: str | None = None
-    data_kind: Literal["SYNTHETIC"] = "SYNTHETIC"
+    data_kind: Literal["SYNTHETIC", "REAL_CV"] = "SYNTHETIC"
 
     @model_validator(mode="after")
     def consistent_visibility(self) -> Self:
