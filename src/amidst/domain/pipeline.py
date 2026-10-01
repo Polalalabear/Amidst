@@ -12,6 +12,16 @@ from amidst.domain.search import GraphSearchPolicy, MovementConstraints
 from amidst.domain.topology import CameraTopologyConfig
 
 
+class PipelineConfig(DomainModel):
+    """Endpoint-independent configured graph and reconstruction policy."""
+
+    navigation: NavigationGraphConfig
+    topology: CameraTopologyConfig
+    movement: MovementConstraints
+    search_policy: GraphSearchPolicy
+    reconstruction_policy: ReconstructionPolicy = ReconstructionPolicy()
+
+
 class InferenceInput(DomainModel):
     dataset_id: str = Field(min_length=1)
     data_kind: Literal["SYNTHETIC"] = "SYNTHETIC"
