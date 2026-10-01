@@ -17,12 +17,17 @@ from urllib.parse import quote
 
 import rerun as rr
 
+from amidst.domain.calibration import CameraCalibrationCatalog
 from amidst.domain.common import Provenance, Vec3
 from amidst.domain.ground_truth import GroundTruthTrajectory
 from amidst.domain.navigation import NavigationGraphConfig
 from amidst.domain.observation import Observation
 from amidst.domain.topology import CameraTopologyConfig
 from amidst.domain.trajectory import Event, TimedTrajectoryPoint
+from amidst.geometry.calibration import (
+    frustum_line_segments,
+    validate_camera_calibration_catalog,
+)
 
 PROVENANCE_COLORS: Mapping[Provenance, tuple[int, int, int]] = {
     Provenance.OBSERVED: (40, 190, 80),
@@ -148,6 +153,7 @@ class RerunDebugVisualizationAdapter:
         observations: tuple[Observation, ...] = (),
         navigation_config: NavigationGraphConfig | None = None,
         topology_config: CameraTopologyConfig | None = None,
+        calibration_catalog: CameraCalibrationCatalog | None = None,
         recording: RecordingSink | None = None,
         debug_mode: bool = False,
         application_id: str = "amidst_debug",
@@ -173,6 +179,10 @@ class RerunDebugVisualizationAdapter:
         self.topology_config = (
             CameraTopologyConfig.model_validate(topology_config.model_dump())
             if topology_config is not None else None
+        )
+        self.calibration_catalog = (
+            validate_camera_calibration_catalog(calibration_catalog)
+            if calibration_catalog is not None else None
         )
         if self.navigation_config is not None and self.topology_config is not None and (
             self.topology_config.navigation_graph_id != self.navigation_config.graph_id
@@ -233,6 +243,7 @@ class RerunDebugVisualizationAdapter:
             })
             self._log_navigation()
             self._log_topology()
+            self._log_calibration()
 
     def _document(self, path: str, payload: object) -> None:
         self.recording.log(
@@ -262,6 +273,30 @@ class RerunDebugVisualizationAdapter:
                 rr.LineStrips3D(
                     [edge.polyline], colors=(110, 150, 170), radii=0.015,
                     labels=[f"{edge.edge_id}: {edge.transition_type.value}"],
+                ),
+                static=True,
+            )
+
+    def _log_calibration(self) -> None:
+        catalog = self.calibration_catalog
+        if catalog is None:
+            return
+        self._document("debug/camera_calibration", catalog.model_dump(mode="json"))
+        for calibration in catalog.cameras:
+            root = f"world/calibrated_cameras/{_segment_name(calibration.camera.camera_id)}"
+            self.recording.log(
+                f"{root}/position",
+                rr.Points3D(
+                    [calibration.pose.position_world], colors=(80, 200, 210), radii=0.14,
+                    labels=[f"{calibration.camera_name} actual calibrated pose"],
+                ),
+                static=True,
+            )
+            self.recording.log(
+                f"{root}/frustum",
+                rr.LineStrips3D(
+                    frustum_line_segments(calibration), colors=(80, 200, 210), radii=0.015,
+                    labels=[f"{calibration.camera_name} actual near/far frustum"] * 12,
                 ),
                 static=True,
             )
