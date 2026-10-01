@@ -12,6 +12,8 @@ import rerun as rr
 from pydantic import ValidationError
 from rerun.chunk import RrdReader
 
+from amidst.domain.calibration import CameraCalibration, CameraCalibrationCatalog
+from amidst.domain.camera import Camera
 from amidst.domain.common import Provenance
 from amidst.domain.evidence import ObservationFrame, VisibilityStatus
 from amidst.domain.ground_truth import GroundTruthSample, GroundTruthTrajectory
@@ -37,6 +39,14 @@ from amidst.domain.trajectory import (
     TimedTrajectoryPoint,
     TrajectoryHypothesis,
     TrajectorySegment,
+)
+from amidst.geometry.calibration import (
+    calibration_content_sha256,
+    frustum_geometry,
+    image_fov_radians,
+    multiply_matrices,
+    pinhole_projection_matrix,
+    rigid_inverse,
 )
 from amidst.visualization import RerunDebugVisualizationAdapter
 from amidst.visualization.rerun_adapter import EVENT_TIMELINE, PROVENANCE_COLORS
@@ -519,3 +529,63 @@ def test_real_sdk_saves_nonempty_rrd_with_event_truth_and_metrics(tmp_path: Path
     )} <= paths
     with pytest.raises(RuntimeError, match="closed"):
         adapter.log_event(_event())
+
+
+def test_rerun_calibrated_pose_and_frustum_are_separate_from_navigation_anchors(
+    tmp_path: Path,
+) -> None:
+    camera = Camera(
+        camera_id="camera_a", camera_to_world=(
+            (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 10), (0, 0, 0, 1),
+        ), fx=800, fy=800, cx=320, cy=240, width=640, height=480, clip_start=1, clip_end=10,
+    )
+    view = rigid_inverse(camera.camera_to_world)
+    projection = pinhole_projection_matrix(800, 800, 320, 240, 640, 480, 1, 10)
+    calibration = CameraCalibration.model_validate({
+        "camera_name": camera.camera_id, "camera": camera.model_dump(),
+        "pose": {
+            "evaluated_world_matrix": camera.camera_to_world,
+            "evaluated_world_inverse": view, "rigid_camera_to_world": camera.camera_to_world,
+            "world_to_camera": view, "position_world": (0, 0, 10),
+            "rotation_quaternion_wxyz": (1, 0, 0, 0), "rotation_euler_xyz_radians": (0, 0, 0),
+            "evaluated_axis_scale": (1, 1, 1),
+        },
+        "intrinsic_matrix": ((800, 0, 320), (0, 800, 240), (0, 0, 1)),
+        "focal_length_mm": 45, "sensor_width_mm": 36, "sensor_height_mm": 24,
+        "sensor_fit": "HORIZONTAL", "pixel_aspect_xy": (1, 1), "shift_xy": (0, 0),
+        "image_fov_xy_radians": image_fov_radians(800, 800, 320, 240, 640, 480),
+        "blender_sensor_angle_xy_radians": (0.76, 0.52), "projection_matrix": projection,
+        "view_projection_matrix": multiply_matrices(projection, view),
+        "frustum": frustum_geometry(camera.camera_to_world, 800, 800, 320, 240, 640, 480, 1, 10),
+    })
+    catalog = CameraCalibrationCatalog(
+        camera_config_version="fixture-v1", calibration_content_sha256="0" * 64,
+        source_asset_name="SYNTHETIC_TEST_FIXTURE.blend", source_asset_sha256="a" * 64,
+        scene_name="SYNTHETIC_TEST_FIXTURE", scene_frame=1, scene_subframe=0,
+        source_scene_unit_system="METRIC", source_scene_scale_length=1, cameras=(calibration,),
+    )
+    catalog = catalog.model_copy(update={
+        "calibration_content_sha256": calibration_content_sha256(catalog.model_dump(mode="json")),
+    })
+    path = tmp_path / "calibration.rrd"
+    adapter = RerunDebugVisualizationAdapter(
+        calibration_catalog=catalog, observations=_observations(), navigation_config=_navigation(),
+        topology_config=_topology(),
+    )
+    adapter.save(path)
+    adapter.log_event(_event())
+    adapter.close()
+    chunks = list(RrdReader(path).stream())
+    positions = next(chunk for chunk in chunks if chunk.entity_path ==
+                     "/world/calibrated_cameras/camera_a/position")
+    assert positions.to_record_batch().to_pylist()[0]["Points3D:positions"] == [[0, 0, 10]]
+    anchor = next(
+        chunk for chunk in chunks if chunk.entity_path == "/world/camera_anchors/camera_a"
+    )
+    assert anchor.to_record_batch().to_pylist()[0]["Points3D:positions"] == [[0, 0, 0]]
+    frustum = next(chunk for chunk in chunks if chunk.entity_path ==
+                   "/world/calibrated_cameras/camera_a/frustum")
+    assert len(frustum.to_record_batch().to_pylist()[0]["LineStrips3D:strips"]) == 12
+    metadata = next(chunk for chunk in chunks if chunk.entity_path == "/debug/camera_calibration")
+    payload = json.loads(metadata.to_record_batch().to_pylist()[0]["TextDocument:text"][0])
+    assert payload["calibration_content_sha256"] == catalog.calibration_content_sha256

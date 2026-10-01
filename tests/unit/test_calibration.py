@@ -3,14 +3,12 @@
 from __future__ import annotations
 
 import copy
-import json
 import subprocess
 import sys
 from pathlib import Path
 
 import pytest
 from pydantic import ValidationError
-from rerun.chunk import RrdReader
 
 from amidst.domain.calibration import CameraCalibration, CameraCalibrationCatalog
 from amidst.domain.camera import Camera
@@ -31,7 +29,6 @@ from amidst.simulation.camera_calibration import (
     load_camera_calibration_json,
 )
 from amidst.simulation.virtual_camera import project_world
-from amidst.visualization import RerunDebugVisualizationAdapter
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -166,24 +163,3 @@ def test_blender_extraction_modules_import_with_no_site_packages() -> None:
         "assert 'bpy' not in sys.modules"
     )
     subprocess.run([sys.executable, "-S", "-c", code], check=True, capture_output=True, text=True)
-
-
-def test_rerun_accepts_portable_calibration_and_saves_twelve_actual_frustum_edges(
-    tmp_path: Path,
-) -> None:
-    path = tmp_path / "calibration.rrd"
-    adapter = RerunDebugVisualizationAdapter(calibration_catalog=_catalog())
-    adapter.save(path)
-    adapter.log_metrics({})
-    adapter.close()
-    chunks = list(RrdReader(path).stream())
-    positions = next(chunk for chunk in chunks if chunk.entity_path ==
-                     "/world/calibrated_cameras/CAM_FIXTURE/position")
-    row = positions.to_record_batch().to_pylist()[0]
-    assert row["Points3D:positions"] == [[10, 20, 30]]
-    frustum = next(chunk for chunk in chunks if chunk.entity_path ==
-                   "/world/calibrated_cameras/CAM_FIXTURE/frustum")
-    assert len(frustum.to_record_batch().to_pylist()[0]["LineStrips3D:strips"]) == 12
-    metadata = next(chunk for chunk in chunks if chunk.entity_path == "/debug/camera_calibration")
-    payload = json.loads(metadata.to_record_batch().to_pylist()[0]["TextDocument:text"][0])
-    assert payload["calibration_content_sha256"] == _catalog().calibration_content_sha256

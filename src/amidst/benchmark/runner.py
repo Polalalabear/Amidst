@@ -10,6 +10,7 @@ from urllib.parse import quote
 
 from pydantic import Field
 
+from amidst.benchmark.reporting import generate_reports
 from amidst.datasets.loading import load_case_calibration, load_dataset_case
 from amidst.domain.calibration import CameraCalibrationCatalog
 from amidst.domain.common import DomainModel
@@ -171,6 +172,16 @@ def _write_results(result: BenchmarkResult, destination: Path) -> None:
                 "hypotheses": len(gap.gap.event.trajectories),
                 "termination_reason": gap.gap.event.termination_reason.value,
                 "rerun_artifact": gap.rerun_artifact,
+                "evaluation_status": "EVALUATED" if gap.evaluation is not None else "NO_REFERENCE",
+                "metrics_at_k": [{
+                    "k": metric.config.k_routes,
+                    "selected_route_count": metric.selected_route_count,
+                    "min_ade_m": metric.min_ade_at_k_m,
+                    "min_fde_m": metric.min_fde_at_k_m,
+                    "coverage": metric.coverage_at_k,
+                    "collision_violations": metric.collision_segment_count,
+                    "constraint_violations": metric.constraint_violation_segment_count,
+                } for metric in gap.evaluation.evaluations] if gap.evaluation is not None else [],
             } for gap in case.gaps],
         } for case in result.cases],
     })
@@ -202,6 +213,7 @@ def run_benchmark(
     destination = output_directory.resolve()
     if destination.exists():
         raise FileExistsError("benchmark output directory must be new")
+    original_config_fingerprint = fingerprint(config_path, "experiment_config")
     config, dataset, manifest_path = load_experiment(config_path)
     updates = {}
     if record_rerun is not None:
@@ -287,7 +299,10 @@ def run_benchmark(
     record = record.model_copy(update={
         "inputs": _input_fingerprints(config_path, manifest_path, record),
     })
+    if record.inputs[0] != original_config_fingerprint:
+        raise ValueError("experiment config changed during benchmark execution")
     result = BenchmarkResult(record=record, cases=tuple(results),
                              runtime_s=runtime_clock() - started)
     _write_results(result, destination)
+    generate_reports(result, destination, config_path=config_path, manifest_path=manifest_path)
     return result
