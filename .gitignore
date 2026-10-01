@@ -8,6 +8,7 @@ __pycache__/
 
 # Blender source assets are local research inputs and are not committed as Git blobs.
 blender/*.blend
+blender/working/
 *.blend1
 
 # Generated runtime artifacts that are not curated benchmark fixtures.

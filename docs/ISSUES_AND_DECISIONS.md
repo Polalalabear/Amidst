@@ -21,3 +21,9 @@ Decision: Use texture-free, opaque neutral gray surface materials for Phase 1 sy
 Decision: Infer floor-surface candidates from evaluated mesh geometry, not object names alone. The two stair annotation regions lack a mesh-supported continuous ascent; fail closed on cross-floor traversal until a valid stair representation is confirmed. Never use annotation boxes as collision surfaces or invent connections through floor slabs; preserve the source `.blend`.
 
 決策：以求值後的 Mesh 幾何辨識地板候選，不只依賴名稱。兩處樓梯標示區未找到實體 Mesh 支持的連續上升路徑；在有效樓梯表示確認前，不開放跨樓層通行。語意 box 不當作碰撞面，也不虛構穿越樓板的連接；原始 `.blend` 保留。
+
+## Research asset isolation / 研究資產隔離
+
+Decision: Keep `blender/school_v2.blend` immutable. Use a separate local, Git-ignored research copy at `blender/working/school_v2_research.blend`. Creating the copy does not approve stair geometry or cross-floor connectivity; record approved derivative changes separately from source evidence.
+
+決策：`blender/school_v2.blend` 保持不變；研究用副本置於 `blender/working/school_v2_research.blend`，只存本機並由 Git 忽略。建立副本不代表樓梯幾何或跨樓層連通已核准；核准後的衍生修改須與來源證據分開記錄。

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "UNMODIFIED_RESEARCH_COPY",
+  "source": {
+    "path": "blender/school_v2.blend",
+    "sha256_before": "1332280b8ca24ba8568017a13b666618c93337f32bcc431e59e7db617924fc38",
+    "sha256_after": "1332280b8ca24ba8568017a13b666618c93337f32bcc431e59e7db617924fc38",
+    "size_bytes": 466332340,
+    "mtime_seconds_before": 1790851387,
+    "mtime_seconds_after": 1790851387
+  },
+  "research_copy": {
+    "path": "blender/working/school_v2_research.blend",
+    "initial_sha256": "1332280b8ca24ba8568017a13b666618c93337f32bcc431e59e7db617924fc38",
+    "initial_size_bytes": 466332340,
+    "initial_geometry_modified": false,
+    "initial_materials_modified": false,
+    "git_tracked": false
+  },
+  "validation": {
+    "source_hash_unchanged": true,
+    "source_size_unchanged": true,
+    "source_mtime_unchanged": true,
+    "copy_initially_byte_identical": true,
+    "blender_save_performed": false,
+    "render_performed": false,
+    "cross_floor_traversal_approved": false,
+    "external_relative_path_resolution_reviewed": false
+  },
+  "limitations": [
+    "This records initial copy provenance, not the hash of future approved derivative changes.",
+    "Blender // external asset references resolve relative to the containing blend directory; moving a copy into working/ requires a later dependency check.",
+    "Stair geometry and floor openings have not been modified or validated."
+  ]
+}
