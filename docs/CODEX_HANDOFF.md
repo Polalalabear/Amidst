@@ -82,6 +82,8 @@ M5 schemas 已包含時間／camera／identity 一致性、finite values、prove
 
 ### 資產保全與資料上下文
 
+目前資料現況與 Git 發布邊界記錄於 [`data/README.md`](../data/README.md)。Git 追蹤的 data 只有唯讀 scene/geometry audit bundle；目前唯一已物化的 runtime artifact 是本機、Git-ignored 的 camera catalog。Ground Truth、observations、candidates、metrics、`.rrd` 與 rendered-image dataset 目前都不存在。
+
 原檔：`blender/school_v2.blend`。
 研究副本：`blender/working/school_v2_research.blend`（Git ignored）。
 
@@ -93,7 +95,7 @@ M5 schemas 已包含時間／camera／identity 一致性、finite values、prove
 
 本輪未修改、儲存或渲染任一 `.blend`。Blender scripts 使用 `--background --factory-startup --disable-autoexec -noaudio --python-exit-code 2`。整合測試只建立 transient factory fixtures；Blender adapters 使用標準函式庫與 lazy bpy/mathutils，避免依賴 Blender Python 具有 uv 的 Pydantic/NumPy 環境。
 
-`configs/trajectory_fixture.json` 是 factory-scene synthetic fixture，不是核准的 school route。`data/cameras/school_v2_cameras.json` 是本機生成的真實 29 台校正資料，Git ignored。factory GT 不得混入 school camera/visibility 場景；school observation 匯出須有 BLENDER_EVALUATED GT 且三者來源 SHA 相同。生成 GT、camera、observations/candidates/metrics/.rrd 維持本機並 ignored。
+`configs/trajectory_fixture.json` 是 factory-scene synthetic fixture 設定，不是已物化 dataset 或核准的 school route。`data/cameras/school_v2_cameras.json` 是由 school_v2 場景唯讀抽取、標記 `SYNTHETIC` 的本機 29-camera calibration catalog，Git ignored；它不是 FORMAL Observation 或真實 capture-time 證據。Factory GT 不得混入 school camera/visibility 場景；school observation 匯出須有 BLENDER_EVALUATED GT 且三者來源 SHA 相同。生成 GT、camera、observations/candidates/metrics/.rrd 維持本機並 ignored，除非另有明確資料發布授權。
 
 ### 最新驗證
 
@@ -107,7 +109,7 @@ git diff --check
 shasum -a 256 blender/school_v2.blend blender/working/school_v2_research.blend
 ```
 
-結果：**219 passed in 25.73s**，沒有 skipped／failed；Ruff 全通過；mypy 33 source files 無問題；diff check 無問題；兩個 `.blend` 雜湊一致。M8 直接 targeted tests 28 個通過。這證明目前 M0–M8 程式檢查通過，不代表 M9、school walkability、Projection Error evaluation 或 formal benchmark 已完成。
+結果：**219 passed in 27.05s**，沒有 skipped／failed；Ruff 全通過；mypy 33 source files 無問題；diff check 無問題；兩個 `.blend` 雜湊一致。M8 直接 targeted tests 28 個通過。這證明目前 M0–M8 程式檢查通過，不代表 M9、school walkability、Projection Error evaluation 或 formal benchmark 已完成。
 
 ### Git commits（皆為本機）
 
@@ -143,6 +145,8 @@ Resume in `/Users/polalabear/Developer/amidst`, branch `main`; the continuation 
 Read PRD, SYSTEM_DESIGN, ISSUES_AND_DECISIONS and the audit before any future work. Do not start M9 or later work without new authorization. Use uv. Domain contains contracts only. Ground Truth never enters inference, navigation/search, ranking or path scoring. Phase 2 and semantic ranking remain deferred.
 
 Use only 29 CAM_* cameras and one unit per metre. The source and ignored research copy have identical SHA-256 shown above. Neutral materials use a reversible temporary surface override; no rendered-pixel claim is validated. Factory trajectory fixtures are not approved school routes and must not be mixed with school camera/geometry contexts.
+
+The current materialization inventory is in [`data/README.md`](../data/README.md). Git tracks only the read-only scene/geometry audit bundle. The local 29-camera catalog is labelled `SYNTHETIC` and ignored; no Ground Truth, Observation, candidate, metric, `.rrd` or rendered-image dataset is currently materialized.
 
 M8 candidates preserve exact transition-authorized navigation edges and continuous anchors; no uncited connector or alternate shortcut is inserted. Equal physical corridors are deduplicated, return cycles remain bounded, and same-camera movement between distinct nodes needs an explicit leave-and-return cycle. `complete` is exhaustive only for the configured bounded candidate space; effective K is the smaller of request and policy cap, and truncation requires observing K+1 feasible corridors. Candidate identity includes the bound source/network, endpoints, physical route and speed. Ground Truth, semantic ranking and path score remain outside the engine.
 

@@ -6,6 +6,8 @@
 
 The authoritative schemas are Pydantic models in `src/amidst/domain/`. Models forbid unknown fields, require finite coordinates/times, retain nullable Phase 2 fields, and serialize enums as strings. Frozen models and tuple sequences prevent accidental in-place mutation.
 
+For the dated inventory of files that are actually materialized, tracked or local-only, see [`data/README.md`](../data/README.md). This document defines contracts; the inventory records current availability.
+
 | Model | Producer and permitted consumers | Key boundary |
 | --- | --- | --- |
 | `GroundTruthTrajectory` | Simulation/export; evaluation; debug visualization | `SYNTHETIC`, `GROUND_TRUTH`; never inference input |
@@ -39,6 +41,8 @@ All time values are synthetic seconds. World coordinates are right-handed Blende
 ## 繁體中文
 
 正式欄位定義以 `src/amidst/domain/` 的 Pydantic models 為準。模型拒絕未知欄位、非有限座標／時間，保留 Phase 2 nullable 欄位；enum 序列化為字串，frozen model 與 tuple 防止原地修改。
+
+目前實際已物化、Git 追蹤或僅存本機的檔案盤點，請見 [`data/README.md`](../data/README.md)。本文件定義契約；盤點文件記錄當前可用狀態。
 
 Ground Truth 僅供 simulation/export、evaluation 與 debug visualization；`BLENDER_EVALUATED` 座標來自 Blender proxy 求值，解析測試取樣器另標為 `CONFIGURATION_SAMPLER`。速度是設定路徑的分段線性導數。基準取樣器不使用隨機性，但仍記錄 seed 與可用的來源資產 SHA-256。
 
