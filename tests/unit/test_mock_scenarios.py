@@ -14,8 +14,8 @@ FIXTURES = Path(__file__).resolve().parents[2] / "data" / "mock"
 
 def test_regeneration_is_byte_identical_and_refuses_overwrite(tmp_path: Path) -> None:
     export_scenarios(tmp_path)
-    for path in FIXTURES.rglob("*.json"):
-        assert path.read_bytes() == (tmp_path / path.relative_to(FIXTURES)).read_bytes()
+    for generated in tmp_path.rglob("*.json"):
+        assert generated.read_bytes() == (FIXTURES / generated.relative_to(tmp_path)).read_bytes()
     with pytest.raises(FileExistsError):
         export_scenarios(tmp_path)
 

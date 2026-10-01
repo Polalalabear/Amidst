@@ -1,0 +1,6 @@
+{
+  "benchmark_kind": "SYNTHETIC_TEST_FIXTURE",
+  "coverage_distance": "ADE",
+  "coverage_epsilon_m": 1e-6,
+  "k_routes": 3
+}

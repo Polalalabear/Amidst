@@ -1,0 +1,92 @@
+{
+  "samples": [
+    {
+      "camera_id": "CAM_A",
+      "confidence": null,
+      "data_kind": "SYNTHETIC",
+      "frame_id": 0,
+      "gap_reason": null,
+      "occluder_id": null,
+      "occlusion_state": "UNKNOWN",
+      "projected_point": {
+        "camera_id": "CAM_A",
+        "floor_id": "1F",
+        "observation_id": "branching_top_k:obs:A",
+        "plane_id": "synthetic_plane:1F",
+        "point_id": "branching_top_k:obs:A:point",
+        "projection_quality": 1.0,
+        "provenance": "PROJECTED",
+        "timestamp": 10.0,
+        "world_position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "zone_id": null
+      },
+      "provenance": "PROJECTED",
+      "sample_id": "branching_top_k:obs:A:point",
+      "source_asset_sha256": null,
+      "source_id": "mock:branching_top_k",
+      "spatial_context_id": "SYNTHETIC:branching_top_k",
+      "target_id": "synthetic_person_01",
+      "timestamp": 10.0,
+      "uv": null,
+      "visibility": "OBSERVED"
+    },
+    {
+      "camera_id": "CAM_B",
+      "confidence": null,
+      "data_kind": "SYNTHETIC",
+      "frame_id": 0,
+      "gap_reason": null,
+      "occluder_id": null,
+      "occlusion_state": "UNKNOWN",
+      "projected_point": {
+        "camera_id": "CAM_B",
+        "floor_id": "1F",
+        "observation_id": "branching_top_k:obs:B",
+        "plane_id": "synthetic_plane:1F",
+        "point_id": "branching_top_k:obs:B:point",
+        "projection_quality": 1.0,
+        "provenance": "PROJECTED",
+        "timestamp": 50.0,
+        "world_position": [
+          20.0,
+          0.0,
+          0.0
+        ],
+        "zone_id": null
+      },
+      "provenance": "PROJECTED",
+      "sample_id": "branching_top_k:obs:B:point",
+      "source_asset_sha256": null,
+      "source_id": "mock:branching_top_k",
+      "spatial_context_id": "SYNTHETIC:branching_top_k",
+      "target_id": "synthetic_person_01",
+      "timestamp": 50.0,
+      "uv": null,
+      "visibility": "OBSERVED"
+    },
+    {
+      "camera_id": "CAM_A",
+      "confidence": null,
+      "data_kind": "SYNTHETIC",
+      "frame_id": 1,
+      "gap_reason": "OUTSIDE_FOV",
+      "occluder_id": null,
+      "occlusion_state": "UNKNOWN",
+      "projected_point": null,
+      "provenance": null,
+      "sample_id": "branching_top_k:gap",
+      "source_asset_sha256": null,
+      "source_id": "mock:branching_top_k",
+      "spatial_context_id": "SYNTHETIC:branching_top_k",
+      "target_id": "synthetic_person_01",
+      "timestamp": 30.0,
+      "uv": null,
+      "visibility": "GAP"
+    }
+  ],
+  "schema_version": "1.0"
+}

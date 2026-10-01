@@ -34,6 +34,7 @@ class DatasetCase(DomainModel):
     # Reference metadata only; providers never open these files.
     evaluation_references: tuple[ArtifactReference, ...] = ()
     camera_calibration: ArtifactReference | None = None
+    constraints: ArtifactReference | None = None
 
 
 class DatasetManifest(DomainModel):

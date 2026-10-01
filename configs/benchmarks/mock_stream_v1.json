@@ -1,0 +1,24 @@
+{
+  "aggregation_policy": {
+    "max_visible_sample_gap_s": null
+  },
+  "camera_config_version": "projected-endpoints-v1",
+  "dataset_manifest": {
+    "path": "../../data/mock/stream_v1/dataset.json",
+    "sha256": "2015db6be471fa976948998e875b16267b00e9025cbfa17339ff8f07b1a970f1"
+  },
+  "dataset_version": "mock-stream-v1",
+  "debug_ground_truth": false,
+  "experiment_id": "mock-stream-regression-v1",
+  "metric_config": {
+    "path": "../metrics/synthetic_regression_v1.json",
+    "sha256": "61ac611cee969f77231279ffdea771373eecc6c379282e536eca824cd60b9b2d"
+  },
+  "metric_config_version": "synthetic-regression-metrics-v1",
+  "pipeline_version": "phase1-dataset-infrastructure-v1",
+  "record_rerun": false,
+  "scene_version": "configured-fake-scenes-v1",
+  "schema_version": "1.0",
+  "seed": 20261001,
+  "topology_version": "topology-authorized-v1"
+}

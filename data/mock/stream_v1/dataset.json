@@ -1,0 +1,113 @@
+{
+  "camera_config_version": "projected-endpoints-v1",
+  "cases": [
+    {
+      "camera_calibration": null,
+      "case_id": "branching_top_k",
+      "constraints": {
+        "path": "../constraints.json",
+        "sha256": "0c38bef1bddad13ccb351770f1a0952cfa4cd8a1f48eb737fd9a7a776c3384bb"
+      },
+      "evaluation_references": [
+        {
+          "path": "../branching_top_k/ground_truth.json",
+          "sha256": "61d1f254d7711fc70713f8ca975d94996e48cd2e8eecda65e2b441b2ba4f94a9"
+        }
+      ],
+      "frames": {
+        "path": "branching_top_k/frames.json",
+        "sha256": "7115596e899ee919834d54645c8d78b0c87afd2898d66883839f8df929eb7181"
+      },
+      "pipeline": {
+        "path": "branching_top_k/pipeline.json",
+        "sha256": "652ed5ed25e758c321242757c90dd010776c4166b22bed0473c2d6499f67a8f6"
+      },
+      "source_asset_sha256": null,
+      "source_id": "mock:branching_top_k",
+      "spatial_context_id": "SYNTHETIC:branching_top_k"
+    },
+    {
+      "camera_calibration": null,
+      "case_id": "simplified_stair",
+      "constraints": {
+        "path": "../constraints.json",
+        "sha256": "0c38bef1bddad13ccb351770f1a0952cfa4cd8a1f48eb737fd9a7a776c3384bb"
+      },
+      "evaluation_references": [
+        {
+          "path": "../simplified_stair/ground_truth.json",
+          "sha256": "0b708acee8f783f014a1bf81aa5dc1631819823167bcb4d8ee4991a9da4ee79f"
+        }
+      ],
+      "frames": {
+        "path": "simplified_stair/frames.json",
+        "sha256": "b975b1dda247749341c351f20785be6151ec58b2f108e83d7bdbcbd36c5fcc53"
+      },
+      "pipeline": {
+        "path": "simplified_stair/pipeline.json",
+        "sha256": "d121bfc9c45f731e96ab6260d1b5a750bd38e565fa6f22cc607d1b001b9a26b4"
+      },
+      "source_asset_sha256": null,
+      "source_id": "mock:simplified_stair",
+      "spatial_context_id": "SYNTHETIC:simplified_stair"
+    },
+    {
+      "camera_calibration": null,
+      "case_id": "single_path",
+      "constraints": {
+        "path": "../constraints.json",
+        "sha256": "0c38bef1bddad13ccb351770f1a0952cfa4cd8a1f48eb737fd9a7a776c3384bb"
+      },
+      "evaluation_references": [
+        {
+          "path": "../single_path/ground_truth.json",
+          "sha256": "f1acba6bd4be7856fbbf438924794873936b8a22f0bcc3d4234a254e01a1af53"
+        }
+      ],
+      "frames": {
+        "path": "single_path/frames.json",
+        "sha256": "087698af6d21927bc649a7c349e2b629135792adcd0e04d56f761ceddc18ee9d"
+      },
+      "pipeline": {
+        "path": "single_path/pipeline.json",
+        "sha256": "c20d01c0901852335403dd9b57853827c2a3d44da3ed356548961464aafca5e2"
+      },
+      "source_asset_sha256": null,
+      "source_id": "mock:single_path",
+      "spatial_context_id": "SYNTHETIC:single_path"
+    },
+    {
+      "camera_calibration": null,
+      "case_id": "temporal_slack",
+      "constraints": {
+        "path": "../constraints.json",
+        "sha256": "0c38bef1bddad13ccb351770f1a0952cfa4cd8a1f48eb737fd9a7a776c3384bb"
+      },
+      "evaluation_references": [
+        {
+          "path": "../temporal_slack/ground_truth.json",
+          "sha256": "1cc2e0c3fb57d90e92c51fec5b863f44289a000b97f0e124b5a30c4653a87672"
+        }
+      ],
+      "frames": {
+        "path": "temporal_slack/frames.json",
+        "sha256": "a449b293eb7c9f599566c550ad2b0f7e7a38bfc0bf637444f3b74c08c44c3f07"
+      },
+      "pipeline": {
+        "path": "temporal_slack/pipeline.json",
+        "sha256": "42fc5b51d7b9365da16b5e1b3578cecae4f781e70c6c34260130ea760d2f3953"
+      },
+      "source_asset_sha256": null,
+      "source_id": "mock:temporal_slack",
+      "spatial_context_id": "SYNTHETIC:temporal_slack"
+    }
+  ],
+  "data_kind": "SYNTHETIC",
+  "dataset_id": "mock-stream",
+  "dataset_version": "mock-stream-v1",
+  "provider_kind": "MOCK_JSON",
+  "scene_version": "configured-fake-scenes-v1",
+  "schema_version": "1.0",
+  "seed": 20261001,
+  "topology_version": "topology-authorized-v1"
+}
