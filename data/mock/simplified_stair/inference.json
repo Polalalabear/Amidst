@@ -1,0 +1,251 @@
+{
+  "data_kind": "SYNTHETIC",
+  "dataset_id": "simplified_stair",
+  "end_observation": {
+    "appearance_embedding": null,
+    "appearance_labels": null,
+    "appearance_quality": null,
+    "camera_id": "CAM_B",
+    "end_time": 17.0,
+    "entry_direction": null,
+    "exit_direction": null,
+    "floor_id": "2F",
+    "fragment_count": null,
+    "frames": [],
+    "observation_id": "simplified_stair:obs:B",
+    "observation_quality": null,
+    "occlusion_quality": null,
+    "projected_path": [
+      {
+        "camera_id": "CAM_B",
+        "floor_id": "2F",
+        "observation_id": "simplified_stair:obs:B",
+        "plane_id": "synthetic_plane:2F",
+        "point_id": "simplified_stair:obs:B:point",
+        "projection_quality": 1.0,
+        "provenance": "PROJECTED",
+        "timestamp": 17.0,
+        "world_position": [
+          4.0,
+          0.0,
+          3.0
+        ],
+        "zone_id": null
+      }
+    ],
+    "projection_quality": null,
+    "provenance": "PROJECTED",
+    "source_video_reference": null,
+    "start_time": 17.0,
+    "stitching_count": null,
+    "target_id": "synthetic_person_01",
+    "track_ids": null,
+    "tracking_quality": null,
+    "zone_id": null
+  },
+  "movement": {
+    "max_speed_m_s": 1.0
+  },
+  "navigation": {
+    "cross_floor_policy": "EXPLICIT_PARAMETERIZED_STAIRS",
+    "data_kind": "SYNTHETIC_TEST_FIXTURE",
+    "edges": [
+      {
+        "edge_id": "entry",
+        "from_node_id": "A",
+        "polyline": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            2.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "stair_id": null,
+        "to_node_id": "stair_entry",
+        "transition_type": "WALK",
+        "walkable": true
+      },
+      {
+        "edge_id": "stair_path",
+        "from_node_id": "stair_entry",
+        "polyline": [
+          [
+            2.0,
+            0.0,
+            0.0
+          ],
+          [
+            2.0,
+            0.0,
+            1.5
+          ],
+          [
+            2.0,
+            0.0,
+            3.0
+          ]
+        ],
+        "stair_id": "SYNTHETIC_INTERFACE_ONLY",
+        "to_node_id": "stair_exit",
+        "transition_type": "STAIR_UP",
+        "walkable": true
+      },
+      {
+        "edge_id": "exit",
+        "from_node_id": "stair_exit",
+        "polyline": [
+          [
+            2.0,
+            0.0,
+            3.0
+          ],
+          [
+            4.0,
+            0.0,
+            3.0
+          ]
+        ],
+        "stair_id": null,
+        "to_node_id": "B",
+        "transition_type": "WALK",
+        "walkable": true
+      }
+    ],
+    "graph_id": "simplified_stair:walkable",
+    "node_match_tolerance_m": 1e-06,
+    "nodes": [
+      {
+        "floor_id": "1F",
+        "node_id": "A",
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "zone_id": null
+      },
+      {
+        "floor_id": "1F",
+        "node_id": "stair_entry",
+        "position": [
+          2.0,
+          0.0,
+          0.0
+        ],
+        "zone_id": null
+      },
+      {
+        "floor_id": "2F",
+        "node_id": "stair_exit",
+        "position": [
+          2.0,
+          0.0,
+          3.0
+        ],
+        "zone_id": null
+      },
+      {
+        "floor_id": "2F",
+        "node_id": "B",
+        "position": [
+          4.0,
+          0.0,
+          3.0
+        ],
+        "zone_id": null
+      }
+    ],
+    "source_asset_sha256": null,
+    "spatial_context_id": "SYNTHETIC:simplified_stair"
+  },
+  "random_seed": 20261001,
+  "search_policy": {
+    "max_branch_factor": 8,
+    "max_candidate_paths": 3,
+    "max_detour_ratio": 3.0,
+    "max_path_length_m": 100.0,
+    "max_search_nodes": 100,
+    "max_search_time_s": 60.0
+  },
+  "start_observation": {
+    "appearance_embedding": null,
+    "appearance_labels": null,
+    "appearance_quality": null,
+    "camera_id": "CAM_A",
+    "end_time": 10.0,
+    "entry_direction": null,
+    "exit_direction": null,
+    "floor_id": "1F",
+    "fragment_count": null,
+    "frames": [],
+    "observation_id": "simplified_stair:obs:A",
+    "observation_quality": null,
+    "occlusion_quality": null,
+    "projected_path": [
+      {
+        "camera_id": "CAM_A",
+        "floor_id": "1F",
+        "observation_id": "simplified_stair:obs:A",
+        "plane_id": "synthetic_plane:1F",
+        "point_id": "simplified_stair:obs:A:point",
+        "projection_quality": 1.0,
+        "provenance": "PROJECTED",
+        "timestamp": 10.0,
+        "world_position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "zone_id": null
+      }
+    ],
+    "projection_quality": null,
+    "provenance": "PROJECTED",
+    "source_video_reference": null,
+    "start_time": 10.0,
+    "stitching_count": null,
+    "target_id": "synthetic_person_01",
+    "track_ids": null,
+    "tracking_quality": null,
+    "zone_id": null
+  },
+  "topology": {
+    "data_kind": "SYNTHETIC_TEST_FIXTURE",
+    "navigation_graph_id": "simplified_stair:walkable",
+    "nodes": [
+      {
+        "camera_id": "CAM_A",
+        "floor_id": "1F",
+        "zone_id": null
+      },
+      {
+        "camera_id": "CAM_B",
+        "floor_id": "2F",
+        "zone_id": null
+      }
+    ],
+    "source_asset_sha256": null,
+    "spatial_context_id": "SYNTHETIC:simplified_stair",
+    "topology_id": "simplified_stair:cameras",
+    "transitions": [
+      {
+        "from_camera_id": "CAM_A",
+        "navigation_edge_ids": [
+          "entry",
+          "stair_path",
+          "exit"
+        ],
+        "navigation_from_node_id": "A",
+        "navigation_to_node_id": "B",
+        "to_camera_id": "CAM_B",
+        "transition_id": "stair",
+        "transition_type": "STAIR_UP"
+      }
+    ]
+  }
+}

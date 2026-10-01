@@ -1,0 +1,15 @@
+{
+  "collision_geometry": "EXPLICIT_AABB_ONLY",
+  "coverage_distance": "ADE",
+  "coverage_epsilon_m": 1e-06,
+  "data_kind": "SYNTHETIC_TEST_FIXTURE",
+  "k_routes": 3,
+  "random_seed": 20261001,
+  "scenarios": [
+    "single_path",
+    "branching_top_k",
+    "temporal_slack",
+    "simplified_stair"
+  ],
+  "school_or_blender_validation": false
+}

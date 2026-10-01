@@ -1,0 +1,166 @@
+{
+  "data_kind": "SYNTHETIC",
+  "random_seed": 20261001,
+  "sample_rate_hz": 1,
+  "sample_source": "CONFIGURATION_SAMPLER",
+  "samples": [
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 10.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 11.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        2.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 12.0,
+      "velocity": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        2.0,
+        0.0,
+        1.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 13.0,
+      "velocity": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        2.0,
+        0.0,
+        1.5
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 13.5,
+      "velocity": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        2.0,
+        0.0,
+        2.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 14.0,
+      "velocity": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "2F",
+      "position": [
+        2.0,
+        0.0,
+        3.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 15.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "2F",
+      "position": [
+        3.0,
+        0.0,
+        3.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 16.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "2F",
+      "position": [
+        4.0,
+        0.0,
+        3.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 17.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    }
+  ],
+  "scene_id": "SYNTHETIC:simplified_stair",
+  "source_asset_name": null,
+  "source_asset_sha256": null,
+  "target_id": "synthetic_person_01",
+  "trajectory_id": "simplified_stair:truth"
+}

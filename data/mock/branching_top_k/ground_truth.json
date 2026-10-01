@@ -1,0 +1,710 @@
+{
+  "data_kind": "SYNTHETIC",
+  "random_seed": 20261001,
+  "sample_rate_hz": 1,
+  "sample_source": "CONFIGURATION_SAMPLER",
+  "samples": [
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 10.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 11.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -2.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 12.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -3.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 13.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -4.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 14.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -5.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 15.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -6.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 16.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -7.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 17.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -8.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 18.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -9.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 19.0,
+      "velocity": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        0.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 20.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        1.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 21.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        2.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 22.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        3.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 23.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        4.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 24.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        5.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 25.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        6.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 26.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        7.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 27.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        8.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 28.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        9.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 29.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        10.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 30.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        11.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 31.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        12.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 32.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        13.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 33.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        14.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 34.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        15.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 35.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        16.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 36.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        17.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 37.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        18.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 38.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        19.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 39.0,
+      "velocity": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -10.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 40.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -9.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 41.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -8.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 42.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -7.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 43.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -6.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 44.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -5.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 45.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -4.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 46.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -3.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 47.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -2.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 48.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        -1.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 49.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    },
+    {
+      "floor_id": "1F",
+      "position": [
+        20.0,
+        0.0,
+        0.0
+      ],
+      "provenance": "GROUND_TRUTH",
+      "semantic_region": null,
+      "timestamp": 50.0,
+      "velocity": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "zone_id": null
+    }
+  ],
+  "scene_id": "SYNTHETIC:branching_top_k",
+  "source_asset_name": null,
+  "source_asset_sha256": null,
+  "target_id": "synthetic_person_01",
+  "trajectory_id": "branching_top_k:truth"
+}
