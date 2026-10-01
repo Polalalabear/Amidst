@@ -1,6 +1,23 @@
 {
-  "benchmark_kind": "SYNTHETIC_TEST_FIXTURE",
-  "coverage_distance": "ADE",
-  "coverage_epsilon_m": 1e-6,
-  "k_routes": 3
+  "ade_policy": "ARITHMETIC_MEAN_3D_EUCLIDEAN",
+  "collision_boundary_policy": "CLOSED_AABB_TOUCH_COUNTS",
+  "collision_tolerance_m": 0.0,
+  "collision_tolerance_policy": "EXPAND_CLOSED_AABB",
+  "constraint_corridor_tolerance_m": 1e-06,
+  "constraint_denominator": "CONSECUTIVE_TIMED_POINT_PAIRS_INCLUDING_DWELL",
+  "constraint_speed_relative_tolerance": 1e-12,
+  "coverage_comparison": "STRICTLY_LESS_THAN",
+  "coverage_epsilon_m": 1e-06,
+  "fde_policy": "LAST_GROUND_TRUTH_TIMESTAMP_3D_EUCLIDEAN",
+  "formal_benchmark_status": "UNRESOLVED",
+  "interpolation_policy": "PIECEWISE_LINEAR",
+  "k_values": [
+    1,
+    2,
+    3
+  ],
+  "metric_config_version": "synthetic-regression-metrics-v1",
+  "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+  "top_k_policy": "FIRST_HYPOTHESIS_PER_DISTINCT_CANDIDATE_IN_INPUT_ORDER",
+  "trajectory_distance_metric": "ADE"
 }

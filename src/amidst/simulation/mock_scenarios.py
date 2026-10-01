@@ -186,7 +186,10 @@ def export_scenarios(destination: Path) -> None:
         write_json(folder / "inference.json", scenario.model_dump(mode="json"))
         truth = sample_trajectory(ground_truth_config(scenario))
         write_json(folder / "ground_truth.json", truth.model_dump(mode="json"))
-    write_json(destination / "constraints.json", fixture_constraints().model_dump(mode="json"))
+    # Preserve the original fixture serialization; metric tolerances are external config.
+    write_json(destination / "constraints.json", fixture_constraints().model_dump(
+        mode="json", exclude={"collision_tolerance_m", "speed_relative_tolerance"},
+    ))
     write_json(destination / "manifest.json", {
         "data_kind": "SYNTHETIC_TEST_FIXTURE", "random_seed": SEED,
         "scenarios": list(SCENARIO_IDS), "coverage_distance": "ADE",

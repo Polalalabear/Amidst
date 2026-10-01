@@ -12,7 +12,7 @@
   "experiment_id": "mock-stream-regression-v1",
   "metric_config": {
     "path": "../metrics/synthetic_regression_v1.json",
-    "sha256": "61ac611cee969f77231279ffdea771373eecc6c379282e536eca824cd60b9b2d"
+    "sha256": "8cdd18912d1ead78cc5c1592c8c91b7e69c15117053ba2f3701b0ebb57f50cca"
   },
   "metric_config_version": "synthetic-regression-metrics-v1",
   "pipeline_version": "phase1-dataset-infrastructure-v1",

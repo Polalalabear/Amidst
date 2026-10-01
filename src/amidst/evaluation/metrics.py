@@ -40,12 +40,13 @@ def _position_at(trajectory: TrajectoryHypothesis, timestamp: float) -> Vec3:
     )
 
 
-def _collides(start: Vec3, end: Vec3, obstacle: AABBObstacle) -> bool:
+def _collides(start: Vec3, end: Vec3, obstacle: AABBObstacle, tolerance_m: float) -> bool:
     """Slab clipping tests the entire closed segment, including a stationary dwell."""
     entry, exit_ = 0.0, 1.0
     for axis in range(3):
         delta = _finite(end[axis] - start[axis])
-        low, high = obstacle.minimum[axis], obstacle.maximum[axis]
+        low = _finite(obstacle.minimum[axis] - tolerance_m)
+        high = _finite(obstacle.maximum[axis] + tolerance_m)
         if delta == 0:
             if not low <= start[axis] <= high:
                 return False
@@ -149,9 +150,15 @@ def _physical_metrics(
         start, end = before.world_position, after.world_position
         speed = _finite(math.dist(start, end) / (after.timestamp - before.timestamp))
         speed_violation = speed > constraints.max_speed_m_s and not math.isclose(
-            speed, constraints.max_speed_m_s, rel_tol=1e-12, abs_tol=0
+            speed,
+            constraints.max_speed_m_s,
+            rel_tol=constraints.speed_relative_tolerance,
+            abs_tol=0,
         )
-        collision = any(_collides(start, end, obstacle) for obstacle in constraints.obstacles)
+        collision = any(
+            _collides(start, end, obstacle, float(constraints.collision_tolerance_m))
+            for obstacle in constraints.obstacles
+        )
         corridor_violation = corridor_segments is not None and not _authorized_segment(
             start, end, corridor_segments, float(constraints.corridor_tolerance_m)
         )

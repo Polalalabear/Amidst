@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -14,6 +16,7 @@ from amidst.domain.evaluation import ConstraintConfig, EvaluationConfig, Evaluat
 from amidst.domain.ground_truth import GroundTruthTrajectory
 from amidst.domain.trajectory import TerminationReason
 from amidst.evaluation import evaluate_trajectories
+from amidst.experiments.versioning import load_experiment, resolve_reference
 from amidst.pipeline import load_inference_input, reconstruct_input
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,7 +26,51 @@ FIXTURES = ROOT / "data" / "mock"
 
 def _metric(gap: GapResult) -> EvaluationResult:
     assert gap.evaluation is not None
-    return gap.evaluation
+    return gap.evaluation.for_k(3)
+
+
+def _reference(path: Path) -> dict[str, str]:
+    return {"path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+
+
+def _custom_config(
+    directory: Path, *, case_ids: tuple[str, ...] = ("single_path",),
+    case_updates: dict[str, Any] | None = None,
+    frames: dict[str, Any] | None = None,
+    truth: dict[str, Any] | None = None,
+    config_updates: dict[str, Any] | None = None,
+) -> Path:
+    """Rebind content hashes for local test mutations without changing source inputs."""
+    config, dataset, manifest_path = load_experiment(CONFIG)
+    directory.mkdir(parents=True, exist_ok=True)
+    payload = dataset.model_dump(mode="json")
+    payload["cases"] = [case for case in payload["cases"] if case["case_id"] in case_ids]
+    for case in payload["cases"]:
+        for name in ("pipeline", "frames", "constraints", "camera_calibration"):
+            if case[name] is not None:
+                case[name]["path"] = str((manifest_path.parent / case[name]["path"]).resolve())
+        for reference in case["evaluation_references"]:
+            reference["path"] = str((manifest_path.parent / reference["path"]).resolve())
+        if frames is not None:
+            frame_path = directory / "frames.json"
+            frame_path.write_text(json.dumps(frames))
+            case["frames"] = _reference(frame_path)
+        if truth is not None:
+            truth_path = directory / "ground_truth.json"
+            truth_path.write_text(json.dumps(truth))
+            case["evaluation_references"] = [_reference(truth_path)]
+        if case_updates:
+            case.update(case_updates)
+    manifest = directory / "manifest.json"
+    manifest.write_text(json.dumps(payload))
+    config_payload = config.model_dump(mode="json")
+    config_payload["dataset_manifest"] = _reference(manifest)
+    config_payload["metric_config"]["path"] = str(resolve_reference(config.metric_config, CONFIG))
+    if config_updates:
+        config_payload.update(config_updates)
+    target = directory / "experiment.json"
+    target.write_text(json.dumps(config_payload))
+    return target
 
 
 def _deterministic_cases(result: BenchmarkResult) -> list[dict[str, object]]:

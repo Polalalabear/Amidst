@@ -15,9 +15,10 @@ from amidst.domain.experiment import (
     DatasetManifest,
     ExperimentConfig,
 )
+from amidst.domain.metric_config import MetricConfig
 from amidst.domain.pipeline import InferenceInput, PipelineConfig
 from amidst.domain.stream import OcclusionState, RawProjectedFrameSample
-from amidst.experiments.versioning import PIPELINE_VERSION
+from amidst.experiments.versioning import PIPELINE_VERSION, read_local_bytes
 from amidst.storage.json_files import write_json
 
 
@@ -135,6 +136,7 @@ def experiment_config(
     *,
     config_directory: Path,
 ) -> ExperimentConfig:
+    metric_config = MetricConfig.model_validate_json(read_local_bytes(metric_path))
     return ExperimentConfig(
         experiment_id="mock-stream-regression-v1",
         dataset_version=manifest.dataset_version,
@@ -142,7 +144,7 @@ def experiment_config(
         scene_version=manifest.scene_version,
         camera_config_version=manifest.camera_config_version,
         topology_version=manifest.topology_version,
-        metric_config_version="synthetic-regression-metrics-v1",
+        metric_config_version=metric_config.metric_config_version,
         pipeline_version=PIPELINE_VERSION,
         dataset_manifest=_reference(dataset_path, os.path.relpath(dataset_path, config_directory)),
         metric_config=_reference(metric_path, os.path.relpath(metric_path, config_directory)),

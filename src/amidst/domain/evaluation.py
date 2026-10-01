@@ -36,7 +36,9 @@ class ConstraintConfig(DomainModel):
     max_speed_m_s: PositiveFinite
     navigation_graph: NavigationGraphConfig | None = None
     obstacles: tuple[AABBObstacle, ...] = ()
-    corridor_tolerance_m: PositiveFinite = 1e-6
+    corridor_tolerance_m: NonNegativeFinite = 1e-6
+    collision_tolerance_m: NonNegativeFinite = 0.0
+    speed_relative_tolerance: Annotated[FiniteFloat, Field(ge=0, lt=1)] = 1e-12
 
     @model_validator(mode="after")
     def unique_obstacles(self) -> Self:

@@ -13,12 +13,16 @@ from pydantic import Field
 from amidst.datasets.loading import load_case_calibration, load_dataset_case
 from amidst.domain.calibration import CameraCalibrationCatalog
 from amidst.domain.common import DomainModel
-from amidst.domain.evaluation import ConstraintConfig, EvaluationConfig, EvaluationResult
+from amidst.domain.evaluation import ConstraintConfig
 from amidst.domain.experiment import DatasetCase, ExperimentRecord, InputFingerprint
 from amidst.domain.ground_truth import GroundTruthTrajectory
+from amidst.domain.metric_config import MetricConfig
 from amidst.domain.pipeline import PipelineConfig
 from amidst.domain.stream import BoundGapEvent, ObservationAggregation
-from amidst.evaluation.metrics import evaluate_trajectories
+from amidst.evaluation.configured import (
+    ConfiguredEvaluationResult,
+    evaluate_configured_trajectories,
+)
 from amidst.events import reconstruct_gaps
 from amidst.experiments.versioning import (
     canonical_config_hash,
@@ -34,7 +38,7 @@ from amidst.visualization import RerunDebugVisualizationAdapter
 
 class GapResult(DomainModel):
     gap: BoundGapEvent
-    evaluation: EvaluationResult | None = None
+    evaluation: ConfiguredEvaluationResult | None = None
     rerun_artifact: str | None = None
 
 
@@ -205,9 +209,11 @@ def run_benchmark(
     if debug_ground_truth is not None:
         updates["debug_ground_truth"] = debug_ground_truth
     config = type(config).model_validate(config.model_dump() | updates)
-    metric_config = EvaluationConfig.model_validate_json(
+    metric_config = MetricConfig.model_validate_json(
         read_reference(config.metric_config, config_path)
     )
+    if metric_config.metric_config_version != config.metric_config_version:
+        raise ValueError("metric configuration version must match the experiment")
     # Repository identity comes from installed code location, independent of cwd.
     repository = Path(__file__).resolve().parents[3]
     revision = git_revision(repository)
@@ -238,8 +244,9 @@ def run_benchmark(
         for gap in inferred_case.gaps:
             truth = _reference_for_gap(references, gap, seed=config.seed)
             evaluation = (
-                evaluate_trajectories(gap.event.trajectories, truth, metric_config,
-                                      constraints=constraints)
+                evaluate_configured_trajectories(
+                    gap.event.trajectories, truth, metric_config, constraints=constraints,
+                )
                 if truth is not None else None
             )
             rerun_artifact = None
