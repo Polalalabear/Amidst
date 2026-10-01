@@ -1,0 +1,141 @@
+# Conversation handoff / 對話交接
+
+[繁體中文](#繁體中文) | [English](#english)
+
+## 繁體中文
+
+更新日期：2026-10-01。已接續交接內容完成 M5 收尾與驗證；沒有 push、PR 或 render。
+
+### 已驗證的工作位置與 checkpoint
+
+- 實際 repository：`/Users/polalabear/Developer/amidst`。舊環境可能仍顯示 `admist`；不要在舊路徑重建專案。
+- Branch：`main`。
+- 接續起點 HEAD：`58a809956cdfe444509e0d676ec2e8f6f382370c`（M4）。
+- Remote：`https://github.com/Polalalabear/amidst.git`。本輪未 push。
+- M5 既有檔案已保留並完成 review 收尾；本文件隨 M5 commit 納入版本控制。
+- 使用 `uv`、`pyproject.toml`、`uv.lock`；不要改用 requirements.txt。
+- Blender CLI：`/Applications/Blender.app/Contents/MacOS/blender`，5.2.1 LTS，build `9e2066aef7ef`。
+- 舊 sandbox writable root 若仍是 `admist`，相關執行可能需要正常權限升級；這不是產品錯誤。所有 shell 指令明確指定正確 workdir。
+
+### 授權、順序與停點
+
+先完整閱讀 `docs/PRD.md`、`docs/SYSTEM_DESIGN.md`、`docs/ISSUES_AND_DECISIONS.md`，再接續現有程式。上個對話已完整閱讀，但新對話仍須自行確認。
+
+使用者要求 M0、M1 後，若無重大問題便做 M2→M8；每個 milestone 都必須可執行、測試、獨立 commit，然後才進下一階段。完成 M8 就停止，不自動進入 M9 或 Agent Semantic Ranking。Phase 2 僅留 schema/interface。
+
+重大設計、公開介面調整、來源資產改動、不確定 walkability 或 Ground Truth leakage 須詢問。小型工程問題可依現有規格處理。
+
+Ground Truth 僅限 simulation/export、evaluation、debug visualization。不得流入 projection inference、topology/graph 搜尋、candidate ranking、semantic reasoning 或 path score。domain 只放 schema/interface，不能放幾何或搜尋演算法。
+
+只有 29 台 `CAM_*` 參與研究；1 Blender unit = 1 meter。攝影機 local +X 右、+Y 上、-Z 前；左上原點連續像素、半開影像邊界。使用者同意研究副本與中性材質，沒有同意清理來源資產或渲染。
+
+### 現況：M0–M5 已完成
+
+| Milestone | 狀態／內容 |
+| --- | --- |
+| M0 | uv、Git、文件、Blender CLI 檢查完成 |
+| M1 | 唯讀場景盤點與幾何補充 audit；原檔保留，建立 byte-identical 研究副本 |
+| M2 | 可設定、確定性取樣；Blender transient target proxy 求值；timestamped GT JSON/CSV、seed 與來源綁定 |
+| M3 | Camera schema、29 台實際相機抽取、world→pixel、FOV/clip；與 Blender 投影 parity 驗證 |
+| M4 | evaluated Mesh raycast、OBSERVED/GAP、FOV/occlusion/fail-closed 原因、只含 2D 的 observation 匯出與來源 SHA 綁定 |
+| M5 | Observation、ProjectedPoint、CandidateTrajectory、Event、ReconstructionResult、Provenance/termination 契約、nullable Phase 2 欄位與 serialization tests 完成；已補 termination/completion 一致性與空 shell 邊界 |
+| M6–M8 | 尚未實作；依序做 inverse projection、topology/navigation abstraction、deterministic Top-K graph engine |
+
+M5 從交接保留並納入本階段 commit 的檔案：
+
+```text
+docs/DATA_SCHEMA.md
+docs/INTERFACES.md
+src/amidst/domain/interfaces.py
+src/amidst/domain/observation.py
+src/amidst/domain/trajectory.py
+tests/unit/test_observation_models.py
+```
+
+本交接文件 `docs/CODEX_HANDOFF.md` 也納入 M5 commit。接續時仍須重新 `git status` 確認，不能假設工作樹狀態未變。
+
+M5 schemas 已包含時間／camera／identity 一致性、finite values、provenance 限制與 extra／GT 欄位拒絕。空 OBSERVED shell 可存在，但未來 graph 必須拒絕沒有 projected endpoints 的推論輸入。`ReconstructionResult.complete` 表示搜尋窮盡，限額終止不可誤標完整。
+
+交接 review 發現的兩項 M5 收尾事項已處理：
+
+- `domain/trajectory.py` 已驗證 reason/complete 一致性，並拒絕 `NO_FEASIBLE_PATH` 攜帶 candidates；相應 schema tests 已加入。
+- `DATA_SCHEMA.md` 已註明空 OBSERVED shell 不等於有效 Evidence；M8 仍須另外檢查 projected endpoints。
+
+尚未寫 synthetic frame→Observation aggregation helper；它若需要，屬於 simulation，不是 Phase 2 tracking/stitching。M6 Plane schema／inverse projection、M7 navigation config、M8 search policy 也都尚未建立；不要把交接規劃當已採用介面或完成能力。
+
+### Scene Audit 核心結果與限制
+
+報告：`data/scene_audit/school_v2_scene_audit.json`、`README.md`、`school_v2_geometry_audit.json`、`GEOMETRY.md`。
+
+- 2,796 objects：2,652 Mesh、92 Empty、30 Camera、18 Light，以及少量其他類型；29 collections、260 materials、447 images（441 packed，5 missing）、489 modifiers、12 actions。
+- 29 台 `CAM_*` 是有限值 perspective cameras；另有 `skp_camera_Last_Saved_SketchUp_View` 焦距非有限，排除但不刪除。
+- 8 個高面數物件、18 個 imported lights、材質／貼圖與裝飾模型只列報告，未清理。neutral override 暫時替換表面材質，不改原始 slots、UV、images；未驗證 render pixels。
+- 幾何補充只檢查 370 個結構 Mesh（25,098 triangles），排除 Areas annotation boxes；不是完整場景 NavMesh 認證。
+- 主要 floor candidates：`z≈20.07885`、`z≈161.811096`；庭院另有 `z≈0.000112` 候選。候選地板與 raw overlap 不代表 walkability。
+- 兩個樓梯標示區沒有找到 Mesh 支持的連續上升路徑；固定網格最高面皆在二樓高度。不能從名稱建立穿越樓板的 school 跨樓層邊。
+- school 跨樓層配置維持 fail-closed，等待有效 entry/exit／parameterized path／geometry 確認；通用演算法與明確 `SYNTHETIC_TEST_FIXTURE` 的參數化樓梯測試仍可繼續 M6–M8（PRD §15、SYSTEM_DESIGN §14）。不要因此重開所有 milestone 的廣泛停工 gate。
+- visibility 是固定 frame 的 evaluated VIEWPORT Mesh 點查詢，不是 render-pixel equivalence；render-only modifiers、透明度、影像可用性不在驗證範圍。
+
+### 資產保全與資料上下文
+
+原檔：`blender/school_v2.blend`。
+研究副本：`blender/working/school_v2_research.blend`（Git ignored）。
+
+交接時兩者 SHA-256 一致：
+
+```text
+1332280b8ca24ba8568017a13b666618c93337f32bcc431e59e7db617924fc38
+```
+
+本輪未修改、儲存或渲染任一 `.blend`。Blender scripts 使用 `--background --factory-startup --disable-autoexec -noaudio --python-exit-code 2`。整合測試只建立 transient factory fixtures；Blender adapters 使用標準函式庫與 lazy bpy/mathutils，避免依賴 Blender Python 具有 uv 的 Pydantic/NumPy 環境。
+
+`configs/trajectory_fixture.json` 是 factory-scene synthetic fixture，不是核准的 school route。`data/cameras/school_v2_cameras.json` 是本機生成的真實 29 台校正資料，Git ignored。factory GT 不得混入 school camera/visibility 場景；school observation 匯出須有 BLENDER_EVALUATED GT 且三者來源 SHA 相同。生成 GT、camera、observations/candidates/metrics/.rrd 維持本機並 ignored。
+
+### 最新驗證
+
+於 M5 完整內容執行：
+
+```sh
+uv run pytest
+uv run ruff check .
+uv run mypy
+git diff --check
+shasum -a 256 blender/school_v2.blend blender/working/school_v2_research.blend
+```
+
+結果：**106 passed in 23.82s**，沒有 skipped／failed；Ruff 全通過；mypy 21 source files 無問題；diff check 無問題；兩個 `.blend` 雜湊一致。M5 targeted tests 45 個已包含於 106。這證明目前 M0–M5 程式檢查通過，不代表 M6–M8、school walkability 或 formal benchmark 已完成。
+
+### Git commits（皆為本機）
+
+```text
+3238ec7 chore: initialize uv project
+ab8a9d9 chore: add blender scene audit
+c3a02c7 docs: confirm phase 1 camera and unit conventions
+52b2b6e feat: add neutral surface material override
+c3638c5 chore: add read-only floor and stair geometry audit
+7add28b chore: record isolated research scene copy
+2e9dd29 docs: scope stair gate to school cross-floor configuration
+82fa2a3 feat: add blender ground truth export
+251db8f feat: add virtual camera projection
+58a8099 feat: add visibility and occlusion detection
+```
+
+### 接續順序與待決策事項
+
+1. M6：顯式 piecewise plane 與 camera calibration → inverse projection；Projection Error 只能在獨立 evaluation 邊界計算，推論不得接收 GT。
+2. M7：Camera topology／NavMesh abstraction、可行走幾何檢查、minimum path distance；school 未核准跨樓層邊維持 disconnected。可用合成 fixture 驗證 branching／parameterized stairs，但不能宣稱 school 已通過。
+3. M8：reachability、minimum travel time、speed／physical pruning、Top-K、確定性限額終止、GT isolation；核心單元測試與 major-flow integration tests、獨立 commit 後停止回報。
+
+待使用者確認的 school-specific 問題：實際樓梯 entry/exit 與路徑表示、庭院 floor／walkability 語意。Coverage@K 的 epsilon/正式定義需在 M10 benchmark 前確認；目前不因此阻塞通用 M6–M8。任何清理／修改來源資產、render、push/PR 或正式 Phase 2 都需要額外明確授權。
+
+`ISSUES_AND_DECISIONS.md` 僅記錄核心問題→採用解法；不要放進 commit log、測試紀錄或一般 TODO。本交接狀態留在此文件，不改 PRD/SYSTEM_DESIGN。
+
+## English
+
+Resume in `/Users/polalabear/Developer/amidst`, branch `main`; the continuation started from M4 HEAD `58a809956cdfe444509e0d676ec2e8f6f382370c`. M0–M5 are complete. M5 schemas/interfaces/docs/tests now enforce termination/completion consistency and document the empty Observation-shell boundary. No push, PR, render, or asset modification occurred.
+
+Read PRD, SYSTEM_DESIGN, ISSUES_AND_DECISIONS and the audit before resuming. Implement/test/commit M6, M7 and M8 sequentially; **stop after M8**. Use uv. Domain contains contracts only. Ground Truth never enters inference, navigation/search, ranking or path scoring. Phase 2 and semantic ranking remain deferred.
+
+Use only 29 CAM_* cameras and one unit per metre. The source and ignored research copy have identical SHA-256 shown above. Neutral materials use a reversible temporary surface override; no rendered-pixel claim is validated. Factory trajectory fixtures are not approved school routes and must not be mixed with school camera/geometry contexts.
+
+Latest full checks: 106 tests passed (no skips), Ruff passed, strict mypy passed for 21 source files, diff check passed, both asset hashes match. School floor heights are candidates, not navigation certification. School stairs lack a confirmed mesh-supported ascent and remain disconnected until entry/exit/path representation is confirmed. Explicitly synthetic parameterized stair fixtures can validate generic algorithms without inventing school connectivity. Courtyard interpretation and formal Coverage@K thresholds remain open, scoped to their relevant downstream work.
