@@ -4,7 +4,7 @@
 
 ## 繁體中文
 
-更新日期：2026-10-01。已依序完成 M5、M6 收尾、驗證與獨立 commit；沒有 push、PR 或 render。
+更新日期：2026-10-01。已依序完成 M5–M7 收尾、驗證與獨立 commit；沒有 push、PR 或 render。
 
 ### 已驗證的工作位置與 checkpoint
 
@@ -12,7 +12,7 @@
 - Branch：`main`。
 - 接續起點 HEAD：`58a809956cdfe444509e0d676ec2e8f6f382370c`（M4）。
 - Remote：`https://github.com/Polalalabear/amidst.git`。本輪未 push。
-- M5 已提交於 `1dcce12`；M6 顯式平面反投影已完成，本文件隨各 milestone 更新。
+- M5 已提交於 `1dcce12`、M6 已提交於 `7e952ae`；M7 navigation/topology 已完成，本文件隨各 milestone 更新。
 - 使用 `uv`、`pyproject.toml`、`uv.lock`；不要改用 requirements.txt。
 - Blender CLI：`/Applications/Blender.app/Contents/MacOS/blender`，5.2.1 LTS，build `9e2066aef7ef`。
 - 舊 sandbox writable root 若仍是 `admist`，相關執行可能需要正常權限升級；這不是產品錯誤。所有 shell 指令明確指定正確 workdir。
@@ -29,7 +29,7 @@ Ground Truth 僅限 simulation/export、evaluation、debug visualization。不�
 
 只有 29 台 `CAM_*` 參與研究；1 Blender unit = 1 meter。攝影機 local +X 右、+Y 上、-Z 前；左上原點連續像素、半開影像邊界。使用者同意研究副本與中性材質，沒有同意清理來源資產或渲染。
 
-### 現況：M0–M6 已完成
+### 現況：M0–M7 已完成
 
 | Milestone | 狀態／內容 |
 | --- | --- |
@@ -40,7 +40,8 @@ Ground Truth 僅限 simulation/export、evaluation、debug visualization。不�
 | M4 | evaluated Mesh raycast、OBSERVED/GAP、FOV/occlusion/fail-closed 原因、只含 2D 的 observation 匯出與來源 SHA 綁定 |
 | M5 | Observation、ProjectedPoint、CandidateTrajectory、Event、ReconstructionResult、Provenance/termination 契約、nullable Phase 2 欄位與 serialization tests 完成；已補 termination/completion 一致性與空 shell 邊界 |
 | M6 | 顯式 unit-normal Plane、camera/pixel fail-closed 驗證、ray-plane inverse projection、axial clipping、plane identity 與 incidence quality 完成；不接受 Ground Truth |
-| M7–M8 | 尚未實作；依序做 topology/navigation abstraction、deterministic Top-K graph engine |
+| M7 | 分離的 directed Camera Topology 與 configured navigation、3D polyline walkability checks、canonical minimum-distance route、顯式 synthetic parameterized stairs 完成；school 跨樓層維持 disconnected |
+| M8 | 尚未實作 deterministic Top-K graph engine |
 
 M5 從交接保留並納入本階段 commit 的檔案：
 
@@ -62,7 +63,7 @@ M5 schemas 已包含時間／camera／identity 一致性、finite values、prove
 - `domain/trajectory.py` 已驗證 reason/complete 一致性，並拒絕 `NO_FEASIBLE_PATH` 攜帶 candidates；相應 schema tests 已加入。
 - `DATA_SCHEMA.md` 已註明空 OBSERVED shell 不等於有效 Evidence；M8 仍須另外檢查 projected endpoints。
 
-尚未寫 synthetic frame→Observation aggregation helper；它若需要，屬於 simulation，不是 Phase 2 tracking/stitching。M6 已實作單一 camera／明確 Plane 綁定的 inverse projection；沒有寫入 school floor 候選或 walkability 宣稱。M7 navigation config 與 M8 search policy 尚未建立。
+尚未寫 synthetic frame→Observation aggregation helper；它若需要，屬於 simulation，不是 Phase 2 tracking/stitching。M6 已實作單一 camera／明確 Plane 綁定的 inverse projection；M7 已實作通用的 directed waypoint navigation 與 Camera Topology abstraction。沒有寫入 school navigation config、floor walkability 或 stair connectivity 宣稱。M8 search policy 尚未建立。
 
 ### Scene Audit 核心結果與限制
 
@@ -94,7 +95,7 @@ M5 schemas 已包含時間／camera／identity 一致性、finite values、prove
 
 ### 最新驗證
 
-於 M6 完整內容執行：
+於 M7 完整內容執行：
 
 ```sh
 uv run pytest
@@ -104,7 +105,7 @@ git diff --check
 shasum -a 256 blender/school_v2.blend blender/working/school_v2_research.blend
 ```
 
-結果：**148 passed in 24.99s**，沒有 skipped／failed；Ruff 全通過；mypy 24 source files 無問題；diff check 無問題；兩個 `.blend` 雜湊一致。M6 相關 targeted tests 100 個通過。這證明目前 M0–M6 程式檢查通過，不代表 M7–M8、school walkability、Projection Error evaluation 或 formal benchmark 已完成。
+結果：**191 passed in 25.19s**，沒有 skipped／failed；Ruff 全通過；mypy 30 source files 無問題；diff check 無問題；兩個 `.blend` 雜湊一致。M7 相關 targeted tests 43 個通過。這證明目前 M0–M7 程式檢查通過，不代表 M8、school walkability、Projection Error evaluation 或 formal benchmark 已完成。
 
 ### Git commits（皆為本機）
 
@@ -120,12 +121,12 @@ c3638c5 chore: add read-only floor and stair geometry audit
 251db8f feat: add virtual camera projection
 58a8099 feat: add visibility and occlusion detection
 1dcce12 feat: add observation domain models
+7e952ae feat: add planar inverse projection
 ```
 
 ### 接續順序與待決策事項
 
-1. M7：Camera topology／NavMesh abstraction、可行走幾何檢查、minimum path distance；school 未核准跨樓層邊維持 disconnected。可用合成 fixture 驗證 branching／parameterized stairs，但不能宣稱 school 已通過。
-2. M8：reachability、minimum travel time、speed／physical pruning、Top-K、確定性限額終止、GT isolation；核心單元測試與 major-flow integration tests、獨立 commit 後停止回報。
+1. M8：reachability、minimum travel time、speed／physical pruning、Top-K、確定性限額終止、GT isolation；核心單元測試與 major-flow integration tests、獨立 commit 後停止回報。
 
 待使用者確認的 school-specific 問題：實際樓梯 entry/exit 與路徑表示、庭院 floor／walkability 語意。Coverage@K 的 epsilon/正式定義需在 M10 benchmark 前確認；目前不因此阻塞通用 M6–M8。任何清理／修改來源資產、render、push/PR 或正式 Phase 2 都需要額外明確授權。
 
@@ -133,10 +134,10 @@ c3638c5 chore: add read-only floor and stair geometry audit
 
 ## English
 
-Resume in `/Users/polalabear/Developer/amidst`, branch `main`; the continuation started from M4 HEAD `58a809956cdfe444509e0d676ec2e8f6f382370c`. M0–M6 are complete. M5 schemas enforce termination/completion and empty-shell boundaries. M6 implements auditable explicit-plane inverse projection without Ground Truth input. No push, PR, render, or asset modification occurred.
+Resume in `/Users/polalabear/Developer/amidst`, branch `main`; the continuation started from M4 HEAD `58a809956cdfe444509e0d676ec2e8f6f382370c`. M0–M7 are complete. M5 schemas enforce termination/completion and empty-shell boundaries. M6 implements auditable explicit-plane inverse projection without Ground Truth input. M7 adds explicit directed topology/navigation and deterministic minimum-distance routing while leaving school cross-floor movement disconnected. No push, PR, render, or asset modification occurred.
 
-Read PRD, SYSTEM_DESIGN, ISSUES_AND_DECISIONS and the audit before resuming. Implement/test/commit M7 and M8 sequentially; **stop after M8**. Use uv. Domain contains contracts only. Ground Truth never enters inference, navigation/search, ranking or path scoring. Phase 2 and semantic ranking remain deferred.
+Read PRD, SYSTEM_DESIGN, ISSUES_AND_DECISIONS and the audit before resuming. Implement/test/commit M8, then **stop after M8**. Use uv. Domain contains contracts only. Ground Truth never enters inference, navigation/search, ranking or path scoring. Phase 2 and semantic ranking remain deferred.
 
 Use only 29 CAM_* cameras and one unit per metre. The source and ignored research copy have identical SHA-256 shown above. Neutral materials use a reversible temporary surface override; no rendered-pixel claim is validated. Factory trajectory fixtures are not approved school routes and must not be mixed with school camera/geometry contexts.
 
-Latest full checks: 148 tests passed (no skips), Ruff passed, strict mypy passed for 24 source files, diff check passed, both asset hashes match. School floor heights are candidates, not navigation certification. School stairs lack a confirmed mesh-supported ascent and remain disconnected until entry/exit/path representation is confirmed. Explicitly synthetic parameterized stair fixtures can validate generic algorithms without inventing school connectivity. Courtyard interpretation and formal Coverage@K thresholds remain open, scoped to their relevant downstream work.
+Latest full checks: 191 tests passed (no skips), Ruff passed, strict mypy passed for 30 source files, diff check passed, both asset hashes match. School floor heights are candidates, not navigation certification. School stairs lack a confirmed mesh-supported ascent and remain disconnected until entry/exit/path representation is confirmed. Explicitly synthetic parameterized stair fixtures can validate generic algorithms without inventing school connectivity. Courtyard interpretation and formal Coverage@K thresholds remain open, scoped to their relevant downstream work.

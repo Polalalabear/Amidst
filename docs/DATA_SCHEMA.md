@@ -14,6 +14,8 @@ The authoritative schemas are Pydantic models in `src/amidst/domain/`. Models fo
 | `ObservationFrame` | Simulation; observation/projection services | OBSERVED has pixels; GAP has null pixels/provenance and a reason; no 3D truth |
 | `ProjectedPoint` | Projection; topology/graph/reconstruction | World position plus explicit `plane_id`; PROJECTED only |
 | `Observation` | Evidence aggregation; graph | Observed frames and/or projected path, explicit time window; no GAP frame as evidence |
+| `NavigationGraphConfig` / `NavigationPath` | Explicit walkable configuration; deterministic routing | Directed polylines, internal 3D distance, explicit cross-floor policy |
+| `CameraTopologyConfig` / `CameraTransition` | Camera adjacency and permitted direction | Separate from geometry; `RETURN_TRIP` is not a fixed edge |
 | `CandidateTrajectory` | Deterministic graph; reconstruction/evaluation | INFERRED_GAP only; polyline, corridor, distance/time/cost and feasibility flags |
 | `ReconstructionResult` / `Event` | Graph/reconstruction; storage/presentation | Alternatives and explicit termination; never ground-truth payloads |
 
@@ -22,6 +24,8 @@ Ground Truth JSON and CSV belong in `data/ground_truth/`. `sample_source=BLENDER
 Simulation observation JSON has `{data_kind, scene_id, geometry_policy, frames}` and is stored separately in `data/observations/`. It contains no hidden 3D position or velocity. GAP reasons distinguish FOV/clipping, occlusion, uncertain geometry and budget limits. Geometry is a fixed-frame evaluated VIEWPORT Mesh snapshot; no rendered-image claim is made.
 
 M6 inverse projection binds one calibrated `Camera` to one explicit `Plane`. It rejects GAP evidence, camera mismatch, out-of-image pixels, invalid calibration, invalid planes, parallel/behind-camera intersections and clip violations. Every output records the plane identity and uses ray-plane incidence as a deterministic geometric conditioning quality in `[0, 1]`; this value is neither a probability nor Ground-Truth-derived projection error. Projection Error remains an evaluation-only calculation.
+
+M7 keeps Camera Topology and walkable navigation as separate contracts bound by `navigation_graph_id`, `spatial_context_id` and, for configured scene-derived data, the same source-asset SHA-256. Navigation nodes and directed polyline edges are explicit; reverse movement requires a second edge. Each Camera Transition cites its exact ordered navigation edge sequence rather than silently taking another route. Edge and path distance are recomputed from every 3D segment and never trusted from callers. Cross-floor movement defaults to `DISCONNECTED` and can only use explicit `STAIR_UP` / `STAIR_DOWN` parameterized paths. `SYNTHETIC_TEST_FIXTURE` labels synthetic branching and stair tests. Membership in a configured graph is a caller assertion of walkability, not school-scene certification or Ground Truth.
 
 Phase 2 track IDs, stitching/fragment counts, appearance embeddings/labels/qualities, tracking quality, directions and video references remain nullable. They are schemas, not detector/tracker/ReID/database implementations. `projection_quality` is a geometric quality indicator, not a calibrated probability.
 
@@ -38,6 +42,8 @@ Ground Truth 僅供 simulation/export、evaluation 與 debug visualization；`BL
 2D Observation 與 Ground Truth 分開儲存。OBSERVED 必須有像素與 OBSERVED provenance；GAP 必須沒有像素／provenance，並記錄 FOV、遮擋、不確定幾何或預算原因。輸出沒有隱藏世界座標或速度。可見性是固定 frame 的 VIEWPORT Mesh 點查詢，並非渲染影像結果。
 
 M6 反投影會把一個校正後 `Camera` 明確綁定至一個 `Plane`。GAP evidence、camera 不一致、超出影像範圍的 pixel、無效校正／平面、平行或位於 camera 後方的交點，以及 clip 違規都會 fail closed。每個輸出都記錄 plane identity，並以 ray-plane incidence 作為 `[0, 1]` 的確定性幾何條件品質；它不是機率，也不是由 Ground Truth 計算的 Projection Error。Projection Error 只屬於 evaluation 邊界。
+
+M7 將 Camera Topology 與可行走 navigation 維持為兩個獨立契約，並以 `navigation_graph_id`、`spatial_context_id`，以及 configured scene-derived data 的相同來源資產 SHA-256 綁定。Navigation node 與有方向的 polyline edge 都必須明確設定，反向移動需要另一條 edge；每個 Camera Transition 引用精確的 ordered navigation edge sequence，不會靜默改走其他路徑。Edge／path 距離由所有 3D segment 重新計算，不信任 caller 提供的長度。跨樓層預設為 `DISCONNECTED`，只能透過顯式 `STAIR_UP`／`STAIR_DOWN` 參數化路徑開啟；合成 branching／stair 測試明記 `SYNTHETIC_TEST_FIXTURE`。加入 configured graph 只是 caller 對 walkability 的宣告，不等於 school 場景認證或 Ground Truth。
 
 ProjectedPoint 僅允許 PROJECTED；CandidateTrajectory 僅允許 INFERRED_GAP。Observation 可保留原始 observed frames 與 projected path，但不能把 GAP 當作直接證據。ReconstructionResult／Event 保留多解與停止原因，不接受 Ground Truth payload。
 

@@ -4,8 +4,11 @@ from __future__ import annotations
 
 from typing import Protocol
 
+from amidst.domain.common import Vec3
 from amidst.domain.evidence import ObservationFrame
+from amidst.domain.navigation import NavigationPath
 from amidst.domain.observation import Observation, ProjectedPoint
+from amidst.domain.topology import CameraTransition
 from amidst.domain.trajectory import Event, ReconstructionResult
 
 
@@ -17,6 +20,18 @@ class ObservationProvider(Protocol):
 
 class ProjectionService(Protocol):
     def project_frame(self, frame: ObservationFrame) -> ProjectedPoint: ...
+
+
+class NavigationService(Protocol):
+    def locate_node(self, position: Vec3, floor_id: str) -> str | None: ...
+
+    def minimum_path(
+        self, start_node_id: str, end_node_id: str
+    ) -> NavigationPath | None: ...
+
+
+class CameraTopologyService(Protocol):
+    def outgoing_transitions(self, camera_id: str) -> tuple[CameraTransition, ...]: ...
 
 
 class TrajectoryGenerator(Protocol):
