@@ -55,15 +55,27 @@ is 608 bytes with SHA-256
 defines one `SYNTHETIC_TEST_FIXTURE` target, three keyframes at 0, 2 and 4
 seconds, a 10 Hz sample rate and random seed 42. Running the current sampler
 would deterministically yield 41 samples from 0.0 through 4.0 seconds inclusive;
-the materialized Ground Truth record count remains zero.
+no Ground Truth for that factory configuration is currently saved.
 
-### Currently absent
+### Curated deterministic mock dataset and local downstream outputs
 
-There are currently no materialized files in `data/ground_truth/`,
-`data/observations/`, `data/candidates/` or `data/metrics/`, and no `.rrd` or
-rendered-image dataset. Therefore there is no current Observation/target record
-count, capture-time coverage, reconstruction result, or benchmark metric to
-report.
+[`mock/`](mock/README.md) is Git-tracked synthetic test data with fixed seed 20261001.
+It stores four strict inference inputs, eight PROJECTED endpoint Observations and
+four separate CONFIGURATION_SAMPLER GT trajectories: Single Path 21 samples,
+Branching Top-K 41, Temporal Slack 181, Simplified Stair 9 (252 total).
+The manifest and synthetic-wall constraint config define the regression settings.
+This is not Blender-derived data, an approved school route or a formal benchmark.
+
+Local ignored `data/candidates/fake_downstream_20261001/` contains four saved candidate,
+Event, metrics, run-config and debug.rrd sets plus summary.json. The runs retain 7
+routes and 11 timed hypotheses in total; all terminate COMPLETE. minADE@K is zero
+within floating-point tolerance, minFDE@K=0 and synthetic Coverage@K=true in all four.
+Collision/constraint rates are zero against the provided AABB/directed graph/speed
+contracts; they are not school mesh results. All four RRD recordings were reopened
+with the SDK and verified readable. JSON is reproducible; RRD SDK metadata can vary.
+
+`data/ground_truth/`, `data/observations/` and `data/metrics/` still have no formal
+school dataset. No rendered-image dataset or authoritative capture times are present.
 
 The source `blender/school_v2.blend` and local research copy are both Git-ignored,
 466,332,340 bytes, and byte-identical at the source SHA-256 above. The approved
@@ -113,14 +125,24 @@ walkability、NavMesh 或跨樓層樓梯路徑。
 `e986cdf0b98353c17d54f2b89b3e463e6a02cef0018bedaff61ed9f29b2cb0e4`，並描述一個
 `SYNTHETIC_TEST_FIXTURE` target、0／2／4 秒三個 keyframes、10 Hz 與 seed 42；
 目前 sampler 若執行，會從 0.0 到 4.0 秒（含端點）確定性產生 41 筆 samples，
-但目前實際物化的 Ground Truth records 仍為零。
+此 factory 設定目前沒有另行保存的 Ground Truth。
 
-### 目前不存在的資料
+### 已物化 mock dataset 與本機後半段輸出
 
-目前沒有 `data/ground_truth/`、`data/observations/`、`data/candidates/`、
-`data/metrics/`、`.rrd` 或 rendered-image dataset。因此沒有可報告的
-Observation／target record count、capture-time coverage、reconstruction result
-或 benchmark metrics。
+[`mock/`](mock/README.md) 追蹤四組 seed 20261001 的合成測試資料、8 個 PROJECTED
+endpoint Observations、4 個另存的 CONFIGURATION_SAMPLER GT trajectories：
+Single Path 21 samples、Branching Top-K 41、Temporal Slack 181、Simplified Stair 9，
+共252筆。Manifest 與 synthetic wall constraint config 明確保存 regression 設定；
+這不是 Blender-derived／正式 school dataset 或核准路徑。
+
+本機 ignored `data/candidates/fake_downstream_20261001/` 含四組 candidates／Event／metrics／
+完整 run config／debug.rrd 與 summary.json，共7 routes、11 timed hypotheses，全部 COMPLETE。
+四組 minADE@K 在浮點誤差內為0、minFDE@K=0、synthetic Coverage@K=true；顯式 AABB／
+directed graph／speed contracts 的 collision／constraint rates=0，不等於 school Mesh 結果。
+四份 RRD 皆已用 SDK 重開確認可讀；JSON 可重現，RRD metadata 不保證 byte-identical。
+
+仍沒有正式 school Ground Truth／Observation／metrics、rendered-image dataset，
+也沒有真實 capture-time authority。
 
 來源 `blender/school_v2.blend` 與本機研究副本都由 Git 忽略，大小皆為
 466,332,340 bytes，且來源 SHA-256 相同。Phase 1 已核准的 convention 是

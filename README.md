@@ -6,10 +6,10 @@
 
 [繁體中文](#繁體中文) | [English](#english)
 
-> **研究狀態：**Phase 1 prototype，版本 `0.1.0`。M0–M8 已實作並測試；本
+> **研究狀態：**Phase 1 prototype，版本 `0.1.0`。M0–M8 與 fake-data 後半段閉環已實作並測試；本
 > repository 不含正式監控資料、真實攝影機 Observation 或具權威性的 capture time。
 >
-> **Research status:** Phase 1 prototype, version `0.1.0`. M0–M8 are implemented
+> **Research status:** Phase 1 prototype, version `0.1.0`. M0–M8 and the fake-data downstream loop are implemented
 > and tested. This repository does not contain production surveillance data,
 > real-camera observations, or authoritative capture times.
 
@@ -39,8 +39,11 @@ Detection／Tracking／ReID、正式資料庫與操作介面屬於後續 Phase 2
 - **M8 — Top-K 候選搜尋：**在有界、明確設定的候選空間中，依距離、時間、速度
   與拓撲授權路徑，確定性列舉物理可行候選。
 
-尚未完成 M9 blind-gap completion、semantic ranking、Projection Error／ADE／FDE／
-Coverage@K 評估、Rerun visualization、baseline／ablation，以及正式 Phase 2 實作。
+- **Fake-data 後半段閉環：**四組固定 seed fixtures，具時間參數的 blind-gap hypotheses、
+  ADE／FDE／Top-K Coverage、AABB／速度／corridor metrics 與 Rerun debug recording。
+
+尚未完成正式 school end-to-end dataset／benchmark、semantic ranking、Projection Error、
+baseline／ablation，以及正式 Phase 2 實作。
 School walkability、NavMesh、樓梯與跨樓層路徑也尚未核准；跨樓層預設維持
 `DISCONNECTED`。
 
@@ -53,6 +56,8 @@ Blender / synthetic configuration
   -> Explicit-plane inverse projection
   -> Camera topology + directed navigation
   -> Bounded Top-K physically feasible candidates
+  -> Timed blind-gap hypotheses
+  -> Separate Ground Truth evaluation + Rerun debug recording
 ```
 
 Ground Truth 只供 simulation/export、evaluation 與 debug visualization，不能進入
@@ -98,8 +103,10 @@ Blender 或所需本機資產時，相關 integration tests 可能跳過。
   `SYNTHETIC`，並由 Git 忽略。
 - `blender/school_v2.blend` 與研究副本都只存本機並由 Git 忽略；來源資產不得因
   export 或 audit 被儲存、覆寫或渲染。
-- 目前沒有已物化的 Ground Truth、Observation、candidate、metric、`.rrd` 或
-  rendered-image dataset；repository 內沒有專案產生的 Blender 圖片。
+- [`data/mock/`](data/mock/README.md) 追蹤四組合成 fixture、8 個 PROJECTED Observations、
+  4 個獨立 GT trajectories（252 samples）與完整 config，不代表 Blender scene 已驗證。
+- 本機 ignored 的 `data/candidates/fake_downstream_20261001/` 有四組 Event／metrics／Rerun
+  recordings；沒有正式 school dataset 或專案產生的 Blender rendered images。
 - 座標採 Blender 右手座標、Z 向上，且 1 Blender unit = 1 metre。只有 29 台
   `CAM_*` 可用於研究；imported SketchUp camera 因 lens 為非有限值而排除。
 
@@ -113,6 +120,10 @@ src/amidst/domain/      嚴格資料契約與 interface
 src/amidst/geometry/    明確平面反投影
 src/amidst/navigation/  有方向 navigation 與 camera topology
 src/amidst/graph/       有界 Top-K 時空 graph search
+src/amidst/reconstruction/ 時間參數化 blind-gap hypotheses
+src/amidst/evaluation/  真值評估與 physical metrics
+src/amidst/visualization/ Rerun debug adapter
+src/amidst/debug/       通用實驗 runner
 src/amidst/simulation/  Blender／synthetic exporters 與 visibility
 src/amidst/storage/     本機 JSON 邊界
 scripts/                唯讀稽核與資料匯出入口
@@ -165,9 +176,11 @@ tool-calling Agent belongs to Phase 2.
   time, speed and topology-authorized routes within an explicitly configured
   bounded candidate space.
 
-M9 blind-gap completion, semantic ranking, Projection Error/ADE/FDE/Coverage@K
-evaluation, Rerun visualization, baselines/ablations and production Phase 2 are
-not implemented. School walkability, NavMesh, stairs and cross-floor routes are
+- **Fake-data downstream loop:** four fixed-seed fixtures, timed blind-gap hypotheses,
+  ADE/FDE/route Coverage, AABB/speed/corridor metrics and Rerun debug recordings.
+
+Formal school end-to-end data/benchmark, semantic ranking, Projection Error,
+baselines/ablations and production Phase 2 are not implemented. School walkability, NavMesh, stairs and cross-floor routes are
 also unapproved; cross-floor movement remains `DISCONNECTED` by default.
 
 ### Core data flow
@@ -179,6 +192,8 @@ Blender / synthetic configuration
   -> Explicit-plane inverse projection
   -> Camera topology + directed navigation
   -> Bounded Top-K physically feasible candidates
+  -> Timed blind-gap hypotheses
+  -> Separate Ground Truth evaluation + Rerun debug recording
 ```
 
 Ground Truth is restricted to simulation/export, evaluation and debug
@@ -228,9 +243,11 @@ local asset may skip.
   cameras, is labelled `SYNTHETIC`, and is Git-ignored.
 - `blender/school_v2.blend` and its research copy remain local and Git-ignored;
   export and audit operations must not save, overwrite or render the source.
-- No Ground Truth, Observation, candidate, metric, `.rrd` or rendered-image
-  dataset is currently materialized. The repository contains no
-  project-generated Blender images.
+- [`data/mock/`](data/mock/README.md) tracks four synthetic fixtures, eight PROJECTED
+  observations, four separate GT trajectories (252 samples) and full config.
+  These do not certify a Blender scene.
+- Local ignored `data/candidates/fake_downstream_20261001/` contains four Event/metric/Rerun
+  output sets. No formal school dataset or project-generated Blender rendered images exist.
 - Coordinates use Blender's right-handed, Z-up world with one Blender unit per
   metre. Only the 29 `CAM_*` cameras are research-eligible; the imported SketchUp
   camera is excluded because its lens is non-finite.
@@ -245,6 +262,10 @@ src/amidst/domain/      Strict data contracts and interfaces
 src/amidst/geometry/    Explicit-plane inverse projection
 src/amidst/navigation/  Directed navigation and camera topology
 src/amidst/graph/       Bounded Top-K spatiotemporal graph search
+src/amidst/reconstruction/ Timed blind-gap hypotheses
+src/amidst/evaluation/  Truth evaluation and physical metrics
+src/amidst/visualization/ Rerun debug adapter
+src/amidst/debug/       Generic experiment runner
 src/amidst/simulation/  Blender/synthetic exporters and visibility
 src/amidst/storage/     Local JSON boundary
 scripts/                Read-only audits and data-export entry points

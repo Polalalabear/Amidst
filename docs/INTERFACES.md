@@ -11,9 +11,9 @@
 - `NavigationService.locate_node(...) / minimum_path(...)`: exact configured-node lookup and one deterministic minimum-distance route; disconnected pairs return `None`.
 - `CameraTopologyService.outgoing_transitions(camera_id) / minimum_hop_transition_path(...)`: stable directed topology transitions and canonical camera-level reachability, separate from navigation distance; hop reachability alone does not prove navigation-anchor continuity.
 - `TrajectoryGenerator.propose_feasible_trajectories(start, end, max_paths)`: configured topology, navigation and movement/search limits produce physically pruned alternatives.
-- `GapReasoner.reconstruct(event)`: reserved for M9 blind-gap completion.
+- `GapReasoner.reconstruct(event)`: deterministic timed alternatives for a single blind gap.
 - `EventRepository.save/get`: persistence boundary; production storage is not implemented.
-- `VisualizationAdapter.log_event(event)`: presentation boundary; Ground Truth debug rendering is separate.
+- `VisualizationAdapter.log_event(event)`: Rerun presentation boundary; Ground Truth debug rendering is separate.
 
 M6 implements `InverseProjectionService`, a concrete `ProjectionService` configured with exactly one calibrated `Camera` and one explicit unit-normal `Plane`. `project_frame(frame)` accepts only an OBSERVED 2D frame from that camera and returns a `PROJECTED` point carrying the configured plane identity. Pixel-to-world conversion uses the Blender -Z-forward pinhole ray and ray-plane intersection; clip comparisons use camera axial depth. Expected invalid inputs raise typed `InverseProjectionError` failures instead of returning partial coordinates.
 
@@ -26,6 +26,32 @@ M8 implements `SpatiotemporalGraphEngine`, a concrete `TrajectoryGenerator` boun
 Candidate enumeration is uniform-cost over exact Camera Transition routes, ordered by cumulative distance, complete edge-ID sequence and transition identity. Multi-hop anchors must be continuous; no uncited navigation bridge or alternate shortest route is inserted. Equal ordered edge corridors are deduplicated before consuming K. Camera cycles are allowed and remain finite under positive lengths, speed, maximum length, detour, node, branch and time bounds. Same-camera/same-node input yields a stationary zero-distance candidate; moving between different nodes of one camera requires an explicit leave-and-return transition cycle. `expanded_nodes` counts dequeued authorized-route search states. Branch overflow stops before silently discarding children. Timeout is an operational wall-clock bound measured with an injectable, finite, nondecreasing monotonic clock at fixed search boundaries. Candidate IDs are canonical SHA-256 identities over source/network, complete endpoint, route geometry and movement-speed data. Search does not use projection quality, semantic fields, Ground Truth or a path score.
 
 `COMPLETE` and `NO_FEASIBLE_PATH` mean the configured bounded candidate space was exhausted. `MAX_PATHS_REACHED` requires observing one extra feasible route beyond the effective K; the effective K is the smaller of method `max_paths` and policy `max_candidate_paths`. Node, branch and timeout reasons always set `complete=false`, preserving candidates already proven feasible. No school navigation configuration or inferred stair connectivity is supplied.
+
+The producer-independent downstream entry is `pipeline.load_inference_input(path)` followed
+by `generate_candidates(inputs)` or `reconstruct_input(inputs) -> (ReconstructionResult, Event)`.
+Neither loads GT. `BlindGapReconstructor(policy).reconstruct_gap(start, end, result)` validates
+projected endpoints/candidates and implements `reconstruct(event)` for one gap. Longer
+retained routes, slower uniform timing and start-dwell alternatives stay separate hypotheses.
+
+`evaluate_trajectories(event.trajectories, truth, EvaluationConfig, constraints=ConstraintConfig)`
+is evaluation-only. `RerunDebugVisualizationAdapter` implements `log_event`; call `save(path)`
+before logging and `close()` afterward. `log_debug_ground_truth(truth)` requires debug mode.
+All Top-K paths, sampled timed markers, provenance, slack, termination and metrics are logged;
+camera anchors are configured navigation anchors, not calibrated poses or frustums.
+
+`debug.runner.run_experiment` completes inference before loading optional GT, validates
+target/context/source bindings, and saves exclusive output files plus the full run config.
+Its generic CLI can run a fixture or a future Blender-derived input without algorithm changes:
+
+```sh
+uv run python scripts/run_downstream.py --input data/mock/branching_top_k/inference.json --ground-truth data/mock/branching_top_k/ground_truth.json --constraints data/mock/constraints.json --output data/candidates/my_new_run
+uv run rerun data/candidates/my_new_run/debug.rrd
+```
+
+`--k` and `--coverage-epsilon-m` configure evaluation; inference K remains in the input's
+search policy. Omit `--ground-truth` for inference-only output; `--no-rerun` skips recording.
+Use a fresh output directory for every rerun. JSON inference/results are deterministic;
+RRD SDK recording/log metadata need not be byte-identical. No Semantic Ranking is implemented.
 
 Implemented simulation entry points:
 
@@ -62,4 +88,14 @@ Ground Truth CLI 預設使用新的 Blender factory 場景，不是核准的 sch
 
 Observation 匯出需提供 Ground Truth、camera catalog、Blender 場景與輸出路徑；前三者必須具有相同來源 SHA-256。不能把 factory fixture 軌跡混入 school 相機與建築幾何。推論端只收到清理過的 2D Evidence。
 
-輸出預設不覆寫；明確開啟覆寫仍不得取代輸入或 Blender 資產。Blender 讀取前後驗證雜湊、大小與修改時間；生成軌跡、相機與 Evidence 保留本機並由 Git 忽略。M9 重建、M11 視覺化與正式 Phase 2 實作仍在後續里程碑。
+輸出預設不覆寫；明確開啟覆寫仍不得取代輸入或 Blender 資產。Blender 讀取前後驗證雜湊、大小與修改時間；生成軌跡、相機與 Evidence 保留本機並由 Git 忽略。正式 Phase 2 實作仍在後續里程碑。
+
+通用 `pipeline` 可載入任何符合 `InferenceInput` 的合成 producer，產生 Graph result 與 timed
+Event，完全不讀 GT。`BlindGapReconstructor` 保留所有候選並沿 polyline 建立 direct／slower／
+start-dwell／detour 假設。Evaluation 另接 GT；Rerun 的 GT overlay 必須啟用 debug mode，
+呈現所有 Top-K、具時間取樣的 markers、provenance、slack、termination 與 metrics。
+Camera anchors 不冒充 calibrated camera poses／FOV。`run_experiment` 在推論完成後才載入
+GT，驗證 target／spatial context／source hash，存完整 config 並拒絕既有 output directory。
+上方 CLI 可直接替換 Blender-derived input；`--k`／epsilon 僅設定 evaluation，Graph K 由
+inference search policy 決定。省略 GT 可獨立推論；`--no-rerun` 不生成 recording。JSON 可重現，
+RRD SDK metadata 不保證 byte-identical。本輪沒有加入 Semantic Ranking。

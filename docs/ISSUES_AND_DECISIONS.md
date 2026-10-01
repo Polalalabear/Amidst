@@ -57,3 +57,37 @@ Decision: Represent Phase 1 walkability as explicit directed waypoint polylines,
 Decision: Enumerate M8 candidates from directed Camera Transition sequences and preserve each transition's exact ordered navigation edges. Require endpoint and intermediate navigation anchors to be continuous; never insert an uncited connector or replace a designated route with a shorter graph route. Deduplicate identical ordered edge corridors. Allow bounded camera-return cycles; same-camera movement between distinct nodes therefore requires an explicit leave-and-return cycle, while the same node permits a stationary candidate. Treat maximum path length and detour ratio as candidate-space eligibility bounds, while node, branch and timeout limits are incomplete termination. Report `MAX_PATHS_REACHED` only after finding an additional distinct feasible candidate beyond the effective K. Keep Ground Truth, semantic ranking and path scores outside this engine.
 
 決策：M8 候選由有方向的 Camera Transition sequences 列舉，並原樣保留每個 transition 指定的 ordered navigation edges。兩端與中間 navigation anchors 都必須連續；不插入未引用的 connector，也不把 designated route 替換成較短的 graph route；相同 ordered edge corridor 會去重。允許受限的 camera-return cycle，因此同 camera 不同 node 必須有明確離開／返回 cycle，同一 node 則可用 stationary candidate。最大 path length 與 detour ratio 定義候選空間；node、branch 與 timeout 則是 incomplete termination。只有找到超過 effective K 的下一條不同可行候選才回 `MAX_PATHS_REACHED`。Ground Truth、semantic ranking 與 path score 維持在此 engine 之外。
+
+## Temporal slack does not determine behavior / 額外時間不決定人類行為
+
+Problem: A physically feasible route can consume much less time than the observed gap;
+neither that slack nor the shortest route identifies what the person actually did.
+Decision: Preserve every graph candidate and parameterize its full polyline in time.
+Store slack explicitly; retain uniform slower movement and deterministic start-dwell
+alternatives, and label longer retained routes as possible detours. These are admissible
+hypotheses with uncertainty, not behavioral probabilities. Never use Ground Truth to
+choose route or timing. Serialize the timing policy alongside movement/search config.
+
+問題：合法路徑所需最低時間可能遠小於 observation gap；slack 或最短路徑都無法確定
+人物的實際行為。採用解法：保留全部 Graph candidates，沿完整 polyline 做時間參數化，
+明確儲存 slack，保留較慢的等速移動與 departure waypoint dwell alternatives；較長的
+既有候選可標為 possible detour。這些都是帶有不確定性的可行假設，不賦予行為機率，
+也不以 GT 選擇 route／timing；timing policy 與 movement／search config 一起儲存。
+
+## Separate route coverage from timing alternatives / 路徑覆蓋與時間假設分離
+
+Problem: Counting multiple timings of one route as Top-K, or choosing its best timing
+using truth, can inflate route coverage. Decision: K counts distinct candidate IDs in
+the supplied order and scores the first timing of each route. Score other timings
+individually for debugging only. Align every trajectory at all GT sample timestamps,
+reject mismatched extents, and expose ADE/FDE minima plus Coverage using explicit
+distance/epsilon config. The fake regression setting is D=ADE, epsilon=1e-6m; formal
+benchmark settings remain open. Collision rates use continuous segments against supplied
+closed AABBs; configured directed corridor/speed checks do not certify Blender mesh clearance.
+
+問題：把同一路徑的多種 timing 算成 Top-K，或用真值挑選最佳 timing，會高估 route
+coverage。採用解法：K 依輸入順序計算不同 candidate ID，只評各 route 第一個 timing；
+其他 timing 另提供 debug metrics。所有 GT timestamps 都做線性插值對齊，時間範圍
+不一致就拒絕，輸出 ADE／FDE minima 與有明確 distance／epsilon 的 Coverage。
+Fake regression 使用 D=ADE、epsilon=1e-6m，正式 benchmark 尚未定案。碰撞率計算
+連續線段對顯式封閉 AABB；directed corridor／速度檢查不代表 Blender Mesh 淨空認證。

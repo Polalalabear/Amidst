@@ -4,6 +4,52 @@
 
 ## 繁體中文
 
+### 2026-10-01 — Deterministic fake-data 後半段閉環
+
+起點 `2a988df`，branch `codex/deterministic-downstream-scenarios`；使用者授權四組
+可替換的 fake scenarios，完成後停止，不進入完整 Agent Semantic Ranking。
+
+| 功能 | Commit |
+| --- | --- |
+| 固定 seed 20261001 fixtures 與分離 GT／inference JSON | `ef1e1ca` |
+| 通用 Graph pipeline、reachability／min time／不可能轉移／Top-K／termination tests | `93a6bee` |
+| M6 完整 frame schema 重驗、防止 provenance bypass | `c3387a2` |
+| Timed Event hypotheses、direct／slower／dwell／detour 與 temporal slack | `d7db5ca` |
+| ADE／FDE／route Top-K Coverage／continuous AABB／speed／directed corridor metrics | `723bbbe` |
+| Rerun adapter、所有候選／hypotheses／provenance／GT debug overlay 與1Hz播放 | `737010d` |
+| 完整 runner、所有 configs 物化與 Ground Truth isolation integration | `6066c9e` |
+
+`6066c9e` 完整程式內容的驗證：**347 passed in 26.14s，無 skipped／failed**；
+Ruff 通過、strict mypy 46 source files 通過、diff check 通過。指令由 uv 管理，使用
+`UV_CACHE_DIR=/private/tmp/amidst-uv-cache uv run --offline --no-sync`，沿用 locked installed
+environment。Sandbox 內 uv online discovery 會觸發 macOS SystemConfiguration panic，
+既有 Blender CLI tests 在 sandbox 內 SIGSEGV；完整 pytest 在獲准解除 sandbox 後通過。
+沒有修改 dependencies／lock 或 render／save Blender assets。
+
+四組實際閉環輸出在本機 ignored `data/candidates/fake_downstream_20261001/`：
+
+| Scenario | Routes／hypotheses | Primary ADE（m） | minADE@K（m） | minFDE@K | Coverage@K |
+| --- | --- | --- | --- | --- | --- |
+| Single Path | 1／1 | 0 | 0 | 0 | true |
+| Branching Top-K | 3／5 | 7.8021081352 | 2.7079e-17 | 0 | true |
+| Temporal Slack | 2／4 | 0 | 0 | 0 | true |
+| Simplified Stair | 1／1 | 0 | 0 | 0 | true |
+
+全部 COMPLETE；synthetic wall AABB、directed corridor、max speed 的 collision／constraint
+rate=0。Branching GT 是第三條，Coverage@1=false；ADE/FDE 已知 numeric oracle 為1／2。
+Temporal Slack 最短時間20s、gap180s、slack160s，保留 slower movement、dwell、detour，
+不賦予行為機率。四份實際 RRD 以 SDK RrdReader 重開，確認 footer/store 與 entity data 可讀。
+18 個 Rerun tests 另驗證3個Top-K、GT debug labels、provenance與20秒路徑中點播放。
+
+GT isolation integration **12 passed**：禁止真值檔案讀取仍能完成四組推論；改變GT只改變
+evaluation，candidate／Event JSON 不變；拒絕 JSON 注入、forged provenance、candidate
+truth／probability payload。另有8個M6 copy／construct frame bypass regression cases。
+Source／research copy SHA-256 均仍為
+`1332280b8ca24ba8568017a13b666618c93337f32bcc431e59e7db617924fc38`。
+
+這是 configured synthetic interface regression，不是 school walkability／stair／Mesh collision
+驗證、formal benchmark 或完整研究驗收。有效接入缺口留在 handoff；沒有 push／PR／merge。
+
 本文件保存已完成工作與當時驗證證據。即時待修項目見 [CODEX_HANDOFF](CODEX_HANDOFF.md)，持續適用的規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，實際能力契約見 [DATA_SCHEMA](DATA_SCHEMA.md)／[INTERFACES](INTERFACES.md)。下列內容從既有交接整理，不代表本次重新執行全部測試，也不代表正式 school benchmark 已完成。
 
 ### 2026-10-01 — M0–M4：環境、稽核與合成模擬
@@ -76,6 +122,24 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+The 2026-10-01 fake-data round started at `2a988df` and completed the generic downstream
+loop on `codex/deterministic-downstream-scenarios`, with implementation commits listed
+above through `6066c9e`. Full validation passed 347 tests in 26.14s, no skips/failures,
+Ruff, strict mypy for 46 source files and diff checks. uv used the installed locked
+environment with offline/no-sync and a writable cache; existing Blender tests required
+approved unsandboxed execution. No dependencies, source assets, render, semantic ranking
+or publication changed.
+
+All four fixtures generated real candidate/Event/metric/RRD outputs, totaling 7 routes
+and 11 timing hypotheses. All terminated COMPLETE; minADE@K≈0, minFDE@K=0, Coverage@K=true,
+and supplied-AABB/speed/corridor violations=0. Branching primary ADE=7.8021081352m and
+Coverage@1=false, with true route retained at rank three. Temporal slack is160s for20s
+minimum travel in180s. Four RRD files were reopened successfully; 18 visualization tests
+include midpoint playback. Twelve GT isolation integration cases and eight new M6 bypass
+cases passed. Blender source/copy hashes match the unchanged digest above. These are fake
+interface results, not school mesh certification or a formal benchmark. Remaining
+producer/scene/multiple-gap/benchmark interfaces are in CODEX_HANDOFF.
 
 This is a dated completion/evidence log, not a live TODO list. [CODEX_HANDOFF](CODEX_HANDOFF.md) owns current unresolved work; [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md) owns durable rules; DATA_SCHEMA/INTERFACES own contracts. Historical results are not new test runs or formal benchmark acceptance.
 

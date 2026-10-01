@@ -21,6 +21,25 @@ For the dated inventory of files that are actually materialized, tracked or loca
 | `MovementConstraints` / `GraphSearchPolicy` | Deterministic graph configuration | Positive speed and finite candidate/node/length/time/branch/detour bounds |
 | `CandidateTrajectory` | Deterministic graph; reconstruction/evaluation | INFERRED_GAP only; polyline, corridor, distance/time/cost and feasibility flags |
 | `ReconstructionResult` / `Event` | Graph/reconstruction; storage/presentation | Alternatives and explicit termination; never ground-truth payloads |
+| `InferenceInput` / `ReconstructionPolicy` | Any synthetic producer; generic pipeline | Separate truth-free JSON; explicit search/movement/timing configs |
+| `TrajectoryHypothesis` / `TimedTrajectoryPoint` / `TrajectorySegment` | Reconstruction; evaluation/debug | Timed route, segment provenance, slack/dwell durations and uncertainty; no probability |
+| `EvaluationConfig` / `ConstraintConfig` / `EvaluationResult` | Evaluation/debug only | Explicit route K, ADE threshold, AABB geometry, metric counts and denominators |
+
+`Event.trajectories` defaults to an empty tuple for backwards compatibility. Each timed
+hypothesis references an existing candidate, spans the single blind gap, and has strictly
+ordered points plus contiguous movement/dwell segments. Hypothesis/segment provenance is
+`INFERRED_GAP`; supplied projected boundary samples retain `PROJECTED`. Movement and dwell
+durations cover the gap, and `temporal_slack = gap - minimum_travel_time`. Hypotheses have
+no behavioral probability. `ReconstructionResult` retains the original bounded-search meaning.
+
+Curated `data/mock/` stores separate strict `InferenceInput` and `GroundTruthTrajectory`
+JSON for four scenarios. Seed, movement/search/reconstruction policies and evaluation
+thresholds are fixed and reproducible. `constraints.json` supplies a synthetic wall AABB;
+the runner fills its configured navigation graph from the inference input. Evaluation
+counts consecutive timed-point pairs including dwell, tests continuous collisions against
+provided closed AABBs, and checks maximum speed and directed configured corridor membership.
+ADE/FDE use all truth timestamps; mismatched temporal extents fail. K counts distinct
+routes and their first timing hypothesis. Empty results yield null errors/rates, not zero.
 
 Ground Truth JSON and CSV belong in `data/ground_truth/`. `sample_source=BLENDER_EVALUATED` means positions were read from an evaluated Blender proxy; `CONFIGURATION_SAMPLER` is the analytic test helper, not an authoritative Blender export. Configured velocities are piecewise-linear derivatives. Optional source asset SHA-256 binds school motion to calibration/visibility. Seeds are recorded; the baseline sampler itself uses no randomness.
 
@@ -45,6 +64,18 @@ All time values are synthetic seconds. World coordinates are right-handed Blende
 目前實際已物化、Git 追蹤或僅存本機的檔案盤點，請見 [`data/README.md`](../data/README.md)。本文件定義契約；盤點文件記錄當前可用狀態。
 
 Ground Truth 僅供 simulation/export、evaluation 與 debug visualization；`BLENDER_EVALUATED` 座標來自 Blender proxy 求值，解析測試取樣器另標為 `CONFIGURATION_SAMPLER`。速度是設定路徑的分段線性導數。基準取樣器不使用隨機性，但仍記錄 seed 與可用的來源資產 SHA-256。
+
+`InferenceInput` 是任何合成 producer 都能替換的無真值入口，保存完整 movement／search／
+reconstruction policies。四組 curated `data/mock/` fixtures 的 GT 另存。`Event.trajectories`
+預設為空 tuple，新增 typed hypothesis／timed point／contiguous segment 契約；每個假設引用
+既有 candidate，記錄 minimum time、slack、movement／dwell duration 與 uncertainty，沒有
+行為機率。Hypothesis／segment 是 `INFERRED_GAP`，實際提供的 projected endpoints 保留
+`PROJECTED`。Graph `ReconstructionResult` 的搜尋結果與 termination 契約不變。
+
+Evaluation 以全部 GT timestamps 線性插值計算 ADE／FDE，拒絕時間範圍不一致；K 計不同
+route 的第一個 timing。空結果回 null errors／rates。物理 metrics 的分母是 consecutive
+timed-point pairs（含 dwell），檢查顯式 AABB 的連續線段碰撞、最大速度與有方向 corridor。
+Fixture `constraints.json` 提供合成 wall box，不代表 school mesh／淨空已通過驗證。
 
 2D Observation 與 Ground Truth 分開儲存。OBSERVED 必須有像素與 OBSERVED provenance；GAP 必須沒有像素／provenance，並記錄 FOV、遮擋、不確定幾何或預算原因。輸出沒有隱藏世界座標或速度。可見性是固定 frame 的 VIEWPORT Mesh 點查詢，並非渲染影像結果。
 
