@@ -15,3 +15,9 @@ Decision: Use only the 29 `CAM_*` camera objects. Exclude `skp_camera_Last_Saved
 Decision: Use texture-free, opaque neutral gray surface materials for Phase 1 synthetic rendering. Apply a temporary view-layer override in the simulation process; restore original overrides afterward. Keep source material slots, shader graphs, UVs and image assets intact. Lighting/world settings remain a separate rendering concern.
 
 決策：Phase 1 合成渲染採用無紋理、不透明的中性灰表面材質，以模擬程序內的暫時 View Layer Override 套用，結束後恢復。來源材質槽、shader、UV 與影像資產保留；燈光與 World 設定另行處理。
+
+## Floor candidates do not establish stair connectivity / 地板候選不等於樓梯連通
+
+Decision: Infer floor-surface candidates from evaluated mesh geometry, not object names alone. The two stair annotation regions lack a mesh-supported continuous ascent; fail closed on cross-floor traversal until a valid stair representation is confirmed. Never use annotation boxes as collision surfaces or invent connections through floor slabs; preserve the source `.blend`.
+
+決策：以求值後的 Mesh 幾何辨識地板候選，不只依賴名稱。兩處樓梯標示區未找到實體 Mesh 支持的連續上升路徑；在有效樓梯表示確認前，不開放跨樓層通行。語意 box 不當作碰撞面，也不虛構穿越樓板的連接；原始 `.blend` 保留。
