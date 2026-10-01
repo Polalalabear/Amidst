@@ -18,9 +18,9 @@ Decision: Use texture-free, opaque neutral gray surface materials for Phase 1 sy
 
 ## Floor candidates do not establish stair connectivity / 地板候選不等於樓梯連通
 
-Decision: Infer floor-surface candidates from evaluated mesh geometry, not object names alone. The two stair annotation regions lack a mesh-supported continuous ascent; fail closed on cross-floor traversal until a valid stair representation is confirmed. Never use annotation boxes as collision surfaces or invent connections through floor slabs; preserve the source `.blend`.
+Decision: Infer floor-surface candidates from evaluated mesh geometry, not object names alone. The two school stair annotation regions lack a mesh-supported continuous ascent; fail closed on school cross-floor traversal until a valid stair representation is confirmed. Continue generic algorithms with explicitly synthetic fixtures and parameterized stair paths. Never use annotation boxes as collision surfaces or invent school connections through floor slabs; preserve the source `.blend`.
 
-決策：以求值後的 Mesh 幾何辨識地板候選，不只依賴名稱。兩處樓梯標示區未找到實體 Mesh 支持的連續上升路徑；在有效樓梯表示確認前，不開放跨樓層通行。語意 box 不當作碰撞面，也不虛構穿越樓板的連接；原始 `.blend` 保留。
+決策：以求值後的 Mesh 幾何辨識地板候選，不只依賴名稱。school 兩處樓梯標示區未找到實體 Mesh 支持的連續上升路徑；在有效表示確認前，不開放 school 跨樓層通行。通用演算法以明確標記的合成 fixture 與參數化樓梯路徑繼續驗證。語意 box 不當作碰撞面，也不虛構穿越 school 樓板的連接；原始 `.blend` 保留。
 
 ## Research asset isolation / 研究資產隔離
 
