@@ -25,6 +25,8 @@ class AggregationInputError(ValueError):
 
 def _check_contract(value: object) -> None:
     if isinstance(value, DomainModel):
+        if DomainModel not in type(value).__bases__:
+            raise AggregationInputError("nested models must use exact declared domain contracts")
         fields = set(type(value).model_fields)
         if set(value.__dict__) - fields or value.model_extra:
             raise AggregationInputError("model contains fields outside its declared contract")

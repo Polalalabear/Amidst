@@ -280,6 +280,21 @@ def test_construct_and_copy_bypasses_including_nested_truth_are_rejected() -> No
         aggregate_frames((injected,))
 
 
+def test_nested_schema_subclasses_cannot_add_hidden_coordinates_to_inference() -> None:
+    class ExtendedPoint(ProjectedPoint):
+        hidden_coordinates: Vec3
+
+    sample = _sample(0)
+    assert sample.projected_point is not None
+    extended = ExtendedPoint(
+        **sample.projected_point.model_dump(),
+        hidden_coordinates=(999, 999, 999),
+    )
+    forged = sample.model_copy(update={"projected_point": extended})
+    with pytest.raises(AggregationInputError, match="exact declared domain contracts"):
+        aggregate_frames((forged,))
+
+
 def test_aggregation_cannot_forge_time_geometry_source_or_drop_visible_samples() -> None:
     result = aggregate_frames((_sample(0), _sample(1)))
     payload = result.model_dump()
