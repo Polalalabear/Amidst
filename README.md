@@ -127,6 +127,8 @@ docs/                   產品、設計、契約、決策與交接文件
 - [資料契約](docs/DATA_SCHEMA.md)
 - [模組介面與 export 指令](docs/INTERFACES.md)
 - [已確認決策與開放邊界](docs/ISSUES_AND_DECISIONS.md)
+- [開發與文件維護規則](docs/DEVELOPMENT_RULES.md)
+- [已完成工作紀錄](docs/WORK_LOG.md)
 - [目前資料盤點](data/README.md)
 - [最新開發交接](docs/CODEX_HANDOFF.md)
 
@@ -257,5 +259,7 @@ docs/                   Product, design, contract, decision and handoff docs
 - [Data contracts](docs/DATA_SCHEMA.md)
 - [Module interfaces and export commands](docs/INTERFACES.md)
 - [Accepted decisions and open boundaries](docs/ISSUES_AND_DECISIONS.md)
+- [Development and documentation rules](docs/DEVELOPMENT_RULES.md)
+- [Completed work log](docs/WORK_LOG.md)
 - [Current data inventory](data/README.md)
 - [Latest development handoff](docs/CODEX_HANDOFF.md)
