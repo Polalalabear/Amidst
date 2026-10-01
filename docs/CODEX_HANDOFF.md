@@ -4,14 +4,14 @@
 
 ## 繁體中文
 
-更新日期：2026-10-01。已依序完成 M5–M8 收尾、驗證與獨立 commit，並依使用者要求停在 M8；沒有 push、PR 或 render。
+更新日期：2026-10-01。已依序完成 M5–M8 收尾、驗證與獨立 commit，並依使用者要求停在 M8；使用者明確授權後，`main` 已推送至 GitHub。沒有 PR 或 render。
 
 ### 已驗證的工作位置與 checkpoint
 
 - 實際 repository：`/Users/polalabear/Developer/amidst`。舊環境可能仍顯示 `admist`；不要在舊路徑重建專案。
 - Branch：`main`。
 - 接續起點 HEAD：`58a809956cdfe444509e0d676ec2e8f6f382370c`（M4）。
-- Remote：`https://github.com/Polalalabear/amidst.git`。本輪未 push。
+- Remote：`https://github.com/Polalalabear/amidst.git`。`main` 已推送並追蹤 `origin/main`；未建立 PR。
 - M5 已提交於 `1dcce12`、M6 已提交於 `7e952ae`、M7 已提交於 `94ee2cd`、M8 已提交於 `d6620b4`；M8 deterministic graph engine 為本輪最後一個 milestone。
 - 使用 `uv`、`pyproject.toml`、`uv.lock`；不要改用 requirements.txt。
 - Blender CLI：`/Applications/Blender.app/Contents/MacOS/blender`，5.2.1 LTS，build `9e2066aef7ef`。
@@ -111,7 +111,7 @@ shasum -a 256 blender/school_v2.blend blender/working/school_v2_research.blend
 
 結果：**219 passed in 27.05s**，沒有 skipped／failed；Ruff 全通過；mypy 33 source files 無問題；diff check 無問題；兩個 `.blend` 雜湊一致。M8 直接 targeted tests 28 個通過。這證明目前 M0–M8 程式檢查通過，不代表 M9、school walkability、Projection Error evaluation 或 formal benchmark 已完成。
 
-### Git commits（皆為本機）
+### Git commits（已推送至 `origin/main`）
 
 ```text
 3238ec7 chore: initialize uv project
@@ -128,6 +128,8 @@ c3638c5 chore: add read-only floor and stair geometry audit
 7e952ae feat: add planar inverse projection
 94ee2cd feat: add deterministic navigation topology
 d6620b4 feat: add bounded trajectory graph search
+c04435f docs: record M8 completion
+74c66bd docs: inventory current datasets
 ```
 
 ### 接續順序與待決策事項
@@ -140,7 +142,7 @@ M8 stop point 已到達；M9 blind-gap completion、Agent Semantic Ranking、eva
 
 ## English
 
-Resume in `/Users/polalabear/Developer/amidst`, branch `main`; the continuation started from M4 HEAD `58a809956cdfe444509e0d676ec2e8f6f382370c`. M0–M8 are complete and the requested M8 stop point has been reached. M5 schemas enforce termination/completion and empty-shell boundaries. M6 implements auditable explicit-plane inverse projection without Ground Truth input. M7 adds explicit directed topology/navigation and deterministic minimum-distance routing while leaving school cross-floor movement disconnected. M8 adds bounded topology-authorized Top-K generation, physical/time pruning and explicit termination without Ground Truth or semantic ranking. No push, PR, render, or asset modification occurred.
+Resume in `/Users/polalabear/Developer/amidst`, branch `main`; the continuation started from M4 HEAD `58a809956cdfe444509e0d676ec2e8f6f382370c`. M0–M8 are complete and the requested M8 stop point has been reached. M5 schemas enforce termination/completion and empty-shell boundaries. M6 implements auditable explicit-plane inverse projection without Ground Truth input. M7 adds explicit directed topology/navigation and deterministic minimum-distance routing while leaving school cross-floor movement disconnected. M8 adds bounded topology-authorized Top-K generation, physical/time pruning and explicit termination without Ground Truth or semantic ranking. After explicit user authorization, `main` was pushed to GitHub and now tracks `origin/main`; no PR, render, or asset modification occurred.
 
 Read PRD, SYSTEM_DESIGN, ISSUES_AND_DECISIONS and the audit before any future work. Do not start M9 or later work without new authorization. Use uv. Domain contains contracts only. Ground Truth never enters inference, navigation/search, ranking or path scoring. Phase 2 and semantic ranking remain deferred.
 
