@@ -1,0 +1,1 @@
+"""Deterministic spatiotemporal candidate search."""

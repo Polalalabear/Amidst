@@ -33,6 +33,10 @@ class NavigationService(Protocol):
 class CameraTopologyService(Protocol):
     def outgoing_transitions(self, camera_id: str) -> tuple[CameraTransition, ...]: ...
 
+    def minimum_hop_transition_path(
+        self, start_camera_id: str, end_camera_id: str
+    ) -> tuple[str, ...] | None: ...
+
 
 class TrajectoryGenerator(Protocol):
     def propose_feasible_trajectories(

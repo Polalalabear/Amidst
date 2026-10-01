@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import heapq
 from collections.abc import Mapping
 from enum import StrEnum
 from types import MappingProxyType
@@ -61,3 +62,29 @@ class CameraTopologyGraph:
     def outgoing_transitions(self, camera_id: str) -> tuple[CameraTransition, ...]:
         self.node(camera_id)
         return self._outgoing[camera_id]
+
+    def minimum_hop_transition_path(
+        self, start_camera_id: str, end_camera_id: str
+    ) -> tuple[str, ...] | None:
+        """Return the canonical directed minimum-hop transition sequence, if reachable."""
+
+        self.node(start_camera_id)
+        self.node(end_camera_id)
+        if start_camera_id == end_camera_id:
+            return ()
+
+        queue: list[tuple[int, tuple[str, ...], str]] = [(0, (), start_camera_id)]
+        best: dict[str, tuple[int, tuple[str, ...]]] = {start_camera_id: (0, ())}
+        while queue:
+            hops, transition_ids, current = heapq.heappop(queue)
+            if best.get(current) != (hops, transition_ids):
+                continue
+            if current == end_camera_id:
+                return transition_ids
+            for transition in self._outgoing[current]:
+                next_ids = (*transition_ids, transition.transition_id)
+                key = (hops + 1, next_ids)
+                if transition.to_camera_id not in best or key < best[transition.to_camera_id]:
+                    best[transition.to_camera_id] = key
+                    heapq.heappush(queue, (*key, transition.to_camera_id))
+        return None
