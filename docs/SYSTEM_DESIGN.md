@@ -1,5 +1,15 @@
 ## 1. Design Goal
 
+本文件保留完整產品架構；Phase 1 的實際入口、producer 契約與 benchmark 邊界見下方
+「Phase 1 實作資料流」及 [BENCHMARK](BENCHMARK.md)。Agent Semantic Ranking 是延後的
+optional Phase 1 extension；CV、ReID、完整 tool-calling Agent、資料庫與 Three.js 屬於
+Phase 2，不能由既有 schema／interface 推定已完成。
+
+This document retains the full product architecture. The implemented Phase 1 flow and
+benchmark boundaries are specified below and in [BENCHMARK](BENCHMARK.md). Semantic ranking
+is a deferred optional Phase 1 extension. Preserved CV, ReID, full tool-calling Agent,
+database and Three.js interfaces do not imply their Phase 2 implementations.
+
 本系統建立一條從 **監控影像、結構化 Observation、物理可行 Candidate Event、Agent 仲裁，到 3D Event Reconstruction** 的完整技術鏈路。整體設計的核心原則，是將不同性質的工作交由最適合的模組處理，使高頻、確定性與數值型運算不依賴 LLM，而 Agent 僅處理需要語意判斷、不確定性比較與 Event-level Reasoning 的部分。
 
 在此架構中，**CV** 負責取得與追蹤人物 Evidence；**Tracklet Stitching** 修復單一 Camera 內因短暫遮擋或 Tracking Loss 所造成的追蹤斷裂；**Geometry** 將 2D Evidence 轉換至實際空間；**Spatiotemporal Graph Engine** 根據 Camera Topology、時間與移動條件建立物理上合理的 Candidate Trajectory；**Agent** 比較候選事件、處理 Evidence 衝突與不確定性；最後由 **Three.js Runtime 與 Global Timeline** 同步呈現 Camera Video、3D Trajectory 與 Provenance。
@@ -53,6 +63,27 @@ Operator Query → Appearance Retrieval → Starting Observations
 ```
 
 這樣可以讓大量影像處理與幾何計算在背景提前完成，避免每次事件查詢時重新分析原始 Video。
+
+### Phase 1 實作資料流 / Implemented Phase 1 flow
+
+```text
+Versioned DatasetManifest + ExperimentConfig + MetricConfig
+  → RawFrameProvider / ObservationProvider
+  → Validated frame samples → BoundObservation visible segments
+  → Adjacent visible-segment pairs → independent BoundGapEvents
+  → Topology-authorized Graph Top-K → timed gap hypotheses
+  → Evaluation and optional Rerun → content-bound result report
+```
+
+`MockDataset` 與 `BlenderDataset` 都接收相同的清理後 JSON frame schema；Blender-specific
+抽取留在 producer，核心 models 不接收 `bpy`／`mathutils`。Dataset provider 不開啟
+evaluation references；Graph、candidate generation、ranking、reconstruction 與 Event
+aggregation 不接收 GT。Benchmark 只在獨立 evaluation／debug visualization 邊界載入
+reference trajectory。替換 provider 不改動這些後半段 consumers。
+
+Both providers accept the same sanitized JSON frame schema. Blender extraction stays in
+the producer; inference consumers have no Blender types or truth geometry. Evaluation
+references are opened only by the separate benchmark evaluation/debug consumers.
 
 ---
 
@@ -149,6 +180,18 @@ Observation
 ```
 
 完整 Embedding、逐幀 Position 與高頻 Coordinate 保留在底層 Storage。Agent 僅取得經摘要後的 Observation Information，以降低 Context Size 與不必要的 Token 使用。
+
+Phase 1 使用 `RawProjectedFrameSample → ObservationAggregation` 的 deterministic layer。
+Frame sample 保留 source／context、target／camera、timestamp／frame ID、UV、visibility、
+occlusion、nullable confidence 與合法 provenance。Visible sample 可保留 observed pixels
+與已有投影，或以 projected-only 形式保留 mock endpoint；不虛構 UV。GAP 沒有 pixels、
+projection 或 evidence provenance。聚合會保留全部 raw samples，但 Observation 只含
+可見 Evidence；GAP、handoff、binding／evidence 改變都會分段，短暫 visibility recovery
+不自動 stitching。Phase 2 的 REAL_CV source 可使用 frame 契約，尚未開放實際推論。
+
+The deterministic Phase 1 aggregator preserves each visible sample exactly once, retains
+explicit missing-evidence records separately, and invents neither pixels nor confidence.
+Brief visibility recovery remains a separate segment; it is not tracking/stitching arbitration.
 
 ---
 
@@ -308,6 +351,24 @@ projection_quality
 
 由於 Ground Contact Estimate 可能受到 Occlusion、Bounding Box Noise、Perspective 與 Detection Drift 影響，因此 Projection Result 必須包含 Quality，而不能視為完全精確的 Ground Truth。
 
+Phase 1 的 `CameraCalibrationCatalog` 保存原始 evaluated world matrix 與正規化 rigid
+`CameraPose`，另列 position、WXYZ quaternion、XYZ Euler、basis scale、實際解析度、
+lens／sensor／pixel aspect／shift、effective image FOV、clipping、view／projection
+matrices，以及八個 frustum corners／十二條邊。既有 `Camera` schema 保持相容。
+來源 SHA-256、scene／frame、camera-config version 與 calibration-content digest 一起
+綁定 export；不渲染或儲存輸入資產。Rigid normalization 不接受 shear／reflection。
+
+Camera local axes are Blender +X right, +Y up, -Z forward; the world is right-handed,
+Z up, with one unit per metre. The CV intrinsic matrix acts on +X right, +Y down,
++Z forward after the explicit sign conversion. Projection uses OpenGL NDC with Z in
+[-1, 1]; pixels map from NDC to top-left continuous image coordinates. Frustum boundary
+corners include width/height as closed geometric boundaries, not valid half-open pixel samples.
+
+Rerun 可選接收 portable calibration catalog，將實際 pose／frustum 與 configured navigation
+anchors 分開呈現；camera 抽取與 frustum 本身不建立 floor walkability 或 stair connectivity。
+具體 camera-to-plane mapping 仍須顯式設定；camera／floor 名稱與 calibration export
+不替代 school floor／zone、projection plane 或 configured endpoint alignment 的審核。
+
 ---
 
 ## 14. Stair Representation
@@ -349,6 +410,24 @@ Path Confidence
 ```
 
 NavMesh 所產生的 Shortest Route 僅代表一條 **物理上合理的可能路徑**，不可被視為人物實際行走的 Ground Truth。
+
+上方 `Path Confidence` 保留為完整產品的未來位置；Phase 1 不填入未校準的行為機率，
+改以明確的可行條件、temporal slack 與 uncertainty 描述替代假設。
+
+Phase 1 每個 `BoundGapEvent` 只處理一對相鄰 visible segments，使用 start Observation
+最後與 end Observation 第一個 projected sample。每個 gap 保留獨立 source／context、
+endpoint IDs、Graph result 與 termination；不把相鄰 gaps 或一個 sample 的可見恢復合併。
+Binding 切換就斷鏈，同時／重疊的 visible segments 在 unresolved arbitration 前拒絕。
+
+Reconstruction 保留每條 candidate 的完整 polyline，以 `TrajectoryHypothesis` 儲存
+timed points、contiguous movement／dwell segments、minimum time、temporal slack 及
+uncertainty。Slower movement、start-dwell 與已保留的 detour route 是不同可行假設，
+沒有校準後的人類行為機率。Gap samples／segments 為 `INFERRED_GAP`，已提供的投影
+boundary samples 保留 `PROJECTED`；GT 不參與 route 或 timing 選擇。
+
+Each gap is independently reconstructed from its own evidence boundaries. Brief recovery
+separates adjacent gaps. Temporal slack supports admissible timing alternatives and retained
+detours, without a behavioral probability or truth-driven route/timing selection.
 
 ---
 
@@ -487,6 +566,14 @@ Global Event Time
 
 三種類型在 UI 上必須具備明確可辨識差異，避免 Operator 將 Inference 視為原始 Evidence。
 
+Phase 1 另有 **GROUND_TRUTH**，只允許 evaluation／benchmark reference／debug visualization。
+Rerun 用綠色 OBSERVED、藍色 PROJECTED、橘色虛線 INFERRED_GAP，以及需明確啟用的
+灰色點線 GT overlay。Marker 的 deterministic display resampling 只改善播放，不改寫
+Event／metrics；新增的 interior display samples 仍為 `INFERRED_GAP`。
+
+GROUND_TRUTH is an evaluation/debug provenance only. Display interpolation never changes
+the reconstructed Event, metric inputs, or candidate order.
+
 ---
 
 ## 27. Logging
@@ -505,20 +592,27 @@ Global Event Time
 
 ## 28. Search Termination
 
-Event Search 必須具備 deterministic termination condition。主要狀態包括：
+Phase 1 Event Search 的實際 `TerminationReason` 為：
 
 ```
-COMPLETE_EVENT
+COMPLETE
 NO_FEASIBLE_PATH
-LOW_CONFIDENCE
-SEARCH_WINDOW_EXCEEDED
-MAX_HOPS_EXCEEDED
 MAX_PATHS_REACHED
-TOOL_BUDGET_EXCEEDED
-USER_TERMINATED
+MAX_SEARCH_NODES
+MAX_BRANCH_FACTOR
+SEARCH_TIMEOUT
 ```
 
 Termination Reason 會被保存在 Event Result 中，使系統能說明事件為何停止繼續延伸。
+
+`COMPLETE`／`NO_FEASIBLE_PATH` 表示 configured bounded candidate space 已窮盡；其餘
+理由表示 incomplete search，保留已找到的 feasible candidates。Multi-gap aggregation
+原樣傳遞每個 gap 的 reason。Confidence／tool budget／user termination 等產品層狀態
+仍是 Phase 2 概念，不能與目前 enum 混用。Wall-clock timeout 是操作限制，不承諾不同
+機器每次都在相同 search node 觸發；固定 clock 的 regression 驗證停止邊界。
+
+Phase 1 reasons preserve exhaustive versus incomplete search semantics independently for
+each gap. Operational timeouts are distinct from a fixed-clock deterministic regression.
 
 ---
 
@@ -563,7 +657,23 @@ MVP 不預先限制固定的 Observation 數量或 Vector Database Size，例如
 
 ## 32. Benchmark Structure
 
-Benchmark 分成四個主要面向：
+Phase 1 以統一 `amidst.benchmark --config ... --output ...` 入口載入 content-bound dataset，
+執行 aggregation、逐 gap Graph／reconstruction、Top-K evaluation 與結果報告。
+`MetricConfig` 將 K、D、Coverage epsilon、ADE／FDE、插值／時間對齊及 collision／
+constraint policies 與 dataset 分開版本管理。每個 route 只用輸入順序的第一個 timing
+計入 Top-K；ADE／FDE 對齊全部 GT timestamps，時間範圍必須一致；Coverage 採嚴格
+`D < epsilon`。空候選回 null errors／rates，不以零誤差表示成功。
+
+實驗紀錄保存 dataset／scene／camera／topology／metric／pipeline versions、seed、
+effective config、input hashes、Git commit／dirty source fingerprints 與 uv lock digest。
+Collision 只檢查提供的封閉 AABB，constraint metrics 只檢查速度與 configured directed
+corridor；不代表 Blender mesh collision／clearance 已認證。正式研究 threshold 仍未定案；
+當前預設值只保留 mock regression。參數、輸出及重播條件見 [BENCHMARK](BENCHMARK.md)。
+
+Phase 1 externalizes metric policies and versions every experiment input. Formal research
+thresholds remain unresolved; configured AABB/corridor metrics do not certify school geometry.
+
+後續產品層的 Benchmark 分成四個主要面向：
 
 - **Accuracy**：Detection Recall、Tracking Quality、Tracklet Stitching Accuracy、ReID Retrieval Accuracy、Cross-Camera Association Accuracy、Event Reconstruction Accuracy。
 - **Latency**：Appearance Retrieval、Graph Trajectory Generation、Agent Arbitration、Total Investigation Search。
