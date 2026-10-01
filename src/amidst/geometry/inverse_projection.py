@@ -20,6 +20,7 @@ FloatArray = NDArray[np.float64]
 
 
 class InverseProjectionFailure(StrEnum):
+    INVALID_FRAME = "INVALID_FRAME"
     FRAME_NOT_OBSERVED = "FRAME_NOT_OBSERVED"
     CAMERA_MISMATCH = "CAMERA_MISMATCH"
     PIXEL_OUTSIDE_IMAGE = "PIXEL_OUTSIDE_IMAGE"
@@ -104,6 +105,18 @@ class InverseProjectionService:
         _validated_plane(self.plane)
 
     def project_frame(self, frame: ObservationFrame) -> ProjectedPoint:
+        if not isinstance(frame, ObservationFrame):
+            raise InverseProjectionError(
+                InverseProjectionFailure.INVALID_FRAME,
+                "inverse projection requires an ObservationFrame",
+            )
+        try:
+            frame = ObservationFrame.model_validate(frame.model_dump(mode="python"))
+        except ValidationError as error:
+            raise InverseProjectionError(
+                InverseProjectionFailure.INVALID_FRAME,
+                "frame must satisfy the full 2D evidence contract",
+            ) from error
         if frame.status != VisibilityStatus.OBSERVED or frame.point_2d is None:
             raise InverseProjectionError(
                 InverseProjectionFailure.FRAME_NOT_OBSERVED,

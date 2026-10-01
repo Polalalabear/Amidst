@@ -290,3 +290,23 @@ def test_invalid_plane_bypassing_model_validation_still_fails_closed(
     with pytest.raises(InverseProjectionError) as captured:
         InverseProjectionService(_camera(), plane)
     assert captured.value.failure == InverseProjectionFailure.INVALID_PLANE
+
+
+@pytest.mark.parametrize("construction", ["copy", "construct"])
+@pytest.mark.parametrize("updates", [
+    {"provenance": Provenance.GROUND_TRUTH},
+    {"provenance": Provenance.INFERRED_GAP},
+    {"timestamp": -1.0},
+    {"point_2d": (float("nan"), 50.0)},
+])
+def test_frame_schema_bypass_is_rejected_before_projection(
+    construction: str, updates: dict[str, Any],
+) -> None:
+    original = _frame()
+    if construction == "copy":
+        frame = original.model_copy(update=updates)
+    else:
+        frame = ObservationFrame.model_construct(**(original.model_dump() | updates))
+    with pytest.raises(InverseProjectionError) as captured:
+        InverseProjectionService(_camera(), _plane()).project_frame(frame)
+    assert captured.value.failure == InverseProjectionFailure.INVALID_FRAME
