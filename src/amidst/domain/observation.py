@@ -15,6 +15,7 @@ NonNegativeCount = Annotated[int, Field(ge=0)]
 class ProjectedPoint(DomainModel):
     point_id: str = Field(min_length=1)
     camera_id: str = Field(min_length=1)
+    plane_id: str = Field(min_length=1)
     timestamp: Timestamp
     world_position: Vec3
     projection_quality: Quality = 1.0

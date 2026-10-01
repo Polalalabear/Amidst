@@ -13,6 +13,10 @@
 - `EventRepository.save/get`: persistence boundary; production storage is not implemented.
 - `VisualizationAdapter.log_event(event)`: presentation boundary; Ground Truth debug rendering is separate.
 
+M6 implements `InverseProjectionService`, a concrete `ProjectionService` configured with exactly one calibrated `Camera` and one explicit unit-normal `Plane`. `project_frame(frame)` accepts only an OBSERVED 2D frame from that camera and returns a `PROJECTED` point carrying the configured plane identity. Pixel-to-world conversion uses the Blender -Z-forward pinhole ray and ray-plane intersection; clip comparisons use camera axial depth. Expected invalid inputs raise typed `InverseProjectionError` failures instead of returning partial coordinates.
+
+The reported `projection_quality` is the bounded ray-plane incidence used as a geometric conditioning indicator. It is not a probability. Neither this service nor its interface accepts Ground Truth; Euclidean Projection Error belongs only to a separate evaluation boundary.
+
 Implemented simulation entry points:
 
 ```sh
@@ -29,6 +33,10 @@ JSON publication refuses existing files by default; an explicit `--overwrite` ne
 ## 繁體中文
 
 `domain/interfaces.py` 保留可替換的 ObservationProvider、ProjectionService、TrajectoryGenerator、GapReasoner、EventRepository 與 VisualizationAdapter 契約，不代表已實作 Phase 2 CV、DB 或 UI。
+
+M6 已實作 `InverseProjectionService`：每個 service 明確綁定一個校正後 `Camera` 與一個 unit-normal `Plane`。`project_frame(frame)` 只接受同一台 camera 的 OBSERVED 2D frame，並輸出含 plane identity 的 `PROJECTED` point。轉換採 Blender -Z-forward pinhole ray 與 ray-plane intersection，clip 使用 camera axial depth；無效輸入以 typed `InverseProjectionError` fail closed，不回傳局部座標。
+
+`projection_quality` 是有界的 ray-plane incidence 幾何條件指標，不是機率。此 service 與 interface 都不接受 Ground Truth；歐氏 Projection Error 僅屬於獨立 evaluation 邊界。
 
 Ground Truth CLI 預設使用新的 Blender factory 場景，不是核准的 school 路徑。school 軌跡必須另提供明確路徑／scene config 與研究副本 `--blend`。Camera CLI 僅抽取研究副本的 29 台 CAM_*；所有輸入資產都不儲存、不渲染。
 

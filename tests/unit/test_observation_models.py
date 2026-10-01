@@ -36,6 +36,7 @@ def _point(timestamp: float = 1, **updates: Any) -> ProjectedPoint:
     payload = dict(
         point_id=f"point_{timestamp}",
         camera_id="CAM_A",
+        plane_id="floor_1",
         timestamp=timestamp,
         world_position=(1, 2, 0),
         observation_id="obs_a",
@@ -157,6 +158,7 @@ def test_projected_observation_rejects_inconsistent_path(path: tuple[ProjectedPo
         {"projection_quality": float("nan")},
         {"timestamp": float("inf")},
         {"world_position": (0, float("inf"), 0)},
+        {"plane_id": ""},
         {"provenance": "GROUND_TRUTH"},
         {"ground_truth_3d": (0, 0, 0)},
     ],

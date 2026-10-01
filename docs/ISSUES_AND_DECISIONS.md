@@ -39,3 +39,9 @@ Decision: Use Blender camera local +X right, +Y up, -Z forward and top-left cont
 Decision: Use point raycasts against a fixed-frame evaluated VIEWPORT Mesh snapshot, excluding only annotation geometry and explicitly owned proxies. Query allowed colliders directly, preserving thin obstacles. This is not rendered-pixel equivalence: render-only modifiers, transparency and image usability are outside this validation. Bind motion, camera catalog and visibility geometry to the same source asset SHA-256 before exporting observations; publish 2D evidence separately from Ground Truth.
 
 決策：以固定 frame 的 evaluated VIEWPORT Mesh 快照進行點 raycast，只排除語意幾何與明確自有 proxy；直接查詢可用碰撞物，保留薄障礙物。此驗證不等於渲染像素結果，render-only modifier、透明度與影像可用性不在本次驗證範圍。匯出前以相同來源 SHA-256 綁定軌跡、相機與可見性場景，2D Evidence 與 Ground Truth 分開儲存。
+
+## Explicit planar inverse projection / 顯式平面反投影
+
+Decision: Bind each Phase 1 inverse-projection service to one calibrated camera and one explicit unit-normal plane. Use the unnormalized Blender -Z-forward camera ray so the intersection parameter remains axial depth for clipping. Record the plane identity and ray-plane incidence quality on PROJECTED output; fail closed on invalid evidence, calibration, geometry or intersection. Ground Truth and Projection Error remain outside the inference interface.
+
+決策：Phase 1 每個反投影 service 明確綁定一個校正 camera 與一個 unit-normal plane。使用未正規化的 Blender -Z-forward camera ray，使交點參數維持可供 clipping 的 axial depth。`PROJECTED` 輸出記錄 plane identity 與 ray-plane incidence quality；無效 evidence、校正、幾何或交點皆 fail closed。Ground Truth 與 Projection Error 維持在 inference interface 之外。
