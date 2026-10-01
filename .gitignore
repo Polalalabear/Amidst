@@ -13,6 +13,7 @@ blender/working/
 
 # Generated runtime artifacts that are not curated benchmark fixtures.
 data/ground_truth/
+data/cameras/
 data/observations/
 data/candidates/
 data/metrics/
