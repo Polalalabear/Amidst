@@ -1,0 +1,52 @@
+{
+  "schema_version": "scene-validation-config-v1",
+  "authority": "DIAGNOSTIC_HEURISTICS_NOT_PHYSICAL_CERTIFICATION",
+  "units": "metres",
+  "meters_per_blender_unit": 1.0,
+  "allowed_floors": [
+    "1F",
+    "2F"
+  ],
+  "floor_planes": {},
+  "expected_collections": {},
+  "tolerances": {
+    "numeric_epsilon": 1e-09,
+    "coverage_pass_ratio": 0.8,
+    "coverage_partial_ratio": 0.01,
+    "floor_height_m": 0.25,
+    "walkable_plane_extent_m": 0.1,
+    "connectivity_distance_m": 0.05,
+    "connectivity_z_m": 0.1,
+    "small_island_area_m2": 0.5,
+    "large_component_area_m2": 10.0,
+    "portal_near_distance_m": 0.5,
+    "portal_side_probe_m": 0.2,
+    "portal_orientation_vertical_ratio": 0.1,
+    "endpoint_distance_m": 0.1,
+    "contact_overlap_ratio": 0.01,
+    "conflict_overlap_ratio": 0.1,
+    "conflict_vertical_contact_m": 0.05,
+    "navigation_near_distance_m": 5.0,
+    "tiny_area_m2": 0.001,
+    "huge_extent_m": 100.0,
+    "extreme_scale_min": 0.0001,
+    "extreme_scale_max": 1000.0,
+    "stair_join_distance_m": 0.25,
+    "stair_min_rise_m": 0.25,
+    "stair_direction_tolerance_m": 0.05,
+    "minimum_clearance_m": null
+  },
+  "unresolved_settings": [
+    "approved floor planes and geometry authority",
+    "physical clearance and contact semantics",
+    "camera-plane binding",
+    "wall/obstacle movement versus occlusion ownership",
+    "portal normal and endpoint declarations",
+    "stair path direction, clearance and slab opening evidence"
+  ],
+  "geometry_complexity": {
+    "maximum_mesh_triangles": 256,
+    "maximum_union_polygons": 1024,
+    "maximum_pair_intersections": 8192
+  }
+}
