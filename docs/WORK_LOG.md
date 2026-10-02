@@ -34,7 +34,7 @@ authority、malformed/non-finite inputs、contact overlap、geometry budgets、s
 跨孔洞與 naming／collection ownership。Unsupported geometry、floor-plane authority、
 clearance／slab opening 維持 REVIEW；diagnostic adjacency 不建立 navigation 或 stair edges。
 
-[Protocol](BENCHMARK_PROTOCOL.md) 固定問題、指標 populations／units、比較與缺值政策，
+[Protocol](PHASE1_BENCHMARK_PROTOCOL.md) 固定問題、指標 populations／units、比較與缺值政策，
 正式 D／epsilon／K／時間政策、physical authority 與 final baselines 仍為
 `UNRESOLVED_RESEARCH_SETTING`／null，formal execution disabled；epsilon=0 仍拒絕。
 PRD targets 是 INITIAL_TARGET，六類 acceptance 分開列出，不宣稱 synthetic 驗收成功。

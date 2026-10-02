@@ -1,7 +1,7 @@
 {
   "protocol_version": "phase1-benchmark-protocol-v1",
   "status": "UNRESOLVED_RESEARCH_SETTING",
-  "document": "../../docs/BENCHMARK_PROTOCOL.md",
+  "document": "../../docs/PHASE1_BENCHMARK_PROTOCOL.md",
   "kind": "PROTOCOL_SPECIFICATION_NOT_EXPERIMENT_CONFIG",
   "formal_execution_enabled": false,
   "result_types": ["SYNTHETIC_REGRESSION", "MOCK_VALIDATION", "BLENDER_RESEARCH_RESULT"],

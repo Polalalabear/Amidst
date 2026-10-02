@@ -14,7 +14,7 @@ Formal setting status: **UNRESOLVED_RESEARCH_SETTING**; formal execution is disa
 完成後沿用同一套協定。尚未核准的研究參數在 config 保持 `null`，不能用 regression
 預設值補上。`protocol_v1.json` 是 protocol specification，不能直接當作
 `amidst.benchmark --config` 的 `ExperimentConfig`；runner 的現有操作見
-[BENCHMARK](BENCHMARK.md)。本輪未執行 Blender Cases 1–3；Case 4 保留定義並暫緩。
+[BENCHMARK](PHASE1_BENCHMARK.md)。本輪未執行 Blender Cases 1–3；Case 4 保留定義並暫緩。
 
 正式執行前須確認以下 source-bound 證據：人工核准的 WALKABLE 與 collider geometry、
 floor planes、camera→plane binding、clearance／contact／ownership policy，以及明確的

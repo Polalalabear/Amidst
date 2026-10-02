@@ -36,7 +36,7 @@
   snapshot、config-driven diagnostics 與 HIGH／MEDIUM／LOW human review queue。
   [目前報告](../data/scene_audit/semantic_validation.md) 仍為 `REVIEW_REQUIRED`；
   沒有 WALKABLE／WALL／OBSTACLE／STAIR，診斷 adjacency 不建立 inference topology。
-- [正式 Benchmark Protocol](BENCHMARK_PROTOCOL.md) 已定義 Case 1–4、A–E baseline、
+- [正式 Benchmark Protocol](PHASE1_BENCHMARK_PROTOCOL.md) 已定義 Case 1–4、A–E baseline、
   single-factor ablation、metrics／六類 acceptance；formal settings 仍 unresolved，
   protocol specification 不能直接當成 executable ExperimentConfig，A–C 尚未實作。
 - `amidst.benchmark_report` 已支援 native／normalized／case-method-run inputs、獨立 PNG

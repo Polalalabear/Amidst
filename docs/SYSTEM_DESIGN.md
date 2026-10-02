@@ -1,12 +1,12 @@
 ## 1. Design Goal
 
 本文件保留完整產品架構；Phase 1 的實際入口、producer 契約與 benchmark 邊界見下方
-「Phase 1 實作資料流」及 [BENCHMARK](BENCHMARK.md)。Agent Semantic Ranking 是延後的
+「Phase 1 實作資料流」及 [BENCHMARK](PHASE1_BENCHMARK.md)。Agent Semantic Ranking 是延後的
 optional Phase 1 extension；CV、ReID、完整 tool-calling Agent、資料庫與 Three.js 屬於
 Phase 2，不能由既有 schema／interface 推定已完成。
 
 This document retains the full product architecture. The implemented Phase 1 flow and
-benchmark boundaries are specified below and in [BENCHMARK](BENCHMARK.md). Semantic ranking
+benchmark boundaries are specified below and in [BENCHMARK](PHASE1_BENCHMARK.md). Semantic ranking
 is a deferred optional Phase 1 extension. Preserved CV, ReID, full tool-calling Agent,
 database and Three.js interfaces do not imply their Phase 2 implementations.
 
@@ -668,7 +668,7 @@ constraint policies 與 dataset 分開版本管理。每個 route 只用輸入�
 effective config、input hashes、Git commit／dirty source fingerprints 與 uv lock digest。
 Collision 只檢查提供的封閉 AABB，constraint metrics 只檢查速度與 configured directed
 corridor；不代表 Blender mesh collision／clearance 已認證。正式研究 threshold 仍未定案；
-當前預設值只保留 mock regression。參數、輸出及重播條件見 [BENCHMARK](BENCHMARK.md)。
+當前預設值只保留 mock regression。參數、輸出及重播條件見 [BENCHMARK](PHASE1_BENCHMARK.md)。
 
 Phase 1 externalizes metric policies and versions every experiment input. Formal research
 thresholds remain unresolved; configured AABB/corridor metrics do not certify school geometry.
