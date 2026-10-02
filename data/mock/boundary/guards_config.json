@@ -1,0 +1,360 @@
+{
+  "data_kind": "SYNTHETIC_TEST_FIXTURE",
+  "scenarios": [
+    {
+      "scenario_id": "epsilon-zero",
+      "input": {
+        "metric_patch": {
+          "coverage_epsilon_m": 0
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "coverage_epsilon_m"
+      }
+    },
+    {
+      "scenario_id": "epsilon-negative",
+      "input": {
+        "metric_patch": {
+          "coverage_epsilon_m": -1
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "coverage_epsilon_m"
+      }
+    },
+    {
+      "scenario_id": "epsilon-nan",
+      "input": {
+        "metric_patch": {
+          "coverage_epsilon_m": "NaN"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "coverage_epsilon_m"
+      }
+    },
+    {
+      "scenario_id": "epsilon-inf",
+      "input": {
+        "metric_patch": {
+          "coverage_epsilon_m": "+Infinity"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "coverage_epsilon_m"
+      }
+    },
+    {
+      "scenario_id": "negative-collision-tolerance",
+      "input": {
+        "metric_patch": {
+          "collision_tolerance_m": -1
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "collision_tolerance_m"
+      }
+    },
+    {
+      "scenario_id": "negative-corridor-tolerance",
+      "input": {
+        "metric_patch": {
+          "constraint_corridor_tolerance_m": -1
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "constraint_corridor_tolerance_m"
+      }
+    },
+    {
+      "scenario_id": "invalid-relative-tolerance",
+      "input": {
+        "metric_patch": {
+          "constraint_speed_relative_tolerance": 1
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "constraint_speed_relative_tolerance"
+      }
+    },
+    {
+      "scenario_id": "zero-k",
+      "input": {
+        "metric_patch": {
+          "k_values": [
+            0
+          ]
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "k_values"
+      }
+    },
+    {
+      "scenario_id": "duplicate-k",
+      "input": {
+        "metric_patch": {
+          "k_values": [
+            1,
+            1
+          ]
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "unique"
+      }
+    },
+    {
+      "scenario_id": "unsupported-policy",
+      "input": {
+        "metric_patch": {
+          "interpolation_policy": "UNIMPLEMENTED_V99"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "interpolation_policy"
+      }
+    },
+    {
+      "scenario_id": "unknown-field",
+      "input": {
+        "metric_patch": {
+          "invented_tolerance": 1
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "invented_tolerance"
+      }
+    }
+  ],
+  "valid_boundaries": [
+    {
+      "scenario_id": "k-one",
+      "input": {
+        "k_values": [
+          1
+        ]
+      },
+      "expected": {
+        "candidates": [
+          "boundary-route"
+        ],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "INFERRED_GAP",
+        "metric_behavior": "one available route, no duplicate padding",
+        "state": "EVALUATION_SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "k-greater-than-available",
+      "input": {
+        "k_values": [
+          99
+        ]
+      },
+      "expected": {
+        "candidates": [
+          "boundary-route"
+        ],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "INFERRED_GAP",
+        "metric_behavior": "one available route, no duplicate padding",
+        "state": "EVALUATION_SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "tiny-positive-epsilon",
+      "input": {
+        "k_values": [
+          1
+        ],
+        "coverage_epsilon_m": 1e-300
+      },
+      "expected": {
+        "candidates": [
+          "boundary-route"
+        ],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "INFERRED_GAP",
+        "metric_behavior": "exact distance zero is strictly below positive epsilon",
+        "state": "EVALUATION_SUCCESS"
+      }
+    }
+  ],
+  "unsupported_version": {
+    "scenario_id": "metric-version-mismatch",
+    "input": {
+      "metric_config_version": "unsupported-v99",
+      "experiment_version": "synthetic-regression-metrics-v1"
+    },
+    "expected": {
+      "candidates": [],
+      "termination": "NOT_STARTED",
+      "rejected_transitions": [],
+      "provenance": "NONE",
+      "metric_behavior": "SKIPPED_INVALID_INPUT",
+      "state": "REJECTED_BEFORE_INFERENCE",
+      "failure": "metric configuration version must match the experiment"
+    }
+  },
+  "malformed_json": {
+    "scenario_id": "malformed-metric-json",
+    "input": {
+      "config_text": "{\"k_values\": [1], \"coverage_epsilon_m\": "
+    },
+    "expected": {
+      "candidates": [],
+      "termination": "NOT_STARTED",
+      "rejected_transitions": [],
+      "provenance": "NONE",
+      "metric_behavior": "SKIPPED_INVALID_INPUT",
+      "state": "REJECTED_BEFORE_INFERENCE",
+      "failure": "Invalid JSON"
+    }
+  },
+  "contract_limit": "Coverage epsilon=0 is invalid under the existing strictly-positive schema; testing preserves that existing contract.",
+  "invalid_search_and_aggregation": [
+    {
+      "scenario_id": "negative-aggregation-threshold",
+      "input": {
+        "model": "AggregationPolicy",
+        "patch": {
+          "max_visible_sample_gap_s": -1
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "max_visible_sample_gap_s"
+      }
+    },
+    {
+      "scenario_id": "negative-max-paths",
+      "input": {
+        "model": "GraphSearchPolicy",
+        "patch": {
+          "max_candidate_paths": -1
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "max_candidate_paths"
+      }
+    },
+    {
+      "scenario_id": "negative-search-time",
+      "input": {
+        "model": "GraphSearchPolicy",
+        "patch": {
+          "max_search_time_s": -1
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "max_search_time_s"
+      }
+    },
+    {
+      "scenario_id": "zero-branch-factor",
+      "input": {
+        "model": "GraphSearchPolicy",
+        "patch": {
+          "max_branch_factor": 0
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure_field": "max_branch_factor"
+      }
+    }
+  ]
+}

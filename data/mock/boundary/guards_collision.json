@@ -1,0 +1,108 @@
+{
+  "data_kind": "SYNTHETIC_TEST_FIXTURE",
+  "input": {
+    "trajectory_xz": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "timestamps": [
+      0,
+      1
+    ],
+    "obstacle": {
+      "obstacle_id": "boundary-wall",
+      "minimum": [
+        4,
+        -0.5,
+        -1
+      ],
+      "maximum": [
+        6,
+        0.5,
+        1
+      ]
+    },
+    "maximum_speed_m_s": 10
+  },
+  "scenarios": [
+    {
+      "scenario_id": "positive-wall-crossing",
+      "input": {
+        "y": 0,
+        "collision_tolerance_m": 0
+      },
+      "expected": {
+        "candidates": [
+          "boundary-route"
+        ],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "INFERRED_GAP",
+        "metric_behavior": "collision_rate=1 and constraint_violation_rate=1",
+        "state": "EVALUATION_DETECTS_INVALID",
+        "collision_count": 1
+      }
+    },
+    {
+      "scenario_id": "exact-clearance-threshold",
+      "input": {
+        "y": 0.625,
+        "collision_tolerance_m": 0.125
+      },
+      "expected": {
+        "candidates": [
+          "boundary-route"
+        ],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "INFERRED_GAP",
+        "metric_behavior": "closed expanded AABB contact counts",
+        "state": "EVALUATION_DETECTS_INVALID",
+        "collision_count": 1
+      }
+    },
+    {
+      "scenario_id": "below-clearance-threshold",
+      "input": {
+        "y": "NEXT_BELOW_0.625",
+        "collision_tolerance_m": 0.125
+      },
+      "expected": {
+        "candidates": [
+          "boundary-route"
+        ],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "INFERRED_GAP",
+        "metric_behavior": "one ULP below expanded boundary collides",
+        "state": "EVALUATION_DETECTS_INVALID",
+        "collision_count": 1
+      }
+    },
+    {
+      "scenario_id": "above-clearance-threshold",
+      "input": {
+        "y": "NEXT_ABOVE_0.625",
+        "collision_tolerance_m": 0.125
+      },
+      "expected": {
+        "candidates": [
+          "boundary-route"
+        ],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "INFERRED_GAP",
+        "metric_behavior": "one ULP above expanded boundary has zero collision",
+        "state": "EVALUATION_SUCCESS",
+        "collision_count": 0
+      }
+    }
+  ],
+  "scope_limit": "Only the existing evaluation fake-geometry detector is verified. Graph obstacle ownership/input contract is unresolved; official Top-K exclusion of known-collision routes remains unverified. No Blender mesh collision or walkability certification."
+}
