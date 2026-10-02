@@ -1,0 +1,497 @@
+{
+  "data_kind": "SYNTHETIC_TEST_FIXTURE",
+  "input": {
+    "camera": {
+      "camera_id": "boundary-camera",
+      "width": 100,
+      "height": 100,
+      "fx": 50,
+      "fy": 50,
+      "cx": 50,
+      "cy": 50,
+      "camera_to_world": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "clip_start": 1,
+      "clip_end": 20
+    },
+    "plane": {
+      "plane_id": "boundary-floor",
+      "point": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "floor_id": "1F",
+      "zone_id": "boundary"
+    },
+    "frame": {
+      "frame_id": 1,
+      "timestamp": 1,
+      "target_id": "boundary-target",
+      "camera_id": "boundary-camera",
+      "status": "OBSERVED",
+      "point_2d": [
+        50,
+        50
+      ],
+      "provenance": "OBSERVED"
+    }
+  },
+  "numeric_tokens": {
+    "NaN": "IEEE NaN",
+    "+Infinity": "IEEE positive infinity",
+    "-Infinity": "IEEE negative infinity"
+  },
+  "scenarios": [
+    {
+      "scenario_id": "uv-NaN",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "point_2d": [
+            "NaN",
+            50
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "INVALID_FRAME"
+      }
+    },
+    {
+      "scenario_id": "uv-+Infinity",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "point_2d": [
+            "+Infinity",
+            50
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "INVALID_FRAME"
+      }
+    },
+    {
+      "scenario_id": "uv--Infinity",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "point_2d": [
+            "-Infinity",
+            50
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "INVALID_FRAME"
+      }
+    },
+    {
+      "scenario_id": "negative-u",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "point_2d": [
+            -1e-09,
+            50
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "PIXEL_OUTSIDE_IMAGE"
+      }
+    },
+    {
+      "scenario_id": "right-boundary",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "point_2d": [
+            100,
+            50
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "PIXEL_OUTSIDE_IMAGE"
+      }
+    },
+    {
+      "scenario_id": "negative-v",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "point_2d": [
+            50,
+            -1e-09
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "PIXEL_OUTSIDE_IMAGE"
+      }
+    },
+    {
+      "scenario_id": "bottom-boundary",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "point_2d": [
+            50,
+            100
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "PIXEL_OUTSIDE_IMAGE"
+      }
+    },
+    {
+      "scenario_id": "unknown-camera",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "camera_id": "unknown-camera"
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "CAMERA_MISMATCH"
+      }
+    },
+    {
+      "scenario_id": "empty-camera-id",
+      "input": {
+        "stage": "frame",
+        "patch": {
+          "camera_id": ""
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "INVALID_FRAME"
+      }
+    },
+    {
+      "scenario_id": "missing-calibration",
+      "input": {
+        "stage": "camera",
+        "patch": {},
+        "remove_fields": [
+          "camera_to_world",
+          "fx",
+          "fy"
+        ]
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "SCHEMA_REJECTED"
+      }
+    },
+    {
+      "scenario_id": "malformed-matrix",
+      "input": {
+        "stage": "camera",
+        "patch": {
+          "camera_to_world": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "SCHEMA_REJECTED"
+      }
+    },
+    {
+      "scenario_id": "singular-matrix",
+      "input": {
+        "stage": "camera",
+        "patch": {
+          "camera_to_world": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              10
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "INVALID_CAMERA_POSE"
+      }
+    },
+    {
+      "scenario_id": "nonfinite-matrix",
+      "input": {
+        "stage": "camera",
+        "patch": {
+          "camera_to_world": [
+            [
+              1,
+              0,
+              0,
+              "NaN"
+            ],
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              10
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "INVALID_CAMERA_POSE"
+      }
+    },
+    {
+      "scenario_id": "zero-depth",
+      "input": {
+        "stage": "plane",
+        "patch": {
+          "point": [
+            0,
+            0,
+            10
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "INTERSECTION_BEHIND_CAMERA"
+      }
+    },
+    {
+      "scenario_id": "negative-depth",
+      "input": {
+        "stage": "plane",
+        "patch": {
+          "point": [
+            0,
+            0,
+            11
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "INTERSECTION_BEHIND_CAMERA"
+      }
+    },
+    {
+      "scenario_id": "near-depth",
+      "input": {
+        "stage": "plane",
+        "patch": {
+          "point": [
+            0,
+            0,
+            9.5
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "NEAR_CLIPPED"
+      }
+    },
+    {
+      "scenario_id": "far-depth",
+      "input": {
+        "stage": "plane",
+        "patch": {
+          "point": [
+            0,
+            0,
+            -11
+          ]
+        },
+        "remove_fields": []
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE",
+        "failure": "FAR_CLIPPED"
+      }
+    }
+  ]
+}

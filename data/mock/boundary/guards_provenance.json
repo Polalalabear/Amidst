@@ -1,0 +1,317 @@
+{
+  "data_kind": "SYNTHETIC_TEST_FIXTURE",
+  "input": {
+    "raw_sample": {
+      "sample_id": "boundary-sample",
+      "source_id": "boundary-source",
+      "spatial_context_id": "boundary-context",
+      "target_id": "boundary-target",
+      "camera_id": "boundary-camera",
+      "timestamp": 1,
+      "frame_id": 1,
+      "uv": null,
+      "visibility": "OBSERVED",
+      "provenance": "PROJECTED",
+      "projected_point": {
+        "point_id": "boundary-point",
+        "camera_id": "boundary-camera",
+        "plane_id": "boundary-floor",
+        "timestamp": 1,
+        "world_position": [
+          0,
+          0,
+          0
+        ],
+        "floor_id": "1F",
+        "provenance": "PROJECTED"
+      }
+    },
+    "projected_point": {
+      "point_id": "boundary-point",
+      "camera_id": "boundary-camera",
+      "plane_id": "boundary-floor",
+      "timestamp": 1,
+      "world_position": [
+        0,
+        0,
+        0
+      ],
+      "floor_id": "1F",
+      "provenance": "PROJECTED"
+    },
+    "observation": {
+      "observation_id": "boundary-observation",
+      "target_id": "boundary-target",
+      "camera_id": "boundary-camera",
+      "start_time": 1,
+      "end_time": 1,
+      "projected_path": [
+        {
+          "point_id": "boundary-point",
+          "camera_id": "boundary-camera",
+          "plane_id": "boundary-floor",
+          "timestamp": 1,
+          "world_position": [
+            0,
+            0,
+            0
+          ],
+          "floor_id": "1F",
+          "provenance": "PROJECTED"
+        }
+      ],
+      "provenance": "PROJECTED"
+    },
+    "frame": {
+      "frame_id": 1,
+      "timestamp": 1,
+      "target_id": "boundary-target",
+      "camera_id": "boundary-camera",
+      "status": "OBSERVED",
+      "point_2d": [
+        50,
+        50
+      ],
+      "provenance": "OBSERVED"
+    }
+  },
+  "scenarios": [
+    {
+      "scenario_id": "inferred-as-observed",
+      "input": {
+        "model": "ObservationFrame",
+        "patch": {
+          "provenance": "INFERRED_GAP"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "gt-as-observed",
+      "input": {
+        "model": "ObservationFrame",
+        "patch": {
+          "provenance": "GROUND_TRUTH"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "gt-as-projected",
+      "input": {
+        "model": "ProjectedPoint",
+        "patch": {
+          "provenance": "GROUND_TRUTH"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "inferred-as-projected",
+      "input": {
+        "model": "ProjectedPoint",
+        "patch": {
+          "provenance": "INFERRED_GAP"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "projected-as-observed",
+      "input": {
+        "model": "Observation",
+        "patch": {
+          "provenance": "OBSERVED"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "inferred-raw-evidence",
+      "input": {
+        "model": "RawProjectedFrameSample",
+        "patch": {
+          "provenance": "INFERRED_GAP"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "hidden-gt-extra-field",
+      "input": {
+        "model": "RawProjectedFrameSample",
+        "patch": {
+          "ground_truth_3d": [
+            999,
+            -999,
+            3
+          ]
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "gap-contains-projection",
+      "input": {
+        "model": "RawProjectedFrameSample",
+        "patch": {
+          "visibility": "GAP",
+          "gap_reason": "OUTSIDE_FOV"
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    }
+  ],
+  "scope_limit": "A coordinate payload whose origin and provenance have both been relabeled is not distinguishable from legitimate PROJECTED evidence by the existing schema. No new origin-attestation schema is introduced.",
+  "unchecked_nested_scenarios": [
+    {
+      "scenario_id": "copy-nested-GROUND_TRUTH",
+      "input": {
+        "bypass": "copy",
+        "provenance": "GROUND_TRUTH"
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "copy-nested-INFERRED_GAP",
+      "input": {
+        "bypass": "copy",
+        "provenance": "INFERRED_GAP"
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "construct-nested-GROUND_TRUTH",
+      "input": {
+        "bypass": "construct",
+        "provenance": "GROUND_TRUTH"
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    },
+    {
+      "scenario_id": "construct-nested-INFERRED_GAP",
+      "input": {
+        "bypass": "construct",
+        "provenance": "INFERRED_GAP"
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NOT_STARTED",
+        "rejected_transitions": [],
+        "provenance": "NONE",
+        "metric_behavior": "SKIPPED_INVALID_INPUT",
+        "state": "REJECTED_BEFORE_INFERENCE"
+      }
+    }
+  ],
+  "unchecked_extra": {
+    "scenario_id": "unchecked-raw-gt-extra",
+    "input": {
+      "ground_truth_3d": [
+        999,
+        -999,
+        3
+      ]
+    },
+    "expected": {
+      "candidates": [],
+      "termination": "NOT_STARTED",
+      "rejected_transitions": [],
+      "provenance": "NONE",
+      "metric_behavior": "SKIPPED_INVALID_INPUT",
+      "state": "REJECTED_BEFORE_INFERENCE"
+    }
+  },
+  "gt_model_in_projected": {
+    "scenario_id": "gt-model-as-projected",
+    "input": {
+      "source": "GroundTruthSample.model_dump",
+      "destination": "ProjectedPoint"
+    },
+    "expected": {
+      "candidates": [],
+      "termination": "NOT_STARTED",
+      "rejected_transitions": [],
+      "provenance": "NONE",
+      "metric_behavior": "SKIPPED_INVALID_INPUT",
+      "state": "REJECTED_BEFORE_INFERENCE"
+    }
+  }
+}
