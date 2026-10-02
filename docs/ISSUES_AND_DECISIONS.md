@@ -207,3 +207,19 @@ collision／tolerance tests，暫緩 collision Top-K pruning 並保持正式 Sch
 後續須先核准 inference obstacle input、source／context binding、ownership 與 deterministic
 pruning policy；不能把 evaluation／GT geometry 偷渡入 inference，也不能把 fake AABB
 測試當成 Blender mesh clearance certification。
+
+Current milestone status / 本輪 milestone 狀態：使用者後續要求解決 collision ownership
+並完成 Blender Cases 1–3。2026-10-02 的
+[live semantic audit](../data/scene_audit/SEMANTICS.md) 確認沒有 WALKABLE／WALL／OBSTACLE／
+STAIR object 或 collection 標記，亦沒有批准的 camera→floor plane binding。
+依使用者明訂 stop conditions，physical integration 暫停；需人工指定 source-bound
+walkable／collider objects、faces 或 proxies，以及 movement／occlusion ownership、
+floor planes／camera binding 與 physical clearance policy。原 `.blend` 保持不變。
+平台無關 geometry provider 可走 additive interface，但未實作或核准 geometry authority；
+不得把 annotation boxes、name heuristics 或 evaluation obstacles 升格為 inference authority。
+
+The later milestone requests collision ownership and Blender Cases 1–3. The live audit
+finds no approved physical surface/collider labels or camera-plane bindings. Under the
+user's explicit stop conditions, integration awaits source-bound human annotations and
+physical clearance/contact policy. An additive geometry interface is feasible, but is
+not implemented or approved. The original asset and formal schemas remain unchanged.

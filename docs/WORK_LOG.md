@@ -4,6 +4,44 @@
 
 ## 繁體中文
 
+### 2026-10-02 — Blender semantic audit；physical integration 等待人工標記
+
+起點 `bd984f2`，branch `codex/dataset-infrastructure`。使用者要求完成 Blender-backed
+Phase 1 Case 1–3 milestone，同時明訂遇到不可信 walkable、未明 collision ownership
+或 ambiguous floor／camera-plane mapping 時停止並詢問。先 review PRD／System Design／
+Issues、既有 provider／benchmark／Graph／reconstruction／metrics 與 configs／mock。
+三組唯讀 review 分別檢查 scene evidence、geometry contract seams、dataset／camera 接入。
+
+新增 [live semantic audit](../data/scene_audit/SEMANTICS.md) 與可重跑的 Blender／Python
+wrapper，功能 commit `a03f993`。Blender 5.2.1 LTS 在 frame 220／subframe 0 評估全部
+2,796 objects、2,652
+meshes、29 collections；逐筆保存 BB／centroid 方法、mesh statistics、candidate role
+與 trust status。30 AREA、28 PORTAL、29 research CAM；WALKABLE／WALL／OBSTACLE／STAIR
+objects／collections 全為 **0**，annotation 未升格為 physical authority。
+原 `.blend` SHA-256、466,332,340 bytes 與 mtime 執行前後完全不變，沒有 save／render。
+29 camera IDs 與 portable calibration 一致，raw world matrices 最大差異 **0**；
+這不是 Projection Error 量測，也不核准 floor plane。所有 floor authority 保持 unknown。
+
+Audit review 抓到兩個 empty evaluated meshes 的 origin fallback 被誤標為 surface
+centroid／AABB；已修正 `Circle.018`／`Plane.110` 的 audit methods，明示 non-surface／
+non-geometry，沒有更改場景。修正後兩個獨立 Blender process／fresh outputs 的完整
+JSON 語意相同；2,825 object／collection records 的必要欄位、finite bounds／centroids、
+tool hashes 與 source immutability 均驗證。既有 output 的 runner guard 明確拒絕、
+不覆寫 artifact、不啟動 Blender。
+
+結果 **STOP_REQUIRED_HUMAN_ANNOTATION**；已詢問人工 source-bound WALKABLE surfaces／
+connectivity／anchors、WALL／OBSTACLE movement／occlusion ownership、floor planes／camera
+binding 與 physical clearance/contact policy。可透過 sidecar 保留原檔；尚未實作
+sidecar schema／loader。Geometry provider 可用 additive platform-independent interface，
+但本輪僅完成唯讀 review，沒有實作正式 contract、pruning 或 geometry authority。
+School Cases 1–3／datasets／benchmarks／metrics／physical Rerun／A–C baselines 仍未建立；
+未擴 fake fixtures、未修改 core／正式 schemas，未進入 Agent／Phase 2／Case 4。
+
+完整 regression：**687 passed in 45.61s，無 failed/skipped**；`uv run ruff check .`
+通過，`uv run mypy` 通過（69 source files），`git diff --check` 通過。既有 GT poisoning、
+isolation、provider、termination、determinism／failure reporting 測試全部維持。
+這些結果不代表 school physical integration 已完成；下一步需先取得人工標記。
+
 ### 2026-10-02 — Boundary / Failure-mode / Adversarial validation
 
 起點 `b11edb9`，branch `codex/dataset-infrastructure`。先讀 PRD／System Design／
@@ -175,6 +213,22 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+The 2026-10-02 Blender milestone begins at `bd984f2`. A fresh read-only source-bound audit
+inventories 2,796 objects, 2,652 meshes and 29 collections: 30 AREA annotations, 28 PORTAL
+annotations, 29 research cameras, and no WALKABLE/WALL/OBSTACLE/STAIR labels. All 29 raw
+camera world matrices match the portable calibration exactly; floor-plane authority is
+still unreviewed. Source SHA-256, size and mtime are unchanged; no save or render occurred.
+Two empty-mesh origin fallback descriptions were corrected in the new audit. Two fresh
+Blender processes produced identical JSON semantics; all 2,825 rows and tool/source hashes
+were checked. The existing-output guard rejects without overwrite or Blender launch.
+
+Under the user's explicit stop conditions, physical integration waits for source-bound
+human walkable/collider ownership, floor/camera-plane bindings and clearance policy.
+An additive geometry interface was reviewed, not implemented. No school Cases 1–3,
+datasets, physical metrics/visualizations or A–C baselines are claimed. Existing schemas,
+core, fake fixtures, Agent and Phase 2 remain untouched. Final regression: 687 passed in
+45.61s, Ruff passed, mypy passed for 69 source files, and diff checks passed.
 
 The 2026-10-02 boundary round starts at `b11edb9` on `codex/dataset-infrastructure` and
 adds 140 tests across the eight commits above. Final code `a95b595` passes 687 tests
