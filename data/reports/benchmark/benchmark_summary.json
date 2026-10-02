@@ -1,0 +1,1013 @@
+{
+  "schema_version": "benchmark-comparison/v1",
+  "benchmark_label": "SYNTHETIC REGRESSION",
+  "comparison_warnings": [],
+  "aggregation": "ARITHMETIC_MEAN_OF_AVAILABLE_INDEPENDENT_RUNS",
+  "missing_policy": "NULL_AND_N/A; never zero-filled; availability counts retained",
+  "ordering": "DECLARED_OR_DISCOVERY_IDENTITY_ORDER; never Ground Truth metric order",
+  "native_gap_aggregation": "ACCURACY/COVERAGE=EQUAL_GAP_MEAN; PHYSICAL=POOLED_SEGMENT_RATE; CANDIDATE=MEAN; SEARCH=SUM; RUNTIME=ONCE_PER_CASE",
+  "cases": [
+    "branching_top_k",
+    "simplified_stair",
+    "single_path",
+    "temporal_slack"
+  ],
+  "methods": [
+    "deterministic_graph"
+  ],
+  "rows": [
+    {
+      "case_id": "branching_top_k",
+      "method_id": "deterministic_graph",
+      "method_label": "Configured Deterministic Graph",
+      "run_count": 1,
+      "run_ids": [
+        "infrastructure_20261002_final"
+      ],
+      "sources": [
+        "/Users/polalabear/Developer/amidst/data/candidates/infrastructure_20261002_final"
+      ],
+      "benchmark_labels": [
+        "SYNTHETIC REGRESSION"
+      ],
+      "status_counts": {
+        "COMPLETE": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m"
+          ],
+          "missing_metrics": [
+            "projection_error_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate"
+          ],
+          "missing_metrics": [
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "candidate_count",
+            "termination_reason"
+          ],
+          "missing_metrics": [
+            "feasible_candidate_recall",
+            "search_nodes"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 7.802108135221577,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 2.7078610356711135e-17,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 13.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 13.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 0.0036588329821825027,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 3.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "infrastructure_20261002_final": {
+          "projection_error_m": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "ade_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "fde_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "min_ade_at_k_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "min_fde_at_k_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "feasible_candidate_recall": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "collision_rate": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "constraint_violation_rate": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "impossible_transition_rate": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "path_length_error_m": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "travel_time_error_s": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "candidate_count": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "search_nodes": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          }
+        }
+      }
+    },
+    {
+      "case_id": "simplified_stair",
+      "method_id": "deterministic_graph",
+      "method_label": "Configured Deterministic Graph",
+      "run_count": 1,
+      "run_ids": [
+        "infrastructure_20261002_final"
+      ],
+      "sources": [
+        "/Users/polalabear/Developer/amidst/data/candidates/infrastructure_20261002_final"
+      ],
+      "benchmark_labels": [
+        "SYNTHETIC REGRESSION"
+      ],
+      "status_counts": {
+        "COMPLETE": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m"
+          ],
+          "missing_metrics": [
+            "projection_error_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate"
+          ],
+          "missing_metrics": [
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "candidate_count",
+            "termination_reason"
+          ],
+          "missing_metrics": [
+            "feasible_candidate_recall",
+            "search_nodes"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 4.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 4.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 0.0022036669543012977,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "infrastructure_20261002_final": {
+          "projection_error_m": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "ade_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "fde_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "min_ade_at_k_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "min_fde_at_k_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "feasible_candidate_recall": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "collision_rate": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "constraint_violation_rate": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "impossible_transition_rate": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "path_length_error_m": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "travel_time_error_s": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "candidate_count": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "search_nodes": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          }
+        }
+      }
+    },
+    {
+      "case_id": "single_path",
+      "method_id": "deterministic_graph",
+      "method_label": "Configured Deterministic Graph",
+      "run_count": 1,
+      "run_ids": [
+        "infrastructure_20261002_final"
+      ],
+      "sources": [
+        "/Users/polalabear/Developer/amidst/data/candidates/infrastructure_20261002_final"
+      ],
+      "benchmark_labels": [
+        "SYNTHETIC REGRESSION"
+      ],
+      "status_counts": {
+        "COMPLETE": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m"
+          ],
+          "missing_metrics": [
+            "projection_error_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate"
+          ],
+          "missing_metrics": [
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "candidate_count",
+            "termination_reason"
+          ],
+          "missing_metrics": [
+            "feasible_candidate_recall",
+            "search_nodes"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 1.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 1.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 0.002087957924231887,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "infrastructure_20261002_final": {
+          "projection_error_m": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "ade_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "fde_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "min_ade_at_k_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "min_fde_at_k_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "feasible_candidate_recall": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "collision_rate": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "constraint_violation_rate": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "impossible_transition_rate": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "path_length_error_m": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "travel_time_error_s": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "candidate_count": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "search_nodes": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          }
+        }
+      }
+    },
+    {
+      "case_id": "temporal_slack",
+      "method_id": "deterministic_graph",
+      "method_label": "Configured Deterministic Graph",
+      "run_count": 1,
+      "run_ids": [
+        "infrastructure_20261002_final"
+      ],
+      "sources": [
+        "/Users/polalabear/Developer/amidst/data/candidates/infrastructure_20261002_final"
+      ],
+      "benchmark_labels": [
+        "SYNTHETIC REGRESSION"
+      ],
+      "status_counts": {
+        "COMPLETE": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m"
+          ],
+          "missing_metrics": [
+            "projection_error_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate"
+          ],
+          "missing_metrics": [
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "PARTIAL_MEASUREMENTS",
+          "available_metrics": [
+            "candidate_count",
+            "termination_reason"
+          ],
+          "missing_metrics": [
+            "feasible_candidate_recall",
+            "search_nodes"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 10.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 10.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 0.0023654160322621465,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "infrastructure_20261002_final": {
+          "projection_error_m": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "ade_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "fde_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "min_ade_at_k_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "min_fde_at_k_m": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "feasible_candidate_recall": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "collision_rate": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "constraint_violation_rate": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "impossible_transition_rate": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "path_length_error_m": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "travel_time_error_s": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          },
+          "candidate_count": {
+            "available_gaps": 1,
+            "total_gaps": 1
+          },
+          "search_nodes": {
+            "available_gaps": 0,
+            "total_gaps": 1
+          }
+        }
+      }
+    }
+  ],
+  "generated_charts": [
+    "accuracy_ade.png",
+    "accuracy_fde.png",
+    "accuracy_minade_at_k.png",
+    "accuracy_minfde_at_k.png",
+    "collision_rate.png",
+    "constraint_rate.png",
+    "runtime.png",
+    "candidate_count.png",
+    "coverage_at_k.png",
+    "physical_validity.png",
+    "termination_categories.png"
+  ],
+  "skipped_charts": {
+    "projection_error.png": "projection_error_m: no measured values; all rows are N/A",
+    "feasible_recall.png": "feasible_candidate_recall: no measured values; all rows are N/A",
+    "impossible_transition_rate.png": "impossible_transition_rate: no measured values; all rows are N/A",
+    "path_length_error.png": "path_length_error_m: no measured values; all rows are N/A",
+    "travel_time_error.png": "travel_time_error_s: no measured values; all rows are N/A",
+    "search_nodes.png": "search_nodes: no measured values; all rows are N/A"
+  }
+}

@@ -2,6 +2,28 @@
 
 [繁體中文](#繁體中文) | [English](#english)
 
+正式 Case 1–4、metric／baseline／ablation 與分項 acceptance specification 見
+[BENCHMARK_PROTOCOL](BENCHMARK_PROTOCOL.md)。該 protocol 尚有
+`UNRESOLVED_RESEARCH_SETTING`，不能直接作為可執行的 ExperimentConfig。
+本頁說明既有 synthetic runner；comparison reporting 的入口為：
+
+```sh
+uv run python -m amidst.benchmark_report --input <benchmark-output-root> --output data/reports/benchmark
+```
+
+輸出使用新的目錄，含各自獨立的 comparison PNG、`benchmark_summary.json` 與
+`benchmark_summary.md`。缺值維持 N/A，失敗與 NO_REFERENCE 保留；不依 GT 誤差
+重排 method。既有 fake outputs 的圖表標記為 `SYNTHETIC REGRESSION`，人工建立的
+plotting fixture 標記為 `MOCK VALIDATION`，不能當作 Blender research result。
+
+The [formal protocol](BENCHMARK_PROTOCOL.md) specifies Cases 1–4, metrics, baselines,
+ablations and separate acceptance categories. It retains unresolved settings and is a
+specification, not an executable ExperimentConfig. The comparison command above reads
+existing benchmark outputs into a fresh report directory, writes separate PNGs and JSON/
+Markdown summaries, preserves missing/failed/no-reference rows, and never orders methods
+by Ground Truth error. Synthetic runner results and plotting fixtures remain explicitly
+labelled synthetic regression or mock validation.
+
 ## 繁體中文
 
 ### 執行入口
