@@ -4,6 +4,28 @@
 
 ## 繁體中文
 
+### 2026-10-02 — Phase 2 驗證與凍結
+
+從 clean `b839254` 在隔離 `phase2/integration-foundation` 驗證；merge-base 仍為
+`b11edb9`。139 個受保護 Phase 1 paths 的 blobs／modes 完全相同，Phase 2 commits
+未進入 Phase 1 branches；沒有需要修改 Phase 1 contract 的問題。
+
+只新增兩個回歸測試檔（18 cases）：七個 API route 的 schema/status 與 inclusive point
+queries、atomic publication failure、nullable/empty/incomplete TypeScript contracts，
+以及 GT／metrics 改變、重複 GET、replay/debug overlays 的 inference/storage isolation。
+未修改 production source、既有 configs／fixtures／tests 或 Blender assets。
+
+本輪重跑：既有 Phase 2 integration **14 passed in 3.11s**；Phase 2 unit
+**102 passed in 3.11s**；新增兩檔 **18 passed in 4.42s**；完整 pytest
+**668 passed in 46.64s，無 skipped／failed**。Ruff、strict mypy（80 source files）、
+diff checks 通過；Node 26 執行 TypeScript runtime，既有 Blender tests 在獲准環境
+執行，沒有 render／save assets。以上 targeted counts 已包含在 full count，不能相加。
+
+標記 **PHASE2_INTEGRATION_FOUNDATION_VALIDATED**，以最後 validation commit 保存測試與
+[凍結紀錄](PHASE2_INTEGRATION_VALIDATION.md)，同步 handoff。無本機 mock portability
+blocker；跨 OS／filesystem／Node capability hardening 延後。完成後停止，建議回
+Phase 1 Blender research closed loop；本輪沒有 push／PR／merge／history rewrite。
+
 ### 2026-10-02 — Phase 2 Integration Foundation
 
 從 `codex/dataset-infrastructure` 的乾淨 checkpoint `b11edb9` 開始；建立前 Ruff、strict
@@ -163,6 +185,22 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-02 — Phase 2 validation and freeze
+
+Validation started from clean `b839254` on the isolated Phase 2 branch. Merge-base remained
+`b11edb9`; 139 protected Phase 1 blobs/modes were identical and Phase 2 commits stayed outside
+Phase 1 branches. Only two new regression files (18 cases) and validation/handoff/log docs
+were added, covering API/status, atomic failure, TypeScript preservation and GT/metrics/read
+isolation. Full pytest: **668 passed in 46.64s, no skips/failures**; targeted integration 14,
+unit 102 and new-file coverage 18 all passed (already included in the full total). Ruff, strict
+mypy for 80 source files and diff checks passed; Node runtime and existing Blender tests ran.
+
+**PHASE2_INTEGRATION_FOUNDATION_VALIDATED**. See the
+[freeze record](PHASE2_INTEGRATION_VALIDATION.md) for scope and limitations. No local mock
+portability blocker, Phase 1 contract change, production feature, asset save/render,
+publication, merge or history rewrite occurred. Work stops here; returning to the separately
+owned Phase 1 Blender research closed loop is recommended.
 
 ### 2026-10-02 — Phase 2 Integration Foundation
 
