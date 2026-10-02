@@ -1,0 +1,103 @@
+{
+  "data_kind": "SYNTHETIC_TEST_FIXTURE",
+  "scenarios": [
+    {
+      "scenario_id": "benchmark_disconnected",
+      "input": {"base_case": "single_path", "remove_topology_transitions": true},
+      "expected_candidates": 0,
+      "expected_termination": "NO_FEASIBLE_PATH",
+      "expected_rejected_transitions": ["NO_FEASIBLE_AUTHORIZED_ROUTE"],
+      "expected_provenance": "Only supplied OBSERVED/PROJECTED endpoints; no INFERRED_GAP",
+      "expected_metric_behavior": "selected routes 0; errors and rates null; coverage false",
+      "expected_state": "EXHAUSTED_WITHOUT_FEASIBLE_PATH"
+    },
+    {
+      "scenario_id": "benchmark_no_gt",
+      "input": {"base_case": "branching_top_k", "evaluation_references": []},
+      "expected_candidates": 3,
+      "expected_termination": "COMPLETE",
+      "expected_rejected_transitions": [],
+      "expected_provenance": "PROJECTED endpoints and INFERRED_GAP candidates; no GT in inference",
+      "expected_metric_behavior": "NO_REFERENCE; metrics null; no fabricated evaluation",
+      "expected_state": "INFERENCE_COMPLETED_EVALUATION_UNAVAILABLE"
+    },
+    {
+      "scenario_id": "benchmark_duplicate_input",
+      "input": {"base_case": "single_path", "repeat_first_sample": true},
+      "expected_candidates": 0,
+      "expected_termination": null,
+      "expected_rejected_transitions": [],
+      "expected_provenance": "Untrusted duplicate evidence rejected before Event or Graph",
+      "expected_metric_behavior": "INPUT_REJECTED; evaluation NOT_RUN",
+      "expected_state": "INPUT_REJECTED_WITH_STRUCTURED_REPORT_AND_ORIGINAL_EXCEPTION"
+    },
+    {
+      "scenario_id": "benchmark_invalid_uv",
+      "input": {"base_case": "single_path", "first_uv": [-0.1, 0.5]},
+      "expected_candidates": 0,
+      "expected_termination": null,
+      "expected_rejected_transitions": [],
+      "expected_provenance": "Invalid evidence rejected before Event or Graph",
+      "expected_metric_behavior": "INPUT_REJECTED; evaluation NOT_RUN",
+      "expected_state": "INPUT_REJECTED_WITH_STRUCTURED_REPORT_AND_ORIGINAL_EXCEPTION"
+    }
+  ],
+  "additional_scenarios": [
+    {
+      "scenario_id": "benchmark_off_network",
+      "input": {"base_case": "single_path", "first_projected_position": [999, 0, 0]},
+      "expected_candidates": 0,
+      "expected_termination": null,
+      "expected_rejected_transitions": ["ENDPOINT_OFF_NETWORK"],
+      "expected_provenance": "PROJECTED label does not authorize an off-network endpoint",
+      "expected_metric_behavior": "INPUT_REJECTED; evaluation NOT_RUN",
+      "expected_state": "ORIGINAL_GRAPH_ERROR_AND_FAILURE_CODE_PRESERVED"
+    },
+    {
+      "scenario_id": "benchmark_unexpected_runtime_defect",
+      "input": {"base_case": "single_path", "inject_error_types": ["RuntimeError", "ValueError"]},
+      "expected_candidates": 0,
+      "expected_termination": null,
+      "expected_rejected_transitions": [],
+      "expected_provenance": "No output from failed consumer",
+      "expected_metric_behavior": "NOT_RUN; do not disguise unexpected defects as input rejections",
+      "expected_state": "ORIGINAL_EXCEPTION_PROPAGATES_NO_FALSE_REPORT"
+    },
+    {
+      "scenario_id": "benchmark_formal_top_three_only",
+      "input": {"graph_case": "eight_routes_k3", "record_rerun": true},
+      "expected_candidates": 3,
+      "expected_termination": "MAX_PATHS_REACHED",
+      "expected_rejected_transitions": [],
+      "expected_provenance": "Only formal INFERRED_GAP route IDs enter timing, metrics and Rerun",
+      "expected_metric_behavior": "Every metric uses only three official route IDs",
+      "expected_state": "BOUNDED_OUTPUT_WITH_INCOMPLETE_ENUMERATION"
+    }
+  ],
+  "determinism_expected": {
+    "input": ["eight_routes_k3", "equal_distance_ties", "uncited_navigation_bridge"],
+    "invocations_per_fixture": {"same_process": 4, "separate_process": 3},
+    "process_hash_and_random_seeds": [1, 17, 101],
+    "expected_candidates": "3, 3, 0; original ordering and candidate/Event IDs unchanged",
+    "expected_termination": ["MAX_PATHS_REACHED", "COMPLETE", "NO_FEASIBLE_PATH"],
+    "expected_rejected_transitions": "Identical across all invocations",
+    "expected_provenance": "Identical inference records, including bindings and evidence",
+    "expected_metric_behavior": "Metrics and JSON summary semantics identical; runtime/Git/RRD metadata excluded",
+    "expected_state": "REPRODUCIBLE_ACROSS_OUTPUT_AND_PROCESS_CONTEXTS"
+  },
+  "poison_patterns": {
+    "different_path": {"position_offset": [0, 1000, 0]},
+    "impossible_speed": {"alternating_x": [-1000000, 1000000], "velocity": [2000000, 0, 0]},
+    "different_floor": {"z": 300, "floor_id": "POISONED_99F"},
+    "coordinate_chaos": {"cycle": [[4321, -700, 37], [-9876, 800, -22], [51, 9000, 11]]}
+  },
+  "poison_expected": {
+    "input": "Replace evaluation-only coordinates, velocity and floor; retain reference binding/time/seed",
+    "expected_candidates": 3,
+    "expected_termination": "COMPLETE",
+    "expected_rejected_transitions": [],
+    "expected_provenance": "All inference records unchanged; truth remains GROUND_TRUTH",
+    "expected_metric_behavior": "Coverage false and ADE changes; inference/physical checks unchanged",
+    "expected_state": "INFERENCE_IDENTICAL_EVALUATION_CHANGED"
+  }
+}
