@@ -1,0 +1,348 @@
+{
+  "schema_version": "benchmark-comparison/v1",
+  "provenance": {
+    "benchmark_kind": "MOCK_VALIDATION"
+  },
+  "description": "PLOTTING-ONLY fabricated measurements. No baselines were executed. No Blender research result or method quality conclusion is represented.",
+  "comparison_settings": {
+    "dataset_id": "PLOTTING_ONLY_FIXTURE",
+    "seed": 20261002,
+    "metric_config_id": "PLOTTING_ONLY_CONFIG"
+  },
+  "cases": [
+    "case1",
+    "case2",
+    "case3",
+    "no_reference",
+    "failed",
+    "empty_candidates",
+    "missing_case"
+  ],
+  "methods": [
+    "shortest_path",
+    "geometry",
+    "spatiotemporal"
+  ],
+  "runs": [
+    {
+      "case_id": "case1",
+      "method_id": "shortest_path",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 0.25,
+        "ade_m": 1.0,
+        "fde_m": 0.5,
+        "min_ade_at_k_m": 0.2,
+        "min_fde_at_k_m": 0.1,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.1,
+        "impossible_transition_rate": 0.2,
+        "path_length_error_m": 1.0,
+        "travel_time_error_s": 2.0,
+        "runtime_s": 0.05,
+        "candidate_count": 1,
+        "search_nodes": 10
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case1",
+      "method_id": "geometry",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 0.5,
+        "ade_m": 2.0,
+        "fde_m": 1.0,
+        "min_ade_at_k_m": 0.4,
+        "min_fde_at_k_m": 0.2,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.2,
+        "constraint_violation_rate": 0.0,
+        "impossible_transition_rate": 0.1,
+        "path_length_error_m": 2.0,
+        "travel_time_error_s": 3.0,
+        "runtime_s": 0.1,
+        "candidate_count": 2,
+        "search_nodes": 20
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case1",
+      "method_id": "spatiotemporal",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 0.75,
+        "ade_m": 3.0,
+        "fde_m": 1.5,
+        "min_ade_at_k_m": 0.6000000000000001,
+        "min_fde_at_k_m": 0.30000000000000004,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.1,
+        "constraint_violation_rate": 0.3,
+        "impossible_transition_rate": 0.0,
+        "path_length_error_m": 3.0,
+        "travel_time_error_s": 4.0,
+        "runtime_s": 0.15000000000000002,
+        "candidate_count": 3,
+        "search_nodes": 30
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "shortest_path",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 0.5,
+        "ade_m": 2.0,
+        "fde_m": 1.0,
+        "min_ade_at_k_m": 0.4,
+        "min_fde_at_k_m": 0.2,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.1,
+        "impossible_transition_rate": 0.2,
+        "path_length_error_m": 2.0,
+        "travel_time_error_s": 3.0,
+        "runtime_s": 0.1,
+        "candidate_count": 2,
+        "search_nodes": 20
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "geometry",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 0.75,
+        "ade_m": 3.0,
+        "fde_m": 1.5,
+        "min_ade_at_k_m": 0.6000000000000001,
+        "min_fde_at_k_m": 0.30000000000000004,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.2,
+        "constraint_violation_rate": 0.0,
+        "impossible_transition_rate": 0.1,
+        "path_length_error_m": 3.0,
+        "travel_time_error_s": 4.0,
+        "runtime_s": 0.15000000000000002,
+        "candidate_count": 3,
+        "search_nodes": 30
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "spatiotemporal",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 1.0,
+        "ade_m": 4.0,
+        "fde_m": 2.0,
+        "min_ade_at_k_m": 0.8,
+        "min_fde_at_k_m": 0.4,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.1,
+        "constraint_violation_rate": 0.3,
+        "impossible_transition_rate": 0.0,
+        "path_length_error_m": 4.0,
+        "travel_time_error_s": 5.0,
+        "runtime_s": 0.2,
+        "candidate_count": 4,
+        "search_nodes": 40
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "shortest_path",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 0.75,
+        "ade_m": 3.0,
+        "fde_m": 1.5,
+        "min_ade_at_k_m": 0.6000000000000001,
+        "min_fde_at_k_m": 0.30000000000000004,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.1,
+        "impossible_transition_rate": 0.2,
+        "path_length_error_m": 3.0,
+        "travel_time_error_s": 4.0,
+        "runtime_s": 0.15000000000000002,
+        "candidate_count": 3,
+        "search_nodes": 30
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "geometry",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 1.0,
+        "ade_m": 4.0,
+        "fde_m": 2.0,
+        "min_ade_at_k_m": 0.8,
+        "min_fde_at_k_m": 0.4,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.2,
+        "constraint_violation_rate": 0.0,
+        "impossible_transition_rate": 0.1,
+        "path_length_error_m": 4.0,
+        "travel_time_error_s": 5.0,
+        "runtime_s": 0.2,
+        "candidate_count": 4,
+        "search_nodes": 40
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "spatiotemporal",
+      "run_id": "plot-fixture-1",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "projection_error_m": 1.25,
+        "ade_m": 5.0,
+        "fde_m": 2.5,
+        "min_ade_at_k_m": 1.0,
+        "min_fde_at_k_m": 0.5,
+        "feasible_candidate_recall": 0.5,
+        "collision_rate": 0.1,
+        "constraint_violation_rate": 0.3,
+        "impossible_transition_rate": 0.0,
+        "path_length_error_m": 5.0,
+        "travel_time_error_s": 6.0,
+        "runtime_s": 0.25,
+        "candidate_count": 5,
+        "search_nodes": 50
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.5,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "case1",
+      "method_id": "shortest_path",
+      "run_id": "plot-fixture-2",
+      "status": "COMPLETE",
+      "selected_k": 3,
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "ade_m": 3.0,
+        "fde_m": 2.0,
+        "min_ade_at_k_m": 0.6,
+        "min_fde_at_k_m": 0.4,
+        "runtime_s": 0.1,
+        "candidate_count": 2,
+        "search_nodes": 20
+      },
+      "coverage_at_k": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0
+      }
+    },
+    {
+      "case_id": "no_reference",
+      "method_id": "geometry",
+      "run_id": "plot-fixture-1",
+      "status": "NO_REFERENCE",
+      "termination_reason": "COMPLETE",
+      "metrics": {
+        "candidate_count": 1,
+        "search_nodes": 2,
+        "runtime_s": 0.02
+      }
+    },
+    {
+      "case_id": "failed",
+      "method_id": "geometry",
+      "run_id": "plot-fixture-1",
+      "status": "INPUT_REJECTED",
+      "metrics": {}
+    },
+    {
+      "case_id": "empty_candidates",
+      "method_id": "geometry",
+      "run_id": "plot-fixture-1",
+      "status": "NO_FEASIBLE_PATH",
+      "selected_k": 3,
+      "termination_reason": "NO_FEASIBLE_PATH",
+      "metrics": {
+        "candidate_count": 0,
+        "search_nodes": 3,
+        "runtime_s": 0.03
+      },
+      "coverage_at_k": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0
+      }
+    }
+  ]
+}
