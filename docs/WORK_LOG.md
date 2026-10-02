@@ -4,6 +4,59 @@
 
 ## 繁體中文
 
+### 2026-10-02 — Boundary / Failure-mode / Adversarial validation
+
+起點 `b11edb9`，branch `codex/dataset-infrastructure`。先讀 PRD／System Design／
+Issues and Decisions、既有 mock／tests／benchmark／metric configs；基線重新驗證
+547 passed in 46.98s。本輪只新增小型 boundary fixtures／regressions，沒有一般正常
+scenario、Blender scene 修改、render、Agent ranking 或發布；正式 domain schemas 不變。
+
+| 分組 | 新增 tests | Commit |
+| --- | --- | --- |
+| Reachability／time／speed／floor；Graph fixture adapter | 15 | `f9246b6` |
+| Observation duplicate／ordering／short/adjacent/missing gaps | 20 | `a76eb76` |
+| Top-K／deterministic equal-distance tie | 17 | `09e6606` |
+| Projection／provenance guards | 31 | `dcd7b2e` |
+| Config／fake AABB collision boundaries | 24 | `7e59c06` |
+| Termination／search guardrails | 20 | `9082528` |
+| Four poisoned GT patterns／process determinism | 5 | `1f07701` |
+| Benchmark failure reporting／formal Top-K consumers | 8 | `a95b595` |
+
+新增總數 **140**。上述分組包含 parametrized cases，最後以 pytest collection／完整
+執行總數核對。23 組 Graph specs 都是 2–3 nodes／最多 8 edges；20 min branching cycle
+由 node budget 在 12 expansions 停止，1 hr cycle 由 path-length eligibility 在 15
+expansions 窮盡。全部六種既有 termination 已覆蓋；未創造 unsupported hops/window
+aliases 或 Agent/runtime reasons。Short recovery 保留獨立 endpoints/source binding；
+duplicate policy 明確拒絕，全部 120 input permutations 的 inference semantics 相同。
+
+新 regression 真正抓到的既有缺口集中於 benchmark reporting：invalid case rejection
+沒有 structured report、JSON/Markdown summary 遺失 rejection reasons／endpoint 描述，
+Markdown 未明示 NO_REFERENCE。Production 只修改 `benchmark/runner.py`／`reporting.py`：
+保留 structured diagnostics 與既有 exception re-raise；不捏造 Graph termination，
+不產生成功 artifact。未知 consumer RuntimeError／ValueError 仍原樣拋出；已知 contract
+errors 才分類為 input rejection。Graph／projection／aggregation／ranking／metric semantics
+沒有變更，這些新增測試未發現需要修補的既有核心 bug。
+
+GT poisoning 使用不同 path、超大速度、錯誤 floor 與固定混亂座標，保存相同 reference
+binding／time／seed。完整 aggregation／BoundGapEvent（candidates/order/IDs/termination/
+timing）與 no-GT/clean-GT inference 相同；只有 evaluation 改變，K=3 Coverage 由 true
+變 false、ADE 改變，physical metrics 不變。Determinism stress 三組 adversarial fixtures
+各 4 次同 process、3 次新 process，共 21 次執行／9 個新 process，變更 hash/random
+seed、CWD/output directory；完整 inference、metrics.json 與 JSON summary semantics
+一致。排除 runtime/Git identity/RRD SDK metadata，不要求 binary byte identity。
+
+2026-10-02 使用者確認 collision Top-K pruning **UNRESOLVED**，現階段只做
+evaluation-only positive AABB／threshold tests；epsilon=0 明確拒絕，正式 Schema 不變。
+沒有逐 transition rejection-log、missing-frame marker、coordinate-origin attestation
+或獨立 ImpossibleTransition metric schema；範圍詳見 [boundary fixtures](../data/mock/boundary/README.md)。
+ISSUES_AND_DECISIONS 只新增真正影響物理可行性語意的 collision authority 未解問題。
+
+最終 code checkpoint `a95b595`：**687 passed in 48.05s，無 failed/skipped**；
+`uv run ruff check .` 通過、`uv run mypy` 通過（69 source files）、`git diff --check`
+通過。uv sandbox cache/SystemConfiguration 限制以獲准的 unsandboxed uv checks 解決，
+沒有修改 dependencies／uv.lock。其後只更新文件，不把這些結果冒充正式 Blender
+walkability/collision certification 或研究 benchmark 驗收。
+
 ### 2026-10-01 — Deterministic fake-data 後半段閉環
 
 起點 `2a988df`，branch `codex/deterministic-downstream-scenarios`；使用者授權四組
@@ -122,6 +175,23 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+The 2026-10-02 boundary round starts at `b11edb9` on `codex/dataset-infrastructure` and
+adds 140 tests across the eight commits above. Final code `a95b595` passes 687 tests
+in 48.05s with no skips/failures, repository Ruff, strict mypy for 69 source files and
+diff checks. Only benchmark reporting production code changes: structured known-input
+rejections retain their original exception, and summaries expose endpoints/reasons and
+NO_REFERENCE. No formal schemas, core inference/metric semantics, Blender assets,
+dependencies, rendering, Agent ranking or publication change.
+
+Four poisoned-truth patterns and absent truth preserve full inference; only evaluation
+changes. Three adversarial fixtures replay across 21 invocations, including nine fresh
+processes with varied hash/random seeds, CWD and output directories. All 120 observation
+permutations and equal-distance route permutations retain ordering and IDs. All six
+current search reasons, partial-candidate preservation, short/adjacent gaps and tiny
+long-gap branching bounds are tested. User-confirmed scope keeps collision pruning
+unresolved/evaluation-only and rejects zero epsilon. Actual school geometry, clearance
+and obstacle authority remain future work, not a claim established by these fixtures.
 
 The 2026-10-01 fake-data round started at `2a988df` and completed the generic downstream
 loop on `codex/deterministic-downstream-scenarios`, with implementation commits listed

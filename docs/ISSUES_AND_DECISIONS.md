@@ -183,3 +183,27 @@ regression semantics；不支援的 policy 直接拒絕，不讓名稱變更冒�
 Metric tolerance 不放寬 Graph 的物理可行性限制。正式研究的 K、D、epsilon、取樣／
 時間對齊選擇及 collision／constraint tolerances 尚未定案；目前預設值只重播合成
 regression，不是 benchmark 驗收門檻。
+
+## Unresolved Graph collision authority / Graph 碰撞權威尚未定義
+
+Problem: Configured route membership cannot prove obstacle-free movement. Current Graph
+inputs have no obstacle geometry or collision-authority binding; supplied closed AABBs
+belong to evaluation. Detecting a known collision after candidate generation therefore
+does not establish the PRD requirement that formal output candidates have zero collisions.
+
+Status: **UNRESOLVED**. On 2026-10-02 the user explicitly limited this validation round to
+evaluation-only positive collision/tolerance tests and deferred collision Top-K pruning.
+Preserve formal schemas. Approved inference obstacle input, source/context binding,
+ownership and deterministic pruning policy are required before claiming that Graph
+excludes known-collision routes. Do not import evaluation/GT geometry into inference or
+turn synthetic AABB tests into Blender mesh clearance certification.
+
+問題：Configured route membership 不能證明路徑無障礙；目前 Graph 沒有 obstacle geometry
+或 collision authority binding，封閉 AABB 屬於 evaluation。候選產生後抓到碰撞，不能
+宣稱已滿足 PRD「正式輸出的候選 collision rate = 0」。
+
+狀態：**UNRESOLVED**。2026-10-02 使用者明確確認，本輪維持 evaluation-only positive
+collision／tolerance tests，暫緩 collision Top-K pruning 並保持正式 Schema 不變。
+後續須先核准 inference obstacle input、source／context binding、ownership 與 deterministic
+pruning policy；不能把 evaluation／GT geometry 偷渡入 inference，也不能把 fake AABB
+測試當成 Blender mesh clearance certification。

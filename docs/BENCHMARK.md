@@ -136,6 +136,15 @@ Constraint violations、Termination 與 runtime，不產生研究結論。
 `status=COMPLETE` 與 file SHA-256 清單記錄已完成輸出；它不把 partial output 冒充完整
 run，也不宣告正式研究驗收。
 
+已驗證 experiment config 後，case 載入／aggregation／Graph 的已知 input-contract
+拒絕會保存 `summary.json`（`status=INPUT_REJECTED`、case、stage、error type/message／
+typed failure code）、`error.json`、`metrics.json`（`status=NOT_RUN`）與 `summary.md`，
+並重新拋出原 exception。沒有成功 `artifacts.json`、候選或捏造的 termination；正式
+domain schemas 不變。未知 consumer exceptions 仍直接拋出，不冒充 input rejection。
+Experiment／MetricConfig 版本或 schema 錯誤維持在 output 建立前 fail fast。
+有效空候選仍保存完整結果，errors／rates 為 null、Coverage=false；summary 保留
+search completeness、expanded states、rejection reasons、endpoint cameras 與 NO_REFERENCE。
+
 `replay/inputs/` 保存實際使用的原始 JSON bytes，依 SHA-256 命名。Replay config／
 manifest 改為引用這些封存檔案；原始 config bytes 也保留，CLI overrides 則保存於
 effective config。`source.patch`、`untracked/` 與 `uv.lock` 保留 dirty checkout 所需內容。
@@ -210,6 +219,13 @@ fresh output directory. Determinism covers observations, gap boundaries, candida
 metric values under deterministic search budgets; wall runtimes, operational timeout triggers
 and SDK recording metadata remain execution-dependent. Summary physical counts cover all timed
 hypotheses and repeat across K rows; inference runtime is per case, not additive per gap.
+
+Known case-input contract rejections save structured JSON/Markdown failure diagnostics
+and NOT_RUN metrics, then re-raise the original exception. They produce no successful
+artifact inventory, candidates or invented search termination. Unknown consumer exceptions
+propagate unclassified. Experiment/metric configuration validation still fails before
+creating output. Valid empty results retain null errors/rates and false Coverage; summaries
+include rejection reasons, observed endpoint cameras, search metadata and NO_REFERENCE.
 
 MockDataset and BlenderDataset share the same sanitized JSON/provider contract. The Blender
 adapter requires an asset digest and does not load a Blender scene. A replacement dataset

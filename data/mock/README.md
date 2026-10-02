@@ -2,6 +2,9 @@
 
 [繁體中文](#繁體中文) | [English](#english)
 
+Boundary／failure／adversarial fixtures 與範圍限制見 [boundary/](boundary/README.md)。
+For boundary/failure/adversarial regression fixtures, see [boundary/](boundary/README.md).
+
 ## 繁體中文
 
 這四組資料只驗證後半段 interface，不代表 school WALKABLE／STAIR／WALL
