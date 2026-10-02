@@ -8,7 +8,7 @@ from pathlib import Path
 from time import monotonic, perf_counter
 from urllib.parse import quote
 
-from pydantic import Field
+from pydantic import Field, ValidationError
 
 from amidst.benchmark.reporting import generate_reports
 from amidst.datasets.loading import load_case_calibration, load_dataset_case
@@ -24,7 +24,7 @@ from amidst.evaluation.configured import (
     ConfiguredEvaluationResult,
     evaluate_configured_trajectories,
 )
-from amidst.events import reconstruct_gaps
+from amidst.events import EventAggregationError, reconstruct_gaps
 from amidst.experiments.versioning import (
     canonical_config_hash,
     fingerprint,
@@ -33,6 +33,11 @@ from amidst.experiments.versioning import (
     read_reference,
     resolve_reference,
 )
+from amidst.graph.engine import GraphInputError
+from amidst.navigation.graph import NavigationError
+from amidst.navigation.topology import TopologyError
+from amidst.observation.aggregation import AggregationInputError
+from amidst.reconstruction.blind_gap import ReconstructionInputError
 from amidst.storage.json_files import write_json
 from amidst.visualization import RerunDebugVisualizationAdapter
 
@@ -171,6 +176,12 @@ def _write_results(result: BenchmarkResult, destination: Path) -> None:
                 "candidates": len(gap.gap.event.candidates),
                 "hypotheses": len(gap.gap.event.trajectories),
                 "termination_reason": gap.gap.event.termination_reason.value,
+                "search_complete": gap.gap.search_result.complete,
+                "expanded_nodes": gap.gap.search_result.expanded_nodes,
+                "rejection_reasons": gap.gap.search_result.rejection_reasons,
+                "endpoint_camera_ids": (
+                    gap.gap.start.observation.camera_id, gap.gap.end.observation.camera_id,
+                ),
                 "rerun_artifact": gap.rerun_artifact,
                 "evaluation_status": "EVALUATED" if gap.evaluation is not None else "NO_REFERENCE",
                 "metrics_at_k": [{
@@ -191,6 +202,41 @@ def _write_results(result: BenchmarkResult, destination: Path) -> None:
         for gap in case.gaps:
             write_json(directory / "gaps" / _component(gap.gap.event.event_id) / "candidates.json",
                        gap.gap.model_dump(mode="json"))
+
+
+def _write_input_rejection(
+    destination: Path, *, experiment_id: str, case_id: str, error: ValueError,
+) -> None:
+    """Report a known case-input rejection while preserving its original exception.
+
+    No Event or Graph termination is invented when input validation stopped the run.
+    Configuration validation still fails before output; unexpected exceptions propagate.
+    """
+    destination.mkdir(parents=True, exist_ok=False)
+    metadata: dict[str, object] = {"type": type(error).__name__, "message": str(error)}
+    if isinstance(error, GraphInputError):
+        metadata["failure"] = error.failure.value
+    if isinstance(error, ValidationError):
+        metadata["validation_errors"] = error.errors(include_url=False, include_context=False,
+                                                     include_input=False)
+    write_json(destination / "summary.json", {
+        "experiment_id": experiment_id,
+        "status": "INPUT_REJECTED",
+        "stage": "CASE_INFERENCE",
+        "termination_reason": None,
+        "evaluation_status": "NOT_RUN",
+        "error": metadata,
+        "cases": [{"case_id": case_id, "gaps": []}],
+    })
+    write_json(destination / "metrics.json", {"status": "NOT_RUN"})
+    write_json(destination / "error.json", metadata)
+    (destination / "summary.md").write_text(
+        f"Experiment: {experiment_id}\n\nStatus: INPUT_REJECTED\n\n"
+        f"Case: {case_id}; stage: CASE_INFERENCE; evaluation: NOT_RUN\n\n"
+        f"{type(error).__name__}: {error}\n\n"
+        "No Event or search termination was produced. The original exception is re-raised.\n",
+        encoding="utf-8",
+    )
 
 
 def run_benchmark(
@@ -232,12 +278,25 @@ def run_benchmark(
     inferred: list[_InferredCase] = []
     for case in dataset.cases:
         case_started = runtime_clock()
-        provider, pipeline = load_dataset_case(dataset, case, manifest_path)
-        aggregation = provider.aggregate(provider.time_range, config.aggregation_policy)
-        gaps = reconstruct_gaps(
-            aggregation, pipeline, dataset_id=case.case_id, random_seed=config.seed,
-            clock=search_clock,
-        )
+        try:
+            provider, pipeline = load_dataset_case(dataset, case, manifest_path)
+        except ValueError as error:
+            _write_input_rejection(destination, experiment_id=config.experiment_id,
+                                   case_id=case.case_id, error=error)
+            raise
+        try:
+            aggregation = provider.aggregate(provider.time_range, config.aggregation_policy)
+            gaps = reconstruct_gaps(
+                aggregation, pipeline, dataset_id=case.case_id, random_seed=config.seed,
+                clock=search_clock,
+            )
+        except (
+            ValidationError, AggregationInputError, EventAggregationError,
+            GraphInputError, NavigationError, TopologyError, ReconstructionInputError,
+        ) as error:
+            _write_input_rejection(destination, experiment_id=config.experiment_id,
+                                   case_id=case.case_id, error=error)
+            raise
         inferred.append(_InferredCase(
             case, pipeline, aggregation, gaps,
             load_case_calibration(dataset, case, manifest_path),

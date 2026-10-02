@@ -131,11 +131,22 @@ def generate_reports(
         "Collision violations | Constraint violations | Termination | Inference runtime (s) |",
         "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
+    diagnostics: list[str] = []
     for case in result.cases:
         if not case.gaps:
             lines.append(f"| {_cell(case.case_id)} | 0 / 0 | n/a | n/a | n/a | n/a | n/a | n/a | "
                          f"NO_BOUNDED_GAP | {case.inference_runtime_s:.6f} |")
         for gap in case.gaps:
+            diagnostics.extend([
+                "", f"Event {_cell(gap.gap.event.event_id)} observed endpoint cameras: "
+                f"{_cell(gap.gap.start.observation.camera_id)} → "
+                f"{_cell(gap.gap.end.observation.camera_id)}. Evaluation status: "
+                + ("EVALUATED." if gap.evaluation is not None else "NO_REFERENCE."),
+                "Rejection reasons: " + (
+                    ", ".join(_cell(reason) for reason in gap.gap.search_result.rejection_reasons)
+                    or "none"
+                ) + ".", "",
+            ])
             # Configured metrics own K selection; reports never select hypotheses by truth.
             evaluations = gap.evaluation.evaluations if gap.evaluation is not None else (None,)
             for evaluation in evaluations:
@@ -152,6 +163,7 @@ def generate_reports(
                     + f" | {gap.gap.event.termination_reason.value} | "
                     f"{case.inference_runtime_s:.6f} |"
                 )
+    lines.extend(diagnostics)
     lines.extend([
         "", f"Total runner runtime: {result.runtime_s:.6f} s.",
         "Inference runtime is per case (shared by its gaps), not an additive per-gap measurement.",
