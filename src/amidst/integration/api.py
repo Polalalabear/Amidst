@@ -1,8 +1,10 @@
 """Read-only JSON/WSGI adapter for the transport-neutral integration service."""
 
+import base64
+import binascii
 from collections.abc import Iterable
 from http import HTTPStatus
-from urllib.parse import parse_qs, unquote
+from urllib.parse import parse_qs
 from wsgiref.types import StartResponse, WSGIEnvironment
 
 from amidst.domain.common import DomainModel
@@ -22,9 +24,30 @@ from amidst.integration.service import MockIntegrationService
 def api_contract() -> ApiContract:
     models = (
         RecordQuery, ObservationPage, EventPage, EventResponse, TrajectoryResponse,
-        ConsumerEvent, ReplaySeek, ReplayFrame, ApiError,
+        ConsumerEvent, ReplaySeek, ReplayFrame, ApiError, ApiContract,
     )
     return ApiContract(schemas={model.__name__: model.model_json_schema() for model in models})
+
+
+def encode_event_key(event_id: str) -> str:
+    """Opaque URL-safe key; preserve literal slashes, percent signs and Unicode IDs."""
+    if not event_id:
+        raise ValueError("event_id cannot be empty")
+    return "e-" + base64.urlsafe_b64encode(event_id.encode("utf-8")).decode("ascii").rstrip("=")
+
+
+def _decode_event_key(key: str) -> str:
+    if not key.startswith("e-"):
+        raise ValueError("event route requires a versioned base64url event key")
+    encoded = key[2:]
+    try:
+        event_id = base64.b64decode(encoded + "=" * (-len(encoded) % 4),
+                                   altchars=b"-_", validate=True).decode("utf-8")
+    except (ValueError, binascii.Error, UnicodeError) as error:
+        raise ValueError("invalid event key") from error
+    if encode_event_key(event_id) != key:
+        raise ValueError("event key must use canonical encoding")
+    return event_id
 
 
 def _parameters(query_string: str, allowed: set[str]) -> dict[str, str]:
@@ -70,7 +93,7 @@ class IntegrationApplication:
             prefix = "/v1/events/"
             if path.startswith(prefix):
                 parts = path[len(prefix):].split("/")
-                event_id = unquote(parts[0])
+                event_id = _decode_event_key(parts[0])
                 operation = parts[1] if len(parts) == 2 else "" if len(parts) == 1 else None
                 if operation == "replay":
                     parameters = _parameters(query_string, {"timestamp"})

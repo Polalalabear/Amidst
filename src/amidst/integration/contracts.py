@@ -11,6 +11,7 @@ from amidst.domain.trajectory import (
     TerminationReason,
     TrajectoryHypothesis,
 )
+from amidst.integration.consumer import ConsumerEvent, ReplayFrame, ReplaySeek
 
 
 class IntegrationMetadata(DomainModel):
@@ -90,15 +91,18 @@ class EndpointContract(DomainModel):
 
 class ApiContract(DomainModel):
     metadata: IntegrationMetadata = IntegrationMetadata()
+    event_key_encoding: Literal["E_PREFIX_BASE64URL_UTF8_NO_PADDING"] = (
+        "E_PREFIX_BASE64URL_UTF8_NO_PADDING"
+    )
     endpoints: tuple[EndpointContract, ...] = (
         EndpointContract(path="/v1/contract", response="ApiContract"),
         EndpointContract(path="/v1/observations", request="RecordQuery",
                          response="ObservationPage"),
         EndpointContract(path="/v1/events", request="RecordQuery", response="EventPage"),
-        EndpointContract(path="/v1/events/{event_id}", response="EventResponse"),
-        EndpointContract(path="/v1/events/{event_id}/trajectories", response="TrajectoryResponse"),
-        EndpointContract(path="/v1/events/{event_id}/consumer", response="ConsumerEvent"),
-        EndpointContract(path="/v1/events/{event_id}/replay", request="ReplaySeek",
+        EndpointContract(path="/v1/events/{event_key}", response="EventResponse"),
+        EndpointContract(path="/v1/events/{event_key}/trajectories", response="TrajectoryResponse"),
+        EndpointContract(path="/v1/events/{event_key}/consumer", response="ConsumerEvent"),
+        EndpointContract(path="/v1/events/{event_key}/replay", request="ReplaySeek",
                          response="ReplayFrame"),
     )
     schemas: dict[str, object]
@@ -114,3 +118,7 @@ class BackendAPI(Protocol):
     def event(self, event_id: str) -> EventResponse: ...
 
     def trajectories(self, event_id: str) -> TrajectoryResponse: ...
+
+    def consumer(self, event_id: str) -> ConsumerEvent: ...
+
+    def replay(self, seek: ReplaySeek) -> ReplayFrame: ...

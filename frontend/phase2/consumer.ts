@@ -10,6 +10,16 @@ import type { ConsumerEvent, ReplayFrame, Vec3 } from "./contracts.js";
  */
 export const WORLD_UP: Vec3 = [0, 0, 1];
 
+/** Encode the API route key without changing the canonical Event identity. */
+export function eventPath(eventId: string): string {
+  if (typeof eventId !== "string" || eventId.length === 0)
+    throw new TypeError("event_id must be nonempty");
+  const binary = Array.from(new TextEncoder().encode(eventId),
+    byte => String.fromCharCode(byte)).join("");
+  const key = btoa(binary).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, "");
+  return `/v1/events/e-${key}`;
+}
+
 type RecordValue = Record<string, unknown>;
 const META = {
   contract_version: "phase2.integration.v1",

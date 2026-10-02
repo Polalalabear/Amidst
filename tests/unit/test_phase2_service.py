@@ -1,9 +1,10 @@
 """Mock composition, canonical queries and strict read-only transport boundaries."""
 
 import json
+import shutil
+import subprocess
 from http import HTTPStatus
 from pathlib import Path
-from urllib.parse import quote
 from wsgiref.util import setup_testing_defaults
 from wsgiref.validate import validator
 
@@ -11,10 +12,13 @@ import pytest
 from pydantic import ValidationError
 
 from amidst.domain.interfaces import ObservationProvider
-from amidst.integration.api import IntegrationApplication, api_contract
+from amidst.domain.stream import BoundGapEvent
+from amidst.integration.api import IntegrationApplication, api_contract, encode_event_key
 from amidst.integration.config import ServiceConfig
 from amidst.integration.contracts import BackendAPI, EventResponse, RecordQuery
-from amidst.integration.local_repository import LocalJsonRepository
+from amidst.integration.local_repository import InMemoryRepository, LocalJsonRepository
+from amidst.integration.repositories import RepositorySnapshot
+from amidst.integration.service import MockIntegrationService
 from amidst.integration.wiring import build_mock_service
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -53,7 +57,7 @@ def test_http_json_roundtrip_and_wsgi_protocol() -> None:
     app = IntegrationApplication(service)
     environ = {}
     setup_testing_defaults(environ)
-    environ["PATH_INFO"] = "/v1/events/" + quote(gap.event.event_id, safe="")
+    environ["PATH_INFO"] = "/v1/events/" + encode_event_key(gap.event.event_id)
     environ["QUERY_STRING"] = ""
     environ["SERVER_PROTOCOL"] = "HTTP/1.0"
     captured = {}
@@ -85,13 +89,54 @@ def test_http_rejects_invalid_queries(query_string: str) -> None:
 
 def test_http_unknown_ids_write_methods_and_json_schemas() -> None:
     app = IntegrationApplication(build_mock_service(CONFIG, search_clock=lambda: 0.0))
-    assert app.handle("GET", "/v1/events/unknown")[0] == HTTPStatus.NOT_FOUND
+    assert app.handle("GET", "/v1/events/" + encode_event_key("unknown"))[0] == HTTPStatus.NOT_FOUND
     assert app.handle("GET", "/missing")[0] == HTTPStatus.NOT_FOUND
     assert app.handle("POST", "/v1/events")[0] == HTTPStatus.METHOD_NOT_ALLOWED
     contract = api_contract()
     assert contract.metadata.mode == "MOCK_INTEGRATION_ONLY"
     assert "ConsumerEvent" in contract.schemas
     assert "ReplayFrame" in contract.schemas
+    for endpoint in contract.endpoints:
+        assert endpoint.response in contract.schemas
+        if endpoint.request is not None:
+            assert endpoint.request in contract.schemas
+
+
+@pytest.mark.parametrize("event_id", ["literal%2Fidentifier", "a/b/consumer", "合成 event ?#%"])
+def test_url_keys_preserve_special_event_identifiers(event_id: str) -> None:
+    original = build_mock_service(CONFIG, search_clock=lambda: 0.0).repository.snapshot().gaps[0]
+    payload = original.model_dump(mode="json")
+    payload["event"]["event_id"] = event_id
+    gap = BoundGapEvent.model_validate(payload)
+    snapshot = RepositorySnapshot(observations=(gap.start, gap.end), gaps=(gap,))
+    app = IntegrationApplication(MockIntegrationService(InMemoryRepository(snapshot)))
+    key = encode_event_key(event_id)
+    assert "/" not in key and "%" not in key
+    status, response = app.handle("GET", "/v1/events/" + key)
+    assert status == HTTPStatus.OK
+    assert EventResponse.model_validate_json(response.model_dump_json()).gap == gap
+    assert app.handle("GET", "/v1/events/" + key + "/consumer")[0] == HTTPStatus.OK
+
+
+@pytest.mark.parametrize("key", ["e-", "e-Zg=", "bad", "e-!!!!"])
+def test_event_routes_reject_noncanonical_keys(key: str) -> None:
+    app = IntegrationApplication(build_mock_service(CONFIG, search_clock=lambda: 0.0))
+    assert app.handle("GET", "/v1/events/" + key)[0] == HTTPStatus.BAD_REQUEST
+
+
+def test_typescript_route_keys_match_backend_for_arbitrary_ids() -> None:
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("Node is required for TypeScript route-key coverage")
+    identities = ["literal%2Fidentifier", "a/b/consumer", "合成 event ?#%"]
+    source = ROOT / "frontend/phase2/consumer.ts"
+    script = (
+        "import {eventPath} from " + json.dumps(source.as_uri()) + ";"
+        "console.log(JSON.stringify(JSON.parse(process.argv[1]).map(eventPath)));"
+    )
+    result = subprocess.run([node, "--input-type=module", "-e", script, json.dumps(identities)],
+                            check=True, capture_output=True, text=True)
+    assert json.loads(result.stdout) == ["/v1/events/" + encode_event_key(i) for i in identities]
 
 
 def _local_config(tmp_path: Path, **changes: object) -> Path:
