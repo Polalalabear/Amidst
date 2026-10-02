@@ -1,0 +1,129 @@
+{
+  "navigation": {
+    "graph_id": "SYNTHETIC:observation_boundary_navigation",
+    "spatial_context_id": "SYNTHETIC:observation_boundaries",
+    "source_asset_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "data_kind": "SYNTHETIC_TEST_FIXTURE",
+    "nodes": [
+      {
+        "node_id": "A",
+        "position": [
+          0.0,
+          0,
+          0
+        ],
+        "floor_id": "1F"
+      },
+      {
+        "node_id": "B",
+        "position": [
+          0.02,
+          0,
+          0
+        ],
+        "floor_id": "1F"
+      },
+      {
+        "node_id": "C",
+        "position": [
+          0.04,
+          0,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ],
+    "edges": [
+      {
+        "edge_id": "AB",
+        "from_node_id": "A",
+        "to_node_id": "B",
+        "polyline": [
+          [
+            0.0,
+            0,
+            0
+          ],
+          [
+            0.02,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "edge_id": "BC",
+        "from_node_id": "B",
+        "to_node_id": "C",
+        "polyline": [
+          [
+            0.02,
+            0,
+            0
+          ],
+          [
+            0.04,
+            0,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  "topology": {
+    "topology_id": "SYNTHETIC:observation_boundary_topology",
+    "navigation_graph_id": "SYNTHETIC:observation_boundary_navigation",
+    "spatial_context_id": "SYNTHETIC:observation_boundaries",
+    "source_asset_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "data_kind": "SYNTHETIC_TEST_FIXTURE",
+    "nodes": [
+      {
+        "camera_id": "CAM_A",
+        "floor_id": "1F"
+      },
+      {
+        "camera_id": "CAM_B",
+        "floor_id": "1F"
+      },
+      {
+        "camera_id": "CAM_C",
+        "floor_id": "1F"
+      }
+    ],
+    "transitions": [
+      {
+        "transition_id": "CAM_AB",
+        "from_camera_id": "CAM_A",
+        "to_camera_id": "CAM_B",
+        "transition_type": "ADJACENT",
+        "navigation_from_node_id": "A",
+        "navigation_to_node_id": "B",
+        "navigation_edge_ids": [
+          "AB"
+        ]
+      },
+      {
+        "transition_id": "CAM_BC",
+        "from_camera_id": "CAM_B",
+        "to_camera_id": "CAM_C",
+        "transition_type": "ADJACENT",
+        "navigation_from_node_id": "B",
+        "navigation_to_node_id": "C",
+        "navigation_edge_ids": [
+          "BC"
+        ]
+      }
+    ]
+  },
+  "movement": {
+    "max_speed_m_s": 1
+  },
+  "search_policy": {
+    "max_candidate_paths": 3,
+    "max_search_nodes": 10,
+    "max_search_time_s": 1,
+    "max_branch_factor": 2,
+    "max_path_length_m": 1,
+    "max_detour_ratio": 3
+  }
+}

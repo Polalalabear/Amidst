@@ -1,0 +1,989 @@
+{
+  "data_kind": "SYNTHETIC_TEST_FIXTURE",
+  "descriptor_contract": "Each visible descriptor means supplied uv=(32,24), OBSERVED pixels and a PROJECTED point at its configured camera node. GAP descriptors explicitly declare OUTSIDE_FOV; absent records declare no visibility reason.",
+  "source_binding": {
+    "source_id": "SYNTHETIC:observation_boundaries",
+    "spatial_context_id": "SYNTHETIC:observation_boundaries",
+    "source_asset_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  },
+  "scenarios": [
+    {
+      "scenario_id": "out_of_order",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "c0",
+            "camera_id": "CAM_C",
+            "timestamp": 2,
+            "frame_id": 60
+          },
+          {
+            "sample_id": "a_gap",
+            "camera_id": "CAM_A",
+            "timestamp": 0.1,
+            "frame_id": 3,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "b_gap",
+            "camera_id": "CAM_B",
+            "timestamp": 1.1,
+            "frame_id": 33,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "b0",
+            "camera_id": "CAM_B",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ]
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0"
+          ],
+          [
+            "b0"
+          ],
+          [
+            "c0"
+          ]
+        ],
+        "event_time_ranges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "candidates_per_gap": [
+          1,
+          1
+        ],
+        "termination": [
+          "COMPLETE",
+          "COMPLETE"
+        ],
+        "rejected_transitions": [
+          [],
+          []
+        ],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "single_frame_recovery",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a_gap",
+            "camera_id": "CAM_A",
+            "timestamp": 0.1,
+            "frame_id": 3,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "b0",
+            "camera_id": "CAM_B",
+            "timestamp": 1,
+            "frame_id": 30
+          },
+          {
+            "sample_id": "b_gap",
+            "camera_id": "CAM_B",
+            "timestamp": 1.1,
+            "frame_id": 33,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "c0",
+            "camera_id": "CAM_C",
+            "timestamp": 2,
+            "frame_id": 60
+          }
+        ]
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0"
+          ],
+          [
+            "b0"
+          ],
+          [
+            "c0"
+          ]
+        ],
+        "event_time_ranges": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "candidates_per_gap": [
+          1,
+          1
+        ],
+        "termination": [
+          "COMPLETE",
+          "COMPLETE"
+        ],
+        "rejected_transitions": [
+          [],
+          []
+        ],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "two_frame_recovery",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a_gap",
+            "camera_id": "CAM_A",
+            "timestamp": 0.1,
+            "frame_id": 3,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "b0",
+            "camera_id": "CAM_B",
+            "timestamp": 1,
+            "frame_id": 30
+          },
+          {
+            "sample_id": "b1",
+            "camera_id": "CAM_B",
+            "timestamp": 1.0333333333333334,
+            "frame_id": 31
+          },
+          {
+            "sample_id": "b_gap",
+            "camera_id": "CAM_B",
+            "timestamp": 1.1,
+            "frame_id": 33,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "c0",
+            "camera_id": "CAM_C",
+            "timestamp": 2,
+            "frame_id": 60
+          }
+        ]
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0"
+          ],
+          [
+            "b0",
+            "b1"
+          ],
+          [
+            "c0"
+          ]
+        ],
+        "event_time_ranges": [
+          [
+            0,
+            1
+          ],
+          [
+            1.0333333333333334,
+            2
+          ]
+        ],
+        "candidates_per_gap": [
+          1,
+          1
+        ],
+        "termination": [
+          "COMPLETE",
+          "COMPLETE"
+        ],
+        "rejected_transitions": [
+          [],
+          []
+        ],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "threshold_below",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 0.099999999,
+            "frame_id": 3
+          }
+        ],
+        "aggregation_policy": {
+          "max_visible_sample_gap_s": 0.1
+        }
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0",
+            "a1"
+          ]
+        ],
+        "event_time_ranges": [],
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "threshold_equal",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 0.1,
+            "frame_id": 3
+          }
+        ],
+        "aggregation_policy": {
+          "max_visible_sample_gap_s": 0.1
+        }
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0",
+            "a1"
+          ]
+        ],
+        "event_time_ranges": [],
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "threshold_above",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 0.100000001,
+            "frame_id": 3
+          }
+        ],
+        "aggregation_policy": {
+          "max_visible_sample_gap_s": 0.1
+        }
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0"
+          ],
+          [
+            "a1"
+          ]
+        ],
+        "event_time_ranges": [
+          [
+            0,
+            0.100000001
+          ]
+        ],
+        "candidates_per_gap": [
+          1
+        ],
+        "termination": [
+          "COMPLETE"
+        ],
+        "rejected_transitions": [
+          []
+        ],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "explicit_short_gap_1_frames",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a_gap1",
+            "camera_id": "CAM_A",
+            "timestamp": 0.03333333333333333,
+            "frame_id": 1,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "b0",
+            "camera_id": "CAM_B",
+            "timestamp": 0.06666666666666667,
+            "frame_id": 2
+          }
+        ],
+        "aggregation_policy": {
+          "max_visible_sample_gap_s": 0.5
+        }
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0"
+          ],
+          [
+            "b0"
+          ]
+        ],
+        "event_time_ranges": [
+          [
+            0,
+            0.06666666666666667
+          ]
+        ],
+        "candidates_per_gap": [
+          1
+        ],
+        "termination": [
+          "COMPLETE"
+        ],
+        "rejected_transitions": [
+          []
+        ],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "explicit_short_gap_2_frames",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a_gap1",
+            "camera_id": "CAM_A",
+            "timestamp": 0.03333333333333333,
+            "frame_id": 1,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "a_gap2",
+            "camera_id": "CAM_A",
+            "timestamp": 0.06666666666666667,
+            "frame_id": 2,
+            "visibility": "GAP",
+            "gap_reason": "OUTSIDE_FOV"
+          },
+          {
+            "sample_id": "b0",
+            "camera_id": "CAM_B",
+            "timestamp": 0.1,
+            "frame_id": 3
+          }
+        ],
+        "aggregation_policy": {
+          "max_visible_sample_gap_s": 0.5
+        }
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0"
+          ],
+          [
+            "b0"
+          ]
+        ],
+        "event_time_ranges": [
+          [
+            0,
+            0.1
+          ]
+        ],
+        "candidates_per_gap": [
+          1
+        ],
+        "termination": [
+          "COMPLETE"
+        ],
+        "rejected_transitions": [
+          []
+        ],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "missing_camera_frames",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "b0",
+            "camera_id": "CAM_B",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ],
+        "absent_interval": [
+          0.03333333333333333,
+          0.9666666666666667
+        ]
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0"
+          ],
+          [
+            "b0"
+          ]
+        ],
+        "event_time_ranges": [
+          [
+            0,
+            1
+          ]
+        ],
+        "candidates_per_gap": [
+          1
+        ],
+        "termination": [
+          "COMPLETE"
+        ],
+        "rejected_transitions": [
+          []
+        ],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "missing_same_camera_default",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ]
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0",
+            "a1"
+          ]
+        ],
+        "event_time_ranges": [],
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "missing_same_camera_threshold",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ],
+        "aggregation_policy": {
+          "max_visible_sample_gap_s": 0.1
+        }
+      },
+      "expected": {
+        "segments": [
+          [
+            "a0"
+          ],
+          [
+            "a1"
+          ]
+        ],
+        "event_time_ranges": [
+          [
+            0,
+            1
+          ]
+        ],
+        "candidates_per_gap": [
+          1
+        ],
+        "termination": [
+          "COMPLETE"
+        ],
+        "rejected_transitions": [
+          []
+        ],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    },
+    {
+      "scenario_id": "duplicate_exact",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          }
+        ]
+      },
+      "expected": {
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "visible_pixels": "OBSERVED",
+          "observations": "NOT_EMITTED",
+          "candidates": "NOT_EMITTED"
+        },
+        "metric_behavior": "NOT_RUN_INPUT_REJECTED",
+        "state": "REJECTED",
+        "error": "duplicate sample, camera timestamp or source frame identity",
+        "error_stage": "AGGREGATION"
+      }
+    },
+    {
+      "scenario_id": "duplicate_camera_timestamp",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 1
+          }
+        ]
+      },
+      "expected": {
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "visible_pixels": "OBSERVED",
+          "observations": "NOT_EMITTED",
+          "candidates": "NOT_EMITTED"
+        },
+        "metric_behavior": "NOT_RUN_INPUT_REJECTED",
+        "state": "REJECTED",
+        "error": "duplicate sample, camera timestamp or source frame identity",
+        "error_stage": "AGGREGATION"
+      }
+    },
+    {
+      "scenario_id": "duplicate_source_frame",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 1,
+            "frame_id": 0
+          }
+        ]
+      },
+      "expected": {
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "visible_pixels": "OBSERVED",
+          "observations": "NOT_EMITTED",
+          "candidates": "NOT_EMITTED"
+        },
+        "metric_behavior": "NOT_RUN_INPUT_REJECTED",
+        "state": "REJECTED",
+        "error": "duplicate sample, camera timestamp or source frame identity",
+        "error_stage": "AGGREGATION"
+      }
+    },
+    {
+      "scenario_id": "zero_duration_camera_handoff",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "b0",
+            "camera_id": "CAM_B",
+            "timestamp": 0,
+            "frame_id": 0
+          }
+        ]
+      },
+      "expected": {
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "visible_pixels": "OBSERVED",
+          "observations": "NOT_EMITTED",
+          "candidates": "NOT_EMITTED"
+        },
+        "metric_behavior": "NOT_RUN_INPUT_REJECTED",
+        "state": "REJECTED",
+        "error": "overlapping visible segments",
+        "error_stage": "EVENT_BOUNDARY"
+      }
+    },
+    {
+      "scenario_id": "reverse_extent",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ],
+        "observation_mutation": "reverse_extent"
+      },
+      "expected": {
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "observations": "NOT_EMITTED",
+          "candidates": "NOT_EMITTED"
+        },
+        "metric_behavior": "NOT_RUN_INPUT_REJECTED",
+        "state": "REJECTED",
+        "error_stage": "OBSERVATION_SCHEMA",
+        "error": "end_time must not precede start_time"
+      }
+    },
+    {
+      "scenario_id": "duplicate_projected_time",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ],
+        "observation_mutation": "duplicate_projected_time"
+      },
+      "expected": {
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "observations": "NOT_EMITTED",
+          "candidates": "NOT_EMITTED"
+        },
+        "metric_behavior": "NOT_RUN_INPUT_REJECTED",
+        "state": "REJECTED",
+        "error_stage": "OBSERVATION_SCHEMA",
+        "error": "projected_path must be strictly time-ordered"
+      }
+    },
+    {
+      "scenario_id": "reverse_projected_order",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ],
+        "observation_mutation": "reverse_projected_order"
+      },
+      "expected": {
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "observations": "NOT_EMITTED",
+          "candidates": "NOT_EMITTED"
+        },
+        "metric_behavior": "NOT_RUN_INPUT_REJECTED",
+        "state": "REJECTED",
+        "error_stage": "OBSERVATION_SCHEMA",
+        "error": "projected_path must be strictly time-ordered"
+      }
+    },
+    {
+      "scenario_id": "reverse_frame_order",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "a0",
+            "camera_id": "CAM_A",
+            "timestamp": 0,
+            "frame_id": 0
+          },
+          {
+            "sample_id": "a1",
+            "camera_id": "CAM_A",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ],
+        "observation_mutation": "reverse_frame_order"
+      },
+      "expected": {
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "observations": "NOT_EMITTED",
+          "candidates": "NOT_EMITTED"
+        },
+        "metric_behavior": "NOT_RUN_INPUT_REJECTED",
+        "state": "REJECTED",
+        "error_stage": "OBSERVATION_SCHEMA",
+        "error": "frames must be strictly time-ordered"
+      }
+    },
+    {
+      "scenario_id": "zero_duration_visible_segment",
+      "input": {
+        "samples": [
+          {
+            "sample_id": "b0",
+            "camera_id": "CAM_B",
+            "timestamp": 1,
+            "frame_id": 30
+          }
+        ]
+      },
+      "expected": {
+        "segments": [
+          [
+            "b0"
+          ]
+        ],
+        "event_time_ranges": [],
+        "candidates_per_gap": [],
+        "termination": [],
+        "rejected_transitions": [],
+        "provenance": {
+          "observations": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "visible_pixels": "OBSERVED",
+          "explicit_gap": null
+        },
+        "metric_behavior": "NOT_REQUESTED_NO_GT",
+        "state": "SUCCESS"
+      }
+    }
+  ]
+}
