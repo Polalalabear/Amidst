@@ -22,7 +22,7 @@ diff checks 通過；Node 26 執行 TypeScript runtime，既有 Blender tests �
 執行，沒有 render／save assets。以上 targeted counts 已包含在 full count，不能相加。
 
 標記 **PHASE2_INTEGRATION_FOUNDATION_VALIDATED**，以最後 validation commit 保存測試與
-[凍結紀錄](PHASE2_INTEGRATION_VALIDATION.md)，同步 handoff。無本機 mock portability
+[Phase 2 Integration Validation 整合驗證與凍結](PHASE2_INTEGRATION_VALIDATION.md)，同步 handoff。無本機 mock portability
 blocker；跨 OS／filesystem／Node capability hardening 延後。完成後停止，建議回
 Phase 1 Blender research closed loop；本輪沒有 push／PR／merge／history rewrite。
 
@@ -63,7 +63,7 @@ reaggregation 的既有行為，透過 canonical snapshot 解決 Event ID joins�
 Phase 2 schema map 漏列自身 response 與 WSGI route ID decoding；未變更任何 Phase 1 code、
 benchmark logic、既有 fixture 或 Blender geometry。
 
-新增 [雙語架構文件](PHASE2_INTEGRATION.md)，並同步 README 導覽與目前 handoff。
+新增 [Phase 2 Integration Foundation 架構文件](PHASE2_INTEGRATION.md)，並同步 README 導覽與目前 handoff。
 PostgreSQL／Three.js UI renderer／Real CV 等仍只在明確界線內保留 interface 或延後；
 本輪沒有 production deployment、Semantic Ranking、push／PR／merge，也不 merge 回 Phase 1。
 
@@ -197,7 +197,7 @@ unit 102 and new-file coverage 18 all passed (already included in the full total
 mypy for 80 source files and diff checks passed; Node runtime and existing Blender tests ran.
 
 **PHASE2_INTEGRATION_FOUNDATION_VALIDATED**. See the
-[freeze record](PHASE2_INTEGRATION_VALIDATION.md) for scope and limitations. No local mock
+[Phase 2 Integration Validation and freeze](PHASE2_INTEGRATION_VALIDATION.md) for scope and limitations. No local mock
 portability blocker, Phase 1 contract change, production feature, asset save/render,
 publication, merge or history rewrite occurred. Work stops here; returning to the separately
 owned Phase 1 Blender research closed loop is recommended.

@@ -17,7 +17,7 @@
   mock providers/service、memory/local JSON repositories、PostgreSQL factory interface、
   TypeScript/Three.js consumer contract 與 benchmark/replay importer。只允許 synthetic/mock。
 - **PHASE2_INTEGRATION_FOUNDATION_VALIDATED**：完成既有 foundation 驗證與凍結；
-  [驗證紀錄](PHASE2_INTEGRATION_VALIDATION.md) 保存 Git 邊界、契約與 portability 結果。
+  [Phase 2 Integration Validation 整合驗證與凍結](PHASE2_INTEGRATION_VALIDATION.md) 保存 Git 邊界、契約與 portability 結果。
   本輪完整 pytest 668 passed、Ruff／mypy 通過。後續建議回 Phase 1 Blender research
   closed loop；本 branch 停止擴張，新增 Phase 2 scope 需另行授權。
 - 通用 M0–M8 與 deterministic fake-data 後半段閉環已實作。四組 curated fixtures 在
@@ -51,7 +51,7 @@
 
 Status date: 2026-10-02. `phase2/integration-foundation`, based on `b11edb9`, is
 **PHASE2_INTEGRATION_FOUNDATION_VALIDATED** and frozen. See the
-[validation record](PHASE2_INTEGRATION_VALIDATION.md): 668 pytest passed, Ruff and mypy passed.
+[Phase 2 Integration Validation and freeze](PHASE2_INTEGRATION_VALIDATION.md): 668 pytest passed, Ruff and mypy passed.
 Find the isolated checkout with `git worktree list` and verify actual HEAD/dirty state. Preserve
 unrelated work in the original Phase 1 checkout. Recommend returning there for the Blender
 research closed loop; further Phase 2 expansion requires a new authorized scope.
@@ -59,7 +59,7 @@ The four curated deterministic fixtures and generic downstream closed loop are c
 configured graph/Top-K, timed reconstruction, metrics and saved Rerun recordings.
 M6 full-frame schema revalidation is fixed. See WORK_LOG for evidence and
 DATA_SCHEMA/INTERFACES for replaceable contracts. The additive
-[Integration Foundation](PHASE2_INTEGRATION.md) supplies mock API/service/storage, PostgreSQL
+[Phase 2 Integration Foundation](PHASE2_INTEGRATION.md) supplies mock API/service/storage, PostgreSQL
 factory interface, TypeScript consumer contracts and verified benchmark/replay import.
 
 This foundation stops here: no Real CV, production database/deployment, concurrency load tests,

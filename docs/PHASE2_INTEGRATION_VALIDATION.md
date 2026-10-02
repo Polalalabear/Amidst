@@ -4,14 +4,14 @@
 
 **狀態：`PHASE2_INTEGRATION_FOUNDATION_VALIDATED`。** 日期：2026-10-02。
 本輪只驗證既有 mock Integration Foundation，新增回歸測試與文件後停止擴張。
-架構契約見 [PHASE2_INTEGRATION](PHASE2_INTEGRATION.md)。
+架構契約見 [Phase 2 Integration Foundation](PHASE2_INTEGRATION.md)。
 
 ### Branch / commit 與 Phase 1 邊界
 
 - Branch：`phase2/integration-foundation`；開始驗證時工作樹 clean。
 - Phase 1 checkpoint／merge-base：`b11edb9d6157699d395c112298f8fab518f202a6`。
 - 驗證起點：`b839254bdae8275c9aa5340b2ed60af375cf585e`；本文件與兩個新增測試檔
-  由最後一個 validation commit 保存，SHA 可用 `git log -1 --format=%H -- docs/PHASE2_INTEGRATION_VALIDATION.md` 查得。
+  由 validation commit `59c3b51e6b58921e76d96174d261258c2ce3191c` 保存。
 - 原 Phase 1 branch `codex/dataset-infrastructure` 當時 tip 為
   `bd984f2d5a68d259195dc713812a7be388ba9723`，在另一 checkout 獨立前進。
 - 139 個受保護 Phase 1 paths 的 Git blob／mode 與基底相同。Domain schemas、

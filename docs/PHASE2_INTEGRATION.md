@@ -30,7 +30,7 @@ Phase 1 benchmark logic modification。完成後不 merge 回 Phase 1；目前�
 | `integration/config.py`、`wiring.py` | Producer/storage config、既有 MockDataset/ObservationProvider wiring | Mock composition root |
 | `integration/service.py` | Observation/Event overlap queries、Trajectory／consumer／replay reads | Mock service |
 | `integration/api.py`、`__main__.py` | Read-only JSON/WSGI transport、schema export、loopback CLI | 可執行 mock API |
-| `integration/replay.py` | 驗證並讀取既有 benchmark outputs、定位原 replay config | 本機 read-only adapter |
+| `integration/replay.py` | 驗證並讀取既有 [Phase 1 benchmark outputs](BENCHMARK.md)、定位原 replay config | 本機 read-only adapter |
 | `integration/consumer.py` | Lossless ConsumerEvent、全部 alternatives 的 display replay markers | Consumer contract 與 presentation helper |
 | `frontend/phase2/contracts.ts`、`consumer.ts` | Readonly TypeScript schemas、runtime validator、API key helper | Three.js consumer foundation；沒有 UI app／renderer |
 | `configs/integration/mock_v1.json` | 綁定既有 stream_v1 manifest 的 SHA-256 | Mock configuration |
@@ -137,7 +137,8 @@ git diff --check
 CLI server 只綁定 `127.0.0.1`，不啟動 production deployment。TypeScript runtime coverage 使用
 支援 native type stripping 的 Node；本輪以 Node 26 執行，未新增 TypeScript／Three.js dependencies。
 完整 Blender-backed pytest 需要在可正常啟動 Blender 的環境執行，不需要 render／save assets。
-日期與 checkpoint 綁定的實際結果見 [WORK_LOG](WORK_LOG.md)，續作入口見
+[Phase 2 Integration Validation 整合驗證與凍結](PHASE2_INTEGRATION_VALIDATION.md)
+保存本階段結果；日期與 checkpoint 綁定的歷史紀錄見 [WORK_LOG](WORK_LOG.md)，續作入口見
 [CODEX_HANDOFF](CODEX_HANDOFF.md)。
 
 ## English
@@ -158,7 +159,7 @@ excluded. This foundation does not certify Phase 1 research acceptance or a scho
 
 `src/amidst/integration/` contains the versioned backend schemas/Protocol, snapshot repository port,
 mock memory/local JSON stores, config/composition root, mock query service, read-only WSGI/CLI,
-verified benchmark importer and lossless presentation/replay envelopes.
+verified [Phase 1 benchmark](BENCHMARK.md) importer and lossless presentation/replay envelopes.
 `frontend/phase2/contracts.ts` defines readonly consumer interfaces; `consumer.ts` validates runtime
 payloads and supplies event-route encoding. There is no UI app or Three.js renderer.
 
@@ -205,5 +206,7 @@ the locator helper neither executes the benchmark nor promises immutable files a
 
 Use the CLI/check commands above. Config chooses MEMORY by default; LOCAL_JSON paths are relative
 to the service config. Optional serving binds only loopback. Node native type stripping runs the
-TypeScript contract tests without new dependencies. Dated results are in [WORK_LOG](WORK_LOG.md);
+TypeScript contract tests without new dependencies. See
+[Phase 2 Integration Validation and freeze](PHASE2_INTEGRATION_VALIDATION.md) for this stage;
+dated history is in [WORK_LOG](WORK_LOG.md);
 current ownership/scope is in [CODEX_HANDOFF](CODEX_HANDOFF.md).

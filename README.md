@@ -134,6 +134,8 @@ docs/                   產品、設計、契約、決策與交接文件
 ### 文件導覽
 
 - [Phase 2 Integration Foundation 架構與 mock API](docs/PHASE2_INTEGRATION.md)
+- [Phase 2 Integration Validation 整合驗證與凍結](docs/PHASE2_INTEGRATION_VALIDATION.md)
+- [Phase 1 research benchmark 研究實驗執行](docs/BENCHMARK.md)
 - [研究範圍與需求](docs/PRD.md)
 - [系統設計](docs/SYSTEM_DESIGN.md)
 - [資料契約](docs/DATA_SCHEMA.md)
@@ -277,6 +279,8 @@ docs/                   Product, design, contract, decision and handoff docs
 ### Documentation
 
 - [Phase 2 Integration Foundation architecture and mock API](docs/PHASE2_INTEGRATION.md)
+- [Phase 2 Integration Validation and freeze](docs/PHASE2_INTEGRATION_VALIDATION.md)
+- [Phase 1 research benchmark](docs/BENCHMARK.md)
 - [Research scope and requirements](docs/PRD.md)
 - [System design](docs/SYSTEM_DESIGN.md)
 - [Data contracts](docs/DATA_SCHEMA.md)
