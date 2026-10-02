@@ -1,0 +1,2221 @@
+{
+  "schema_version": "BOUNDARY_GRAPH_FIXTURE_V1",
+  "data_kind": "SYNTHETIC_TEST_FIXTURE",
+  "scope": "Deterministic fake topology only; no Blender mesh walkability or clearance certification.",
+  "input_adapter": "tests/boundary/graph_cases.py:load_graph_case",
+  "rejected_transitions_contract": "Result-level rejection reasons; current schema does not expose individual rejected transition records.",
+  "future_scope": {
+    "unsupported_termination": [
+      "COMPLETE_EVENT",
+      "SEARCH_WINDOW_EXCEEDED",
+      "MAX_HOPS_EXCEEDED"
+    ],
+    "agent_runtime_only": [
+      "LOW_CONFIDENCE",
+      "TOOL_BUDGET_EXCEEDED",
+      "USER_TERMINATED"
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "uncited_navigation_bridge",
+      "purpose": "Navigation is geometrically connected but Camera Topology authorizes no route; no fabricated connector is permitted.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "uncited_bridge",
+            "from": "A",
+            "to": "B",
+            "authorized": false
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NO_FEASIBLE_PATH",
+        "rejected_transitions": [
+          "NO_FEASIBLE_AUTHORIZED_ROUTE"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "EXHAUSTIVE_NO_PATH",
+        "complete": true,
+        "expanded_nodes": 1
+      }
+    },
+    {
+      "id": "isolated_start",
+      "purpose": "Configured start endpoint exists but has no outgoing edge; endpoint remains reportable.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "C",
+            "camera": "CAM_C",
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "other_to_end",
+            "from": "C",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NO_FEASIBLE_PATH",
+        "rejected_transitions": [
+          "NO_FEASIBLE_AUTHORIZED_ROUTE"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "EXHAUSTIVE_NO_PATH",
+        "complete": true,
+        "expanded_nodes": 1,
+        "isolated_endpoint": "start"
+      }
+    },
+    {
+      "id": "isolated_end",
+      "purpose": "Configured end endpoint exists but has no incoming edge; source can reach only a different endpoint.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "C",
+            "camera": "CAM_C",
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "start_to_other",
+            "from": "A",
+            "to": "C"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NO_FEASIBLE_PATH",
+        "rejected_transitions": [
+          "NO_FEASIBLE_AUTHORIZED_ROUTE"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "EXHAUSTIVE_NO_PATH",
+        "complete": true,
+        "expanded_nodes": 2,
+        "isolated_endpoint": "end"
+      }
+    },
+    {
+      "id": "insufficient_travel_time",
+      "purpose": "20 m at 1 m/s requires 20 s; only 5 s is available.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 15,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NO_FEASIBLE_PATH",
+        "rejected_transitions": [
+          "NO_FEASIBLE_AUTHORIZED_ROUTE",
+          "PHYSICALLY_IMPOSSIBLE_SPEED"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "EXHAUSTIVE_NO_PATH",
+        "complete": true,
+        "expanded_nodes": 1,
+        "minimum_required_s": 20,
+        "available_gap_s": 5
+      }
+    },
+    {
+      "id": "speed_limit_violation",
+      "purpose": "The only route requires a speed strictly greater than the configured ceiling; reject before reconstruction or metrics.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 19.999,
+        "max_speed_m_s": 2,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NO_FEASIBLE_PATH",
+        "rejected_transitions": [
+          "NO_FEASIBLE_AUTHORIZED_ROUTE",
+          "PHYSICALLY_IMPOSSIBLE_SPEED"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "EXHAUSTIVE_NO_PATH",
+        "complete": true,
+        "expanded_nodes": 1
+      }
+    },
+    {
+      "id": "exact_minimum_travel_time",
+      "purpose": "An exact travel-time hard-constraint boundary has zero slack and does not become negative.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 30,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [
+          [
+            "walk"
+          ]
+        ],
+        "termination": "COMPLETE",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "ONLY_FORMAL_OUTPUT_ROUTES_EVALUATED",
+        "state": "EXHAUSTIVE_SUCCESS",
+        "complete": true,
+        "expanded_nodes": 2
+      }
+    },
+    {
+      "id": "reverse_gap",
+      "purpose": "Endpoint time gap must be strictly positive; a typed Graph rejection occurs before candidate construction.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 5,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": null,
+        "rejected_transitions": [
+          "INVALID_TIME_GAP"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "NOT_EVALUATED_INVALID_INPUT",
+        "state": "REJECTED_INPUT",
+        "complete": null,
+        "error_type": "GraphInputError",
+        "error_message": "strictly after"
+      }
+    },
+    {
+      "id": "zero_duration_gap",
+      "purpose": "Endpoint time gap must be strictly positive; a typed Graph rejection occurs before candidate construction.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 10,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": null,
+        "rejected_transitions": [
+          "INVALID_TIME_GAP"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "NOT_EVALUATED_INVALID_INPUT",
+        "state": "REJECTED_INPUT",
+        "complete": null,
+        "error_type": "GraphInputError",
+        "error_message": "strictly after"
+      }
+    },
+    {
+      "id": "duplicate_projected_timestamp",
+      "purpose": "Projected evidence samples must be strictly time-ordered; invalid ordering fails schema validation.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        },
+        "start_sample_times_s": [
+          10,
+          10
+        ]
+      },
+      "expected": {
+        "candidates": [],
+        "termination": null,
+        "rejected_transitions": [
+          "INVALID_OBSERVATION"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "NOT_EVALUATED_INVALID_INPUT",
+        "state": "REJECTED_INPUT",
+        "complete": null,
+        "error_type": "ValidationError",
+        "error_message": "strictly time-ordered"
+      }
+    },
+    {
+      "id": "nonmonotonic_projected_timestamps",
+      "purpose": "Projected evidence samples must be strictly time-ordered; invalid ordering fails schema validation.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        },
+        "start_sample_times_s": [
+          11,
+          10
+        ]
+      },
+      "expected": {
+        "candidates": [],
+        "termination": null,
+        "rejected_transitions": [
+          "INVALID_OBSERVATION"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "NOT_EVALUATED_INVALID_INPUT",
+        "state": "REJECTED_INPUT",
+        "complete": null,
+        "error_type": "ValidationError",
+        "error_message": "strictly time-ordered"
+      }
+    },
+    {
+      "id": "eight_routes_k3",
+      "purpose": "Eight distinct feasible corridors are listed in reverse order; K=3 retains only the three least-distance routes after observing K+1.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              2,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "route_h",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                7,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_g",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                6,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_f",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                5,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_e",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                4,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_d",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                3,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_c",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                2,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_b",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_a",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 30,
+        "max_speed_m_s": 10,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [
+          [
+            "route_a"
+          ],
+          [
+            "route_b"
+          ],
+          [
+            "route_c"
+          ]
+        ],
+        "termination": "MAX_PATHS_REACHED",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "ONLY_FORMAL_OUTPUT_ROUTES_EVALUATED",
+        "state": "INCOMPLETE_SEARCH",
+        "complete": false,
+        "expanded_nodes": 5,
+        "available_candidate_count": 8
+      }
+    },
+    {
+      "id": "equal_distance_ties",
+      "purpose": "Three identical-length routes have no score; the adopted complete edge-ID sequence rule determines stable order.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              2,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "z_edge",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "a_edge",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                -1,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "m_edge",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                0,
+                1
+              ]
+            ]
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 10,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [
+          [
+            "a_edge"
+          ],
+          [
+            "m_edge"
+          ],
+          [
+            "z_edge"
+          ]
+        ],
+        "termination": "COMPLETE",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "ONLY_FORMAL_OUTPUT_ROUTES_EVALUATED",
+        "state": "EXHAUSTIVE_SUCCESS",
+        "complete": true,
+        "expanded_nodes": 4
+      }
+    },
+    {
+      "id": "missing_stair_connection",
+      "purpose": "1F and 2F endpoints are vertically aligned but no stair or elevator connection is configured.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              0,
+              0,
+              3
+            ],
+            "floor": "2F"
+          }
+        ],
+        "edges": [],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NO_FEASIBLE_PATH",
+        "rejected_transitions": [
+          "NO_FEASIBLE_AUTHORIZED_ROUTE"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "EXHAUSTIVE_NO_PATH",
+        "complete": true,
+        "expanded_nodes": 1,
+        "impossible_floor_transition": true
+      }
+    },
+    {
+      "id": "vertical_walk_forgery",
+      "purpose": "A direct WALK edge cannot bypass the explicit stair contract by joining two floors.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              0,
+              0,
+              3
+            ],
+            "floor": "2F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": null,
+        "rejected_transitions": [
+          "WALK_CANNOT_CROSS_FLOORS"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "NOT_EVALUATED_INVALID_INPUT",
+        "state": "REJECTED_INPUT",
+        "complete": null,
+        "error_type": "ValidationError",
+        "error_message": "WALK edge cannot cross floors"
+      }
+    },
+    {
+      "id": "search_node_limit",
+      "purpose": "Search-node protection stops after preserving the one already proven feasible candidate.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              2,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "route_h",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                7,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_g",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                6,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_f",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                5,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_e",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                4,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_d",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                3,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_c",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                2,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_b",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_a",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 30,
+        "max_speed_m_s": 10,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 2,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [
+          [
+            "route_a"
+          ]
+        ],
+        "termination": "MAX_SEARCH_NODES",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "ONLY_FORMAL_OUTPUT_ROUTES_EVALUATED",
+        "state": "INCOMPLETE_SEARCH",
+        "complete": false,
+        "expanded_nodes": 2
+      }
+    },
+    {
+      "id": "branch_factor_limit",
+      "purpose": "Eight eligible transitions exceed branch budget three; stop before silently choosing or discarding children.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              2,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "route_h",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                7,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_g",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                6,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_f",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                5,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_e",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                4,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_d",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                3,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_c",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                2,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_b",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_a",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 30,
+        "max_speed_m_s": 10,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 3,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "MAX_BRANCH_FACTOR",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "INCOMPLETE_SEARCH",
+        "complete": false,
+        "expanded_nodes": 1
+      }
+    },
+    {
+      "id": "fixed_clock_timeout",
+      "purpose": "The injectable monotonic clock reaches the deadline at a fixed boundary after one candidate; preserve that candidate.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              2,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "route_h",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                7,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_g",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                6,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_f",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                5,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_e",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                4,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_d",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                3,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_c",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                2,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_b",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_a",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 30,
+        "max_speed_m_s": 10,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        },
+        "clock_values_s": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "expected": {
+        "candidates": [
+          [
+            "route_a"
+          ]
+        ],
+        "termination": "SEARCH_TIMEOUT",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "ONLY_FORMAL_OUTPUT_ROUTES_EVALUATED",
+        "state": "INCOMPLETE_SEARCH",
+        "complete": false,
+        "expanded_nodes": 2
+      }
+    },
+    {
+      "id": "long_gap_twenty_minutes",
+      "purpose": "A 20 minute gap increases speed allowance but does not disable node protection on a tiny branching return-cycle graph.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "C",
+            "camera": "CAM_C",
+            "position": [
+              3,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "out_a",
+            "from": "A",
+            "to": "B"
+          },
+          {
+            "id": "out_b",
+            "from": "A",
+            "to": "B"
+          },
+          {
+            "id": "back_a",
+            "from": "B",
+            "to": "A"
+          },
+          {
+            "id": "back_b",
+            "from": "B",
+            "to": "A"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "C",
+        "start_time_s": 10,
+        "end_time_s": 1210,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 12,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "MAX_SEARCH_NODES",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "INCOMPLETE_SEARCH",
+        "complete": false,
+        "expanded_nodes": 12,
+        "node_count": 3,
+        "edge_count": 4
+      }
+    },
+    {
+      "id": "long_gap_one_hour",
+      "purpose": "A one hour gap remains finite because the three metre path-length eligibility bound exhausts this branching cycle space.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "C",
+            "camera": "CAM_C",
+            "position": [
+              3,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "out_a",
+            "from": "A",
+            "to": "B"
+          },
+          {
+            "id": "out_b",
+            "from": "A",
+            "to": "B"
+          },
+          {
+            "id": "back_a",
+            "from": "B",
+            "to": "A"
+          },
+          {
+            "id": "back_b",
+            "from": "B",
+            "to": "A"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "C",
+        "start_time_s": 10,
+        "end_time_s": 3610,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 3,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NO_FEASIBLE_PATH",
+        "rejected_transitions": [
+          "NO_FEASIBLE_AUTHORIZED_ROUTE",
+          "MAX_PATH_LENGTH_EXCEEDED"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "EXHAUSTIVE_NO_PATH",
+        "complete": true,
+        "expanded_nodes": 15,
+        "node_count": 3,
+        "edge_count": 4
+      }
+    },
+    {
+      "id": "maximum_path_length_boundary",
+      "purpose": "A physically time-feasible 20 metre route exceeds configured path eligibility by 1 mm; do not emit it.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              20,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "walk",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 40,
+        "max_speed_m_s": 1,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 19.999,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [],
+        "termination": "NO_FEASIBLE_PATH",
+        "rejected_transitions": [
+          "NO_FEASIBLE_AUTHORIZED_ROUTE",
+          "MAX_PATH_LENGTH_EXCEEDED"
+        ],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "EMPTY_CANDIDATES_NULL_ERRORS_AND_RATES",
+        "state": "EXHAUSTIVE_NO_PATH",
+        "complete": true,
+        "expanded_nodes": 1
+      }
+    },
+    {
+      "id": "eight_routes_k1",
+      "purpose": "K=1 truncates only after K+1 is proven feasible.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              2,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "route_h",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                7,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_g",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                6,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_f",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                5,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_e",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                4,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_d",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                3,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_c",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                2,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_b",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_a",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 30,
+        "max_speed_m_s": 10,
+        "requested_k": 1,
+        "search_policy": {
+          "max_candidate_paths": 12,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [
+          [
+            "route_a"
+          ]
+        ],
+        "termination": "MAX_PATHS_REACHED",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "ONLY_FORMAL_OUTPUT_ROUTES_EVALUATED",
+        "state": "INCOMPLETE_SEARCH",
+        "complete": false,
+        "expanded_nodes": 3,
+        "available_candidate_count": 8
+      }
+    },
+    {
+      "id": "eight_routes_k12",
+      "purpose": "K greater than all eight feasible routes exhausts search; it does not fabricate additional candidates.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              2,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "route_h",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                7,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_g",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                6,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_f",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                5,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_e",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                4,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_d",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                3,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_c",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                2,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_b",
+            "from": "A",
+            "to": "B",
+            "via": [
+              [
+                1,
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "id": "route_a",
+            "from": "A",
+            "to": "B"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 30,
+        "max_speed_m_s": 10,
+        "requested_k": 12,
+        "search_policy": {
+          "max_candidate_paths": 12,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 16,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [
+          [
+            "route_a"
+          ],
+          [
+            "route_b"
+          ],
+          [
+            "route_c"
+          ],
+          [
+            "route_d"
+          ],
+          [
+            "route_e"
+          ],
+          [
+            "route_f"
+          ],
+          [
+            "route_g"
+          ],
+          [
+            "route_h"
+          ]
+        ],
+        "termination": "COMPLETE",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "ONLY_FORMAL_OUTPUT_ROUTES_EVALUATED",
+        "state": "EXHAUSTIVE_SUCCESS",
+        "complete": true,
+        "expanded_nodes": 9,
+        "available_candidate_count": 8
+      }
+    },
+    {
+      "id": "branch_limit_after_feasible_candidate",
+      "purpose": "A route is proven feasible before the destination camera has too many outgoing children; incomplete branch termination preserves that candidate.",
+      "input": {
+        "nodes": [
+          {
+            "id": "A",
+            "camera": "CAM_A",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "B",
+            "camera": "CAM_B",
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "floor": "1F"
+          },
+          {
+            "id": "C",
+            "camera": "CAM_C",
+            "position": [
+              2,
+              0,
+              0
+            ],
+            "floor": "1F"
+          }
+        ],
+        "edges": [
+          {
+            "id": "route_a",
+            "from": "A",
+            "to": "B"
+          },
+          {
+            "id": "exit_0",
+            "from": "B",
+            "to": "C"
+          },
+          {
+            "id": "exit_1",
+            "from": "B",
+            "to": "C"
+          },
+          {
+            "id": "exit_2",
+            "from": "B",
+            "to": "C"
+          }
+        ],
+        "start_node": "A",
+        "end_node": "B",
+        "start_time_s": 10,
+        "end_time_s": 30,
+        "max_speed_m_s": 10,
+        "requested_k": 3,
+        "search_policy": {
+          "max_candidate_paths": 8,
+          "max_search_nodes": 128,
+          "max_path_length_m": 100,
+          "max_search_time_s": 1,
+          "max_branch_factor": 2,
+          "max_detour_ratio": 10
+        }
+      },
+      "expected": {
+        "candidates": [
+          [
+            "route_a"
+          ]
+        ],
+        "termination": "MAX_BRANCH_FACTOR",
+        "rejected_transitions": [],
+        "provenance": {
+          "endpoints": "PROJECTED",
+          "candidates": "INFERRED_GAP",
+          "fabricated_observations": false
+        },
+        "metric_behavior": "ONLY_FORMAL_OUTPUT_ROUTES_EVALUATED",
+        "state": "INCOMPLETE_SEARCH",
+        "complete": false,
+        "expanded_nodes": 2
+      }
+    }
+  ]
+}
