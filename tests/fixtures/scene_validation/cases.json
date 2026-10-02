@@ -1,0 +1,1838 @@
+{
+  "complete_walkable": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "missing_walkable": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "isolated_walkable": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_ISLAND",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            30,
+            0,
+            0
+          ],
+          [
+            30.2,
+            0,
+            0
+          ],
+          [
+            30.2,
+            0.2,
+            0
+          ],
+          [
+            30,
+            0.2,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          30.1,
+          0.1,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            30,
+            0,
+            0
+          ],
+          "maximum": [
+            30.2,
+            0.2,
+            0
+          ]
+        },
+        "in_active_scene": true
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "one_sided_portal": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_LEFT",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            -10,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ],
+          [
+            -10,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          -5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            -10,
+            0,
+            0
+          ],
+          "maximum": [
+            0,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "PORTAL_1F_DOOR",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            -0.1,
+            4,
+            0
+          ],
+          [
+            0.1,
+            4,
+            0
+          ],
+          [
+            0.1,
+            6,
+            0
+          ],
+          [
+            -0.1,
+            6,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {
+          "portal_normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        "centroid": [
+          0.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            -0.1,
+            4,
+            0
+          ],
+          "maximum": [
+            0.1,
+            6,
+            0
+          ]
+        },
+        "in_active_scene": true
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "semantic_conflict": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true,
+        "collections": [
+          "WALL_1F_COLLIDERS"
+        ]
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "invalid_floor": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_9F_WRONG",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "missing_stair_entry": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "STAIR_PATH_S1",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {
+          "stair_id": "S1",
+          "stair_role": "PATH",
+          "floor_from": "1F",
+          "floor_to": "2F"
+        },
+        "centroid": [
+          0.5,
+          0.5,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            1,
+            1,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "STAIR_EXIT_2F_S1",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            3
+          ],
+          [
+            1,
+            0,
+            3
+          ],
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            0,
+            1,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {
+          "stair_id": "S1",
+          "stair_role": "EXIT"
+        },
+        "centroid": [
+          0.5,
+          0.5,
+          3
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            3
+          ],
+          "maximum": [
+            1,
+            1,
+            3
+          ]
+        },
+        "in_active_scene": true
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "stair_wrong_floor": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "STAIR_ENTRY_1F_S1",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {
+          "stair_id": "S1",
+          "stair_role": "ENTRY"
+        },
+        "centroid": [
+          0.5,
+          0.5,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            1,
+            1,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "STAIR_PATH_S1",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {
+          "stair_id": "S1",
+          "stair_role": "PATH",
+          "floor_from": "1F",
+          "floor_to": "1F",
+          "path_points_m": [
+            [
+              0.5,
+              0.5,
+              0
+            ],
+            [
+              0.5,
+              0.5,
+              3
+            ]
+          ],
+          "direction": "UP"
+        },
+        "centroid": [
+          0.5,
+          0.5,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            1,
+            1,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "STAIR_EXIT_1F_S1",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            3
+          ],
+          [
+            1,
+            0,
+            3
+          ],
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            0,
+            1,
+            3
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {
+          "stair_id": "S1",
+          "stair_role": "EXIT"
+        },
+        "centroid": [
+          0.5,
+          0.5,
+          3
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            3
+          ],
+          "maximum": [
+            1,
+            1,
+            3
+          ]
+        },
+        "in_active_scene": true
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "wall_walkable_overlap": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALL_1F_BLOCK",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            5,
+            0,
+            0
+          ],
+          [
+            5,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {
+          "collision_role": "MOVEMENT"
+        },
+        "centroid": [
+          2.5,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            5,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  },
+  "suspicious_geometry": {
+    "schema_version": "scene-validation-snapshot-v1",
+    "benchmark_type": "SYNTHETIC REGRESSION",
+    "source_sha256": "synthetic-fixture",
+    "objects": [
+      {
+        "object": "AREA_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "WALKABLE_1F_ROOM",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            0,
+            0
+          ],
+          [
+            10,
+            10,
+            0
+          ],
+          [
+            0,
+            10,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          5.0,
+          5.0,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            0,
+            0,
+            0
+          ],
+          "maximum": [
+            10,
+            10,
+            0
+          ]
+        },
+        "in_active_scene": true
+      },
+      {
+        "object": "OBSTACLE_1F_ODD",
+        "object_type": "MESH",
+        "vertices": [
+          [
+            300,
+            0,
+            0
+          ],
+          [
+            500,
+            0,
+            0
+          ],
+          [
+            500,
+            0.001,
+            0
+          ],
+          [
+            300,
+            0.001,
+            0
+          ]
+        ],
+        "triangles": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "custom_properties": {},
+        "centroid": [
+          400.0,
+          0.0005,
+          0
+        ],
+        "bounding_box": {
+          "minimum": [
+            300,
+            0,
+            0
+          ],
+          "maximum": [
+            500,
+            0.001,
+            0
+          ]
+        },
+        "in_active_scene": true,
+        "hidden": true,
+        "scale": [
+          0,
+          1,
+          1
+        ],
+        "non_manifold_edges": 4
+      }
+    ],
+    "collections": [],
+    "endpoints": [
+      {
+        "id": "endpoint1",
+        "position_m": [
+          1,
+          1,
+          0
+        ],
+        "floor_id": "1F"
+      }
+    ]
+  }
+}
