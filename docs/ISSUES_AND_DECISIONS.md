@@ -223,3 +223,39 @@ finds no approved physical surface/collider labels or camera-plane bindings. Und
 user's explicit stop conditions, integration awaits source-bound human annotations and
 physical clearance/contact policy. An additive geometry interface is feasible, but is
 not implemented or approved. The original asset and formal schemas remain unchanged.
+
+## Protocol definitions do not approve research settings / 協定定義不核准研究參數
+
+Problem: Reusable case and comparison definitions can be mistaken for approved school
+geometry, formal metric choices or an executed research benchmark. Decision: Separate the
+versioned [Phase 1 protocol](BENCHMARK_PROTOCOL.md) from executable ExperimentConfig and
+synthetic MetricConfig. Report geometric accuracy, physical validity, Top-K coverage,
+temporal validity, search behavior and runtime separately. Preserve PRD values only as
+`INITIAL_TARGET`. Keep formal execution disabled while research settings or scene authority
+are unresolved; Cases 1–3 have no formal Blender results, and Case 4 remains deferred.
+
+Status: **UNRESOLVED_RESEARCH_SETTING** for formal Coverage D and strictly positive epsilon;
+formal K, reference sampling, alignment and interpolation; physical clearance/collision
+envelope and contact semantics; source-bound geometry/floor authority and camera-plane
+binding; movement/occlusion obstacle ownership; and the final A–C baseline algorithms,
+constraint masks, tie breaks and budgets. D/E remain interface-only, without Agent work.
+Feasible Candidate Recall also requires an independent exhaustive route inventory;
+Travel-time Error requires an approved moving-time/dwell reference policy. Overall case/run
+weighting and target calibration remain open. Null or unavailable metrics are not zero or
+acceptance success; reference-present empty candidate sets retain zero Coverage. These are
+open research choices, not adopted values or an expansion of Graph/Reconstruction semantics.
+
+問題：Case 與比較協定完成，容易被誤認為 school geometry、正式 metric 已核准，或已執行
+研究 benchmark。採用解法：具版本的 protocol specification 與可執行 ExperimentConfig、
+synthetic MetricConfig 分開；幾何、物理、Top-K、時間、search、runtime 六類分別呈現，
+PRD 數值只保留 `INITIAL_TARGET`。Research settings／scene authority 未核准時不開放正式
+執行；Cases 1–3 沒有正式 Blender results，Case 4 維持暫緩。
+
+狀態：正式 Coverage D／strictly positive epsilon、K／取樣／對齊／插值、physical
+clearance／collision envelope／contact semantics、source-bound geometry／floor authority、
+camera-plane binding、movement／occlusion obstacle ownership、A–C 的最終算法／constraint
+mask／tie break／budgets 皆為 **UNRESOLVED_RESEARCH_SETTING**。D/E 只定義 interface，
+不開始 Agent。Recall 另需獨立 exhaustive route inventory；Travel-time Error 另需核准
+moving-time／dwell reference policy；overall weighting／target 校準仍未定案。Null／未量測
+不當成零或通過；有 reference 的空候選 Coverage 仍為 0。這些列為真正影響研究語意的
+未決事項，不填入自行選的值，也不變更正式 Graph／Reconstruction semantics。

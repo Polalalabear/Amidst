@@ -1,0 +1,285 @@
+{
+  "protocol_version": "phase1-benchmark-protocol-v1",
+  "status": "UNRESOLVED_RESEARCH_SETTING",
+  "document": "../../docs/BENCHMARK_PROTOCOL.md",
+  "kind": "PROTOCOL_SPECIFICATION_NOT_EXPERIMENT_CONFIG",
+  "formal_execution_enabled": false,
+  "result_types": ["SYNTHETIC_REGRESSION", "MOCK_VALIDATION", "BLENDER_RESEARCH_RESULT"],
+  "execution_gates": [
+    "SOURCE_BOUND_HUMAN_APPROVED_WALKABLE_AND_COLLIDER_GEOMETRY",
+    "APPROVED_FLOOR_PLANES_AND_CAMERA_PLANE_BINDING",
+    "APPROVED_CLEARANCE_CONTACT_AND_OBSTACLE_OWNERSHIP",
+    "EXPLICIT_AUTHORIZED_NAVIGATION_AND_CAMERA_TOPOLOGY",
+    "APPROVED_FORMAL_METRIC_CONFIG",
+    "FROZEN_BASELINE_AND_ABLATION_PROTOCOL",
+    "GROUND_TRUTH_ISOLATED_FROM_INFERENCE_AND_RANKING"
+  ],
+  "coverage": {
+    "formula": "1[min_{k <= K} D(P_k, P_GT) < epsilon]",
+    "comparison": "STRICTLY_LESS_THAN",
+    "route_selection": "FIRST_HYPOTHESIS_PER_DISTINCT_CANDIDATE_IN_INPUT_ORDER",
+    "formal_settings": {
+      "status": "UNRESOLVED_RESEARCH_SETTING",
+      "distance_metric": null,
+      "epsilon": null,
+      "epsilon_unit": null,
+      "k_values": null,
+      "temporal_alignment_policy": null,
+      "interpolation_policy": null,
+      "reference_sampling_policy": null
+    },
+    "parameter_constraints": {
+      "epsilon": {"type": "number", "exclusiveMinimum": 0.0, "finite": true},
+      "k_values": {"type": "array", "minItems": 1, "uniqueItems": true,
+        "items": {"type": "integer", "minimum": 1}},
+      "unsupported_policy": "REJECT_DO_NOT_SUBSTITUTE_OR_SILENTLY_FALL_BACK",
+      "empty_candidates_with_valid_reference": 0,
+      "missing_reference_or_not_evaluated": null
+    },
+    "synthetic_regression_profile": {
+      "result_type": "SYNTHETIC_REGRESSION",
+      "metric_config_path": "../metrics/synthetic_regression_v1.json",
+      "distance_metric": "ADE",
+      "epsilon": 0.000001,
+      "epsilon_unit": "m",
+      "k_values": [1, 2, 3],
+      "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+      "interpolation_policy": "PIECEWISE_LINEAR",
+      "formal_setting_approved": false
+    }
+  },
+  "metric_protocol": {
+    "coordinate_units": "m",
+    "time_units": "s",
+    "missing_value": null,
+    "missing_display": "N/A",
+    "top_k_population": "FIRST_TIMING_OF_DISTINCT_ROUTES_IN_CALLER_ORDER",
+    "physical_population": "ALL_EMITTED_TIMING_HYPOTHESES_WITHOUT_REPEATING_K_ROWS",
+    "definitions": {
+      "projection_error_m": {
+        "unit": "m", "category": "GEOMETRIC_ACCURACY",
+        "formula": "mean(||projected_t - reference_t||_2) over matched visible PROJECTED samples",
+        "requires": ["VISIBLE_SAMPLE_REFERENCE_WITH_MATCHING_TIME_SOURCE_CONTEXT"],
+        "current_runner_availability": "NOT_EXPORTED_AS_BENCHMARK_METRIC"
+      },
+      "ade_m": {
+        "unit": "m", "category": "GEOMETRIC_ACCURACY",
+        "formula": "mean(||P_1(t_i) - P_GT(t_i)||_2) at all aligned reference timestamps",
+        "population": "FIRST_PRIMARY_ROUTE_NO_REFERENCE_BASED_SELECTION",
+        "current_runner_availability": "DERIVABLE_FROM_PRIMARY_TRAJECTORY_METRICS"
+      },
+      "fde_m": {
+        "unit": "m", "category": "GEOMETRIC_ACCURACY",
+        "formula": "||P_1(t_last) - P_GT(t_last)||_2",
+        "population": "FIRST_PRIMARY_ROUTE_NO_REFERENCE_BASED_SELECTION",
+        "current_runner_availability": "DERIVABLE_FROM_PRIMARY_TRAJECTORY_METRICS"
+      },
+      "min_ade_at_k_m": {
+        "unit": "m", "category": "GEOMETRIC_ACCURACY",
+        "formula": "min(ADE(P_k, P_GT)) over up to K distinct primary routes",
+        "empty_candidates": null,
+        "current_runner_availability": "EXPORTED"
+      },
+      "min_fde_at_k_m": {
+        "unit": "m", "category": "GEOMETRIC_ACCURACY",
+        "formula": "min(FDE(P_k, P_GT)) over up to K distinct primary routes",
+        "empty_candidates": null,
+        "current_runner_availability": "EXPORTED"
+      },
+      "coverage_at_k": {
+        "unit": "fraction", "category": "TOP_K_COVERAGE",
+        "formula": "coverage.formula; aggregate by mean of evaluated gap indicators",
+        "empty_candidates_with_valid_reference": 0,
+        "missing_reference_or_not_evaluated": null,
+        "current_runner_availability": "EXPORTED_UNDER_SYNTHETIC_SETTINGS"
+      },
+      "candidate_count": {
+        "unit": "routes", "category": "SEARCH_BEHAVIOR",
+        "formula": "number of emitted distinct candidate IDs before timing expansion",
+        "empty_candidates": 0,
+        "current_runner_availability": "EXPORTED"
+      },
+      "feasible_candidate_recall": {
+        "unit": "fraction", "category": "SEARCH_BEHAVIOR",
+        "formula": "|emitted distinct routes intersect independent feasible route inventory| / |independent feasible route inventory|",
+        "requires": ["INDEPENDENT_EXHAUSTIVE_FEASIBLE_ROUTE_INVENTORY_WITH_SAME_ELIGIBILITY_BOUNDS"],
+        "zero_denominator_or_incomplete_inventory": null,
+        "current_runner_availability": "NOT_EXPORTED"
+      },
+      "collision_rate": {
+        "unit": "fraction", "category": "PHYSICAL_VALIDITY",
+        "formula": "continuous timed segments intersecting at least one authorized collider / all consecutive timed-point pairs including dwell",
+        "zero_denominator": null,
+        "current_runner_availability": "EXPORTED_SUPPLIED_CLOSED_AABB_ONLY_NOT_MESH_CERTIFIED"
+      },
+      "constraint_violation_rate": {
+        "unit": "fraction", "category": "PHYSICAL_VALIDITY",
+        "formula": "segments violating collision OR configured speed OR directed corridor / all consecutive timed-point pairs including dwell",
+        "double_count_overlapping_violations": false,
+        "zero_denominator": null,
+        "current_runner_availability": "EXPORTED_CONFIGURED_CONSTRAINTS_ONLY"
+      },
+      "impossible_transition_rate": {
+        "unit": "fraction", "category": "PHYSICAL_VALIDITY",
+        "formula": "unauthorized directed camera/floor transitions / all declared directed camera/floor transitions of distinct emitted routes",
+        "zero_denominator_or_missing_transition_authority": null,
+        "current_runner_availability": "NOT_EXPORTED_DO_NOT_ALIAS_CORRIDOR_RATE"
+      },
+      "path_length_error_m": {
+        "unit": "m", "category": "GEOMETRIC_ACCURACY",
+        "formula": "abs(sum(lengths of P_1 full 3D polyline segments) - sum(lengths of P_GT reference polyline segments))",
+        "requires": ["PRIMARY_CANDIDATE_AND_REFERENCE_POLYLINES_WITH_MATCHING_EXTENT"],
+        "current_runner_availability": "NOT_EXPORTED"
+      },
+      "travel_time_error_s": {
+        "unit": "s", "category": "TEMPORAL_VALIDITY",
+        "formula": "abs(primary hypothesis moving-time duration - independently annotated reference moving-time duration)",
+        "moving_time_policy": "EXCLUDE_EXPLICIT_DWELL; DO_NOT_USE_FIXED_GAP_DURATION_AS_MOVING_TIME",
+        "requires": ["APPROVED_REFERENCE_DWELL_OR_MOVEMENT_ANNOTATION_POLICY"],
+        "current_runner_availability": "NOT_EXPORTED"
+      },
+      "runtime_s": {
+        "unit": "s", "category": "SYSTEM_RUNTIME",
+        "formula": "measured case inference wall time; exclude evaluation/reporting; do not sum repeated gap rows",
+        "whole_run_runtime": "SEPARATE_DIAGNOSTIC_DO_NOT_MIX_WITH_CASE_INFERENCE_RUNTIME",
+        "current_runner_availability": "EXPORTED"
+      },
+      "termination_reason": {
+        "unit": "category", "category": "SEARCH_BEHAVIOR",
+        "formula": "exact Graph termination enum; input rejection is separate status, not an invented Graph termination",
+        "current_runner_availability": "EXPORTED"
+      },
+      "search_nodes": {
+        "unit": "expanded states", "category": "SEARCH_BEHAVIOR",
+        "formula": "expanded_nodes as reported by Graph; sum once across independent gaps when aggregating a run",
+        "current_runner_availability": "EXPORTED_EXPANDED_NODES_ONLY"
+      }
+    },
+    "formal_physical_settings": {
+      "status": "UNRESOLVED_RESEARCH_SETTING",
+      "clearance_m": null,
+      "collision_envelope": null,
+      "contact_semantics": null,
+      "collision_tolerance_m": null,
+      "corridor_tolerance_m": null,
+      "speed_relative_tolerance": null,
+      "geometry_authority": null,
+      "obstacle_ownership": null
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case1", "name": "Single Feasible Route / 單一可行路徑",
+      "research_question": "Can visible gap endpoints reconstruct the sole authorized route without physical violations? / 可否由可見端點重建唯一合法路徑？",
+      "required_scene_semantics": ["APPROVED_SAME_FLOOR_WALKABLE", "RELEVANT_WALL_OBSTACLE_OWNERSHIP", "PORTAL_ENDPOINT_ACCESSIBILITY", "APPROVED_CAMERA_PLANE_BINDING", "EXPLICIT_SINGLE_ROUTE_TOPOLOGY"],
+      "expected_observations": ["Cam A visible samples before gap", "position-free GAP", "Cam B visible samples after gap", "matching source/context/timestamps", "separate evaluation-only reference"],
+      "expected_ambiguity": "One admissible route; timing alternatives may remain / 路徑唯一，時間假設仍可不唯一",
+      "required_metrics": ["projection_error_m", "ade_m", "fde_m", "min_ade_at_k_m", "min_fde_at_k_m", "coverage_at_k", "candidate_count", "feasible_candidate_recall", "collision_rate", "constraint_violation_rate", "impossible_transition_rate", "path_length_error_m", "travel_time_error_s", "runtime_s", "termination_reason", "search_nodes"],
+      "failure_conditions": ["GROUND_TRUTH_LEAKAGE_INVALIDATES_RUN", "MISSING_SCENE_AUTHORITY_BLOCKS_FORMAL_RUN", "NO_FEASIBLE_PATH_WITH_INDEPENDENTLY_CONFIRMED_FEASIBLE_ROUTE", "PHYSICAL_VIOLATION", "WRONG_ENDPOINT_OR_FLOOR", "INITIAL_TARGET_MISS_REPORTED_PER_CATEGORY", "INCOMPLETE_SEARCH_REPORTED_WITH_REASON"],
+      "execution_status": "BLOCKED_SCENE_SEMANTICS_AND_FORMAL_SETTINGS"
+    },
+    {
+      "case_id": "case2", "name": "Branching / Multi-Hypothesis / 分歧與多假設",
+      "research_question": "Does Top-K preserve a reference-compatible route through authorized branches without using truth to rank? / Top-K 是否保留與真值相容的分支路徑？",
+      "required_scene_semantics": ["APPROVED_BRANCHED_SAME_FLOOR_WALKABLE", "WALL_OBSTACLE_CLEARANCE_AUTHORITY", "PORTALS_WITH_TWO_SIDED_ACCESS", "EXPLICIT_MULTIPLE_DIRECTED_ROUTES", "APPROVED_CAMERA_PLANE_BINDING"],
+      "expected_observations": ["shared visible entry and exit anchors", "unobserved branch interiors", "same endpoint evidence for all methods", "separate evaluation-only reference"],
+      "expected_ambiguity": "Multiple distinct feasible routes with shared observed endpoints; multiple timings do not increase route K / 相同端點可對應多條合法路徑",
+      "required_metrics": ["projection_error_m", "ade_m", "fde_m", "min_ade_at_k_m", "min_fde_at_k_m", "coverage_at_k", "candidate_count", "feasible_candidate_recall", "collision_rate", "constraint_violation_rate", "impossible_transition_rate", "path_length_error_m", "travel_time_error_s", "runtime_s", "termination_reason", "search_nodes"],
+      "failure_conditions": ["GROUND_TRUTH_LEAKAGE_INVALIDATES_RUN", "MISSING_SCENE_AUTHORITY_BLOCKS_FORMAL_RUN", "REFERENCE_COMPATIBLE_ROUTE_MISSING_AT_CONFIGURED_K", "TIMING_DUPLICATES_COUNTED_AS_ROUTES", "INCOMPLETE_SEARCH_MISREPRESENTED_AS_EXHAUSTIVE", "PHYSICAL_VIOLATION"],
+      "execution_status": "BLOCKED_SCENE_SEMANTICS_AND_FORMAL_SETTINGS"
+    },
+    {
+      "case_id": "case3", "name": "Temporal Slack / Long Gap / 時間餘裕與長盲區",
+      "research_question": "Are feasible timing, detour and dwell alternatives preserved when the observed gap exceeds minimum travel time? / 長盲區是否保留合法 timing、detour 與 dwell 假設？",
+      "required_scene_semantics": ["APPROVED_WALKABLE_AND_OPTIONAL_DETOUR_ROUTES", "WALL_OBSTACLE_CLEARANCE_AUTHORITY", "ACCESSIBLE_PORTALS_AND_ANCHORS", "EXPLICIT_SPEED_AND_TIMING_POLICY", "APPROVED_CAMERA_PLANE_BINDING"],
+      "expected_observations": ["visible endpoints with long timestamp gap", "no fabricated evidence inside GAP", "same endpoint times for every method", "separate reference with independently specified movement/dwell annotations when travel-time error is evaluated"],
+      "expected_ambiguity": "Uniform slower movement, explicit dwell, and retained longer routes are admissible hypotheses, not inferred behavior probabilities / 慢速移動、停留與繞路為可行假設，非行為機率",
+      "required_metrics": ["projection_error_m", "ade_m", "fde_m", "min_ade_at_k_m", "min_fde_at_k_m", "coverage_at_k", "candidate_count", "feasible_candidate_recall", "collision_rate", "constraint_violation_rate", "impossible_transition_rate", "path_length_error_m", "travel_time_error_s", "runtime_s", "termination_reason", "search_nodes"],
+      "failure_conditions": ["GROUND_TRUTH_LEAKAGE_INVALIDATES_RUN", "MISSING_SCENE_AUTHORITY_BLOCKS_FORMAL_RUN", "SPEED_OR_TEMPORAL_CONSTRAINT_VIOLATION", "SILENT_COLLAPSE_TO_SHORTEST_PATH", "REFERENCE_SELECTED_TIMING", "GAP_DURATION_MISREPORTED_AS_ZERO_TRAVEL_TIME_ERROR", "PHYSICAL_VIOLATION"],
+      "execution_status": "BLOCKED_SCENE_SEMANTICS_AND_FORMAL_SETTINGS"
+    },
+    {
+      "case_id": "case4", "name": "Cross-floor / Stair / 跨樓層與樓梯",
+      "research_question": "Can a route connect different approved floors only through an authorized continuous stair transition? / 是否只經核准的連續樓梯連接不同樓層？",
+      "required_scene_semantics": ["APPROVED_FLOOR_FROM_NOT_EQUAL_FLOOR_TO", "STAIR_ENTRY_CONNECTED_TO_WALKABLE", "CONTINUOUS_STAIR_PATH", "STAIR_EXIT_CONNECTED_TO_OTHER_FLOOR_WALKABLE", "APPROVED_ASCENT_DESCENT_DIRECTIONS", "APPROVED_CLEARANCE_AND_SLAB_OPENING", "APPROVED_CROSS_FLOOR_TOPOLOGY", "APPROVED_CAMERA_PLANE_BINDING"],
+      "expected_observations": ["visible entry endpoint on floor_from", "visible exit endpoint on floor_to", "position-free stair GAP", "reference with independently approved vertical path"],
+      "expected_ambiguity": "Multiple stairs or timings only if independently authorized; never connect through a floor slab / 只保留核准樓梯與時間假設",
+      "required_metrics": ["projection_error_m", "ade_m", "fde_m", "min_ade_at_k_m", "min_fde_at_k_m", "coverage_at_k", "candidate_count", "feasible_candidate_recall", "collision_rate", "constraint_violation_rate", "impossible_transition_rate", "path_length_error_m", "travel_time_error_s", "runtime_s", "termination_reason", "search_nodes"],
+      "failure_conditions": ["GROUND_TRUTH_LEAKAGE_INVALIDATES_RUN", "MISSING_ENTRY_PATH_EXIT_OR_AUTHORITY", "CROSS_FLOOR_EDGE_WITHOUT_APPROVED_STAIR", "DISCONTINUOUS_Z_OR_WRONG_DIRECTION", "INSUFFICIENT_CLEARANCE_OR_NO_SLAB_OPENING", "PHYSICAL_VIOLATION"],
+      "execution_status": "DEFERRED_NOT_EXECUTED_THIS_ROUND"
+    }
+  ],
+  "baselines": [
+    {"id": "A", "method_id": "shortest_path", "name": "Shortest Path", "status": "NEXT_STAGE_DETERMINISTIC_BASELINE_DEFINITION", "candidate_policy": "one canonical shortest authorized geometric route; shared timing policy; requested K unchanged", "travel_time_filter": false, "camera_topology_filter": false, "collision_filter": "REQUIRES_APPROVED_INFERENCE_AUTHORITY"},
+    {"id": "B", "method_id": "geometry", "name": "Geometry-only Graph", "status": "NEXT_STAGE_DETERMINISTIC_BASELINE_DEFINITION", "candidate_policy": "deterministic multiple authorized geometric routes; shared timing policy", "travel_time_filter": false, "camera_topology_filter": false, "collision_filter": "REQUIRES_APPROVED_INFERENCE_AUTHORITY"},
+    {"id": "C", "method_id": "spatiotemporal", "name": "Spatiotemporal Constraint Graph", "status": "NEXT_STAGE_DETERMINISTIC_BASELINE_DEFINITION", "candidate_policy": "full deterministic geometry, explicit directed camera topology, travel-time and approved collision constraints", "travel_time_filter": true, "camera_topology_filter": true, "collision_filter": "REQUIRES_APPROVED_INFERENCE_AUTHORITY"},
+    {"id": "D", "method_id": "semantic", "name": "Graph + Semantic Information", "status": "INTERFACE_ONLY_NOT_IMPLEMENTED", "candidate_policy": "C plus approved source-bound semantic features; hard feasibility preserved", "semantic_policy": null},
+    {"id": "E", "method_id": "agent", "name": "Graph + Agent Semantic Ranking", "status": "INTERFACE_ONLY_NOT_IMPLEMENTED_AGENT_NOT_STARTED", "candidate_policy": "rerank deterministic feasible candidates without generating geometry or relaxing constraints", "agent_policy": null}
+  ],
+  "ablations": [
+    {"id": "remove_travel_time", "reference_method": "C", "changed_factor": "TRAVEL_TIME_FILTER", "override": false},
+    {"id": "remove_collision", "reference_method": "C", "changed_factor": "COLLISION_FILTER", "override": false, "gate": "APPROVED_INFERENCE_COLLISION_AUTHORITY_IMPLEMENTED"},
+    {"id": "remove_topology", "reference_method": "C", "changed_factor": "CAMERA_TOPOLOGY_FILTER", "override": false, "preserve": "AUTHORIZED_GEOMETRIC_FLOOR_AND_STAIR_CONNECTIVITY"},
+    {"id": "shortest_path_only", "reference_method": "C", "changed_factor": "CANDIDATE_ENUMERATOR", "override": "CANONICAL_SHORTEST_ROUTE", "preserve": "ALL_OTHER_C_CONSTRAINTS_AND_REQUESTED_K"},
+    {"id": "full_deterministic_graph", "reference_method": "C", "changed_factor": null, "role": "REFERENCE"},
+    {"id": "add_semantic_information", "reference_method": "C", "changed_factor": "SEMANTIC_FEATURE_POLICY", "override": null, "status": "FUTURE_INTERFACE_ONLY"},
+    {"id": "add_agent_ranking", "reference_method": "D", "changed_factor": "RANKING_POLICY", "override": null, "status": "FUTURE_INTERFACE_ONLY"}
+  ],
+  "comparison": {
+    "invariants": ["dataset_content_and_case_gap_ids", "source_scene_and_authority_snapshot", "camera_calibration_and_plane_binding", "seed", "metric_config_content", "candidate_k_values", "observations_and_endpoints", "movement_and_timing_policy_except_named_factor", "candidate_eligibility_and_search_budgets_except_named_factor", "evaluation_reference", "hardware_and_runtime_measurement_boundary"],
+    "single_factor_ablation": true,
+    "baseline_comparison_may_change_multiple_declared_factors": true,
+    "incompatible_dataset_seed_metric_or_requested_k": "SUPPRESS_AGGREGATE_NULL_AND_FLAG_REVIEW_DO_NOT_COMPARE_AS_CONTROLLED_EXPERIMENT",
+    "baseline_order": ["A", "B", "C", "D", "E"],
+    "order_by_ground_truth": false,
+    "aggregate": {
+      "accuracy_and_coverage": "macro mean over evaluated gap records, then arithmetic mean over matched runs; retain sample and missing counts",
+      "physical_rates": "pool supplied numerator and denominator counts; if counts absent label mean_of_reported_rates instead of asserting pooled rate",
+      "candidate_count": "mean emitted distinct-route count over measured gaps per run, then mean across matched runs; empty result contributes zero",
+      "expanded_states": "sum measured independent gap expansions per run, then mean across runs",
+      "case_inference_runtime": "one case runtime per run, then mean across runs; never sum repeated gap rows",
+      "termination": "category counts per measured gap, without repeating K rows",
+      "no_reference": "exclude unavailable reference metrics from means and show NO_REFERENCE count",
+      "empty_candidates_with_reference": "coverage zero; errors and physical rates N/A; candidate count zero",
+      "failed_or_missing_case": "retain row/status; unmeasured values N/A; show failure and missing counts",
+      "cross_case_or_overall_aggregate": "no silent weighting across different cases; report case/method separately"
+    },
+    "report_layout": "INDIVIDUAL_CHART_PER_METRIC_NO_SUBPLOT_COLLAGE",
+    "unavailable_metric_chart": "GRACEFUL_SKIP_AND_RECORD_REASON_NO_FABRICATED_VALUES"
+  },
+  "acceptance": {
+    "overall_pass_fail": false,
+    "categories": {
+      "GEOMETRIC_ACCURACY": ["projection_error_m", "ade_m", "fde_m", "min_ade_at_k_m", "min_fde_at_k_m", "path_length_error_m"],
+      "PHYSICAL_VALIDITY": ["collision_rate", "constraint_violation_rate", "impossible_transition_rate"],
+      "TOP_K_COVERAGE": ["coverage_at_k"],
+      "TEMPORAL_VALIDITY": ["travel_time_error_s"],
+      "SEARCH_BEHAVIOR": ["candidate_count", "feasible_candidate_recall", "termination_reason", "search_nodes"],
+      "SYSTEM_RUNTIME": ["runtime_s"]
+    },
+    "initial_targets": [
+      {"status": "INITIAL_TARGET", "case_id": "case1", "metric": "ade_m", "comparison": "<=", "value": 0.5, "unit": "m"},
+      {"status": "INITIAL_TARGET", "case_id": "case1", "metric": "fde_m", "comparison": "<=", "value": 0.5, "unit": "m"},
+      {"status": "INITIAL_TARGET", "case_id": "case3", "metric": "fde_m", "comparison": "<=", "value": 1.0, "unit": "m"},
+      {"status": "INITIAL_TARGET", "scope": "PRD_OVERALL_AGGREGATION_NOT_YET_APPROVED", "metric": "coverage_at_3", "comparison": ">=", "value": 0.9, "unit": "fraction"},
+      {"status": "INITIAL_TARGET", "scope": "EVERY_FORMAL_OUTPUT_CANDIDATE", "metric": "collision_rate", "comparison": "=", "value": 0.0, "unit": "fraction"},
+      {"status": "INITIAL_TARGET", "scope": "EVERY_FORMAL_OUTPUT_CANDIDATE", "metric": "impossible_transition_rate", "comparison": "=", "value": 0.0, "unit": "fraction"}
+    ],
+    "synthetic_zero_error_is_formal_evidence": false,
+    "missing_required_metric": "NOT_EVALUATED_NOT_PASS",
+    "unapproved_setting": "UNRESOLVED_RESEARCH_SETTING"
+  },
+  "unresolved_settings": [
+    {"id": "formal_coverage_distance", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "formal_coverage_epsilon", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null, "constraint": "FINITE_STRICTLY_POSITIVE"},
+    {"id": "formal_k_sampling_alignment_interpolation", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "physical_clearance", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "contact_semantics", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "geometry_authority", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "camera_plane_binding", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "obstacle_ownership", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "final_baseline_protocol", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "feasible_route_inventory_and_travel_time_reference_policy", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null},
+    {"id": "overall_case_weighting_and_acceptance_calibration", "status": "UNRESOLVED_RESEARCH_SETTING", "value": null}
+  ]
+}
