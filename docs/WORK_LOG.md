@@ -4,6 +4,56 @@
 
 ## 繁體中文
 
+### 2026-10-02 — Semantic completeness validator、Benchmark Protocol 與 comparison reporting
+
+起點 `1750e39`，branch `codex/dataset-infrastructure`，起始工作目錄 clean。
+本輪依使用者授權新增唯讀診斷與報告工具；未修改原 Blender scene，也未猜測
+`group_*`／`Cube.*`，未開始 school formal benchmarks、Agent、完整 reproducibility、
+最終 Blender／Rerun presentation 或 Phase 2。正式 Graph／Reconstruction／MetricConfig
+與 evaluation semantics 保持不變。
+
+| Milestone | Local commit |
+| --- | --- |
+| Semantic validator、config、唯讀 extractor、診斷文件／school report | `56040b7` |
+| 10 組 synthetic semantic scenes 與 39 個 regression tests | `b29b9aa` |
+| Case 1–4、A–E baseline interfaces、single-factor ablation、metric protocol／4 tests | `40bfea1` |
+| Matplotlib comparison generator、native／mock charts 與 summary tables | `249615a` |
+| Plotting-only multi-method fixture 與 15 個 reporting regressions | `7f7ea71` |
+
+[Semantic report](../data/scene_audit/semantic_validation.md) 由原 scene 在兩個獨立
+Blender 5.2.1 LTS processes 唯讀抽取：30 AREA、28 PORTAL、29 CAM，WALKABLE／WALL／
+OBSTACLE／STAIR 各 0。兩次 JSON 與 Markdown **byte-identical**；source SHA-256
+`1332280b8ca24ba8568017a13b666618c93337f32bcc431e59e7db617924fc38`、466,332,340 bytes
+與 mtime 均不變，沒有 save／render。Queue 為 HIGH 63／MEDIUM 124／LOW 3；HIGH 包含
+30 個 AREA missing coverage、28 個 PORTAL disconnected、四種 missing physical labels
+與一個 floor authority unresolved。MEDIUM 的 giant／hidden annotation 是 diagnostic
+heuristics，不自動判成場景錯誤。
+
+Validator 驗證 mesh holes／rotated triangles／union 不重複計面積、source-bound floor
+authority、malformed/non-finite inputs、contact overlap、geometry budgets、stair path
+跨孔洞與 naming／collection ownership。Unsupported geometry、floor-plane authority、
+clearance／slab opening 維持 REVIEW；diagnostic adjacency 不建立 navigation 或 stair edges。
+
+[Protocol](BENCHMARK_PROTOCOL.md) 固定問題、指標 populations／units、比較與缺值政策，
+正式 D／epsilon／K／時間政策、physical authority 與 final baselines 仍為
+`UNRESOLVED_RESEARCH_SETTING`／null，formal execution disabled；epsilon=0 仍拒絕。
+PRD targets 是 INITIAL_TARGET，六類 acceptance 分開列出，不宣稱 synthetic 驗收成功。
+
+比較工具載入既有 `data/candidates/infrastructure_20261002_final/`，產生
+[11 張 SYNTHETIC REGRESSION 圖](../data/reports/benchmark/benchmark_summary.md)。
+Native 未輸出的 projection／recall／impossible transition／path/time error／search
+nodes graceful skip 並記理由，不捏造值。新的 plotting-only fixture 產生
+[17 張 MOCK VALIDATION 圖](../data/reports/benchmark/mock_comparison/benchmark_summary.md)，
+含三個 cases、A–C IDs、repeated／failed／missing／NO_REFERENCE／empty candidate records；
+這不是 baseline A–C 實際執行。Physical／accuracy／Coverage 圖經 visual QA，Coverage
+footer 重疊已修正。JSON／Markdown 保存 N/A、availability／status、K、六類 acceptance
+與 incompatible-settings REVIEW；methods 不按 GT 排序。
+
+本輪 final checks：**745 passed in 58.78s，無 failed/skipped**；repository Ruff 通過；
+strict mypy 通過（72 source files）；diff whitespace、新文件 local links、PNG inventories、
+source fingerprint 與 report replay 均通過。新增 58 tests（39 semantic／15 reporting／4
+protocol）；起始 687 tests 也已重新通過。Local milestone commits 未 push／PR／merge。
+
 ### 2026-10-02 — Blender semantic audit；physical integration 等待人工標記
 
 起點 `bd984f2`，branch `codex/dataset-infrastructure`。使用者要求完成 Blender-backed
@@ -213,6 +263,28 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+The 2026-10-02 validator/protocol/reporting round starts at clean `1750e39` on
+`codex/dataset-infrastructure`. Local commits `56040b7`, `b29b9aa`, `40bfea1`, `249615a`,
+and `7f7ea71` add read-only scene diagnostics, synthetic semantic tests, the formal protocol
+specification, matplotlib comparison reporting and plotting regressions. No original scene,
+formal Graph/Reconstruction/evaluation semantics, school benchmark, Agent or presentation work
+changes. No publication is performed.
+
+Two independent Blender processes produce byte-identical semantic JSON/Markdown: 30 AREA,
+28 PORTAL, 29 CAM and zero physical labels. Source SHA-256, size and mtime remain unchanged.
+The review queue has 63 HIGH, 124 MEDIUM and 3 LOW findings; unsupported geometry and absent
+floor/clearance/opening authority retain REVIEW rather than creating navigation/stair edges.
+The protocol defines Cases 1–4, baseline/ablation interfaces, metric populations and six
+acceptance categories, while formal settings remain unresolved and execution disabled.
+
+Persisted native fake outputs yield 11 SYNTHETIC REGRESSION charts; unavailable metrics skip
+with reasons. The explicit plotting-only fixture yields all 17 MOCK VALIDATION chart families,
+including failed/missing/no-reference/empty records and repeated runs. Visual QA corrected the
+Coverage footer layout. Missing values remain N/A; incompatible aggregates require REVIEW;
+GT never orders methods. Final checks: 745 tests in 58.78s, no skips/failures, Ruff, strict mypy
+for 72 source files, diff/local-link/chart inventories, report replay and source immutability
+all pass. The 58 new tests consist of 39 semantic, 15 reporting and 4 protocol regressions.
 
 The 2026-10-02 Blender milestone begins at `bd984f2`. A fresh read-only source-bound audit
 inventories 2,796 objects, 2,652 meshes and 29 collections: 30 AREA annotations, 28 PORTAL

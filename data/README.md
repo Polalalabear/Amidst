@@ -6,6 +6,27 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-02 addendum / 補充盤點
+
+- [`scene_audit/semantic_validation.json`](scene_audit/semantic_validation.json) and
+  [Markdown review queue](scene_audit/semantic_validation.md) are repeatable read-only
+  diagnostics of the original source. They retain 30 AREA, 28 PORTAL and 29 CAM objects,
+  zero WALKABLE/WALL/OBSTACLE/STAIR, and unresolved floor authority. The source SHA-256,
+  size and mtime remain unchanged. These diagnostics do not establish physical authority.
+- [`reports/benchmark/benchmark_summary.md`](reports/benchmark/benchmark_summary.md)
+  and [JSON](reports/benchmark/benchmark_summary.json) compare the four persisted outputs
+  in local ignored `data/candidates/infrastructure_20261002_final/`, with 11 separate
+  **SYNTHETIC REGRESSION** charts. Missing metrics are recorded as unavailable.
+- [`reports/benchmark/mock_comparison/benchmark_summary.md`](reports/benchmark/mock_comparison/benchmark_summary.md)
+  and JSON/17 PNGs validate all supported chart families using the checked-in plotting-only
+  fixture `tests/fixtures/benchmark_report_comparison.json`. The label is **MOCK VALIDATION**;
+  numeric fixture values are not executions of baseline A–C or school benchmark results.
+
+本輪新增的 semantic report 是來源不變的唯讀診斷與 human review queue，未建立正式
+physical topology。11 張既有 fake-output 圖與 17 張 plotting fixture 圖分別明列
+`SYNTHETIC REGRESSION`／`MOCK VALIDATION`；沒有 Blender Cases 1–3、正式 Case 4、
+rendered images 或 Agent Ranking 結果。正式 protocol 的研究設定仍需核准。
+
 ## English
 
 ### Git-tracked audit evidence

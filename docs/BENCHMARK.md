@@ -24,6 +24,22 @@ Markdown summaries, preserves missing/failed/no-reference rows, and never orders
 by Ground Truth error. Synthetic runner results and plotting fixtures remain explicitly
 labelled synthetic regression or mock validation.
 
+Normalized multi-method input 使用 `schema_version="benchmark-comparison/v1"`，包含
+`cases`／`methods` identity arrays、`provenance.benchmark_kind` 與 `runs`。每筆 run 明列
+`case_id`、`method_id`、`run_id`、`status`、`selected_k`、`metrics`、`coverage_at_k`、
+`termination_reason` 與 invariant `comparison_settings`（dataset／seed／metric identity）。
+完整範例見 [plotting-only fixture](../tests/fixtures/benchmark_report_comparison.json)。
+Native runner 的 method 標為 `deterministic_graph`；不擅自將既有 fake run 改稱 A–C。
+Multi-method directory 格式為 `results/<case>/<method>/<run>/metrics.json`，搭配原
+`summary.json`；method IDs 可用 `shortest_path`、`geometry`、`spatiotemporal`。
+缺值使用 JSON null；同一 case／method 的不相容 runs 不平均，會列 N/A／REVIEW。
+
+Normalized comparisons declare the schema version above, case/method identities, explicit
+provenance and independent run records with metrics, K, Coverage and comparison invariants.
+The linked fixture is a complete plotting-only example. Native outputs retain their actual
+configured deterministic method identity. Directory comparisons accept the tree above;
+incompatible repeated-run settings produce N/A and REVIEW rather than an aggregate mean.
+
 ## 繁體中文
 
 ### 執行入口

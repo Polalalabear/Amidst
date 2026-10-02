@@ -21,7 +21,7 @@
   [140 boundary regressions](../data/mock/boundary/README.md)，共 687 tests。
 - Benchmark case-input rejection 保存 structured diagnostics 並重新拋原 exception；
   summaries 保留拒絕原因、端點與 GT unavailable 狀態。正式 schemas 未變更。
-- 使用者本輪要求 Blender physical integration／collision Top-K pruning，但
+- 使用者前輪要求 Blender physical integration／collision Top-K pruning，但
   [live semantic audit](../data/scene_audit/SEMANTICS.md) 確認沒有 WALKABLE／WALL／
   OBSTACLE／STAIR 標記，依指定 stop conditions 暫停 physical integration。
   30 AREA／28 PORTAL 是 annotation；未猜測 `group_*`／`Cube.*`。原 scene 未變更。
@@ -32,6 +32,17 @@
   正式 schemas/core 未修改，未擴 fake fixtures；epsilon=0 依既有契約拒絕。
 - 未進入 Agent／Phase 2，未 push／PR／merge。
 - School 樓梯／跨樓層與正式 Case 4 仍暫緩；Simplified Stair 只測後半段 interface。
+- 本輪完成 additive [semantic validator](SCENE_VALIDATION.md)：唯讀 Blender／portable
+  snapshot、config-driven diagnostics 與 HIGH／MEDIUM／LOW human review queue。
+  [目前報告](../data/scene_audit/semantic_validation.md) 仍為 `REVIEW_REQUIRED`；
+  沒有 WALKABLE／WALL／OBSTACLE／STAIR，診斷 adjacency 不建立 inference topology。
+- [正式 Benchmark Protocol](BENCHMARK_PROTOCOL.md) 已定義 Case 1–4、A–E baseline、
+  single-factor ablation、metrics／六類 acceptance；formal settings 仍 unresolved，
+  protocol specification 不能直接當成 executable ExperimentConfig，A–C 尚未實作。
+- `amidst.benchmark_report` 已支援 native／normalized／case-method-run inputs、獨立 PNG
+  與 summary table。既有 synthetic outputs 與 plotting-only multi-method fixtures
+  已驗證；不等於 Blender Cases 1–3 或 A–C 的研究結果。Missing／failed／NO_REFERENCE
+  保留，未輸出的 metrics 不補值。不開始完整 reproducibility、最終 presentation 或 Agent。
 
 ### Blender-derived dataset 接入缺口
 
@@ -65,7 +76,7 @@ Zero epsilon is rejected.
 M6 full-frame schema revalidation is fixed. See WORK_LOG for evidence and
 DATA_SCHEMA/INTERFACES for replaceable contracts.
 
-The user requested Blender physical integration in the current round. The
+The preceding round requested Blender physical integration. The
 [fresh semantic audit](../data/scene_audit/SEMANTICS.md) finds no WALKABLE/WALL/OBSTACLE/STAIR
 labels. Physical integration is stopped under the explicit user conditions until trusted
 source-bound surface/collider roles, floor/camera-plane bindings and clearance policy are
@@ -75,6 +86,17 @@ this does not measure Projection Error. No core/schema changes, new fake fixture
 Phase 2, school Cases 1–3, publication or merge. Collision pruning remains unresolved.
 School stairs/cross-floor/formal Case 4 remain deferred; the simplified stair only tests
 a synthetic interface.
+
+This round adds read-only semantic completeness validation, configurable diagnostics and
+priority human review queues. The current school report still requires review with no physical
+labels; proximity diagnostics do not authorize navigation or stairs. The formal protocol now
+defines Cases 1–4, A–E baseline interfaces, single-factor ablations, metric populations and six
+acceptance categories, while formal research settings remain unresolved and execution disabled.
+The comparison generator accepts native/normalized/tree outputs and writes individual charts
+and JSON/Markdown summaries; synthetic and plotting-only fixtures validate it. A–C algorithms,
+school benchmarks, full reproducibility engineering, final presentations and Agent ranking
+remain future work. Existing formal Graph/Reconstruction/metric semantics and source assets
+remain unchanged; no publication is performed.
 
 Remaining Blender interfaces: approved walkability,
 wall/stair geometry and directed route/transition configs; shared source/context
