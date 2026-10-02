@@ -4,6 +4,47 @@
 
 ## 繁體中文
 
+### 2026-10-02 — Phase 2 Integration Foundation
+
+從 `codex/dataset-infrastructure` 的乾淨 checkpoint `b11edb9` 開始；建立前 Ruff、strict
+mypy（69 files）與完整 pytest **547 passed**。Sandbox 內既有 Blender tests 出現18個
+SIGSEGV，解除 sandbox 後完整重跑通過。驗證期間原 checkout 出現並行工作的 boundary
+fixtures/tests；保留原 checkout，改在同一 commit 的乾淨隔離 worktree 再驗證 **547 passed**，
+才建立使用者指定的 `phase2/integration-foundation`，沒有 stash／reset／rebase／rewrite。
+
+| 功能 | Commit |
+| --- | --- |
+| Versioned backend API contracts／Protocol | `36fd908` |
+| Snapshot repository abstraction、memory/local mock、PostgreSQL factory interface | `70ccbb9` |
+| Lossless Python/TypeScript consumer、display-only replay | `f51bf55` |
+| Mock service/provider wiring、config、read-only JSON/WSGI API、verified replay import | `6ff76db` |
+| 完整 schema export、canonical URL-safe Event keys、ID/TypeScript parity regressions | `e2da4d8` |
+| Provider→repository→API→consumer、既有 benchmark/replay 端到端覆蓋 | `899061f` |
+
+`899061f` 完整程式內容的驗證：**650 passed in 44.53s，無 skipped／failed**；Phase 2 專用
+integration **14 passed in 2.24s**、unit tests **89 passed**（在完整 pytest 中執行），Ruff
+通過、strict mypy **80 source files** 通過。完整 pytest 包含既有 Blender-backed tests，
+沒有 render／save assets。Python 仍由 uv 管理、lock/dependencies 不變；隔離 worktree 使用
+原 installed environment，設定 `UV_PROJECT_ENVIRONMENT`／`PYTHONPATH` 指向正確的
+environment／隔離 source，以及可寫 `/private/tmp/amidst-phase2-uv-cache`。完整 Blender
+pytest 在獲准解除 sandbox 後執行；沒有將 sandbox SIGSEGV 記為產品測試成功。
+
+四組既有 mock fixtures（single_path、branching_top_k、temporal_slack、simplified_stair）
+驗證 canonical observations、完整 BoundGapEvent、candidate/hypothesis ordering、nullable
+path_score、termination、complete、source/context binding；memory/local JSON adapter 可互換。
+原 portable replay 搬移後重新執行原 benchmark，cases 與 metrics JSON 一致；服務／importer
+不反序列化 evaluation GT。Node 26 實際執行 TypeScript，驗證四組 API consumer/replay JSON、
+finite XYZ/time、provenance、invalid contracts 與 Python/TypeScript URL-key parity。
+
+沒有需要修改 Phase 1 contract 的問題。保留 inclusive configured-time 與 provider window
+reaggregation 的既有行為，透過 canonical snapshot 解決 Event ID joins。交叉審查修正了
+Phase 2 schema map 漏列自身 response 與 WSGI route ID decoding；未變更任何 Phase 1 code、
+benchmark logic、既有 fixture 或 Blender geometry。
+
+新增 [雙語架構文件](PHASE2_INTEGRATION.md)，並同步 README 導覽與目前 handoff。
+PostgreSQL／Three.js UI renderer／Real CV 等仍只在明確界線內保留 interface 或延後；
+本輪沒有 production deployment、Semantic Ranking、push／PR／merge，也不 merge 回 Phase 1。
+
 ### 2026-10-01 — Deterministic fake-data 後半段閉環
 
 起點 `2a988df`，branch `codex/deterministic-downstream-scenarios`；使用者授權四組
@@ -122,6 +163,32 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-02 — Phase 2 Integration Foundation
+
+Starting checkpoint `b11edb9` was clean, with **547 pytest passed**, Ruff passed and strict mypy
+passed across 69 files. Existing Blender subprocesses failed with sandbox SIGSEGV; the authorized
+unsandboxed full run passed. Concurrent unrelated boundary files appeared in the original checkout,
+so a clean isolated worktree at the same commit was independently verified before creating
+`phase2/integration-foundation`. Original changes were preserved; no history rewrite or rebase occurred.
+
+Implementation commits are listed in the Traditional Chinese table above. At code checkpoint
+`899061f`, full pytest was **650 passed in 44.53s**, with no skips/failures; the new Phase 2 suite
+included **14 integration** and **89 unit** tests. Ruff passed and strict mypy passed across
+**80 source files**. Blender tests ran without rendering/saving assets. The locked existing uv
+environment and isolated source path were selected explicitly; dependencies and lockfile were unchanged.
+
+All four existing mock cases traverse providers, bound snapshots, memory/local storage, JSON API,
+Python/TypeScript consumer contracts and display replay. Relocated portable replay runs the unchanged
+benchmark with identical cases/metrics. Node 26 executed actual API consumer/replay JSON and rejected
+corrupt contracts, preserving finite XYZ/time, provenance, alternatives and special Event identities.
+Service/importer never deserialize evaluation truth.
+
+No Phase 1 contract change was required. Canonical snapshots retain existing inclusive/window-query
+behavior; additive API schema/routing defects found by peer review were fixed. Core Phase 1 code,
+benchmark logic, existing fixtures and Blender geometry were untouched. Architecture/navigation/handoff
+documentation now describes only the authorized mock foundation. No production deployment, Semantic
+Ranking, push, PR or merge into Phase 1 occurred.
 
 The 2026-10-01 fake-data round started at `2a988df` and completed the generic downstream
 loop on `codex/deterministic-downstream-scenarios`, with implementation commits listed
