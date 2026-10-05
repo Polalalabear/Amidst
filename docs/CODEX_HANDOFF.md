@@ -30,10 +30,14 @@
   [sidecar](../data/scene_audit/school_v3_wall_candidates.json) 標記 81 個 WALL surface
   patches（7 source objects），1,491 patches 留 HUMAN_REVIEW（674 objects，totals 重疊）。
   28 PORTAL 的自動確認牆面相交為 0；不改 source、不分類整個混合 object。
-- 本機 ignored `data/pilot/school_v3_pilot_20261005/` 已完成小型
-  **PILOT / SYNTHETIC SAMPLE**，50 timestamps／100 PNG 全數驗證成功。
-  先看 `sample_report.md`、`review.html`、五張 representative montages 與同步 preview。
-  已停止，不擴充 dataset；未開始 formal geometry/navigation integration、collision
+- 本機 ignored `data/pilot/school_v3_multisite_20261005/` 已完成同一 school_v3 的
+  教室／禮堂／辦公區三組 **PILOT / SYNTHETIC SAMPLE**，150 timestamps／300 PNG
+  全數獨立驗證成功。先看 root `comparison.md`／`review.html`，各子目錄的
+  `dataset.json`、五張代表 montages 與同步 preview。原 corridor pilot 保留作比較。
+  教室是中心點可見對照（完整 body 全程有邊界裁切）；禮堂只有一個且仍有 partial body
+  的 GAP 樣本；辦公區24個 GAP 中19個完全隱藏，最適合目前 point occlusion 檢查。
+  禮堂與辦公區共用既有 FRONT／REAR cameras，不是三套獨立相機配置。
+  已停止於這三組額外 pilot；未開始 formal geometry/navigation integration、collision
   pruning、benchmark、Agent／Phase 2 或 Case 4。
 
 ### 仍需人工與 geometry integration 處理
@@ -56,11 +60,13 @@
   projected endpoints 需對齊 configured nodes，尚無 arbitrary-point snapping／connector。
 - Pilot source/context、GT／camera／visibility／render binding 與獨立投影驗證已完成，
   純 2D `observations.json` 另存，GT 不能進 inference。正式 adapters 仍需共同 authority。
-  Pilot forward residual 最大 0.000114px、固定診斷 plane inverse residual 最大
-  0.000248 scene units，沒有異常；這不是 formal floor/camera-plane 認證。實際地面
+  三組新 pilot forward residual 最大 0.000638311px、固定診斷 plane inverse residual 最大
+  0.001787566 scene units，沒有異常；這不是 formal floor/camera-plane 認證。實際地面
   Z≈20.07885，比 WALKABLE Z=25 低 4.92115；marker plane Z≈75.12885。
-  METRIC／1m-per-unit 有建築尺度疑義，不猜測換算比例。完整 generation 待 image review、
-  physical scale 與正式 authority；點可見性不當作整個人體 CV detection。
+  METRIC／1m-per-unit 有建築尺度疑義，不猜測換算比例。完整 generation 待 image policy、
+  physical scale 與正式 authority；marker 裁切、地板明暗塊、短 GAP／恢復視窗與 camera
+  coverage 限制已在 comparison 記錄，agent 判斷不替代人類 authority。
+  點可見性不當作整個人體 CV detection。
 - Rerun 已支援合成 waypoint graph、navigation anchors、portable calibrated poses／
   frustums；實際 mesh integration 與學校正式視覺化仍未完成。
 - [Phase 1 Benchmark Protocol](PHASE1_BENCHMARK_PROTOCOL.md) 已定義 Cases 1–4、A–E
@@ -95,11 +101,17 @@ floor or camera-plane authority. Authorized WALL extraction labels 81 connected 
 patches in a source-bound sidecar, retaining 1,491 HUMAN_REVIEW patches (7 automatic /
 674 review objects, with overlap). All 28 PORTALs are protected; automatic aperture
 intersections are zero. Whole mixed objects and saved source labels are unchanged.
-The local ignored `data/pilot/school_v3_pilot_20261005/` contains the completed bounded
-PILOT / SYNTHETIC SAMPLE: 50 timestamps and 100 verified PNGs. Review sample_report.md,
-review.html, five representative montages and the synchronized preview before new work.
-Work stops at the pilot; no formal geometry/navigation integration, collision pruning,
-benchmark, Agent, Phase 2 or formal Case 4 is started.
+The local ignored `data/pilot/school_v3_multisite_20261005/` contains three additional
+PILOT / SYNTHETIC SAMPLE locales within the same school_v3 asset: classroom, auditorium
+and office, with all 150 timestamps / 300 PNGs independently verified. Review comparison.md
+and review.html, then each site's dataset, five representative montages and synchronized
+preview. The original corridor pilot is retained as a comparison reference. Classroom is a
+center-point control with body clipping in all visible images; auditorium has one partially
+visible GAP sample; office has 24 GAP samples, 19 fully hidden, making it the strongest
+current point-occlusion sample. Auditorium/office reuse the existing FRONT/REAR cameras,
+not separate installations. Work stops at these three additional pilots; no formal
+geometry/navigation integration, collision pruning, benchmark, Agent, Phase 2 or Case 4
+is started.
 
 Human work remains: correct fully blocking bathroom footprints while retaining OBSTACLE/BOTH
 roles; confirm real doorway seams/portal positions/normals and aperture conflicts; provide
@@ -113,11 +125,13 @@ Collision Top-K pruning remains unresolved; evaluation AABB checks do not certif
 Graph routes and projected node anchors still require explicit configs, with no arbitrary
 point attachment. Pilot source/context bindings, render hashes and separate 2D/GT exports
 are verified, while formal adapters still need shared authority. GT stays excluded from
-inference. Independent pilot forward/inverse errors are at most 0.000114 pixels / 0.000248
+inference. The three new pilots' forward/inverse errors are at most 0.000638311 pixels / 0.001787566
 scene units, with no unexpected failures; the static landmark plane is diagnostic only.
 Actual 1F support is Z≈20.07885, 4.92115 below the WALKABLE annotation; landmark plane
 Z≈75.12885. Declared metric scale is not certified architectural scale. Full generation
-awaits image review and physical scale/plane authority; point visibility is not whole-body CV.
+awaits image policy and physical scale/plane authority. Boundary clipping, floor appearance,
+short gap/recovery windows and limited camera coverage are documented in comparison;
+agent judgments do not grant human authority. Point visibility is not whole-body CV.
 Portable Rerun poses/frustums are supported, while real mesh visualization remains pending.
 The Phase 1 protocol specifies comparison interfaces and acceptance, but formal settings are
 unresolved/execution disabled and A–C algorithms are not implemented. Zero epsilon remains

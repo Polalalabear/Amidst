@@ -6,6 +6,36 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-05 addendum / 三個不同區域的 PILOT
+
+Local ignored `data/pilot/school_v3_multisite_20261005/` contains three new
+**PILOT / SYNTHETIC SAMPLE** runs in the same school_v3 asset, not separate buildings.
+Each run has 10 seconds at 5 FPS, 50 timestamps on [0,10), 100 camera PNGs, source-bound
+trajectory/support evidence, separate 2D observations and GT, evaluation-only dataset JSON,
+five representative montages, synchronized preview, sample report and independent validation.
+
+| Locale | Configured / sampled scene units | Visible / occluded / out-of-FOV camera records | Global landmark GAP | Judgment |
+| --- | ---: | --- | ---: | --- |
+| CLASS101 classroom | 300 / 294.000000 | 50 / 0 / 50 | 0 | Center-point visibility control; all 50 visible images have marker boundary clipping |
+| Auditorium | 660 / 646.800049 | 82 / 2 / 16 | 1 | Coverage / short-gap sample; partial body remains at its sole GAP timestamp |
+| Office | 160 / 156.800049 | 26 / 74 / 0 | 24 | Strongest point-occlusion pilot; 19 GAP timestamps have no marker pixels in either view |
+
+教室使用 `CAM_1F_CLASS101` / `CAM_1F_CORRIDOR_04`；後者全程 FAR_CLIPPED。
+禮堂與辦公區共用既有 `CAM_1F_AUDITORIUM_FRONT` / `CAM_1F_AUDITORIUM_REAR`，
+不代表三套獨立相機配置。辦公區 GAP 為 frames21–44（t4.2–8.8），其中 frames23–41
+（t4.6–8.2）的19個樣本完全沒有 marker；另外5個仍有部分 body pixels。
+畫面使用 opaque gray Workbench 與橙色 marker，地板有不規則明暗塊；原因未認證。
+可用於 point simulation 品質檢查，尚不足作為完整人體 CV 或正式完整 dataset。
+
+All 150 timestamps / 300 PNGs pass independent source/site/provenance/render validation
+with zero errors. Maximum native forward residual is 0.000638311 pixels; static diagnostic
+plane inverse residual is 0.001787566 scene units, with no unexpected Projection failures.
+`comparison.json` / `comparison.md` / `review.html` include agent image judgments bound to
+dataset and reviewed-artifact hashes. The original corridor pilot is retained as a fourth
+comparison reference, not counted as a new run. GT stays evaluation-only; no benchmark,
+downstream inference or source save is performed. Full generation remains pending image
+policy, physical scale and formal authority. Work stops at these three additional pilots.
+
 ### 2026-10-05 addendum / WALL 與小型 PILOT
 
 - [WALL report](scene_audit/school_v3_wall_candidates.md) and

@@ -345,6 +345,7 @@ def main() -> None:
                     "SourceAssetSHA256": before[0],
                     "SimulationTimestampSeconds": str(sample["timestamp"]),
                     "TrajectoryID": trajectory_id,
+                    "SiteID": plan.get("site_id", "corridor_reference"),
                     "VisibilityPolicy": policy["point_visibility_policy"],
                 })
                 qa = image_diagnostics(bpy, path, native_pixel)
@@ -359,6 +360,7 @@ def main() -> None:
                         "source_asset_sha256": before[0],
                         "render_policy_id": policy["policy_id"],
                         "image_measurement": False,
+                        "site_id": plan.get("site_id", "corridor_reference"),
                     },
                     "blender_projection": {
                         "pixel": native_pixel, "axial_depth": float(ndc.z),
@@ -395,6 +397,9 @@ def main() -> None:
     dataset = {
         "schema_version": "blender-pilot-sample-v1", "label": LABEL,
         "data_kind": "SYNTHETIC", "purpose": "SIMULATION_EXPORT_EVALUATION_AND_HUMAN_REVIEW_ONLY",
+        "site_id": plan.get("site_id", "corridor_reference"),
+        "site_label": plan.get("site_label", "1F corridor reference"),
+        "sample_role": plan.get("sample_role", "VISIBLE_GAP_VISIBLE"),
         "duration_seconds": 10, "sampling_fps": 5,
         "sampling_interval": "[0,10) seconds: 0.0 through 9.8, endpoint excluded",
         "requested_timestamps": 50, "successful_timestamps": len(timestamps),
@@ -421,10 +426,12 @@ def main() -> None:
     write_json(args.output / "observations.json", {
         "data_kind": "SYNTHETIC", "label": LABEL,
         "source_asset_sha256": before[0], "frames": frames,
+        "site_id": plan.get("site_id", "corridor_reference"),
     })
     write_json(args.output / "ground_truth.json", {
         "label": LABEL, "provenance": "GROUND_TRUTH", "source_asset_sha256": before[0],
         "trajectory_id": trajectory_id,
+        "site_id": plan.get("site_id", "corridor_reference"),
         "samples": [{"timestamp": row["timestamp"], **row["ground_truth"]} for row in timestamps],
     })
     print(f"PILOT_EXPORT_OK {len(timestamps)} timestamps; source unchanged", flush=True)

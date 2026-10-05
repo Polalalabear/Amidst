@@ -17,7 +17,14 @@ from PIL import Image, ImageDraw, ImageFont
 LABEL = "PILOT / SYNTHETIC SAMPLE"
 
 
-def representative_indices(rows: list[dict]) -> list[tuple[str, int]]:
+def representative_indices(
+    rows: list[dict], sample_role: str = "VISIBLE_GAP_VISIBLE"
+) -> list[tuple[str, int]]:
+    if sample_role == "FULLY_OBSERVED_CONTROL":
+        if len(rows) != 50 or any(row["gap_state"] != "OBSERVED" for row in rows):
+            raise ValueError("a declared visible control must have all 50 timestamps observed")
+        return [("01_start", 0), ("02_early", 12), ("03_middle", 24),
+                ("04_late", 37), ("05_end", 49)]
     gaps = [row["index"] for row in rows if row["gap_state"] == "GAP"]
     if not gaps:
         raise ValueError("pilot must contain a selected-camera global GAP")
@@ -27,6 +34,13 @@ def representative_indices(rows: list[dict]) -> list[tuple[str, int]]:
         last += 1
     if first < 2 or last >= len(rows) - 1:
         raise ValueError("pilot lacks representative visible/gap/reappearance stages")
+    if first == last:
+        extra = len(rows) - 1 if last + 1 < len(rows) - 1 else first - 2
+        return [
+            ("01_visible_start", 0), ("02_before_short_gap", first - 1),
+            ("03_short_gap", first), ("04_visible_again", last + 1),
+            ("05_additional_visible", extra),
+        ]
     return [
         ("01_visible_start", 0), ("02_approaching_occlusion", first - 1),
         ("03_entering_gap", first), ("04_middle_of_gap", (first + last) // 2),
@@ -80,19 +94,27 @@ def main() -> None:
     dataset = json.loads((root / "dataset.json").read_text())
     rows = dataset["timestamps"]
     validation = json.loads((root / "validation.json").read_text())
-    representatives = representative_indices(rows)
+    sample_role = dataset.get("sample_role", "VISIBLE_GAP_VISIBLE")
+    site_id = dataset.get("site_id", "corridor_reference")
+    site_label = dataset.get("site_label", "1F corridor reference")
+    plan_path = Path(dataset["trajectory"]["plan_path"])
+    plan = json.loads(plan_path.read_text())
+    plane_basis = dataset["trajectory"]["projection_plane_basis"]
+    physical_z = float(plane_basis["physical_floor_z"])
+    annotation_z = plan.get("floor_support_evidence", {}).get("annotation_plane_z")
+    representatives = representative_indices(rows, sample_role)
     rep_dir = root / "representative"
     rep_dir.mkdir(exist_ok=args.refresh_review)
     rep_records = []
     for name, index in representatives:
         path = rep_dir / f"{name}_t{rows[index]['timestamp']:.1f}.png"
-        composite(root, rows[index], name.replace("_", " "), rows).save(path)
+        composite(root, rows[index], site_id + " | " + name.replace("_", " "), rows).save(path)
         rep_records.append({"stage": name, "index": index,
                             "timestamp": rows[index]["timestamp"],
                             "path": str(path.relative_to(root)),
                             "camera_frames": [r["render"]["path"]
                                               for r in rows[index]["per_camera"]]})
-    previews = [composite(root, row, "synchronized camera preview", rows) for row in rows]
+    previews = [composite(root, row, site_id + " | synchronized preview", rows) for row in rows]
     previews[0].save(root / "trajectory_preview.gif", save_all=True,
                      append_images=previews[1:], duration=200, loop=0, optimize=False)
     positions = [row["ground_truth"]["foot_position"] for row in rows]
@@ -114,7 +136,8 @@ def main() -> None:
                    color="#1565c0", head_width=4, length_includes_head=True)
     axis.set(xlabel="X (Blender scene units; physical scale unverified)",
              ylabel="Y (Blender scene units)", aspect="equal",
-             title=LABEL + "\nFoot trajectory: green visible, red selected-camera GAP")
+             title=LABEL + " | " + site_id
+             + "\nFoot trajectory: green visible, red selected-camera GAP")
     axis.grid(alpha=.2)
     figure.savefig(root / "trajectory_preview.png", dpi=140)
     plt.close(figure)
@@ -128,10 +151,11 @@ def main() -> None:
         c["image_diagnostics"]["orange_target_pixels"] == 0 for c in row["per_camera"]
     ) for row in rows)
     lines = [
-        "# PILOT / SYNTHETIC SAMPLE — school_v3 quality review", "",
+        f"# PILOT / SYNTHETIC SAMPLE — {site_label} quality review", "",
         "本資料僅供 simulation/export/evaluation 與人工品質檢查，未跑正式 Cases 1–3。",
         "GT 不進入 Projection inference / Graph / ranking / reconstruction；"
         "`observations.json` 為獨立且符合既有 schema 的純 2D evidence。", "",
+        f"- Site: `{site_id}` ({site_label}); sample role: `{sample_role}`.",
         f"- Source SHA-256: `{dataset['source_scene']['sha256_before']}`; "
         "hash/size/mtime unchanged.",
         f"- 10 seconds at 5 FPS: **{len(rows)}/50 timestamps**, [0,10), t=0.0…9.8 s.",
@@ -153,13 +177,18 @@ def main() -> None:
         "Partial head/body visibility near occlusion is recorded by orange-pixel diagnostics.",
         f"- Of {len(gaps)} global landmark GAP timestamps, **{marker_absent}** show no "
         f"orange marker in either render; **{len(gaps) - marker_absent}** retain partial body "
-        "visibility. The 3.6s entering-GAP example is partial; the 6.4s midpoint is fully hidden.",
+        "visibility. Representative captions distinguish partial body from full marker absence.",
         "- GT `position` is the body-center landmark; `foot_position` is exported separately. "
-        "Actual physical floor Z≈20.07885, foot Z≈20.12885, landmark Z≈75.12885. "
-        "WALKABLE annotation Z=25 has a 4.92115-unit discrepancy from actual mesh support.",
+        f"Physical floor Z≈{physical_z:.6f}, foot Z≈"
+        f"{rows[0]['ground_truth']['foot_position'][2]:.6f}, landmark plane Z≈"
+        f"{dataset['trajectory']['observation_plane_z']:.6f}.",
+        f"- WALKABLE annotation plane: {annotation_z}; "
+        + (f"annotation minus actual floor: {annotation_z - physical_z:.6f} scene units."
+           if annotation_z is not None else "annotation plane comparison unavailable."),
         "- Pixels use top-left continuous coordinates; depth is axial along camera -Z. "
         "Raw PNG text metadata explicitly labels PILOT/SYNTHETIC and simulation timestamps; "
-        "native Frame=220/Time refers to the frozen source geometry frame.",
+        f"native Frame={dataset['render_policy']['geometry_frame']}/Time refers to the frozen "
+        "source geometry frame.",
         "- Observation producer is simulation projection + physical mesh raycast, "
         "not CV detection.",
         "- Workbench opaque gray studio camera renders use an orange synthetic marker; "
@@ -188,7 +217,8 @@ def main() -> None:
               "- [Separate Ground Truth](ground_truth.json)",
               "- [Source-bound route/support plan](trajectory_plan.json)", "",
               "## Readiness", "",
-              "這份小型 pilot 足以人工檢查資料格式、相機畫面、遮擋與 GAP。"
+              "這份小型 pilot 供檢查資料格式、相機畫面與可見性；"
+              "FULLY_OBSERVED_CONTROL 為持續可見對照，不宣稱具有 blind GAP。"
               "完整 Blender dataset generation 仍需本次畫面的人類品質審查，"
               "物理尺度確認及涵蓋更多場景的 route/visibility/render policy 驗證。"
               "它不構成完整資料集或正式 benchmark readiness；本次到此停止。", ""]
@@ -204,6 +234,7 @@ def main() -> None:
         'body{max-width:1480px;margin:24px auto;padding:16px;font:16px system-ui;'
         'background:#f8fafc;color:#172033}img{max-width:100%;height:auto}'
         'section{margin:32px 0}a{color:#075fa8}</style><h1>' + LABEL + '</h1>'
+        '<h2>' + html.escape(site_label) + '</h2><p>' + html.escape(sample_role) + '</p>'
         '<p>10秒 / 5 FPS / 50 timestamps。橙色 synthetic marker；灰色 opaque physical mesh。'
         '狀態依 body-center landmark；純2D Observation另存，GT僅simulation/evaluation。</p>'
         '<p><a href="sample_report.md">Sample report</a> · '

@@ -4,6 +4,55 @@
 
 ## 繁體中文
 
+### 2026-10-05 — Three-locale Blender PILOT comparison
+
+起點 `c078b89`，使用者追加授權「不同場地的多個資料，並給出判斷」。完成同一
+`school_v3.blend` 的 CLASS101／AUDITORIUM／OFFICE 三個不同 metadata 區域，
+本機 ignored `data/pilot/school_v3_multisite_20261005/`；不是不同建築或真實場地。
+每組10秒、5FPS、[0,10) 的50timestamps／100PNG，合計 **150／300全部成功**。
+原 corridor pilot 保留為比較 reference，不計入新生成數量。
+
+教室用 `CAM_1F_CLASS101`／`CAM_1F_CORRIDOR_04`；禮堂與辦公區共用既有
+`CAM_1F_AUDITORIUM_FRONT`／`CAM_1F_AUDITORIUM_REAR`，不改 pose／lens。
+規劃／採樣長度依序300／294、660／646.800049、160／156.800049 scene units。
+三組各驗證50個 timestamp 的5點 WALKABLE containment／physical support，並對完整
+radius6／height119 continuous swept volume 做 exact triangle clipping；沒有 collision、
+portal crossing、cross-floor 或 elevator transition。Cached search 僅供 hints，最終用
+current evaluated physical mesh 重新判斷，拒絕碰撞及不符50點 visibility 的 routes。
+
+| 區域 | Visible / occluded / out-of-FOV camera records | Global point GAP | 雙鏡頭全隱藏 / partial body | 判斷 |
+| --- | --- | ---: | --- | --- |
+| CLASS101 | 50 / 0 / 50 | 0 | 0 / 0 | 中心點持續可見對照；50個可見影像皆有 body boundary clipping |
+| AUDITORIUM | 82 / 2 / 16 | 1 | 0 / 1 | 覆蓋／短暫中斷樣本，不適合作主要長遮擋資料 |
+| OFFICE | 26 / 74 / 0 | 24 | 19 / 5 | 最適合本輪 point occlusion，仍有限 camera 配置與短 recovery window |
+
+Auditorium GAP 只有 frame47／9.4s，仍看得到部分 marker。Office GAP 為frames21–44／
+t4.2–8.8，完全看不到 marker 為frames23–41／t4.6–8.2，共19個離散樣本；恢復後只有5點。
+Classroom corridor camera 全50點 FAR_CLIPPED；office 是不同 WALKABLE／AREA 路徑，
+畫面仍是既有 auditorium 視角，不宣稱新增 office interior camera。全場採既有
+opaque-gray Workbench／orange-marker policy，地板不規則明暗塊的原因未認證。
+Agent 視覺判斷不當作 human authority／完整人體 CV detection readiness。
+
+各組另存 combined evaluation-only dataset、strict 2D observations、GT、source-bound plan、
+validation、sample report、50frame同步GIF、trajectory map與5張不同代表 montages。
+Control 有明確 `FULLY_OBSERVED_CONTROL` 角色，不能假造 GAP；singleton GAP 的代表
+frames 為0／46／47／48／49。跨場地 comparison 將判斷綁定 dataset／reviewed image hashes，
+PNG 新增 SiteID，validator 核對 plan／export／PNG／provenance／2D／GT 一致，拒絕混場。
+
+獨立驗證三組均 **PASS_WITH_REVIEW、errors=[]**；300PNG全部解碼、標記／hash核對，
+158個 visible landmark 都有實際 orange pixels；全部PNG另做獨立 mask 分析確認上述
+hidden／partial split。Forward max0.000638311px、static pilot plane inverse max
+0.001787566units，unexpected Projection failure0；142個 non-observed camera inputs
+按既有接口拒絕。來源SHA／468,300,506bytes／mtime_ns1791198236746106977不變。
+GT僅 simulation/export/evaluation，inverse僅 sanitized2D＋camera＋independent static
+pilot plane；沒有 Graph／ranking／reconstruction／Cases1–3 或 benchmark semantics 改動。
+
+完整 regression **821 passed in72.57s、無skips**，Ruff、strict mypy72sourcefiles與diff
+check通過。Sandbox內18個native Blender SIGSEGV於sandbox外完整rerun全部消失，
+屬既知Metal環境問題，沒有以skip掩蓋。最後報告角色文字修正另通過6個summary tests／Ruff。
+到這三組額外pilot停止；完整generation仍待
+image policy／physical scale／formal floor-camera-geometry authority，不自動擴充。
+
 ### 2026-10-05 — Bounded Blender PILOT / SYNTHETIC SAMPLE
 
 WALL milestone 後依同一授權完成本機 ignored
@@ -370,6 +419,48 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-05 — Three-locale Blender PILOT comparison
+
+Starting at c078b89, the user's follow-up authorizes several locales and judgments.
+Three new ignored PILOT / SYNTHETIC SAMPLE runs in school_v3 cover CLASS101, AUDITORIUM
+and OFFICE metadata regions, not separate buildings or real sites. Each has 10s at 5 FPS,
+50 timestamps on [0,10) and 100 PNGs: all 150 timestamps / 300 renders succeed. The
+original corridor pilot remains a reference and is not counted as newly generated.
+Classroom uses CLASS101/CORRIDOR_04; auditorium/office reuse AUDITORIUM_FRONT/REAR without
+camera changes. Configured / sampled lengths are 300/294, 660/646.800049 and 160/156.800049
+native scene units. Every route passes 250 physical/WALKABLE support probes and exact
+continuous full-marker swept-volume triangle checks. Cached grids are hints only;
+current geometry rejects colliding or mismatched-visibility routes. No portal, floor or
+elevator transition is introduced.
+
+Classroom has 50 visible / 0 occluded / 50 out-of-FOV records and no global GAP: it is a
+center-point control, with marker boundary clipping in all 50 visible images and all
+CORRIDOR_04 samples FAR_CLIPPED. Auditorium has 82/2/16 records and one GAP at 9.4s with
+partial body still visible: useful coverage/brief-interruption data, not the main long-gap
+sample. Office has 26/74/0 records and 24 GAP samples at 4.2–8.8s: 19 at 4.6–8.2s show no
+marker in either view and five retain partial body. It is the strongest current point-gap
+sample, with reused auditorium views and only five recovery samples. Existing opaque-gray
+Workbench/orange-marker rendering has irregular floor appearance of unverified cause.
+Agent image judgments do not grant human authority or whole-body detector readiness.
+
+Each run saves separate strict 2D observations/GT, evaluation-only combined JSON, source-bound
+plan, validation, report, 50-frame synchronized GIF, trajectory map and five distinct review
+montages. Explicit FULLY_OBSERVED_CONTROL never fabricates a GAP; singleton GAP representatives
+are 0/46/47/48/49. Comparison binds judgments to dataset and inspected-image hashes. SiteID
+is verified across plans, PNGs, provenance and both exports; mixed-site corruption is rejected.
+All three independent validations are PASS_WITH_REVIEW with no errors; all 300 PNGs are
+decoded/hashed/labeled, all 158 visible landmarks have orange pixels, and independent masks
+confirm the full-hidden/partial split. Forward error is at most 0.000638311 pixels and static
+pilot-plane inverse error at most 0.001787566 scene units, with zero unexpected failures;
+all 142 non-observed camera inputs are correctly rejected. Source hash/size/mtime are unchanged.
+GT is used only for simulation/export/evaluation; inverse receives sanitized 2D, camera and
+an independent configured plane. Graph, ranking, reconstruction and formal benchmarks are
+not run or changed. Full regression passes 821 tests in 72.57s without skips, plus Ruff,
+strict mypy for 72 source files and diff checks. Eighteen native Blender crashes in the
+sandbox disappear in the full outside-sandbox rerun, without skipping tests. Work stops at
+these three pilots; the final report-role wording adjustment also passes six summary tests
+and Ruff. Full generation still awaits image policy, scale and formal authority.
 
 The bounded 2026-10-05 PILOT / SYNTHETIC SAMPLE is materialized locally in ignored
 `data/pilot/school_v3_pilot_20261005/`. CAM_1F_CORRIDOR_02/03 retain their source poses;
