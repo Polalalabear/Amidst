@@ -4,6 +4,24 @@
 
 ## 繁體中文
 
+### 2026-10-05 — Phase 1 semantic scene checkpoint
+
+使用者明確要求大斷點、push目前branch及從斷點建立新branch。起始working tree clean，
+`codex/dataset-infrastructure` HEAD為 `4437ef3e468d3b18181f893906619af021042434`。
+本次重新執行指定指令：`uv run pytest` **821 passed in58.64s，無skips**；
+`uv run ruff check .`、`uv run mypy`（72sourcefiles）與`git diff --check`均通過。
+完整pytest與uv最終檢查在sandbox外完成；uv在sandbox的macOS初始化崩潰於相同命令
+rerun消失，沒有刪除或skip測試。
+
+[Checkpoint record](PHASE1_CHECKPOINT.md) 保存branch、已驗證起點、來源fingerprint、
+本機資產與續作邊界。建立ignored唯讀 `blender/working/checkpoints/phase1-semantic-scene-20261005/`
+scene snapshot，SHA與目前school_v3完全一致；原來源SHA／size／mtime不變。
+manifest記錄Git checkpoint SHA與四組pilot檔案hash，raw資產不隨push發布，也沒有重render。
+checkpoint commit message為 `checkpoint: preserve phase1 semantic scene state`；
+後續branch為 `phase1/pilot-dataset-and-wall-inference`，由相同checkpoint commit建立。
+不修改正式benchmark semantics、不執行正式Cases1–3、不merge回checkpoint branch。
+精確commit與push結果綁定於本輪完成回報及本機manifest。
+
 ### 2026-10-05 — Three-locale Blender PILOT comparison
 
 起點 `c078b89`，使用者追加授權「不同場地的多個資料，並給出判斷」。完成同一
@@ -419,6 +437,23 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-05 — Phase 1 semantic scene checkpoint
+
+The user explicitly authorizes a major checkpoint, publishing the current branch and
+creating a continuation branch from it. The starting tree is clean on
+codex/dataset-infrastructure at 4437ef3e468d3b18181f893906619af021042434. Fresh requested
+checks pass: uv run pytest has 821 passed in 58.64s without skips; Ruff, mypy for 72 source files
+and git diff --check pass. Final native Blender/uv checks run outside the sandbox;
+uv's sandbox macOS initialization failure disappears on the same-command rerun, without
+removing or skipping tests. The checkpoint record preserves branch/source/validation and
+continuation boundaries. A verified, ignored read-only snapshot matches the current
+school_v3 hash; original hash/size/mtime are unchanged. The local manifest records the
+checkpoint SHA and four pilot file hashes; raw assets are not pushed and no new rendering
+occurs. The marker commit is checkpoint: preserve phase1 semantic scene state. Subsequent
+work belongs on phase1/pilot-dataset-and-wall-inference, created at the same checkpoint
+commit, with no formal benchmark semantic changes, Cases1–3 execution or merge back.
+Exact commit/publication evidence is in the completion report and local manifest.
 
 ### 2026-10-05 — Three-locale Blender PILOT comparison
 

@@ -10,8 +10,10 @@
 
 ### 目前狀態與續作入口
 
-- Repository：`/Users/polalabear/Developer/amidst`；branch
-  `codex/dataset-infrastructure`。續作先核對 HEAD／dirty state 與來源 hash。
+- Repository：`/Users/polalabear/Developer/amidst`。Phase 1 大斷點保留在
+  `codex/dataset-infrastructure`；後續只在 `phase1/pilot-dataset-and-wall-inference`。
+  [Checkpoint record](PHASE1_CHECKPOINT.md) 包含驗證、來源快照與回復入口。
+  續作先核對 HEAD／dirty state 與來源 hash；不 merge 回 checkpoint branch。
 - 通用 M0–M8 deterministic 閉環、camera extraction、producer-neutral aggregation、
   multi-gap Events、benchmark runner／MetricConfig／provider contract、GT isolation、
   fake／boundary／reporting regression 均已實作。Evidence 在 WORK_LOG，合成 fixtures
@@ -82,8 +84,11 @@
 
 ## English
 
-Status date: 2026-10-05. Resume in `/Users/polalabear/Developer/amidst` on
-`codex/dataset-infrastructure`, checking actual HEAD, dirty state and source identity.
+Status date: 2026-10-05. The Phase 1 checkpoint is preserved on
+`codex/dataset-infrastructure`. Resume in `/Users/polalabear/Developer/amidst` only on
+`phase1/pilot-dataset-and-wall-inference`, checking actual HEAD, dirty state and source
+identity; do not merge back into the checkpoint branch. The
+[checkpoint record](PHASE1_CHECKPOINT.md) binds validation and the local source snapshot.
 Durable rules live in DEVELOPMENT_RULES; completed regression evidence belongs to WORK_LOG.
 The generic deterministic loop, camera extraction, replaceable observation/aggregation
 contracts, multi-gap Events, benchmark runner/MetricConfig, GT isolation, fake/boundary
