@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>PILOT / SYNTHETIC SAMPLE</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#101820;color:#e4edf4;font:15px system-ui}
+header{padding:20px 26px;border-bottom:1px solid #30404c}h1{font-size:23px;margin:0 0 6px}
+.muted{color:#a9bac6}main{display:grid;grid-template-columns:1fr 300px;gap:16px;padding:20px}
+canvas{width:100%;height:65vh;background:#15232e;border:1px solid #344652;border-radius:12px;touch-action:none}
+aside{background:#192832;padding:18px;border-radius:12px}label{display:block;margin:10px 0}
+button,input{accent-color:#4cbb8a}button{background:#284655;color:white;border:0;padding:9px 15px;border-radius:6px}
+.bar{display:flex;align-items:center;gap:15px;padding:15px 0}.bar input{flex:1}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+small{line-height:1.6}#info{white-space:pre-wrap} @media(max-width:800px){main{grid-template-columns:1fr}canvas{height:55vh}}</style>
+<header><h1>PILOT / SYNTHETIC SAMPLE</h1><div class="muted">3D downstream debug · configured navigation · physical authority provisional</div></header>
+<main><section><canvas id="view"></canvas><div class="bar"><button id="play">播放</button><input id="time" type="range"><span id="stamp"></span></div>
+<small class="muted">拖曳旋轉 · 滾輪縮放 · 路徑次序保持原始 Top-K。綠色來自可見影像座標的投影；GT 僅作獨立 debug overlay。</small></section>
+<aside><h3>顯示圖層</h3><div id="layers"></div><hr><small id="info"></small><p class="muted"><small>這是已儲存結果的呈現。不是實體 mesh 或正式 benchmark 驗收；scene units 尚無可信公尺比例。</small></p></aside></main>
+<script>const D=__DATA__;const canvas=document.querySelector('#view'),ctx=canvas.getContext('2d');
+const slider=document.querySelector('#time'),stamp=document.querySelector('#stamp'),layers=document.querySelector('#layers');
+let yaw=-.75,pitch=.8,zoom=1,drag=null,playing=false,time=D.time_range[1];const enabled=new Map;
+const routes=D.events.flatMap(e=>e.candidates.map(c=>({...c,event:e.event_id,key:e.event_id+'/'+c.candidate_id})));
+function rgb(c){return `rgb(${c.join(',')})`}function checkbox(key,text,color){enabled.set(key,true);const l=document.createElement('label'),i=document.createElement('input');i.type='checkbox';i.checked=true;i.onchange=()=>{enabled.set(key,i.checked);draw()};
+const s=document.createElement('span');s.className='dot';s.style.background=rgb(color);l.append(i,' ',s,document.createTextNode(text));layers.append(l)}
+checkbox('observed','Observed → projected',[40,190,80]);checkbox('navigation','Configured navigation',[100,125,140]);
+routes.forEach(c=>checkbox(c.key,`Top-${c.rank} inferred gap`,c.color));if(D.debug_ground_truth)checkbox('gt','GT · debug/evaluation only',[160,160,170]);
+document.querySelector('#info').textContent=`${D.samples.length} samples\n${D.events.length} gap events\n${routes.length} candidates\n${D.events.reduce((s,e)=>s+e.hypotheses.length,0)} timed hypotheses\n\nSource SHA-256:\n${D.source_asset_sha256}`;
+slider.min=D.time_range[0];slider.max=D.time_range[1];slider.step=.02;slider.value=time;
+const all=[...D.navigation.nodes.map(n=>n.position),...routes.flatMap(c=>c.polyline),...D.observations.flatMap(o=>o.points.map(p=>p.world_position))];
+const low=[0,1,2].map(a=>Math.min(...all.map(p=>p[a]))),high=[0,1,2].map(a=>Math.max(...all.map(p=>p[a]))),center=low.map((x,a)=>(x+high[a])/2),extent=Math.max(1,...low.map((x,a)=>high[a]-x));
+function project(p){const a=p.map((x,i)=>x-center[i]),x=Math.cos(yaw)*a[0]-Math.sin(yaw)*a[1],y=Math.sin(yaw)*a[0]+Math.cos(yaw)*a[1];const py=Math.cos(pitch)*y-Math.sin(pitch)*a[2],z=Math.sin(pitch)*y+Math.cos(pitch)*a[2],s=Math.min(canvas.width,canvas.height)*.68/extent*zoom;return [canvas.width/2+x*s,canvas.height/2-py*s,z]}
+function line(points,color,width,dash=[]){if(points.length<2)return;ctx.beginPath();points.forEach((p,i)=>{const q=project(p);i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1])});ctx.strokeStyle=rgb(color);ctx.lineWidth=width;ctx.setLineDash(dash);ctx.stroke();ctx.setLineDash([])}
+function dot(p,color,r=5){const q=project(p);ctx.beginPath();ctx.arc(q[0],q[1],r,0,2*Math.PI);ctx.fillStyle=rgb(color);ctx.fill()}
+function at(points,t,key){if(!points.length||t<points[0].timestamp||t>points.at(-1).timestamp)return null;for(let i=1;i<points.length;i++)if(t<=points[i].timestamp){const a=points[i-1],b=points[i],f=(t-a.timestamp)/(b.timestamp-a.timestamp);return a[key].map((v,j)=>v+(b[key][j]-v)*f)}return points.at(-1)[key]}
+function draw(){canvas.width=Math.round(canvas.clientWidth*devicePixelRatio);canvas.height=Math.round(canvas.clientHeight*devicePixelRatio);ctx.clearRect(0,0,canvas.width,canvas.height);stamp.textContent=time.toFixed(2)+' s';
+if(enabled.get('navigation'))D.navigation.edges.forEach(e=>line(e.polyline,[83,106,121],1.2));
+routes.forEach(c=>{if(enabled.get(c.key))line(c.polyline,c.color,2.4,[7,5])});
+if(enabled.get('observed'))D.observations.forEach(o=>{const p=o.points.filter(p=>p.timestamp<=time);line(p.map(p=>p.world_position),[40,190,80],3.5);const current=at(o.points,time,'world_position');if(current)dot(current,[40,190,80],6)});
+D.events.forEach(e=>e.hypotheses.forEach(h=>{if(enabled.get(e.event_id+'/'+h.candidate_id)){const p=at(h.timed_points,time,'world_position');if(p)dot(p,h.color,4)}}));
+if(D.debug_ground_truth&&enabled.get('gt')){line(D.debug_ground_truth.samples.map(p=>p.position),[160,160,170],2,[2,7]);const p=at(D.debug_ground_truth.samples,time,'position');if(p)dot(p,[160,160,170],4)}
+ctx.fillStyle='#b1c4d0';ctx.font='14px system-ui';ctx.fillText('PILOT / SYNTHETIC SAMPLE · X/Y/Z scene units',18,28)}
+slider.oninput=()=>{time=Number(slider.value);draw()};canvas.onpointerdown=e=>{drag=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId)};
+canvas.onpointermove=e=>{if(drag){yaw+=(e.clientX-drag[0])*.008;pitch=Math.max(-1.4,Math.min(1.4,pitch+(e.clientY-drag[1])*.008));drag=[e.clientX,e.clientY];draw()}};
+canvas.onpointerup=()=>drag=null;canvas.onwheel=e=>{e.preventDefault();zoom=Math.max(.3,Math.min(6,zoom*Math.exp(-e.deltaY*.001)));draw()};window.onresize=draw;
+document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'暫停':'播放';if(playing&&time>=D.time_range[1])time=D.time_range[0]};
+let last=performance.now();function tick(now){if(playing){time+=Math.min(.1,(now-last)/1000);if(time>=D.time_range[1]){time=D.time_range[1];playing=false;document.querySelector('#play').textContent='播放'}slider.value=time;draw()}last=now;requestAnimationFrame(tick)}draw();requestAnimationFrame(tick);
+</script></html>

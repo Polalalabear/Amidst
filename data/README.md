@@ -6,6 +6,33 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-05 addendum / 小型 downstream PILOT
+
+Second checkpoint `fdf9e7e8f2dc695917ba42094a63cc06ca910963` is published on
+`phase1/pilot-dataset-and-wall-inference`; continuation is only on
+`phase1/pilot-downstream-reconstruction`. One existing office trajectory is consumed,
+with no new dataset or Blender render. Ignored `data/pilot/phase1_downstream_20261005/`
+contains **PILOT / SYNTHETIC SAMPLE** context/export audit, projected frames,
+aggregation, provisional topology/config, all candidates/events, evaluation metrics,
+repeated/GT-poison evidence and verification JSON/Markdown.
+
+100camera records / 50timestamps → 26PROJECTED / 74nullGAP → two Observations →
+one4.0–9.0s gap → **3routes / 6timing hypotheses / COMPLETE**. The24global GAP
+samples remain4.2–8.8s. Graph anchors use inverse-projected endpoints, configured
+±12BU offsets and source annotation bounds; no GT route/hidden depth is used.
+All10inference artifacts and metrics repeat byte-for-byte. GT poison leaves context
+and inference identical while evaluation changes. ADE/FDE and minADE@3/minFDE@3
+are0.000708092424/0.000280838027nativeunits; Coverage@1/2/3true at diagnostic ADE<0.02.
+GT compatibility is evaluation-only; Top-K order and every hypothesis remain intact.
+
+`run_01/visualization/` contains readable `debug.rrd`, `preview_3d.png`, standalone
+`review_3d.html` and manifest:26observed/3candidatepaths/6hypotheses plus50GTdebug
+markers. PNG and RRD readback verified; HTML UI not inspected because file:// is blocked.
+Verification is PASS_WITH_PROVISIONAL_PHYSICS, zero errors; physical/collision validity
+partial/provisional, actual mesh collision rate unavailable and scale unverified.
+原始pilot與Blender assets不變；未改正式benchmark semantics或執行Case1–3。只保存本機
+downstream結果並停下，不擴充dataset；raw GT／images／RRD保持ignored。
+
 ### 2026-10-05 addendum / Checkpoint 後 WALL 標記與單一 PILOT
 
 - [Fresh candidate report](scene_audit/phase1_wall_candidates_20261005.md) / JSON:

@@ -10,10 +10,13 @@
 
 ### 目前狀態與續作入口
 
-- Repository：`/Users/polalabear/Developer/amidst`。Phase 1 大斷點保留在
-  `codex/dataset-infrastructure`；後續只在 `phase1/pilot-dataset-and-wall-inference`。
-  [Checkpoint record](PHASE1_CHECKPOINT.md) 包含驗證、來源快照與回復入口。
-  續作先核對 HEAD／dirty state 與來源 hash；不 merge 回 checkpoint branch。
+- Repository：`/Users/polalabear/Developer/amidst`。第一個semantic checkpoint保留在
+  `codex/dataset-infrastructure`；第二個成功pilot checkpoint
+  `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 已push於
+  `phase1/pilot-dataset-and-wall-inference`，origin SHA一致。
+  現在只在 `phase1/pilot-downstream-reconstruction`；核對HEAD／dirty state與source hash，
+  不merge回任一checkpoint branch。恢復入口見[第一斷點](PHASE1_CHECKPOINT.md)／
+  [第二斷點](PHASE1_PILOT_CHECKPOINT.md)。
 - 通用 M0–M8 deterministic 閉環、camera extraction、producer-neutral aggregation、
   multi-gap Events、benchmark runner／MetricConfig／provider contract、GT isolation、
   fake／boundary／reporting regression 均已實作。Evidence 在 WORK_LOG，合成 fixtures
@@ -40,8 +43,18 @@
   visible→GAP→visible成立；24個point GAP中19個marker全隱藏、5個partial body。
   先看`sample_report.md`／`review.html`、五張代表montages與同步preview，
   dataset與plan同時綁定衍生SHA及未變原source。原先corridor／三區pilot保留作歷史比較。
-  已停止等使用者確認pilot；未開始formal geometry/navigation integration、collision
-  pruning、benchmark、Agent／Phase2或Case4，不擴充完整dataset。
+  原pilot資料與source保持不變；正式geometry/navigation、collision pruning、benchmark、
+  Agent／Phase2或Case4未開始，不擴充完整dataset。
+- 現有office一條trajectory的bounded downstream閉環已驗證，入口為本機ignored
+  `data/pilot/phase1_downstream_20261005/verification.md`與`run_01/`。
+  100records→26inverse PROJECTED＋74null GAP→兩段Observation→一個4.0–9.0s Event→
+  3candidate routes／6timing hypotheses／COMPLETE；24個GAP samples為4.2–8.8s。
+  `run_pilot_downstream.py`只讀純2D與strict context，三條configured local routes取
+  projected endpoints與明示offset，不讀GT／mixed export／plan。Topology與collision
+  PARTIAL／PROVISIONAL，沒有升格WALL或完整school navigation authority。
+  Repeated run與GT poison的10份inference artifacts逐byte一致；GT只在結果保存後evaluation。
+  Rerun／3D PNG保留observed、全部Top-K與獨立GTdebug；HTML已產出、UI未驗證。
+  已停止於這一條existing trajectory，不生成新dataset、不開始formal Cases1–3。
 
 ### 仍需人工與 geometry integration 處理
 
@@ -62,7 +75,10 @@
   AABB detector 不代替 mesh certification。Graph WALKABLE 仍依 explicit route 設定；
   projected endpoints 需對齊 configured nodes，尚無 arbitrary-point snapping／connector。
 - Pilot source/context、GT／camera／visibility／render binding 與獨立投影驗證已完成，
-  純 2D `observations.json` 另存，GT 不能進 inference。正式 adapters 仍需共同 authority。
+  純2D與strict metadata context現可經ordinary downstream consumers形成小型閉環；
+  GT不能進inference。正式adapters仍需共同authority。Downstream diagnostic ADE/FDE為
+  0.000708092424／0.000280838027BU，minADE@3／minFDE@3相同；Coverage@3在ADE<0.02BU
+  下成立，僅evaluation判定，不以GT選候選、不認證formal epsilon或metric scale。
   本次pilot forward residual最大0.000314545px、固定診斷plane inverse residual最大
   0.001615262scene units，沒有異常；這不是formal floor/camera-plane認證。實際地面
   Z≈20.07885，比 WALKABLE Z=25 低 4.92115；marker plane Z≈75.12885。
@@ -85,11 +101,13 @@
 
 ## English
 
-Status date: 2026-10-05. The Phase 1 checkpoint is preserved on
-`codex/dataset-infrastructure`. Resume in `/Users/polalabear/Developer/amidst` only on
-`phase1/pilot-dataset-and-wall-inference`, checking actual HEAD, dirty state and source
-identity; do not merge back into the checkpoint branch. The
-[checkpoint record](PHASE1_CHECKPOINT.md) binds validation and the local source snapshot.
+Status date: 2026-10-05. The first semantic checkpoint remains on
+`codex/dataset-infrastructure`; the successful-pilot checkpoint
+`fdf9e7e8f2dc695917ba42094a63cc06ca910963` is published on
+`phase1/pilot-dataset-and-wall-inference` with identical origin SHA. Resume only on
+`phase1/pilot-downstream-reconstruction`, checking HEAD/dirty state/source identity;
+do not merge into either checkpoint. [First](PHASE1_CHECKPOINT.md) and
+[second checkpoint records](PHASE1_PILOT_CHECKPOINT.md) bind recovery and local assets.
 Durable rules live in DEVELOPMENT_RULES; completed regression evidence belongs to WORK_LOG.
 The generic deterministic loop, camera extraction, replaceable observation/aggregation
 contracts, multi-gap Events, benchmark runner/MetricConfig, GT isolation, fake/boundary
@@ -117,9 +135,18 @@ route. Visible→GAP→visible succeeds, with 24 landmark GAP samples, 19 fully 
 and 5 partially visible. Review sample_report.md, review.html, five representative
 montages and synchronized preview. Export/plan lineage binds the actual derived asset
 and preserved original source. Earlier corridor/three-locale pilots remain historical
-references. Work stops pending user pilot confirmation; no full dataset expansion,
-formal geometry/navigation integration, collision pruning, benchmark, Agent, Phase2 or
-Case4 starts.
+references. Original pilot/source remain unchanged; no full dataset expansion, formal
+geometry/navigation integration, collision pruning, benchmark, Agent, Phase2 or Case4.
+One existing office trajectory now passes bounded downstream verification at
+data/pilot/phase1_downstream_20261005/verification.md and run_01/:100raw records,
+26inverse projections/74nullGAPs, two Observations, one4.0–9.0s Event and3routes/
+6timing hypotheses with COMPLETE termination. Missing timestamps remain4.2–8.8s.
+The consumer reads only strict2D/context inputs; projected endpoint/configured-offset
+routes have partial/provisional topology and collision validity. No GT/mixed export/
+plan enters inference, and no school/WALL authority is promoted. Two runs and GT poison
+have byte-identical10inference artifacts. GT loads only after saved inference for
+evaluation/debug. Rerun and inspected3DPNG retain observed/allTop-K/separateGT;
+standaloneHTML is produced but not UI-verified. Work stops here on one existing route.
 
 Human work remains: correct fully blocking bathroom footprints while retaining OBSTACLE/BOTH
 roles; confirm real doorway seams/portal positions/normals and aperture conflicts; provide
@@ -131,9 +158,12 @@ not approved passage, and two-sided probes can land on the same small threshold.
 
 Collision Top-K pruning remains unresolved; evaluation AABB checks do not certify meshes.
 Graph routes and projected node anchors still require explicit configs, with no arbitrary
-point attachment. Pilot source/context bindings, render hashes and separate 2D/GT exports
-are verified, while formal adapters still need shared authority. GT stays excluded from
-inference. This pilot's forward/inverse errors are at most 0.000314545 pixels / 0.001615262
+point attachment. Strict pilot2D/context can now use ordinary consumers for the bounded
+loop; formal adapters still require shared authority. Diagnostic downstream ADE/FDE and
+minADE@3/minFDE@3 are0.000708092424/0.000280838027native units; Coverage@3true at
+ADE<0.02units is evaluation-only, not formal epsilon/scale authority or GT selection.
+GT stays excluded from inference. This pilot's forward/inverse errors are at most
+0.000314545 pixels / 0.001615262
 scene units, with no unexpected failures; the static landmark plane is diagnostic only.
 Actual 1F support is Z≈20.07885, 4.92115 below the WALKABLE annotation; landmark plane
 Z≈75.12885. Declared metric scale is not certified architectural scale. Full generation

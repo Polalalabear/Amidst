@@ -4,6 +4,63 @@
 
 ## 繁體中文
 
+### 2026-10-05 — 第二個 checkpoint 與 bounded pilot downstream 閉環
+
+使用者明確要求將成功pilot `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 作第二斷點。
+起始 `phase1/pilot-dataset-and-wall-inference` working tree clean、HEAD完全相符；重新跑
+`uv run pytest` **847 passed in55.97s、無skips**，Ruff、mypy72sourcefiles、diff check通過。
+Push該branch成功，`git ls-remote --heads origin` 回傳相同完整SHA；從它建立
+`phase1/pilot-downstream-reconstruction`，後續只在新branch。[Checkpoint record](PHASE1_PILOT_CHECKPOINT.md)
+記錄恢復入口、原始／衍生assets及本機ignored資料。不另改checkpoint commit或merge回去。
+
+只接現有office **1條trajectory**，不新增Blender render／dataset。新增GT-free strict
+pilot context／Observation consumer、provisional topology與小型CLI，復用既有
+InverseProjectionService、BlenderDataset、aggregation、reconstruct_gaps、Graph Top-K、
+BlindGapReconstructor與configured metrics。沒有改core engine、正式benchmark或metric semantics。
+輸出位於本機ignored `data/pilot/phase1_downstream_20261005/`，全部標示
+**PILOT / SYNTHETIC SAMPLE**；strict domain結果以label wrapper保存。
+
+Export preparation只從existing mixed export allowlist 960×540camera calibration、
+source identity、independent mesh-probed static landmark plane與原audit AREA bounds。
+Container digest在獨立preparation manifest，不進inference identity；不copy GT positions、
+plan waypoints、per-frame depth或GT速度。Consumer只讀 `observations.json`＋strict
+`projection_context.json`，拒絕hidden字段、未檢查model_copy注入與source/site/contentSHA錯配。
+100／100 camera records、50／50timestamps完整接入；26 OBSERVED反投影、74 GAP保持null。
+聚合front0.0–4.0與rear9.0–9.8兩段PROJECTED Observation，形成一個4.0→9.0s Event；
+24個global GAP samples為4.2–8.8s，端點window與GAP samples明確區分。
+
+Graph只以PROJECTED departure/recovery anchors與明示±12BU lateral offset，限制於
+source AREA_1F_OFFICE annotation AABB；保留來源camera zone IDs，以3個configured
+ADJACENT transitions建立direct/left/right路徑。這是local provisional scaffold，
+不是完整WALKABLE polygon、school camera adjacency或WALL／mesh certification。
+候選長度80.00083961／104.00083961／104.00083961BU，3routes／6timing hypotheses，
+`COMPLETE`、search exhaustive=True、rejections=[]、path_score全部None。所有Top-K保留，
+不以GT、confidence或behavioral probability排序；physical/collision validity為
+PARTIAL／PROVISIONAL，actual mesh collision rate=null。空obstacles的raw0不是clearance證據。
+
+Inference全部寫完後才載入GT，僅對4.0–9.0s的26個GT timestamps（含visible endpoints）
+使用既有metric semantics。首個primary route ADE **0.000708092424BU**、FDE
+**0.000280838027BU**；minADE@3／minFDE@3相同，Coverage@1/2/3皆True，門檻為
+diagnostic ADE<0.02BU，非正式epsilon／米制認證。Near-zero FDE是anchored endpoints的
+診斷結果，不宣稱研究accuracy；GT-compatible route只由evaluation判定，候選order不變。
+
+`run_01`／`run_02`的10份inference artifacts與metrics逐byte一致。將50個GTpositions
+大幅移位並污染simulation waypoints後重新export，context與`poison_run`的10份inference
+artifacts仍逐byte一致；只有metrics改變（ADE約37416.574BU、Coverage@3=False）。另有
+file-access poison、GT缺席、extra字段／unchecked nested injection、GT第三路徑相符而
+第一候選不變、錯GT binding／time extent與inference先於GT載入等meaningful tests。
+完整source original／derived hash、size、mtime，原pilot dataset／2D／GT／plan均未改動。
+
+Rerun／3D呈現只讀saved outputs，再載入GT獨立debug overlay；保留3candidate paths、
+6hypotheses、26observed及50GT markers。產生readable `debug.rrd`、standalone
+`review_3d.html`、`preview_3d.png`與hash manifest；實際目視PNG，RRD readback41chunks／
+33entities與各路徑sample counts通過。Browser policy拒絕file://，未做HTML UI驗證或繞過。
+總驗證 `verification.json/md` 為 **PASS_WITH_PROVISIONAL_PHYSICS、errors=[]**。
+
+Final完整檢查：**895 pytest passed in57.58s、無skips**，Ruff、strict mypy74sourcefiles、
+diff check通過；uv/native Blender檢查於sandbox外完成。新branch只做本機milestone commit，
+沒有push新branch、merge、正式Case1–3、elevator transition或dataset擴充。本輪到此停止。
+
 ### 2026-10-05 — Checkpoint 後 WALL semantic marking 與單一 pilot 閉環
 
 只在 `phase1/pilot-dataset-and-wall-inference`，由 checkpoint
@@ -489,6 +546,59 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-05 — Second checkpoint and bounded pilot downstream loop
+
+The requested successful-pilot checkpoint fdf9e7e8f2dc695917ba42094a63cc06ca910963 starts
+clean on phase1/pilot-dataset-and-wall-inference. Fresh checks pass: 847pytest tests
+in55.97s without skips, Ruff, mypy72sourcefiles and diff check. Push succeeds and live
+git ls-remote returns the identical SHA. The new phase1/pilot-downstream-reconstruction
+branch starts there; the checkpoint is neither rewritten nor merged into. The new
+checkpoint record preserves Git/local-asset recovery and scope boundaries.
+
+Exactly one existing office trajectory is consumed, with no new Blender dataset/render.
+Strict GT-free pilot context/adaptation and a provisional topology scaffold reuse the
+ordinary inverse projection, BlenderDataset, aggregation, gap-event Graph Top-K,
+reconstruction and configured evaluation APIs, without changing core/benchmark semantics.
+All outputs under ignored data/pilot/phase1_downstream_20261005 are labelled
+PILOT / SYNTHETIC SAMPLE, including wrappers around strict domain results.
+Export preparation allowlists render-resolution cameras, source identity, an independent
+mesh-probed static plane and source AREA bounds. GT positions, waypoints, hidden depths
+and GT speeds are absent from context. The mixed-container digest is separate audit data.
+Consumers read only 2D observations and strict context, with source/site/content and
+schema-bypass guards. All100camera records / 50timestamps survive: 26visible projections,
+74nullGAPs, two projected Observation segments and one4.0–9.0s gap Event. The24missing
+timestamps are4.2–8.8s; reconstruction endpoints and missing samples are distinguished.
+
+Exact PROJECTED endpoints plus configured ±12native-unit offsets produce three routes
+within an annotation-AABB envelope. Original camera home-zone IDs are retained;
+configured ADJACENT transitions demonstrate this local provisional handoff only.
+Route lengths80.00083961/104.00083961/104.00083961BU yield3routes/6timing hypotheses,
+COMPLETE/exhaustive termination, no rejections and null path scores. Every alternative
+is retained without GT ranking. Mesh/WALL/metric authority remains unverified, physical
+validity partial/provisional and actual mesh collision rate unavailable. Zero rates
+from an empty obstacle config never certify clearance.
+
+GT loads after frozen inference only. Existing metrics score26GTtimestamps over the
+exact4.0–9.0s extent. First-primary ADE/FDE are0.000708092424/0.000280838027native
+units; minADE@3/minFDE@3 match, Coverage@1/2/3true at diagnostic ADE<0.02units.
+The threshold is not formal epsilon or physical metre certification; low anchored FDE
+is diagnostic, not research accuracy. GT compatibility is evaluated without reordering.
+Two runs have byte-identical10inference artifacts and metrics. Poisoning GT positions
+and simulation waypoints leaves exported context and all10inference artifacts identical;
+only evaluation changes (ADE≈37416.574units, Coverage@3false). Tests cover forbidden GT
+access, missing GT, schema-bypass injections, incompatible bindings/time extents and a
+GT-compatible third route that never replaces the first prior candidate. Original and
+derived Blender identity and original dataset/observations/GT/plan remain unchanged.
+
+Saved-output Rerun/3D visualization retains all3routes/6hypotheses,26observed and50GT
+debug samples. Readable RRD, standalone interactive HTML, inspected3DPNG and manifests
+are produced; RRD readback has41chunks/33entities with correct samples. Browser policy
+blocks file:// UI inspection; no workaround is attempted. Final verification is
+PASS_WITH_PROVISIONAL_PHYSICS with zero errors. Fresh final checks pass895tests
+in57.58s without skips, Ruff, mypy74sourcefiles and diff check outside the native sandbox.
+Work stops after the local downstream commit: no new-branch push, merge, formal
+Cases1–3, elevator transition or dataset expansion.
 
 ### 2026-10-05 — Post-checkpoint WALL markings and one bounded pilot loop
 
