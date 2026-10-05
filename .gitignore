@@ -17,4 +17,6 @@ data/cameras/
 data/observations/
 data/candidates/
 data/metrics/
+# Local pilot exports contain simulation truth and rendered frames.
+data/pilot/
 *.rrd

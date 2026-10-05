@@ -6,6 +6,32 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-05 addendum / WALL 與小型 PILOT
+
+- [WALL report](scene_audit/school_v3_wall_candidates.md) and
+  [source-bound sidecar](scene_audit/school_v3_wall_candidates.json) contain **81 automatic
+  WALL surface patches / 1,491 HUMAN_REVIEW patches**. No whole objects or source labels
+  are rewritten; 28 protected PORTALs have zero automatic face/aperture intersections.
+- Local ignored `data/pilot/school_v3_pilot_20261005/` contains **PILOT / SYNTHETIC SAMPLE**:
+  50 timestamps, 100 PNG camera renders, combined evaluation-only `dataset.json`, separate
+  `ground_truth.json` and sanitized `observations.json`, `sample_report.md`, `review.html`,
+  five representative montages, trajectory map and synchronized GIF preview.
+- Cameras: `CAM_1F_CORRIDOR_02` and `CAM_1F_CORRIDOR_03`. Planned route 106 native scene
+  units over 10s; [0,10) at 5 FPS materializes 103.880005 units from t=0 through 9.8.
+  Camera records: 21 visible / 79 occluded / zero out-of-FOV. Selected-camera landmark
+  GAP: 29 timestamps; 14 have no marker pixels in either render, 15 retain partial body.
+- All 50 timestamps / 100 renders, PNG labels/hashes and unchanged source identity pass
+  independent validation. Maximum forward residual 0.000114px and diagnostic inverse
+  residual 0.000248 scene units do not certify a formal school floor/camera-plane binding.
+
+原始 `school_v3.blend` SHA-256、size、mtime 不變。GT 僅 simulation/export/evaluation，
+不進 Projection inference／Graph／ranking／reconstruction；未跑正式 Cases 1–3，也不改
+benchmark semantics。所有 raw PNG 的 text metadata 與 review 圖／JSON／reports 明列
+PILOT／SYNTHETIC。使用者已確認沒有 elevator，歷史 AREA 命名不產生 transition。
+METRIC／1m-per-unit 與建築尺寸有疑義；實際 floor Z≈20.07885 與 annotation Z=25 不一致。
+完整 generation 仍待 image quality review、尺度與正式 authority；本輪停止於小型 pilot。
+本機 pilot 含 GT 與生成影像，由 `.gitignore` 排除，不會隨一般 Git push 發布。
+
 ### 2026-10-02 addendum / 補充盤點
 
 - [`scene_audit/semantic_validation.json`](scene_audit/semantic_validation.json) and

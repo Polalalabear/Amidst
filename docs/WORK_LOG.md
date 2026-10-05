@@ -4,6 +4,46 @@
 
 ## 繁體中文
 
+### 2026-10-05 — Bounded Blender PILOT / SYNTHETIC SAMPLE
+
+WALL milestone 後依同一授權完成本機 ignored
+`data/pilot/school_v3_pilot_20261005/`，到此停止，不擴充完整 dataset。
+`CAM_1F_CORRIDOR_02`／`CAM_1F_CORRIDOR_03` 保留來源 pose；1F corridor route 規劃
+106 Blender scene units／10s，5 FPS 的 [0,10) 採樣為 **50 timestamps（0.0–9.8s）**，
+採樣路段長 **103.880005 units**。實際 mesh floor Z≈20.07885，foot Z≈20.12885，
+body-center landmark plane Z≈75.12885；沒有把 annotation Z=25 當作實體地面。
+尺度不做猜測換算，marker 不宣稱真實人體尺寸／速度。
+
+Planner 排除 135 annotation meshes（含四個 `Stair Reference Surfaces`），驗證 50 個
+timestamp 的 WALKABLE triangle containment／250 physical support probes，以及 radius6／
+height119 的完整 continuous swept volume 對 actual triangles intersection 為 0。
+曾查出 point-clear route 的側面碰撞並修正路徑後才 render，不把 center ray 當作淨空證明。
+
+Unsaved Blender 使用固定 frame220 的 evaluated VIEWPORT mesh instances，凍結為無
+render modifiers 的 render-only copies，排除 non-MESH renderables；Workbench opaque
+gray studio／orange marker 為明確 pilot policy。**100／100 PNG** render 成功，raw PNG
+加入 PILOT／SYNTHETIC／source／simulation timestamp text metadata；100 個 IDAT payload
+均保持不變。PNG hash、decoded dimensions、標記及所有 21 visible landmark 的實際
+orange pixels 通過獨立檢查。這是 simulation point producer，不是 CV detector／正式材質驗證。
+
+Camera02 visible3／occluded47，Camera03 visible18／occluded32，合計 **21 visible／79
+occluded／0 out-of-FOV camera records**。Selected-camera landmark GAP 為 frames18–46，
+**29 timestamps**；其中15仍有 partial body，frames25–38的14timestamps兩台相機都無
+marker pixels。代表 frames0／17／18／32／47（0.0／3.4／3.6／6.4／9.4s）輸出雙相機
+montages，另有50frame同步GIF、trajectory map、HTML gallery與human-readable sample report。
+
+Independent validation **PASS_WITH_REVIEW、errors=[]**：source SHA／size／mtime 不變；
+forward native residual 最大 **0.000114213px**，axial depth 最大0.000112066units；
+獨立 mesh/config plane 的21次 inverse diagnostic 最大 **0.000247572units**，79 GAP
+全數按既有 interface 拒絕，unexpected failure0。Inverse input 僅 sanitized 2D frame、
+camera與explicit static pilot plane；GT只在simulation與後續evaluation讀取。另存
+`observations.json`／`ground_truth.json`，combined `dataset.json` 明列 evaluation-only。
+未呼叫 Graph／ranking／reconstruction／Cases1–3，不改 benchmark semantics，不建立 elevator。
+
+最後完整 regression **797 passed in 56.90s，無 skips**；14 項 task safety／provenance tests
+另外通過。Ruff 與 strict mypy（72 source files）通過。完整 generation 仍待人類 image review、
+physical scale 及 formal floor/camera/geometry authority；不把 pilot 技術成功當作 full dataset ready。
+
 ### 2026-10-05 — Geometry-derived WALL candidate extraction
 
 起點 `e8b293f`，branch `codex/dataset-infrastructure`，工作目錄原為 clean。
@@ -330,6 +370,36 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+The bounded 2026-10-05 PILOT / SYNTHETIC SAMPLE is materialized locally in ignored
+`data/pilot/school_v3_pilot_20261005/`. CAM_1F_CORRIDOR_02/03 retain their source poses;
+the 1F route is planned at 106 native scene units over 10s, with 50 timestamps at 5 FPS on
+[0,10), sampled length 103.880005. Actual floor support Z≈20.07885 differs from annotation 25;
+feet and landmark are Z≈20.12885/75.12885. No physical-scale conversion or human-size claim
+is invented. All 50 samples pass WALKABLE containment, 250 physical support probes and exact
+continuous radius6/height119 swept-volume triangle checks. A point-clear side collision
+was corrected before rendering. Annotation/reference geometry is excluded.
+
+Frozen frame 220 evaluated VIEWPORT mesh instances are rendered without modifiers in an
+unsaved process, using the explicit opaque-gray Workbench studio/orange-marker pilot policy.
+All 100 PNG renders, hashes, dimensions and synthetic/source/timestamp provenance labels
+verify; metadata labeling preserves all 100 compressed IDAT pixel payloads. All 21 visible
+landmarks independently show orange image pixels. Camera02 has 3 visible/47 occluded records;
+Camera03 has 18/32, totaling 21 visible/79 occluded/zero out-of-FOV. Global landmark GAP has
+29 timestamps (frames 18–46); 15 retain partial body and 14 show no marker in either render.
+Representative frames 0/17/18/32/47, a synchronized 50-frame GIF, trajectory map, HTML gallery
+and sample report are saved. This is point simulation, not whole-body CV or formal shading.
+
+Independent validation is PASS_WITH_REVIEW with no errors. Source SHA/size/mtime are
+unchanged; forward residual ≤0.000114213 pixels, axial-depth residual ≤0.000112066 scene units,
+and 21 diagnostic inverse projections differ by at most 0.000247572 scene units. All 79 GAP
+inputs are correctly rejected with no unexpected failures. Inverse inputs contain only
+sanitized 2D evidence, camera calibration and an independent static mesh/config plane;
+truth is evaluated afterward. GT and observations are separate, combined data is
+evaluation-only, and no Graph/ranking/reconstruction/formal benchmark/elevator transition
+is run or changed. Final regression passes 797 tests in 56.90s with no skips, 14 targeted
+safety/provenance tests, Ruff and strict mypy for 72 source files. Work stops at this pilot;
+full generation remains pending human image review and physical scale/formal authority.
 
 The 2026-10-05 WALL extraction starts at clean `e8b293f` on
 `codex/dataset-infrastructure`. Source-bound evaluated surface analysis confirms

@@ -25,9 +25,16 @@
 - 三個明確不可走 AREA 已 EXCLUDED，兩個 stair AREA 改為 cross-floor 診斷。
   1F=25／2F=165 僅 PROPOSED。已補的 WALKABLE、19 個 OBSTACLE/BOTH 與六個
   stair annotations 都不能替代 physical／floor／camera-plane authority。
-- 本輪只完成 semantic supplementation 與最小診斷 metadata 擴充；沒有開始
-  geometry integration、collision pruning、benchmark、Agent／Phase 2 或 Case 4。
-  未標記 group_*／Cube.* 不自動分類。續作需新的明確授權。
+- 新授權的 geometry-derived WALL extraction 已完成：
+  [report](../data/scene_audit/school_v3_wall_candidates.md)／
+  [sidecar](../data/scene_audit/school_v3_wall_candidates.json) 標記 81 個 WALL surface
+  patches（7 source objects），1,491 patches 留 HUMAN_REVIEW（674 objects，totals 重疊）。
+  28 PORTAL 的自動確認牆面相交為 0；不改 source、不分類整個混合 object。
+- 本機 ignored `data/pilot/school_v3_pilot_20261005/` 已完成小型
+  **PILOT / SYNTHETIC SAMPLE**，50 timestamps／100 PNG 全數驗證成功。
+  先看 `sample_report.md`、`review.html`、五張 representative montages 與同步 preview。
+  已停止，不擴充 dataset；未開始 formal geometry/navigation integration、collision
+  pruning、benchmark、Agent／Phase 2 或 Case 4。
 
 ### 仍需人工與 geometry integration 處理
 
@@ -40,15 +47,20 @@
 - Stair A/B 缺可信連續 landing；A ENTRY 與 A/B EXIT 未接相應 floor。Slab opening／
   clearance 尚待人工審查。只有角色／方向 annotation，沒有 stair navigation edges。
   正式跨樓層 Case 4 暫緩，不以它展開 benchmark。
-- WALL 標記仍缺。OBSTACLE 是原 footprint proxy，沒有已核准的 3D 高度／occlusion
-  volume；人工核准 physical geometry、floor planes／例外與 camera-plane bindings。
-  Elevator lobby/cabin/shaft 角色待定，沒有 elevator transition。
+- WALL sidecar 尚未接入 formal geometry/navigation，仍有 1,491 候選需 review。
+  OBSTACLE 是原 footprint proxy，沒有已核准的 3D 高度／occlusion volume；physical
+  geometry、floor planes／例外與 camera-plane bindings 待核准。使用者已確認只有 stairs、
+  沒有 elevator；`AREA_*_ELEVATOR` 只是歷史命名，不建立 transition。
 - Collision Top-K pruning ownership contract 仍 unresolved；現有 evaluation-only fake
   AABB detector 不代替 mesh certification。Graph WALKABLE 仍依 explicit route 設定；
   projected endpoints 需對齊 configured nodes，尚無 arbitrary-point snapping／connector。
-- 後續 dataset／geometry／navigation／GT export／camera visibility 需共同 source/context
-  binding；GT 不能進 inference。Projection Error 需獨立 evaluation；29 camera pose
-  存在或校正矩陣比對不等於 plane mapping 或 error measurement。
+- Pilot source/context、GT／camera／visibility／render binding 與獨立投影驗證已完成，
+  純 2D `observations.json` 另存，GT 不能進 inference。正式 adapters 仍需共同 authority。
+  Pilot forward residual 最大 0.000114px、固定診斷 plane inverse residual 最大
+  0.000248 scene units，沒有異常；這不是 formal floor/camera-plane 認證。實際地面
+  Z≈20.07885，比 WALKABLE Z=25 低 4.92115；marker plane Z≈75.12885。
+  METRIC／1m-per-unit 有建築尺度疑義，不猜測換算比例。完整 generation 待 image review、
+  physical scale 與正式 authority；點可見性不當作整個人體 CV detection。
 - Rerun 已支援合成 waypoint graph、navigation anchors、portable calibrated poses／
   frustums；實際 mesh integration 與學校正式視覺化仍未完成。
 - [Phase 1 Benchmark Protocol](PHASE1_BENCHMARK_PROTOCOL.md) 已定義 Cases 1–4、A–E
@@ -79,20 +91,33 @@ are bound in the update artifact. The ignored asset is saved locally; portable r
 audit/report evidence refer to the new source, without transferring v2 authority.
 Three intentional nonwalkable areas are excluded; stair areas defer to cross-floor checks.
 Floors 25/165 are only proposed. Semantic metadata and annotations do not grant physical,
-floor or camera-plane authority. No geometry integration, collision pruning, benchmark,
-Agent, Phase 2 or formal Case 4 is started. Unlabeled group_*/Cube.* are not classified.
+floor or camera-plane authority. Authorized WALL extraction labels 81 connected surface
+patches in a source-bound sidecar, retaining 1,491 HUMAN_REVIEW patches (7 automatic /
+674 review objects, with overlap). All 28 PORTALs are protected; automatic aperture
+intersections are zero. Whole mixed objects and saved source labels are unchanged.
+The local ignored `data/pilot/school_v3_pilot_20261005/` contains the completed bounded
+PILOT / SYNTHETIC SAMPLE: 50 timestamps and 100 verified PNGs. Review sample_report.md,
+review.html, five representative montages and the synchronized preview before new work.
+Work stops at the pilot; no formal geometry/navigation integration, collision pruning,
+benchmark, Agent, Phase 2 or formal Case 4 is started.
 
 Human work remains: correct fully blocking bathroom footprints while retaining OBSTACLE/BOTH
 roles; confirm real doorway seams/portal positions/normals and aperture conflicts; provide
-continuous stair landings and floor endpoint contacts plus opening/clearance review; mark
-trusted walls and 3D collider/occlusion volumes; approve source-bound floor/camera planes and
-exceptions; identify elevator lobby/cabin/shaft roles. Six local contacts are diagnostic,
+continuous stair landings and floor endpoint contacts plus opening/clearance review; review
+remaining WALL candidates and 3D collider/occlusion volumes; approve source-bound floor/camera
+planes and exceptions. The user confirms stairs only and no elevator; historical
+AREA_*_ELEVATOR names never create an elevator transition. Six local contacts are diagnostic,
 not approved passage, and two-sided probes can land on the same small threshold.
 
 Collision Top-K pruning remains unresolved; evaluation AABB checks do not certify meshes.
 Graph routes and projected node anchors still require explicit configs, with no arbitrary
-point attachment. Future dataset/geometry/navigation/GT/camera adapters need shared source
-bindings; GT remains excluded from inference. Projection Error requires independent evaluation.
+point attachment. Pilot source/context bindings, render hashes and separate 2D/GT exports
+are verified, while formal adapters still need shared authority. GT stays excluded from
+inference. Independent pilot forward/inverse errors are at most 0.000114 pixels / 0.000248
+scene units, with no unexpected failures; the static landmark plane is diagnostic only.
+Actual 1F support is Z≈20.07885, 4.92115 below the WALKABLE annotation; landmark plane
+Z≈75.12885. Declared metric scale is not certified architectural scale. Full generation
+awaits image review and physical scale/plane authority; point visibility is not whole-body CV.
 Portable Rerun poses/frustums are supported, while real mesh visualization remains pending.
 The Phase 1 protocol specifies comparison interfaces and acceptance, but formal settings are
 unresolved/execution disabled and A–C algorithms are not implemented. Zero epsilon remains
