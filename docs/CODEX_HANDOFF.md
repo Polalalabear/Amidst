@@ -4,105 +4,99 @@
 
 ## 繁體中文
 
-狀態日期：2026-10-02。規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，
+狀態日期：2026-10-05。規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，
 完成／驗證紀錄見 [WORK_LOG](WORK_LOG.md)，契約見 [DATA_SCHEMA](DATA_SCHEMA.md)
 與 [INTERFACES](INTERFACES.md)。
 
 ### 目前狀態與續作入口
 
-- Repository：`/Users/polalabear/Developer/amidst`；本輪 branch
-  `codex/dataset-infrastructure`。續作時核對實際 HEAD／dirty state。
-- 通用 M0–M8 與 deterministic fake-data 後半段閉環已實作。四組 curated fixtures 在
-  [`data/mock/`](../data/mock/README.md)，可直接替換符合相同契約的合成 producer。
-- 已有 timed blind-gap reconstruction、ADE／FDE／Top-K／physical metrics 與 Rerun
-  recording；不等於正式 school dataset／benchmark 或完整 Phase 1 研究驗收。
-- Camera extraction、producer-neutral Observation／multi-gap aggregation、benchmark
-  runner／MetricConfig／provider contract 與 GT isolation 均已實作；前輪完成
-  [140 boundary regressions](../data/mock/boundary/README.md)，共 687 tests。
-- Benchmark case-input rejection 保存 structured diagnostics 並重新拋原 exception；
-  summaries 保留拒絕原因、端點與 GT unavailable 狀態。正式 schemas 未變更。
-- 使用者前輪要求 Blender physical integration／collision Top-K pruning，但
-  [live semantic audit](../data/scene_audit/SEMANTICS.md) 確認沒有 WALKABLE／WALL／
-  OBSTACLE／STAIR 標記，依指定 stop conditions 暫停 physical integration。
-  30 AREA／28 PORTAL 是 annotation；未猜測 `group_*`／`Cube.*`。原 scene 未變更。
-- 需人工確認 source-bound walkable／collider roles、floor planes／camera bindings 與
-  physical clearance policy，才可續作 Case 1–3。29 camera matrices 與 portable catalog
-  完全一致；這不等於 Projection Error 或 ground-plane authority。
-- Collision Top-K pruning 仍 unresolved，evaluation-only fake AABB detector 保留。
-  正式 schemas/core 未修改，未擴 fake fixtures；epsilon=0 依既有契約拒絕。
-- 未進入 Agent／Phase 2，未 push／PR／merge。
-- School 樓梯／跨樓層與正式 Case 4 仍暫緩；Simplified Stair 只測後半段 interface。
-- 本輪完成 additive [semantic validator](SCENE_VALIDATION.md)：唯讀 Blender／portable
-  snapshot、config-driven diagnostics 與 HIGH／MEDIUM／LOW human review queue。
-  [目前報告](../data/scene_audit/semantic_validation.md) 仍為 `REVIEW_REQUIRED`；
-  沒有 WALKABLE／WALL／OBSTACLE／STAIR，診斷 adjacency 不建立 inference topology。
-- [正式 Benchmark Protocol](PHASE1_BENCHMARK_PROTOCOL.md) 已定義 Case 1–4、A–E baseline、
-  single-factor ablation、metrics／六類 acceptance；formal settings 仍 unresolved，
-  protocol specification 不能直接當成 executable ExperimentConfig，A–C 尚未實作。
-- `amidst.benchmark_report` 已支援 native／normalized／case-method-run inputs、獨立 PNG
-  與 summary table。既有 synthetic outputs 與 plotting-only multi-method fixtures
-  已驗證；不等於 Blender Cases 1–3 或 A–C 的研究結果。Missing／failed／NO_REFERENCE
-  保留，未輸出的 metrics 不補值。不開始完整 reproducibility、最終 presentation 或 Agent。
+- Repository：`/Users/polalabear/Developer/amidst`；branch
+  `codex/dataset-infrastructure`。續作先核對 HEAD／dirty state 與來源 hash。
+- 通用 M0–M8 deterministic 閉環、camera extraction、producer-neutral aggregation、
+  multi-gap Events、benchmark runner／MetricConfig／provider contract、GT isolation、
+  fake／boundary／reporting regression 均已實作。Evidence 在 WORK_LOG，合成 fixtures
+  在 [data/mock](../data/mock/README.md)；不等於正式 school benchmark 或研究驗收。
+- 目前 scene 為使用者已授權補標並保存的 `school_v3.blend`；
+  [保存後報告](../data/scene_audit/school_v3_semantic_validation.md) 與
+  [具體待補位置](../data/scene_audit/school_v3_semantic_locations.md) 判定
+  **NEEDS_HUMAN_FIXES**。新 source SHA 及原始備份證據見
+  [update](../data/scene_audit/school_v3_semantic_update.json)。`.blend` gitignored，
+  本機保存；Git 的 patch／audit／reports 綁定新 hash，不能套用 v2 authority。
+- 三個明確不可走 AREA 已 EXCLUDED，兩個 stair AREA 改為 cross-floor 診斷。
+  1F=25／2F=165 僅 PROPOSED。已補的 WALKABLE、19 個 OBSTACLE/BOTH 與六個
+  stair annotations 都不能替代 physical／floor／camera-plane authority。
+- 本輪只完成 semantic supplementation 與最小診斷 metadata 擴充；沒有開始
+  geometry integration、collision pruning、benchmark、Agent／Phase 2 或 Case 4。
+  未標記 group_*／Cube.* 不自動分類。續作需新的明確授權。
 
-### Blender-derived dataset 接入缺口
+### 仍需人工與 geometry integration 處理
 
-- M6 frame schema bypass 已修；Projection Error 仍需獨立 evaluation。
-- 需核准 WALKABLE／STAIR／WALL 與可信任 directed waypoint routes／camera transitions，
-  並讓 navigation、topology、GT、camera calibration／visibility 共用 source/context binding。
-  Graph `WALKABLE` 目前依顯式 route 設定，不提供 Mesh collision／clearance 證明。
-- Projected endpoints 必須對齊 configured nodes；沒有 arbitrary-point snapping／connector。
-  Floor／zone／camera-plane mapping 與 courtyard walkability 尚待確認。
-- Rerun 已支援 waypoint graph、camera navigation anchors 與 portable calibration
-  poses／frustums；仍需接入實際 Mesh。AABB metrics 不代替 Mesh collision certification。
-- 正式 benchmark 的 Coverage distance／epsilon、採樣與 collision／constraint protocol、
-  baseline／ablation 尚未固定。本輪 D=ADE、epsilon=1e-6m 只用於 fake regression。
-- 多段 gaps 已由 `reconstruct_gaps()` 保留為獨立 BoundGapEvents；同時／重疊 visibility
-  arbitration 仍暫緩。沒有明確 missing-camera-frame marker 或 coordinate-origin attestation
-  schema；目前只保留供應的 Evidence 與 absence，不推定 occlusion／out-of-FOV。
+- 四個男女廁 AREA 被 BATHROOM obstacle footprint 蓋滿；保留已確認 OBSTACLE/BOTH
+  角色，人工核對實際 blocking 佔地，不把整個 room 填回 WALKABLE。
+- 教室／餐廳／部分 meeting room、AUDITORIUM_OFFICE 與 SIDE_ENTRANCE 門外 seams
+  仍未連接。六組局部 room/corridor contact 不等於合法通行；雙側 probe 落地
+  也不代表連到不同區域。PORTAL 位置／normal 例外及 obstacle aperture overlap
+  見位置摘要；陽台目的地保持不可走。
+- Stair A/B 缺可信連續 landing；A ENTRY 與 A/B EXIT 未接相應 floor。Slab opening／
+  clearance 尚待人工審查。只有角色／方向 annotation，沒有 stair navigation edges。
+  正式跨樓層 Case 4 暫緩，不以它展開 benchmark。
+- WALL 標記仍缺。OBSTACLE 是原 footprint proxy，沒有已核准的 3D 高度／occlusion
+  volume；人工核准 physical geometry、floor planes／例外與 camera-plane bindings。
+  Elevator lobby/cabin/shaft 角色待定，沒有 elevator transition。
+- Collision Top-K pruning ownership contract 仍 unresolved；現有 evaluation-only fake
+  AABB detector 不代替 mesh certification。Graph WALKABLE 仍依 explicit route 設定；
+  projected endpoints 需對齊 configured nodes，尚無 arbitrary-point snapping／connector。
+- 後續 dataset／geometry／navigation／GT export／camera visibility 需共同 source/context
+  binding；GT 不能進 inference。Projection Error 需獨立 evaluation；29 camera pose
+  存在或校正矩陣比對不等於 plane mapping 或 error measurement。
+- Rerun 已支援合成 waypoint graph、navigation anchors、portable calibrated poses／
+  frustums；實際 mesh integration 與學校正式視覺化仍未完成。
+- [Phase 1 Benchmark Protocol](PHASE1_BENCHMARK_PROTOCOL.md) 已定義 Cases 1–4、A–E
+  baseline interfaces／single-factor ablation／六類 acceptance；正式 Coverage D／epsilon、
+  K／採樣／physical tolerance／time policy 等保持 UNRESOLVED_RESEARCH_SETTING。
+  Formal execution disabled；A–C 尚未實作，fake epsilon 不當作研究設定，epsilon=0 仍拒絕。
+- `amidst.benchmark_report` 已能保留 missing／failed／NO_REFERENCE，輸出 charts／summary；
+  目前 synthetic／plotting-only fixtures 不當作 Blender Cases 1–3 或 baseline 成果。
+- 多段 gap 保持 BoundGapEvents。重疊 visibility arbitration 暫緩；尚無明確 missing-frame
+  marker／coordinate-origin attestation schema，absence 不自動解讀成 occlusion／out-of-FOV。
 
-以上是介面／研究缺口，不是新增授權的開發排程。
+以上是目前缺口，不是新的實作、render 或發布授權。
 
 ## English
 
-Status date: 2026-10-02. Resume in `/Users/polalabear/Developer/amidst`, branch
-`codex/dataset-infrastructure`, verifying actual HEAD and dirty state.
-The four curated deterministic fixtures and generic downstream closed loop are complete:
-configured graph/Top-K, timed reconstruction, metrics and saved Rerun recordings.
-Camera extraction, producer-neutral aggregation, independent multiple-gap Events, the
-benchmark runner, MetricConfig, provider contracts and GT isolation are implemented.
-The preceding boundary round completed 140 regressions, for 687 tests, and narrow
-benchmark report diagnostics. Formal schemas are unchanged; input exceptions are re-raised.
-Zero epsilon is rejected.
-M6 full-frame schema revalidation is fixed. See WORK_LOG for evidence and
-DATA_SCHEMA/INTERFACES for replaceable contracts.
+Status date: 2026-10-05. Resume in `/Users/polalabear/Developer/amidst` on
+`codex/dataset-infrastructure`, checking actual HEAD, dirty state and source identity.
+Durable rules live in DEVELOPMENT_RULES; completed regression evidence belongs to WORK_LOG.
+The generic deterministic loop, camera extraction, replaceable observation/aggregation
+contracts, multi-gap Events, benchmark runner/MetricConfig, GT isolation, fake/boundary
+validation and reporting are implemented. They do not constitute a formal school benchmark.
 
-The preceding round requested Blender physical integration. The
-[fresh semantic audit](../data/scene_audit/SEMANTICS.md) finds no WALKABLE/WALL/OBSTACLE/STAIR
-labels. Physical integration is stopped under the explicit user conditions until trusted
-source-bound surface/collider roles, floor/camera-plane bindings and clearance policy are
-provided. AREA/PORTAL annotations and unlabeled meshes are not promoted to physical
-authority. The source is unchanged and all 29 camera matrices match the catalog exactly;
-this does not measure Projection Error. No core/schema changes, new fake fixtures, Agent,
-Phase 2, school Cases 1–3, publication or merge. Collision pruning remains unresolved.
-School stairs/cross-floor/formal Case 4 remain deferred; the simplified stair only tests
-a synthetic interface.
+The current source is the explicitly authorized supplemented school_v3.blend. The
+[post-save report](../data/scene_audit/school_v3_semantic_validation.md) concludes
+NEEDS_HUMAN_FIXES; the [location summary](../data/scene_audit/school_v3_semantic_locations.md)
+identifies concrete objects and required human actions. The source hash and verified backup
+are bound in the update artifact. The ignored asset is saved locally; portable recipes and
+audit/report evidence refer to the new source, without transferring v2 authority.
+Three intentional nonwalkable areas are excluded; stair areas defer to cross-floor checks.
+Floors 25/165 are only proposed. Semantic metadata and annotations do not grant physical,
+floor or camera-plane authority. No geometry integration, collision pruning, benchmark,
+Agent, Phase 2 or formal Case 4 is started. Unlabeled group_*/Cube.* are not classified.
 
-This round adds read-only semantic completeness validation, configurable diagnostics and
-priority human review queues. The current school report still requires review with no physical
-labels; proximity diagnostics do not authorize navigation or stairs. The formal protocol now
-defines Cases 1–4, A–E baseline interfaces, single-factor ablations, metric populations and six
-acceptance categories, while formal research settings remain unresolved and execution disabled.
-The comparison generator accepts native/normalized/tree outputs and writes individual charts
-and JSON/Markdown summaries; synthetic and plotting-only fixtures validate it. A–C algorithms,
-school benchmarks, full reproducibility engineering, final presentations and Agent ranking
-remain future work. Existing formal Graph/Reconstruction/metric semantics and source assets
-remain unchanged; no publication is performed.
+Human work remains: correct fully blocking bathroom footprints while retaining OBSTACLE/BOTH
+roles; confirm real doorway seams/portal positions/normals and aperture conflicts; provide
+continuous stair landings and floor endpoint contacts plus opening/clearance review; mark
+trusted walls and 3D collider/occlusion volumes; approve source-bound floor/camera planes and
+exceptions; identify elevator lobby/cabin/shaft roles. Six local contacts are diagnostic,
+not approved passage, and two-sided probes can land on the same small threshold.
 
-Remaining Blender interfaces: approved walkability,
-wall/stair geometry and directed route/transition configs; shared source/context
-bindings; explicit camera-plane/floor/zone mapping and graph-node anchors; actual mesh
-collision/clearance and mesh visualization. Portable calibrated poses/frustums are supported.
-No arbitrary point attachment
-or approved courtyard interpretation exists. Projection Error,
-formal sampling/Coverage/collision protocol and baselines/ablations remain
-open. Fake ADE epsilon=1e-6m and AABB tests do not certify a school scene or formal benchmark.
+Collision Top-K pruning remains unresolved; evaluation AABB checks do not certify meshes.
+Graph routes and projected node anchors still require explicit configs, with no arbitrary
+point attachment. Future dataset/geometry/navigation/GT/camera adapters need shared source
+bindings; GT remains excluded from inference. Projection Error requires independent evaluation.
+Portable Rerun poses/frustums are supported, while real mesh visualization remains pending.
+The Phase 1 protocol specifies comparison interfaces and acceptance, but formal settings are
+unresolved/execution disabled and A–C algorithms are not implemented. Zero epsilon remains
+invalid. Comparison charts retain unavailable/failed/no-reference data without inventing
+metrics. Multi-gap Events exist; overlapping visibility arbitration and explicit missing-frame
+or coordinate-origin schemas remain deferred. These are gaps, not new implementation,
+rendering or publication authorization.

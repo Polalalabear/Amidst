@@ -1,0 +1,6545 @@
+{
+  "schema_version": "reviewed-semantic-scene-patch-v1",
+  "source_path": "blender/school_v3.blend",
+  "source_sha256": "26428df2fd395c69673b3e918fb7171b72d77a47d728e6b9cb21bb9da7b8e614",
+  "source_modification_authorized": true,
+  "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+  "human_request_sha256": "e6d716f5fcf9bf930bceddd636d58ec1a1da4b72fe7185dfae861f67039a2539",
+  "policy": {
+    "indoor_floor": "horizontal AREA mesh section at proposed floor, minus actual same-floor BLOCK XY polygons",
+    "block_role": "OBSTACLE/BOTH; footprint geometry retained without invented height",
+    "portal_patch": "only explicit PORTAL floor sections; no extension across unmarked gaps",
+    "stair_path": "existing two disconnected source halves only; no fabricated landing or ordered full path",
+    "floor_authority": "PROPOSED, not APPROVED"
+  },
+  "collection_updates": [
+    {
+      "collection": "BLOCK",
+      "rename": "OBSTACLE_AREAS",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "original_collection_id": "BLOCK",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05"
+      }
+    }
+  ],
+  "object_updates": [
+    {
+      "object": "BLOCK_1F_BATHROOM",
+      "rename": "OBSTACLE_1F_BATHROOM",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_BATHROOM",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_CORRIDOR_01_01",
+      "rename": "OBSTACLE_1F_CORRIDOR_01_01",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_CORRIDOR_01_01",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_CORRIDOR_01_02",
+      "rename": "OBSTACLE_1F_CORRIDOR_01_02",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_CORRIDOR_01_02",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_MAIN_ENTRANCE_01",
+      "rename": "OBSTACLE_1F_MAIN_ENTRANCE_01",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_MAIN_ENTRANCE_01",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_MAIN_ENTRANCE_02",
+      "rename": "OBSTACLE_1F_MAIN_ENTRANCE_02",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_MAIN_ENTRANCE_02",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_OFFICE_01",
+      "rename": "OBSTACLE_1F_OFFICE_01",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_OFFICE_01",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_OFFICE_02",
+      "rename": "OBSTACLE_1F_OFFICE_02",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_OFFICE_02",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_RESTAURANT_01",
+      "rename": "OBSTACLE_1F_RESTAURANT_01",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_RESTAURANT_01",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_RESTAURANT_02",
+      "rename": "OBSTACLE_1F_RESTAURANT_02",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_RESTAURANT_02",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_RESTAURANT_03",
+      "rename": "OBSTACLE_1F_RESTAURANT_03",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_RESTAURANT_03",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_STORAGE01",
+      "rename": "OBSTACLE_1F_STORAGE01",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_STORAGE01",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_STORAGE02",
+      "rename": "OBSTACLE_1F_STORAGE02",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_STORAGE02",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_1F_STORAGE03",
+      "rename": "OBSTACLE_1F_STORAGE03",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_1F_STORAGE03",
+        "original_collection_id": "BLOCK",
+        "floor_id": "1F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_2F_BATHROOM",
+      "rename": "OBSTACLE_2F_BATHROOM",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_2F_BATHROOM",
+        "original_collection_id": "BLOCK",
+        "floor_id": "2F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_2F_GALLERY_01",
+      "rename": "OBSTACLE_2F_GALLERY_01",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_2F_GALLERY_01",
+        "original_collection_id": "BLOCK",
+        "floor_id": "2F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_2F_GALLERY_02",
+      "rename": "OBSTACLE_2F_GALLERY_02",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_2F_GALLERY_02",
+        "original_collection_id": "BLOCK",
+        "floor_id": "2F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_2F_MEETINGROOM",
+      "rename": "OBSTACLE_2F_MEETINGROOM",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_2F_MEETINGROOM",
+        "original_collection_id": "BLOCK",
+        "floor_id": "2F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_2F_OFFICE_01",
+      "rename": "OBSTACLE_2F_OFFICE_01",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_2F_OFFICE_01",
+        "original_collection_id": "BLOCK",
+        "floor_id": "2F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "BLOCK_2F_OFFICE_02",
+      "rename": "OBSTACLE_2F_OFFICE_02",
+      "properties": {
+        "semantic_class": "OBSTACLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "original_object_id": "BLOCK_2F_OFFICE_02",
+        "original_collection_id": "BLOCK",
+        "floor_id": "2F",
+        "collision_role": "BOTH",
+        "blocks_movement": true,
+        "occludes_visibility": true,
+        "geometry_representation": "EXPLICIT_FOOTPRINT_PROXY_NO_HEIGHT"
+      }
+    },
+    {
+      "object": "AREA_1F_COURTYARD",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": false,
+        "exclusion_reason": "Human-confirmed non-walkable courtyard/balcony"
+      }
+    },
+    {
+      "object": "AREA_2F_BALCONY_LEFT",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": false,
+        "exclusion_reason": "Human-confirmed non-walkable courtyard/balcony"
+      }
+    },
+    {
+      "object": "AREA_2F_BALCONY_RIGHT",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": false,
+        "exclusion_reason": "Human-confirmed non-walkable courtyard/balcony"
+      }
+    },
+    {
+      "object": "AREA_STAIR_A",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "coverage_scope": "CROSS_FLOOR",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "stair_id": "A"
+      }
+    },
+    {
+      "object": "AREA_STAIR_B",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "coverage_scope": "CROSS_FLOOR",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "stair_id": "B"
+      }
+    },
+    {
+      "object": "AREA_1F_ELEVATOR",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "elevator_semantic_review": "HUMAN_REVIEW_LOBBY_CABIN_SHAFT_UNRESOLVED",
+        "topology_transition": false
+      }
+    },
+    {
+      "object": "AREA_2F_ELEVATOR",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "elevator_semantic_review": "HUMAN_REVIEW_LOBBY_CABIN_SHAFT_UNRESOLVED",
+        "topology_transition": false
+      }
+    },
+    {
+      "object": "AREA_1F_AUDITORIUM",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_CLASS101",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_CLASS102",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_CLASS103",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_CLASS104",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_LADYSROOM",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_MEETINGROOM",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_MENSROOM",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_OFFICE",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_RESTAURANT_A",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_RESTAURANT_B",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_1F_STORAGE",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_CLASS201",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_CLASS202",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_CLASS203",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_CLASS204",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_GALLERY",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_LADYSROOM",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_MEETINGROOM",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_MENSROOM",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "AREA_2F_OFFICE",
+      "properties": {
+        "semantic_class": "AREA",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "walkable": true,
+        "walkable_surface_basis": "AREA_SECTION_MINUS_EXPLICIT_OBSTACLE"
+      }
+    },
+    {
+      "object": "PORTAL_1F_AUDITORIUM",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_AUDITORIUM_OFFICE",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_CLASS101",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_CLASS102",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_CLASS103",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_CLASS104",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_LADYSROOM",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY"
+      }
+    },
+    {
+      "object": "PORTAL_1F_MAIN_ENTRANCE",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_MEETINGROOM_01",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_MEETINGROOM_02",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY"
+      }
+    },
+    {
+      "object": "PORTAL_1F_MENSROOM",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY"
+      }
+    },
+    {
+      "object": "PORTAL_1F_OFFICE",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_RESTAURANT_A",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_RESTAURANT_B",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_1F_SIDE_ENTRANCE",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY"
+      }
+    },
+    {
+      "object": "PORTAL_1F_STORAGE",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_BALCONY_LEFT",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_BALCONY_RIGHT",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_CLASS201",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_CLASS202",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_CLASS203",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_CLASS204",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_GALLERY",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_LADYSROOM",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY"
+      }
+    },
+    {
+      "object": "PORTAL_2F_MEETINGROOM_01",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_MEETINGROOM_02",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "PORTAL_2F_MENSROOM",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY",
+        "original_centroid_json": "[396.0, 1975.0, 90.0]",
+        "position_correction_basis": "Matches 2F MENSROOM AREA Z160..300, other 2F portals and 140-unit floor separation"
+      },
+      "translation": [
+        0,
+        0,
+        140
+      ]
+    },
+    {
+      "object": "PORTAL_2F_OFFICE",
+      "properties": {
+        "semantic_class": "PORTAL",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "normal_basis": "HUMAN_AUTHORIZED_EXPLICIT_AREA_BOUNDARY",
+        "portal_normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "portal_direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL"
+      }
+    },
+    {
+      "object": "WALK_STAIRS_A_LOWERHALF",
+      "collection": "Stair Reference Surfaces",
+      "properties": {
+        "semantic_reference_role": "STAIR_SOURCE_HALF",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "floor_id": "1F",
+        "stair_id": "A",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "physical_connection_review": "HUMAN_REVIEW"
+      }
+    },
+    {
+      "object": "WALK_STAIRS_A_UPPERHALF",
+      "collection": "Stair Reference Surfaces",
+      "properties": {
+        "semantic_reference_role": "STAIR_SOURCE_HALF",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "floor_id": "2F",
+        "stair_id": "A",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "physical_connection_review": "HUMAN_REVIEW"
+      }
+    },
+    {
+      "object": "WALK_STAIRS_B_LOWERHALF",
+      "collection": "Stair Reference Surfaces",
+      "properties": {
+        "semantic_reference_role": "STAIR_SOURCE_HALF",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "floor_id": "1F",
+        "stair_id": "B",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "physical_connection_review": "HUMAN_REVIEW"
+      }
+    },
+    {
+      "object": "WALK_STAIRS_B_UPPERHALF",
+      "collection": "Stair Reference Surfaces",
+      "properties": {
+        "semantic_reference_role": "STAIR_SOURCE_HALF",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "floor_id": "2F",
+        "stair_id": "B",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "physical_connection_review": "HUMAN_REVIEW"
+      }
+    }
+  ],
+  "mesh_updates": [
+    {
+      "object": "WALK_1F_BATHROOM",
+      "create": false,
+      "vertices": [
+        [
+          277.822998046875,
+          1854.8023681640625,
+          25.0
+        ],
+        [
+          535.6851806640625,
+          1854.8023681640625,
+          25.0
+        ],
+        [
+          535.6851806640625,
+          1963.19091796875,
+          25.0
+        ],
+        [
+          277.822998046875,
+          1963.19091796875,
+          25.0
+        ],
+        [
+          535.6851806640625,
+          1963.19091796875,
+          25.0
+        ],
+        [
+          535.6851806640625,
+          1964.2113037109375,
+          25.0
+        ],
+        [
+          492.36956787109375,
+          1964.2113037109375,
+          25.0
+        ],
+        [
+          492.36956787109375,
+          1963.19091796875,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "original_object_id": "WALK_1F_BATHROOM",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_CORRIDOR_01",
+      "create": false,
+      "vertices": [
+        [
+          972.0720825195312,
+          508.96783447265625,
+          25.0
+        ],
+        [
+          1484.5445556640625,
+          508.96783447265625,
+          25.0
+        ],
+        [
+          1484.5445556640625,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          531.8611450195312,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          538.608642578125,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          538.608642578125,
+          531.8611450195312,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          878.9989013671875,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          878.9989013671875,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          878.9989013671875,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          538.608642578125,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          538.608642578125,
+          718.0277709960938,
+          25.0
+        ],
+        [
+          878.9989013671875,
+          718.0277709960938,
+          25.0
+        ],
+        [
+          538.608642578125,
+          718.0277709960938,
+          25.0
+        ],
+        [
+          538.608642578125,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          841.061279296875,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          841.061279296875,
+          718.0277709960938,
+          25.0
+        ],
+        [
+          538.608642578125,
+          508.96783447265625,
+          25.0
+        ],
+        [
+          912.7913208007812,
+          508.96783447265625,
+          25.0
+        ],
+        [
+          912.7913208007812,
+          531.8611450195312,
+          25.0
+        ],
+        [
+          538.608642578125,
+          531.8611450195312,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14,
+          15
+        ],
+        [
+          16,
+          17,
+          18,
+          19
+        ],
+        [
+          20,
+          21,
+          22,
+          23
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "original_object_id": "WALK_1F_CORRIDOR_01",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_CORRIDOR_02",
+      "create": false,
+      "vertices": [
+        [
+          1379.873779296875,
+          512.191650390625,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          512.191650390625,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          1696.31591796875,
+          25.0
+        ],
+        [
+          1379.873779296875,
+          1696.31591796875,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "original_object_id": "WALK_1F_CORRIDOR_02",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_CORRIDOR_03",
+      "create": false,
+      "vertices": [
+        [
+          538.608642578125,
+          1582.4937744140625,
+          25.0
+        ],
+        [
+          1484.5445556640625,
+          1582.4937744140625,
+          25.0
+        ],
+        [
+          1484.5445556640625,
+          1699.6214599609375,
+          25.0
+        ],
+        [
+          538.608642578125,
+          1699.6214599609375,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "original_object_id": "WALK_1F_CORRIDOR_03",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_CORRIDOR_04",
+      "create": false,
+      "vertices": [
+        [
+          530.9911499023438,
+          515.94873046875,
+          25.0
+        ],
+        [
+          642.5297241210938,
+          515.94873046875,
+          25.0
+        ],
+        [
+          642.5297241210938,
+          1987.5537109375,
+          25.0
+        ],
+        [
+          530.9911499023438,
+          1987.5537109375,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "original_object_id": "WALK_1F_CORRIDOR_04",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_MAIN_ENTRANCE",
+      "create": false,
+      "vertices": [
+        [
+          952.66259765625,
+          292.42047119140625,
+          25.0
+        ],
+        [
+          1163.44970703125,
+          292.42047119140625,
+          25.0
+        ],
+        [
+          1163.44970703125,
+          390.9319763183594,
+          25.0
+        ],
+        [
+          952.66259765625,
+          390.9319763183594,
+          25.0
+        ],
+        [
+          1163.44970703125,
+          487.1218566894531,
+          25.0
+        ],
+        [
+          1163.44970703125,
+          502.4107971191406,
+          25.0
+        ],
+        [
+          1057.7540283203125,
+          502.4107971191406,
+          25.0
+        ],
+        [
+          1057.7540283203125,
+          487.1218566894531,
+          25.0
+        ],
+        [
+          1124.0565185546875,
+          487.1218566894531,
+          25.0
+        ],
+        [
+          1057.7540283203125,
+          487.1218566894531,
+          25.0
+        ],
+        [
+          1057.7540283203125,
+          390.9319763183594,
+          25.0
+        ],
+        [
+          1124.0565185546875,
+          390.9319763183594,
+          25.0
+        ],
+        [
+          1057.7540283203125,
+          502.4107971191406,
+          25.0
+        ],
+        [
+          952.66259765625,
+          502.4107971191406,
+          25.0
+        ],
+        [
+          952.66259765625,
+          487.1218566894531,
+          25.0
+        ],
+        [
+          1057.7540283203125,
+          487.1218566894531,
+          25.0
+        ],
+        [
+          1163.44970703125,
+          502.4107971191406,
+          25.0
+        ],
+        [
+          1163.44970703125,
+          514.698974609375,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          514.698974609375,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          502.4107971191406,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14,
+          15
+        ],
+        [
+          16,
+          17,
+          18,
+          19
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "original_object_id": "WALK_1F_MAIN_ENTRANCE",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_SIDE_ENTRANCE",
+      "create": false,
+      "vertices": [
+        [
+          1496.39111328125,
+          1449.1544189453125,
+          25.0
+        ],
+        [
+          1718.572021484375,
+          1449.1544189453125,
+          25.0
+        ],
+        [
+          1718.572021484375,
+          1559.2791748046875,
+          25.0
+        ],
+        [
+          1496.39111328125,
+          1559.2791748046875,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "original_object_id": "WALK_1F_SIDE_ENTRANCE",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_BATHROOM",
+      "create": false,
+      "vertices": [
+        [
+          277.822998046875,
+          1854.8023681640625,
+          165.0
+        ],
+        [
+          535.6851806640625,
+          1854.8023681640625,
+          165.0
+        ],
+        [
+          535.6851806640625,
+          1963.19091796875,
+          165.0
+        ],
+        [
+          277.822998046875,
+          1963.19091796875,
+          165.0
+        ],
+        [
+          535.6851806640625,
+          1963.19091796875,
+          165.0
+        ],
+        [
+          535.6851806640625,
+          1964.2113037109375,
+          165.0
+        ],
+        [
+          492.36956787109375,
+          1964.2113037109375,
+          165.0
+        ],
+        [
+          492.36956787109375,
+          1963.19091796875,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "original_object_id": "WALK_2F_BATHROOM",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_CORRIDOR_01",
+      "create": false,
+      "vertices": [
+        [
+          538.608642578125,
+          508.96783447265625,
+          165.0
+        ],
+        [
+          1484.5445556640625,
+          508.96783447265625,
+          165.0
+        ],
+        [
+          1484.5445556640625,
+          754.0654907226562,
+          165.0
+        ],
+        [
+          538.608642578125,
+          754.0654907226562,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "original_object_id": "WALK_2F_CORRIDOR_01",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_CORRIDOR_02",
+      "create": false,
+      "vertices": [
+        [
+          1379.873779296875,
+          512.191650390625,
+          165.0
+        ],
+        [
+          1491.412353515625,
+          512.191650390625,
+          165.0
+        ],
+        [
+          1491.412353515625,
+          1696.31591796875,
+          165.0
+        ],
+        [
+          1379.873779296875,
+          1696.31591796875,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "original_object_id": "WALK_2F_CORRIDOR_02",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_CORRIDOR_03",
+      "create": false,
+      "vertices": [
+        [
+          538.608642578125,
+          1582.4937744140625,
+          165.0
+        ],
+        [
+          1484.5445556640625,
+          1582.4937744140625,
+          165.0
+        ],
+        [
+          1484.5445556640625,
+          1699.6214599609375,
+          165.0
+        ],
+        [
+          538.608642578125,
+          1699.6214599609375,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "original_object_id": "WALK_2F_CORRIDOR_03",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_CORRIDOR_04",
+      "create": false,
+      "vertices": [
+        [
+          530.9911499023438,
+          515.94873046875,
+          165.0
+        ],
+        [
+          642.5297241210938,
+          515.94873046875,
+          165.0
+        ],
+        [
+          642.5297241210938,
+          1987.5537109375,
+          165.0
+        ],
+        [
+          530.9911499023438,
+          1987.5537109375,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "original_object_id": "WALK_2F_CORRIDOR_04",
+        "source_geometry": "EXISTING_WALK_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_AUDITORIUM",
+      "create": true,
+      "vertices": [
+        [
+          1520.0,
+          1575.0,
+          25.0
+        ],
+        [
+          2030.0,
+          1575.0,
+          25.0
+        ],
+        [
+          2030.0,
+          2315.0,
+          25.0
+        ],
+        [
+          1520.0,
+          2315.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_AUDITORIUM",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_CLASS101",
+      "create": true,
+      "vertices": [
+        [
+          232.0,
+          235.0,
+          25.0
+        ],
+        [
+          488.0,
+          235.0,
+          25.0
+        ],
+        [
+          488.0,
+          625.0,
+          25.0
+        ],
+        [
+          232.0,
+          625.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_CLASS101",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_CLASS102",
+      "create": true,
+      "vertices": [
+        [
+          232.0,
+          640.0,
+          25.0
+        ],
+        [
+          488.0,
+          640.0,
+          25.0
+        ],
+        [
+          488.0,
+          1030.0,
+          25.0
+        ],
+        [
+          232.0,
+          1030.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_CLASS102",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_CLASS103",
+      "create": true,
+      "vertices": [
+        [
+          232.0,
+          1045.0,
+          25.0
+        ],
+        [
+          488.0,
+          1045.0,
+          25.0
+        ],
+        [
+          488.0,
+          1435.0,
+          25.0
+        ],
+        [
+          232.0,
+          1435.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_CLASS103",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_CLASS104",
+      "create": true,
+      "vertices": [
+        [
+          232.0,
+          1445.0,
+          25.0
+        ],
+        [
+          488.0,
+          1445.0,
+          25.0
+        ],
+        [
+          488.0,
+          1835.0,
+          25.0
+        ],
+        [
+          232.0,
+          1835.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_CLASS104",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_MEETINGROOM",
+      "create": true,
+      "vertices": [
+        [
+          1500.0,
+          770.0,
+          25.0
+        ],
+        [
+          1760.0,
+          770.0,
+          25.0
+        ],
+        [
+          1760.0,
+          1290.0,
+          25.0
+        ],
+        [
+          1500.0,
+          1290.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_MEETINGROOM",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_OFFICE",
+      "create": false,
+      "vertices": [
+        [
+          1145.0,
+          1710.0,
+          25.0
+        ],
+        [
+          1495.0,
+          1710.0,
+          25.0
+        ],
+        [
+          1495.0,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1145.0,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1495.0,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1495.0,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1380.3240966796875,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1380.3240966796875,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1164.0628662109375,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1145.0,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1145.0,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1164.0628662109375,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1495.0,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1495.0,
+          2310.0,
+          25.0
+        ],
+        [
+          1488.606689453125,
+          2310.0,
+          25.0
+        ],
+        [
+          1488.606689453125,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1168.8525390625,
+          2310.0,
+          25.0
+        ],
+        [
+          1145.0,
+          2310.0,
+          25.0
+        ],
+        [
+          1145.0,
+          2125.791015625,
+          25.0
+        ],
+        [
+          1168.8525390625,
+          2125.791015625,
+          25.0
+        ],
+        [
+          1145.0,
+          2125.791015625,
+          25.0
+        ],
+        [
+          1145.0,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1164.0628662109375,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1164.0628662109375,
+          2125.791015625,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14,
+          15
+        ],
+        [
+          16,
+          17,
+          18,
+          19
+        ],
+        [
+          20,
+          21,
+          22,
+          23
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_OFFICE",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_RESTAURANT_A",
+      "create": true,
+      "vertices": [
+        [
+          666.9732055664062,
+          312.0,
+          25.0
+        ],
+        [
+          935.0,
+          312.0,
+          25.0
+        ],
+        [
+          935.0,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          505.0,
+          312.0,
+          25.0
+        ],
+        [
+          644.2267456054688,
+          312.0,
+          25.0
+        ],
+        [
+          644.2267456054688,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          505.0,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          935.0,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          935.0,
+          492.0,
+          25.0
+        ],
+        [
+          881.1814575195312,
+          492.0,
+          25.0
+        ],
+        [
+          881.1814575195312,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          881.1814575195312,
+          492.0,
+          25.0
+        ],
+        [
+          768.30810546875,
+          492.0,
+          25.0
+        ],
+        [
+          768.30810546875,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          881.1814575195312,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          768.30810546875,
+          492.0,
+          25.0
+        ],
+        [
+          505.0,
+          492.0,
+          25.0
+        ],
+        [
+          505.0,
+          464.69000244140625,
+          25.0
+        ],
+        [
+          768.30810546875,
+          464.69000244140625,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          687.7032470703125,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          687.7032470703125,
+          464.69000244140625,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          464.69000244140625,
+          25.0
+        ],
+        [
+          505.0,
+          464.69000244140625,
+          25.0
+        ],
+        [
+          505.0,
+          429.38946533203125,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          429.38946533203125,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          464.69000244140625,
+          25.0
+        ],
+        [
+          505.0,
+          429.38946533203125,
+          25.0
+        ],
+        [
+          505.0,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          644.2267456054688,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          644.2267456054688,
+          429.38946533203125,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          806.2914428710938,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          806.2914428710938,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          505.0,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          505.0,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          644.2267456054688,
+          342.8847961425781,
+          25.0
+        ],
+        [
+          644.2267456054688,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          768.30810546875,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          806.2914428710938,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          806.2914428710938,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          768.30810546875,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          687.7032470703125,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          687.7032470703125,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          666.9732055664062,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          505.0,
+          420.8572082519531,
+          25.0
+        ],
+        [
+          505.0,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          644.2267456054688,
+          389.13726806640625,
+          25.0
+        ],
+        [
+          644.2267456054688,
+          420.8572082519531,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14,
+          15
+        ],
+        [
+          16,
+          17,
+          18,
+          19
+        ],
+        [
+          20,
+          21,
+          22,
+          23
+        ],
+        [
+          24,
+          25,
+          26,
+          27
+        ],
+        [
+          28,
+          29,
+          30,
+          31
+        ],
+        [
+          32,
+          33,
+          34,
+          35
+        ],
+        [
+          36,
+          37,
+          38,
+          39
+        ],
+        [
+          40,
+          41,
+          42,
+          43
+        ],
+        [
+          44,
+          45,
+          46,
+          47
+        ],
+        [
+          48,
+          49,
+          50,
+          51
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_RESTAURANT_A",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_RESTAURANT_B",
+      "create": true,
+      "vertices": [
+        [
+          1190.0,
+          312.0,
+          25.0
+        ],
+        [
+          1490.0,
+          312.0,
+          25.0
+        ],
+        [
+          1490.0,
+          492.0,
+          25.0
+        ],
+        [
+          1190.0,
+          492.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_RESTAURANT_B",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_STORAGE",
+      "create": true,
+      "vertices": [
+        [
+          1500.0,
+          440.0,
+          25.0
+        ],
+        [
+          1711.605310072406,
+          440.0,
+          25.0
+        ],
+        [
+          1628.0876376314116,
+          513.6660190746622,
+          25.0
+        ],
+        [
+          1500.0,
+          592.2876857294442,
+          25.0
+        ],
+        [
+          1711.605310072406,
+          440.0,
+          25.0
+        ],
+        [
+          1748.1017095591285,
+          440.0,
+          25.0
+        ],
+        [
+          1699.0594409896087,
+          470.1027090730066,
+          25.0
+        ],
+        [
+          1689.615478515625,
+          459.39593505859375,
+          25.0
+        ],
+        [
+          1664.4580939417392,
+          491.34141425728336,
+          25.0
+        ],
+        [
+          1628.0876376314116,
+          513.6660190746622,
+          25.0
+        ],
+        [
+          1659.618408203125,
+          485.8545837402344,
+          25.0
+        ],
+        [
+          1606.6293484592902,
+          532.5931119073787,
+          25.0
+        ],
+        [
+          1604.063232421875,
+          528.4124755859375,
+          25.0
+        ],
+        [
+          1628.0876376314113,
+          513.6660190746624,
+          25.0
+        ],
+        [
+          1748.1017095591285,
+          440.0,
+          25.0
+        ],
+        [
+          1760.0,
+          440.0,
+          25.0
+        ],
+        [
+          1760.0,
+          539.1920129995838,
+          25.0
+        ],
+        [
+          1699.0594409896087,
+          470.1027090730066,
+          25.0
+        ],
+        [
+          1760.0,
+          539.1920129995838,
+          25.0
+        ],
+        [
+          1760.0,
+          557.6541880387408,
+          25.0
+        ],
+        [
+          1643.3082754398881,
+          560.2445140490879,
+          25.0
+        ],
+        [
+          1719.3828125,
+          493.1436462402344,
+          25.0
+        ],
+        [
+          1760.0,
+          557.6541880387408,
+          25.0
+        ],
+        [
+          1760.0,
+          650.0,
+          25.0
+        ],
+        [
+          1748.2105073276937,
+          650.0,
+          25.0
+        ],
+        [
+          1746.16748046875,
+          557.9612426757812,
+          25.0
+        ],
+        [
+          1748.2105073276937,
+          650.0,
+          25.0
+        ],
+        [
+          1678.6948608054186,
+          650.0,
+          25.0
+        ],
+        [
+          1677.8318863125571,
+          648.5940688352628,
+          25.0
+        ],
+        [
+          1748.1446533203125,
+          647.0332641601562,
+          25.0
+        ],
+        [
+          1677.8318863125571,
+          648.5940688352628,
+          25.0
+        ],
+        [
+          1630.523695914728,
+          571.5210385454735,
+          25.0
+        ],
+        [
+          1643.3082754398881,
+          560.2445140490879,
+          25.0
+        ],
+        [
+          1679.3472900390625,
+          559.4445190429688,
+          25.0
+        ],
+        [
+          1681.324462890625,
+          648.5165405273438,
+          25.0
+        ],
+        [
+          1630.523695914728,
+          571.5210385454735,
+          25.0
+        ],
+        [
+          1606.6293484592902,
+          532.5931119073787,
+          25.0
+        ],
+        [
+          1628.0876376314113,
+          513.6660190746624,
+          25.0
+        ],
+        [
+          1664.4580939417392,
+          491.3414142572833,
+          25.0
+        ],
+        [
+          1689.3857421875,
+          519.602294921875,
+          25.0
+        ],
+        [
+          1678.6948608054186,
+          650.0,
+          25.0
+        ],
+        [
+          1515.6387985793283,
+          650.0,
+          25.0
+        ],
+        [
+          1634.0731201171875,
+          577.3036499023438,
+          25.0
+        ],
+        [
+          1515.6387985793283,
+          650.0,
+          25.0
+        ],
+        [
+          1500.0,
+          650.0,
+          25.0
+        ],
+        [
+          1500.0,
+          592.2876857294442,
+          25.0
+        ],
+        [
+          1571.4808349609375,
+          548.4119262695312,
+          25.0
+        ],
+        [
+          1601.49072265625,
+          597.3031005859375,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          11,
+          12,
+          13
+        ],
+        [
+          14,
+          15,
+          16,
+          17
+        ],
+        [
+          18,
+          19,
+          20,
+          21
+        ],
+        [
+          22,
+          23,
+          24,
+          25
+        ],
+        [
+          26,
+          27,
+          28,
+          29
+        ],
+        [
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        [
+          35,
+          36,
+          37,
+          38,
+          39
+        ],
+        [
+          40,
+          41,
+          42
+        ],
+        [
+          43,
+          44,
+          45,
+          46,
+          47
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_area_id": "AREA_1F_STORAGE",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_CLASS201",
+      "create": true,
+      "vertices": [
+        [
+          232.0,
+          235.0,
+          165.0
+        ],
+        [
+          488.0,
+          235.0,
+          165.0
+        ],
+        [
+          488.0,
+          625.0,
+          165.0
+        ],
+        [
+          232.0,
+          625.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_area_id": "AREA_2F_CLASS201",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_CLASS202",
+      "create": true,
+      "vertices": [
+        [
+          232.0,
+          640.0,
+          165.0
+        ],
+        [
+          488.0,
+          640.0,
+          165.0
+        ],
+        [
+          488.0,
+          1030.0,
+          165.0
+        ],
+        [
+          232.0,
+          1030.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_area_id": "AREA_2F_CLASS202",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_CLASS203",
+      "create": true,
+      "vertices": [
+        [
+          232.0,
+          1045.0,
+          165.0
+        ],
+        [
+          488.0,
+          1045.0,
+          165.0
+        ],
+        [
+          488.0,
+          1435.0,
+          165.0
+        ],
+        [
+          232.0,
+          1435.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_area_id": "AREA_2F_CLASS203",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_CLASS204",
+      "create": true,
+      "vertices": [
+        [
+          232.0,
+          1445.0,
+          165.0
+        ],
+        [
+          488.0,
+          1445.0,
+          165.0
+        ],
+        [
+          488.0,
+          1835.0,
+          165.0
+        ],
+        [
+          232.0,
+          1835.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_area_id": "AREA_2F_CLASS204",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_GALLERY",
+      "create": true,
+      "vertices": [
+        [
+          1185.3343505859375,
+          300.0,
+          165.0
+        ],
+        [
+          1500.0,
+          300.0,
+          165.0
+        ],
+        [
+          1500.0,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          1185.3343505859375,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          500.0,
+          300.0,
+          165.0
+        ],
+        [
+          929.0413818359375,
+          300.0,
+          165.0
+        ],
+        [
+          929.0413818359375,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          500.0,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          1500.0,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          1500.0,
+          500.0,
+          165.0
+        ],
+        [
+          1303.7001953125,
+          500.0,
+          165.0
+        ],
+        [
+          1303.7001953125,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          1303.7001953125,
+          500.0,
+          165.0
+        ],
+        [
+          500.0,
+          500.0,
+          165.0
+        ],
+        [
+          500.0,
+          447.0150146484375,
+          165.0
+        ],
+        [
+          1303.7001953125,
+          447.0150146484375,
+          165.0
+        ],
+        [
+          1185.3343505859375,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          1262.227294921875,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          1262.227294921875,
+          447.0150146484375,
+          165.0
+        ],
+        [
+          1185.3343505859375,
+          447.0150146484375,
+          165.0
+        ],
+        [
+          500.0,
+          447.0150146484375,
+          165.0
+        ],
+        [
+          500.0,
+          413.50958251953125,
+          165.0
+        ],
+        [
+          1185.3343505859375,
+          413.50958251953125,
+          165.0
+        ],
+        [
+          1185.3343505859375,
+          447.0150146484375,
+          165.0
+        ],
+        [
+          500.0,
+          413.50958251953125,
+          165.0
+        ],
+        [
+          500.0,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          929.0413818359375,
+          412.3192138671875,
+          165.0
+        ],
+        [
+          929.0413818359375,
+          413.50958251953125,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14,
+          15
+        ],
+        [
+          16,
+          17,
+          18,
+          19
+        ],
+        [
+          20,
+          21,
+          22,
+          23
+        ],
+        [
+          24,
+          25,
+          26,
+          27
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_area_id": "AREA_2F_GALLERY",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_MEETINGROOM",
+      "create": true,
+      "vertices": [
+        [
+          1500.0,
+          240.0,
+          165.0
+        ],
+        [
+          1760.0,
+          240.0,
+          165.0
+        ],
+        [
+          1760.0,
+          640.7108154296875,
+          165.0
+        ],
+        [
+          1500.0,
+          640.7108154296875,
+          165.0
+        ],
+        [
+          1760.0,
+          640.7108154296875,
+          165.0
+        ],
+        [
+          1760.0,
+          760.0,
+          165.0
+        ],
+        [
+          1719.842041015625,
+          760.0,
+          165.0
+        ],
+        [
+          1719.842041015625,
+          640.7108154296875,
+          165.0
+        ],
+        [
+          1719.842041015625,
+          760.0,
+          165.0
+        ],
+        [
+          1500.0,
+          760.0,
+          165.0
+        ],
+        [
+          1500.0,
+          722.9495849609375,
+          165.0
+        ],
+        [
+          1719.842041015625,
+          722.9495849609375,
+          165.0
+        ],
+        [
+          1500.0,
+          722.9495849609375,
+          165.0
+        ],
+        [
+          1500.0,
+          640.7108154296875,
+          165.0
+        ],
+        [
+          1551.339599609375,
+          640.7108154296875,
+          165.0
+        ],
+        [
+          1551.339599609375,
+          722.9495849609375,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14,
+          15
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_area_id": "AREA_2F_MEETINGROOM",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_2F_OFFICE",
+      "create": false,
+      "vertices": [
+        [
+          1145.0,
+          1710.0,
+          165.0
+        ],
+        [
+          1495.0,
+          1710.0,
+          165.0
+        ],
+        [
+          1495.0,
+          1715.883544921875,
+          165.0
+        ],
+        [
+          1145.0,
+          1715.883544921875,
+          165.0
+        ],
+        [
+          1495.0,
+          1715.883544921875,
+          165.0
+        ],
+        [
+          1495.0,
+          2123.23876953125,
+          165.0
+        ],
+        [
+          1380.3240966796875,
+          2123.23876953125,
+          165.0
+        ],
+        [
+          1380.3240966796875,
+          1715.883544921875,
+          165.0
+        ],
+        [
+          1164.0628662109375,
+          2123.23876953125,
+          165.0
+        ],
+        [
+          1145.0,
+          2123.23876953125,
+          165.0
+        ],
+        [
+          1145.0,
+          1715.883544921875,
+          165.0
+        ],
+        [
+          1164.0628662109375,
+          1715.883544921875,
+          165.0
+        ],
+        [
+          1495.0,
+          2123.23876953125,
+          165.0
+        ],
+        [
+          1495.0,
+          2310.0,
+          165.0
+        ],
+        [
+          1488.606689453125,
+          2310.0,
+          165.0
+        ],
+        [
+          1488.606689453125,
+          2123.23876953125,
+          165.0
+        ],
+        [
+          1168.8525390625,
+          2310.0,
+          165.0
+        ],
+        [
+          1145.0,
+          2310.0,
+          165.0
+        ],
+        [
+          1145.0,
+          2125.791015625,
+          165.0
+        ],
+        [
+          1168.8525390625,
+          2125.791015625,
+          165.0
+        ],
+        [
+          1145.0,
+          2125.791015625,
+          165.0
+        ],
+        [
+          1145.0,
+          2123.23876953125,
+          165.0
+        ],
+        [
+          1164.0628662109375,
+          2123.23876953125,
+          165.0
+        ],
+        [
+          1164.0628662109375,
+          2125.791015625,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14,
+          15
+        ],
+        [
+          16,
+          17,
+          18,
+          19
+        ],
+        [
+          20,
+          21,
+          22,
+          23
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_area_id": "AREA_2F_OFFICE",
+        "source_geometry": "AREA_SECTION_MINUS_SAME_FLOOR_OBSTACLE"
+      }
+    },
+    {
+      "object": "WALK_1F_AUDITORIUM_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1491.412353515625,
+          1612.0,
+          25.0
+        ],
+        [
+          1520.0,
+          1612.0,
+          25.0
+        ],
+        [
+          1520.0,
+          1684.0,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          1684.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_AUDITORIUM",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_AUDITORIUM_OFFICE_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1495.0,
+          1990.0,
+          25.0
+        ],
+        [
+          1515.0,
+          1990.0,
+          25.0
+        ],
+        [
+          1515.0,
+          2060.0,
+          25.0
+        ],
+        [
+          1495.0,
+          2060.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_AUDITORIUM_OFFICE",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_CLASS101_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          488.0,
+          513.0,
+          25.0
+        ],
+        [
+          526.0,
+          513.0,
+          25.0
+        ],
+        [
+          526.0,
+          553.0,
+          25.0
+        ],
+        [
+          488.0,
+          553.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_CLASS101",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_CLASS102_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          488.0,
+          915.0,
+          25.0
+        ],
+        [
+          526.0,
+          915.0,
+          25.0
+        ],
+        [
+          526.0,
+          955.0,
+          25.0
+        ],
+        [
+          488.0,
+          955.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_CLASS102",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_CLASS103_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          488.0,
+          1320.0,
+          25.0
+        ],
+        [
+          526.0,
+          1320.0,
+          25.0
+        ],
+        [
+          526.0,
+          1360.0,
+          25.0
+        ],
+        [
+          488.0,
+          1360.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_CLASS103",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_CLASS104_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          488.0,
+          1722.0,
+          25.0
+        ],
+        [
+          526.0,
+          1722.0,
+          25.0
+        ],
+        [
+          526.0,
+          1762.0,
+          25.0
+        ],
+        [
+          488.0,
+          1762.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_CLASS104",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_MEETINGROOM_01_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1494.0,
+          770.0,
+          25.0
+        ],
+        [
+          1500.0,
+          770.0,
+          25.0
+        ],
+        [
+          1500.0,
+          880.0,
+          25.0
+        ],
+        [
+          1494.0,
+          880.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_MEETINGROOM_01",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_OFFICE_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1467.0,
+          1699.6214599609375,
+          25.0
+        ],
+        [
+          1467.0,
+          1710.0,
+          25.0
+        ],
+        [
+          1397.0,
+          1710.0,
+          25.0
+        ],
+        [
+          1397.0,
+          1699.6214599609375,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_OFFICE",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_RESTAURANT_A_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          826.0,
+          492.0,
+          25.0
+        ],
+        [
+          826.0,
+          506.0,
+          25.0
+        ],
+        [
+          786.0,
+          506.0,
+          25.0
+        ],
+        [
+          786.0,
+          492.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_RESTAURANT_A",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_RESTAURANT_B_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1262.0,
+          492.0,
+          25.0
+        ],
+        [
+          1262.0,
+          506.0,
+          25.0
+        ],
+        [
+          1222.0,
+          506.0,
+          25.0
+        ],
+        [
+          1222.0,
+          492.0,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_RESTAURANT_B",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_1F_STORAGE_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1500.0,
+          609.0,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          609.0,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          597.5588820113722,
+          25.0
+        ],
+        [
+          1500.0,
+          592.2876857294442,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          539.0,
+          25.0
+        ],
+        [
+          1500.0,
+          539.0,
+          25.0
+        ],
+        [
+          1500.0,
+          592.2876857294442,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          597.5588820113722,
+          25.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "1F",
+        "source_portal_id": "PORTAL_1F_STORAGE",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_2F_CLASS201_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          488.0,
+          513.0,
+          165.0
+        ],
+        [
+          526.0,
+          513.0,
+          165.0
+        ],
+        [
+          526.0,
+          553.0,
+          165.0
+        ],
+        [
+          488.0,
+          553.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_portal_id": "PORTAL_2F_CLASS201",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_2F_CLASS202_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          488.0,
+          915.0,
+          165.0
+        ],
+        [
+          526.0,
+          915.0,
+          165.0
+        ],
+        [
+          526.0,
+          955.0,
+          165.0
+        ],
+        [
+          488.0,
+          955.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_portal_id": "PORTAL_2F_CLASS202",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_2F_CLASS203_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          488.0,
+          1320.0,
+          165.0
+        ],
+        [
+          526.0,
+          1320.0,
+          165.0
+        ],
+        [
+          526.0,
+          1360.0,
+          165.0
+        ],
+        [
+          488.0,
+          1360.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_portal_id": "PORTAL_2F_CLASS203",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_2F_CLASS204_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          488.0,
+          1722.0,
+          165.0
+        ],
+        [
+          526.0,
+          1722.0,
+          165.0
+        ],
+        [
+          526.0,
+          1762.0,
+          165.0
+        ],
+        [
+          488.0,
+          1762.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_portal_id": "PORTAL_2F_CLASS204",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_2F_GALLERY_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1125.0,
+          500.0,
+          165.0
+        ],
+        [
+          1125.0,
+          508.96783447265625,
+          165.0
+        ],
+        [
+          1055.0,
+          508.96783447265625,
+          165.0
+        ],
+        [
+          1055.0,
+          500.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_portal_id": "PORTAL_2F_GALLERY",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_2F_MEETINGROOM_01_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1760.0,
+          644.0,
+          165.0
+        ],
+        [
+          1762.0,
+          644.0,
+          165.0
+        ],
+        [
+          1762.0,
+          664.0,
+          165.0
+        ],
+        [
+          1760.0,
+          664.0,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_portal_id": "PORTAL_2F_MEETINGROOM_01",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_2F_MEETINGROOM_02_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1500.0,
+          757.0,
+          165.0
+        ],
+        [
+          1497.0,
+          757.0,
+          165.0
+        ],
+        [
+          1497.0,
+          722.9495849609375,
+          165.0
+        ],
+        [
+          1500.0,
+          722.9495849609375,
+          165.0
+        ],
+        [
+          1497.0,
+          657.0,
+          165.0
+        ],
+        [
+          1500.0,
+          657.0,
+          165.0
+        ],
+        [
+          1500.0,
+          722.9495849609375,
+          165.0
+        ],
+        [
+          1497.0,
+          722.9495849609375,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_portal_id": "PORTAL_2F_MEETINGROOM_02",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "WALK_2F_OFFICE_THRESHOLD",
+      "create": true,
+      "vertices": [
+        [
+          1467.0,
+          1699.6214599609375,
+          165.0
+        ],
+        [
+          1467.0,
+          1710.0,
+          165.0
+        ],
+        [
+          1397.0,
+          1710.0,
+          165.0
+        ],
+        [
+          1397.0,
+          1699.6214599609375,
+          165.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ],
+      "collection": "WALKABLE_AREAS",
+      "properties": {
+        "semantic_class": "WALKABLE",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "floor_id": "2F",
+        "source_portal_id": "PORTAL_2F_OFFICE",
+        "source_geometry": "EXPLICIT_PORTAL_SECTION_MINUS_OBSTACLE_AND_EXISTING_WALK"
+      }
+    },
+    {
+      "object": "STAIR_A_PATH",
+      "create": true,
+      "collection": "STAIR_ANNOTATIONS",
+      "vertices": [
+        [
+          1524.6468505859375,
+          1375.331787109375,
+          22.862010955810547
+        ],
+        [
+          1641.1087646484375,
+          1375.331787109375,
+          91.13798522949219
+        ],
+        [
+          1524.6468505859375,
+          1428.145263671875,
+          22.862010955810547
+        ],
+        [
+          1641.1087646484375,
+          1428.145263671875,
+          91.13798522949219
+        ],
+        [
+          1519.5140380859375,
+          1317.749267578125,
+          161.0
+        ],
+        [
+          1640.7576904296875,
+          1317.749267578125,
+          91.0
+        ],
+        [
+          1519.5140380859375,
+          1370.562744140625,
+          161.0
+        ],
+        [
+          1640.7576904296875,
+          1370.562744140625,
+          91.0
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          3,
+          2
+        ],
+        [
+          4,
+          5,
+          7
+        ],
+        [
+          4,
+          7,
+          6
+        ]
+      ],
+      "properties": {
+        "semantic_class": "STAIR",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "stair_id": "A",
+        "stair_role": "PATH",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "source_objects": [
+          "WALK_STAIRS_A_LOWERHALF",
+          "WALK_STAIRS_A_UPPERHALF"
+        ],
+        "path_segment_points_json": "[[[1524.6468505859375, 1401.738525390625, 22.862010955810547], [1641.1087646484375, 1401.738525390625, 91.13798522949219]], [[1640.7576904296875, 1344.156005859375, 91.0], [1519.5140380859375, 1344.156005859375, 161.0]]]",
+        "path_continuity_review": "HUMAN_REVIEW_MISSING_LANDING_BETWEEN_SOURCE_HALVES",
+        "slab_opening_review": "REVIEW"
+      }
+    },
+    {
+      "object": "STAIR_B_PATH",
+      "create": true,
+      "collection": "STAIR_ANNOTATIONS",
+      "vertices": [
+        [
+          594.3112182617188,
+          1923.7296142578125,
+          25.126384735107422
+        ],
+        [
+          594.3112182617188,
+          2035.8782958984375,
+          90.87361145019531
+        ],
+        [
+          541.4977416992188,
+          1923.7296142578125,
+          25.126384735107422
+        ],
+        [
+          541.4977416992188,
+          2035.8782958984375,
+          90.87361145019531
+        ],
+        [
+          651.8185424804688,
+          1921.09912109375,
+          158.75
+        ],
+        [
+          651.8185424804688,
+          2038.012451171875,
+          91.25
+        ],
+        [
+          599.0050659179688,
+          1921.09912109375,
+          158.75
+        ],
+        [
+          599.0050659179688,
+          2038.012451171875,
+          91.25
+        ]
+      ],
+      "faces": [
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          3,
+          2
+        ],
+        [
+          4,
+          5,
+          7
+        ],
+        [
+          4,
+          7,
+          6
+        ]
+      ],
+      "properties": {
+        "semantic_class": "STAIR",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "stair_id": "B",
+        "stair_role": "PATH",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "source_objects": [
+          "WALK_STAIRS_B_LOWERHALF",
+          "WALK_STAIRS_B_UPPERHALF"
+        ],
+        "path_segment_points_json": "[[[567.9044799804688, 1923.7296142578125, 25.126384735107422], [567.9044799804688, 2035.8782958984375, 90.87361145019531]], [[625.4118041992188, 2038.012451171875, 91.25], [625.4118041992188, 1921.09912109375, 158.75]]]",
+        "path_continuity_review": "HUMAN_REVIEW_MISSING_LANDING_BETWEEN_SOURCE_HALVES",
+        "slab_opening_review": "REVIEW"
+      }
+    }
+  ],
+  "markers": [
+    {
+      "object": "STAIR_A_ENTRY",
+      "position": [
+        1524.6468505859375,
+        1401.738525390625,
+        22.862010955810547
+      ],
+      "collection": "STAIR_ANNOTATIONS",
+      "properties": {
+        "semantic_class": "STAIR",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "stair_id": "A",
+        "stair_role": "ENTRY",
+        "floor_id": "1F",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "anchor_basis": "EXISTING_SOURCE_HALF_END_EDGE_CENTER",
+        "walkable_contact_review": "HUMAN_REVIEW_NOT_CONNECTED_BY_FABRICATED_GEOMETRY"
+      }
+    },
+    {
+      "object": "STAIR_A_EXIT",
+      "position": [
+        1519.5140380859375,
+        1344.156005859375,
+        161.0
+      ],
+      "collection": "STAIR_ANNOTATIONS",
+      "properties": {
+        "semantic_class": "STAIR",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "stair_id": "A",
+        "stair_role": "EXIT",
+        "floor_id": "2F",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "anchor_basis": "EXISTING_SOURCE_HALF_END_EDGE_CENTER",
+        "walkable_contact_review": "HUMAN_REVIEW_NOT_CONNECTED_BY_FABRICATED_GEOMETRY"
+      }
+    },
+    {
+      "object": "STAIR_B_ENTRY",
+      "position": [
+        567.9044799804688,
+        1923.7296142578125,
+        25.126384735107422
+      ],
+      "collection": "STAIR_ANNOTATIONS",
+      "properties": {
+        "semantic_class": "STAIR",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "stair_id": "B",
+        "stair_role": "ENTRY",
+        "floor_id": "1F",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "anchor_basis": "EXISTING_SOURCE_HALF_END_EDGE_CENTER",
+        "walkable_contact_review": "HUMAN_REVIEW_NOT_CONNECTED_BY_FABRICATED_GEOMETRY"
+      }
+    },
+    {
+      "object": "STAIR_B_EXIT",
+      "position": [
+        625.4118041992188,
+        1921.09912109375,
+        158.75
+      ],
+      "collection": "STAIR_ANNOTATIONS",
+      "properties": {
+        "semantic_class": "STAIR",
+        "semantic_review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
+        "geometry_authority": "ANNOTATION_PROXY_NOT_PHYSICAL_CERTIFICATION",
+        "stair_id": "B",
+        "stair_role": "EXIT",
+        "floor_id": "2F",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "direction": "UP",
+        "anchor_basis": "EXISTING_SOURCE_HALF_END_EDGE_CENTER",
+        "walkable_contact_review": "HUMAN_REVIEW_NOT_CONNECTED_BY_FABRICATED_GEOMETRY"
+      }
+    }
+  ],
+  "area_floor_results": [
+    {
+      "area_id": "AREA_1F_AUDITORIUM",
+      "walkable_object": "WALK_1F_AUDITORIUM",
+      "area_footprint_area": 377400.0,
+      "nonblocking_floor_area": 377400.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_CLASS101",
+      "walkable_object": "WALK_1F_CLASS101",
+      "area_footprint_area": 99840.0,
+      "nonblocking_floor_area": 99840.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_CLASS102",
+      "walkable_object": "WALK_1F_CLASS102",
+      "area_footprint_area": 99840.0,
+      "nonblocking_floor_area": 99840.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_CLASS103",
+      "walkable_object": "WALK_1F_CLASS103",
+      "area_footprint_area": 99840.0,
+      "nonblocking_floor_area": 99840.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_CLASS104",
+      "walkable_object": "WALK_1F_CLASS104",
+      "area_footprint_area": 99840.0,
+      "nonblocking_floor_area": 99840.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_LADYSROOM",
+      "walkable_object": null,
+      "area_footprint_area": 29956.18048095703,
+      "nonblocking_floor_area": 0,
+      "raw_area_coverage_expected": 0.0,
+      "nonblocking_floor_coverage": null,
+      "status": "HUMAN_REVIEW_FULLY_BLOCKED_BY_CONFIRMED_OBSTACLE"
+    },
+    {
+      "area_id": "AREA_1F_MEETINGROOM",
+      "walkable_object": "WALK_1F_MEETINGROOM",
+      "area_footprint_area": 135200.0,
+      "nonblocking_floor_area": 135200.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_MENSROOM",
+      "walkable_object": null,
+      "area_footprint_area": 29956.18408203125,
+      "nonblocking_floor_area": 0,
+      "raw_area_coverage_expected": 0.0,
+      "nonblocking_floor_coverage": null,
+      "status": "HUMAN_REVIEW_FULLY_BLOCKED_BY_CONFIRMED_OBSTACLE"
+    },
+    {
+      "area_id": "AREA_1F_OFFICE",
+      "walkable_object": "WALK_1F_OFFICE",
+      "area_footprint_area": 210000.0,
+      "nonblocking_floor_area": 62174.95488983393,
+      "raw_area_coverage_expected": 0.29607121376111395,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_RESTAURANT_A",
+      "walkable_object": "WALK_1F_RESTAURANT_A",
+      "area_footprint_area": 77400.0,
+      "nonblocking_floor_area": 62800.532686032355,
+      "raw_area_coverage_expected": 0.8113763912924077,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_RESTAURANT_B",
+      "walkable_object": "WALK_1F_RESTAURANT_B",
+      "area_footprint_area": 54000.0,
+      "nonblocking_floor_area": 54000.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_1F_STORAGE",
+      "walkable_object": "WALK_1F_STORAGE",
+      "area_footprint_area": 54600.0,
+      "nonblocking_floor_area": 44652.14902851731,
+      "raw_area_coverage_expected": 0.8178049272622219,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_2F_CLASS201",
+      "walkable_object": "WALK_2F_CLASS201",
+      "area_footprint_area": 99840.0,
+      "nonblocking_floor_area": 99840.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_2F_CLASS202",
+      "walkable_object": "WALK_2F_CLASS202",
+      "area_footprint_area": 99840.0,
+      "nonblocking_floor_area": 99840.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_2F_CLASS203",
+      "walkable_object": "WALK_2F_CLASS203",
+      "area_footprint_area": 99840.0,
+      "nonblocking_floor_area": 99840.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_2F_CLASS204",
+      "walkable_object": "WALK_2F_CLASS204",
+      "area_footprint_area": 99840.0,
+      "nonblocking_floor_area": 99840.0,
+      "raw_area_coverage_expected": 1.0,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_2F_GALLERY",
+      "walkable_object": "WALK_2F_GALLERY",
+      "area_footprint_area": 200000.0,
+      "nonblocking_floor_area": 169469.35662472248,
+      "raw_area_coverage_expected": 0.8473467831236124,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_2F_LADYSROOM",
+      "walkable_object": null,
+      "area_footprint_area": 29956.18048095703,
+      "nonblocking_floor_area": 0,
+      "raw_area_coverage_expected": 0.0,
+      "nonblocking_floor_coverage": null,
+      "status": "HUMAN_REVIEW_FULLY_BLOCKED_BY_CONFIRMED_OBSTACLE"
+    },
+    {
+      "area_id": "AREA_2F_MEETINGROOM",
+      "walkable_object": "WALK_2F_MEETINGROOM",
+      "area_footprint_area": 135200.0,
+      "nonblocking_floor_area": 121342.56655573845,
+      "raw_area_coverage_expected": 0.897504190501024,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    },
+    {
+      "area_id": "AREA_2F_MENSROOM",
+      "walkable_object": null,
+      "area_footprint_area": 29956.18408203125,
+      "nonblocking_floor_area": 0,
+      "raw_area_coverage_expected": 0.0,
+      "nonblocking_floor_coverage": null,
+      "status": "HUMAN_REVIEW_FULLY_BLOCKED_BY_CONFIRMED_OBSTACLE"
+    },
+    {
+      "area_id": "AREA_2F_OFFICE",
+      "walkable_object": "WALK_2F_OFFICE",
+      "area_footprint_area": 210000.0,
+      "nonblocking_floor_area": 62174.95488983393,
+      "raw_area_coverage_expected": 0.29607121376111395,
+      "nonblocking_floor_coverage": 1.0,
+      "status": "CREATED_OR_EXTENDED"
+    }
+  ],
+  "portal_annotation_results": [
+    {
+      "portal_id": "PORTAL_1F_AUDITORIUM",
+      "room_area_id": "AREA_1F_AUDITORIUM",
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_AUDITORIUM_OFFICE",
+      "room_area_id": "AREA_1F_OFFICE",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_CLASS101",
+      "room_area_id": "AREA_1F_CLASS101",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_CLASS102",
+      "room_area_id": "AREA_1F_CLASS102",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_CLASS103",
+      "room_area_id": "AREA_1F_CLASS103",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_CLASS104",
+      "room_area_id": "AREA_1F_CLASS104",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_LADYSROOM",
+      "room_area_id": "AREA_1F_LADYSROOM",
+      "normal": null,
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_MAIN_ENTRANCE",
+      "room_area_id": "AREA_1F_MAIN_ENTRANCE",
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_MEETINGROOM_01",
+      "room_area_id": "AREA_1F_MEETINGROOM",
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_MEETINGROOM_02",
+      "room_area_id": "AREA_1F_MEETINGROOM",
+      "normal": null,
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_MENSROOM",
+      "room_area_id": "AREA_1F_MENSROOM",
+      "normal": null,
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_OFFICE",
+      "room_area_id": "AREA_1F_OFFICE",
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_RESTAURANT_A",
+      "room_area_id": "AREA_1F_RESTAURANT_A",
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_RESTAURANT_B",
+      "room_area_id": "AREA_1F_RESTAURANT_B",
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_SIDE_ENTRANCE",
+      "room_area_id": "AREA_1F_SIDE_ENTRANCE",
+      "normal": null,
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_1F_STORAGE",
+      "room_area_id": "AREA_1F_STORAGE",
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_BALCONY_LEFT",
+      "room_area_id": "AREA_2F_BALCONY_LEFT",
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "INTENTIONAL_NONWALKABLE_DESTINATION"
+    },
+    {
+      "portal_id": "PORTAL_2F_BALCONY_RIGHT",
+      "room_area_id": "AREA_2F_BALCONY_RIGHT",
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "INTENTIONAL_NONWALKABLE_DESTINATION"
+    },
+    {
+      "portal_id": "PORTAL_2F_CLASS201",
+      "room_area_id": "AREA_2F_CLASS201",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_CLASS202",
+      "room_area_id": "AREA_2F_CLASS202",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_CLASS203",
+      "room_area_id": "AREA_2F_CLASS203",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_CLASS204",
+      "room_area_id": "AREA_2F_CLASS204",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_GALLERY",
+      "room_area_id": "AREA_2F_GALLERY",
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_LADYSROOM",
+      "room_area_id": "AREA_2F_LADYSROOM",
+      "normal": null,
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_MEETINGROOM_01",
+      "room_area_id": "AREA_2F_MEETINGROOM",
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_MEETINGROOM_02",
+      "room_area_id": "AREA_2F_MEETINGROOM",
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_MENSROOM",
+      "room_area_id": "AREA_2F_MENSROOM",
+      "normal": null,
+      "threshold_added": false,
+      "outside_portal_bridge_added": false,
+      "position_correction": [
+        0,
+        0,
+        140
+      ],
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    },
+    {
+      "portal_id": "PORTAL_2F_OFFICE",
+      "room_area_id": "AREA_2F_OFFICE",
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "threshold_added": true,
+      "outside_portal_bridge_added": false,
+      "position_correction": null,
+      "status": "ANNOTATED_LOCAL_APERTURE_CONNECTION_REQUIRES_POST_AUDIT"
+    }
+  ],
+  "stair_annotation_results": [
+    {
+      "stair_id": "A",
+      "source_half_segments": [
+        [
+          [
+            1524.6468505859375,
+            1401.738525390625,
+            22.862010955810547
+          ],
+          [
+            1641.1087646484375,
+            1401.738525390625,
+            91.13798522949219
+          ]
+        ],
+        [
+          [
+            1640.7576904296875,
+            1344.156005859375,
+            91.0
+          ],
+          [
+            1519.5140380859375,
+            1344.156005859375,
+            161.0
+          ]
+        ]
+      ],
+      "missing_landing_centerline_gap": 57.58375507551949,
+      "entry_position": [
+        1524.6468505859375,
+        1401.738525390625,
+        22.862010955810547
+      ],
+      "exit_position": [
+        1519.5140380859375,
+        1344.156005859375,
+        161.0
+      ],
+      "status": "HUMAN_REVIEW_DISCONTINUOUS_SOURCE_GEOMETRY",
+      "ordered_full_path_created": false,
+      "landing_created": false
+    },
+    {
+      "stair_id": "B",
+      "source_half_segments": [
+        [
+          [
+            567.9044799804688,
+            1923.7296142578125,
+            25.126384735107422
+          ],
+          [
+            567.9044799804688,
+            2035.8782958984375,
+            90.87361145019531
+          ]
+        ],
+        [
+          [
+            625.4118041992188,
+            2038.012451171875,
+            91.25
+          ],
+          [
+            625.4118041992188,
+            1921.09912109375,
+            158.75
+          ]
+        ]
+      ],
+      "missing_landing_centerline_gap": 57.548141810765664,
+      "entry_position": [
+        567.9044799804688,
+        1923.7296142578125,
+        25.126384735107422
+      ],
+      "exit_position": [
+        625.4118041992188,
+        1921.09912109375,
+        158.75
+      ],
+      "status": "HUMAN_REVIEW_DISCONTINUOUS_SOURCE_GEOMETRY",
+      "ordered_full_path_created": false,
+      "landing_created": false
+    }
+  ],
+  "baseline": {
+    "semantic_counts": {
+      "AREA": 30,
+      "WALKABLE": 18,
+      "WALL": 0,
+      "OBSTACLE": 0,
+      "STAIR": 0,
+      "PORTAL": 28,
+      "CAM": 29
+    },
+    "review_counts": {
+      "HIGH": 49,
+      "MEDIUM": 170,
+      "LOW": 43
+    },
+    "area_coverage": [
+      {
+        "area_id": "AREA_1F_AUDITORIUM",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_SIDE_ENTRANCE",
+        "nearest_distance_m": 15.7208251953125,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_CLASS101",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_04",
+        "nearest_distance_m": 42.99114990234375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_CLASS102",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_04",
+        "nearest_distance_m": 42.99114990234375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_CLASS103",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_04",
+        "nearest_distance_m": 42.99114990234375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_CLASS104",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_BATHROOM",
+        "nearest_distance_m": 19.8023681640625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_COURTYARD",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_03",
+        "nearest_distance_m": 2.4937744140625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_ELEVATOR",
+        "floor": "1F",
+        "status": "REVIEW",
+        "coverage_status": "PARTIAL",
+        "walkable_overlap_ratio": 0.27032745361328125,
+        "uncovered_ratio": 0.7296725463867187,
+        "overlapping_walkables": [
+          "WALK_1F_CORRIDOR_01"
+        ],
+        "nearest_walkable": "WALK_1F_CORRIDOR_01",
+        "nearest_distance_m": 0.0,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_LADYSROOM",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_BATHROOM",
+        "nearest_distance_m": 20.7886962890625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_MAIN_ENTRANCE",
+        "floor": "1F",
+        "status": "REVIEW",
+        "coverage_status": "PASS",
+        "walkable_overlap_ratio": 0.9581232244318182,
+        "uncovered_ratio": 0.04187677556818181,
+        "overlapping_walkables": [
+          "WALK_1F_MAIN_ENTRANCE"
+        ],
+        "nearest_walkable": "WALK_1F_MAIN_ENTRANCE",
+        "nearest_distance_m": 0.0,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_MEETINGROOM",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_02",
+        "nearest_distance_m": 8.587646484375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_MENSROOM",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_BATHROOM",
+        "nearest_distance_m": 20.7886962890625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_OFFICE",
+        "floor": "1F",
+        "status": "REVIEW",
+        "coverage_status": "PARTIAL",
+        "walkable_overlap_ratio": 0.20574157260258993,
+        "uncovered_ratio": 0.79425842739741,
+        "overlapping_walkables": [
+          "WALK_1F_OFFICE"
+        ],
+        "nearest_walkable": "WALK_1F_OFFICE",
+        "nearest_distance_m": 0.0,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_RESTAURANT_A",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_01",
+        "nearest_distance_m": 16.96783447265625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_RESTAURANT_B",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_01",
+        "nearest_distance_m": 16.96783447265625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_SIDE_ENTRANCE",
+        "floor": "1F",
+        "status": "REVIEW",
+        "coverage_status": "PASS",
+        "walkable_overlap_ratio": 0.917706298828125,
+        "uncovered_ratio": 0.08229370117187496,
+        "overlapping_walkables": [
+          "WALK_1F_SIDE_ENTRANCE"
+        ],
+        "nearest_walkable": "WALK_1F_SIDE_ENTRANCE",
+        "nearest_distance_m": 0.0,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_1F_STORAGE",
+        "floor": "1F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_02",
+        "nearest_distance_m": 8.587646484375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_BALCONY_LEFT",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_CORRIDOR_04",
+        "nearest_distance_m": 17.47027587890625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_BALCONY_RIGHT",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_CORRIDOR_02",
+        "nearest_distance_m": 9.873779296875,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_CLASS201",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_CORRIDOR_04",
+        "nearest_distance_m": 42.99114990234375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_CLASS202",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_CORRIDOR_04",
+        "nearest_distance_m": 42.99114990234375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_CLASS203",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_CORRIDOR_04",
+        "nearest_distance_m": 42.99114990234375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_CLASS204",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_BATHROOM",
+        "nearest_distance_m": 19.8023681640625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_ELEVATOR",
+        "floor": "2F",
+        "status": "REVIEW",
+        "coverage_status": "PARTIAL",
+        "walkable_overlap_ratio": 0.27032745361328125,
+        "uncovered_ratio": 0.7296725463867187,
+        "overlapping_walkables": [
+          "WALK_2F_CORRIDOR_01"
+        ],
+        "nearest_walkable": "WALK_2F_CORRIDOR_01",
+        "nearest_distance_m": 0.0,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_GALLERY",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_CORRIDOR_01",
+        "nearest_distance_m": 8.96783447265625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_LADYSROOM",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_BATHROOM",
+        "nearest_distance_m": 20.7886962890625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_MEETINGROOM",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_CORRIDOR_02",
+        "nearest_distance_m": 8.587646484375,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_MENSROOM",
+        "floor": "2F",
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_2F_BATHROOM",
+        "nearest_distance_m": 20.7886962890625,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_2F_OFFICE",
+        "floor": "2F",
+        "status": "REVIEW",
+        "coverage_status": "PARTIAL",
+        "walkable_overlap_ratio": 0.20574157260258993,
+        "uncovered_ratio": 0.79425842739741,
+        "overlapping_walkables": [
+          "WALK_2F_OFFICE"
+        ],
+        "nearest_walkable": "WALK_2F_OFFICE",
+        "nearest_distance_m": 0.0,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_STAIR_A",
+        "floor": null,
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_STAIRS_A_LOWERHALF",
+        "nearest_distance_m": 0.0,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      },
+      {
+        "area_id": "AREA_STAIR_B",
+        "floor": null,
+        "status": "MISSING",
+        "coverage_status": "MISSING",
+        "walkable_overlap_ratio": 0.0,
+        "uncovered_ratio": 1.0,
+        "overlapping_walkables": [],
+        "nearest_walkable": "WALK_1F_CORRIDOR_04",
+        "nearest_distance_m": 0.0,
+        "floor_consistency": "REVIEW",
+        "geometry_offset_m": 0,
+        "geometry_basis": "EVALUATED_MESH_XY",
+        "authority": "HEURISTIC"
+      }
+    ],
+    "walkable_connectivity": {
+      "authority": "HEURISTIC_DIAGNOSTIC_ONLY",
+      "connected_component_count": 9,
+      "components": [
+        [
+          "WALK_1F_BATHROOM",
+          "WALK_1F_CORRIDOR_01",
+          "WALK_1F_CORRIDOR_02",
+          "WALK_1F_CORRIDOR_03",
+          "WALK_1F_CORRIDOR_04",
+          "WALK_1F_MAIN_ENTRANCE"
+        ],
+        [
+          "WALK_1F_OFFICE"
+        ],
+        [
+          "WALK_1F_SIDE_ENTRANCE"
+        ],
+        [
+          "WALK_2F_BATHROOM",
+          "WALK_2F_CORRIDOR_01",
+          "WALK_2F_CORRIDOR_02",
+          "WALK_2F_CORRIDOR_03",
+          "WALK_2F_CORRIDOR_04"
+        ],
+        [
+          "WALK_2F_OFFICE"
+        ],
+        [
+          "WALK_STAIRS_A_LOWERHALF"
+        ],
+        [
+          "WALK_STAIRS_A_UPPERHALF"
+        ],
+        [
+          "WALK_STAIRS_B_LOWERHALF"
+        ],
+        [
+          "WALK_STAIRS_B_UPPERHALF"
+        ]
+      ],
+      "component_details": [
+        {
+          "objects": [
+            "WALK_1F_BATHROOM",
+            "WALK_1F_CORRIDOR_01",
+            "WALK_1F_CORRIDOR_02",
+            "WALK_1F_CORRIDOR_03",
+            "WALK_1F_CORRIDOR_04",
+            "WALK_1F_MAIN_ENTRANCE"
+          ],
+          "floor": "1F",
+          "area_m2": 638054.1022275202
+        },
+        {
+          "objects": [
+            "WALK_1F_OFFICE"
+          ],
+          "floor": "1F",
+          "area_m2": 43205.730246543884
+        },
+        {
+          "objects": [
+            "WALK_1F_SIDE_ENTRANCE"
+          ],
+          "floor": "1F",
+          "area_m2": 24467.61827248335
+        },
+        {
+          "objects": [
+            "WALK_2F_BATHROOM",
+            "WALK_2F_CORRIDOR_01",
+            "WALK_2F_CORRIDOR_02",
+            "WALK_2F_CORRIDOR_03",
+            "WALK_2F_CORRIDOR_04"
+          ],
+          "floor": "2F",
+          "area_m2": 592408.7094786875
+        },
+        {
+          "objects": [
+            "WALK_2F_OFFICE"
+          ],
+          "floor": "2F",
+          "area_m2": 43205.730246543884
+        },
+        {
+          "objects": [
+            "WALK_STAIRS_A_LOWERHALF"
+          ],
+          "floor": null,
+          "area_m2": 6150.758568763733
+        },
+        {
+          "objects": [
+            "WALK_STAIRS_A_UPPERHALF"
+          ],
+          "floor": null,
+          "area_m2": 6403.298791408539
+        },
+        {
+          "objects": [
+            "WALK_STAIRS_B_LOWERHALF"
+          ],
+          "floor": null,
+          "area_m2": 5922.9617693424225
+        },
+        {
+          "objects": [
+            "WALK_STAIRS_B_UPPERHALF"
+          ],
+          "floor": null,
+          "area_m2": 6174.599417924881
+        }
+      ],
+      "isolated_walkables": [
+        "WALK_1F_OFFICE",
+        "WALK_1F_SIDE_ENTRANCE",
+        "WALK_2F_OFFICE",
+        "WALK_STAIRS_A_LOWERHALF",
+        "WALK_STAIRS_A_UPPERHALF",
+        "WALK_STAIRS_B_LOWERHALF",
+        "WALK_STAIRS_B_UPPERHALF"
+      ],
+      "edges": [
+        {
+          "from": "WALK_1F_BATHROOM",
+          "to": "WALK_1F_CORRIDOR_04",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_1F_CORRIDOR_01",
+          "to": "WALK_1F_CORRIDOR_02",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_1F_CORRIDOR_01",
+          "to": "WALK_1F_CORRIDOR_04",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_1F_CORRIDOR_01",
+          "to": "WALK_1F_MAIN_ENTRANCE",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_1F_CORRIDOR_02",
+          "to": "WALK_1F_CORRIDOR_03",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_1F_CORRIDOR_03",
+          "to": "WALK_1F_CORRIDOR_04",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_2F_BATHROOM",
+          "to": "WALK_2F_CORRIDOR_04",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_2F_CORRIDOR_01",
+          "to": "WALK_2F_CORRIDOR_02",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_2F_CORRIDOR_01",
+          "to": "WALK_2F_CORRIDOR_04",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_2F_CORRIDOR_02",
+          "to": "WALK_2F_CORRIDOR_03",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        },
+        {
+          "from": "WALK_2F_CORRIDOR_03",
+          "to": "WALK_2F_CORRIDOR_04",
+          "distance_m": 0.0,
+          "authority": "DIAGNOSTIC_ONLY_NOT_INFERENCE_EDGE"
+        }
+      ],
+      "endpoint_accessibility": [],
+      "stair_edges_created": false,
+      "portal_edges_created": false
+    },
+    "portal_validation": [
+      {
+        "portal_id": "PORTAL_1F_AUDITORIUM",
+        "floor": "1F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_1F_CORRIDOR_02"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_AUDITORIUM_OFFICE",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_CLASS101",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_CLASS102",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_CLASS103",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_CLASS104",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_LADYSROOM",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_MAIN_ENTRANCE",
+        "floor": "1F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_1F_CORRIDOR_01",
+          "WALK_1F_MAIN_ENTRANCE"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_MEETINGROOM_01",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_MEETINGROOM_02",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_MENSROOM",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_OFFICE",
+        "floor": "1F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_1F_CORRIDOR_03",
+          "WALK_1F_OFFICE"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_RESTAURANT_A",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_RESTAURANT_B",
+        "floor": "1F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_SIDE_ENTRANCE",
+        "floor": "1F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_1F_SIDE_ENTRANCE"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_1F_STORAGE",
+        "floor": "1F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_1F_CORRIDOR_02"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_BALCONY_LEFT",
+        "floor": "2F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_2F_CORRIDOR_01"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_BALCONY_RIGHT",
+        "floor": "2F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_2F_CORRIDOR_01"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_CLASS201",
+        "floor": "2F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_CLASS202",
+        "floor": "2F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_CLASS203",
+        "floor": "2F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_CLASS204",
+        "floor": "2F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_GALLERY",
+        "floor": "2F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_2F_CORRIDOR_01"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_LADYSROOM",
+        "floor": "2F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_MEETINGROOM_01",
+        "floor": "2F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_MEETINGROOM_02",
+        "floor": "2F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_MENSROOM",
+        "floor": "2F",
+        "status": "MISSING",
+        "nearby_walkables": [],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      },
+      {
+        "portal_id": "PORTAL_2F_OFFICE",
+        "floor": "2F",
+        "status": "REVIEW",
+        "nearby_walkables": [
+          "WALK_2F_CORRIDOR_03",
+          "WALK_2F_OFFICE"
+        ],
+        "side_accessibility": {
+          "negative": [],
+          "positive": []
+        },
+        "orientation": "REVIEW",
+        "floor_consistency": "HEURISTIC",
+        "connectivity_created": false
+      }
+    ]
+  },
+  "baseline_audit_sha256": "826d22017fca34982c28b738e8d26e5e9326716bdb294de84ed2e4c78fefae6e",
+  "planned_surface_obstacle_overlap_check": "PASSED_EXACT_CONVEX_POLYGON_INTERSECTIONS"
+}

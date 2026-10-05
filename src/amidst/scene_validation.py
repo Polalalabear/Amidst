@@ -24,6 +24,15 @@ Point = tuple[float, float]
 Polygon = list[Point]
 KINDS = ("AREA", "WALKABLE", "WALL", "OBSTACLE", "STAIR", "PORTAL", "CAM")
 PHYSICAL = {"WALKABLE", "WALL", "OBSTACLE", "STAIR"}
+AREA_DECLARATION_FIELDS = (
+    "walkable",
+    "exclusion_reason",
+    "coverage_scope",
+    "floor_from",
+    "floor_to",
+    "stair_id",
+    "semantic_review_id",
+)
 _GEOMETRY_BUDGET: ContextVar[dict[str, int] | None] = ContextVar(
     "scene_validation_budget", default=None
 )
@@ -372,11 +381,95 @@ def _source_hash(scene: dict[str, Any]) -> str | None:
     return value if isinstance(value, str) else None
 
 
+def _nonempty_string(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _has_area_declaration(props: dict[str, Any]) -> bool:
+    return any(key in props for key in ("walkable", "exclusion_reason", "coverage_scope"))
+
+
+def _declared_area_evidence(scene: dict[str, Any]) -> list[dict[str, Any]]:
+    """Preserve new declarations even if bounded geometry processing cannot finish."""
+    collections = {r.get("collection", r.get("name")): r for r in scene.get("collections", [])}
+    result = []
+    for raw in scene.get("objects", []):
+        name = raw.get("object", raw.get("name", ""))
+        props = _props(raw)
+        area_role = _class(name) == "AREA" or props.get("semantic_class") == "AREA"
+        area_role |= any(
+            _class(c) == "AREA" or _props(collections.get(c, {})).get("semantic_class") == "AREA"
+            for c in raw.get("collections", [])
+        )
+        if area_role and _has_area_declaration(props):
+            result.append(
+                {
+                    "object_id": name,
+                    "declared_fields": _safe_json(
+                        {key: props[key] for key in AREA_DECLARATION_FIELDS if key in props}
+                    ),
+                    "source_sha256": _source_hash(scene),
+                }
+            )
+    return result
+
+
+def _area_declaration(
+    name: str, props: dict[str, Any], config: dict[str, Any], issue: Any
+) -> dict[str, Any]:
+    """Review identity records semantic intent, never floor or traversal approval."""
+    if not _has_area_declaration(props):
+        return {}
+    errors = []
+    walkable = props.get("walkable")
+    scope = props.get("coverage_scope")
+    mode = "STANDARD"
+    if "walkable" in props and not isinstance(walkable, bool):
+        errors.append("walkable must be a boolean")
+    if "coverage_scope" in props and scope != "CROSS_FLOOR":
+        errors.append("coverage_scope must be CROSS_FLOOR when provided")
+    if scope == "CROSS_FLOOR":
+        mode = "CROSS_FLOOR"
+        if walkable is False or "exclusion_reason" in props:
+            errors.append("cross-floor coverage and nonwalkable exclusion cannot be combined")
+        floor_from, floor_to = props.get("floor_from"), props.get("floor_to")
+        if not _nonempty_string(floor_from) or floor_from not in config["allowed_floors"]:
+            errors.append("floor_from must name a configured floor")
+        if not _nonempty_string(floor_to) or floor_to not in config["allowed_floors"]:
+            errors.append("floor_to must name a configured floor")
+        if floor_from == floor_to:
+            errors.append("cross-floor AREA must name two distinct floors")
+        if not _nonempty_string(props.get("stair_id")):
+            errors.append("cross-floor AREA requires a nonempty stair_id")
+        if not _nonempty_string(props.get("semantic_review_id")):
+            errors.append("cross-floor AREA requires a nonempty semantic_review_id")
+    elif walkable is False or "exclusion_reason" in props:
+        mode = "EXCLUDED"
+        if walkable is not False:
+            errors.append("nonwalkable exclusion requires explicit walkable=false")
+        if not _nonempty_string(props.get("exclusion_reason")):
+            errors.append("nonwalkable exclusion requires a nonempty exclusion_reason")
+        if not _nonempty_string(props.get("semantic_review_id")):
+            errors.append("nonwalkable exclusion requires a nonempty semantic_review_id")
+    evidence = _safe_json({key: props[key] for key in AREA_DECLARATION_FIELDS if key in props})
+    if errors:
+        issue(
+            "AREA_COVERAGE_DECLARATION_INVALID",
+            [name],
+            "HIGH",
+            "Incomplete or malformed AREA intent does not exempt ordinary coverage checks.",
+            errors=errors,
+            declared_fields=evidence,
+        )
+        mode = "INVALID"
+    return {"mode": mode, "declared_fields": evidence}
+
+
 def validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
     """Bounded validation; excessive geometry is explicitly incomplete and queued for review."""
     token = _GEOMETRY_BUDGET.set(config["geometry_complexity"])
     try:
-        return _validate_scene(scene, config)
+        report = _validate_scene(scene, config)
     except GeometryBudgetExceeded as error:
         finding = {
             "review_id": "SV-00001",
@@ -387,7 +480,7 @@ def validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, A
             "detail": str(error),
             "evidence": {},
         }
-        return {
+        report = {
             "schema_version": "scene-validation-v1",
             "status": "INCOMPLETE_REVIEW_REQUIRED",
             "source": scene.get("source", {}),
@@ -417,6 +510,10 @@ def validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, A
         }
     finally:
         _GEOMETRY_BUDGET.reset(token)
+    declarations = _declared_area_evidence(scene)
+    if declarations:
+        report["area_semantic_declarations"] = declarations
+    return report
 
 
 def _validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
@@ -468,6 +565,8 @@ def _validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, 
         if not labels:
             continue  # No interpretation of unlabeled group_*/Cube.*.
         kind = _class(name) or sorted(labels)[0]
+        declaration = _area_declaration(name, props, config, issue) if kind == "AREA" else {}
+        cross_floor = declaration.get("mode") == "CROSS_FLOOR"
         floor_labels = {
             _floor(name),
             raw.get("declared_floor_label"),
@@ -504,9 +603,14 @@ def _validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, 
                 "ERROR",
                 floor=floor,
             )
-        if floor is None and kind != "STAIR":
+        if floor is None and kind != "STAIR" and not cross_floor:
             issue("MISSING_FLOOR_LABEL", [name], "LOW", "No unambiguous explicit floor label.")
-        if _class(name) is None:
+        reviewed_walk_alias = (
+            kind == "WALKABLE"
+            and name.startswith("WALK_")
+            and _nonempty_string(props.get("semantic_review_id"))
+        )
+        if _class(name) is None and not reviewed_walk_alias:
             issue(
                 "NAMING_INCONSISTENCY",
                 [name],
@@ -515,6 +619,8 @@ def _validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, 
             )
         tokens = name.split("_")
         conflicting = sorted({token for token in tokens if token in KINDS} - {kind})
+        if cross_floor:
+            conflicting = [role for role in conflicting if role != "STAIR"]
         if conflicting:
             issue(
                 "CONFLICTING_NAME_PREFIX",
@@ -599,6 +705,7 @@ def _validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, 
             "area_m2": area,
             "plane_z_m": (lo[2] + hi[2]) / 2,
             "valid_geometry": box is not None and bool(footprints) and area > eps,
+            "coverage_declaration": declaration,
         }
         rows.append(row)
         _geometry_checks(row, tol, issue)
@@ -634,10 +741,26 @@ def _validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, 
     floor_checks = _floor_checks(rows, scene, config, issue)
     by_kind = {kind: [r for r in rows if r["kind"] == kind] for kind in KINDS}
     walkables = [r for r in by_kind["WALKABLE"] if r["valid_geometry"]]
-    coverage = _coverage(by_kind["AREA"], walkables, floor_checks, tol, issue)
+    coverage = _coverage(
+        by_kind["AREA"], walkables, floor_checks, tol, issue, source_sha256=_source_hash(scene)
+    )
     graph = _connectivity(walkables, scene.get("endpoints", []), tol, issue)
     portals = _portals(by_kind["PORTAL"], walkables, floor_checks, tol, issue)
     stairs = _stairs(by_kind["STAIR"], walkables, config, issue)
+    stair_groups = {group["stair_id"]: group for group in stairs["groups"]}
+    for item in coverage:
+        if item["coverage_status"] != "NOT_APPLICABLE":
+            continue
+        group = stair_groups.get(item["semantic_declaration"]["declared_fields"]["stair_id"])
+        item["stair_diagnostic_status"] = "MISSING" if group is None else group["status"]
+        if group is None:
+            issue(
+                "AREA_CROSS_FLOOR_STAIR_UNRESOLVED",
+                [item["area_id"]],
+                "HIGH",
+                "Declared cross-floor AREA has no matching explicit stair diagnostic group.",
+                stair_id=item["semantic_declaration"]["declared_fields"]["stair_id"],
+            )
     conflicts = _conflicts(by_kind, tol, issue)
     for kind in PHYSICAL:
         if not by_kind[kind]:
@@ -682,7 +805,9 @@ def _validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, 
             connected_components=sum(any(i in floor_ids for i in c) for c in graph["components"]),
             isolated_walkables=sum(i in floor_ids for i in graph["isolated_walkables"]),
             uncovered_areas=sum(
-                c["area_id"] in floor_ids and c["coverage_status"] != "PASS" for c in coverage
+                c["area_id"] in floor_ids
+                and c["coverage_status"] not in {"PASS", "EXCLUDED", "NOT_APPLICABLE"}
+                for c in coverage
             ),
             suspicious_portals=sum(
                 p["portal_id"] in floor_ids and p["status"] != "PASS" for p in portals
@@ -697,6 +822,7 @@ def _validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, 
                     "CONFLICTING_FLOOR_LABELS",
                     "CONFLICTING_NAME_PREFIX",
                     "WALKABLE_COLLIDER_OVERLAP",
+                    "AREA_NONWALKABLE_OVERLAP",
                 }
                 for f in findings
             ),
@@ -1033,22 +1159,74 @@ def _coverage(
     floors: dict[str, Any],
     tol: dict[str, Any],
     issue: Any,
+    source_sha256: str | None = None,
 ) -> list[dict[str, Any]]:
     result = []
     eps = tol["numeric_epsilon"]
     for area in areas:
-        same = [w for w in walkables if _same_floor(area, w)]
-        eligible = [
-            w
-            for w in same
-            if max(area["bounds"][0][2] - w["plane_z_m"], w["plane_z_m"] - area["bounds"][1][2], 0)
-            <= tol["floor_height_m"]
-        ]
+        declaration = area["coverage_declaration"]
+        mode = declaration.get("mode")
+        declared_evidence = {**declaration, "source_sha256": source_sha256} if declaration else None
+        if mode == "CROSS_FLOOR":
+            result.append(
+                {
+                    "area_id": area["id"],
+                    "floor": area["floor"],
+                    "status": "REVIEW",
+                    "coverage_status": "NOT_APPLICABLE",
+                    "walkable_overlap_ratio": None,
+                    "uncovered_ratio": None,
+                    "overlapping_walkables": [],
+                    "nearest_walkable": None,
+                    "nearest_distance_m": None,
+                    "floor_consistency": "REVIEW",
+                    "geometry_offset_m": None,
+                    "geometry_basis": area["representation"],
+                    "authority": "DECLARED_CROSS_FLOOR_AREA_NOT_TOPOLOGY",
+                    "semantic_declaration": declared_evidence,
+                }
+            )
+            issue(
+                "AREA_CROSS_FLOOR_REVIEW",
+                [area["id"]],
+                "MEDIUM",
+                "Cross-floor AREA defers traversal to explicit stair diagnostics; "
+                "semantic intent does not approve floor or stair connectivity.",
+                declared_fields=declaration["declared_fields"],
+                source_sha256=source_sha256,
+            )
+            continue
+        # A nonwalkable volume must not hide overlapping surfaces behind a floor-label mismatch.
+        same = walkables if mode == "EXCLUDED" else [w for w in walkables if _same_floor(area, w)]
+        if mode == "EXCLUDED":
+            # Sloped WALKABLE can enter the volume although its midpoint lies outside it.
+            eligible = [
+                w
+                for w in same
+                if max(
+                    area["bounds"][0][2] - w["bounds"][1][2],
+                    w["bounds"][0][2] - area["bounds"][1][2],
+                    0,
+                )
+                <= tol["floor_height_m"]
+            ]
+        else:
+            eligible = [
+                w
+                for w in same
+                if max(
+                    area["bounds"][0][2] - w["plane_z_m"],
+                    w["plane_z_m"] - area["bounds"][1][2],
+                    0,
+                )
+                <= tol["floor_height_m"]
+            ]
         pieces = [
             p for w in eligible for p in _intersections(area["footprints"], w["footprints"], eps)
         ]
         denominator = area["area_m2"]
-        ratio = min(1.0, _union_area(pieces, eps) / denominator) if denominator > eps else None
+        overlap_area = _union_area(pieces, eps) if denominator > eps or mode == "EXCLUDED" else 0.0
+        ratio = min(1.0, overlap_area / denominator) if denominator > eps else None
         if ratio is None:
             geometric = "REVIEW"
         elif ratio >= tol["coverage_pass_ratio"]:
@@ -1062,8 +1240,21 @@ def _coverage(
             and area["representation"] != "AABB_PROXY_ONLY"
             and all(w["representation"] != "AABB_PROXY_ONLY" for w in eligible)
         )
+        if mode == "EXCLUDED" and any(
+            w["bounds"][1][2] - w["bounds"][0][2] > tol["walkable_plane_extent_m"]
+            and _union_area(_intersections(area["footprints"], w["footprints"], eps), eps) > eps
+            for w in eligible
+        ):
+            reliable = False  # XY projection plus Z extents is conservative for nonplanar surfaces.
         approved_floor = floors.get(area["floor"], {}).get("approved", False)
         status = geometric if reliable and approved_floor or geometric == "MISSING" else "REVIEW"
+        if mode == "INVALID":
+            status = "REVIEW"
+        if mode == "EXCLUDED":
+            geometric = "EXCLUDED"
+            status = "EXCLUDED" if reliable and area["floor"] in floors else "REVIEW"
+            if overlap_area > eps:
+                status = "ERROR" if reliable else "REVIEW"
         nearest = min(
             walkables if area["valid_geometry"] else [],
             key=lambda w: math.hypot(
@@ -1089,7 +1280,7 @@ def _coverage(
             "status": status,
             "coverage_status": geometric,
             "walkable_overlap_ratio": ratio,
-            "uncovered_ratio": None if ratio is None else 1 - ratio,
+            "uncovered_ratio": None if ratio is None or mode == "EXCLUDED" else 1 - ratio,
             "overlapping_walkables": [
                 w["id"]
                 for w in eligible
@@ -1108,7 +1299,32 @@ def _coverage(
             "geometry_basis": area["representation"],
             "authority": floors.get(area["floor"], {}).get("authority", "HEURISTIC"),
         }
+        if declaration:
+            item["semantic_declaration"] = declared_evidence
         result.append(item)
+        if mode == "EXCLUDED":
+            if item["overlapping_walkables"]:
+                issue(
+                    "AREA_NONWALKABLE_OVERLAP",
+                    [area["id"], *item["overlapping_walkables"]],
+                    "HIGH",
+                    "Projected WALKABLE overlap with intersecting or nearby Z extents "
+                    "contradicts nonwalkable intent; bounds do not certify 3D collision.",
+                    "ERROR" if reliable else "REVIEW",
+                    overlap_ratio=ratio,
+                    declared_fields=declaration["declared_fields"],
+                    source_sha256=source_sha256,
+                    overlap_basis="XY_FOOTPRINTS_WITH_Z_INTERVAL_BROAD_PHASE",
+                )
+            if not reliable or area["floor"] not in floors:
+                issue(
+                    "AREA_EXCLUSION_GEOMETRY_REVIEW",
+                    [area["id"]],
+                    "HIGH",
+                    "Nonwalkable intent does not certify unsupported/nonplanar geometry "
+                    "or an unresolved floor label as free of WALKABLE overlap.",
+                )
+            continue
         if geometric == "MISSING":
             issue(
                 "AREA_MISSING_WALKABLE",

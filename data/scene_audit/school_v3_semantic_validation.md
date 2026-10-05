@@ -1,3 +1,5 @@
+> 2026-10-05：已依人工明確授權補充並保存同名 `school_v3.blend`；以下原生 validator 的「來源不修改」指保存後的唯讀 audit／validation，不表示本輪未修改場景。未 render，未開始 Graph／collision pruning／benchmark。
+
 # Semantic completeness diagnostics / 場景語意完整度診斷
 
 Status: **REVIEW_REQUIRED**. Authority: **HEURISTIC / REVIEW** until source-bound approval.
@@ -9,317 +11,381 @@ Source is preserved; no inferred physical roles or inference topology are create
 
 | Floor | AREA | WALKABLE | WALL | OBSTACLE | STAIR | PORTAL | Components | Isolated | Uncovered | Suspicious portals | Conflicts | Geometry warnings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1F | 16 | 8 | 0 | 0 | 0 | 16 | 3 | 2 | 14 | 16 | 0 | 81 |
-| 2F | 12 | 6 | 0 | 0 | 0 | 12 | 2 | 1 | 12 | 12 | 0 | 61 |
-| UNASSIGNED | 2 | 4 | 0 | 0 | 0 | 0 | 4 | 4 | 2 | 0 | 2 | 12 |
+| 1F | 16 | 28 | 0 | 13 | 2 | 16 | 9 | 1 | 5 | 16 | 0 | 128 |
+| 2F | 12 | 20 | 0 | 6 | 2 | 12 | 5 | 0 | 4 | 12 | 0 | 91 |
+| UNASSIGNED | 2 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 8 |
 
 ## AREA coverage / 區域覆蓋
 
 | AREA | Status | Geometric coverage | Overlap ratio | Uncovered | Nearest WALKABLE | Offset m |
 | --- | --- | --- | ---: | ---: | --- | ---: |
-| AREA_1F_AUDITORIUM | MISSING | MISSING | 0 | 1 | WALK_1F_SIDE_ENTRANCE | 0 |
-| AREA_1F_CLASS101 | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_04 | 0 |
-| AREA_1F_CLASS102 | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_04 | 0 |
-| AREA_1F_CLASS103 | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_04 | 0 |
-| AREA_1F_CLASS104 | MISSING | MISSING | 0 | 1 | WALK_1F_BATHROOM | 0 |
-| AREA_1F_COURTYARD | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_03 | 0 |
+| AREA_1F_AUDITORIUM | REVIEW | PASS | 1 | 0 | WALK_1F_AUDITORIUM | 0 |
+| AREA_1F_CLASS101 | REVIEW | PASS | 1 | 0 | WALK_1F_CLASS101 | 0 |
+| AREA_1F_CLASS102 | REVIEW | PASS | 1 | 0 | WALK_1F_CLASS102 | 0 |
+| AREA_1F_CLASS103 | REVIEW | PASS | 1 | 0 | WALK_1F_CLASS103 | 0 |
+| AREA_1F_CLASS104 | REVIEW | PASS | 1 | 0 | WALK_1F_CLASS104 | 0 |
+| AREA_1F_COURTYARD | EXCLUDED | EXCLUDED | 0 | N/A | WALK_1F_CORRIDOR_03 | 0 |
 | AREA_1F_ELEVATOR | REVIEW | PARTIAL | 0.270327 | 0.729673 | WALK_1F_CORRIDOR_01 | 0 |
 | AREA_1F_LADYSROOM | MISSING | MISSING | 0 | 1 | WALK_1F_BATHROOM | 0 |
-| AREA_1F_MAIN_ENTRANCE | REVIEW | PASS | 0.958123 | 0.0418768 | WALK_1F_MAIN_ENTRANCE | 0 |
-| AREA_1F_MEETINGROOM | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_02 | 0 |
+| AREA_1F_MAIN_ENTRANCE | REVIEW | PARTIAL | 0.656214 | 0.343786 | WALK_1F_MAIN_ENTRANCE | 0 |
+| AREA_1F_MEETINGROOM | REVIEW | PASS | 1 | 0 | WALK_1F_MEETINGROOM | 0 |
 | AREA_1F_MENSROOM | MISSING | MISSING | 0 | 1 | WALK_1F_BATHROOM | 0 |
-| AREA_1F_OFFICE | REVIEW | PARTIAL | 0.205742 | 0.794258 | WALK_1F_OFFICE | 0 |
-| AREA_1F_RESTAURANT_A | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_01 | 0 |
-| AREA_1F_RESTAURANT_B | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_01 | 0 |
+| AREA_1F_OFFICE | REVIEW | PARTIAL | 0.296071 | 0.703929 | WALK_1F_AUDITORIUM_OFFICE_THRESHOLD | 0 |
+| AREA_1F_RESTAURANT_A | REVIEW | PASS | 0.811376 | 0.188624 | WALK_1F_RESTAURANT_A | 0 |
+| AREA_1F_RESTAURANT_B | REVIEW | PASS | 1 | 0 | WALK_1F_RESTAURANT_B | 0 |
 | AREA_1F_SIDE_ENTRANCE | REVIEW | PASS | 0.917706 | 0.0822937 | WALK_1F_SIDE_ENTRANCE | 0 |
-| AREA_1F_STORAGE | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_02 | 0 |
-| AREA_2F_BALCONY_LEFT | MISSING | MISSING | 0 | 1 | WALK_2F_CORRIDOR_04 | 0 |
-| AREA_2F_BALCONY_RIGHT | MISSING | MISSING | 0 | 1 | WALK_2F_CORRIDOR_02 | 0 |
-| AREA_2F_CLASS201 | MISSING | MISSING | 0 | 1 | WALK_2F_CORRIDOR_04 | 0 |
-| AREA_2F_CLASS202 | MISSING | MISSING | 0 | 1 | WALK_2F_CORRIDOR_04 | 0 |
-| AREA_2F_CLASS203 | MISSING | MISSING | 0 | 1 | WALK_2F_CORRIDOR_04 | 0 |
-| AREA_2F_CLASS204 | MISSING | MISSING | 0 | 1 | WALK_2F_BATHROOM | 0 |
+| AREA_1F_STORAGE | REVIEW | PASS | 0.817805 | 0.182195 | WALK_1F_STORAGE | 0 |
+| AREA_2F_BALCONY_LEFT | EXCLUDED | EXCLUDED | 0 | N/A | WALK_2F_CORRIDOR_04 | 0 |
+| AREA_2F_BALCONY_RIGHT | EXCLUDED | EXCLUDED | 0 | N/A | WALK_2F_CORRIDOR_02 | 0 |
+| AREA_2F_CLASS201 | REVIEW | PASS | 1 | 0 | WALK_2F_CLASS201 | 0 |
+| AREA_2F_CLASS202 | REVIEW | PASS | 1 | 0 | WALK_2F_CLASS202 | 0 |
+| AREA_2F_CLASS203 | REVIEW | PASS | 1 | 0 | WALK_2F_CLASS203 | 0 |
+| AREA_2F_CLASS204 | REVIEW | PASS | 1 | 0 | WALK_2F_CLASS204 | 0 |
 | AREA_2F_ELEVATOR | REVIEW | PARTIAL | 0.270327 | 0.729673 | WALK_2F_CORRIDOR_01 | 0 |
-| AREA_2F_GALLERY | MISSING | MISSING | 0 | 1 | WALK_2F_CORRIDOR_01 | 0 |
+| AREA_2F_GALLERY | REVIEW | PASS | 0.847347 | 0.152653 | WALK_2F_GALLERY | 0 |
 | AREA_2F_LADYSROOM | MISSING | MISSING | 0 | 1 | WALK_2F_BATHROOM | 0 |
-| AREA_2F_MEETINGROOM | MISSING | MISSING | 0 | 1 | WALK_2F_CORRIDOR_02 | 0 |
+| AREA_2F_MEETINGROOM | REVIEW | PASS | 0.897504 | 0.102496 | WALK_2F_GALLERY | 0 |
 | AREA_2F_MENSROOM | MISSING | MISSING | 0 | 1 | WALK_2F_BATHROOM | 0 |
-| AREA_2F_OFFICE | REVIEW | PARTIAL | 0.205742 | 0.794258 | WALK_2F_OFFICE | 0 |
-| AREA_STAIR_A | MISSING | MISSING | 0 | 1 | WALK_STAIRS_A_LOWERHALF | 0 |
-| AREA_STAIR_B | MISSING | MISSING | 0 | 1 | WALK_1F_CORRIDOR_04 | 0 |
+| AREA_2F_OFFICE | REVIEW | PARTIAL | 0.296071 | 0.703929 | WALK_2F_OFFICE | 0 |
+| AREA_STAIR_A | REVIEW | NOT_APPLICABLE | N/A | N/A | N/A | N/A |
+| AREA_STAIR_B | REVIEW | NOT_APPLICABLE | N/A | N/A | N/A | N/A |
 
 ## Human review queue / 人工審查佇列
 
-### HIGH (49)
+### HIGH (33)
 
-- **SV-00001 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_AUDITORIUM — Area has no sufficient same-floor walkable overlap.
-- **SV-00002 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_CLASS101 — Area has no sufficient same-floor walkable overlap.
-- **SV-00003 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_CLASS102 — Area has no sufficient same-floor walkable overlap.
-- **SV-00004 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_CLASS103 — Area has no sufficient same-floor walkable overlap.
-- **SV-00005 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_CLASS104 — Area has no sufficient same-floor walkable overlap.
-- **SV-00006 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_COURTYARD — Area has no sufficient same-floor walkable overlap.
-- **SV-00007 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_LADYSROOM — Area has no sufficient same-floor walkable overlap.
-- **SV-00008 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_MEETINGROOM — Area has no sufficient same-floor walkable overlap.
-- **SV-00009 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_MENSROOM — Area has no sufficient same-floor walkable overlap.
-- **SV-00010 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_RESTAURANT_A — Area has no sufficient same-floor walkable overlap.
-- **SV-00011 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_RESTAURANT_B — Area has no sufficient same-floor walkable overlap.
-- **SV-00012 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_STORAGE — Area has no sufficient same-floor walkable overlap.
-- **SV-00013 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_BALCONY_LEFT — Area has no sufficient same-floor walkable overlap.
-- **SV-00014 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_BALCONY_RIGHT — Area has no sufficient same-floor walkable overlap.
-- **SV-00015 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_CLASS201 — Area has no sufficient same-floor walkable overlap.
-- **SV-00016 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_CLASS202 — Area has no sufficient same-floor walkable overlap.
-- **SV-00017 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_CLASS203 — Area has no sufficient same-floor walkable overlap.
-- **SV-00018 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_CLASS204 — Area has no sufficient same-floor walkable overlap.
-- **SV-00019 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_GALLERY — Area has no sufficient same-floor walkable overlap.
-- **SV-00020 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_LADYSROOM — Area has no sufficient same-floor walkable overlap.
-- **SV-00021 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_MEETINGROOM — Area has no sufficient same-floor walkable overlap.
-- **SV-00022 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_MENSROOM — Area has no sufficient same-floor walkable overlap.
-- **SV-00023 AREA_MISSING_WALKABLE** [MISSING] AREA_STAIR_A — Area has no sufficient same-floor walkable overlap.
-- **SV-00024 AREA_MISSING_WALKABLE** [MISSING] AREA_STAIR_B — Area has no sufficient same-floor walkable overlap.
-- **SV-00025 CONFLICTING_NAME_PREFIX** [ERROR] AREA_STAIR_A — Name contains conflicting semantic tokens.
-- **SV-00026 CONFLICTING_NAME_PREFIX** [ERROR] AREA_STAIR_B — Name contains conflicting semantic tokens.
-- **SV-00027 FLOOR_PLANE_AUTHORITY_UNRESOLVED** [REVIEW] Scene — No source-bound approved floor-plane configuration; floor results remain HEURISTIC.
-- **SV-00028 MISSING_OBSTACLE_LABELS** [MISSING] Scene — No explicit OBSTACLE_* objects or semantic collection members.
-- **SV-00029 MISSING_STAIR_LABELS** [MISSING] Scene — No explicit STAIR_* objects or semantic collection members.
-- **SV-00030 MISSING_WALL_LABELS** [MISSING] Scene — No explicit WALL_* objects or semantic collection members.
-- **SV-00031 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_AUDITORIUM_OFFICE — No nearby same-floor walkable.
-- **SV-00032 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_CLASS101 — No nearby same-floor walkable.
-- **SV-00033 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_CLASS102 — No nearby same-floor walkable.
-- **SV-00034 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_CLASS103 — No nearby same-floor walkable.
-- **SV-00035 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_CLASS104 — No nearby same-floor walkable.
-- **SV-00036 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_LADYSROOM — No nearby same-floor walkable.
-- **SV-00037 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_MEETINGROOM_01 — No nearby same-floor walkable.
-- **SV-00038 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_MEETINGROOM_02 — No nearby same-floor walkable.
-- **SV-00039 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_MENSROOM — No nearby same-floor walkable.
-- **SV-00040 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_RESTAURANT_A — No nearby same-floor walkable.
-- **SV-00041 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_RESTAURANT_B — No nearby same-floor walkable.
-- **SV-00042 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_CLASS201 — No nearby same-floor walkable.
-- **SV-00043 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_CLASS202 — No nearby same-floor walkable.
-- **SV-00044 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_CLASS203 — No nearby same-floor walkable.
-- **SV-00045 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_CLASS204 — No nearby same-floor walkable.
-- **SV-00046 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_LADYSROOM — No nearby same-floor walkable.
-- **SV-00047 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_MEETINGROOM_01 — No nearby same-floor walkable.
-- **SV-00048 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_MEETINGROOM_02 — No nearby same-floor walkable.
-- **SV-00049 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_MENSROOM — No nearby same-floor walkable.
+- **SV-00001 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_LADYSROOM — Area has no sufficient same-floor walkable overlap.
+- **SV-00002 AREA_MISSING_WALKABLE** [MISSING] AREA_1F_MENSROOM — Area has no sufficient same-floor walkable overlap.
+- **SV-00003 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_LADYSROOM — Area has no sufficient same-floor walkable overlap.
+- **SV-00004 AREA_MISSING_WALKABLE** [MISSING] AREA_2F_MENSROOM — Area has no sufficient same-floor walkable overlap.
+- **SV-00005 COLLIDER_CROSSES_PORTAL** [REVIEW] OBSTACLE_1F_BATHROOM, PORTAL_1F_LADYSROOM — Projected collider overlap crosses portal; review 3D aperture/contact semantics.
+- **SV-00006 COLLIDER_CROSSES_PORTAL** [REVIEW] OBSTACLE_1F_BATHROOM, PORTAL_1F_MENSROOM — Projected collider overlap crosses portal; review 3D aperture/contact semantics.
+- **SV-00007 COLLIDER_CROSSES_PORTAL** [REVIEW] OBSTACLE_1F_MAIN_ENTRANCE_01, PORTAL_1F_MAIN_ENTRANCE — Projected collider overlap crosses portal; review 3D aperture/contact semantics.
+- **SV-00008 COLLIDER_CROSSES_PORTAL** [REVIEW] OBSTACLE_1F_MAIN_ENTRANCE_02, PORTAL_1F_MAIN_ENTRANCE — Projected collider overlap crosses portal; review 3D aperture/contact semantics.
+- **SV-00009 COLLIDER_CROSSES_PORTAL** [REVIEW] OBSTACLE_2F_BATHROOM, PORTAL_2F_LADYSROOM — Projected collider overlap crosses portal; review 3D aperture/contact semantics.
+- **SV-00010 COLLIDER_CROSSES_PORTAL** [REVIEW] OBSTACLE_2F_BATHROOM, PORTAL_2F_MENSROOM — Projected collider overlap crosses portal; review 3D aperture/contact semantics.
+- **SV-00011 COLLIDER_CROSSES_PORTAL** [REVIEW] OBSTACLE_2F_MEETINGROOM, PORTAL_2F_MEETINGROOM_01 — Projected collider overlap crosses portal; review 3D aperture/contact semantics.
+- **SV-00012 COLLIDER_CROSSES_PORTAL** [REVIEW] OBSTACLE_2F_MEETINGROOM, PORTAL_2F_MEETINGROOM_02 — Projected collider overlap crosses portal; review 3D aperture/contact semantics.
+- **SV-00013 FLOOR_GEOMETRY_OFFSET** [REVIEW] OBSTACLE_1F_STORAGE02 — Declared floor and geometry differ beyond configured height tolerance.
+- **SV-00014 FLOOR_GEOMETRY_OFFSET** [REVIEW] OBSTACLE_1F_STORAGE03 — Declared floor and geometry differ beyond configured height tolerance.
+- **SV-00015 FLOOR_GEOMETRY_OFFSET** [REVIEW] STAIR_A_ENTRY — Declared floor and geometry differ beyond configured height tolerance.
+- **SV-00016 FLOOR_GEOMETRY_OFFSET** [REVIEW] STAIR_A_EXIT — Declared floor and geometry differ beyond configured height tolerance.
+- **SV-00017 FLOOR_GEOMETRY_OFFSET** [REVIEW] STAIR_B_EXIT — Declared floor and geometry differ beyond configured height tolerance.
+- **SV-00018 FLOOR_PLANE_AUTHORITY_UNRESOLVED** [REVIEW] Scene — No source-bound approved floor-plane configuration; floor results remain HEURISTIC.
+- **SV-00019 ISOLATED_STAIR** [REVIEW] STAIR_A_ENTRY, STAIR_A_EXIT, STAIR_A_PATH — No stair endpoint touches any same-floor walkable.
+- **SV-00020 MISSING_WALL_LABELS** [MISSING] Scene — No explicit WALL_* objects or semantic collection members.
+- **SV-00021 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_LADYSROOM — No nearby same-floor walkable.
+- **SV-00022 PORTAL_DISCONNECTED** [MISSING] PORTAL_1F_MENSROOM — No nearby same-floor walkable.
+- **SV-00023 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_LADYSROOM — No nearby same-floor walkable.
+- **SV-00024 PORTAL_DISCONNECTED** [MISSING] PORTAL_2F_MENSROOM — No nearby same-floor walkable.
+- **SV-00025 PORTAL_IN_NONWALKABLE_REGION** [REVIEW] PORTAL_2F_BALCONY_LEFT — Portal is near walkable but its explicit side probes are inaccessible.
+- **SV-00026 PORTAL_IN_NONWALKABLE_REGION** [REVIEW] PORTAL_2F_BALCONY_RIGHT — Portal is near walkable but its explicit side probes are inaccessible.
+- **SV-00027 STAIR_ENTRY_DISCONNECTED** [MISSING] STAIR_A_ENTRY — Stair endpoint does not touch declared-floor walkable.
+- **SV-00028 STAIR_EXIT_DISCONNECTED** [MISSING] STAIR_A_EXIT — Stair endpoint does not touch declared-floor walkable.
+- **SV-00029 STAIR_EXIT_DISCONNECTED** [MISSING] STAIR_B_EXIT — Stair endpoint does not touch declared-floor walkable.
+- **SV-00030 STAIR_PATH_CONTINUITY_UNRESOLVED** [REVIEW] STAIR_A_ENTRY, STAIR_A_EXIT, STAIR_A_PATH — Mesh/AABB alone does not declare ordered stair traversal; explicit path_points_m required.
+- **SV-00031 STAIR_PATH_CONTINUITY_UNRESOLVED** [REVIEW] STAIR_B_ENTRY, STAIR_B_EXIT, STAIR_B_PATH — Mesh/AABB alone does not declare ordered stair traversal; explicit path_points_m required.
+- **SV-00032 STAIR_SLAB_OPENING_REVIEW** [REVIEW] STAIR_A_ENTRY, STAIR_A_EXIT, STAIR_A_PATH — Slab opening needs explicit human PASS/FAIL review.
+- **SV-00033 STAIR_SLAB_OPENING_REVIEW** [REVIEW] STAIR_B_ENTRY, STAIR_B_EXIT, STAIR_B_PATH — Slab opening needs explicit human PASS/FAIL review.
 
-### MEDIUM (170)
+### MEDIUM (224)
 
-- **SV-00050 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_MAIN_ENTRANCE — Coverage evidence requires approved floor authority or a supported geometry representation.
-- **SV-00051 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_SIDE_ENTRANCE — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00034 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_AUDITORIUM — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00035 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_CLASS101 — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00036 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_CLASS102 — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00037 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_CLASS103 — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00038 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_CLASS104 — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00039 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_MEETINGROOM — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00040 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_RESTAURANT_A — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00041 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_RESTAURANT_B — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00042 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_SIDE_ENTRANCE — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00043 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_1F_STORAGE — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00044 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_2F_CLASS201 — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00045 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_2F_CLASS202 — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00046 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_2F_CLASS203 — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00047 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_2F_CLASS204 — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00048 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_2F_GALLERY — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00049 AREA_COVERAGE_AUTHORITY_REVIEW** [REVIEW] AREA_2F_MEETINGROOM — Coverage evidence requires approved floor authority or a supported geometry representation.
+- **SV-00050 AREA_CROSS_FLOOR_REVIEW** [REVIEW] AREA_STAIR_A — Cross-floor AREA defers traversal to explicit stair diagnostics; semantic intent does not approve floor or stair connectivity.
+- **SV-00051 AREA_CROSS_FLOOR_REVIEW** [REVIEW] AREA_STAIR_B — Cross-floor AREA defers traversal to explicit stair diagnostics; semantic intent does not approve floor or stair connectivity.
 - **SV-00052 AREA_PARTIAL_COVERAGE** [REVIEW] AREA_1F_ELEVATOR — Area coverage is below diagnostic pass threshold.
-- **SV-00053 AREA_PARTIAL_COVERAGE** [REVIEW] AREA_1F_OFFICE — Area coverage is below diagnostic pass threshold.
-- **SV-00054 AREA_PARTIAL_COVERAGE** [REVIEW] AREA_2F_ELEVATOR — Area coverage is below diagnostic pass threshold.
-- **SV-00055 AREA_PARTIAL_COVERAGE** [REVIEW] AREA_2F_OFFICE — Area coverage is below diagnostic pass threshold.
-- **SV-00056 DUPLICATED_GEOMETRY** [REVIEW] PORTAL_1F_MENSROOM, PORTAL_2F_MENSROOM — Identical evaluated world geometry.
-- **SV-00057 ENDPOINT_ACCESSIBILITY_UNRESOLVED** [REVIEW] Scene — No explicit navigation endpoint declarations.
-- **SV-00058 GIANT_GEOMETRY** [REVIEW] AREA_1F_AUDITORIUM — Object exceeds configured maximum diagnostic extent.
-- **SV-00059 GIANT_GEOMETRY** [REVIEW] AREA_1F_CLASS101 — Object exceeds configured maximum diagnostic extent.
-- **SV-00060 GIANT_GEOMETRY** [REVIEW] AREA_1F_CLASS102 — Object exceeds configured maximum diagnostic extent.
-- **SV-00061 GIANT_GEOMETRY** [REVIEW] AREA_1F_CLASS103 — Object exceeds configured maximum diagnostic extent.
-- **SV-00062 GIANT_GEOMETRY** [REVIEW] AREA_1F_CLASS104 — Object exceeds configured maximum diagnostic extent.
-- **SV-00063 GIANT_GEOMETRY** [REVIEW] AREA_1F_COURTYARD — Object exceeds configured maximum diagnostic extent.
-- **SV-00064 GIANT_GEOMETRY** [REVIEW] AREA_1F_ELEVATOR — Object exceeds configured maximum diagnostic extent.
-- **SV-00065 GIANT_GEOMETRY** [REVIEW] AREA_1F_LADYSROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00066 GIANT_GEOMETRY** [REVIEW] AREA_1F_MAIN_ENTRANCE — Object exceeds configured maximum diagnostic extent.
-- **SV-00067 GIANT_GEOMETRY** [REVIEW] AREA_1F_MEETINGROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00068 GIANT_GEOMETRY** [REVIEW] AREA_1F_MENSROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00069 GIANT_GEOMETRY** [REVIEW] AREA_1F_OFFICE — Object exceeds configured maximum diagnostic extent.
-- **SV-00070 GIANT_GEOMETRY** [REVIEW] AREA_1F_RESTAURANT_A — Object exceeds configured maximum diagnostic extent.
-- **SV-00071 GIANT_GEOMETRY** [REVIEW] AREA_1F_RESTAURANT_B — Object exceeds configured maximum diagnostic extent.
-- **SV-00072 GIANT_GEOMETRY** [REVIEW] AREA_1F_SIDE_ENTRANCE — Object exceeds configured maximum diagnostic extent.
-- **SV-00073 GIANT_GEOMETRY** [REVIEW] AREA_1F_STORAGE — Object exceeds configured maximum diagnostic extent.
-- **SV-00074 GIANT_GEOMETRY** [REVIEW] AREA_2F_BALCONY_LEFT — Object exceeds configured maximum diagnostic extent.
-- **SV-00075 GIANT_GEOMETRY** [REVIEW] AREA_2F_BALCONY_RIGHT — Object exceeds configured maximum diagnostic extent.
-- **SV-00076 GIANT_GEOMETRY** [REVIEW] AREA_2F_CLASS201 — Object exceeds configured maximum diagnostic extent.
-- **SV-00077 GIANT_GEOMETRY** [REVIEW] AREA_2F_CLASS202 — Object exceeds configured maximum diagnostic extent.
-- **SV-00078 GIANT_GEOMETRY** [REVIEW] AREA_2F_CLASS203 — Object exceeds configured maximum diagnostic extent.
-- **SV-00079 GIANT_GEOMETRY** [REVIEW] AREA_2F_CLASS204 — Object exceeds configured maximum diagnostic extent.
-- **SV-00080 GIANT_GEOMETRY** [REVIEW] AREA_2F_ELEVATOR — Object exceeds configured maximum diagnostic extent.
-- **SV-00081 GIANT_GEOMETRY** [REVIEW] AREA_2F_GALLERY — Object exceeds configured maximum diagnostic extent.
-- **SV-00082 GIANT_GEOMETRY** [REVIEW] AREA_2F_LADYSROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00083 GIANT_GEOMETRY** [REVIEW] AREA_2F_MEETINGROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00084 GIANT_GEOMETRY** [REVIEW] AREA_2F_MENSROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00085 GIANT_GEOMETRY** [REVIEW] AREA_2F_OFFICE — Object exceeds configured maximum diagnostic extent.
-- **SV-00086 GIANT_GEOMETRY** [REVIEW] AREA_STAIR_A — Object exceeds configured maximum diagnostic extent.
-- **SV-00087 GIANT_GEOMETRY** [REVIEW] AREA_STAIR_B — Object exceeds configured maximum diagnostic extent.
-- **SV-00088 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_AUDITORIUM — Object exceeds configured maximum diagnostic extent.
-- **SV-00089 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_AUDITORIUM_OFFICE — Object exceeds configured maximum diagnostic extent.
-- **SV-00090 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_CLASS101 — Object exceeds configured maximum diagnostic extent.
-- **SV-00091 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_CLASS102 — Object exceeds configured maximum diagnostic extent.
-- **SV-00092 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_CLASS103 — Object exceeds configured maximum diagnostic extent.
-- **SV-00093 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_CLASS104 — Object exceeds configured maximum diagnostic extent.
-- **SV-00094 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_LADYSROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00095 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_MAIN_ENTRANCE — Object exceeds configured maximum diagnostic extent.
-- **SV-00096 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_MEETINGROOM_01 — Object exceeds configured maximum diagnostic extent.
-- **SV-00097 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_MEETINGROOM_02 — Object exceeds configured maximum diagnostic extent.
-- **SV-00098 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_MENSROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00099 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_OFFICE — Object exceeds configured maximum diagnostic extent.
-- **SV-00100 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_RESTAURANT_A — Object exceeds configured maximum diagnostic extent.
-- **SV-00101 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_RESTAURANT_B — Object exceeds configured maximum diagnostic extent.
-- **SV-00102 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_SIDE_ENTRANCE — Object exceeds configured maximum diagnostic extent.
-- **SV-00103 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_STORAGE — Object exceeds configured maximum diagnostic extent.
-- **SV-00104 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_BALCONY_LEFT — Object exceeds configured maximum diagnostic extent.
-- **SV-00105 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_BALCONY_RIGHT — Object exceeds configured maximum diagnostic extent.
-- **SV-00106 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_CLASS201 — Object exceeds configured maximum diagnostic extent.
-- **SV-00107 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_CLASS202 — Object exceeds configured maximum diagnostic extent.
-- **SV-00108 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_CLASS203 — Object exceeds configured maximum diagnostic extent.
-- **SV-00109 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_CLASS204 — Object exceeds configured maximum diagnostic extent.
-- **SV-00110 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_GALLERY — Object exceeds configured maximum diagnostic extent.
-- **SV-00111 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_LADYSROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00112 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_MEETINGROOM_01 — Object exceeds configured maximum diagnostic extent.
-- **SV-00113 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_MEETINGROOM_02 — Object exceeds configured maximum diagnostic extent.
-- **SV-00114 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_MENSROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00115 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_OFFICE — Object exceeds configured maximum diagnostic extent.
-- **SV-00116 GIANT_GEOMETRY** [REVIEW] WALK_1F_BATHROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00117 GIANT_GEOMETRY** [REVIEW] WALK_1F_CORRIDOR_01 — Object exceeds configured maximum diagnostic extent.
-- **SV-00118 GIANT_GEOMETRY** [REVIEW] WALK_1F_CORRIDOR_02 — Object exceeds configured maximum diagnostic extent.
-- **SV-00119 GIANT_GEOMETRY** [REVIEW] WALK_1F_CORRIDOR_03 — Object exceeds configured maximum diagnostic extent.
-- **SV-00120 GIANT_GEOMETRY** [REVIEW] WALK_1F_CORRIDOR_04 — Object exceeds configured maximum diagnostic extent.
-- **SV-00121 GIANT_GEOMETRY** [REVIEW] WALK_1F_MAIN_ENTRANCE — Object exceeds configured maximum diagnostic extent.
-- **SV-00122 GIANT_GEOMETRY** [REVIEW] WALK_1F_OFFICE — Object exceeds configured maximum diagnostic extent.
-- **SV-00123 GIANT_GEOMETRY** [REVIEW] WALK_1F_SIDE_ENTRANCE — Object exceeds configured maximum diagnostic extent.
-- **SV-00124 GIANT_GEOMETRY** [REVIEW] WALK_2F_BATHROOM — Object exceeds configured maximum diagnostic extent.
-- **SV-00125 GIANT_GEOMETRY** [REVIEW] WALK_2F_CORRIDOR_01 — Object exceeds configured maximum diagnostic extent.
-- **SV-00126 GIANT_GEOMETRY** [REVIEW] WALK_2F_CORRIDOR_02 — Object exceeds configured maximum diagnostic extent.
-- **SV-00127 GIANT_GEOMETRY** [REVIEW] WALK_2F_CORRIDOR_03 — Object exceeds configured maximum diagnostic extent.
-- **SV-00128 GIANT_GEOMETRY** [REVIEW] WALK_2F_CORRIDOR_04 — Object exceeds configured maximum diagnostic extent.
-- **SV-00129 GIANT_GEOMETRY** [REVIEW] WALK_2F_OFFICE — Object exceeds configured maximum diagnostic extent.
-- **SV-00130 GIANT_GEOMETRY** [REVIEW] WALK_STAIRS_A_LOWERHALF — Object exceeds configured maximum diagnostic extent.
-- **SV-00131 GIANT_GEOMETRY** [REVIEW] WALK_STAIRS_A_UPPERHALF — Object exceeds configured maximum diagnostic extent.
-- **SV-00132 GIANT_GEOMETRY** [REVIEW] WALK_STAIRS_B_LOWERHALF — Object exceeds configured maximum diagnostic extent.
-- **SV-00133 GIANT_GEOMETRY** [REVIEW] WALK_STAIRS_B_UPPERHALF — Object exceeds configured maximum diagnostic extent.
-- **SV-00134 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_AUDITORIUM — Semantic object is hidden or disabled.
-- **SV-00135 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_CLASS101 — Semantic object is hidden or disabled.
-- **SV-00136 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_CLASS102 — Semantic object is hidden or disabled.
-- **SV-00137 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_CLASS103 — Semantic object is hidden or disabled.
-- **SV-00138 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_CLASS104 — Semantic object is hidden or disabled.
-- **SV-00139 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_COURTYARD — Semantic object is hidden or disabled.
-- **SV-00140 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_ELEVATOR — Semantic object is hidden or disabled.
-- **SV-00141 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_LADYSROOM — Semantic object is hidden or disabled.
-- **SV-00142 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_MAIN_ENTRANCE — Semantic object is hidden or disabled.
-- **SV-00143 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_MEETINGROOM — Semantic object is hidden or disabled.
-- **SV-00144 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_MENSROOM — Semantic object is hidden or disabled.
-- **SV-00145 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_OFFICE — Semantic object is hidden or disabled.
-- **SV-00146 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_RESTAURANT_A — Semantic object is hidden or disabled.
-- **SV-00147 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_RESTAURANT_B — Semantic object is hidden or disabled.
-- **SV-00148 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_SIDE_ENTRANCE — Semantic object is hidden or disabled.
-- **SV-00149 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_STORAGE — Semantic object is hidden or disabled.
-- **SV-00150 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_BALCONY_LEFT — Semantic object is hidden or disabled.
-- **SV-00151 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_BALCONY_RIGHT — Semantic object is hidden or disabled.
-- **SV-00152 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_CLASS201 — Semantic object is hidden or disabled.
-- **SV-00153 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_CLASS202 — Semantic object is hidden or disabled.
-- **SV-00154 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_CLASS203 — Semantic object is hidden or disabled.
-- **SV-00155 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_CLASS204 — Semantic object is hidden or disabled.
-- **SV-00156 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_ELEVATOR — Semantic object is hidden or disabled.
-- **SV-00157 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_GALLERY — Semantic object is hidden or disabled.
-- **SV-00158 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_LADYSROOM — Semantic object is hidden or disabled.
-- **SV-00159 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_MEETINGROOM — Semantic object is hidden or disabled.
-- **SV-00160 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_MENSROOM — Semantic object is hidden or disabled.
-- **SV-00161 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_OFFICE — Semantic object is hidden or disabled.
-- **SV-00162 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_STAIR_A — Semantic object is hidden or disabled.
-- **SV-00163 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_STAIR_B — Semantic object is hidden or disabled.
-- **SV-00164 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_AUDITORIUM — Semantic object is hidden or disabled.
-- **SV-00165 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_AUDITORIUM_OFFICE — Semantic object is hidden or disabled.
-- **SV-00166 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_CLASS101 — Semantic object is hidden or disabled.
-- **SV-00167 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_CLASS102 — Semantic object is hidden or disabled.
-- **SV-00168 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_CLASS103 — Semantic object is hidden or disabled.
-- **SV-00169 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_CLASS104 — Semantic object is hidden or disabled.
-- **SV-00170 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_LADYSROOM — Semantic object is hidden or disabled.
-- **SV-00171 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_MAIN_ENTRANCE — Semantic object is hidden or disabled.
-- **SV-00172 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_MEETINGROOM_01 — Semantic object is hidden or disabled.
-- **SV-00173 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_MEETINGROOM_02 — Semantic object is hidden or disabled.
-- **SV-00174 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_MENSROOM — Semantic object is hidden or disabled.
-- **SV-00175 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_OFFICE — Semantic object is hidden or disabled.
-- **SV-00176 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_RESTAURANT_A — Semantic object is hidden or disabled.
-- **SV-00177 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_RESTAURANT_B — Semantic object is hidden or disabled.
-- **SV-00178 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_SIDE_ENTRANCE — Semantic object is hidden or disabled.
-- **SV-00179 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_STORAGE — Semantic object is hidden or disabled.
-- **SV-00180 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_BALCONY_LEFT — Semantic object is hidden or disabled.
-- **SV-00181 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_BALCONY_RIGHT — Semantic object is hidden or disabled.
-- **SV-00182 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_CLASS201 — Semantic object is hidden or disabled.
-- **SV-00183 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_CLASS202 — Semantic object is hidden or disabled.
-- **SV-00184 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_CLASS203 — Semantic object is hidden or disabled.
-- **SV-00185 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_CLASS204 — Semantic object is hidden or disabled.
-- **SV-00186 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_GALLERY — Semantic object is hidden or disabled.
-- **SV-00187 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_LADYSROOM — Semantic object is hidden or disabled.
-- **SV-00188 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_MEETINGROOM_01 — Semantic object is hidden or disabled.
-- **SV-00189 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_MEETINGROOM_02 — Semantic object is hidden or disabled.
-- **SV-00190 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_MENSROOM — Semantic object is hidden or disabled.
-- **SV-00191 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_OFFICE — Semantic object is hidden or disabled.
-- **SV-00192 ISOLATED_WALKABLE** [REVIEW] WALK_1F_OFFICE — Walkable has no same-floor geometric neighbor; isolation can be intentional.
-- **SV-00193 ISOLATED_WALKABLE** [REVIEW] WALK_1F_SIDE_ENTRANCE — Walkable has no same-floor geometric neighbor; isolation can be intentional.
-- **SV-00194 ISOLATED_WALKABLE** [REVIEW] WALK_2F_OFFICE — Walkable has no same-floor geometric neighbor; isolation can be intentional.
-- **SV-00195 ISOLATED_WALKABLE** [REVIEW] WALK_STAIRS_A_LOWERHALF — Walkable has no same-floor geometric neighbor; isolation can be intentional.
-- **SV-00196 ISOLATED_WALKABLE** [REVIEW] WALK_STAIRS_A_UPPERHALF — Walkable has no same-floor geometric neighbor; isolation can be intentional.
-- **SV-00197 ISOLATED_WALKABLE** [REVIEW] WALK_STAIRS_B_LOWERHALF — Walkable has no same-floor geometric neighbor; isolation can be intentional.
-- **SV-00198 ISOLATED_WALKABLE** [REVIEW] WALK_STAIRS_B_UPPERHALF — Walkable has no same-floor geometric neighbor; isolation can be intentional.
-- **SV-00199 LARGE_SAME_FLOOR_DISCONNECTION** [REVIEW] WALK_1F_BATHROOM, WALK_1F_CORRIDOR_01, WALK_1F_CORRIDOR_02, WALK_1F_CORRIDOR_03, WALK_1F_CORRIDOR_04, WALK_1F_MAIN_ENTRANCE, WALK_1F_OFFICE, WALK_1F_SIDE_ENTRANCE — Large same-floor components are disconnected; not automatically an error.
-- **SV-00200 LARGE_SAME_FLOOR_DISCONNECTION** [REVIEW] WALK_2F_BATHROOM, WALK_2F_CORRIDOR_01, WALK_2F_CORRIDOR_02, WALK_2F_CORRIDOR_03, WALK_2F_CORRIDOR_04, WALK_2F_OFFICE — Large same-floor components are disconnected; not automatically an error.
-- **SV-00201 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_1F_AUDITORIUM — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00202 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_1F_MAIN_ENTRANCE — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00203 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_1F_OFFICE — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00204 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_1F_SIDE_ENTRANCE — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00205 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_1F_STORAGE — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00206 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_2F_BALCONY_LEFT — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00207 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_2F_BALCONY_RIGHT — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00208 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_2F_GALLERY — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00209 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_2F_OFFICE — No explicit world-space portal normal; geometry thin axis is not treated as authority.
-- **SV-00210 UNRESOLVED_SETTING** [REVIEW] Scene — approved floor planes and geometry authority
-- **SV-00211 UNRESOLVED_SETTING** [REVIEW] Scene — physical clearance and contact semantics
-- **SV-00212 UNRESOLVED_SETTING** [REVIEW] Scene — camera-plane binding
-- **SV-00213 UNRESOLVED_SETTING** [REVIEW] Scene — wall/obstacle movement versus occlusion ownership
-- **SV-00214 UNRESOLVED_SETTING** [REVIEW] Scene — portal normal and endpoint declarations
-- **SV-00215 UNRESOLVED_SETTING** [REVIEW] Scene — stair path direction, clearance and slab opening evidence
-- **SV-00216 WALKABLE_NONPLANAR_EXTENT** [REVIEW] WALK_STAIRS_A_LOWERHALF — Walkable vertical extent exceeds diagnostic plane tolerance; ramps need explicit review.
-- **SV-00217 WALKABLE_NONPLANAR_EXTENT** [REVIEW] WALK_STAIRS_A_UPPERHALF — Walkable vertical extent exceeds diagnostic plane tolerance; ramps need explicit review.
-- **SV-00218 WALKABLE_NONPLANAR_EXTENT** [REVIEW] WALK_STAIRS_B_LOWERHALF — Walkable vertical extent exceeds diagnostic plane tolerance; ramps need explicit review.
-- **SV-00219 WALKABLE_NONPLANAR_EXTENT** [REVIEW] WALK_STAIRS_B_UPPERHALF — Walkable vertical extent exceeds diagnostic plane tolerance; ramps need explicit review.
+- **SV-00053 AREA_PARTIAL_COVERAGE** [REVIEW] AREA_1F_MAIN_ENTRANCE — Area coverage is below diagnostic pass threshold.
+- **SV-00054 AREA_PARTIAL_COVERAGE** [REVIEW] AREA_1F_OFFICE — Area coverage is below diagnostic pass threshold.
+- **SV-00055 AREA_PARTIAL_COVERAGE** [REVIEW] AREA_2F_ELEVATOR — Area coverage is below diagnostic pass threshold.
+- **SV-00056 AREA_PARTIAL_COVERAGE** [REVIEW] AREA_2F_OFFICE — Area coverage is below diagnostic pass threshold.
+- **SV-00057 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_AUDITORIUM_FRONT — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00058 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_AUDITORIUM_REAR — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00059 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_BATHROOM — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00060 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_CLASS101 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00061 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_CLASS102 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00062 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_CLASS103 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00063 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_CLASS104 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00064 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_CORRIDOR_01 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00065 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_CORRIDOR_02 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00066 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_CORRIDOR_03 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00067 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_CORRIDOR_04 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00068 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_MAIN_ENTRANCE — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00069 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_MEETINGROOM — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00070 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_RESTAURANT_01 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00071 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_RESTAURANT_02 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00072 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_SIDE_ENTRANCE — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00073 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_1F_STORAGE — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00074 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_BATHROOM — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00075 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_CLASS201 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00076 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_CLASS202 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00077 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_CLASS203 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00078 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_CLASS204 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00079 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_CORRIDOR_01 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00080 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_CORRIDOR_02 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00081 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_CORRIDOR_03 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00082 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_CORRIDOR_04 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00083 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_GALLERY_01 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00084 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_GALLERY_02 — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00085 CAMERA_PLANE_BINDING_REVIEW** [REVIEW] CAM_2F_MEETINGROOM — Floor label and camera position do not approve camera-to-plane binding.
+- **SV-00086 ENDPOINT_ACCESSIBILITY_UNRESOLVED** [REVIEW] Scene — No explicit navigation endpoint declarations.
+- **SV-00087 GIANT_GEOMETRY** [REVIEW] AREA_1F_AUDITORIUM — Object exceeds configured maximum diagnostic extent.
+- **SV-00088 GIANT_GEOMETRY** [REVIEW] AREA_1F_CLASS101 — Object exceeds configured maximum diagnostic extent.
+- **SV-00089 GIANT_GEOMETRY** [REVIEW] AREA_1F_CLASS102 — Object exceeds configured maximum diagnostic extent.
+- **SV-00090 GIANT_GEOMETRY** [REVIEW] AREA_1F_CLASS103 — Object exceeds configured maximum diagnostic extent.
+- **SV-00091 GIANT_GEOMETRY** [REVIEW] AREA_1F_CLASS104 — Object exceeds configured maximum diagnostic extent.
+- **SV-00092 GIANT_GEOMETRY** [REVIEW] AREA_1F_COURTYARD — Object exceeds configured maximum diagnostic extent.
+- **SV-00093 GIANT_GEOMETRY** [REVIEW] AREA_1F_ELEVATOR — Object exceeds configured maximum diagnostic extent.
+- **SV-00094 GIANT_GEOMETRY** [REVIEW] AREA_1F_LADYSROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00095 GIANT_GEOMETRY** [REVIEW] AREA_1F_MAIN_ENTRANCE — Object exceeds configured maximum diagnostic extent.
+- **SV-00096 GIANT_GEOMETRY** [REVIEW] AREA_1F_MEETINGROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00097 GIANT_GEOMETRY** [REVIEW] AREA_1F_MENSROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00098 GIANT_GEOMETRY** [REVIEW] AREA_1F_OFFICE — Object exceeds configured maximum diagnostic extent.
+- **SV-00099 GIANT_GEOMETRY** [REVIEW] AREA_1F_RESTAURANT_A — Object exceeds configured maximum diagnostic extent.
+- **SV-00100 GIANT_GEOMETRY** [REVIEW] AREA_1F_RESTAURANT_B — Object exceeds configured maximum diagnostic extent.
+- **SV-00101 GIANT_GEOMETRY** [REVIEW] AREA_1F_SIDE_ENTRANCE — Object exceeds configured maximum diagnostic extent.
+- **SV-00102 GIANT_GEOMETRY** [REVIEW] AREA_1F_STORAGE — Object exceeds configured maximum diagnostic extent.
+- **SV-00103 GIANT_GEOMETRY** [REVIEW] AREA_2F_BALCONY_LEFT — Object exceeds configured maximum diagnostic extent.
+- **SV-00104 GIANT_GEOMETRY** [REVIEW] AREA_2F_BALCONY_RIGHT — Object exceeds configured maximum diagnostic extent.
+- **SV-00105 GIANT_GEOMETRY** [REVIEW] AREA_2F_CLASS201 — Object exceeds configured maximum diagnostic extent.
+- **SV-00106 GIANT_GEOMETRY** [REVIEW] AREA_2F_CLASS202 — Object exceeds configured maximum diagnostic extent.
+- **SV-00107 GIANT_GEOMETRY** [REVIEW] AREA_2F_CLASS203 — Object exceeds configured maximum diagnostic extent.
+- **SV-00108 GIANT_GEOMETRY** [REVIEW] AREA_2F_CLASS204 — Object exceeds configured maximum diagnostic extent.
+- **SV-00109 GIANT_GEOMETRY** [REVIEW] AREA_2F_ELEVATOR — Object exceeds configured maximum diagnostic extent.
+- **SV-00110 GIANT_GEOMETRY** [REVIEW] AREA_2F_GALLERY — Object exceeds configured maximum diagnostic extent.
+- **SV-00111 GIANT_GEOMETRY** [REVIEW] AREA_2F_LADYSROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00112 GIANT_GEOMETRY** [REVIEW] AREA_2F_MEETINGROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00113 GIANT_GEOMETRY** [REVIEW] AREA_2F_MENSROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00114 GIANT_GEOMETRY** [REVIEW] AREA_2F_OFFICE — Object exceeds configured maximum diagnostic extent.
+- **SV-00115 GIANT_GEOMETRY** [REVIEW] AREA_STAIR_A — Object exceeds configured maximum diagnostic extent.
+- **SV-00116 GIANT_GEOMETRY** [REVIEW] AREA_STAIR_B — Object exceeds configured maximum diagnostic extent.
+- **SV-00117 GIANT_GEOMETRY** [REVIEW] OBSTACLE_1F_BATHROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00118 GIANT_GEOMETRY** [REVIEW] OBSTACLE_1F_MAIN_ENTRANCE_01 — Object exceeds configured maximum diagnostic extent.
+- **SV-00119 GIANT_GEOMETRY** [REVIEW] OBSTACLE_1F_OFFICE_01 — Object exceeds configured maximum diagnostic extent.
+- **SV-00120 GIANT_GEOMETRY** [REVIEW] OBSTACLE_1F_OFFICE_02 — Object exceeds configured maximum diagnostic extent.
+- **SV-00121 GIANT_GEOMETRY** [REVIEW] OBSTACLE_1F_RESTAURANT_03 — Object exceeds configured maximum diagnostic extent.
+- **SV-00122 GIANT_GEOMETRY** [REVIEW] OBSTACLE_2F_BATHROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00123 GIANT_GEOMETRY** [REVIEW] OBSTACLE_2F_GALLERY_02 — Object exceeds configured maximum diagnostic extent.
+- **SV-00124 GIANT_GEOMETRY** [REVIEW] OBSTACLE_2F_MEETINGROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00125 GIANT_GEOMETRY** [REVIEW] OBSTACLE_2F_OFFICE_01 — Object exceeds configured maximum diagnostic extent.
+- **SV-00126 GIANT_GEOMETRY** [REVIEW] OBSTACLE_2F_OFFICE_02 — Object exceeds configured maximum diagnostic extent.
+- **SV-00127 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_AUDITORIUM — Object exceeds configured maximum diagnostic extent.
+- **SV-00128 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_AUDITORIUM_OFFICE — Object exceeds configured maximum diagnostic extent.
+- **SV-00129 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_CLASS101 — Object exceeds configured maximum diagnostic extent.
+- **SV-00130 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_CLASS102 — Object exceeds configured maximum diagnostic extent.
+- **SV-00131 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_CLASS103 — Object exceeds configured maximum diagnostic extent.
+- **SV-00132 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_CLASS104 — Object exceeds configured maximum diagnostic extent.
+- **SV-00133 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_LADYSROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00134 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_MAIN_ENTRANCE — Object exceeds configured maximum diagnostic extent.
+- **SV-00135 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_MEETINGROOM_01 — Object exceeds configured maximum diagnostic extent.
+- **SV-00136 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_MEETINGROOM_02 — Object exceeds configured maximum diagnostic extent.
+- **SV-00137 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_MENSROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00138 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_OFFICE — Object exceeds configured maximum diagnostic extent.
+- **SV-00139 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_RESTAURANT_A — Object exceeds configured maximum diagnostic extent.
+- **SV-00140 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_RESTAURANT_B — Object exceeds configured maximum diagnostic extent.
+- **SV-00141 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_SIDE_ENTRANCE — Object exceeds configured maximum diagnostic extent.
+- **SV-00142 GIANT_GEOMETRY** [REVIEW] PORTAL_1F_STORAGE — Object exceeds configured maximum diagnostic extent.
+- **SV-00143 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_BALCONY_LEFT — Object exceeds configured maximum diagnostic extent.
+- **SV-00144 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_BALCONY_RIGHT — Object exceeds configured maximum diagnostic extent.
+- **SV-00145 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_CLASS201 — Object exceeds configured maximum diagnostic extent.
+- **SV-00146 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_CLASS202 — Object exceeds configured maximum diagnostic extent.
+- **SV-00147 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_CLASS203 — Object exceeds configured maximum diagnostic extent.
+- **SV-00148 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_CLASS204 — Object exceeds configured maximum diagnostic extent.
+- **SV-00149 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_GALLERY — Object exceeds configured maximum diagnostic extent.
+- **SV-00150 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_LADYSROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00151 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_MEETINGROOM_01 — Object exceeds configured maximum diagnostic extent.
+- **SV-00152 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_MEETINGROOM_02 — Object exceeds configured maximum diagnostic extent.
+- **SV-00153 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_MENSROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00154 GIANT_GEOMETRY** [REVIEW] PORTAL_2F_OFFICE — Object exceeds configured maximum diagnostic extent.
+- **SV-00155 GIANT_GEOMETRY** [REVIEW] STAIR_A_PATH — Object exceeds configured maximum diagnostic extent.
+- **SV-00156 GIANT_GEOMETRY** [REVIEW] STAIR_B_PATH — Object exceeds configured maximum diagnostic extent.
+- **SV-00157 GIANT_GEOMETRY** [REVIEW] WALK_1F_AUDITORIUM — Object exceeds configured maximum diagnostic extent.
+- **SV-00158 GIANT_GEOMETRY** [REVIEW] WALK_1F_BATHROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00159 GIANT_GEOMETRY** [REVIEW] WALK_1F_CLASS101 — Object exceeds configured maximum diagnostic extent.
+- **SV-00160 GIANT_GEOMETRY** [REVIEW] WALK_1F_CLASS102 — Object exceeds configured maximum diagnostic extent.
+- **SV-00161 GIANT_GEOMETRY** [REVIEW] WALK_1F_CLASS103 — Object exceeds configured maximum diagnostic extent.
+- **SV-00162 GIANT_GEOMETRY** [REVIEW] WALK_1F_CLASS104 — Object exceeds configured maximum diagnostic extent.
+- **SV-00163 GIANT_GEOMETRY** [REVIEW] WALK_1F_CORRIDOR_01 — Object exceeds configured maximum diagnostic extent.
+- **SV-00164 GIANT_GEOMETRY** [REVIEW] WALK_1F_CORRIDOR_02 — Object exceeds configured maximum diagnostic extent.
+- **SV-00165 GIANT_GEOMETRY** [REVIEW] WALK_1F_CORRIDOR_03 — Object exceeds configured maximum diagnostic extent.
+- **SV-00166 GIANT_GEOMETRY** [REVIEW] WALK_1F_CORRIDOR_04 — Object exceeds configured maximum diagnostic extent.
+- **SV-00167 GIANT_GEOMETRY** [REVIEW] WALK_1F_MAIN_ENTRANCE — Object exceeds configured maximum diagnostic extent.
+- **SV-00168 GIANT_GEOMETRY** [REVIEW] WALK_1F_MEETINGROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00169 GIANT_GEOMETRY** [REVIEW] WALK_1F_MEETINGROOM_01_THRESHOLD — Object exceeds configured maximum diagnostic extent.
+- **SV-00170 GIANT_GEOMETRY** [REVIEW] WALK_1F_OFFICE — Object exceeds configured maximum diagnostic extent.
+- **SV-00171 GIANT_GEOMETRY** [REVIEW] WALK_1F_RESTAURANT_A — Object exceeds configured maximum diagnostic extent.
+- **SV-00172 GIANT_GEOMETRY** [REVIEW] WALK_1F_RESTAURANT_B — Object exceeds configured maximum diagnostic extent.
+- **SV-00173 GIANT_GEOMETRY** [REVIEW] WALK_1F_SIDE_ENTRANCE — Object exceeds configured maximum diagnostic extent.
+- **SV-00174 GIANT_GEOMETRY** [REVIEW] WALK_1F_STORAGE — Object exceeds configured maximum diagnostic extent.
+- **SV-00175 GIANT_GEOMETRY** [REVIEW] WALK_2F_BATHROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00176 GIANT_GEOMETRY** [REVIEW] WALK_2F_CLASS201 — Object exceeds configured maximum diagnostic extent.
+- **SV-00177 GIANT_GEOMETRY** [REVIEW] WALK_2F_CLASS202 — Object exceeds configured maximum diagnostic extent.
+- **SV-00178 GIANT_GEOMETRY** [REVIEW] WALK_2F_CLASS203 — Object exceeds configured maximum diagnostic extent.
+- **SV-00179 GIANT_GEOMETRY** [REVIEW] WALK_2F_CLASS204 — Object exceeds configured maximum diagnostic extent.
+- **SV-00180 GIANT_GEOMETRY** [REVIEW] WALK_2F_CORRIDOR_01 — Object exceeds configured maximum diagnostic extent.
+- **SV-00181 GIANT_GEOMETRY** [REVIEW] WALK_2F_CORRIDOR_02 — Object exceeds configured maximum diagnostic extent.
+- **SV-00182 GIANT_GEOMETRY** [REVIEW] WALK_2F_CORRIDOR_03 — Object exceeds configured maximum diagnostic extent.
+- **SV-00183 GIANT_GEOMETRY** [REVIEW] WALK_2F_CORRIDOR_04 — Object exceeds configured maximum diagnostic extent.
+- **SV-00184 GIANT_GEOMETRY** [REVIEW] WALK_2F_GALLERY — Object exceeds configured maximum diagnostic extent.
+- **SV-00185 GIANT_GEOMETRY** [REVIEW] WALK_2F_MEETINGROOM — Object exceeds configured maximum diagnostic extent.
+- **SV-00186 GIANT_GEOMETRY** [REVIEW] WALK_2F_OFFICE — Object exceeds configured maximum diagnostic extent.
+- **SV-00187 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_AUDITORIUM — Semantic object is hidden or disabled.
+- **SV-00188 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_CLASS101 — Semantic object is hidden or disabled.
+- **SV-00189 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_CLASS102 — Semantic object is hidden or disabled.
+- **SV-00190 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_CLASS103 — Semantic object is hidden or disabled.
+- **SV-00191 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_CLASS104 — Semantic object is hidden or disabled.
+- **SV-00192 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_COURTYARD — Semantic object is hidden or disabled.
+- **SV-00193 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_ELEVATOR — Semantic object is hidden or disabled.
+- **SV-00194 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_LADYSROOM — Semantic object is hidden or disabled.
+- **SV-00195 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_MAIN_ENTRANCE — Semantic object is hidden or disabled.
+- **SV-00196 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_MEETINGROOM — Semantic object is hidden or disabled.
+- **SV-00197 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_MENSROOM — Semantic object is hidden or disabled.
+- **SV-00198 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_OFFICE — Semantic object is hidden or disabled.
+- **SV-00199 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_RESTAURANT_A — Semantic object is hidden or disabled.
+- **SV-00200 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_RESTAURANT_B — Semantic object is hidden or disabled.
+- **SV-00201 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_SIDE_ENTRANCE — Semantic object is hidden or disabled.
+- **SV-00202 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_1F_STORAGE — Semantic object is hidden or disabled.
+- **SV-00203 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_BALCONY_LEFT — Semantic object is hidden or disabled.
+- **SV-00204 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_BALCONY_RIGHT — Semantic object is hidden or disabled.
+- **SV-00205 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_CLASS201 — Semantic object is hidden or disabled.
+- **SV-00206 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_CLASS202 — Semantic object is hidden or disabled.
+- **SV-00207 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_CLASS203 — Semantic object is hidden or disabled.
+- **SV-00208 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_CLASS204 — Semantic object is hidden or disabled.
+- **SV-00209 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_ELEVATOR — Semantic object is hidden or disabled.
+- **SV-00210 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_GALLERY — Semantic object is hidden or disabled.
+- **SV-00211 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_LADYSROOM — Semantic object is hidden or disabled.
+- **SV-00212 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_MEETINGROOM — Semantic object is hidden or disabled.
+- **SV-00213 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_MENSROOM — Semantic object is hidden or disabled.
+- **SV-00214 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_2F_OFFICE — Semantic object is hidden or disabled.
+- **SV-00215 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_STAIR_A — Semantic object is hidden or disabled.
+- **SV-00216 HIDDEN_DISABLED_OBJECT** [REVIEW] AREA_STAIR_B — Semantic object is hidden or disabled.
+- **SV-00217 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_AUDITORIUM — Semantic object is hidden or disabled.
+- **SV-00218 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_AUDITORIUM_OFFICE — Semantic object is hidden or disabled.
+- **SV-00219 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_CLASS101 — Semantic object is hidden or disabled.
+- **SV-00220 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_CLASS102 — Semantic object is hidden or disabled.
+- **SV-00221 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_CLASS103 — Semantic object is hidden or disabled.
+- **SV-00222 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_CLASS104 — Semantic object is hidden or disabled.
+- **SV-00223 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_LADYSROOM — Semantic object is hidden or disabled.
+- **SV-00224 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_MAIN_ENTRANCE — Semantic object is hidden or disabled.
+- **SV-00225 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_MEETINGROOM_01 — Semantic object is hidden or disabled.
+- **SV-00226 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_MEETINGROOM_02 — Semantic object is hidden or disabled.
+- **SV-00227 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_MENSROOM — Semantic object is hidden or disabled.
+- **SV-00228 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_OFFICE — Semantic object is hidden or disabled.
+- **SV-00229 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_RESTAURANT_A — Semantic object is hidden or disabled.
+- **SV-00230 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_RESTAURANT_B — Semantic object is hidden or disabled.
+- **SV-00231 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_SIDE_ENTRANCE — Semantic object is hidden or disabled.
+- **SV-00232 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_1F_STORAGE — Semantic object is hidden or disabled.
+- **SV-00233 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_BALCONY_LEFT — Semantic object is hidden or disabled.
+- **SV-00234 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_BALCONY_RIGHT — Semantic object is hidden or disabled.
+- **SV-00235 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_CLASS201 — Semantic object is hidden or disabled.
+- **SV-00236 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_CLASS202 — Semantic object is hidden or disabled.
+- **SV-00237 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_CLASS203 — Semantic object is hidden or disabled.
+- **SV-00238 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_CLASS204 — Semantic object is hidden or disabled.
+- **SV-00239 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_GALLERY — Semantic object is hidden or disabled.
+- **SV-00240 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_LADYSROOM — Semantic object is hidden or disabled.
+- **SV-00241 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_MEETINGROOM_01 — Semantic object is hidden or disabled.
+- **SV-00242 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_MEETINGROOM_02 — Semantic object is hidden or disabled.
+- **SV-00243 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_MENSROOM — Semantic object is hidden or disabled.
+- **SV-00244 HIDDEN_DISABLED_OBJECT** [REVIEW] PORTAL_2F_OFFICE — Semantic object is hidden or disabled.
+- **SV-00245 ISOLATED_WALKABLE** [REVIEW] WALK_1F_SIDE_ENTRANCE — Walkable has no same-floor geometric neighbor; isolation can be intentional.
+- **SV-00246 LARGE_SAME_FLOOR_DISCONNECTION** [REVIEW] WALK_1F_AUDITORIUM, WALK_1F_AUDITORIUM_OFFICE_THRESHOLD, WALK_1F_AUDITORIUM_THRESHOLD, WALK_1F_BATHROOM, WALK_1F_CORRIDOR_01, WALK_1F_CORRIDOR_02, WALK_1F_CORRIDOR_03, WALK_1F_CORRIDOR_04, WALK_1F_MAIN_ENTRANCE, WALK_1F_OFFICE, WALK_1F_OFFICE_THRESHOLD, WALK_1F_STORAGE, WALK_1F_STORAGE_THRESHOLD, WALK_1F_CLASS101, WALK_1F_CLASS101_THRESHOLD, WALK_1F_CLASS102, WALK_1F_CLASS102_THRESHOLD, WALK_1F_CLASS103, WALK_1F_CLASS103_THRESHOLD, WALK_1F_CLASS104, WALK_1F_CLASS104_THRESHOLD, WALK_1F_MEETINGROOM, WALK_1F_MEETINGROOM_01_THRESHOLD, WALK_1F_RESTAURANT_A, WALK_1F_RESTAURANT_A_THRESHOLD, WALK_1F_RESTAURANT_B, WALK_1F_RESTAURANT_B_THRESHOLD, WALK_1F_SIDE_ENTRANCE — Large same-floor components are disconnected; not automatically an error.
+- **SV-00247 LARGE_SAME_FLOOR_DISCONNECTION** [REVIEW] WALK_2F_BATHROOM, WALK_2F_CORRIDOR_01, WALK_2F_CORRIDOR_02, WALK_2F_CORRIDOR_03, WALK_2F_CORRIDOR_04, WALK_2F_GALLERY, WALK_2F_GALLERY_THRESHOLD, WALK_2F_MEETINGROOM, WALK_2F_MEETINGROOM_01_THRESHOLD, WALK_2F_MEETINGROOM_02_THRESHOLD, WALK_2F_OFFICE, WALK_2F_OFFICE_THRESHOLD, WALK_2F_CLASS201, WALK_2F_CLASS201_THRESHOLD, WALK_2F_CLASS202, WALK_2F_CLASS202_THRESHOLD, WALK_2F_CLASS203, WALK_2F_CLASS203_THRESHOLD, WALK_2F_CLASS204, WALK_2F_CLASS204_THRESHOLD — Large same-floor components are disconnected; not automatically an error.
+- **SV-00248 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_1F_MEETINGROOM_02 — No explicit world-space portal normal; geometry thin axis is not treated as authority.
+- **SV-00249 PORTAL_ORIENTATION_UNRESOLVED** [REVIEW] PORTAL_1F_SIDE_ENTRANCE — No explicit world-space portal normal; geometry thin axis is not treated as authority.
+- **SV-00250 STAIR_CLEARANCE_UNRESOLVED** [REVIEW] STAIR_A_ENTRY, STAIR_A_EXIT, STAIR_A_PATH — Physical clearance policy/measurement is missing; no mesh-derived clearance claimed.
+- **SV-00251 STAIR_CLEARANCE_UNRESOLVED** [REVIEW] STAIR_B_ENTRY, STAIR_B_EXIT, STAIR_B_PATH — Physical clearance policy/measurement is missing; no mesh-derived clearance claimed.
+- **SV-00252 UNRESOLVED_SETTING** [REVIEW] Scene — approved floor planes and geometry authority
+- **SV-00253 UNRESOLVED_SETTING** [REVIEW] Scene — physical clearance and contact semantics
+- **SV-00254 UNRESOLVED_SETTING** [REVIEW] Scene — camera-plane binding
+- **SV-00255 UNRESOLVED_SETTING** [REVIEW] Scene — wall/obstacle movement versus occlusion ownership
+- **SV-00256 UNRESOLVED_SETTING** [REVIEW] Scene — portal normal and endpoint declarations
+- **SV-00257 UNRESOLVED_SETTING** [REVIEW] Scene — stair path direction, clearance and slab opening evidence
 
-### LOW (43)
+### LOW (69)
 
-- **SV-00220 COLLECTION_POLICY_UNRESOLVED** [REVIEW] Scene — No approved expected-collection mapping; explicit incompatible ownership is checked.
-- **SV-00221 MISSING_FLOOR_LABEL** [REVIEW] AREA_STAIR_A — No unambiguous explicit floor label.
-- **SV-00222 MISSING_FLOOR_LABEL** [REVIEW] AREA_STAIR_B — No unambiguous explicit floor label.
-- **SV-00223 MISSING_FLOOR_LABEL** [REVIEW] WALK_STAIRS_A_LOWERHALF — No unambiguous explicit floor label.
-- **SV-00224 MISSING_FLOOR_LABEL** [REVIEW] WALK_STAIRS_A_UPPERHALF — No unambiguous explicit floor label.
-- **SV-00225 MISSING_FLOOR_LABEL** [REVIEW] WALK_STAIRS_B_LOWERHALF — No unambiguous explicit floor label.
-- **SV-00226 MISSING_FLOOR_LABEL** [REVIEW] WALK_STAIRS_B_UPPERHALF — No unambiguous explicit floor label.
-- **SV-00227 NAMING_INCONSISTENCY** [REVIEW] WALK_1F_BATHROOM — Explicit collection/property role exists without matching object prefix.
-- **SV-00228 NAMING_INCONSISTENCY** [REVIEW] WALK_1F_CORRIDOR_01 — Explicit collection/property role exists without matching object prefix.
-- **SV-00229 NAMING_INCONSISTENCY** [REVIEW] WALK_1F_CORRIDOR_02 — Explicit collection/property role exists without matching object prefix.
-- **SV-00230 NAMING_INCONSISTENCY** [REVIEW] WALK_1F_CORRIDOR_03 — Explicit collection/property role exists without matching object prefix.
-- **SV-00231 NAMING_INCONSISTENCY** [REVIEW] WALK_1F_CORRIDOR_04 — Explicit collection/property role exists without matching object prefix.
-- **SV-00232 NAMING_INCONSISTENCY** [REVIEW] WALK_1F_MAIN_ENTRANCE — Explicit collection/property role exists without matching object prefix.
-- **SV-00233 NAMING_INCONSISTENCY** [REVIEW] WALK_1F_OFFICE — Explicit collection/property role exists without matching object prefix.
-- **SV-00234 NAMING_INCONSISTENCY** [REVIEW] WALK_1F_SIDE_ENTRANCE — Explicit collection/property role exists without matching object prefix.
-- **SV-00235 NAMING_INCONSISTENCY** [REVIEW] WALK_2F_BATHROOM — Explicit collection/property role exists without matching object prefix.
-- **SV-00236 NAMING_INCONSISTENCY** [REVIEW] WALK_2F_CORRIDOR_01 — Explicit collection/property role exists without matching object prefix.
-- **SV-00237 NAMING_INCONSISTENCY** [REVIEW] WALK_2F_CORRIDOR_02 — Explicit collection/property role exists without matching object prefix.
-- **SV-00238 NAMING_INCONSISTENCY** [REVIEW] WALK_2F_CORRIDOR_03 — Explicit collection/property role exists without matching object prefix.
-- **SV-00239 NAMING_INCONSISTENCY** [REVIEW] WALK_2F_CORRIDOR_04 — Explicit collection/property role exists without matching object prefix.
-- **SV-00240 NAMING_INCONSISTENCY** [REVIEW] WALK_2F_OFFICE — Explicit collection/property role exists without matching object prefix.
-- **SV-00241 NAMING_INCONSISTENCY** [REVIEW] WALK_STAIRS_A_LOWERHALF — Explicit collection/property role exists without matching object prefix.
-- **SV-00242 NAMING_INCONSISTENCY** [REVIEW] WALK_STAIRS_A_UPPERHALF — Explicit collection/property role exists without matching object prefix.
-- **SV-00243 NAMING_INCONSISTENCY** [REVIEW] WALK_STAIRS_B_LOWERHALF — Explicit collection/property role exists without matching object prefix.
-- **SV-00244 NAMING_INCONSISTENCY** [REVIEW] WALK_STAIRS_B_UPPERHALF — Explicit collection/property role exists without matching object prefix.
-- **SV-00245 NON_MANIFOLD** [REVIEW] WALK_1F_BATHROOM — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00246 NON_MANIFOLD** [REVIEW] WALK_1F_CORRIDOR_01 — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00247 NON_MANIFOLD** [REVIEW] WALK_1F_CORRIDOR_02 — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00248 NON_MANIFOLD** [REVIEW] WALK_1F_CORRIDOR_03 — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00249 NON_MANIFOLD** [REVIEW] WALK_1F_CORRIDOR_04 — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00250 NON_MANIFOLD** [REVIEW] WALK_1F_MAIN_ENTRANCE — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00251 NON_MANIFOLD** [REVIEW] WALK_1F_OFFICE — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00252 NON_MANIFOLD** [REVIEW] WALK_1F_SIDE_ENTRANCE — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00253 NON_MANIFOLD** [REVIEW] WALK_2F_BATHROOM — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00254 NON_MANIFOLD** [REVIEW] WALK_2F_CORRIDOR_01 — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00255 NON_MANIFOLD** [REVIEW] WALK_2F_CORRIDOR_02 — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00256 NON_MANIFOLD** [REVIEW] WALK_2F_CORRIDOR_03 — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00257 NON_MANIFOLD** [REVIEW] WALK_2F_CORRIDOR_04 — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00258 NON_MANIFOLD** [REVIEW] WALK_2F_OFFICE — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00259 NON_MANIFOLD** [REVIEW] WALK_STAIRS_A_LOWERHALF — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00260 NON_MANIFOLD** [REVIEW] WALK_STAIRS_A_UPPERHALF — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00261 NON_MANIFOLD** [REVIEW] WALK_STAIRS_B_LOWERHALF — Non-manifold edges reported; this does not invalidate a surface.
-- **SV-00262 NON_MANIFOLD** [REVIEW] WALK_STAIRS_B_UPPERHALF — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00258 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_BATHROOM — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00259 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_CORRIDOR_01_01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00260 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_CORRIDOR_01_02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00261 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_MAIN_ENTRANCE_01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00262 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_MAIN_ENTRANCE_02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00263 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_OFFICE_01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00264 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_OFFICE_02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00265 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_RESTAURANT_01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00266 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_RESTAURANT_02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00267 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_RESTAURANT_03 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00268 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_STORAGE01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00269 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_STORAGE02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00270 NON_MANIFOLD** [REVIEW] OBSTACLE_1F_STORAGE03 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00271 NON_MANIFOLD** [REVIEW] OBSTACLE_2F_BATHROOM — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00272 NON_MANIFOLD** [REVIEW] OBSTACLE_2F_GALLERY_01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00273 NON_MANIFOLD** [REVIEW] OBSTACLE_2F_GALLERY_02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00274 NON_MANIFOLD** [REVIEW] OBSTACLE_2F_MEETINGROOM — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00275 NON_MANIFOLD** [REVIEW] OBSTACLE_2F_OFFICE_01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00276 NON_MANIFOLD** [REVIEW] OBSTACLE_2F_OFFICE_02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00277 NON_MANIFOLD** [REVIEW] STAIR_A_PATH — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00278 NON_MANIFOLD** [REVIEW] STAIR_B_PATH — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00279 NON_MANIFOLD** [REVIEW] WALK_1F_AUDITORIUM — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00280 NON_MANIFOLD** [REVIEW] WALK_1F_AUDITORIUM_OFFICE_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00281 NON_MANIFOLD** [REVIEW] WALK_1F_AUDITORIUM_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00282 NON_MANIFOLD** [REVIEW] WALK_1F_BATHROOM — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00283 NON_MANIFOLD** [REVIEW] WALK_1F_CLASS101 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00284 NON_MANIFOLD** [REVIEW] WALK_1F_CLASS101_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00285 NON_MANIFOLD** [REVIEW] WALK_1F_CLASS102 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00286 NON_MANIFOLD** [REVIEW] WALK_1F_CLASS102_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00287 NON_MANIFOLD** [REVIEW] WALK_1F_CLASS103 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00288 NON_MANIFOLD** [REVIEW] WALK_1F_CLASS103_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00289 NON_MANIFOLD** [REVIEW] WALK_1F_CLASS104 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00290 NON_MANIFOLD** [REVIEW] WALK_1F_CLASS104_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00291 NON_MANIFOLD** [REVIEW] WALK_1F_CORRIDOR_01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00292 NON_MANIFOLD** [REVIEW] WALK_1F_CORRIDOR_02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00293 NON_MANIFOLD** [REVIEW] WALK_1F_CORRIDOR_03 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00294 NON_MANIFOLD** [REVIEW] WALK_1F_CORRIDOR_04 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00295 NON_MANIFOLD** [REVIEW] WALK_1F_MAIN_ENTRANCE — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00296 NON_MANIFOLD** [REVIEW] WALK_1F_MEETINGROOM — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00297 NON_MANIFOLD** [REVIEW] WALK_1F_MEETINGROOM_01_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00298 NON_MANIFOLD** [REVIEW] WALK_1F_OFFICE — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00299 NON_MANIFOLD** [REVIEW] WALK_1F_OFFICE_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00300 NON_MANIFOLD** [REVIEW] WALK_1F_RESTAURANT_A — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00301 NON_MANIFOLD** [REVIEW] WALK_1F_RESTAURANT_A_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00302 NON_MANIFOLD** [REVIEW] WALK_1F_RESTAURANT_B — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00303 NON_MANIFOLD** [REVIEW] WALK_1F_RESTAURANT_B_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00304 NON_MANIFOLD** [REVIEW] WALK_1F_SIDE_ENTRANCE — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00305 NON_MANIFOLD** [REVIEW] WALK_1F_STORAGE — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00306 NON_MANIFOLD** [REVIEW] WALK_1F_STORAGE_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00307 NON_MANIFOLD** [REVIEW] WALK_2F_BATHROOM — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00308 NON_MANIFOLD** [REVIEW] WALK_2F_CLASS201 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00309 NON_MANIFOLD** [REVIEW] WALK_2F_CLASS201_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00310 NON_MANIFOLD** [REVIEW] WALK_2F_CLASS202 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00311 NON_MANIFOLD** [REVIEW] WALK_2F_CLASS202_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00312 NON_MANIFOLD** [REVIEW] WALK_2F_CLASS203 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00313 NON_MANIFOLD** [REVIEW] WALK_2F_CLASS203_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00314 NON_MANIFOLD** [REVIEW] WALK_2F_CLASS204 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00315 NON_MANIFOLD** [REVIEW] WALK_2F_CLASS204_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00316 NON_MANIFOLD** [REVIEW] WALK_2F_CORRIDOR_01 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00317 NON_MANIFOLD** [REVIEW] WALK_2F_CORRIDOR_02 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00318 NON_MANIFOLD** [REVIEW] WALK_2F_CORRIDOR_03 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00319 NON_MANIFOLD** [REVIEW] WALK_2F_CORRIDOR_04 — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00320 NON_MANIFOLD** [REVIEW] WALK_2F_GALLERY — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00321 NON_MANIFOLD** [REVIEW] WALK_2F_GALLERY_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00322 NON_MANIFOLD** [REVIEW] WALK_2F_MEETINGROOM — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00323 NON_MANIFOLD** [REVIEW] WALK_2F_MEETINGROOM_01_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00324 NON_MANIFOLD** [REVIEW] WALK_2F_MEETINGROOM_02_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00325 NON_MANIFOLD** [REVIEW] WALK_2F_OFFICE — Non-manifold edges reported; this does not invalidate a surface.
+- **SV-00326 NON_MANIFOLD** [REVIEW] WALK_2F_OFFICE_THRESHOLD — Non-manifold edges reported; this does not invalidate a surface.
 
 ## Limits / 診斷限制
 
@@ -328,92 +394,49 @@ Source is preserved; no inferred physical roles or inference topology are create
 - AABB-only representations are broad-phase evidence and require human review.
 - All thresholds are diagnostic heuristics until adopted by explicit research review.
 
+## 授權補標與結果解讀 / Authorized supplement interpretation
 
-## school_v3 readiness assessment / 接入判斷
+Readiness: **NEEDS_HUMAN_FIXES**。具體 object／位置／人工動作見
+[位置摘要](school_v3_semantic_locations.md)；修改 recipe 見
+[patch](school_v3_semantic_patch.json)，來源保存與獨立複查證據見
+[update](school_v3_semantic_update.json)。三者都是 annotation／diagnostic artifacts，不是 inference inputs。
 
-**NEEDS_HUMAN_FIXES**. This is an interpretation of the existing diagnostic report;
-validator status and native HIGH/MEDIUM/LOW findings are unchanged. It does not define a
-new engine status or approve geometry. 完成 audit 不代表可直接開始 Graph／collision／benchmark。
+| 診斷 | 補標前 | 補標後 |
+| --- | ---: | ---: |
+| WALKABLE objects | 18（含 4 個原 stair halves） | 48（stair references 已分開） |
+| OBSTACLE | 0 | 19 |
+| STAIR annotations | 0 | 6（2 PATH meshes、4 endpoint markers） |
+| AREA PASS / PARTIAL / MISSING | 2 / 4 / 24 | 16 / 5 / 4 |
+| Intentional EXCLUDED / cross-floor NOT_APPLICABLE | 0 / 0 | 3 / 2 |
+| Diagnostic object components | 9 | 14 |
+| Isolated WALKABLE objects | 7 | 1（1F SIDE_ENTRANCE） |
+| HIGH / MEDIUM / LOW | 49 / 170 / 43 | 33 / 224 / 69 |
 
-[Source audit / 原始盤點](school_v3_semantic_audit.json) preserves all 2,833 objects and
-31 collections in `full_scene_inventory`, and the 105 explicitly labeled semantic objects,
-including 76 evaluated meshes and 29 cameras, in the replay snapshot. No v2
-approval/calibration was transferred.
-The existing 1 Blender unit = 1 metre decision is retained; diagnostic giant thresholds
-are not a reason to invent a different conversion.
+新增 15 個室內地板與 19 個 PORTAL 範圍內 threshold surfaces；14 個既有平面扣除
+same-floor blocking footprints（含兩層 OFFICE 延伸）。不橋接 PORTAL 範圍外的未知缺口。
+兩層四個男女廁被已確認 OBSTACLE 全覆蓋，因此未建立空 mesh 或穿越 blocker 的 floor。
+OFFICE 的原生 AREA 覆蓋率由 20.5742% 到 29.6071%；扣除 blockers 後的計畫 free-floor
+polygon 已填滿，但其分母不同，不能寫成原生 AREA coverage 100%。主入口原生覆蓋
+95.8123% → 65.6214% 是扣除兩個 blockers 的結果，不是填地板後忘記保存。
 
-### Coverage scope / 覆蓋率範圍
+Connectivity 的 9 → 14 包含新房間地面及尚未連回 corridor 的門檻；不是改善證明。
+原生 PORTAL 結果為 REVIEW 24／MISSING 4／PASS 0。20 個雙側 probe 落在地面，可能是
+同一小門檻；獨立 component 複查只確認 **6 個不同 room/corridor 的局部接觸**，
+尚無 physical approval。1F MAIN_ENTRANCE 即使局部接觸，仍有 collider/portal overlap REVIEW。
+完整局部 check、其餘 20 個 review 與 2 個不可走陽台目的地均保存，不以 probe 覆蓋替代合法通行。
 
-30 AREA: **24 MISSING / 4 PARTIAL / 2 geometric PASS**. The six nonmissing results remain
-REVIEW because floor authority is unapproved. The area-weighted eligible XY coverage is
-**5.6245%**, uncovered **94.3755%**, over 28 supported positive-area 1F/2F AREA footprints.
-The two unassigned stair AREAs are excluded from this weighted denominator. These values
-are not whole-floor coverage or approved walkability. 1F coverage: 6.1571%; 2F: 4.6985%.
+STAIR A/B 各有 ENTRY/PATH/EXIT、1F→2F 及 UP metadata；PATH 只複製原先不相連的
+兩個 halves，沒有補造 landing、ordered full path 或 stair/navigation edges。B ENTRY
+有 diagnostic floor contact；A ENTRY 與 A/B EXIT 沒有。Clearance／slab opening 維持 REVIEW。
+1F=25／2F=165 僅 PROPOSED；STORAGE02/03 與 stair anchors 的 Z 例外沒有被自動移動。
+Elevator 仍待人工區分 lobby/cabin/shaft；沒有創造電梯 transition。
 
-### Human review focus / 人工優先事項
+19 個 OBSTACLE 的原 world vertices／triangles 保持一致，移動與遮擋標記皆 true，原 ID 可追蹤。
+這些是原始 footprint proxies，不補高度，也不認證 3D collision/occlusion。
+STORAGE subtraction 只有 3 個 float32 rounding contact pairs，ratio 均低於既有 0.01 contact
+threshold；沒有超過該既有閾值的 WALKABLE/OBSTACLE overlap，不代表所有 3D 碰撞已驗證。
+WALL 仍為 0，未猜測 group_*／Cube.*。正式 Phase 1 schema／Graph／benchmark 未修改。
 
-- **HIGH (native 49):** 24 AREA coverage gaps; 19 portals without nearby WALKABLE; two
-  AREA_STAIR naming conflicts; unresolved floor authority; missing WALL/OBSTACLE/STAIR roles.
-- **MEDIUM (native 170):** partial coverage/authority, seven islands/two same-floor
-  disconnections, nine unresolved portal normals, endpoints, duplicate men's-room portals,
-  nonplanar stair-half patches, hidden/giant geometry and unresolved policies.
-- **LOW (native 43):** WALK_* names, missing floors, open-surface non-manifold warnings
-  and unspecified collection policy. A one-face WALKABLE plane has open boundary edges;
-  non-manifold does not by itself prove the proxy is invalid.
-
-19 `BLOCK_*` meshes belong to collection `BLOCK`, outside the current recognized role
-prefixes. They remain UNCLASSIFIED: **請人工確認 WALL／OBSTACLE／其他，以及 movement／occlusion
-ownership**. This inventory observation is associated with the native missing-collider
-HIGH findings; it does not add or relabel native queue entries. With no declared colliders,
-wall/obstacle overlap and portal collision are **not assessed**, rather than collision-free.
-
-All 28 portals lack explicit normals: 19 MISSING, nine REVIEW. There is no verified
-one-sided/two-sided passage. `PORTAL_1F_MENSROOM` and `PORTAL_2F_MENSROOM` have identical
-evaluated world geometry and need placement/floor review.
-
-Four `WALK_STAIRS_*` halves are WALKABLE collection members with no floor assignments,
-not approved STAIR entry/path/exit. Their isolation partly follows missing floor labels.
-STAIR traversal/direction, clearance and slab opening remain **REVIEW / unmeasured**;
-no stair or portal edges were created. Endpoint accessibility remains unresolved.
-
-### Geometry scope / 幾何檢查範圍
-
-Triangle/sanity validation covers 76 explicitly semantic meshes, all within the existing
-256-triangle budget. The remaining 2,613 meshes are inventory-only, not certified by the
-validator. Full inventory records two empty evaluated meshes (`Circle.018`, `Plane.110`)
-and 115 additional vertex/edge-only meshes with no polygons. Their group/instance names
-are not assigned physical roles. Non-manifold is report-only; hidden/disabled and giant
-findings require context review. Floors, camera-plane bindings, contact and clearance
-policy still need source-bound human approval.
-
-### BLOCK IDs requiring ownership review / 待確認阻擋物角色
-
-- `BLOCK_1F_BATHROOM`
-- `BLOCK_1F_CORRIDOR_01_01`
-- `BLOCK_1F_CORRIDOR_01_02`
-- `BLOCK_1F_MAIN_ENTRANCE_01`
-- `BLOCK_1F_MAIN_ENTRANCE_02`
-- `BLOCK_1F_OFFICE_01`
-- `BLOCK_1F_OFFICE_02`
-- `BLOCK_1F_RESTAURANT_01`
-- `BLOCK_1F_RESTAURANT_02`
-- `BLOCK_1F_RESTAURANT_03`
-- `BLOCK_1F_STORAGE01`
-- `BLOCK_1F_STORAGE02`
-- `BLOCK_1F_STORAGE03`
-- `BLOCK_2F_BATHROOM`
-- `BLOCK_2F_GALLERY_01`
-- `BLOCK_2F_GALLERY_02`
-- `BLOCK_2F_MEETINGROOM`
-- `BLOCK_2F_OFFICE_01`
-- `BLOCK_2F_OFFICE_02`
-
-## Verification / 驗證結果
-
-- Existing validator CLI: exit 0; native JSON/Markdown replay agrees; 262 unique review IDs.
-- Full regression: `uv run pytest` — 745 passed, 0 failed, 0 skipped (55.43 s).
-- `uv run ruff check .` — passed; `uv run mypy` — passed (72 source files).
-- Report links and audit hash binding — passed; `git diff --check` — passed.
-- Source SHA-256, 467,890,973-byte size and mtime unchanged after regression; no save/render.
-- Source SHA-256: `26428df2fd395c69673b3e918fb7171b72d77a47d728e6b9cb21bb9da7b8e614`.
-- Only audit/report artifacts changed; no Graph/collision/benchmark implementation started.
+本輪已執行 pytest **783 passed / 0 failed / 0 skipped (53.62s)**，Ruff 通過，strict mypy
+通過（72 source files）。最終 replay／link／diff check 結果保存於 JSON
+`semantic_supplement_review.verification`。

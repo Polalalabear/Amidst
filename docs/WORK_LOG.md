@@ -4,6 +4,46 @@
 
 ## 繁體中文
 
+### 2026-10-05 — school_v3 人工授權 semantic 補標與保存後診斷
+
+起點 `a0aa1ea`，branch `codex/dataset-infrastructure`。依本輪人工確認的室內可走、
+BLOCK→OBSTACLE/BOTH、courtyard／balcony 不可走與 stair floor 規則，保存同名
+`blender/school_v3.blend`；沒有 v4／render。另經明確確認，validator 最小診斷擴充
+讀取 source-bound intentional non-walkable／cross-floor AREA metadata，以及已分類且
+reviewed 的 WALK_* alias。正式 Phase 1 schema／Graph／benchmark／metric semantics 不變。
+
+[Patch recipe](../data/scene_audit/school_v3_semantic_patch.json) 新增 15 個房間地板、
+19 個門檻 surface，14 個既有 floor 扣除實際 same-floor BLOCK polygons（含兩層 OFFICE
+延伸）。19 BLOCK 保持 geometry／原 identity，轉為 OBSTACLE；四個原 stair halves
+留作 reference，新增 2 PATH meshes／4 ENTRY/EXIT markers，沒有補造 landing／full path。
+2F MENSROOM PORTAL 依 2F AREA 明確 bounds 修正 +140 Z。四個廁所扣除 blocker 後為空，
+因此不生成 WALKABLE；elevator 仍 HUMAN_REVIEW。
+
+Source SHA-256 依授權由
+`26428df2fd395c69673b3e918fb7171b72d77a47d728e6b9cb21bb9da7b8e614` 變為
+`cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e`；原始備份與
+architecture／obstacle geometry／camera 保持證據見
+[update](../data/scene_audit/school_v3_semantic_update.json)。保存後唯讀 audit 的 SHA／size／mtime
+不變。`.blend` 沿用 gitignore 留在本機，Git 保存 source-bound recipe／reports／tools。
+
+[新報告](../data/scene_audit/school_v3_semantic_validation.md)：30 AREA、48 WALKABLE、
+0 WALL、19 OBSTACLE、6 STAIR annotations、28 PORTAL、29 CAM。Coverage PASS/PARTIAL/MISSING
+由 2/4/24 到 16/5/4，另 3 EXCLUDED／2 NOT_APPLICABLE；floor 25/165 僅 PROPOSED。
+OFFICE 原 AREA denominator coverage 20.5742%→29.6071%，不改為扣 blocker denominator。
+Components 9→14（範圍擴大且揭露門外 gaps，非連通改善證明），isolated 7→1。
+Queue 49/170/43→33/224/69。原生 20 組雙側 probes 不當作完整連接；獨立 triangle/component
+複查確認 6 組 distinct room/corridor 局部接觸，physical approval 仍為 0。
+
+判定 **NEEDS_HUMAN_FIXES**；完整 HIGH／MEDIUM 位置與人工動作見
+[位置摘要](../data/scene_audit/school_v3_semantic_locations.md)。缺口包括 bathroom blocker、
+門外 seams、stairs landing／endpoint、WALL／3D collider、floor／camera-plane authority、
+clearance／opening 與 elevator roles。沒有開始 Graph／collision pruning／benchmark／Agent。
+
+本輪完整 **783 tests passed in 53.62s，0 failed／0 skipped**；Ruff、strict mypy（72 source
+files）通過。最終 report replay、local links、source fingerprint 與 diff checks 的結果
+保存在 report JSON 的 `semantic_supplement_review.verification`；metadata 未出現時的十組
+既有 semantic fixture reports 保持原語意。
+
 ### 2026-10-02 — Semantic completeness validator、Benchmark Protocol 與 comparison reporting
 
 起點 `1750e39`，branch `codex/dataset-infrastructure`，起始工作目錄 clean。
@@ -263,6 +303,42 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-05 — Authorized school_v3 semantic supplement and post-save diagnostics
+
+Starting at `a0aa1ea` on `codex/dataset-infrastructure`, explicit human policies authorize
+saving the same school_v3.blend, without v4 or rendering. The reviewed recipe adds 15 room
+floors and 19 aperture-only thresholds, subtracts same-floor blocking polygons from 14
+existing floors, extends both offices, preserves all 19 obstacle meshes while assigning
+OBSTACLE/BOTH roles, corrects the 2F MENSROOM portal by +140 Z, and annotates two stairs
+without inventing landings or full paths. Four fully blocked bathrooms remain without room
+floors; elevator roles remain unresolved. The separately approved validator extension reads
+intentional exclusions/cross-floor AREA metadata and reviewed explicit WALKABLE aliases;
+formal Phase 1 schemas, Graph, benchmark and metric semantics stay unchanged.
+
+Source SHA changes intentionally from `26428df2fd395c69673b3e918fb7171b72d77a47d728e6b9cb21bb9da7b8e614`
+to `cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e`.
+The verified original backup and unchanged architectural/obstacle meshes/cameras are recorded
+in [update evidence](../data/scene_audit/school_v3_semantic_update.json). The subsequent
+read-only audit preserves hash, size and mtime. The ignored Blender asset stays local;
+source-bound recipes, reports and tools are committed.
+
+The updated inventory is 30 AREA, 48 WALKABLE, zero WALL, 19 OBSTACLE, 6 stair annotations,
+28 PORTAL and 29 CAM. Coverage PASS/PARTIAL/MISSING moves from 2/4/24 to 16/5/4, plus three
+EXCLUDED and two NOT_APPLICABLE declarations. Floors 25/165 remain proposed. Office coverage
+uses the unchanged raw AREA denominator: 20.5742% to 29.6071%. Diagnostic components grow
+9 to 14 as newly marked rooms reveal unresolved seams; isolated objects fall 7 to 1.
+Queues change 49/170/43 to 33/224/69. Independent component checks confirm six local contacts
+between distinct room/corridor surfaces, not 20 connected doors from two-sided probes;
+none grants physical authority. Readiness is NEEDS_HUMAN_FIXES. The
+[location summary](../data/scene_audit/school_v3_semantic_locations.md) identifies every
+remaining HIGH/MEDIUM object, coordinates and required human action. No physical integration,
+collision pruning, benchmark or Agent work starts.
+
+Full regression passes 783 tests in 53.62s with no failures/skips, repository Ruff and strict
+mypy for 72 source files. Final native replay, local links, source fingerprint and diff
+evidence is stored in the report JSON; ten pre-existing metadata-free semantic fixtures
+retain their prior report semantics.
 
 The 2026-10-02 validator/protocol/reporting round starts at clean `1750e39` on
 `codex/dataset-infrastructure`. Local commits `56040b7`, `b29b9aa`, `40bfea1`, `249615a`,

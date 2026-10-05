@@ -1,0 +1,2305 @@
+{
+  "source_sha256_before": "26428df2fd395c69673b3e918fb7171b72d77a47d728e6b9cb21bb9da7b8e614",
+  "source_sha256_after": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_size_after": 468300506,
+  "original_backup_path": "/private/tmp/school-v3-original-fnlqn7mv/school_v3.blend",
+  "original_backup_sha256_verified": true,
+  "architectural_meshes_and_camera_calibration_unchanged": true,
+  "only_planned_annotation_transforms_and_meshes_changed": true,
+  "render_performed": false,
+  "plan_sha256": "76c451877ff0980a0d775d7bd13f7e2306acc41a212fbb7636f988cd49d267e7",
+  "blender_version": "5.2.1 LTS",
+  "post_save_geometry_checks": {
+    "obstacle_count": 19,
+    "all_original_obstacle_world_vertices_and_triangles_preserved": true,
+    "portal_2f_mensroom_centroid": [
+      396.0,
+      1975.0,
+      230.0
+    ],
+    "portal_2f_mensroom_z_range": [
+      160,
+      300
+    ],
+    "actual_walkable_count": 48,
+    "pairs_above_configured_contact_overlap_ratio": 0,
+    "nonzero_rounding_contact_pairs": [
+      {
+        "walkable": "WALK_1F_STORAGE",
+        "obstacle": "OBSTACLE_1F_STORAGE01",
+        "overlap_area_m2": 0.0003834639704236022,
+        "walkable_ratio": 8.587805249980623e-09
+      },
+      {
+        "walkable": "WALK_1F_STORAGE",
+        "obstacle": "OBSTACLE_1F_STORAGE02",
+        "overlap_area_m2": 0.0018242712343951655,
+        "walkable_ratio": 4.085517100034482e-08
+      },
+      {
+        "walkable": "WALK_1F_STORAGE",
+        "obstacle": "OBSTACLE_1F_STORAGE03",
+        "overlap_area_m2": 0.002922101496783907,
+        "walkable_ratio": 6.544145085478547e-08
+      }
+    ],
+    "no_3d_collision_or_occlusion_volume_certification": true
+  },
+  "portal_local_connection_checks": [
+    {
+      "portal_id": "PORTAL_1F_AUDITORIUM",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_AUDITORIUM",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_02",
+      "other_contact_distance_m": 0.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "CONNECTED_DIAGNOSTIC_NOT_PHYSICAL_APPROVAL",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_AUDITORIUM_OFFICE",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_OFFICE",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_AUDITORIUM",
+      "other_contact_distance_m": 5.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_CLASS101",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_CLASS101",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_04",
+      "other_contact_distance_m": 4.99114990234375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_CLASS102",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_CLASS102",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_04",
+      "other_contact_distance_m": 4.99114990234375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_CLASS103",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_CLASS103",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_04",
+      "other_contact_distance_m": 4.99114990234375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_CLASS104",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_CLASS104",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_04",
+      "other_contact_distance_m": 4.99114990234375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_LADYSROOM",
+      "floor": "1F",
+      "room_walkable": null,
+      "room_contact_distance_m": null,
+      "other_walkable": "WALK_1F_CORRIDOR_04",
+      "other_contact_distance_m": 186.99114990234375,
+      "unique_direction_declared": false,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_MAIN_ENTRANCE",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_MAIN_ENTRANCE",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_01",
+      "other_contact_distance_m": 0.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "CONNECTED_DIAGNOSTIC_NOT_PHYSICAL_APPROVAL",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_MEETINGROOM_01",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_MEETINGROOM",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_02",
+      "other_contact_distance_m": 2.587646484375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_MEETINGROOM_02",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_MEETINGROOM",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_02",
+      "other_contact_distance_m": 224.587646484375,
+      "unique_direction_declared": false,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_MENSROOM",
+      "floor": "1F",
+      "room_walkable": null,
+      "room_contact_distance_m": null,
+      "other_walkable": "WALK_1F_CORRIDOR_04",
+      "other_contact_distance_m": 116.99114990234375,
+      "unique_direction_declared": false,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_OFFICE",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_OFFICE",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_03",
+      "other_contact_distance_m": 0.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "CONNECTED_DIAGNOSTIC_NOT_PHYSICAL_APPROVAL",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_RESTAURANT_A",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_RESTAURANT_A",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_01",
+      "other_contact_distance_m": 2.96783447265625,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_RESTAURANT_B",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_RESTAURANT_B",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_01",
+      "other_contact_distance_m": 2.96783447265625,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_SIDE_ENTRANCE",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_SIDE_ENTRANCE",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_02",
+      "other_contact_distance_m": 134.587646484375,
+      "unique_direction_declared": false,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_1F_STORAGE",
+      "floor": "1F",
+      "room_walkable": "WALK_1F_STORAGE",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_1F_CORRIDOR_02",
+      "other_contact_distance_m": 0.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "CONNECTED_DIAGNOSTIC_NOT_PHYSICAL_APPROVAL",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_BALCONY_LEFT",
+      "floor": "2F",
+      "room_walkable": null,
+      "room_contact_distance_m": null,
+      "other_walkable": "WALK_2F_CORRIDOR_01",
+      "other_contact_distance_m": 0.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "INTENTIONAL_NONWALKABLE_DESTINATION",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_BALCONY_RIGHT",
+      "floor": "2F",
+      "room_walkable": null,
+      "room_contact_distance_m": null,
+      "other_walkable": "WALK_2F_CORRIDOR_01",
+      "other_contact_distance_m": 0.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "INTENTIONAL_NONWALKABLE_DESTINATION",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_CLASS201",
+      "floor": "2F",
+      "room_walkable": "WALK_2F_CLASS201",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_2F_CORRIDOR_04",
+      "other_contact_distance_m": 4.99114990234375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_CLASS202",
+      "floor": "2F",
+      "room_walkable": "WALK_2F_CLASS202",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_2F_CORRIDOR_04",
+      "other_contact_distance_m": 4.99114990234375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_CLASS203",
+      "floor": "2F",
+      "room_walkable": "WALK_2F_CLASS203",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_2F_CORRIDOR_04",
+      "other_contact_distance_m": 4.99114990234375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_CLASS204",
+      "floor": "2F",
+      "room_walkable": "WALK_2F_CLASS204",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_2F_CORRIDOR_04",
+      "other_contact_distance_m": 4.99114990234375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_GALLERY",
+      "floor": "2F",
+      "room_walkable": "WALK_2F_GALLERY",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_2F_CORRIDOR_01",
+      "other_contact_distance_m": 0.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "CONNECTED_DIAGNOSTIC_NOT_PHYSICAL_APPROVAL",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_LADYSROOM",
+      "floor": "2F",
+      "room_walkable": null,
+      "room_contact_distance_m": null,
+      "other_walkable": "WALK_2F_CORRIDOR_04",
+      "other_contact_distance_m": 186.99114990234375,
+      "unique_direction_declared": false,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_MEETINGROOM_01",
+      "floor": "2F",
+      "room_walkable": "WALK_2F_MEETINGROOM",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_2F_CORRIDOR_02",
+      "other_contact_distance_m": 268.587646484375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_MEETINGROOM_02",
+      "floor": "2F",
+      "room_walkable": "WALK_2F_MEETINGROOM",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_2F_CORRIDOR_02",
+      "other_contact_distance_m": 5.587646484375,
+      "unique_direction_declared": true,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_MENSROOM",
+      "floor": "2F",
+      "room_walkable": null,
+      "room_contact_distance_m": null,
+      "other_walkable": "WALK_2F_CORRIDOR_04",
+      "other_contact_distance_m": 116.99114990234375,
+      "unique_direction_declared": false,
+      "local_contact_status": "HUMAN_REVIEW",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    },
+    {
+      "portal_id": "PORTAL_2F_OFFICE",
+      "floor": "2F",
+      "room_walkable": "WALK_2F_OFFICE",
+      "room_contact_distance_m": 0.0,
+      "other_walkable": "WALK_2F_CORRIDOR_03",
+      "other_contact_distance_m": 0.0,
+      "unique_direction_declared": true,
+      "local_contact_status": "CONNECTED_DIAGNOSTIC_NOT_PHYSICAL_APPROVAL",
+      "method": "local threshold mesh or explicitly marked aperture footprint contacts both named regions; no probe-only shortcut",
+      "tolerance_m": 0.05
+    }
+  ],
+  "independent_portal_component_review": {
+    "scope": "READ_ONLY_PORTAL_LOCAL_DISTINCT_SURFACE_CONNECTIVITY_DIAGNOSTIC",
+    "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "audit_path": "data/scene_audit/school_v3_semantic_audit.json",
+    "audit_sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17",
+    "connectivity_distance_m": 0.05,
+    "meters_per_blender_unit": 1.0,
+    "geometry_basis": "EVALUATED_WORLD_MESH_XY_TRIANGLES",
+    "limits": [
+      "No navigation authority or 3D body-clearance certification.",
+      "A threshold must contact distinct room and corridor surfaces within the same threshold component; probes inside one threshold are not completion.",
+      "Room-to-room AUDITORIUM_OFFICE requires OFFICE and AUDITORIUM contacts.",
+      "Missing declared portal_normal is separately retained as nonunique direction."
+    ],
+    "portals": [
+      {
+        "portal": "PORTAL_1F_AUDITORIUM",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_AUDITORIUM_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_AUDITORIUM",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_02",
+          "distance_m": 0.0
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_02",
+          "distance_m": 0.0
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_AUDITORIUM"
+            ],
+            "corridor_contacts": [
+              "WALK_1F_CORRIDOR_02"
+            ],
+            "complete_pair": true
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_AUDITORIUM",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 28.587646484375,
+            "within_0_05": false,
+            "portal_local_distance_m": 28.587646484375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_AUDITORIUM",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 35.4554443359375,
+            "within_0_05": false,
+            "portal_local_distance_m": 35.4554443359375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_AUDITORIUM",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 821.6997974050449,
+            "within_0_05": false,
+            "portal_local_distance_m": 858.6668217312321,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_AUDITORIUM",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 877.4702758789062,
+            "within_0_05": false,
+            "portal_local_distance_m": 877.4702758789062,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "DIRECT_DISTINCT_SURFACES_DIAGNOSTIC",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_AUDITORIUM_OFFICE",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_ROOM",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_AUDITORIUM_OFFICE_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_OFFICE",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          },
+          {
+            "object": "WALK_1F_AUDITORIUM",
+            "exists": true,
+            "threshold_distance_m": 5.0,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": 5.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_03",
+          "distance_m": 290.56670977845914
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_03",
+          "distance_m": 290.56670977845914
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_OFFICE"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_AUDITORIUM",
+            "to": "WALK_1F_OFFICE",
+            "distance_m": 25.0,
+            "within_0_05": false,
+            "portal_local_distance_m": null,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_CLASS101",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_CLASS101_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_CLASS101",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_CLASS101"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_CLASS101",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 42.99114990234375,
+            "within_0_05": false,
+            "portal_local_distance_m": 42.99114990234375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS101",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 50.608642578125,
+            "within_0_05": false,
+            "portal_local_distance_m": 50.608642578125,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS101",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 891.873779296875,
+            "within_0_05": false,
+            "portal_local_distance_m": 891.873779296875,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS101",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 958.8303096717834,
+            "within_0_05": false,
+            "portal_local_distance_m": 1030.736952990875,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_CLASS102",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_CLASS102_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_CLASS102",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_CLASS102"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_CLASS102",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 42.99114990234375,
+            "within_0_05": false,
+            "portal_local_distance_m": 42.99114990234375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS102",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 50.608642578125,
+            "within_0_05": false,
+            "portal_local_distance_m": 168.70433005687747,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS102",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 554.8068181537583,
+            "within_0_05": false,
+            "portal_local_distance_m": 629.5313110815115,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS102",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 891.873779296875,
+            "within_0_05": false,
+            "portal_local_distance_m": 891.873779296875,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_CLASS103",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_CLASS103_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_CLASS103",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_CLASS103"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_CLASS103",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 42.99114990234375,
+            "within_0_05": false,
+            "portal_local_distance_m": 42.99114990234375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS103",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 155.93475621075234,
+            "within_0_05": false,
+            "portal_local_distance_m": 228.17693651334733,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS103",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 295.30344290585106,
+            "within_0_05": false,
+            "portal_local_distance_m": 568.1928400592428,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS103",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 891.873779296875,
+            "within_0_05": false,
+            "portal_local_distance_m": 891.873779296875,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_CLASS104",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_CLASS104_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_CLASS104",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_CLASS104"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_CLASS104",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 42.99114990234375,
+            "within_0_05": false,
+            "portal_local_distance_m": 42.99114990234375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS104",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 50.608642578125,
+            "within_0_05": false,
+            "portal_local_distance_m": 55.33564635820503,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS104",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 692.7854868672728,
+            "within_0_05": false,
+            "portal_local_distance_m": 969.2566476189744,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_CLASS104",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 891.873779296875,
+            "within_0_05": false,
+            "portal_local_distance_m": 892.2435263239958,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_LADYSROOM",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": null,
+        "direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY",
+        "unique_declared_direction": false,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_1F_LADYSROOM",
+            "exists": false,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": null
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 186.99114990234375
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [],
+        "diagnostic_status": "MISSING_ROOM_SURFACE",
+        "missing_room_surfaces": [
+          "WALK_1F_LADYSROOM"
+        ]
+      },
+      {
+        "portal": "PORTAL_1F_MAIN_ENTRANCE",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_1F_MAIN_ENTRANCE",
+            "exists": true,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_01",
+          "distance_m": 0.0
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_MAIN_ENTRANCE",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 0.0,
+            "within_0_05": true,
+            "portal_local_distance_m": 0.0,
+            "local_contact": true
+          },
+          {
+            "from": "WALK_1F_MAIN_ENTRANCE",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 216.424072265625,
+            "within_0_05": false,
+            "portal_local_distance_m": 229.873779296875,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_MAIN_ENTRANCE",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 310.4282121305209,
+            "within_0_05": false,
+            "portal_local_distance_m": 347.4725233872043,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_MAIN_ENTRANCE",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 1067.7947998046875,
+            "within_0_05": false,
+            "portal_local_distance_m": 1067.7947998046875,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "DIRECT_DISTINCT_SURFACES_DIAGNOSTIC",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_MEETINGROOM_01",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_MEETINGROOM_01_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_MEETINGROOM",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_02",
+          "distance_m": 2.587646484375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_02",
+          "distance_m": 2.587646484375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_MEETINGROOM"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_MEETINGROOM",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 8.587646484375,
+            "within_0_05": false,
+            "portal_local_distance_m": 8.587646484375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_MEETINGROOM",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 22.198633866321966,
+            "within_0_05": false,
+            "portal_local_distance_m": 22.198633866321966,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_MEETINGROOM",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 292.901824560049,
+            "within_0_05": false,
+            "portal_local_distance_m": 702.6637701277454,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_MEETINGROOM",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 857.4702758789062,
+            "within_0_05": false,
+            "portal_local_distance_m": 857.4702758789062,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_MEETINGROOM_02",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": null,
+        "direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY",
+        "unique_declared_direction": false,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_1F_MEETINGROOM",
+            "exists": true,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_02",
+          "distance_m": 224.587646484375
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_MEETINGROOM",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 8.587646484375,
+            "within_0_05": false,
+            "portal_local_distance_m": 224.587646484375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_MEETINGROOM",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 22.198633866321966,
+            "within_0_05": false,
+            "portal_local_distance_m": 258.8675977292731,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_MEETINGROOM",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 292.901824560049,
+            "within_0_05": false,
+            "portal_local_distance_m": 730.1501560055855,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_MEETINGROOM",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 857.4702758789062,
+            "within_0_05": false,
+            "portal_local_distance_m": 1073.4702758789062,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_MENSROOM",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": null,
+        "direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY",
+        "unique_declared_direction": false,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_1F_MENSROOM",
+            "exists": false,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": null
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_04",
+          "distance_m": 116.99114990234375
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [],
+        "diagnostic_status": "MISSING_ROOM_SURFACE",
+        "missing_room_surfaces": [
+          "WALK_1F_MENSROOM"
+        ]
+      },
+      {
+        "portal": "PORTAL_1F_OFFICE",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_OFFICE_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_OFFICE",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_03",
+          "distance_m": 0.0
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_03",
+          "distance_m": 0.0
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_OFFICE"
+            ],
+            "corridor_contacts": [
+              "WALK_1F_CORRIDOR_03"
+            ],
+            "complete_pair": true
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_OFFICE",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 10.3785400390625,
+            "within_0_05": false,
+            "portal_local_distance_m": 10.3785400390625,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_OFFICE",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 13.68408203125,
+            "within_0_05": false,
+            "portal_local_distance_m": 13.68408203125,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_OFFICE",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 502.47027587890625,
+            "within_0_05": false,
+            "portal_local_distance_m": 754.4702758789062,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_OFFICE",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 955.9345092773438,
+            "within_0_05": false,
+            "portal_local_distance_m": 955.9345092773438,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "DIRECT_DISTINCT_SURFACES_DIAGNOSTIC",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_RESTAURANT_A",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_RESTAURANT_A_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_RESTAURANT_A",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_01",
+          "distance_m": 2.96783447265625
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_01",
+          "distance_m": 2.96783447265625
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_RESTAURANT_A"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_RESTAURANT_A",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 16.96783447265625,
+            "within_0_05": false,
+            "portal_local_distance_m": 16.96783447265625,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_RESTAURANT_A",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 23.94873046875,
+            "within_0_05": false,
+            "portal_local_distance_m": 145.45535999692243,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_RESTAURANT_A",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 445.33176649704865,
+            "within_0_05": false,
+            "portal_local_distance_m": 554.2417037160778,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_RESTAURANT_A",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 1090.4937744140625,
+            "within_0_05": false,
+            "portal_local_distance_m": 1090.4937744140625,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_RESTAURANT_B",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_RESTAURANT_B_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_RESTAURANT_B",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_01",
+          "distance_m": 2.96783447265625
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_01",
+          "distance_m": 2.96783447265625
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_RESTAURANT_B"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_RESTAURANT_B",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 16.96783447265625,
+            "within_0_05": false,
+            "portal_local_distance_m": 16.96783447265625,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_RESTAURANT_B",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 20.191650390625,
+            "within_0_05": false,
+            "portal_local_distance_m": 119.59067936601758,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_RESTAURANT_B",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 547.9938363357662,
+            "within_0_05": false,
+            "portal_local_distance_m": 579.964949215244,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_RESTAURANT_B",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 1090.4937744140625,
+            "within_0_05": false,
+            "portal_local_distance_m": 1090.4937744140625,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_SIDE_ENTRANCE",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": null,
+        "direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY",
+        "unique_declared_direction": false,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_1F_SIDE_ENTRANCE",
+            "exists": true,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_02",
+          "distance_m": 134.587646484375
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_SIDE_ENTRANCE",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 4.978759765625,
+            "within_0_05": false,
+            "portal_local_distance_m": 134.587646484375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_SIDE_ENTRANCE",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 26.062589326483604,
+            "within_0_05": false,
+            "portal_local_distance_m": 149.21562029617198,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_SIDE_ENTRANCE",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 695.1898726715589,
+            "within_0_05": false,
+            "portal_local_distance_m": 734.6810256153632,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_SIDE_ENTRANCE",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 853.8613891601562,
+            "within_0_05": false,
+            "portal_local_distance_m": 983.4702758789062,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_1F_STORAGE",
+        "floor_id": "1F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_1F_STORAGE_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_1F_STORAGE",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_1F_CORRIDOR_02",
+          "distance_m": 0.0
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_1F_CORRIDOR_02",
+          "distance_m": 0.0
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              3,
+              2,
+              1
+            ],
+            "room_contacts": [
+              "WALK_1F_STORAGE"
+            ],
+            "corridor_contacts": [
+              "WALK_1F_CORRIDOR_02"
+            ],
+            "complete_pair": true
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_1F_STORAGE",
+            "to": "WALK_1F_CORRIDOR_02",
+            "distance_m": 8.587646484375,
+            "within_0_05": false,
+            "portal_local_distance_m": 8.587646484375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_STORAGE",
+            "to": "WALK_1F_CORRIDOR_01",
+            "distance_m": 15.4554443359375,
+            "within_0_05": false,
+            "portal_local_distance_m": 15.4554443359375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_STORAGE",
+            "to": "WALK_1F_CORRIDOR_04",
+            "distance_m": 857.4702758789062,
+            "within_0_05": false,
+            "portal_local_distance_m": 857.4702758789062,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_1F_STORAGE",
+            "to": "WALK_1F_CORRIDOR_03",
+            "distance_m": 932.6218473103693,
+            "within_0_05": false,
+            "portal_local_distance_m": 973.6164540426373,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "DIRECT_DISTINCT_SURFACES_DIAGNOSTIC",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_2F_BALCONY_LEFT",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_2F_BALCONY_LEFT",
+            "exists": false,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": null
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_01",
+          "distance_m": 0.0
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [],
+        "diagnostic_status": "MISSING_ROOM_SURFACE",
+        "missing_room_surfaces": [
+          "WALK_2F_BALCONY_LEFT"
+        ]
+      },
+      {
+        "portal": "PORTAL_2F_BALCONY_RIGHT",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_2F_BALCONY_RIGHT",
+            "exists": false,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": null
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_01",
+          "distance_m": 0.0
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [],
+        "diagnostic_status": "MISSING_ROOM_SURFACE",
+        "missing_room_surfaces": [
+          "WALK_2F_BALCONY_RIGHT"
+        ]
+      },
+      {
+        "portal": "PORTAL_2F_CLASS201",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_2F_CLASS201_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_2F_CLASS201",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_2F_CLASS201"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_2F_CLASS201",
+            "to": "WALK_2F_CORRIDOR_04",
+            "distance_m": 42.99114990234375,
+            "within_0_05": false,
+            "portal_local_distance_m": 42.99114990234375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS201",
+            "to": "WALK_2F_CORRIDOR_01",
+            "distance_m": 50.608642578125,
+            "within_0_05": false,
+            "portal_local_distance_m": 50.608642578125,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS201",
+            "to": "WALK_2F_CORRIDOR_02",
+            "distance_m": 891.873779296875,
+            "within_0_05": false,
+            "portal_local_distance_m": 891.873779296875,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS201",
+            "to": "WALK_2F_CORRIDOR_03",
+            "distance_m": 958.8303096717834,
+            "within_0_05": false,
+            "portal_local_distance_m": 1030.736952990875,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_2F_CLASS202",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_2F_CLASS202_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_2F_CLASS202",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_2F_CLASS202"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_2F_CLASS202",
+            "to": "WALK_2F_CORRIDOR_04",
+            "distance_m": 42.99114990234375,
+            "within_0_05": false,
+            "portal_local_distance_m": 42.99114990234375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS202",
+            "to": "WALK_2F_CORRIDOR_01",
+            "distance_m": 50.608642578125,
+            "within_0_05": false,
+            "portal_local_distance_m": 168.70433005687747,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS202",
+            "to": "WALK_2F_CORRIDOR_03",
+            "distance_m": 554.8068181537583,
+            "within_0_05": false,
+            "portal_local_distance_m": 629.5313110815115,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS202",
+            "to": "WALK_2F_CORRIDOR_02",
+            "distance_m": 891.873779296875,
+            "within_0_05": false,
+            "portal_local_distance_m": 891.873779296875,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_2F_CLASS203",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_2F_CLASS203_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_2F_CLASS203",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_2F_CLASS203"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_2F_CLASS203",
+            "to": "WALK_2F_CORRIDOR_04",
+            "distance_m": 42.99114990234375,
+            "within_0_05": false,
+            "portal_local_distance_m": 42.99114990234375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS203",
+            "to": "WALK_2F_CORRIDOR_03",
+            "distance_m": 155.93475621075234,
+            "within_0_05": false,
+            "portal_local_distance_m": 228.17693651334733,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS203",
+            "to": "WALK_2F_CORRIDOR_01",
+            "distance_m": 295.30344290585106,
+            "within_0_05": false,
+            "portal_local_distance_m": 568.1928400592428,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS203",
+            "to": "WALK_2F_CORRIDOR_02",
+            "distance_m": 891.873779296875,
+            "within_0_05": false,
+            "portal_local_distance_m": 891.873779296875,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_2F_CLASS204",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_2F_CLASS204_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_2F_CLASS204",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 4.99114990234375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_2F_CLASS204"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_2F_CLASS204",
+            "to": "WALK_2F_CORRIDOR_04",
+            "distance_m": 42.99114990234375,
+            "within_0_05": false,
+            "portal_local_distance_m": 42.99114990234375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS204",
+            "to": "WALK_2F_CORRIDOR_03",
+            "distance_m": 50.608642578125,
+            "within_0_05": false,
+            "portal_local_distance_m": 55.33564635820503,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS204",
+            "to": "WALK_2F_CORRIDOR_01",
+            "distance_m": 692.7854868672728,
+            "within_0_05": false,
+            "portal_local_distance_m": 969.2566476189744,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_CLASS204",
+            "to": "WALK_2F_CORRIDOR_02",
+            "distance_m": 891.873779296875,
+            "within_0_05": false,
+            "portal_local_distance_m": 892.2435263239958,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_2F_GALLERY",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_2F_GALLERY_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_2F_GALLERY",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_01",
+          "distance_m": 0.0
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_2F_CORRIDOR_01",
+          "distance_m": 0.0
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_2F_GALLERY"
+            ],
+            "corridor_contacts": [
+              "WALK_2F_CORRIDOR_01"
+            ],
+            "complete_pair": true
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_2F_GALLERY",
+            "to": "WALK_2F_CORRIDOR_01",
+            "distance_m": 8.96783447265625,
+            "within_0_05": false,
+            "portal_local_distance_m": 8.96783447265625,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_GALLERY",
+            "to": "WALK_2F_CORRIDOR_02",
+            "distance_m": 12.191650390625,
+            "within_0_05": false,
+            "portal_local_distance_m": 255.16520082550318,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_GALLERY",
+            "to": "WALK_2F_CORRIDOR_04",
+            "distance_m": 15.94873046875,
+            "within_0_05": false,
+            "portal_local_distance_m": 412.77850051472626,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_GALLERY",
+            "to": "WALK_2F_CORRIDOR_03",
+            "distance_m": 1082.4937744140625,
+            "within_0_05": false,
+            "portal_local_distance_m": 1082.4937744140625,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "DIRECT_DISTINCT_SURFACES_DIAGNOSTIC",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_2F_LADYSROOM",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": null,
+        "direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY",
+        "unique_declared_direction": false,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_2F_LADYSROOM",
+            "exists": false,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": null
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 186.99114990234375
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [],
+        "diagnostic_status": "MISSING_ROOM_SURFACE",
+        "missing_room_surfaces": [
+          "WALK_2F_LADYSROOM"
+        ]
+      },
+      {
+        "portal": "PORTAL_2F_MEETINGROOM_01",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_2F_MEETINGROOM_01_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_2F_MEETINGROOM",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_02",
+          "distance_m": 226.587646484375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_2F_CORRIDOR_02",
+          "distance_m": 268.587646484375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_2F_MEETINGROOM"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_2F_MEETINGROOM",
+            "to": "WALK_2F_CORRIDOR_02",
+            "distance_m": 8.587646484375,
+            "within_0_05": false,
+            "portal_local_distance_m": 228.4296875,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_MEETINGROOM",
+            "to": "WALK_2F_CORRIDOR_01",
+            "distance_m": 15.4554443359375,
+            "within_0_05": false,
+            "portal_local_distance_m": 235.2974853515625,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_MEETINGROOM",
+            "to": "WALK_2F_CORRIDOR_03",
+            "distance_m": 822.6389728851362,
+            "within_0_05": false,
+            "portal_local_distance_m": 948.1538484076092,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_MEETINGROOM",
+            "to": "WALK_2F_CORRIDOR_04",
+            "distance_m": 857.4702758789062,
+            "within_0_05": false,
+            "portal_local_distance_m": 1077.3123168945312,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_2F_MEETINGROOM_02",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_2F_MEETINGROOM_02_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_2F_MEETINGROOM",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_02",
+          "distance_m": 5.587646484375
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_2F_CORRIDOR_02",
+          "distance_m": 5.587646484375
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              3,
+              2,
+              1
+            ],
+            "room_contacts": [
+              "WALK_2F_MEETINGROOM"
+            ],
+            "corridor_contacts": [],
+            "complete_pair": false
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_2F_MEETINGROOM",
+            "to": "WALK_2F_CORRIDOR_02",
+            "distance_m": 8.587646484375,
+            "within_0_05": false,
+            "portal_local_distance_m": 8.587646484375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_MEETINGROOM",
+            "to": "WALK_2F_CORRIDOR_01",
+            "distance_m": 15.4554443359375,
+            "within_0_05": false,
+            "portal_local_distance_m": 15.4554443359375,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_MEETINGROOM",
+            "to": "WALK_2F_CORRIDOR_03",
+            "distance_m": 822.6389728851362,
+            "within_0_05": false,
+            "portal_local_distance_m": 825.6384452991493,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_MEETINGROOM",
+            "to": "WALK_2F_CORRIDOR_04",
+            "distance_m": 857.4702758789062,
+            "within_0_05": false,
+            "portal_local_distance_m": 857.4702758789062,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "GAP_REMAINS",
+        "missing_room_surfaces": []
+      },
+      {
+        "portal": "PORTAL_2F_MENSROOM",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": null,
+        "direction_review": "HUMAN_REVIEW_NO_UNIQUE_MARKED_BOUNDARY",
+        "unique_declared_direction": false,
+        "thresholds": [],
+        "rooms": [
+          {
+            "object": "WALK_2F_MENSROOM",
+            "exists": false,
+            "threshold_distance_m": null,
+            "threshold_contact": false,
+            "portal_footprint_distance_m": null
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_04",
+          "distance_m": 116.99114990234375
+        },
+        "nearest_threshold_corridor": null,
+        "threshold_components": [],
+        "direct_surface_pairs": [],
+        "diagnostic_status": "MISSING_ROOM_SURFACE",
+        "missing_room_surfaces": [
+          "WALK_2F_MENSROOM"
+        ]
+      },
+      {
+        "portal": "PORTAL_2F_OFFICE",
+        "floor_id": "2F",
+        "kind": "ROOM_TO_CORRIDOR",
+        "normal": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "direction_review": "DECLARED_FROM_EXPLICIT_MARKED_BOUNDARY_NOT_TOPOLOGY_APPROVAL",
+        "unique_declared_direction": true,
+        "thresholds": [
+          "WALK_2F_OFFICE_THRESHOLD"
+        ],
+        "rooms": [
+          {
+            "object": "WALK_2F_OFFICE",
+            "exists": true,
+            "threshold_distance_m": 0.0,
+            "threshold_contact": true,
+            "portal_footprint_distance_m": 0.0
+          }
+        ],
+        "nearest_portal_corridor": {
+          "object": "WALK_2F_CORRIDOR_03",
+          "distance_m": 0.0
+        },
+        "nearest_threshold_corridor": {
+          "object": "WALK_2F_CORRIDOR_03",
+          "distance_m": 0.0
+        },
+        "threshold_components": [
+          {
+            "triangle_indices": [
+              0,
+              1
+            ],
+            "room_contacts": [
+              "WALK_2F_OFFICE"
+            ],
+            "corridor_contacts": [
+              "WALK_2F_CORRIDOR_03"
+            ],
+            "complete_pair": true
+          }
+        ],
+        "direct_surface_pairs": [
+          {
+            "from": "WALK_2F_OFFICE",
+            "to": "WALK_2F_CORRIDOR_03",
+            "distance_m": 10.3785400390625,
+            "within_0_05": false,
+            "portal_local_distance_m": 10.3785400390625,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_OFFICE",
+            "to": "WALK_2F_CORRIDOR_02",
+            "distance_m": 13.68408203125,
+            "within_0_05": false,
+            "portal_local_distance_m": 13.68408203125,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_OFFICE",
+            "to": "WALK_2F_CORRIDOR_04",
+            "distance_m": 502.47027587890625,
+            "within_0_05": false,
+            "portal_local_distance_m": 754.4702758789062,
+            "local_contact": false
+          },
+          {
+            "from": "WALK_2F_OFFICE",
+            "to": "WALK_2F_CORRIDOR_01",
+            "distance_m": 955.9345092773438,
+            "within_0_05": false,
+            "portal_local_distance_m": 955.9345092773438,
+            "local_contact": false
+          }
+        ],
+        "diagnostic_status": "DIRECT_DISTINCT_SURFACES_DIAGNOSTIC",
+        "missing_room_surfaces": []
+      }
+    ]
+  }
+}

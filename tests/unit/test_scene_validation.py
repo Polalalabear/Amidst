@@ -259,3 +259,324 @@ def test_stair_path_cannot_cross_projected_mesh_hole() -> None:
     polygons = [[(0, 0), (1, 0), (1, 1), (0, 1)], [(2, 0), (3, 0), (3, 1), (2, 1)]]
     assert not _segment_in_footprints([0.5, 0.5, 0], [2.5, 0.5, 3], polygons, 1e-9)
     assert _segment_in_footprints([0.1, 0.5, 0], [0.9, 0.5, 1], polygons, 1e-9)
+
+
+def excluded_area_props() -> dict[str, Any]:
+    return {
+        "walkable": False,
+        "exclusion_reason": "Outside the declared walking scope",
+        "semantic_review_id": "human-scope-review",
+    }
+
+
+def cross_floor_area_props() -> dict[str, Any]:
+    return {
+        "coverage_scope": "CROSS_FLOOR",
+        "floor_from": "1F",
+        "floor_to": "2F",
+        "stair_id": "declared-transition",
+        "semantic_review_id": "human-transition-review",
+    }
+
+
+def test_reviewed_nonwalkable_area_is_excluded_and_evidence_is_source_bound(
+    tmp_path: Path,
+) -> None:
+    scene = fixture("complete_walkable")
+    scene["objects"] = scene["objects"][:1]
+    scene["objects"][0]["custom_properties"] = excluded_area_props()
+    report = validate_scene(scene, config(approved=False))
+    area = report["area_coverage"][0]
+    assert area["coverage_status"] == area["status"] == "EXCLUDED"
+    assert area["uncovered_ratio"] is None
+    assert "AREA_MISSING_WALKABLE" not in codes(report)
+    assert report["floor_summary"][0]["uncovered_areas"] == 0
+    assert report["floor_consistency"]["1F"]["approved"] is False
+    paths = write_report(report, tmp_path / "declared-scope")
+    saved = json.loads(paths[0].read_text())
+    evidence = saved["area_semantic_declarations"][0]
+    assert evidence["declared_fields"] == excluded_area_props()
+    assert evidence["source_sha256"] == scene["source_sha256"]
+    assert (
+        saved["area_coverage"][0]["semantic_declaration"]["source_sha256"]
+        == evidence["source_sha256"]
+    )
+    assert "EXCLUDED" in paths[1].read_text()
+
+
+@pytest.mark.parametrize("approved", [True, False])
+def test_nonwalkable_overlap_is_high_even_without_floor_approval(approved: bool) -> None:
+    scene = fixture("complete_walkable")
+    scene["objects"][0]["custom_properties"] = excluded_area_props()
+    # Even overlap below the ordinary collider contact allowance contradicts exclusion.
+    walkable = scene["objects"][1]
+    walkable["vertices"][1][0] = walkable["vertices"][2][0] = 0.001
+    report = validate_scene(scene, config(approved=approved))
+    area = report["area_coverage"][0]
+    assert area["coverage_status"] == "EXCLUDED" and area["status"] == "ERROR"
+    finding = next(f for f in report["findings"] if f["code"] == "AREA_NONWALKABLE_OVERLAP")
+    assert finding["priority"] == "HIGH"
+    contact_allowance = config()["tolerances"]["contact_overlap_ratio"]
+    assert 0 < finding["evidence"]["overlap_ratio"] < contact_allowance
+    assert "AREA_MISSING_WALKABLE" not in codes(report)
+
+
+def test_nonwalkable_overlap_cannot_hide_behind_a_different_floor_label() -> None:
+    scene = fixture("complete_walkable")
+    scene["objects"][0]["custom_properties"] = excluded_area_props()
+    scene["objects"][1]["object"] = "WALKABLE_2F_SURFACE"
+    report = validate_scene(scene, config(approved=False))
+    assert "AREA_NONWALKABLE_OVERLAP" in codes(report)
+
+
+def test_nonwalkable_overlap_cannot_hide_in_a_giant_area_denominator() -> None:
+    scene = fixture("complete_walkable")
+    area, walkable = scene["objects"]
+    area["custom_properties"] = excluded_area_props()
+    area["vertices"][1][0] = area["vertices"][2][0] = 1e9
+    area["bounding_box"]["maximum"][0] = 1e9
+    walkable["vertices"][1][0] = walkable["vertices"][2][0] = 0.001
+    report = validate_scene(scene, config())
+    result = report["area_coverage"][0]
+    assert 0 < result["walkable_overlap_ratio"] < config()["tolerances"]["numeric_epsilon"]
+    assert result["status"] == "ERROR"
+    assert "AREA_NONWALKABLE_OVERLAP" in codes(report)
+
+
+@pytest.mark.parametrize("representation", ["mesh", "bounds-only"])
+def test_sloped_walkable_entering_excluded_volume_is_high_review(representation: str) -> None:
+    scene = fixture("complete_walkable")
+    area, walkable = scene["objects"]
+    # A solid AREA spans Z=0..1. This ramp actually passes through its interior,
+    # then rises to Z=10; its midpoint Z=5.25 must not hide the interpenetration.
+    area["vertices"] = [
+        [0, 0, 0],
+        [10, 0, 0],
+        [10, 10, 0],
+        [0, 10, 0],
+        [0, 0, 1],
+        [10, 0, 1],
+        [10, 10, 1],
+        [0, 10, 1],
+    ]
+    area["triangles"] = [
+        [0, 1, 2],
+        [0, 2, 3],
+        [4, 6, 5],
+        [4, 7, 6],
+        [0, 4, 5],
+        [0, 5, 1],
+        [1, 5, 6],
+        [1, 6, 2],
+        [2, 6, 7],
+        [2, 7, 3],
+        [3, 7, 4],
+        [3, 4, 0],
+    ]
+    area["bounding_box"]["maximum"][2] = 1
+    area["centroid"][2] = 0.5
+    area["custom_properties"] = excluded_area_props()
+    for vertex, height in zip(walkable["vertices"], [0.5, 10, 10, 0.5], strict=True):
+        vertex[2] = height
+    walkable["bounding_box"]["minimum"][2] = 0.5
+    walkable["bounding_box"]["maximum"][2] = 10
+    walkable["centroid"][2] = 5.25
+    if representation == "bounds-only":
+        walkable.pop("vertices")
+        walkable.pop("triangles")
+    report = validate_scene(scene, config(approved=False))
+    result = report["area_coverage"][0]
+    assert result["coverage_status"] == "EXCLUDED" and result["status"] == "REVIEW"
+    assert result["overlapping_walkables"] == [walkable["object"]]
+    finding = next(f for f in report["findings"] if f["code"] == "AREA_NONWALKABLE_OVERLAP")
+    assert finding["priority"] == "HIGH" and finding["status"] == "REVIEW"
+    assert finding["evidence"]["overlap_basis"] == "XY_FOOTPRINTS_WITH_Z_INTERVAL_BROAD_PHASE"
+    assert "AREA_EXCLUSION_GEOMETRY_REVIEW" in codes(report)
+    # Ordinary AREA coverage retains its pre-existing midpoint-Z eligibility rule.
+    area["custom_properties"] = {}
+    ordinary = validate_scene(scene, config(approved=False))
+    assert ordinary["area_coverage"][0]["coverage_status"] == "MISSING"
+    assert "AREA_NONWALKABLE_OVERLAP" not in codes(ordinary)
+
+
+@pytest.mark.parametrize(
+    ("key", "bad"),
+    [
+        ("walkable", 0),
+        ("walkable", "false"),
+        ("walkable", None),
+        ("exclusion_reason", " "),
+        ("exclusion_reason", []),
+        ("exclusion_reason", None),
+        ("semantic_review_id", ""),
+        ("semantic_review_id", True),
+        ("semantic_review_id", None),
+    ],
+)
+def test_malformed_exclusion_does_not_skip_missing_coverage(key: str, bad: Any) -> None:
+    scene = fixture("complete_walkable")
+    scene["objects"] = scene["objects"][:1]
+    props = excluded_area_props()
+    props[key] = bad
+    scene["objects"][0]["custom_properties"] = props
+    report = validate_scene(scene, config())
+    assert {"AREA_COVERAGE_DECLARATION_INVALID", "AREA_MISSING_WALKABLE"} <= codes(report)
+    area = report["area_coverage"][0]
+    assert area["coverage_status"] == "MISSING" and area["status"] == "REVIEW"
+
+
+@pytest.mark.parametrize("missing", ["walkable", "exclusion_reason", "semantic_review_id"])
+def test_incomplete_exclusion_does_not_skip_missing_coverage(missing: str) -> None:
+    scene = fixture("complete_walkable")
+    scene["objects"] = scene["objects"][:1]
+    props = excluded_area_props()
+    props.pop(missing)
+    scene["objects"][0]["custom_properties"] = props
+    report = validate_scene(scene, config())
+    assert {"AREA_COVERAGE_DECLARATION_INVALID", "AREA_MISSING_WALKABLE"} <= codes(report)
+
+
+@pytest.mark.parametrize("representation", ["bounds-only", "invalid-mesh"])
+def test_exclusion_retains_unsupported_geometry_review(representation: str) -> None:
+    scene = fixture("complete_walkable")
+    scene["objects"] = scene["objects"][:1]
+    area = scene["objects"][0]
+    area["custom_properties"] = excluded_area_props()
+    if representation == "bounds-only":
+        area.pop("vertices")
+        area.pop("triangles")
+    else:
+        area["vertices"][0][0] = float("nan")
+        area.pop("bounding_box")
+    report = validate_scene(scene, config())
+    assert report["area_coverage"][0]["coverage_status"] == "EXCLUDED"
+    assert report["area_coverage"][0]["status"] == "REVIEW"
+    assert "AREA_EXCLUSION_GEOMETRY_REVIEW" in codes(report)
+
+
+def test_complexity_fallback_preserves_declared_semantic_evidence(tmp_path: Path) -> None:
+    scene = fixture("complete_walkable")
+    scene["objects"][0]["custom_properties"] = excluded_area_props()
+    settings = config()
+    settings["geometry_complexity"]["maximum_union_polygons"] = 1
+    report = validate_scene(scene, settings)
+    assert report["status"] == "INCOMPLETE_REVIEW_REQUIRED"
+    assert report["area_coverage"] == []
+    evidence = report["area_semantic_declarations"][0]
+    assert evidence["declared_fields"] == excluded_area_props()
+    assert evidence["source_sha256"] == scene["source_sha256"]
+    write_report(report, tmp_path / "bounded-declarations")
+
+
+def test_cross_floor_area_defers_to_stairs_without_assigning_a_floor() -> None:
+    scene = fixture("complete_walkable")
+    area = scene["objects"][0]
+    area["object"] = "AREA_STAIR_SPAN"
+    area["custom_properties"] = cross_floor_area_props()
+    report = validate_scene(scene, config())
+    result = report["area_coverage"][0]
+    assert result["coverage_status"] == "NOT_APPLICABLE" and result["status"] == "REVIEW"
+    assert result["floor"] is None
+    assert result["walkable_overlap_ratio"] is result["uncovered_ratio"] is None
+    assert result["stair_diagnostic_status"] == "MISSING"
+    assert {
+        "AREA_CROSS_FLOOR_REVIEW",
+        "AREA_CROSS_FLOOR_STAIR_UNRESOLVED",
+        "MISSING_STAIR_LABELS",
+    } <= codes(report)
+    assert not {"AREA_MISSING_WALKABLE", "MISSING_FLOOR_LABEL", "CONFLICTING_NAME_PREFIX"} & codes(
+        report
+    )
+    assert report["floor_summary"][-1]["uncovered_areas"] == 0
+    assert report["walkable_connectivity"]["stair_edges_created"] is False
+
+
+@pytest.mark.parametrize(
+    ("key", "bad"),
+    [
+        ("coverage_scope", "OTHER"),
+        ("coverage_scope", []),
+        ("floor_from", "3F"),
+        ("floor_from", []),
+        ("floor_to", "1F"),
+        ("floor_to", None),
+        ("stair_id", ""),
+        ("stair_id", []),
+        ("semantic_review_id", " "),
+        ("semantic_review_id", False),
+    ],
+)
+def test_invalid_cross_floor_metadata_keeps_ordinary_floor_and_naming_checks(
+    key: str, bad: Any
+) -> None:
+    scene = fixture("complete_walkable")
+    area = scene["objects"][0]
+    area["object"] = "AREA_STAIR_SPAN"
+    props = cross_floor_area_props()
+    props[key] = bad
+    area["custom_properties"] = props
+    report = validate_scene(scene, config())
+    assert {
+        "AREA_COVERAGE_DECLARATION_INVALID",
+        "MISSING_FLOOR_LABEL",
+        "CONFLICTING_NAME_PREFIX",
+        "AREA_MISSING_WALKABLE",
+    } <= codes(report)
+    assert report["area_coverage"][0]["coverage_status"] == "MISSING"
+
+
+def test_cross_floor_intent_cannot_override_nonwalkable_or_role_conflicts() -> None:
+    scene = fixture("complete_walkable")
+    area = scene["objects"][0]
+    area["custom_properties"] = {**cross_floor_area_props(), **excluded_area_props()}
+    report = validate_scene(scene, config())
+    assert "AREA_COVERAGE_DECLARATION_INVALID" in codes(report)
+    assert report["area_coverage"][0]["coverage_status"] == "PASS"
+    assert report["area_coverage"][0]["status"] == "REVIEW"
+    area["custom_properties"] = {**cross_floor_area_props(), "semantic_class": "STAIR"}
+    assert "INCOMPATIBLE_SEMANTIC_OWNERSHIP" in codes(validate_scene(scene, config()))
+
+
+def test_cross_floor_area_preserves_existing_stair_missing_endpoint_diagnostic() -> None:
+    scene = fixture("missing_stair_entry")
+    path = next(x for x in scene["objects"] if x["custom_properties"].get("stair_role") == "PATH")
+    props = cross_floor_area_props()
+    props["stair_id"] = path["custom_properties"]["stair_id"]
+    scene["objects"][0]["object"] = "AREA_STAIR_SPAN"
+    scene["objects"][0]["custom_properties"] = props
+    report = validate_scene(scene, config())
+    assert "STAIR_MISSING_ENTRY" in codes(report)
+    assert "AREA_CROSS_FLOOR_STAIR_UNRESOLVED" not in codes(report)
+    assert (
+        report["area_coverage"][0]["stair_diagnostic_status"]
+        == report["stair_validation"]["groups"][0]["status"]
+    )
+    assert report["area_coverage"][0]["status"] == "REVIEW"
+
+
+def test_explicit_walkable_true_preserves_ordinary_coverage() -> None:
+    scene = fixture("complete_walkable")
+    original = validate_scene(scene, config())
+    scene["objects"][0]["custom_properties"] = {"walkable": True}
+    updated = validate_scene(scene, config())
+    updated.pop("area_semantic_declarations")
+    updated["area_coverage"][0].pop("semantic_declaration")
+    assert updated == original
+
+
+@pytest.mark.parametrize("name", ["WALK_1F_SURFACE", "WALK_2F_SURFACE"])
+def test_reviewed_walk_alias_requires_explicit_walkable_classification(name: str) -> None:
+    scene = fixture("complete_walkable")
+    walkable = scene["objects"][1]
+    walkable["object"] = name
+    walkable["custom_properties"] = {"semantic_review_id": "human-name-review"}
+    assert validate_scene(scene, config())["semantic_counts"]["WALKABLE"] == 0
+    walkable["custom_properties"]["semantic_class"] = "WALKABLE"
+    report = validate_scene(scene, config())
+    assert report["semantic_counts"]["WALKABLE"] == 1
+    assert "NAMING_INCONSISTENCY" not in codes(report)
+    walkable["custom_properties"]["semantic_review_id"] = " "
+    assert "NAMING_INCONSISTENCY" in codes(validate_scene(scene, config()))
+    walkable["object"] = "Cube.001"
+    walkable["custom_properties"]["semantic_review_id"] = "human-name-review"
+    assert "NAMING_INCONSISTENCY" in codes(validate_scene(scene, config()))

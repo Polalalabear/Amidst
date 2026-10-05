@@ -70,6 +70,33 @@ Stair 診斷欄位包括 `stair_id`、`stair_role=ENTRY/PATH/EXIT`、ordered
 source-bound human review 時，不因物件自己宣告 PASS 而授予 inference authority。
 未明列的 stair vertex ordering 不自行猜測。
 
+AREA 可在頂層 custom properties 明列 `walkable=false`（boolean）、非空
+`exclusion_reason` 與 `semantic_review_id`，表示人工決定不納入行走覆蓋。
+Validator 回報 `coverage_status=EXCLUDED`，不產生缺 WALKABLE finding；仍用 WALKABLE
+完整 Z extents 與 AREA 高度範圍的 conservative overlap 檢查，避免斜面 midpoint 在
+AREA 外而漏報。任何非零 XY 重疊列 HIGH，不用 collider contact tolerance 放寬；
+nonplanar／unsupported evidence 列 HIGH REVIEW，不認證 3D collision。缺 floor label
+仍須 REVIEW；EXCLUDED 不批准 geometry。一般 AREA coverage 維持原本 midpoint-Z 規則。
+
+跨層 AREA 可明列 `coverage_scope=CROSS_FLOOR`、不同且合法的 `floor_from`／`floor_to`、
+非空 `stair_id` 與 `semantic_review_id`。其 coverage 為 `NOT_APPLICABLE`、status 為
+`REVIEW`，引用對應 stair group 的診斷；沒有對應 group 仍列 HIGH。僅對完整有效的
+跨層宣告，不再因缺單一 floor label 或名稱中的 `STAIR` token 報錯，不替它選定單一
+floor，也不消除其他 role／collection 衝突。實際 ENTRY／PATH／EXIT、方向、clearance
+與 opening 仍由 stair 診斷與獨立人工審查處理。
+
+缺 review、空白文字、非 boolean `walkable`、錯誤 floor／scope 或互相矛盾的宣告，
+都保留一般 coverage／naming 檢查並新增 HIGH REVIEW，不能靜默略過。JSON 保存完整
+宣告與當次 source SHA；即使幾何 budget 中止，仍保存宣告 evidence。Review ID 是
+輸入的語意決定識別，不自動成為 floor／physical／topology authority。EXCLUDED 與
+NOT_APPLICABLE 不計入 floor summary 的 uncovered AREA，也不可納入行走覆蓋率分母。
+沒有這些新欄位的輸入維持原本結果。
+
+已明確分類為 WALKABLE、且有非空 `semantic_review_id` 的 `WALK_*` 名稱，可作人工
+核准 alias，不列 naming inconsistency。未分類的 `WALK_*` 仍不由名稱自動分類；
+沒有 review 的舊命名仍維持原本警訊。Blender properties 應放頂層，避免 extractor
+不支援的巢狀 property group。
+
 ### 報告與續作
 
 JSON 保存 effective config、source／audit binding、每層 counts、coverage／connectivity／
@@ -105,6 +132,25 @@ naming/ownership conflicts; and geometry sanity. Non-manifold geometry is report
 not automatically invalidated. Missing stairs produce MISSING without a crash. Mesh footprints
 retain triangle-defined holes; bounds-only or unsupported/over-budget geometry requires REVIEW.
 Diagnostic adjacency never creates or approves inference topology or stair connectivity.
+
+Explicit AREA declarations may exclude walking coverage with boolean `walkable=false`, a
+nonempty `exclusion_reason` and `semantic_review_id`. Coverage becomes `EXCLUDED`, while any
+WALKABLE overlap with conservatively intersecting Z extents produces a HIGH finding. A ramp
+cannot escape detection because its midpoint lies outside the AREA. Nonplanar or unsupported
+overlap evidence remains HIGH REVIEW and does not certify 3D collision; ordinary coverage
+retains its midpoint-Z rule. Unresolved floor labels still require review. No physical
+authority is granted.
+Cross-floor AREA declarations require `coverage_scope=CROSS_FLOOR`, two distinct configured
+`floor_from`/`floor_to` values, and nonempty `stair_id`/`semantic_review_id`. Coverage becomes
+`NOT_APPLICABLE` with status `REVIEW`, referring to existing stair diagnostics; a missing
+matching group remains HIGH. Only valid declarations exempt a missing single-floor label and
+the name's `STAIR` token, without resolving other ownership conflicts or creating topology.
+Malformed or incomplete declarations retain ordinary checks and receive HIGH REVIEW.
+JSON preserves declarations bound to the current source identity, including complexity
+fallback reports. EXCLUDED and NOT_APPLICABLE are omitted from uncovered AREA counts and
+walking coverage denominators. Inputs without the new fields retain their prior results.
+Explicitly classified WALKABLE objects with nonempty `semantic_review_id` may retain a
+reviewed `WALK_*` name alias. Unclassified names never acquire a role from this alias rule.
 
 Explicit portal normals and the stair custom properties listed above provide diagnostic
 evidence. The validator does not infer an ordered stair path or certify body clearance, slab
