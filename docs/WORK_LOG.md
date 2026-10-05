@@ -4,6 +4,33 @@
 
 ## 繁體中文
 
+### 2026-10-05 — Geometry-derived WALL candidate extraction
+
+起點 `e8b293f`，branch `codex/dataset-infrastructure`，工作目錄原為 clean。
+依使用者本輪授權，唯讀提取 `school_v3.blend` evaluated mesh 的 verticality、height、
+edge-connected coplanar continuity、thickness／extent，並檢查 AREA、WALKABLE、PORTAL
+空間關係。[JSON sidecar](../data/scene_audit/school_v3_wall_candidates.json) 自動確認
+**81 WALL patches**（1F 49／2F 32，7 個來源 objects），**1,491 HUMAN_REVIEW patches**
+（674 個來源 objects）。計數為連續共平面 surface patch，不是整個 object；四個 objects
+混合兩種 status，因此 object totals 重疊。來源 `.blend` 的 WALL labels 仍未改寫。
+
+[Human-readable report](../data/scene_audit/school_v3_wall_candidates.md) 包含 reason breakdown、
+object／floor review index、每個候選的 bounds、AREA／WALKABLE／PORTAL 與判斷理由。
+實際 polygons 對 28 個 PORTAL boxes 做 clipping；自動確認的 aperture intersection 為 0。
+不生成 AABB／矩形牆，不補 doorway，不分類整個混合建築 object；window／door panel／
+decoration／弱幾何證據留 HUMAN_REVIEW。WALKABLE intrusion 是 section sampling 診斷，
+不是完整 collision certification。
+
+使用者已明確確認只有 stairs、沒有 elevator；`AREA_*_ELEVATOR` 是歷史命名，
+本輪沒有也不規劃 elevator transition。原始 asset SHA-256 維持
+`cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e`，
+size 468,300,506 bytes、mtime_ns 1791198236746106977 不變。所有幾何數值保留
+Blender scene units，METRIC／scale_length=1 不當作真實建築尺度認證。
+
+五個 doorway／surface／thin-panel safety tests 通過；本輪完整 regression
+**794 tests passed in 56.48s**、Ruff、strict mypy（72 source files）通過。
+GT 未參與提取；未跑正式 Cases 1–3，未改 Graph／ranking／reconstruction／benchmark semantics。
+
 ### 2026-10-05 — school_v3 人工授權 semantic 補標與保存後診斷
 
 起點 `a0aa1ea`，branch `codex/dataset-infrastructure`。依本輪人工確認的室內可走、
@@ -303,6 +330,24 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+The 2026-10-05 WALL extraction starts at clean `e8b293f` on
+`codex/dataset-infrastructure`. Source-bound evaluated surface analysis confirms
+81 WALL patches (49 on 1F, 32 on 2F, 7 source objects) and retains 1,491 HUMAN_REVIEW
+patches (674 source objects). Four objects contain both statuses; counts are connected
+coplanar surface patches, without whole-object classification or saved source labels.
+The report includes review reason counts, an object/floor index, bounds and nearby
+AREA/WALKABLE/PORTAL evidence. Exact face clipping protects all 28 PORTAL boxes;
+confirmed aperture intersections are zero. No rectangle/AABB walls or doorway infill
+are created. Ambiguous panels, glass, decoration and weak evidence stay review; sampled
+WALKABLE checks are not complete collision certification.
+
+The user confirms stairs only and no elevators; historical AREA_*_ELEVATOR names do not
+create transitions. Source SHA-256, 468,300,506-byte size and nanosecond mtime are unchanged.
+Native scene units remain explicit; declared metric scale is not physical certification.
+Five targeted safety tests and the complete 794-test regression (56.48s), Ruff and strict
+mypy for 72 source files pass. Ground Truth, formal Cases 1–3 and downstream inference
+semantics are untouched.
 
 ### 2026-10-05 — Authorized school_v3 semantic supplement and post-save diagnostics
 
