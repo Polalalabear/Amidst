@@ -622,6 +622,7 @@ def main() -> None:
     for obj in sorted(bpy.context.scene.objects, key=lambda x: x.name):
         if (
             obj.type != "MESH"
+            or obj.get("annotation_only") is True
             or obj.get("semantic_class")
             in {
                 "AREA",
@@ -629,9 +630,10 @@ def main() -> None:
                 "PORTAL",
                 "OBSTACLE",
                 "STAIR",
+                "WALL",
             }
             or obj.name.startswith(
-                ("AREA_", "PORTAL_", "WALK_", "WALKABLE_", "OBSTACLE_", "STAIR_")
+                ("AREA_", "PORTAL_", "WALK_", "WALKABLE_", "OBSTACLE_", "STAIR_", "WALL_")
             )
         ):
             continue

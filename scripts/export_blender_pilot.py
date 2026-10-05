@@ -23,9 +23,40 @@ from typing import Any
 LABEL = "PILOT / SYNTHETIC SAMPLE"
 ANNOTATIONS = (
     "Areas", "WALKABLE_AREAS", "OBSTACLE_AREAS", "STAIR_ANNOTATIONS",
-    "Stair Reference Surfaces",
+    "Stair Reference Surfaces", "WALL_ANNOTATIONS",
 )
-ANNOTATION_PREFIXES = ("AREA_", "PORTAL_", "WALK_", "OBSTACLE_", "STAIR_")
+ANNOTATION_PREFIXES = (
+    "AREA_", "PORTAL_", "WALK_", "WALKABLE_", "OBSTACLE_", "STAIR_", "WALL_",
+)
+
+
+def annotation_objects(bpy: Any, scene: Any) -> list[Any]:
+    """Keep semantic selections out of both physical renders and visibility rays."""
+    excluded = []
+    for name in ANNOTATIONS:
+        collection = bpy.data.collections.get(name)
+        if collection:
+            excluded.extend(collection.all_objects)
+    excluded.extend(obj for obj in scene.objects if obj.type == "MESH" and (
+        obj.name.startswith(ANNOTATION_PREFIXES) or obj.get("annotation_only") is True
+    ))
+    return excluded
+
+
+def verify_lineage_metadata(scene: Any, lineage: dict[str, Any]) -> None:
+    """Reject copied plans that claim a different saved WALL marking context."""
+    for key, property_name in (
+        ("original_source_sha256", "phase1_wall_marking_source_sha256"),
+        ("wall_candidate_sidecar_sha256", "phase1_wall_marking_candidate_sidecar_sha256"),
+        ("original_physical_geometry_sha256", "phase1_wall_marking_physical_geometry_sha256"),
+        ("wall_semantic_marking_count", "phase1_wall_marking_count"),
+    ):
+        if lineage.get(key) != scene.get(property_name):
+            raise ValueError(f"pilot lineage differs from the saved scene: {key}")
+    actual_count = sum(obj.get("annotation_only") is True and obj.get("semantic_class") == "WALL"
+                       for obj in scene.objects)
+    if actual_count != lineage.get("wall_semantic_marking_count"):
+        raise ValueError("saved WALL annotation count differs from pilot lineage")
 
 
 def fingerprint(path: Path) -> tuple[str, int, int]:
@@ -120,15 +151,9 @@ def configure_render(bpy: Any, width: int, height: int) -> dict[str, Any]:
     # Freeze evaluated VIEWPORT triangles for rendering. Modifier flags alone
     # cannot make Geometry Nodes' Is Viewport or particle render paths agree.
     depsgraph = bpy.context.evaluated_depsgraph_get()
-    excluded = []
-    for collection_name in ANNOTATIONS:
-        collection = bpy.data.collections.get(collection_name)
-        if collection:
-            for obj in collection.all_objects:
-                obj.hide_render = True
-                excluded.append(obj)
-    excluded.extend(obj for obj in scene.objects if obj.type == "MESH"
-                    and obj.name.startswith(ANNOTATION_PREFIXES))
+    excluded = annotation_objects(bpy, scene)
+    for obj in excluded:
+        obj.hide_render = True
     excluded_pointers = {obj.original.as_pointer() for obj in excluded}
     meshes, instances = {}, []
     for instance in depsgraph.object_instances:
@@ -264,6 +289,15 @@ def main() -> None:
     before = fingerprint(source)
     if plan["source_asset_sha256"] != before[0]:
         raise ValueError("trajectory plan and current source hash differ")
+    lineage = plan.get("source_lineage")
+    if lineage is not None:
+        verify_lineage_metadata(bpy.context.scene, lineage)
+        original = fingerprint(Path(lineage["original_source_path"]))
+        if original != (
+            lineage["original_source_sha256"], lineage["original_source_size"],
+            lineage["original_source_mtime_ns"],
+        ) or lineage.get("original_source_identity_verified") is not True:
+            raise ValueError("original scene identity differs from the derived pilot plan")
     samples = plan["samples"]
     if len(samples) != 50 or not 1 <= args.limit <= 50 or not 2 <= len(plan["camera_ids"]) <= 3:
         raise ValueError("pilot is bounded at 50 timestamps and 2–3 source cameras")
@@ -278,13 +312,7 @@ def main() -> None:
     scene.frame_set(scene.frame_current)
     policy = configure_render(bpy, args.width, args.height)
     targets = make_target(bpy, plan)
-    excluded = targets.copy()
-    for collection_name in ANNOTATIONS:
-        collection = bpy.data.collections.get(collection_name)
-        if collection:
-            excluded.extend(collection.all_objects)
-    excluded.extend(obj for obj in scene.objects if obj.type == "MESH"
-                    and obj.name.startswith(ANNOTATION_PREFIXES))
+    excluded = targets + annotation_objects(bpy, scene)
     raycaster = BlenderMeshRaycaster(scene, excluded_objects=excluded)
     camera_objects = [bpy.data.objects[name] for name in plan["camera_ids"]]
     cameras = [extract_camera_dict(scene, obj) for obj in camera_objects]
@@ -387,6 +415,8 @@ def main() -> None:
         after = fingerprint(source)
         if after != before:
             raise RuntimeError("pilot export changed source Blender asset")
+        if lineage is not None and fingerprint(Path(lineage["original_source_path"])) != original:
+            raise RuntimeError("pilot export changed the original checkpoint scene")
     positions = [row["ground_truth"]["position"] for row in timestamps]
     length = sum(math.dist(a, b) for a, b in pairwise(positions))
     source_info = {
@@ -422,6 +452,8 @@ def main() -> None:
         },
         "timestamps": timestamps,
     }
+    if lineage is not None:
+        dataset["source_lineage"] = lineage
     write_json(args.output / "dataset.json", dataset)
     write_json(args.output / "observations.json", {
         "data_kind": "SYNTHETIC", "label": LABEL,

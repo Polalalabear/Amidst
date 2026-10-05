@@ -6,6 +6,33 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-05 addendum / Checkpoint 後 WALL 標記與單一 PILOT
+
+- [Fresh candidate report](scene_audit/phase1_wall_candidates_20261005.md) / JSON:
+  **81 automatic WALL surface patches / 1,491 HUMAN_REVIEW patches** from unchanged
+  school_v3 geometry, with source/floor/bounds/AREA/WALKABLE/PORTAL/reason evidence.
+- [Saved marking report](scene_audit/phase1_wall_markings_20261005.md) / JSON binds
+  81 annotation-only WALL meshes copying 543 existing polygons in the isolated ignored
+  `blender/working/phase1_wall_pilot_20261005/school_v3_wall_marked.blend`. Independent
+  reopening preserves 2,873 original objects and physical mesh identity. All 28 portals
+  have zero actual face intersections; no doorway infill or movement collider is added.
+- One new ignored `data/pilot/phase1_wall_pilot_20261005/office/` run is labeled
+  **PILOT / SYNTHETIC SAMPLE**: 10s, 5 FPS, 50/50 timestamps and 100/100 camera PNGs,
+  existing AUDITORIUM_FRONT/REAR poses, 160 configured / 156.800049 sampled native units.
+  Dataset JSON, separate GT/2D observations, sample report, validation, five montages,
+  trajectory map, synchronized GIF and gallery are materialized locally.
+- Validation: PASS_WITH_REVIEW, zero errors; 26 visible / 74 occluded / 0 out-of-FOV
+  camera records; 24 global point GAP timestamps, 19 fully hidden / 5 partial body.
+  Visible→GAP→visible recovery succeeds; forward/inverse maxima 0.000314545px /
+  0.001615262 native units, no unexpected Projection failure. Source lineage verifies
+  both the actual derived asset and unchanged original hash/size/mtime.
+
+GT 僅 simulation/export/evaluation/debug，純2D Observation另存；81個WALL annotations
+不進 physical render／raycaster。Formal geometry／scale／camera-plane authority仍待核准。
+原始scene與checkpoint保留，沒有Case1–3、elevator transition、benchmark semantics改動、
+merge或push；先停在此pilot等使用者檢查，不擴充完整dataset。Raw `.blend`／GT／renders
+維持gitignored，本次Git僅保存recipes、tests與source-bound audit/report證據。
+
 ### 2026-10-05 addendum / 三個不同區域的 PILOT
 
 Local ignored `data/pilot/school_v3_multisite_20261005/` contains three new

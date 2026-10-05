@@ -4,6 +4,58 @@
 
 ## 繁體中文
 
+### 2026-10-05 — Checkpoint 後 WALL semantic marking 與單一 pilot 閉環
+
+只在 `phase1/pilot-dataset-and-wall-inference`，由 checkpoint
+`91f4ea600805739aa9659dfef6a381d71be9a692` 繼續。重新從原始 school_v3 mesh 提取，
+[candidate report](../data/scene_audit/phase1_wall_candidates_20261005.md)／JSON 與先前
+結果一致：**81 AUTO_CONFIRMED_WALL patches**（1F49／2F32，7來源objects）、
+**1,491 HUMAN_REVIEW patches**（674來源objects；混合object可重疊）。逐patch列出
+floor、bounds、AREA／WALKABLE／PORTAL關係、verticality／height／continuity／extent／
+parallel thickness evidence與理由；window／door／decoration等歧義保留review。
+
+[Marking report](../data/scene_audit/phase1_wall_markings_20261005.md)／JSON記錄81個
+`semantic_class=WALL` annotation meshes，543個既有實際polygons，存至本機ignored
+`blender/working/phase1_wall_pilot_20261005/school_v3_wall_marked.blend`。
+不重新分類完整group_*、不填rectangle／AABB／doorway、不安裝movement colliders。
+保存後獨立重開：2,873原始object fingerprints與evaluated physical geometry一致，
+28 PORTAL的實際annotation face intersection area為0。原始source與checkpoint snapshot
+SHA均為 `cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e`，
+468,300,506bytes、mtime_ns1791198236746106977保持不變；衍生scene SHA為
+`b4d3394b17626bfdf35ee9b9e35c1f5a4469dd75a3e24b1a4f5f5aa58bdf4d49`。
+新增marking recipe可重驗來源、candidate及保存後的faces／props／camera／portal／geometry。
+
+僅生成一組新 **PILOT / SYNTHETIC SAMPLE**，本機ignored
+`data/pilot/phase1_wall_pilot_20261005/office/`。使用原pose的
+`CAM_1F_AUDITORIUM_FRONT`／`CAM_1F_AUDITORIUM_REAR`，office metadata路線
+`PILOT_OFFICE_001`，1F，規劃160／採樣156.800049 scene units；10秒、5FPS、
+[0,10)的**50timestamps／100PNG全部成功**。250個支撐probes與radius6／height119
+完整continuous swept volume對actual triangles檢查通過。來源lineage同時綁定
+衍生scene與原始source／candidate／physical geometry；81個WALL annotation排除於
+planner BVH、render snapshots與occlusion rays，既有實體mesh仍提供遮擋。
+
+獨立validation為 **PASS_WITH_REVIEW、errors=[]**：26visible／74occluded／0out-of-FOV
+camera records；front21／29，rear5／45。Global body-center GAP為frames21–44
+（4.2–8.8s）共24timestamps，其中19個兩視角完全沒有marker pixels、5個仍有partial body。
+形成visible→GAP→visible閉環。Forward最大0.000314545px、static diagnostic plane inverse
+最大0.001615262units，unexpected Projection failures0；74non-observed inputs按接口拒絕。
+純2D ObservationFrame另存，inverse只讀2D／camera／獨立mesh probe固定plane；GT只在
+simulation與投影後evaluation讀取。原始source與衍生asset的hash／size／mtime均保留。
+獨立audit解碼／核對全部100PNG與labels／hash、100個plan/export states、100個strict2D
+ObservationFrame及26個visible-center orange masks。與舊office原source render逐像素
+比較，**100／100 decoded RGB完全一致、differing pixels0**，確認新增標記未改physical render。
+Dataset SHA為 `77203e33a566f99936e6446133dae245231562b0a64bfc82447e5f1215d5d2df`。
+
+另產生dataset／GT／observations／plan／validation／human-readable sample report、50frame
+10秒同步GIF、trajectory map、gallery及五張代表montages：frames0／20／21／32／45
+（0／4.0／4.2／6.4／9.0s）。逐張檢查visible、approach、partial-body GAP entry、完全隱藏
+GAP middle與rear-camera recovery；不把point GAP宣稱為全身皆隱藏。
+完整指定檢查：`uv run pytest` **847 passed in71.83s、無skips**；
+`uv run ruff check .`、`uv run mypy`（72sourcefiles）與`git diff --check`均通過。
+完整uv／native Blender檢查在sandbox外完成；沒有改benchmark semantics、執行正式Cases1–3、
+elevator transition、merge回checkpoint branch或push。本輪到此停止，完整generation仍待
+使用者pilot確認、physical scale與formal geometry／floor／camera-plane authority。
+
 ### 2026-10-05 — Phase 1 semantic scene checkpoint
 
 使用者明確要求大斷點、push目前branch及從斷點建立新branch。起始working tree clean，
@@ -437,6 +489,60 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-05 — Post-checkpoint WALL markings and one bounded pilot loop
+
+Work continues only on phase1/pilot-dataset-and-wall-inference from checkpoint
+91f4ea600805739aa9659dfef6a381d71be9a692. Fresh original-source extraction confirms
+81 WALL surface patches (49 on 1F, 32 on 2F, 7 source objects), retaining 1,491
+HUMAN_REVIEW patches across 674 objects; object counts overlap for mixed meshes.
+The dated candidate report records bounds, floors, nearby AREA/PORTAL, WALKABLE
+relations and verticality/height/continuity/extent/parallel-thickness reasoning.
+Ambiguous windows, doors and decoration remain under review.
+
+The saved isolated school_v3_wall_marked.blend contains 81 WALL semantic selection
+meshes copying 543 actual existing polygons. No whole group_* is reclassified, no
+doorway is filled and no movement collider is installed. Independent reopening verifies
+all 2,873 original object identities and evaluated physical geometry, with zero actual
+face intersections against 28 protected portals. Original/source-checkpoint SHA remains
+cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e, with unchanged
+468,300,506 bytes and mtime_ns1791198236746106977. Derived SHA is
+b4d3394b17626bfdf35ee9b9e35c1f5a4469dd75a3e24b1a4f5f5aa58bdf4d49. The new
+marking recipe and dated audit artifacts bind source, candidate and reopened selections.
+
+Exactly one new ignored PILOT / SYNTHETIC SAMPLE is materialized at
+data/pilot/phase1_wall_pilot_20261005/office/. Existing AUDITORIUM_FRONT/REAR cameras
+retain source poses on the 1F office metadata route PILOT_OFFICE_001: 160 configured /
+156.800049 sampled native units, 10s at 5 FPS, all 50 timestamps and 100 PNGs successful.
+The route passes 250 support probes and continuous full-marker swept-volume checks.
+The plan/export lineage binds the real derived asset and preserved original/candidate/
+physical geometry. All 81 WALL annotations are excluded from physical BVH, render
+snapshots and rays; original physical surfaces still supply occlusion.
+
+Independent validation is PASS_WITH_REVIEW with zero errors: 26 visible, 74 occluded,
+zero out-of-FOV camera records; FRONT 21/29 and REAR 5/45. The visible→GAP→visible
+loop has 24 global landmark GAP timestamps at frames21–44 (4.2–8.8s), including
+19 fully marker-hidden samples and 5 with partial body. Forward/inverse maxima are
+0.000314545px / 0.001615262 native units, with no unexpected Projection failures;
+74 non-observed inputs are rejected as expected. Inverse inputs contain only sanitized
+2D frames, calibration and an independent mesh-probed static diagnostic plane. GT
+is used only by simulation and post-projection evaluation, never downstream inference.
+Original and derived hashes, sizes and mtimes remain unchanged.
+An independent audit verifies all 100 decoded PNGs and provenance labels/hashes, 100
+planned/exported states and strict 2D frames, plus all 26 visible landmark orange masks.
+All 100 decoded RGB renders are exactly pixel-identical to the previous original-source
+office renders, with zero differing pixels. Dataset SHA is
+77203e33a566f99936e6446133dae245231562b0a64bfc82447e5f1215d5d2df.
+
+Outputs include separate GT/2D observations, evaluation-only dataset, plan, validation,
+sample report, gallery, trajectory map, 50-frame ten-second GIF and five inspected
+representative montages at frames0/20/21/32/45 (0/4.0/4.2/6.4/9.0s), explicitly
+distinguishing partial-body GAP entry from fully hidden middle and rear-camera recovery.
+Fresh requested checks pass: 847 pytest tests in71.83s without skips, Ruff, mypy for
+72 source files and diff check. Final uv/native Blender checks run outside the sandbox.
+No benchmark semantics, formal Cases1–3, elevator transition, merge or push occurs.
+Work stops here; full generation awaits user pilot review, physical scale and formal
+geometry/floor/camera-plane authority.
 
 ### 2026-10-05 — Phase 1 semantic scene checkpoint
 

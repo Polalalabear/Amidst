@@ -62,6 +62,59 @@ def _difference(left: list | tuple, right: list | tuple) -> float:
     return math.dist(left, right)
 
 
+def check_source_lineage(
+    data: dict[str, Any], *, verify_source: bool
+) -> tuple[dict[str, Any], list[str]]:
+    """Verify original-scene preservation; lineage never enters inverse projection."""
+    lineage = data.get("source_lineage")
+    result: dict[str, Any] = {"declared": lineage is not None, "verified": False}
+    if lineage is None:
+        return result, []
+    if not isinstance(lineage, dict):
+        return result, ["source lineage must be an object"]
+    errors: list[str] = []
+    for key in (
+        "original_source_sha256", "wall_candidate_sidecar_sha256",
+        "original_physical_geometry_sha256",
+    ):
+        value = lineage.get(key)
+        if not isinstance(value, str) or len(value) != 64 or any(
+            c not in "0123456789abcdef" for c in value
+        ):
+            errors.append(f"source lineage {key} must be a SHA-256 digest")
+    if lineage.get("original_source_identity_verified") is not True:
+        errors.append("source lineage must attest independently verified original identity")
+    if lineage.get("wall_semantic_marking_policy") != "ANNOTATION_ONLY_PHYSICAL_ROLE_NOT_APPROVED":
+        errors.append("source lineage must keep WALL semantic markings separate from physics")
+    count = lineage.get("wall_semantic_marking_count")
+    if not isinstance(count, int) or isinstance(count, bool) or count < 1:
+        errors.append("source lineage must declare a positive WALL semantic marking count")
+    original_path = lineage.get("original_source_path")
+    if not isinstance(original_path, str) or not original_path:
+        errors.append("source lineage original scene path must be present")
+    elif verify_source:
+        path = Path(original_path)
+        if not path.is_file():
+            errors.append("source lineage original scene is unavailable")
+        else:
+            stat = path.stat()
+            if (
+                sha256(path) != lineage.get("original_source_sha256")
+                or stat.st_size != lineage.get("original_source_size")
+                or stat.st_mtime_ns != lineage.get("original_source_mtime_ns")
+            ):
+                errors.append("source lineage original scene hash/size/mtime differs")
+            if path.resolve() == Path(data.get("source_scene", {}).get("path", "")).resolve():
+                errors.append("source lineage requires a separate derived scene")
+    result.update(
+        original_source_path=original_path,
+        original_source_sha256=lineage.get("original_source_sha256"),
+        wall_semantic_marking_count=count,
+        verified=not errors and verify_source,
+    )
+    return result, errors
+
+
 def check_plan_binding(
     data: dict[str, Any], dataset_path: Path
 ) -> tuple[dict[str, Any], list[str]]:
@@ -92,6 +145,7 @@ def check_plan_binding(
 
     digest = data.get("source_scene", {}).get("sha256_before")
     check(plan.get("source_asset_sha256") == digest, "source SHA-256 differs from dataset")
+    check(plan.get("source_lineage") == data.get("source_lineage"), "source lineage differs")
     check(
         plan.get("label", plan.get("data_kind")) == LABEL,
         "plan lacks PILOT / SYNTHETIC SAMPLE label",
@@ -210,6 +264,8 @@ def validate_pilot(dataset_path: Path, *, verify_source: bool = True) -> dict[st
     )
     plan_binding, plan_errors = check_plan_binding(data, dataset_path)
     errors.extend(plan_errors)
+    lineage_binding, lineage_errors = check_source_lineage(data, verify_source=verify_source)
+    errors.extend(lineage_errors)
     site_id = data.get("site_id")
     check(
         site_id is None or isinstance(site_id, str) and bool(site_id),
@@ -676,6 +732,7 @@ def validate_pilot(dataset_path: Path, *, verify_source: bool = True) -> dict[st
         "dataset_sha256": sha256(dataset_path),
         "source_identity_verified": source_verified,
         "trajectory_plan_binding": plan_binding,
+        "source_lineage_binding": lineage_binding,
         "timestamp_count": len(rows),
         "camera_ids": list(cameras),
         "expected_camera_frame_count": expected_frame_count,

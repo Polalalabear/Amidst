@@ -201,6 +201,19 @@ def main() -> None:
     for camera_id, counts_row in per_camera.items():
         lines.append(f"| {camera_id} | {counts_row['visible']} | "
                      f"{counts_row['occluded']} | {counts_row['out_of_FOV']} |")
+    if dataset.get("source_lineage"):
+        lineage = dataset["source_lineage"]
+        excluded_walls = sum(name.startswith("WALL_") for name in
+                             dataset["render_policy"]["excluded_annotation_objects"])
+        lines += ["", "## Derived scene and original preservation", "",
+                  f"- Original source SHA-256: `{lineage['original_source_sha256']}`; "
+                  "hash/size/mtime independently verified unchanged.",
+                  f"- Derived scene contains {lineage['wall_semantic_marking_count']} "
+                  "exact-surface WALL semantic selections; source objects are not reclassified.",
+                  f"- {excluded_walls} WALL annotation objects are excluded from physical "
+                  "render snapshots and occlusion raycasting; they do not add blockers.",
+                  "- WALL semantic marking is separate from formal navigation/collider "
+                  "approval. GT isolation and benchmark semantics remain unchanged."]
     lines += ["", "## Independent validation", "", "```json",
               json.dumps(validation, indent=2, ensure_ascii=False), "```", "",
               "## Five representative frames", ""]

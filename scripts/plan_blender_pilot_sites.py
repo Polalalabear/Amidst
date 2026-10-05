@@ -21,8 +21,11 @@ ANNOTATION_COLLECTIONS = (
     "OBSTACLE_AREAS",
     "STAIR_ANNOTATIONS",
     "Stair Reference Surfaces",
+    "WALL_ANNOTATIONS",
 )
-ANNOTATION_PREFIXES = ("AREA_", "PORTAL_", "WALK_", "WALKABLE_", "OBSTACLE_", "STAIR_")
+ANNOTATION_PREFIXES = (
+    "AREA_", "PORTAL_", "WALK_", "WALKABLE_", "OBSTACLE_", "STAIR_", "WALL_"
+)
 SITES = (
     {
         "site_id": "classroom101",
@@ -55,6 +58,10 @@ def parse_args():
         "--search-hints", type=Path, default=Path("/private/tmp/amidst-pilot-search.json")
     )
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument(
+        "--site", action="append", choices=[site["site_id"] for site in SITES],
+        help="Plan only this existing locale; repeat to select more than one (default: all)",
+    )
     return parser.parse_args(sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else [])
 
 
@@ -66,6 +73,18 @@ def bounds(points):
 
 def overlaps(first, second):
     return all(first[1][a] >= second[0][a] and second[1][a] >= first[0][a] for a in range(3))
+
+
+def verify_immutable_source(path, expected_sha256, expected_size, expected_mtime_ns):
+    """Check source identity separately from mutable geometry/raycast variables."""
+    asset = Path(path)
+    stat = asset.stat()
+    if (
+        hashlib.sha256(asset.read_bytes()).hexdigest() != expected_sha256
+        or stat.st_size != expected_size
+        or stat.st_mtime_ns != expected_mtime_ns
+    ):
+        raise RuntimeError(f"Immutable Blender source changed during planning: {asset}")
 
 
 def candidates(rows, camera_ids):
@@ -133,6 +152,32 @@ def main():
     source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
     hints = json.loads(args.search_hints.read_text())
     scene, depsgraph = bpy.context.scene, bpy.context.evaluated_depsgraph_get()
+    source_lineage = None
+    origin_path = scene.get("phase1_wall_marking_source_path")
+    origin_digest = scene.get("phase1_wall_marking_source_sha256")
+    if origin_path or origin_digest:
+        if not origin_path or not origin_digest:
+            raise ValueError("Derived scene must bind both original source path and SHA-256")
+        lineage_source = Path(origin_path).resolve()
+        origin_stat = lineage_source.stat()
+        verified_origin_digest = hashlib.sha256(lineage_source.read_bytes()).hexdigest()
+        if verified_origin_digest != origin_digest:
+            raise ValueError("Derived scene original source SHA-256 differs from live source")
+        source_lineage = {
+            "original_source_path": str(lineage_source),
+            "original_source_sha256": verified_origin_digest,
+            "original_source_size": origin_stat.st_size,
+            "original_source_mtime_ns": origin_stat.st_mtime_ns,
+            "original_source_identity_verified": True,
+            "wall_candidate_sidecar_sha256": scene.get(
+                "phase1_wall_marking_candidate_sidecar_sha256"
+            ),
+            "original_physical_geometry_sha256": scene.get(
+                "phase1_wall_marking_physical_geometry_sha256"
+            ),
+            "wall_semantic_marking_count": scene.get("phase1_wall_marking_count"),
+            "wall_semantic_marking_policy": "ANNOTATION_ONLY_PHYSICAL_ROLE_NOT_APPROVED",
+        }
     radius, height, probe_height, margin = 6.0, 119.0, 55.0, 0.05
     excluded, excluded_names = set(), []
     for name in ANNOTATION_COLLECTIONS:
@@ -141,12 +186,15 @@ def main():
             excluded.update(obj.original.as_pointer() for obj in collection.all_objects)
             excluded_names.extend(obj.name for obj in collection.all_objects)
     for obj in scene.objects:
-        if obj.type == "MESH" and obj.name.startswith(ANNOTATION_PREFIXES):
+        if obj.type == "MESH" and (
+            obj.name.startswith(ANNOTATION_PREFIXES) or obj.get("annotation_only")
+        ):
             excluded.add(obj.original.as_pointer())
             excluded_names.append(obj.name)
 
     contexts = []
-    for site in SITES:
+    selected_sites = [site for site in SITES if not args.site or site["site_id"] in args.site]
+    for site in selected_sites:
         walkable = bpy.data.objects[site["walkable"]].evaluated_get(depsgraph)
         mesh = walkable.to_mesh()
         mesh.calc_loop_triangles()
@@ -174,7 +222,15 @@ def main():
     vertices, triangles, triangle_objects, physical_objects = [], [], [], set()
     for instance in depsgraph.object_instances:
         obj = instance.object
-        if obj.type != "MESH" or not instance.show_self or obj.original.as_pointer() in excluded:
+        if (
+            obj.type != "MESH"
+            or not instance.show_self
+            or obj.original.as_pointer() in excluded
+            or (
+                instance.parent is not None
+                and instance.parent.original.as_pointer() in excluded
+            )
+        ):
             continue
         matrix = instance.matrix_world.copy()
         object_bounds = bounds([matrix @ Vector(c) for c in obj.bound_box])
@@ -510,6 +566,8 @@ def main():
             "representative_frame_ids": representative,
             "samples": samples,
         }
+        if source_lineage is not None:
+            plan["source_lineage"] = source_lineage
         output = args.output_root / site["site_id"] / "trajectory_plan.json"
         if output.exists() and not args.overwrite:
             raise FileExistsError(output)
@@ -529,11 +587,14 @@ def main():
         }
         results.append(result)
         print("PILOT_SITE_OK " + json.dumps(result), flush=True)
-    if (
-        hashlib.sha256(source.read_bytes()).hexdigest() != source_sha
-        or source.stat().st_mtime_ns != source_stat.st_mtime_ns
-    ):
-        raise RuntimeError("Immutable Blender input changed during planning")
+    verify_immutable_source(source, source_sha, source_stat.st_size, source_stat.st_mtime_ns)
+    if source_lineage is not None:
+        verify_immutable_source(
+            source_lineage["original_source_path"],
+            source_lineage["original_source_sha256"],
+            source_lineage["original_source_size"],
+            source_lineage["original_source_mtime_ns"],
+        )
     args.output_root.mkdir(parents=True, exist_ok=True)
     (args.output_root / "site_planning_results.json").write_text(
         json.dumps(

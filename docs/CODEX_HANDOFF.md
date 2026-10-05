@@ -27,20 +27,21 @@
 - 三個明確不可走 AREA 已 EXCLUDED，兩個 stair AREA 改為 cross-floor 診斷。
   1F=25／2F=165 僅 PROPOSED。已補的 WALKABLE、19 個 OBSTACLE/BOTH 與六個
   stair annotations 都不能替代 physical／floor／camera-plane authority。
-- 新授權的 geometry-derived WALL extraction 已完成：
-  [report](../data/scene_audit/school_v3_wall_candidates.md)／
-  [sidecar](../data/scene_audit/school_v3_wall_candidates.json) 標記 81 個 WALL surface
-  patches（7 source objects），1,491 patches 留 HUMAN_REVIEW（674 objects，totals 重疊）。
-  28 PORTAL 的自動確認牆面相交為 0；不改 source、不分類整個混合 object。
-- 本機 ignored `data/pilot/school_v3_multisite_20261005/` 已完成同一 school_v3 的
-  教室／禮堂／辦公區三組 **PILOT / SYNTHETIC SAMPLE**，150 timestamps／300 PNG
-  全數獨立驗證成功。先看 root `comparison.md`／`review.html`，各子目錄的
-  `dataset.json`、五張代表 montages 與同步 preview。原 corridor pilot 保留作比較。
-  教室是中心點可見對照（完整 body 全程有邊界裁切）；禮堂只有一個且仍有 partial body
-  的 GAP 樣本；辦公區24個 GAP 中19個完全隱藏，最適合目前 point occlusion 檢查。
-  禮堂與辦公區共用既有 FRONT／REAR cameras，不是三套獨立相機配置。
-  已停止於這三組額外 pilot；未開始 formal geometry/navigation integration、collision
-  pruning、benchmark、Agent／Phase 2 或 Case 4。
+- Checkpoint `91f4ea600805739aa9659dfef6a381d71be9a692` 後新 extraction／
+  [candidate report](../data/scene_audit/phase1_wall_candidates_20261005.md) 與
+  [saved marking report](../data/scene_audit/phase1_wall_markings_20261005.md) 已完成：
+  81個WALL surface patches正式標在本機衍生scene，1,491個候選留HUMAN_REVIEW。
+  `blender/working/phase1_wall_pilot_20261005/school_v3_wall_marked.blend` 保存／重開驗證
+  原始objects與physical geometry未變，28 PORTAL實際相交為0；不改原source或整個group_*。
+  WALL為annotation-only selections，未核准movement/navigation collider。
+- 本次只生成一組新 `data/pilot/phase1_wall_pilot_20261005/office/`
+  **PILOT / SYNTHETIC SAMPLE**：10秒、5FPS、50timestamps／100PNG全部驗證成功。
+  原pose的AUDITORIUM_FRONT／REAR cameras，office metadata路線160scene units，
+  visible→GAP→visible成立；24個point GAP中19個marker全隱藏、5個partial body。
+  先看`sample_report.md`／`review.html`、五張代表montages與同步preview，
+  dataset與plan同時綁定衍生SHA及未變原source。原先corridor／三區pilot保留作歷史比較。
+  已停止等使用者確認pilot；未開始formal geometry/navigation integration、collision
+  pruning、benchmark、Agent／Phase2或Case4，不擴充完整dataset。
 
 ### 仍需人工與 geometry integration 處理
 
@@ -53,7 +54,7 @@
 - Stair A/B 缺可信連續 landing；A ENTRY 與 A/B EXIT 未接相應 floor。Slab opening／
   clearance 尚待人工審查。只有角色／方向 annotation，沒有 stair navigation edges。
   正式跨樓層 Case 4 暫緩，不以它展開 benchmark。
-- WALL sidecar 尚未接入 formal geometry/navigation，仍有 1,491 候選需 review。
+- 衍生scene WALL markings 尚未接入 formal geometry/navigation，仍有 1,491 候選需 review。
   OBSTACLE 是原 footprint proxy，沒有已核准的 3D 高度／occlusion volume；physical
   geometry、floor planes／例外與 camera-plane bindings 待核准。使用者已確認只有 stairs、
   沒有 elevator；`AREA_*_ELEVATOR` 只是歷史命名，不建立 transition。
@@ -62,8 +63,8 @@
   projected endpoints 需對齊 configured nodes，尚無 arbitrary-point snapping／connector。
 - Pilot source/context、GT／camera／visibility／render binding 與獨立投影驗證已完成，
   純 2D `observations.json` 另存，GT 不能進 inference。正式 adapters 仍需共同 authority。
-  三組新 pilot forward residual 最大 0.000638311px、固定診斷 plane inverse residual 最大
-  0.001787566 scene units，沒有異常；這不是 formal floor/camera-plane 認證。實際地面
+  本次pilot forward residual最大0.000314545px、固定診斷plane inverse residual最大
+  0.001615262scene units，沒有異常；這不是formal floor/camera-plane認證。實際地面
   Z≈20.07885，比 WALKABLE Z=25 低 4.92115；marker plane Z≈75.12885。
   METRIC／1m-per-unit 有建築尺度疑義，不猜測換算比例。完整 generation 待 image policy、
   physical scale 與正式 authority；marker 裁切、地板明暗塊、短 GAP／恢復視窗與 camera
@@ -102,21 +103,23 @@ are bound in the update artifact. The ignored asset is saved locally; portable r
 audit/report evidence refer to the new source, without transferring v2 authority.
 Three intentional nonwalkable areas are excluded; stair areas defer to cross-floor checks.
 Floors 25/165 are only proposed. Semantic metadata and annotations do not grant physical,
-floor or camera-plane authority. Authorized WALL extraction labels 81 connected surface
-patches in a source-bound sidecar, retaining 1,491 HUMAN_REVIEW patches (7 automatic /
-674 review objects, with overlap). All 28 PORTALs are protected; automatic aperture
-intersections are zero. Whole mixed objects and saved source labels are unchanged.
-The local ignored `data/pilot/school_v3_multisite_20261005/` contains three additional
-PILOT / SYNTHETIC SAMPLE locales within the same school_v3 asset: classroom, auditorium
-and office, with all 150 timestamps / 300 PNGs independently verified. Review comparison.md
-and review.html, then each site's dataset, five representative montages and synchronized
-preview. The original corridor pilot is retained as a comparison reference. Classroom is a
-center-point control with body clipping in all visible images; auditorium has one partially
-visible GAP sample; office has 24 GAP samples, 19 fully hidden, making it the strongest
-current point-occlusion sample. Auditorium/office reuse the existing FRONT/REAR cameras,
-not separate installations. Work stops at these three additional pilots; no formal
-geometry/navigation integration, collision pruning, benchmark, Agent, Phase 2 or Case 4
-is started.
+floor or camera-plane authority. Post-checkpoint extraction and saved marking reports
+confirm 81 WALL surface patches, retaining 1,491 HUMAN_REVIEW patches. The ignored
+blender/working/phase1_wall_pilot_20261005/school_v3_wall_marked.blend stores exact
+existing face selections with annotation-only WALL semantics. Independent reopening
+preserves original objects/physical geometry and all 28 portals, with zero actual
+annotation intersections. Original source and whole mixed group_* objects stay unchanged;
+navigation/movement colliders remain unapproved.
+Exactly one new ignored PILOT / SYNTHETIC SAMPLE at
+data/pilot/phase1_wall_pilot_20261005/office/ has all 50 timestamps / 100 PNGs verified:
+10s at 5 FPS, existing AUDITORIUM_FRONT/REAR poses and a 160-unit 1F office metadata
+route. Visible→GAP→visible succeeds, with 24 landmark GAP samples, 19 fully hidden
+and 5 partially visible. Review sample_report.md, review.html, five representative
+montages and synchronized preview. Export/plan lineage binds the actual derived asset
+and preserved original source. Earlier corridor/three-locale pilots remain historical
+references. Work stops pending user pilot confirmation; no full dataset expansion,
+formal geometry/navigation integration, collision pruning, benchmark, Agent, Phase2 or
+Case4 starts.
 
 Human work remains: correct fully blocking bathroom footprints while retaining OBSTACLE/BOTH
 roles; confirm real doorway seams/portal positions/normals and aperture conflicts; provide
@@ -130,7 +133,7 @@ Collision Top-K pruning remains unresolved; evaluation AABB checks do not certif
 Graph routes and projected node anchors still require explicit configs, with no arbitrary
 point attachment. Pilot source/context bindings, render hashes and separate 2D/GT exports
 are verified, while formal adapters still need shared authority. GT stays excluded from
-inference. The three new pilots' forward/inverse errors are at most 0.000638311 pixels / 0.001787566
+inference. This pilot's forward/inverse errors are at most 0.000314545 pixels / 0.001615262
 scene units, with no unexpected failures; the static landmark plane is diagnostic only.
 Actual 1F support is Z≈20.07885, 4.92115 below the WALKABLE annotation; landmark plane
 Z≈75.12885. Declared metric scale is not certified architectural scale. Full generation
