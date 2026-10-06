@@ -49,6 +49,8 @@ def validate_decisions(document: dict[str, Any], template: dict[str, Any]) -> di
     if immutable_document(document) != immutable_document(template):
         raise ValueError("immutable source/checkpoint/questions/profiles were changed")
     expected_hash = content_hash(immutable_document(template))
+    if content_hash(immutable_document(document)) != expected_hash:
+        raise ValueError("immutable submitted question payload hash mismatch")
     if template.get("review_payload_sha256") != expected_hash:
         raise ValueError("review template payload hash mismatch")
     if document.get("review_payload_sha256") != expected_hash:

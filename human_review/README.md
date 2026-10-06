@@ -599,7 +599,7 @@ Human choices：**APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW**。
 
 - Branch：`phase1/finalization-sprint`；blocked checkpoint：`85f5e6b055e75d286c1519e6c5ba2f2efc416347`。
 - Source .blend SHA-256：`cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e`；source 未 save / modify。
-- Immutable question payload SHA-256：`d54fc4083d9d182061b7c1c2da2ec718fc0a6782fe1ba2c25964c8bfb4c2e53c`。
+- Immutable question payload SHA-256：`e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463`。
 - [manifest.json](manifest.json)：本 package hashes；[frames/visual_manifest.json](frames/visual_manifest.json)：source/frames hashes。
 - [geometry_evidence.json](geometry_evidence.json)、[settings_evidence.json](settings_evidence.json)：source-bound measurements / calibration / decisions basis。
 - 本輪沒有 formal Cases、GT-assisted decision、核准、main merge 或 freeze tag。

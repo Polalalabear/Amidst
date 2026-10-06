@@ -2,7 +2,7 @@
   "schema_version": "phase1-minimal-human-review-package-v1",
   "checkpoint_sha": "85f5e6b055e75d286c1519e6c5ba2f2efc416347",
   "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
-  "review_payload_sha256": "d54fc4083d9d182061b7c1c2da2ec718fc0a6782fe1ba2c25964c8bfb4c2e53c",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
   "status": "HUMAN_REVIEW_PENDING",
   "human_decision_count": 4,
   "frames": {
@@ -28,12 +28,12 @@
     {
       "path": "README.md",
       "bytes": 21676,
-      "sha256": "c0907fd1b0d1d42ecf8f9d1d263067ace68a84d9eb2bf2bd775d570f26464690"
+      "sha256": "ce6cab5579f6bad3d887fd8c90efb63acc58c4f5e0fd4964256c51967e06c04f"
     },
     {
       "path": "apply_decisions.py",
-      "bytes": 10554,
-      "sha256": "1f2280949500d442e16c276aebe60cc0daa7121459df3c186a922d5fb08edaf1"
+      "bytes": 10701,
+      "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d"
     },
     {
       "path": "assemble_review.py",
@@ -73,7 +73,7 @@
     {
       "path": "decisions.json",
       "bytes": 32164,
-      "sha256": "ecf766a749481148987463776fea9c74c72a93b1513dcc332a5f9f2be31abfe4"
+      "sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2"
     },
     {
       "path": "finalize_package.py",
@@ -388,7 +388,7 @@
     {
       "path": "gate.json",
       "bytes": 1832,
-      "sha256": "7bd4bab6c05b58a2cd5d9f46374d70c9b03eee72eca942f76039dc8f05fa7b72"
+      "sha256": "84f32e4989294004fe9bd191dd42498d6cb4b51e8ba1283afdd54fbbf7c5341f"
     },
     {
       "path": "geometry_evidence.json",
@@ -423,7 +423,7 @@
     {
       "path": "index.html",
       "bytes": 47157,
-      "sha256": "80022fa313b1a5d3c0def6a0f82114ddacbaccb434e4a404ccf7f28ea4231ee3"
+      "sha256": "dcac433c3cf8b2c74616d1ba4d73dfd079cfe14e474c4b6939e85690916f4559"
     },
     {
       "path": "inspect_review_settings.py",
@@ -443,7 +443,7 @@
     {
       "path": "review_template.json",
       "bytes": 32164,
-      "sha256": "ecf766a749481148987463776fea9c74c72a93b1513dcc332a5f9f2be31abfe4"
+      "sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2"
     },
     {
       "path": "settings_evidence.json",

@@ -160,7 +160,7 @@
       },
       {
         "path": "human_review/apply_decisions.py",
-        "sha256": "1f2280949500d442e16c276aebe60cc0daa7121459df3c186a922d5fb08edaf1"
+        "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d"
       },
       {
         "path": "human_review/certificate_application.py",
@@ -801,5 +801,5 @@
       "recommendation_reason": "沿用現有 32 BU/s ceiling、1 s slack 與 supported dwell；不新增速度或 waiting model。"
     }
   ],
-  "review_payload_sha256": "d54fc4083d9d182061b7c1c2da2ec718fc0a6782fe1ba2c25964c8bfb4c2e53c"
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463"
 }

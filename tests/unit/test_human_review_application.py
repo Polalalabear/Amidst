@@ -30,6 +30,7 @@ def template() -> dict:
             "case_blocker_map": {},
             "input_hashes": [],
             "scope_limitations": [],
+            "formal_execution_enabled": False,
         },
         "items": [
             {
@@ -104,7 +105,9 @@ def test_synthetic_complete_receipt_keeps_failed_certificate_and_formal_disabled
     assert len(calls) == 1
 
 
-@pytest.mark.parametrize("edit", ["epsilon", "source", "extra", "order", "input_hash"])
+@pytest.mark.parametrize(
+    "edit", ["epsilon", "source", "extra", "order", "input_hash", "boolean_type"]
+)
 def test_immutable_edits_rejected(template: dict, edit: str) -> None:
     document = completed(template)
     if edit == "epsilon":
@@ -115,6 +118,8 @@ def test_immutable_edits_rejected(template: dict, edit: str) -> None:
         document["items"][0]["new_setting"] = True
     elif edit == "order":
         document["items"].reverse()
+    elif edit == "boolean_type":
+        document["metadata"]["formal_execution_enabled"] = 0
     else:
         document["metadata"]["input_hashes"].append({"path": "poison"})
     with pytest.raises(ValueError, match="immutable"):

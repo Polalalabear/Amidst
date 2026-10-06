@@ -230,6 +230,9 @@ adapters、Case1 uniqueness、Case2 inventory、Case3 stress feasibility 留待�
 Ruff passed；mypy **93 source files** passed；diff check passed。Pending application 的
 source/public-input/57 PNG hashes 驗證通過。Dashboard 預設未選決策、closeup 圖片、
 連續 player 與最後 frame49 已實際開啟檢查；前端 import tamper guards 通過。
+最後再加 canonical JSON 型別/hash guard（避免 bool/int 相等比較繞過）；
+受影響的 review/synthetic certificate tests **49 passed**，strict typing 額外8個 review
+scripts 通過，原 Phase1 inference source 無改動。
 
 Raw review renders 保留 local ignored；package hashes、reproduction scripts、texts 和
 pending decision template 保留。舊 generic gate 另存 human_review/history/blocked_checkpoint，
