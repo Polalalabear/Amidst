@@ -156,6 +156,9 @@ def create_report(root: Path) -> dict[str, Any]:
         "most_sensitive_sample_by_jacobian": peak,
         "camera_summary": cameras,
         "numerical_consistency": camera_peaks,
+        "numerical_consistency_scope": (
+            "179_UNPERTURBED_BASELINE_OBSERVED_SAMPLES_NOT_ALL_DIAGNOSTIC_COPIES"
+        ),
         "calibration_variant_peaks": calibration_peaks,
         "joint_focal_maximum": joint["max"],
         "joint_focal_trial_count": joint["sample_count"],
@@ -289,6 +292,7 @@ def create_report(root: Path) -> dict[str, Any]:
         "",
         "## 分層定位 / Layer evidence",
         "",
+        "以下四項precision上限只統計179個未擾動baseline OBSERVED samples。",
         "- Float64 versus Decimal60最大差："
         f"{camera_peaks['max_float64_vs_decimal60_difference_bu']:.8g}BU。",
         "- float32 diagnostic versus actualservice："

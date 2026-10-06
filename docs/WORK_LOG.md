@@ -23,7 +23,7 @@ GT只在所有inference/reference保存後evaluation，未傳GTpixel進inverse�
 Office ±0.25px精確重現ADE1.4391408126/FDE2.5490031309BU與maxpoint displacement
 2.5487584854BU。Coverage失效boundary依seed方向而變；最早office(0.003,0.0035]px、
 corridor(0.005,0.01]px，不是連續閾值或正式容忍度。Peak analyticgain12.60410293BU/px：
-auditorium front、distance835.1364BU／grazing5.364988°。Float64/Decimal60差≤6.44e−13BU，
+auditorium front、distance835.1364BU／grazing5.364988°。179未擾動baseline的Float64/Decimal60差≤6.44e−13BU，
 roundtrip≤8.14e−13px，analytic/finite-difference相符；沒有找到implementation bug。
 Jointfocal±0.1%可偏移2.6164BU，pitch±0.01°1.5573BU；只是指定diagnosticcopies，
 不證明原calibration有錯。主因證據是geometry conditioning及calibration sensitivity，
@@ -670,7 +670,7 @@ no GT pixel enters inverse inference or candidate selection.
 
 Office ±0.25px reproduces ADE1.4391408126/FDE2.5490031309BU and2.5487584854BU maxpoint
 shift. Noise failure brackets depend on seed/direction, not universal tolerances. Peak local
-gain12.6041BU/px at auditorium front/distance835.136BU/grazing5.365°. Float64/Decimal60,
+gain12.6041BU/px at auditorium front/distance835.136BU/grazing5.365°. The179unperturbed baseline Float64/Decimal60,
 roundtrip and analytic/finite Jacobians agree;no implementation bug found. Jointfocal±0.1%
 shifts up to2.6164BU,pitch±0.01°1.5573BU. Diagnostic copies do not prove source calibration
 wrong. Main evidence is geometry conditioning/calibration sensitivity;GAP length was not

@@ -177,6 +177,9 @@ For X=C+t d and t=n·(P−C)/(n·d), the analytic pixel Jacobian is
 J=t[A−d(n·A)/(n·d)]. Distance and small ray-plane denominator amplify perturbations;
 controlled factorials and analytic/finite-difference agreement support this explanation.
 
+The first four precision rows below cover **179 unperturbed baseline OBSERVED samples**,
+not all calibration copies or near-parallel toy controls.
+
 | Layer / check | Maximum observed residual | Interpretation |
 | --- | ---: | --- |
 | Accepted inverse versus independent Decimal60 | 6.4311e−13 BU | No observed float64 precision defect. |
@@ -186,6 +189,12 @@ controlled factorials and analytic/finite-difference agreement support this expl
 | Blender exported pixel versus simulation forward(GT) | 0.000497228 px | Evaluation-only export/calibration residual, including rounding. |
 | Baseline inverse versus GT | 0.00178757 BU | Small baseline residual, separate from noisy accuracy degradation. |
 | GT true-ray versus fixed landmark plane | 0.0000513107 BU | Tiny height mismatch in these samples; not formal plane authority. |
+
+Across5,370 calibration/plane copies, Float64/Decimal60 maximum is8.1993e−13 BU,
+float32 diagnostic0.000452066 BU and roundtrip1.3880e−12 px. The toy grid has maximum
+analytic/central-difference relative residual8.0153e−5: its fixed0.001px finite step
+is affected by near-grazing nonlinearity. This is distinct from a numeric bug claim;
+the precision table is not a global bound on all diagnostic geometries.
 
 The entire GT-free projection reference is saved before GT access. Evaluation-only
 true-ray/plane algebra never passes GT pixels into InverseProjectionService and never
