@@ -9,8 +9,9 @@ import math
 import time
 from collections.abc import Callable
 from enum import StrEnum
+from typing import Literal, Self
 
-from pydantic import ValidationError
+from pydantic import Field, FiniteFloat, ValidationError, model_validator
 
 from amidst.domain.common import DomainModel, Provenance, Vec3
 from amidst.domain.observation import Observation, ProjectedPoint
@@ -45,6 +46,54 @@ class GraphInputError(ValueError):
     def __init__(self, failure: GraphInputFailure, message: str) -> None:
         super().__init__(message)
         self.failure = failure
+
+
+class GraphFactorMask(DomainModel):
+    """Additive comparison masks; geometric floor/stair authorization stays intact."""
+
+    travel_time_filter: bool = True
+    camera_topology_filter: bool = True
+
+
+class GeometricRoute(DomainModel):
+    """An enumerated route may lack an admissible timing in the observed GAP."""
+
+    candidate_id: str = Field(min_length=1)
+    start_observation_id: str = Field(min_length=1)
+    end_observation_id: str = Field(min_length=1)
+    polyline: tuple[Vec3, ...] = Field(min_length=2)
+    navmesh_corridor: tuple[str, ...]
+    path_length: FiniteFloat = Field(ge=0)
+    minimum_travel_time: FiniteFloat = Field(ge=0)
+    observed_gap_duration: FiniteFloat = Field(gt=0)
+    timing_status: Literal["FEASIBLE", "UNAVAILABLE"]
+    provenance: Literal[Provenance.INFERRED_GAP] = Provenance.INFERRED_GAP
+
+    @model_validator(mode="after")
+    def timing_agrees_with_observed_gap(self) -> Self:
+        feasible = not _exceeds(self.minimum_travel_time, self.observed_gap_duration)
+        if (self.timing_status == "FEASIBLE") != feasible:
+            raise ValueError("geometric route timing status must agree with its unchanged GAP")
+        return self
+
+
+class GeometricSearchResult(DomainModel):
+    routes: tuple[GeometricRoute, ...] = ()
+    termination_reason: TerminationReason
+    expanded_nodes: int = Field(default=0, ge=0)
+    complete: bool = True
+    rejection_reasons: tuple[str, ...] = ()
+
+    @model_validator(mode="after")
+    def consistent_search_result(self) -> Self:
+        if len({route.candidate_id for route in self.routes}) != len(self.routes):
+            raise ValueError("geometric route identities must be unique")
+        exhaustive = {TerminationReason.COMPLETE, TerminationReason.NO_FEASIBLE_PATH}
+        if self.complete != (self.termination_reason in exhaustive):
+            raise ValueError("geometric search completeness must agree with termination")
+        if self.termination_reason == TerminationReason.NO_FEASIBLE_PATH and self.routes:
+            raise ValueError("NO_FEASIBLE_PATH cannot carry geometric routes")
+        return self
 
 
 class _SearchLimitReached(Exception):
@@ -178,6 +227,8 @@ class SpatiotemporalGraphEngine:
         policy: GraphSearchPolicy | None = None,
         *,
         clock: Callable[[], float] = time.monotonic,
+        factors: GraphFactorMask | None = None,
+        route_filter: Callable[[tuple[Vec3, ...]], bool] | None = None,
     ) -> None:
         if not isinstance(network, NavigationNetwork):
             raise GraphInputError(
@@ -201,6 +252,14 @@ class SpatiotemporalGraphEngine:
                 "search clock must be callable",
             )
         self._clock = clock
+        self.factors = _validated_model(
+            factors or GraphFactorMask(), GraphFactorMask, "invalid graph factor mask",
+        )
+        if route_filter is not None and not callable(route_filter):
+            raise GraphInputError(
+                GraphInputFailure.INVALID_CONFIGURATION, "route filter must be callable",
+            )
+        self._route_filter = route_filter
 
     def _now(self) -> float:
         value = float(self._clock())
@@ -262,7 +321,7 @@ class SpatiotemporalGraphEngine:
             )
         return node_id, floor_id
 
-    def _candidate(
+    def _geometric_route(
         self,
         start: Observation,
         end: Observation,
@@ -272,7 +331,7 @@ class SpatiotemporalGraphEngine:
         edge_ids: tuple[str, ...],
         start_node_id: str,
         actual_gap: float,
-    ) -> CandidateTrajectory:
+    ) -> GeometricRoute:
         try:
             path = self.network.navigation.path_from_edge_ids(start_node_id, edge_ids)
         except NavigationError as error:
@@ -287,20 +346,20 @@ class SpatiotemporalGraphEngine:
                 GraphInputFailure.NUMERICAL_FAILURE,
                 "minimum travel time must remain finite",
             )
-        if _exceeds(minimum_time, actual_gap):
+        feasible_timing = not _exceeds(minimum_time, actual_gap)
+        if not feasible_timing and self.factors.travel_time_filter:
             raise GraphInputError(
                 GraphInputFailure.NUMERICAL_FAILURE,
                 "candidate minimum travel time exceeds its available gap",
             )
-        if minimum_time > actual_gap:
+        if feasible_timing and minimum_time > actual_gap:
             minimum_time = actual_gap
-        slack = max(0.0, actual_gap - minimum_time)
         polyline = (
             path.polyline
             if len(path.polyline) >= 2
             else (path.polyline[0], path.polyline[0])
         )
-        return CandidateTrajectory(
+        return GeometricRoute(
             candidate_id=_candidate_id(
                 self.network,
                 start,
@@ -321,21 +380,54 @@ class SpatiotemporalGraphEngine:
             navmesh_corridor=edge_ids,
             path_length=distance,
             minimum_travel_time=minimum_time,
-            estimated_travel_time=actual_gap,
-            spatial_cost=distance,
-            temporal_cost=slack,
-            feasibility_flags=(
-                "CAMERA_REACHABLE",
-                "TOPOLOGY_AUTHORIZED",
-                "WALKABLE",
-                "WITHIN_MAX_SPEED",
-            ),
-            path_score=None,
+            observed_gap_duration=actual_gap,
+            timing_status="FEASIBLE" if feasible_timing else "UNAVAILABLE",
+        )
+
+    def timed_candidate(self, route: GeometricRoute) -> CandidateTrajectory | None:
+        """Keep timing-infeasible routes untimed; never change speed or endpoint times."""
+        route = _validated_model(route, GeometricRoute, "invalid geometric route")
+        if route.timing_status == "UNAVAILABLE":
+            return None
+        flags = (
+            ("CAMERA_REACHABLE", "TOPOLOGY_AUTHORIZED")
+            if self.factors.camera_topology_filter else ("CAMERA_TOPOLOGY_FILTER_DISABLED",)
+        )
+        return CandidateTrajectory(
+            candidate_id=route.candidate_id,
+            start_observation_id=route.start_observation_id,
+            end_observation_id=route.end_observation_id,
+            polyline=route.polyline, navmesh_corridor=route.navmesh_corridor,
+            path_length=route.path_length, minimum_travel_time=route.minimum_travel_time,
+            estimated_travel_time=route.observed_gap_duration,
+            spatial_cost=route.path_length,
+            temporal_cost=max(0.0, route.observed_gap_duration - route.minimum_travel_time),
+            feasibility_flags=(*flags, "WALKABLE", "WITHIN_MAX_SPEED"), path_score=None,
         )
 
     def propose_feasible_trajectories(
         self, start: Observation, end: Observation, max_paths: int = 3
     ) -> ReconstructionResult:
+        if not self.factors.travel_time_filter:
+            raise GraphInputError(
+                GraphInputFailure.INVALID_CONFIGURATION,
+                "disabled time filtering requires propose_geometric_routes and untimed N/A records",
+            )
+        geometry = self.propose_geometric_routes(start, end, max_paths)
+        candidates = tuple(
+            candidate for route in geometry.routes
+            if (candidate := self.timed_candidate(route)) is not None
+        )
+        return ReconstructionResult(
+            candidates=candidates, termination_reason=geometry.termination_reason,
+            expanded_nodes=geometry.expanded_nodes, complete=geometry.complete,
+            rejection_reasons=geometry.rejection_reasons,
+        )
+
+    def propose_geometric_routes(
+        self, start: Observation, end: Observation, max_paths: int = 3,
+    ) -> GeometricSearchResult:
+        """Use the same bounded traversal for masked comparisons and default C."""
         started_at = self._now()
         last_clock_value = started_at
 
@@ -383,10 +475,10 @@ class SpatiotemporalGraphEngine:
         start_node_id, _ = self._located_endpoint(start, start_point)
         end_node_id, _ = self._located_endpoint(end, end_point)
 
-        allowed_by_speed = _finite_product(
-            actual_gap,
-            float(self.movement.max_speed_m_s),
-            "maximum traversable distance",
+        allowed_by_speed = (
+            _finite_product(actual_gap, float(self.movement.max_speed_m_s),
+                            "maximum traversable distance")
+            if self.factors.travel_time_filter else None
         )
         effective_max_paths = min(max_paths, self.policy.max_candidate_paths)
 
@@ -397,11 +489,12 @@ class SpatiotemporalGraphEngine:
             (start.camera_id, start_node_id, ())
         }
         seen_corridors: set[tuple[str, ...]] = set()
-        candidates: list[CandidateTrajectory] = []
+        candidates: list[GeometricRoute] = []
         shortest_distance: float | None = None
         expanded_nodes = 0
         pruned_for_speed = False
         pruned_for_length = False
+        pruned_for_route_filter = False
 
         try:
             while queue:
@@ -419,9 +512,11 @@ class SpatiotemporalGraphEngine:
                     if _exceeds(distance, detour_limit):
                         break
 
-                if camera_id == end.camera_id and nav_node_id == end_node_id:
+                if nav_node_id == end_node_id and (
+                    not self.factors.camera_topology_filter or camera_id == end.camera_id
+                ):
                     if edge_ids not in seen_corridors:
-                        candidate = self._candidate(
+                        candidate = self._geometric_route(
                             start,
                             end,
                             start_point,
@@ -432,26 +527,39 @@ class SpatiotemporalGraphEngine:
                             actual_gap,
                         )
                         seen_corridors.add(edge_ids)
+                        if self._route_filter is not None and not self._route_filter(
+                            candidate.polyline,
+                        ):
+                            pruned_for_route_filter = True
+                            continue
                         if shortest_distance is None:
                             shortest_distance = float(candidate.path_length)
                         candidates.append(candidate)
                         if len(candidates) > effective_max_paths:
-                            return ReconstructionResult(
-                                candidates=tuple(candidates[:effective_max_paths]),
+                            return GeometricSearchResult(
+                                routes=tuple(candidates[:effective_max_paths]),
                                 termination_reason=TerminationReason.MAX_PATHS_REACHED,
                                 expanded_nodes=expanded_nodes,
                                 complete=False,
                             )
 
-                eligible = tuple(
-                    transition
-                    for transition in self.network.topology.outgoing_transitions(camera_id)
-                    if transition.navigation_from_node_id == nav_node_id
+                eligible = (
+                    tuple(
+                        (transition.to_camera_id, transition.navigation_to_node_id,
+                         transition.navigation_edge_ids, transition.transition_id)
+                        for transition in self.network.topology.outgoing_transitions(camera_id)
+                        if transition.navigation_from_node_id == nav_node_id
+                    )
+                    if self.factors.camera_topology_filter else
+                    tuple(
+                        (camera_id, edge.to_node_id, (edge.edge_id,), None)
+                        for edge in self.network.navigation.outgoing_edges(nav_node_id)
+                    )
                 )
                 if len(eligible) > self.policy.max_branch_factor:
                     raise _SearchLimitReached(TerminationReason.MAX_BRANCH_FACTOR)
-                for transition in eligible:
-                    next_edge_ids = (*edge_ids, *transition.navigation_edge_ids)
+                for next_camera, next_node, step_edges, transition_id in eligible:
+                    next_edge_ids = (*edge_ids, *step_edges)
                     try:
                         combined_path = self.network.navigation.path_from_edge_ids(
                             start_node_id, next_edge_ids
@@ -465,17 +573,20 @@ class SpatiotemporalGraphEngine:
                     if _exceeds(next_distance, float(self.policy.max_path_length_m)):
                         pruned_for_length = True
                         continue
-                    if _exceeds(next_distance, allowed_by_speed):
+                    if allowed_by_speed is not None and _exceeds(next_distance, allowed_by_speed):
                         pruned_for_speed = True
                         continue
                     if shortest_distance is not None:
                         detour_limit = _detour_limit(shortest_distance, self.policy)
                         if _exceeds(next_distance, detour_limit):
                             continue
-                    next_transition_ids = (*transition_ids, transition.transition_id)
+                    next_transition_ids = (
+                        transition_ids if transition_id is None
+                        else (*transition_ids, transition_id)
+                    )
                     state_identity = (
-                        transition.to_camera_id,
-                        transition.navigation_to_node_id,
+                        next_camera,
+                        next_node,
                         next_edge_ids,
                     )
                     if state_identity in seen_states:
@@ -487,21 +598,21 @@ class SpatiotemporalGraphEngine:
                             next_distance,
                             next_edge_ids,
                             next_transition_ids,
-                            transition.to_camera_id,
-                            transition.navigation_to_node_id,
+                            next_camera,
+                            next_node,
                         ),
                     )
         except _SearchLimitReached as limit:
-            return ReconstructionResult(
-                candidates=tuple(candidates),
+            return GeometricSearchResult(
+                routes=tuple(candidates),
                 termination_reason=limit.reason,
                 expanded_nodes=expanded_nodes,
                 complete=False,
             )
 
         if candidates:
-            return ReconstructionResult(
-                candidates=tuple(candidates),
+            return GeometricSearchResult(
+                routes=tuple(candidates),
                 termination_reason=TerminationReason.COMPLETE,
                 expanded_nodes=expanded_nodes,
                 complete=True,
@@ -511,7 +622,9 @@ class SpatiotemporalGraphEngine:
             rejections.append("PHYSICALLY_IMPOSSIBLE_SPEED")
         if pruned_for_length:
             rejections.append("MAX_PATH_LENGTH_EXCEEDED")
-        return ReconstructionResult(
+        if pruned_for_route_filter:
+            rejections.append("CONFIGURED_ROUTE_FILTER_REJECTED_OR_UNVALIDATED")
+        return GeometricSearchResult(
             termination_reason=TerminationReason.NO_FEASIBLE_PATH,
             expanded_nodes=expanded_nodes,
             complete=True,

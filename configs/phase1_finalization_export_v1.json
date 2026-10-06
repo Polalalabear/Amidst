@@ -1,0 +1,207 @@
+{
+  "dataset_version": "phase1-finalization-inputs-v1-diagnostic",
+  "height": 540,
+  "metres_per_blender_unit": 0.0247,
+  "sampling_fps": 5,
+  "schema_version": "phase1-finalization-export-v1",
+  "seed": 20261005,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_size_bytes": 468300506,
+  "status": "DIAGNOSTIC_NOT_FORMAL_CASES",
+  "streams": [
+    {
+      "bounds_max": [
+        1495.0,
+        2310.0,
+        155.0
+      ],
+      "bounds_min": [
+        1145.0,
+        1710.0,
+        15.0
+      ],
+      "camera_ids": [
+        "CAM_1F_AUDITORIUM_FRONT",
+        "CAM_1F_AUDITORIUM_REAR"
+      ],
+      "landmark_offset_bu": 55.0,
+      "plane_basis": {
+        "foot_clearance_units": 0.05,
+        "independent_mesh_probe_xy": [
+          1400.0,
+          2020.0
+        ],
+        "landmark_offset_units": 55.0,
+        "mesh_object_id": "group_0",
+        "physical_floor_normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "physical_floor_z": 20.078847885131836,
+        "purpose": "PILOT_DIAGNOSTIC_ONLY",
+        "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "plane_z_bu": 75.12884788513183,
+      "recipe_provenance": {
+        "approval": "PILOT_DIAGNOSTIC_ONLY",
+        "original_path": "data/pilot/school_v3_multisite_20261005/office/trajectory_plan.json",
+        "original_producer": "NOT_ATTESTED_BY_REFERENCE_CHECKPOINT",
+        "original_sha256": "82158f2368e32016db3e11cdd30e56acc90a89ba607abf15a3246aa8b3eea32c",
+        "reference_checkpoint": "8f4055ffcdc3bf6efd723c7956ac685e1fe033f1"
+      },
+      "site_id": "office",
+      "trajectory_id": "PILOT_OFFICE_001",
+      "walkable_id": "WALK_1F_OFFICE",
+      "waypoints": [
+        {
+          "position": [
+            1400.0,
+            1940.0,
+            20.128849029541016
+          ],
+          "timestamp": 0.0
+        },
+        {
+          "position": [
+            1400.0,
+            2100.0,
+            20.128849029541016
+          ],
+          "timestamp": 10.0
+        }
+      ],
+      "zone_id": "AREA_1F_OFFICE"
+    },
+    {
+      "bounds_max": [
+        2030.0,
+        2315.0,
+        155.0
+      ],
+      "bounds_min": [
+        1520.0,
+        1575.0,
+        15.0
+      ],
+      "camera_ids": [
+        "CAM_1F_AUDITORIUM_FRONT",
+        "CAM_1F_AUDITORIUM_REAR"
+      ],
+      "landmark_offset_bu": 55.0,
+      "plane_basis": {
+        "foot_clearance_units": 0.05,
+        "independent_mesh_probe_xy": [
+          1600.0,
+          1930.0
+        ],
+        "landmark_offset_units": 55.0,
+        "mesh_object_id": "group_0",
+        "physical_floor_normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "physical_floor_z": 20.07884979248047,
+        "purpose": "PILOT_DIAGNOSTIC_ONLY",
+        "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "plane_z_bu": 75.12884979248047,
+      "recipe_provenance": {
+        "approval": "PILOT_DIAGNOSTIC_ONLY",
+        "original_path": "data/pilot/school_v3_multisite_20261005/auditorium/trajectory_plan.json",
+        "original_producer": "NOT_ATTESTED_BY_REFERENCE_CHECKPOINT",
+        "original_sha256": "fe97a4fd91f9b5541a4e44c49144ec350416a082495c19038f691cda31873c59",
+        "reference_checkpoint": "8f4055ffcdc3bf6efd723c7956ac685e1fe033f1"
+      },
+      "site_id": "auditorium",
+      "trajectory_id": "PILOT_AUDITORIUM_001",
+      "walkable_id": "WALK_1F_AUDITORIUM",
+      "waypoints": [
+        {
+          "position": [
+            1600.0,
+            1600.0,
+            20.128849029541016
+          ],
+          "timestamp": 0.0
+        },
+        {
+          "position": [
+            1600.0,
+            2260.0,
+            20.128849029541016
+          ],
+          "timestamp": 10.0
+        }
+      ],
+      "zone_id": "AREA_1F_AUDITORIUM"
+    },
+    {
+      "bounds_max": [
+        1090.0,
+        900.0,
+        155.0
+      ],
+      "bounds_min": [
+        930.0,
+        700.0,
+        15.0
+      ],
+      "camera_ids": [
+        "CAM_1F_CORRIDOR_02",
+        "CAM_1F_CORRIDOR_03"
+      ],
+      "landmark_offset_bu": 55.0,
+      "plane_basis": {
+        "foot_clearance_units": 0.05,
+        "independent_mesh_probe_xy": [
+          1013.0,
+          740.0
+        ],
+        "landmark_offset_units": 55.0,
+        "mesh_object_id": "group_0",
+        "physical_floor_normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "physical_floor_z": 20.0788516998291,
+        "purpose": "PILOT_DIAGNOSTIC_ONLY",
+        "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "plane_z_bu": 75.1288516998291,
+      "recipe_provenance": {
+        "approval": "PILOT_DIAGNOSTIC_ONLY",
+        "original_path": "data/pilot/school_v3_pilot_20261005/trajectory_plan.json",
+        "original_producer": "NOT_ATTESTED_BY_REFERENCE_CHECKPOINT",
+        "original_sha256": "7eb9ea77db064bf4429e538acab8cd12567f59b312120abc21d43be88784179e",
+        "reference_checkpoint": "8f4055ffcdc3bf6efd723c7956ac685e1fe033f1"
+      },
+      "site_id": "corridor",
+      "trajectory_id": "PILOT_1F_CORRIDOR_OCCLUSION_001",
+      "walkable_id": "WALK_1F_CORRIDOR_01",
+      "waypoints": [
+        {
+          "position": [
+            960.0,
+            740.0,
+            20.12885093688965
+          ],
+          "timestamp": 0.0
+        },
+        {
+          "position": [
+            1066.0,
+            740.0,
+            20.12885093688965
+          ],
+          "timestamp": 10.0
+        }
+      ],
+      "zone_id": "AREA_1F_ELEVATOR"
+    }
+  ],
+  "timestamp_count": 50,
+  "width": 960
+}

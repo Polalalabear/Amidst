@@ -1,0 +1,41 @@
+{
+  "schema_version": "phase1-review-manifest-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "result_type": "DIAGNOSTIC",
+  "source_scene_modified": false,
+  "plot_kind": "EXACT_COMMITTED_SOURCE_WITNESS_AND_ANNOTATION_GEOMETRY_NOT_BLENDER_SCREENSHOT",
+  "regeneration_command": "uv run python human_review/build_review.py",
+  "artifact_hashes": {
+    "README.md": "f2e76c3dca14841854a65b30e5532fc72244eee783fc40ee70971000314c3b46",
+    "build_review.py": "b11e852731586f3a69dcd445d09b4b66a3cfafbf2adb6ff267840985d4bcce88",
+    "gate.json": "810a20680ca5af612df90d39690af2d78a4c9234513c77730a034fd784a70727",
+    "candidate_regions_xy.png": "dc217793168617b2eeb4f4f00114a2f8e98d6483485d03a6994c6c21cab19420",
+    "source_body_contact_face1030.png": "40c6f60a8bfcde8fa090af51623b069f01f99925f75e9db75fc4ff88d0313596"
+  },
+  "input_hashes": [
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json",
+      "sha256": "19a472c7fae5bf3e3dc63bc314c3e751467fc8abac636e237c300719ac557c71"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_authority_map.json",
+      "sha256": "6e1f8d512c9aaf994ce35890f0d688190e33523edc5eeda7a954e07aeb2ff7fe"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/body_clearance_policy.json",
+      "sha256": "84eb3050c1873e9f25ba3618209f6285fb2e539433aee216f230765c7e7617ec"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/physical_authority.json",
+      "sha256": "dbea2bf7f375db161d0b6c9a664b9eba511c9dcc28b61091a4e8fbd53379d60d"
+    },
+    {
+      "path": "data/scene_audit/school_v3_semantic_audit.json",
+      "sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+    },
+    {
+      "path": "configs/benchmarks/protocol_v1.json",
+      "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7"
+    }
+  ]
+}

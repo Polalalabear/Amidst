@@ -7,6 +7,7 @@ This module reads only 2D evidence and independent, explicit projection context.
 from __future__ import annotations
 
 import hashlib
+from collections.abc import Callable
 from dataclasses import dataclass
 from itertools import groupby
 from pathlib import Path
@@ -35,6 +36,10 @@ from amidst.storage.json_files import write_json
 PILOT_LABEL = "PILOT / SYNTHETIC SAMPLE"
 Digest = Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
 Identity = Annotated[str, Field(min_length=1)]
+
+type PilotFrameProjector = Callable[
+    ["PilotObservationExport", "PilotInferenceContext"], FrameSampleDataset,
+]
 
 
 class PilotZoneContext(DomainModel):
@@ -164,7 +169,9 @@ def project_pilot_observations(
     return FrameSampleDataset(samples=canonical.samples)
 
 
-def load_pilot_projection(observations_path: Path, context_path: Path) -> PilotProjection:
+def load_pilot_projection(
+    observations_path: Path, context_path: Path, *, projector: PilotFrameProjector | None = None,
+) -> PilotProjection:
     """Read only strict 2D evidence and strict context; no mixed export/plan/GT reads."""
     evidence_bytes = observations_path.read_bytes()
     context_bytes = context_path.read_bytes()
@@ -173,13 +180,40 @@ def load_pilot_projection(observations_path: Path, context_path: Path) -> PilotP
     if digest != context.observations_sha256:
         raise ValueError("pilot observations content SHA-256 differs from context binding")
     observations = PilotObservationExport.model_validate_json(evidence_bytes)
-    frames = project_pilot_observations(observations, context)
-    visible_count = sum(s.visibility == VisibilityStatus.OBSERVED for s in frames.samples)
+    if projector is None:
+        frames = project_pilot_observations(observations, context)
+    else:
+        if (
+            observations.source_asset_sha256 != context.source_asset_sha256
+            or observations.site_id != context.site_id
+            or {frame.camera_id for frame in observations.frames}
+            != {camera.camera_id for camera in context.cameras}
+        ):
+            raise ValueError("additive projection inputs must preserve source/site/camera binding")
+        frames = validate_stream_model(projector(observations, context), FrameSampleDataset)
+        original = {(f.camera_id, f.frame_id, f.timestamp, f.target_id): f
+                    for f in observations.frames}
+        if len(frames.samples) != len(observations.frames) or {
+            (s.camera_id, s.frame_id, s.timestamp, s.target_id) for s in frames.samples
+        } != set(original):
+            raise ValueError("additive projection must preserve every original evidence identity")
+        for sample in frames.samples:
+            key = (sample.camera_id, sample.frame_id, sample.timestamp, sample.target_id)
+            frame = original[key]
+            if (
+                sample.binding != context.binding or sample.uv != frame.point_2d
+                or sample.visibility != frame.status or sample.provenance != frame.provenance
+                or sample.gap_reason != frame.gap_reason or sample.occluder_id != frame.occluder_id
+            ):
+                raise ValueError("additive projection must preserve binding and raw evidence")
+    visible_count = sum(s.projected_point is not None for s in frames.samples)
     return PilotProjection(
         context=context, frames=frames, binding=context.binding,
         observations_sha256=digest, context_sha256=hashlib.sha256(context_bytes).hexdigest(),
         projected_observed_count=visible_count,
-        gap_without_projection_count=len(frames.samples) - visible_count,
+        gap_without_projection_count=sum(
+            s.visibility == VisibilityStatus.GAP for s in frames.samples
+        ),
     )
 
 
@@ -201,12 +235,13 @@ def run_pilot_downstream(
     observations_path: Path, context_path: Path, output_directory: Path,
     *, lateral_offset_scene_units: float = 12.0, max_speed_scene_units_s: float = 32.0,
     max_candidate_paths: int = 3, random_seed: int = 42,
+    projector: PilotFrameProjector | None = None,
 ) -> PilotInferenceRun:
     """Run ordinary consumers without accepting a truth/plan/mixed-export path."""
     from amidst.datasets.pilot_topology import build_pilot_pipeline
     from amidst.datasets.providers import BlenderDataset
 
-    projection = load_pilot_projection(observations_path, context_path)
+    projection = load_pilot_projection(observations_path, context_path, projector=projector)
     provider = BlenderDataset(projection.frames, projection.binding)
     aggregation = provider.aggregate(provider.time_range)
     pipeline, topology_evidence = build_pilot_pipeline(
@@ -270,6 +305,12 @@ def run_pilot_downstream(
         "formal_benchmark_executed": False,
         "formal_benchmark_semantics_modified": False,
     }
+    if projector is not None:
+        report["additive_projection_adapter_applied"] = True
+        report["observed_without_available_projection_count"] = sum(
+            sample.visibility == VisibilityStatus.OBSERVED and sample.projected_point is None
+            for sample in projection.frames.samples
+        )
     # Verify both content-bound inputs again before publishing inference artifacts.
     if (
         _file_digest(observations_path) != projection.observations_sha256

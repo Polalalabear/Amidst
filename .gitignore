@@ -21,6 +21,10 @@ data/metrics/
 data/pilot/
 *.rrd
 
+# Phase 1 finalization local raw packages; curated summaries remain tracked.
+/data/finalization/local_run/
+/data/finalization/fresh_run/
+
 # Lightweight physical-policy checkpoint: exact locally materialized evidence paths.
 /data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz
 /data/scene_audit/phase1_physical_policy_approval_20261006/geometry.json.gz
