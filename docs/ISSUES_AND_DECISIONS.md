@@ -28,6 +28,81 @@ historical identical artifacts and provenance are retained.
 不改名、不刪除、不按名稱定角色。後續 active 資料採 canonical source＋hash reference；
 尺寸與重心等衍生資訊自動產生，不人工維護重複表。
 
+## Approved physical policy and scoped geometry authority / 已核准物理政策與局部幾何權威
+
+Source enclosure ownership remains **UNRESOLVED**: `group_0 / component-00000000` has
+zero boundary edges but 1,456 degenerate triangles and 11,635 non-manifold edges.
+It cannot establish a usable solid interior, nor be silently interpreted as surface-only
+by its name. All five searched complete local islands remain REVIEW. Face/component
+binding or traceable derived collider repair is required before complete certification;
+this does not prevent positive rejection against the separately approved 58 components.
+
+未分類 source component 的 surface／solid ownership 仍 **UNRESOLVED**；不可只因
+boundary-edge=0 或名稱把它當可用 closed volume，也不可因未見 triangle contact 就
+略過 enclosure uncertainty。五個完整局部 scope 皆 REVIEW；仍需明確 face/component
+binding 或可追溯 derived collider evidence。58 個已批准 components 的正向拒絕可獨立
+驗證，但正式局部／inference pruning 未開放，完整 physical island 目標尚未達成。
+
+Contact tolerance applies once against actual source support height, including analytic
+segment partitions; nominal-plane and footpoint bands cannot add to twice the tolerance.
+Local certificates use the intersection of actual contact bands. This repairs an
+implementation bug without changing the approved 1 mm policy or clearance threshold.
+Collision consumers also refuse trajectories outside their approved floor-plane scope.
+
+2026-10-06 explicit user approval: the source-bound
+[policy](../configs/physical_authority_policy_school_v3.json) and
+[runtime contract](../configs/physical_policy_runtime_school_v3.json) define an upright
+cylinder at a floor-contact footpoint: radius 0.30 m, height 1.70 m, extra body clearance
+0.05 m, portal margin 0.05 m per side and 0.10 m above, and obstacle-contact tolerance
+0.001 m. Minimum-clearance equality passes; obstacle contact is inclusive. Body and portal
+clearance combine by maximum, never double addition. Only legal APPROVED support contact
+is exempted from obstacle contact; penetration remains invalid. These are approved physical
+model settings, not new MetricConfig definitions or formal benchmark acceptance thresholds.
+
+使用者另外核准上述 physical policy，不再將人體／淨空數值列為待選。
+Trajectory reference 是接地 footpoint；合法核准 support contact 可通行，不能穿入地板。
+Portal 與 body margin 取較嚴的最大值，避免同一淨空需求重複相加。全數 SI quantities
+由同一 APPROVED 0.0247 m/BU authority 換算，原 source vertices／歷史 BU provenance 保留。
+這項決策不改 MetricConfig、Graph／Top-K、ranking 或 GT isolation。
+
+Decision: WALKABLE represents raw source support. Union same-floor supported domains
+before erosion and verify clearance against the original boundary; do not inset adjacent
+annotation objects separately. Navigation is allowed only within approved WALKABLE/STAIR
+support. Other space is forbidden for navigation without acquiring WALL or visibility
+occlusion ownership. BIDIRECTIONAL is the intended stair policy; actual cross-floor travel
+still requires source support, opening and full-body evidence in both directions.
+
+決策：同層 actual support 先 union 再 erosion，避免逐 annotation inset 製造假裂縫；
+WALKABLE／STAIR 外禁止導航，不把未知空間改成牆或 occluder。樓梯預設可雙向通行是
+policy，仍須逐方向證明支撐、開口、人體淨空；不得用 ENTRY／PATH／EXIT proxy 補造 landing。
+
+Decision: physical approval is source-bound and component/domain-specific. Approved closed
+components do not approve their complete obstacle object; approved supported subdomains do
+not approve whole-floor geometry. Unclassified source geometry may block certification but
+never gains a semantic role from names or proximity. The
+[current evidence](../data/scene_audit/phase1_physical_policy_approval_20261006/manifest.json)
+and [experiment record](EXPERIMENT_LOG.md) retain exact source/face IDs and unresolved reviews.
+
+決策：closed component 與 supported 子域分別核准，不擴成 whole obstacle／whole floor。
+未知 geometry 可以阻擋認證，但不能因需要 collider 而從名稱／鄰近關係升級。
+HIGH_CONFIDENCE WALL 與 REVIEW portal／stair 均保留其權威等級；本輪未改原 `.blend`。
+
+The additive physical consumer hard-prunes known source-bound collision/clearance violations
+before final K truncation, preserving candidate relative order and IDs without GT or scoring.
+Distance or budget uncertainty is explicit UNVALIDATED. A partial collider scope never proves
+free space. A local collision/topology certificate instead requires complete source screening
+inside an explicitly bounded footpoint domain and refuses validation outside that domain.
+Local-scope result: **0 complete physical islands; 5 searched regions remain REVIEW (unclassified group_0 enclosure / degenerate source geometry)**. Global `physical_complete=false` remains
+fail-closed; complete school physical validity, unresolved portals/stairs, camera-plane binding
+and formal metric/baseline decisions remain separate prerequisites for Cases 1–3.
+
+新增 consumer 在 final K 截斷前 hard-prune 已知 source-bound collision／clearance violation，
+保留順序與 IDs，不改 score／GT；不確定距離與 budget 明列 UNVALIDATED。
+Partial collision scope 不證明無碰撞；local certificate 必須完整檢查限定域 source geometry，
+離開域就拒絕。Local-scope 結果：**0 complete physical islands; 5 searched regions remain REVIEW (unclassified group_0 enclosure / degenerate source geometry)**。
+全域 snapshot 仍 `physical_complete=false`，不以局部批准跳過 complete school authority、
+門洞／樓梯、camera-plane 或正式 metric／baseline 設定；本輪不開始 Cases 1–3／Agent。
+
 ## Historical scene unit-to-metre convention / 既有 checkpoint 的單位換算
 
 Decision: Use `meters_per_blender_unit = 1.0`: one Blender unit is one metre, as confirmed by the user. Preserve the scene coordinates for Phase 1 distance, speed, and error calculations.
@@ -214,7 +289,15 @@ Metric tolerance 不放寬 Graph 的物理可行性限制。正式研究的 K、
 時間對齊選擇及 collision／constraint tolerances 尚未定案；目前預設值只重播合成
 regression，不是 benchmark 驗收門檻。
 
-## Unresolved Graph collision authority / Graph 碰撞權威尚未定義
+## Historical Graph collision-authority checkpoints / Graph 碰撞權威歷史 checkpoint
+
+The following records preserve the 2026-10-02 boundary-round decision and later scale-only
+checkpoint. Their pending-policy/pruning status is superseded only within the explicitly
+approved policy and local/component scopes above; global completeness remains unresolved.
+
+下列保留 boundary round 與 scale-only checkpoint 原決策；當時待核准 policy／pruning
+的狀態，只在上方明列的本輪 policy／component／local scopes 被更新，不改寫歷史證據。
+全域完整性仍未解決。
 
 Problem: Configured route membership cannot prove obstacle-free movement. Current Graph
 inputs have no obstacle geometry or collision-authority binding; supplied closed AABBs
@@ -280,6 +363,15 @@ inspection collider 集合不代表無碰撞，complete floor 必須有核准 WA
 stair connectivity、clearance policy 或正式 benchmark 已完成，既有 1 BU = 1 m 換算不變。
 
 ## Protocol definitions do not approve research settings / 協定定義不核准研究參數
+
+This protocol checkpoint's pending physical-policy choices are now separately approved
+above. That approval does not adopt final MetricConfig tolerances, certify whole-school
+geometry or approve the remaining formal benchmark settings. The retained text below
+records the earlier protocol scope and its research-setting boundaries.
+
+此 protocol checkpoint 當時待選的 physical policy 已由上方獨立決策核准；不等於採用
+正式 MetricConfig tolerance、全校 geometry 認證或其他正式 benchmark 設定。
+下方保留先前 protocol scope 與研究參數邊界的紀錄。
 
 Problem: Reusable case and comparison definitions can be mistaken for approved school
 geometry, formal metric choices or an executed research benchmark. Decision: Separate the

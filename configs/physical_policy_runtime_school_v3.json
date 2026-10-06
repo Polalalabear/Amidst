@@ -1,0 +1,15 @@
+{
+  "schema_version": "physical-policy-runtime-v1",
+  "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "authority": "APPROVED",
+  "approval_id": "HUMAN_PHASE1_PHYSICAL_POLICY_RUNTIME_2026_10_06",
+  "policy_config": "configs/physical_authority_policy_school_v3.json",
+  "architectural_scale_config": "configs/architectural_scale_school_v3.json",
+  "legal_support_contact": "APPROVED_SUPPORT_ONLY",
+  "portal_clearance_combination": "MAXIMUM",
+  "stair_direction": "BIDIRECTIONAL",
+  "navigation_allowed_roles": ["WALKABLE", "STAIR"],
+  "navigation_outside_approved_support": "FORBIDDEN",
+  "walkable_representation": "RAW_SUPPORT_SURFACE",
+  "footprint_preprocess": "UNION_THEN_EROSION"
+}

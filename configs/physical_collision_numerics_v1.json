@@ -1,0 +1,9 @@
+{
+  "schema_version": "physical-collision-numerics-v1",
+  "units": "metres",
+  "distance_error_budget_m": 1e-10,
+  "maximum_distance_iterations": 128,
+  "maximum_triangles_per_segment": 25000,
+  "uncertain_distance": "REFUSE_VALIDATION",
+  "research_metric_epsilon_changed": false
+}

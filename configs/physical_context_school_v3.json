@@ -6,8 +6,8 @@
   "metres_per_blender_unit": 0.0247,
   "source_coordinates": "BLENDER_NATIVE_UNITS",
   "core_coordinates": "METRES",
-  "geometry": "data/scene_audit/school_v3_approved_scale_20261006/geometry.json",
-  "physical_authority": "data/scene_audit/school_v3_approved_scale_20261006/physical_authority.json",
+  "geometry": "data/scene_audit/phase1_physical_policy_approval_20261006/geometry.json.gz",
+  "physical_authority": "data/scene_audit/phase1_physical_policy_approval_20261006/physical_authority.json",
   "scene_validation_config": "configs/scene_validation_school_v3.json",
   "physical_policy_config": "configs/physical_authority_policy_school_v3.json",
   "measurements": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.json",
@@ -17,5 +17,12 @@
   "legacy_exports_are_formal_metric_inputs": false,
   "other_physical_authorities_approved_by_scale": false,
   "source_geometry_scaled": false,
-  "historical_benchmark_provenance_rewrite_allowed": false
+  "historical_benchmark_provenance_rewrite_allowed": false,
+  "physical_policy_runtime": "configs/physical_policy_runtime_school_v3.json",
+  "physical_policy_validation": "configs/physical_policy_validation_school_v3.json",
+  "floor_authority_map": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_authority_map.json",
+  "local_scope_certificates": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json",
+  "physical_authority_manifest": "data/scene_audit/phase1_physical_policy_approval_20261006/manifest.json",
+  "geometry_transport": "GZIP_JSON_CANONICAL_MODEL_DIGEST",
+  "global_physical_complete": false
 }

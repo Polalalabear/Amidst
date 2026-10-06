@@ -20,3 +20,10 @@ data/metrics/
 # Local pilot exports contain simulation truth and rendered frames.
 data/pilot/
 *.rrd
+
+# Lightweight physical-policy checkpoint: exact locally materialized evidence paths.
+/data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz
+/data/scene_audit/phase1_physical_policy_approval_20261006/geometry.json.gz
+/data/scene_audit/phase1_physical_policy_approval_20261006/obstacle_collider_details.json.gz
+/data/scene_audit/phase1_physical_policy_approval_20261006/source_evidence.json.gz
+/data/scene_audit/phase1_physical_policy_approval_20261006/materialization_receipt.json

@@ -10,6 +10,22 @@
 
 ### 目前狀態與續作入口
 
+目前 branch 為 `phase1/physical-policy-lightweight`，直接從已驗證並推送的
+`phase1/physical-authority-resolution` checkpoint
+`0bab8ac262b93f3c8babad69432744e7e4d1c541` 分出。原 full local evidence commit
+`c5956dc825f669e28e2694578be0fed97432a786` 保留為 provenance reference，不是祖先。
+Raw generated blobs 不 tracked；fresh clone／完整重播入口見
+[materialization contract](PHYSICAL_EVIDENCE_MATERIALIZATION.md)，原 review manifest 保留。
+此 checkpoint 完成後停止，不開始 Finalization Sprint。Physical policy 已 APPROVED；
+actual floor-supported 子域與 58 個 source-bound obstacle components 已核准，整體
+**PARTIAL_APPROVED**。入口見 [active physical context](../configs/physical_context_school_v3.json)
+與 [EXPERIMENT_LOG](EXPERIMENT_LOG.md)。局部 scope 與限制以 manifest／certificate 為準；
+known-component pruning 不代表全域 collision-free。門洞／樓梯與正式 camera-plane／
+benchmark 設定仍待解決；沒有開始 Cases 1–3、Agent 或 merge。
+
+以下保留 scale-only 與前序 checkpoint 的上下文；其 pending-policy／PROVISIONAL
+狀態已由上方受限核准取代，歷史 artifacts 與 source provenance 不回寫。
+
 - 最新使用者設定與 [scale review](SCHOOL_V3_SCALE_REVIEW.md)：school v3
   **1 BU = 0.0247 m** 為 **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING architectural scale**。
   Mesh 量測只作 sanity-check，不再要求外部尺寸重新推導尺度。新的
@@ -143,6 +159,22 @@
 以上是目前缺口，不是新的實作、render 或發布授權。
 
 ## English
+
+Current branch: `phase1/physical-policy-lightweight`, directly based on the verified and
+published `phase1/physical-authority-resolution` checkpoint
+`0bab8ac262b93f3c8babad69432744e7e4d1c541`. The full local evidence commit
+`c5956dc825f669e28e2694578be0fed97432a786` remains a provenance reference, not an ancestor.
+Raw generated blobs are untracked; use the
+[materialization contract](PHYSICAL_EVIDENCE_MATERIALIZATION.md) for fresh-clone tests and
+complete replay. The original review manifest is preserved. Stop at this checkpoint;
+do not start the Finalization Sprint. Policy, actual
+source-supported floor subdomains and 58 exact obstacle components are approved; overall
+physical authority is **PARTIAL_APPROVED**. Use the [active physical context](../configs/physical_context_school_v3.json)
+and [experiment record](EXPERIMENT_LOG.md). Registered local certificates define exact limits;
+known-component pruning is not global free-space certification. Portal/stair evidence,
+camera-plane binding and formal benchmark settings remain separate. No Cases 1–3, Agent or merge.
+The following scale-only/prior checkpoint context is retained historically; its pending-policy
+and PROVISIONAL status is superseded only within the explicitly approved current scopes.
 
 Latest user update: see the [scale review](SCHOOL_V3_SCALE_REVIEW.md). School-v3 architectural
 scale is **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**, **1 BU = 0.0247 m**. Mesh measurements

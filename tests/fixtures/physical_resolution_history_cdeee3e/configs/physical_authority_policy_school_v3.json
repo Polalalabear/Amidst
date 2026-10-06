@@ -1,0 +1,18 @@
+{
+  "policy_id": "school-v3-pedestrian-physical-policy",
+  "config_version": "physical-authority-policy-v1",
+  "units": "metres",
+  "authority": "HUMAN_REVIEW",
+  "body_model": null,
+  "trajectory_reference": null,
+  "body_radius_m": null,
+  "body_height_m": null,
+  "body_clearance_m": null,
+  "portal_horizontal_clearance_m": null,
+  "portal_vertical_clearance_m": null,
+  "collision_tolerance_m": null,
+  "clearance_comparison": null,
+  "collision_comparison": null,
+  "evidence_ids": ["PENDING_HUMAN_BODY_AND_CLEARANCE_RESEARCH_DECISION"],
+  "approval_id": null
+}

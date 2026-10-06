@@ -1,0 +1,47 @@
+{
+  "schema_version": "physical-policy-source-selection-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "architectural_scale_config": "configs/architectural_scale_school_v3.json",
+  "units": "BLENDER_NATIVE_SCENE_UNITS",
+  "authority": "DIAGNOSTIC_SELECTION_NOT_PHYSICAL_APPROVAL",
+  "maximum_mesh_triangles": 500000,
+  "maximum_total_triangles": 2000000,
+  "obstacle_support_bands_bu": {
+    "1F": [0.0, 155.0],
+    "2F": [145.0, 310.0]
+  },
+  "full_body_context": {
+    "horizontal_padding_m": 0.351,
+    "maximum_height_above_support_m": 1.851,
+    "support_bands_bu": {
+      "1F": [10.0, 30.0],
+      "2F": [150.0, 175.0]
+    },
+    "walkable_ids": [
+      "WALK_1F_OFFICE",
+      "WALK_1F_CORRIDOR_02",
+      "WALK_2F_CLASS201",
+      "WALK_2F_CORRIDOR_03",
+      "WALK_1F_CORRIDOR_01"
+    ]
+  },
+  "stair_context_regions_bu": {
+    "STAIR_A": {
+      "minimum": [1440.0, 1250.0, 0.0],
+      "maximum": [1760.0, 1490.0, 370.0]
+    },
+    "STAIR_B": {
+      "minimum": [445.0, 1850.0, 0.0],
+      "maximum": [710.0, 2220.0, 370.0]
+    }
+  },
+  "policy": {
+    "object_names_assign_roles": false,
+    "bounds_are_collision_geometry": false,
+    "missing_geometry_proves_clearance": false,
+    "hidden_source_geometry_excluded": false,
+    "source_save_allowed": false,
+    "benchmark_run": false,
+    "gt_used": false
+  }
+}

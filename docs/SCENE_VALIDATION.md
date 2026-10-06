@@ -34,11 +34,12 @@ evaluated vertices／triangles 和 geometry diagnostics。Synthetic fixtures 與
 [School-v3 config](../configs/scene_validation_school_v3.json) 使用明確核准的
 **1 BU = 0.0247 m**、**APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING architectural scale**。
 原始 BU vertices／量測保留，meter／square-meter 設定依同一比例換算；既有 diagnostic
-heuristics 的 native 幾何比較範圍不因單位更新而放寬。新 active
+heuristics 的 native 幾何比較範圍不因單位更新而放寬。Scale-only checkpoint 的
 [scene validation](../data/scene_audit/school_v3_approved_scale_20261006/scene_validation.md) 與
 [geometry/scale validation](../data/scene_audit/school_v3_approved_scale_20261006/geometry_scale_validation.md)
-引用核准尺度；mesh 量測只作 sanity-check，不要求外部尺寸再次核准。Floor planes、
-stair connectivity／opening、obstacle volumes、body／clearance policy 仍分別待核准。
+引用核准尺度；mesh 量測只作 sanity-check，不要求外部尺寸再次核准。當時 floor planes、
+stair／volume／body-clearance authorities 仍待核准；本輪分開核准的 policy 與局部
+source support 見下節，不回寫該 checkpoint。
 舊 school-v2／mock config 與已完成 reports、benchmark BU provenance 保留原契約；
 exact historical replay 須使用該版本的 code／config，不用新設定覆寫舊證據。
 
@@ -46,7 +47,8 @@ exact historical replay 須使用該版本的 code／config，不用新設定覆
 距離／高度 tolerances、small islands、contact overlap、tiny／giant geometry、scale 與
 geometry complexity budgets 外部化。預設 `coverage_pass_ratio=0.8`，AREA 不要求 100%
 coverage。這些是 **diagnostic heuristics**，不等於正式 clearance 或 research targets。
-`minimum_clearance_m=null` 表示尚未決定，不以其他 overlap tolerance 偷代。
+Generic config 的 `minimum_clearance_m=null` 不以其他 overlap tolerance 偷代；
+本輪已核准的 physical body／clearance policy 由獨立 source-bound config 提供。
 
 `allowed_floors` 檢查 floor tokens；`expected_collections` 可明列每種 role 允許的
 collections。不提供 collection policy 時列 REVIEW，不擅自 rename 或移動物件。
@@ -79,6 +81,9 @@ Stair 診斷欄位包括 `stair_id`、`stair_role=ENTRY/PATH/EXIT`、ordered
 `path_points_m`、`floor_from`／`floor_to`、`direction=UP/DOWN`、
 `measured_clearance_m` 與 `slab_opening_review=PASS/FAIL`。這些是輸入證據；沒有獨立
 source-bound human review 時，不因物件自己宣告 PASS 而授予 inference authority。
+`path_points_m` 明確為 SI；source annotation 的 `path_segment_points_json` 為 native BU，
+依 approved scale 換算。本輪 runtime 的 BIDIRECTIONAL travel policy 不會把既有
+UP／DOWN 的 Z ordering metadata 變成已核准 connectivity。
 未明列的 stair vertex ordering 不自行猜測。
 
 AREA 可在頂層 custom properties 明列 `walkable=false`（boolean）、非空
@@ -107,6 +112,45 @@ NOT_APPLICABLE 不計入 floor summary 的 uncovered AREA，也不可納入行�
 核准 alias，不列 naming inconsistency。未分類的 `WALK_*` 仍不由名稱自動分類；
 沒有 review 的舊命名仍維持原本警訊。Blender properties 應放頂層，避免 extractor
 不支援的巢狀 property group。
+
+### 2026-10-06 physical policy／source validation
+
+Semantic diagnostics 與 physical approval 是不同入口。Lightweight fresh clone 不包含
+raw exact mesh evidence；先依 [materialization contract](PHYSICAL_EVIDENCE_MATERIALIZATION.md)
+提供 hash-bound source scene，明確重建並完整重跑本輪 physical review：
+
+```sh
+uv run python -m amidst.materialize_physical_evidence \
+  --blender /Applications/Blender.app/Contents/MacOS/Blender \
+  --source-scene /absolute/path/to/checkout/blender/school_v3.blend
+```
+
+原 source 不修改或儲存；tracked summaries／原 manifest 不覆寫。若另需 report replay，
+先 materialize，並使用契約中獨立 `/tmp` output 命令。Missing-evidence skip／strict fail
+與原始／regenerated hashes 的比較邊界見同一契約。
+
+[Manifest](../data/scene_audit/phase1_physical_policy_approval_20261006/manifest.json)
+保存 source before／after、input／code／artifact hashes、版本、runtime 與 git commit。
+原 `.blend` 不修改；source evidence 保留 exact source faces／components、hidden geometry
+及 BU coordinates，不按 `group_*`／`Cube.*` 名稱賦予角色。
+
+| Report | 核准範圍與剩餘限制 |
+| --- | --- |
+| [Body policy](../data/scene_audit/phase1_physical_policy_approval_20261006/body_clearance_policy.json) | Upright cylinder／footpoint；0.30 m radius、1.70 m height、0.05 m body clearance、portal 每側 0.05 m／垂直 0.10 m、0.001 m contact tolerance；minimum equality PASS |
+| [Floor map](../data/scene_audit/phase1_physical_policy_approval_20261006/floor_authority_map.json) | 48 個 supported subdomains：45 whole／3 partial；38 個舊 plane-offset 警訊由 actual source support 解決；不認證整層完整性或 body／ceiling clearance |
+| [Obstacle volumes](../data/scene_audit/phase1_physical_policy_approval_20261006/obstacle_collider_authority.json) | 5/19 obstacles 中 58 個 closed source components APPROVED；19 whole-object scopes 均 REVIEW，不能把 component 結果擴成完整物件 |
+| [Portal clearance](../data/scene_audit/phase1_physical_policy_approval_20261006/portal_clearance.json) | 8 組衝突仍 REVIEW；annotation aperture 不能代替 actual clear opening evidence |
+| [Stairs](../data/scene_audit/phase1_physical_policy_approval_20261006/stair_authority.json) | A/B 均無可核准 intermediate landing；source slab point headroom 約 0.194 m，support chain／opening／雙向 full-body clearance 尚未證明 |
+| [Local physical scopes](../data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json) | **0 complete physical islands; 5 searched regions remain REVIEW (unclassified group_0 enclosure / degenerate source geometry)** |
+
+WALL 分類仍 73 HIGH_CONFIDENCE／1,422 HUMAN_REVIEW／77 REJECTED，不放寬 threshold 或
+doorway protection。Policy 不需要再次人工選值；剩餘 review 是未完整 volume、門洞、
+樓梯與未核准 geometry coverage。WALKABLE／STAIR 外不可導航，但不新增 collider／occluder。
+可核准的 local island 須完整檢查限定域 source geometry，離開域就拒絕 validation；
+partial collider pruning 只排除已知 violation。Global `physical_complete=false` gate
+仍拒絕全域 collision-free／topology／physical-metric 認證。
+[Geometry contract](GEOMETRY_PROVIDER.md) 與 [experiment record](EXPERIMENT_LOG.md) 詳列
+scope semantics；本輪不是正式 Case 1–3 benchmark，也不開始 Agent。
 
 ### 報告與續作
 
@@ -137,8 +181,9 @@ School-v3 config uses explicit **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING*
 **1 BU = 0.0247 m**. Original BU coordinates/measurements remain; metre and square-metre
 settings are converted consistently without changing native diagnostic comparison ranges.
 Mesh measurements are sanity checks and do not require external dimensions to reapprove
-scale. Floor/stair/opening/volume/body-clearance authorities remain separate and pending.
-New active scene and geometry/scale validation are in `school_v3_approved_scale_20261006`;
+scale. Other physical authorities were separately pending at the scale-only checkpoint.
+Its retained scene and geometry/scale validation are in `school_v3_approved_scale_20261006`;
+the new physical-policy/source-scope approvals are recorded below, without rewriting that checkpoint.
 historical reports and benchmark provenance remain unchanged. Exact historical replay requires
 the matching historical code/config. The generic mock/school-v2 config keeps its own contract.
 Collection policy is configurable. No objects are renamed, reclassified from unlabeled names,
@@ -170,6 +215,42 @@ fallback reports. EXCLUDED and NOT_APPLICABLE are omitted from uncovered AREA co
 walking coverage denominators. Inputs without the new fields retain their prior results.
 Explicitly classified WALKABLE objects with nonempty `semantic_review_id` may retain a
 reviewed `WALK_*` name alias. Unclassified names never acquire a role from this alias rule.
+
+### Current physical-policy/source validation — 2026-10-06
+
+The explicit `amidst.materialize_physical_evidence` command above reconstructs excluded
+source-bound exact mesh evidence and replays the complete policy validation using
+[the review config](../configs/physical_policy_validation_school_v3.json). Follow the
+[materialization contract](PHYSICAL_EVIDENCE_MATERIALIZATION.md) for source prerequisites,
+hash checks, missing-evidence skip/strict-failure behavior and separate report output.
+Tests do not generate or download local evidence.
+The [manifest](../data/scene_audit/phase1_physical_policy_approval_20261006/manifest.json)
+binds source integrity, inputs, code, artifacts, versions, runtime and git commit.
+The original Blender geometry and historical reports remain unchanged; object names never
+establish roles. Policy approval is distinct from source completeness and formal benchmarks.
+
+The approved cylinder policy uses a 0.30 m radius, 1.70 m height, 0.05 m body clearance,
+0.05 m portal margin per side, 0.10 m vertical portal margin and 0.001 m obstacle-contact
+tolerance. Minimum-clearance equality passes; body/portal margins combine by maximum.
+Only legal APPROVED support contact is permitted. Raw same-floor support is unioned before
+erosion; outside approved WALKABLE/STAIR navigation is forbidden without creating occluders.
+The floor review approves 48 supported subdomains (45 whole/3 partial), resolving 38 old
+annotation-plane offsets; it does not certify whole-floor or body/ceiling clearance.
+Fifty-eight closed components within 5 of 19 obstacles are approved, while all 19 whole
+obstacle scopes remain REVIEW. The eight obstacle/portal conflicts remain REVIEW.
+WALL status remains 73 HIGH_CONFIDENCE, 1,422 HUMAN_REVIEW and 77 REJECTED with unchanged
+doorway protection. Stair A/B each have zero usable intermediate landings in the selected
+source evidence: a slab gives about 0.194 m point headroom, and continuous support, opening
+and full-body bidirectional travel remain unproven. BIDIRECTIONAL is the approved intended
+travel policy; existing UP/DOWN metadata describes Z ordering, not approved connectivity.
+Explicit `path_points_m` remains SI; native `path_segment_points_json` uses the approved BU scale.
+
+Local physical islands: **0 complete physical islands; 5 searched regions remain REVIEW (unclassified group_0 enclosure / degenerate source geometry)**.
+Local certificates require complete source screening within a restricted footpoint domain;
+validation outside it is refused. Partial collision pruning only rejects known violations.
+Global `physical_complete=false` still refuses global collision-free, topology and physical
+metric certification. See [provider documentation](GEOMETRY_PROVIDER.md) and the bilingual
+[experiment record](EXPERIMENT_LOG.md). No formal Case 1–3 benchmark or Agent work starts here.
 
 Explicit portal normals and the stair custom properties listed above provide diagnostic
 evidence. The validator does not infer an ordered stair path or certify body clearance, slab

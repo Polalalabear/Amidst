@@ -395,7 +395,10 @@ def test_approved_scale_preserves_native_diagnostics_and_dual_unit_measurements(
     identities = {"WALK_1F_OFFICE_THRESHOLD", "WALK_2F_CLASS201_THRESHOLD", "A", "B"}
     survey["regions"] = [row for row in survey["regions"] if row["region_id"] in identities]
     legacy_config = _config()
-    active = json.loads(Path("configs/scene_validation_school_v3.json").read_text())
+    # Replay the scale-only checkpoint. Its proposed proxy planes are historical;
+    # today's active config separately approves actual source-supported heights.
+    active = json.loads((root / "school_v3_approved_scale_20261006/scene_validation.json")
+                        .read_text())["config"]
     active["floor_stair_review"] = legacy_config["floor_stair_review"]
     before = review_floor_stairs(audit, survey, legacy_config)
     after = review_floor_stairs(audit, survey, active)
@@ -460,12 +463,13 @@ def test_active_diagnostic_thresholds_preserve_native_quantities() -> None:
             assert active["tolerances"][key] / scale == pytest.approx(value)
         else:
             assert active["tolerances"][key] == value
+    # Updated source-bound planes retain raw BU coordinates, rather than the old
+    # 25/165 annotation heights. This is independent of diagnostic tolerances.
+    heights = {"1F": 20.07884979248047, "2F": 161.81109619140625}
     for floor, plane in active["floor_planes"].items():
-        assert plane["height_m"] / scale == pytest.approx(
-            legacy["floor_planes"][floor]["height_m"]
-        )
-        assert plane["height_bu"] == legacy["floor_planes"][floor]["height_m"]
-        assert plane["status"] == "PROPOSED"
+        assert plane["status"] == "APPROVED"
+        assert plane["height_m"] / scale == pytest.approx(heights[floor])
+        assert plane["height_bu"] == pytest.approx(heights[floor])
 
 
 @pytest.mark.parametrize("height_bu", [False, math.nan, math.inf, 250])

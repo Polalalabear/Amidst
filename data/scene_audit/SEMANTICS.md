@@ -1,10 +1,16 @@
 # School semantic integration gate / 場景語意接入條件
 
-Current school-v3 update: the [scale review](../../docs/SCHOOL_V3_SCALE_REVIEW.md) records
+Current physical-policy update: [experiment record](../../docs/EXPERIMENT_LOG.md) and
+[active authority](phase1_physical_policy_approval_20261006/physical_authority.json) record
+**PARTIAL_APPROVED** source-bound policy/support/component scopes. Complete building
+physics, portals, stairs and formal benchmark readiness remain unapproved. The source
+model is unchanged; local certificate bounds and purpose gates must be respected.
+
+Retained scale-only school-v3 checkpoint: the [scale review](../../docs/SCHOOL_V3_SCALE_REVIEW.md) records
 explicit **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING** architectural scale, **1 BU = 0.0247 m**.
 Mesh measurements are sanity-check evidence, not scale inference; external dimensions are
 not required to reapprove this declared setting. Source geometry/native BU remain unchanged.
-The new [active geometry snapshot](school_v3_approved_scale_20261006/geometry.json) and
+That checkpoint's [geometry snapshot](school_v3_approved_scale_20261006/geometry.json) and
 [geometry/scale validation](school_v3_approved_scale_20261006/geometry_scale_validation.md)
 use this scale; floor/stair/volume/body-clearance authorities remain pending independently.
 Elevator is NOT_APPLICABLE, imported cameras require zero active consuming references before

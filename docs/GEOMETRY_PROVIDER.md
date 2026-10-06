@@ -26,7 +26,8 @@ world-space vertices 與原始 triangle connectivity；provider 不匯入 `bpy`�
 Floor plane 各自保留 authority，宣告 `unit_scale_m` 與 `scale_authority` 也分開。
 School v3 目前為使用者明確核准的 `unit_scale_m=0.0247`、`scale_authority=APPROVED`，
 authority basis 是 `USER_DEFINED_RESEARCH_MODEL_SETTING`；mesh 只提供 sanity-check evidence。
-這不批准 floor planes、stair connectivity、obstacle volumes 或 body／clearance policy。
+Scale approval 本身不批准 floor planes、stair connectivity、obstacle volumes 或
+body／clearance policy；本輪另外核准的 policy 與局部 source scope 如下。
 Physical APPROVED surface
 必須引用 APPROVED floor，且 scale 也已批准。`physical_complete=true` 在 floor、scale、
 相關 surface、portal 或 stair authority 未解決時會 fail fast；預設為 false。
@@ -101,12 +102,66 @@ Exporter 可共用 `clip_triangle_to_box`、`promoted_wall_portal_conflicts`；
 Provider 沒有實作 Graph search、ranking、final route validation 或新 metric semantics；
 後續 consumer 必須保持目前 GT isolation 與既有研究閾值。
 
+### 2026-10-06 physical policy 與 source scope
+
+使用者已另外核准 [physical policy](../configs/physical_authority_policy_school_v3.json)
+及 [runtime contract](../configs/physical_policy_runtime_school_v3.json)。
+`amidst.physical_policy_contract` 以同一 source hash 綁定 policy 與 architectural scale；
+保留 source BU，SI policy 依 **0.0247 m/BU** 換算，不縮放 `.blend`。
+
+| 項目 | APPROVED 設定 |
+| --- | --- |
+| 人體／trajectory reference | Upright cylinder；foot point 接觸合法地板 |
+| 半徑／高度／額外 body clearance | 0.30 m／1.70 m／0.05 m |
+| Portal 水平／垂直 clearance | 每側 0.05 m／上方 0.10 m |
+| Collision contact tolerance | 0.001 m；接觸障礙判碰撞 |
+| Boundary comparison | Minimum clearance equality PASS；collision tolerance 不放寬 minimum |
+| Stair travel policy | BIDIRECTIONAL；需另證明 source support、opening 與雙向 body clearance |
+
+Portal 與 body margins 取較嚴的 `max`，不重複加總：最小門洞淨寬 0.70 m、
+淨高 1.80 m；footprint 所需水平半徑 0.35 m。合法 APPROVED WALKABLE／STAIR support
+contact 不算 obstacle contact，但不允許穿入 support。WALKABLE 是原始 support surface，
+同層先 union 再 erosion，並以原邊界距離檢查淨空，避免逐物件 inset 製造假斷裂。
+WALKABLE／STAIR 外禁止 navigation，這項 permission rule 不會把其餘空間變成 WALL 或 occluder。
+
+本輪 [source-bound evidence bundle](../data/scene_audit/phase1_physical_policy_approval_20261006/manifest.json)
+與 [experiment record](EXPERIMENT_LOG.md) 區分 policy approval、局部 geometry evidence 與全域完整性：
+
+| Scope | 本輪結果／限制 |
+| --- | --- |
+| Floor support | 48 個 supported WALKABLE 子域：45 個完整 annotation coverage、3 個 partial；舊 38 個 plane-offset 警訊以 actual support evidence 解決，不移動 source |
+| Obstacle volume | 5/19 個 OBSTACLE 中共 58 個 source-bound closed components APPROVED；19 個 whole-object scope 仍全為 HUMAN_REVIEW |
+| WALL | 73 HIGH_CONFIDENCE／1,422 HUMAN_REVIEW／77 REJECTED；doorway protection 不放寬，未將高信心 WALL 升為 APPROVED |
+| Portal | 8 組 obstacle／portal 衝突仍 REVIEW；annotation bounds 不證明淨門洞與合法通行 |
+| Stair A/B | 均 0 個 usable intermediate landing；source slab point headroom 約 0.194 m，support chain／opening／雙向 full-body sweep 尚未證明 |
+| Local physical islands | **0 complete physical islands; 5 searched regions remain REVIEW (unclassified group_0 enclosure / degenerate source geometry)** |
+
+`amidst.physical_collision.CylinderCollisionConsumer` 只經
+`KNOWN_COLLISION_PRUNING` gate 取得核准 exact colliders。它對整段 upright-cylinder sweep
+與 actual source triangles 計算有上下界的距離，並檢查 closed-volume interior；未收斂／
+budget 不足明列 UNVALIDATED，不用採樣、AABB 或凸包冒充 collision PASS。
+`prune_before_top_k` 在 final K 截斷前排除已知 collision／clearance violation，
+保留 supplied candidate pool 的相對順序、candidate IDs 與 GT isolation。
+Retained 只代表已核准 collider scope 未發現 violation，不認證未知幾何或全域無碰撞；
+它不修改既有 Graph、ranking、Top-K、Observation 或 MetricConfig schemas。
+
+Local certificate 另明列限定 footpoint domain、support／source／policy hashes 與
+`outside_domain=REFUSE_VALIDATION`。只有完整檢查該域的 source geometry 後，才可核准
+該域的 collision／topology；不以忽略 REVIEW geometry 取得 PASS。School snapshot
+仍 `physical_complete=false`，全域 gate 仍拒絕正式全域 physical validation。
+Physical-validity metrics 與正式 Case 1–3 benchmark 不因 policy approval 自動開放。
+
+Raw evidence 在 lightweight checkpoint 不 tracked；載入或重播前依
+[materialization contract](PHYSICAL_EVIDENCE_MATERIALIZATION.md) 明確重建與核對 hashes。
+Consumer／tests 不偷偷生成或下載資料；原 review manifest 與研究 provenance 保留。
+
 ### Physical authority resolution 與用途 scope
 
-2026-10-06 approved scale update: the [school-v3 scale review](SCHOOL_V3_SCALE_REVIEW.md)
+2026-10-06 scale-only checkpoint（保留歷史證據；本輪 active scope 見上節）：
+the [school-v3 scale review](SCHOOL_V3_SCALE_REVIEW.md)
 records **1 BU = 0.0247 m**, **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**. External dimensions
 are not required to rederive this declared model setting. Native vertices and BU measurements
-remain unchanged; metre quantities use the approved factor explicitly. The active
+remain unchanged; metre quantities use the approved factor explicitly. That checkpoint's
 [geometry snapshot](../data/scene_audit/school_v3_approved_scale_20261006/geometry.json) and
 [physical sidecar](../data/scene_audit/school_v3_approved_scale_20261006/physical_authority.json)
 are separate from retained historical snapshots, calibration, pilot and benchmark artifacts.
@@ -117,7 +172,8 @@ not rewrite old artifacts or change Graph/Top-K, metric definitions or GT isolat
 This is an explicit caller boundary; existing runner/pilot flows keep their legacy contracts
 until a caller invokes normalization. Providing the adapter does not silently migrate them.
 Existing native doorway padding remains 0.28 BU, represented as 0.006916 m in the new snapshot;
-the protection distance is unchanged. Other physical authorities remain pending independently.
+the protection distance is unchanged. Other physical authorities were pending at this checkpoint;
+the later policy/source-scope decisions above do not rewrite these retained artifacts.
 Automatic measurements cite mesh endpoints/evaluated faces; annotation bounds are not colliders.
 Elevator is `NOT_APPLICABLE`, and unclassified object names confer no authority.
 
@@ -128,7 +184,7 @@ validated model JSON，以 sorted keys／compact separators 計算 SHA-256，與
 或輸出目錄無關。重新標示 authority、修改 vertices 或新增 surface 都會改變 binding。
 這個 wrapper 重驗 nested frozen models，不能以 unchecked `model_copy` 偷渡批准。
 
-`PhysicalPolicy` 的 metre 參數均由 config 明確提供；目前未定義的項目保留 `null`
+`PhysicalPolicy` 的 metre 參數均由 config 明確提供；未核准設定中的未定義項目保留 `null`
 與 `HUMAN_REVIEW`，不以預設人體大小或診斷 tolerance 補值：
 
 - body radius、total height、body clearance 分開。
@@ -200,8 +256,50 @@ School-v3 architectural scale is explicitly **APPROVED / USER_DEFINED_RESEARCH_M
 **0.0247 m/BU**. Mesh measurements are sanity evidence rather than scale inference. Original
 BU vertices remain unchanged, and the physical-unit adapter applies one consistent conversion
 to new physical inputs/reports. Historical calibration, pilot and benchmark artifacts retain
-their original unit contracts and provenance. Scale approval does not approve floors, stairs,
-collider volumes, body/clearance policy or a formal physical scope.
+their original unit contracts and provenance. Scale approval alone does not approve floors,
+stairs, collider volumes, body/clearance policy or a formal physical scope. The separately
+approved policy and source scopes for this round are described below.
+
+### Current physical policy and bounded source authority — 2026-10-06
+
+The approved [policy](../configs/physical_authority_policy_school_v3.json) and
+[runtime contract](../configs/physical_policy_runtime_school_v3.json) define an upright cylinder
+at a floor-contact footpoint: radius **0.30 m**, height **1.70 m**, extra body clearance
+**0.05 m**, portal horizontal margin **0.05 m per side**, vertical margin **0.10 m**, and
+obstacle contact tolerance **0.001 m**. Minimum-clearance equality passes; obstacle contact
+is inclusive. Body and portal margins use their maximum, without double addition, giving
+0.70 m minimum portal width, 1.80 m minimum height and a 0.35 m footprint radius.
+Approved support contact is permitted without permitting penetration. Native BU geometry is
+unchanged; one source-bound 0.0247 m/BU scale converts SI policy consistently.
+
+Raw approved WALKABLE support is unioned before erosion, with clearance verified against
+the original boundary. Navigation outside approved WALKABLE/STAIR support is forbidden,
+without creating walls or visibility occluders. BIDIRECTIONAL stair travel is the intended
+policy, conditional on actual support, opening and full-body traversal evidence.
+
+The [current bundle](../data/scene_audit/phase1_physical_policy_approval_20261006/manifest.json)
+records 48 supported walkable subdomains (45 whole and 3 partial), resolving 38 old annotation
+plane offsets through source evidence. It approves 58 closed components within 5 of 19
+obstacles; all 19 whole-obstacle scopes remain HUMAN_REVIEW. WALL status remains 73
+HIGH_CONFIDENCE, 1,422 HUMAN_REVIEW and 77 REJECTED, with doorway protection unchanged.
+Eight obstacle/portal conflicts remain REVIEW. Both stairs have zero usable intermediate
+landings in the selected source evidence; a slab gives only about 0.194 m point headroom,
+and no support chain, opening or bidirectional body sweep is certified.
+Local physical islands: **0 complete physical islands; 5 searched regions remain REVIEW (unclassified group_0 enclosure / degenerate source geometry)**.
+
+The additive cylinder consumer obtains exact approved colliders through a purpose gate,
+checks the complete segment sweep against source triangles with bounded numerical distances,
+and checks closed-volume interiors. Unresolved distance/budget cases are UNVALIDATED.
+`prune_before_top_k` removes known physical violations before final K truncation while
+preserving input relative order and IDs; it does not rescore, use GT or change core schemas.
+Retained candidates have no detected violation within the approved collider scope, not a
+global collision-free certificate. Local certificates independently bind a restricted
+footpoint domain and its complete source screening; outside-domain validation is refused.
+The school snapshot remains `physical_complete=false`, so global validation remains blocked.
+Policy approval does not approve formal physical metrics or start Case 1–3 benchmarks.
+See the bilingual [experiment record](EXPERIMENT_LOG.md) for remaining review and the
+[materialization contract](PHYSICAL_EVIDENCE_MATERIALIZATION.md) for rebuilding the excluded
+raw evidence before loading/replay. Consumers never silently generate or download artifacts.
 
 Loading requires the caller's independently verified source SHA-256. Models reject extra
 fields, non-finite/degenerate geometry, invalid references and unchecked Python model

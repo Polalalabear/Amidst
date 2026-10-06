@@ -4,6 +4,95 @@
 
 ## 繁體中文
 
+### 2026-10-06 — Lightweight physical-policy checkpoint
+
+`phase1/physical-policy-lightweight` 直接由已同步遠端的
+`0bab8ac262b93f3c8babad69432744e7e4d1c541` 建立；full local evidence commit
+`c5956dc825f669e28e2694578be0fed97432a786` 保留為 reference，不作祖先。
+選擇性保留 code/config/tests/docs、experiment log 與小型 summaries；原 producer、
+config、`uv.lock`、12 份 historical JSON（包含原 manifest）bytes 保留。
+沒有 rewrite／rebase／amend／force push／merge，也不開始 Finalization Sprint。
+
+[Materialization contract](PHYSICAL_EVIDENCE_MATERIALIZATION.md) 與
+[artifact manifest](../data/scene_audit/phase1_physical_policy_approval_20261006/artifact_manifest.json)
+明列 source、byte/content hashes、command/config、producer 與 semantic role。
+四份 raw gzip 共 **48,362,311 bytes**，以 exact paths gitignored；receipt 也 ignored。
+Wrapper 以 CPython 3.12.12、固定 lock、Blender 5.2.1 LTS build `9e2066aef7ef` 在隔離
+workspace 執行未改動的 exporter／validation pipeline，檢查全部結果後才安裝 raw blobs。
+Atlas timestamp 只作已揭露的 historical replay metadata 正規化，actual source before/after
+fingerprints 獨立記錄；原 scene 的 bytes／size／mtime 不變，原 provenance 不回寫。
+
+乾淨 independent temporary clone 從基底建立 candidate tree，full commit object 不存在；
+`uv sync --frozen` 通過。Without-artifacts `uv run pytest -rs`：**1365 passed / 8 skipped**
+（88.70 s）；3 個 current physical-evidence checks 明確 skip，其餘是 historical school-v2
+source/calibration prerequisites。Strict missing-evidence profile：6 passed／3 explicit
+prerequisite setup errors，符合契約，沒有模糊 FileNotFound 或偷偷下載／生成。
+既有 historical hash unit 的 local-camera 依賴已分開，3 份原 config 的 committed fixtures
+共 4,140 bytes，仍逐 byte SHA 核對原 manifest；不依賴 Git history 或放寬 hash assertion。
+隔離 branch 的指定 `uv run pytest`：1365 passed／8 skipped（75.54 s）。
+
+Fresh-clone materialization 確實由 preserved scene 重新抽取 atlas，而非複製 full commit blobs：
+660 objects、1,548,921 triangles、26 complete selections。四份 raw artifact 的 byte SHA 與
+canonical JSON hashes **全部完全相同**；完整 physical-policy replay 207.46 s。
+Architectural scale／physical policy APPROVED；floor supported=48；58 approved components
+across 5/19 obstacles；8 portals HUMAN_REVIEW；Stair A/B HUMAN_REVIEW；overall
+PARTIAL_APPROVED；collision diagnostic 4→2。Complete local islands=0、global physics gate
+仍關閉；沒有調 threshold、使用 GT 或改研究結論。
+
+Fully materialized fresh clone 的完整 strict profile：**1368 passed / 5 skipped**
+（79.88 s）；current physical bundle 的 9 checks 全通，remaining skips 僅 historical
+school-v2 fixtures。`--verify-only` 通過，fresh checkout 在 materialization 後仍 clean。
+兩個 profiles 的 Ruff／mypy（91 source files）全通；`git diff --check` 與 13 份
+文件的 216 local links／anchors 檢查通過，沒有 absent-artifact links。
+
+Candidate size/provenance audit（本 log entry 加入前的 clean tree）：新增 unique reachable
+blob payload **2,609,291 bytes**，原 full checkpoint 是 **50,897,608 bytes**，減少 **94.87%**。
+Non-thin single-thread pack（candidate minus base reachability）522,863 bytes，原 full
+checkpoint 同方法為 32,076,978 bytes；不是總 repo size 或依網路 negotiation 改變的 wire size。
+沒有新增／追蹤 `.blend`、`.rrd`、renders 或四份 raw gzip；基底既有 evidence 保留。
+
+| Largest newly tracked artifact | Bytes |
+| --- | ---: |
+| `obstacle_collider_authority.json` | 487,046 |
+| `scene_validation.json` | 444,882 |
+| `stair_authority.json` | 351,042 |
+| `portal_clearance.json` | 153,679 |
+| `walkable_clearance_1F.json` | 82,780 |
+
+全 repo 最大 tracked files 均繼承自基底：`phase1_physical_authority_20261006/source_mesh_evidence.json`
+10,996,697 bytes、`school_v2_scene_audit.json` 6,750,115 bytes、`school_v3_semantic_audit.json`
+6,617,918 bytes、approved-scale `geometry.json` 6,496,240 bytes、geometry-authority
+`geometry.json` 6,496,191 bytes。既有 benchmark PNG 是 plots，沒有新增 scene renders。
+
+### 2026-10-06 — Physical policy 核准與 source-bound partial authority
+
+從 clean scale-approved checkpoint `0bab8ac262b93f3c8babad69432744e7e4d1c541`
+重跑 1199 pytest、Ruff、mypy（83 files）、diff check 全通，push
+`phase1/physical-authority-resolution` 並確認 live origin SHA 完全一致，再建立
+`phase1/physical-policy-approval`，沒有 merge／rebase／history rewrite。
+
+[Authority report](../data/scene_audit/phase1_physical_policy_approval_20261006/authority.md)
+與 [experiment log](EXPERIMENT_LOG.md) 保存新 evidence。Physical policy APPROVED；
+source support Z=20.0788497925／161.8110961914 BU；48 supported 子域（45 whole／3 partial），
+38 舊偏移例外解釋、10 舊 budget-limited regions 恢復可用證據。
+5/19 OBSTACLE 中 58 exact components APPROVED；whole volumes 仍 REVIEW。
+WALL 維持 73 HIGH／1422 REVIEW／77 REJECTED；8 portal 與 Stair A/B 仍 REVIEW。
+5 個局部區域皆因 unclassified enclosure／degenerate geometry 保留 REVIEW，完整 islands=0。
+整體 PARTIAL_APPROVED；positive component probes 4→2，formal local/inference pruning 關閉。
+
+修復凹形 closed-volume ray tangency 漏判、雙重 floor-contact tolerance，新增
+floor-scope refusal 與 before-K provenance/order guards。完整 source geometry 為
+660 objects／1,548,921 triangles／26 complete selections；含 hidden/enclosing geometry。
+Source SHA／468300506 bytes／mtime 全維持，沒有修改或縮放 `.blend`、guess roles、
+造 geometry、使用 GT、調 MetricConfig／benchmark／ranking 或啟動 Cases 1–3。
+
+最終 **uv run pytest: 1352 passed，0 failed／0 skipped（94.81 s）**；新增153 tests，
+原1199均未退化。`uv run ruff check .`、`uv run mypy`（90 files）、diff check 全通。
+第一輪新增tests暴露報告把48proxy偏移誤算為38舊例外，及stair fixture缺enclosure契約欄位；
+修正後完整重跑通過，沒有降低threshold。Task docs175 internal links確認有效。
+Historical artifacts／provenance 保留；active context 指向新 source-bound gzip bundle。
+
+
 ### 2026-10-06 — 正式核准 Phase 1 architectural scale
 
 於 `phase1/physical-authority-resolution`，由 checkpoint
@@ -707,6 +796,89 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Lightweight physical-policy checkpoint
+
+`phase1/physical-policy-lightweight` starts directly from synchronized base
+`0bab8ac262b93f3c8babad69432744e7e4d1c541`. Full local evidence commit
+`c5956dc825f669e28e2694578be0fed97432a786` is a provenance reference, not an ancestor.
+Code/config/tests/docs, experiments and summaries were selectively retained. Historical
+producer/config/lock bytes and 12 historical JSON documents, including the original manifest,
+remain unchanged.
+No rewrite, rebase, amend, force push, merge or Finalization Sprint was performed.
+
+The [materialization contract](PHYSICAL_EVIDENCE_MATERIALIZATION.md) and
+[artifact manifest](../data/scene_audit/phase1_physical_policy_approval_20261006/artifact_manifest.json)
+bind source, byte/content hashes, commands/configs, producers and semantic roles. Four raw gzip
+files totaling **48,362,311 bytes** and the local receipt are precisely ignored. The wrapper
+runs unchanged producers in an isolated workspace with CPython 3.12.12, the committed lock,
+and Blender 5.2.1 LTS build `9e2066aef7ef`; only fully verified raw evidence is installed.
+Historical atlas timestamp normalization is explicitly recorded separately from the actual
+unchanged source before/after fingerprint. Scene bytes/size/mtime and original provenance
+remain unchanged.
+
+An independent clean temporary clone from the base contained no full-commit object.
+Install via `uv sync --frozen` passed. Without-artifacts pytest: **1365 passed / 8 skipped**
+(88.70 s), including 3 explicit physical-evidence skips and optional historical school-v2
+source/calibration skips. Strict missing-evidence profile: 6 passed / 3 explicit prerequisite
+setup errors, as designed. Tests never download or generate evidence. Historical unit hash
+checks now use 4,140 bytes of exact committed config fixtures; optional ignored camera
+provenance is checked separately without weakening hashes or requiring Git history.
+The isolated branch's requested `uv run pytest` passed: 1365 passed / 8 skipped (75.54 s).
+
+Fresh-clone materialization regenerated the atlas from the preserved scene, rather than copying
+full-commit blobs: 660 objects, 1,548,921 triangles, 26 complete selections. All four raw byte
+and canonical JSON hashes exactly matched. Complete policy replay took 207.46 s and preserved
+scale/policy APPROVED, 48 supported subdomains, 58 approved components across 5/19 obstacles,
+8 HUMAN_REVIEW portals, Stair A/B HUMAN_REVIEW, overall PARTIAL_APPROVED and collision 4→2.
+Complete local islands remain 0 and global gates remain closed; thresholds, GT isolation and
+research conclusions were unchanged.
+
+The complete fully materialized strict profile passed: **1368 passed / 5 skipped**
+(79.88 s). All 9 current physical-bundle checks passed; remaining skips concern only
+historical school-v2 fixtures. Read-only `--verify-only` passed and materialization left
+the fresh checkout clean. Ruff and mypy (91 source files) passed in both profiles.
+Diff checks and 216 local links/anchors across 13 documents passed with no missing-artifact links.
+
+Before this log entry, candidate unique reachable blob payload was **2,609,291 bytes** versus
+**50,897,608 bytes** for the full checkpoint (**94.87% smaller**). Non-thin single-thread
+candidate-minus-base pack was 522,863 bytes versus 32,076,978 bytes by the same method.
+These are incremental payload metrics, not total repository size or negotiated wire traffic.
+The largest added files are listed above; largest whole-tree files are inherited base artifacts:
+source mesh evidence 10,996,697 bytes, school-v2 scene audit 6,750,115, school-v3 semantic audit
+6,617,918, approved-scale geometry 6,496,240 and original geometry-authority geometry 6,496,191.
+No `.blend`, `.rrd`, renders or excluded raw gzip are tracked. Existing benchmark PNGs are plots.
+
+### 2026-10-06 — Approved physical policy and source-bound partial authority
+
+The clean scale-approved checkpoint `0bab8ac262b93f3c8babad69432744e7e4d1c541` passed
+1199 tests, Ruff, mypy (83 files) and diff checks. The existing
+`phase1/physical-authority-resolution` branch was pushed and live origin SHA verified;
+`phase1/physical-policy-approval` was created without merge, rebase or history rewrite.
+
+The [authority report](../data/scene_audit/phase1_physical_policy_approval_20261006/authority.md)
+and [experiment log](EXPERIMENT_LOG.md) retain current evidence. Approved policy, actual
+source floor supports and 58 exact components across five obstacles yield PARTIAL_APPROVED.
+Forty-eight supported subdomains include 45 fully covered annotations and three partial
+ones; 38 historical offset diagnostics are explained and ten budget-limited regions recovered.
+Whole obstacle volumes, eight portal pairs and both stairs remain REVIEW. WALL classification
+stays 73 HIGH / 1422 REVIEW / 77 REJECTED. All five searched complete local islands remain
+REVIEW due to unknown enclosure/degenerate source geometry. Positive component probes filter
+4→2 before K; formal local/inference pruning stays disabled.
+
+Fixed concave closed-volume ray tangency and double floor-contact tolerance; added floor
+scope, provenance and order guards. The full atlas has 660 objects, 1,548,921 triangles and
+26 complete selections, including hidden/enclosing geometry. Source SHA, 468300506 bytes
+and mtime remain unchanged. No scene scaling/modification, guessed roles, fabricated geometry,
+GT input, MetricConfig/benchmark/ranking change or Case 1–3 execution occurred.
+
+Final **uv run pytest: 1352 passed, zero failures/skips, 94.81 s**; 153 new tests and all
+1199 baseline checks pass. Ruff, mypy (90 files) and diff checks pass. The initial new-test
+failures exposed an incorrect historical offset count and a missing enclosure-selection
+fixture field; both were repaired and the full suite rerun without lowered thresholds.
+The 175 checked task-document internal links are valid. Historical artifacts/provenance
+remain intact; active context points to the new bound gzip bundle.
+
 
 ### 2026-10-06 — Approved Phase 1 architectural scale
 

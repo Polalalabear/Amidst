@@ -9,28 +9,30 @@
   ],
   "floor_planes": {
     "1F": {
-      "status": "PROPOSED",
-      "height_m": 0.6175,
+      "status": "APPROVED",
+      "height_m": 0.49594758987426757,
       "normal": [
         0,
         0,
         1
       ],
-      "review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
-      "basis": "Existing main WALKABLE planes; human approval of physical floor authority pending",
-      "height_bu": 25
+      "review_id": "SOURCE_BOUND_GEOMETRY_REVIEW_PHYSICAL_POLICY_2026_10_06",
+      "basis": "Actual source triangles intersected with approved WALKABLE permission; local variations and uncovered subdomains retained separately; not whole-floor body-clearance certification",
+      "height_bu": 20.07884979248047,
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
     },
     "2F": {
-      "status": "PROPOSED",
-      "height_m": 4.0755,
+      "status": "APPROVED",
+      "height_m": 3.9967340759277343,
       "normal": [
         0,
         0,
         1
       ],
-      "review_id": "HUMAN_SCHOOL_V3_SUPPLEMENT_2026_10_05",
-      "basis": "Existing main WALKABLE planes; human approval of physical floor authority pending",
-      "height_bu": 165
+      "review_id": "SOURCE_BOUND_GEOMETRY_REVIEW_PHYSICAL_POLICY_2026_10_06",
+      "basis": "Actual source triangles intersected with approved WALKABLE permission; local variations and uncovered subdomains retained separately; not whole-floor body-clearance certification",
+      "height_bu": 161.81109619140625,
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
     }
   },
   "expected_collections": {
@@ -78,12 +80,11 @@
     "minimum_clearance_m": null
   },
   "unresolved_settings": [
-    "approved floor planes and geometry authority",
-    "physical clearance and contact semantics",
+    "building-wide collider completeness and physical authority",
     "camera-plane binding",
-    "wall/obstacle movement versus occlusion ownership",
-    "portal normal and endpoint declarations",
-    "stair path direction, clearance and slab opening evidence"
+    "unclassified source movement/occlusion ownership",
+    "portal source aperture/normal and endpoint declarations",
+    "stair actual run/landing/opening and bidirectional body-clearance evidence"
   ],
   "geometry_complexity": {
     "maximum_mesh_triangles": 256,
@@ -95,7 +96,7 @@
   "diagnostic_threshold_basis": {
     "units": "BLENDER_NATIVE_SCENE_UNITS",
     "policy": "PRESERVE_EXISTING_NATIVE_DIAGNOSTIC_THRESHOLDS",
-    "description": "Convert former 1:1 length/area labels to metres using approved scale; retain original native geometry thresholds, ratios, numeric epsilon and physical-clearance pending state.",
+    "description": "Native diagnostic thresholds preserved. Approved body clearance/contact policy is separate in physical_policy_runtime_school_v3.json; diagnostic minimum_clearance remains unset and is not a physical-authority substitute.",
     "length_bu": {
       "floor_height": 0.25,
       "walkable_plane_extent": 0.1,

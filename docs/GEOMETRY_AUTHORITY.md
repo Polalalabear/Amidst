@@ -4,6 +4,11 @@
 
 ## 繁體中文
 
+本文件保留 `phase1/geometry-authority` 的原始分類 checkpoint。最新物理政策與
+受限核准見 [EXPERIMENT_LOG](EXPERIMENT_LOG.md)：整體已 **PARTIAL_APPROVED**，
+不等於 73 HIGH_CONFIDENCE WALL 或整棟 collider completeness 已核准。下列
+PROVISIONAL 與 pending 描述是當時紀錄；source、threshold 與歷史 artifacts 保留。
+
 本輪從穩定 checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`，
 在 `phase1/geometry-authority` 建立可重驗的幾何 evidence 與
 [唯讀 provider](GEOMETRY_PROVIDER.md)。目前 **physical / collision validity = PROVISIONAL**。
@@ -120,6 +125,12 @@ source、content、authorization scope 不相符即拒絕；approval ID 不是�
 也未開始正式 benchmark、Graph／collision integration、Agent 或 Phase 2。
 
 ## English
+
+This document retains the original `phase1/geometry-authority` classification checkpoint.
+Current policy and restricted approval are in [EXPERIMENT_LOG](EXPERIMENT_LOG.md): overall
+**PARTIAL_APPROVED**, without approving all walls or building collider completeness.
+PROVISIONAL/pending statements below describe that historical checkpoint; its source,
+thresholds and artifacts remain unchanged.
 
 The [school-v3 scale review](SCHOOL_V3_SCALE_REVIEW.md) records explicit user approval of
 **1 BU = 0.0247 m**, **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**. Mesh measurements are

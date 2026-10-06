@@ -1,0 +1,38 @@
+{
+  "schema_version": "physical-policy-validation-config-v1",
+  "checkpoint_commit": "0bab8ac262b93f3c8babad69432744e7e4d1c541",
+  "source_blend": "blender/school_v3.blend",
+  "runtime_config": "configs/physical_policy_runtime_school_v3.json",
+  "audit": "data/scene_audit/school_v3_semantic_audit.json",
+  "floor_survey": "data/scene_audit/phase1_physical_authority_20261006/source_mesh_evidence.json",
+  "source_evidence": "data/scene_audit/phase1_physical_policy_approval_20261006/source_evidence.json.gz",
+  "source_evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+  "source_selection_config": "configs/physical_policy_source_selection_school_v3.json",
+  "source_exporter": "scripts/export_policy_source_evidence.py",
+  "role_authorization": "data/scene_audit/phase1_geometry_authority_20261006/role_authorization.json",
+  "previous_geometry": "data/scene_audit/school_v3_approved_scale_20261006/geometry.json",
+  "collision_numerics_config": "configs/physical_collision_numerics_v1.json",
+  "floor_support": {
+    "support_heights_bu": {
+      "1F": 20.07884979248047,
+      "2F": 161.81109619140625
+    },
+    "horizontal_normal_abs_z_min": 0.984807753012208,
+    "maximum_triangles_per_region": 20000,
+    "numeric_epsilon_bu": 1e-09
+  },
+  "maximum_self_intersection_pairs": 250000,
+  "local_scope_search": {
+    "half_extent_m": [
+      2.0,
+      1.0,
+      0.5
+    ],
+    "maximum_centers": 60,
+    "maximum_approved": 3,
+    "maximum_enclosure_pair_checks": 250000,
+    "self_intersection_numeric_epsilon_bu": 1e-09
+  },
+  "stair_review_config": "configs/physical_authority_resolution_school_v3.json",
+  "historical_resolution": "data/scene_audit/school_v3_approved_scale_20261006/resolution.json"
+}

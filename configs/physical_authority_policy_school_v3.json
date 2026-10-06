@@ -1,18 +1,20 @@
 {
   "policy_id": "school-v3-pedestrian-physical-policy",
-  "config_version": "physical-authority-policy-v1",
+  "config_version": "physical-authority-policy-v2-approved",
   "units": "metres",
-  "authority": "HUMAN_REVIEW",
-  "body_model": null,
-  "trajectory_reference": null,
-  "body_radius_m": null,
-  "body_height_m": null,
-  "body_clearance_m": null,
-  "portal_horizontal_clearance_m": null,
-  "portal_vertical_clearance_m": null,
-  "collision_tolerance_m": null,
-  "clearance_comparison": null,
-  "collision_comparison": null,
-  "evidence_ids": ["PENDING_HUMAN_BODY_AND_CLEARANCE_RESEARCH_DECISION"],
-  "approval_id": null
+  "authority": "APPROVED",
+  "body_model": "UPRIGHT_CYLINDER",
+  "trajectory_reference": "FLOOR_CONTACT_POINT",
+  "body_radius_m": 0.3,
+  "body_height_m": 1.7,
+  "body_clearance_m": 0.05,
+  "portal_horizontal_clearance_m": 0.05,
+  "portal_vertical_clearance_m": 0.1,
+  "collision_tolerance_m": 0.001,
+  "clearance_comparison": "MINIMUM_INCLUSIVE",
+  "collision_comparison": "CONTACT_INCLUSIVE",
+  "evidence_ids": [
+    "USER_EXPLICIT_PHYSICAL_POLICY_APPROVAL_2026_10_06"
+  ],
+  "approval_id": "HUMAN_PHASE1_PHYSICAL_POLICY_2026_10_06"
 }
