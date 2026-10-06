@@ -1,0 +1,75 @@
+{
+  "schema_version": "scale-review-manifest-v1",
+  "checkpoint_commit": "cdeee3e316e88c87ab63cdcf3acb360485f00dd6",
+  "scope": "READ_ONLY_SCALE_MEASUREMENT_AND_SOURCE_REFERENCE_REVIEW",
+  "source": {
+    "path": "blender/school_v3.blend",
+    "before": {
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "size_bytes": 468300506,
+      "mtime_ns": 1791198236746106977
+    },
+    "after": {
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "size_bytes": 468300506,
+      "mtime_ns": 1791198236746106977
+    }
+  },
+  "inputs": {
+    "config_sha256": "c0882dcf18dd3f8cb387291beb9e65decfae43e971dc69907be927f4965b3e44",
+    "script_sha256": "eb57e75e7f503b60af50ca07a16566ed0e7fff587dcbd6ad8ca40d4caa42323a",
+    "audit_sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+  },
+  "code_config_tests": {
+    "scripts/measure_school_scale.py": "eb57e75e7f503b60af50ca07a16566ed0e7fff587dcbd6ad8ca40d4caa42323a",
+    "configs/school_v3_scale_measurement_v1.json": "c0882dcf18dd3f8cb387291beb9e65decfae43e971dc69907be927f4965b3e44",
+    "tests/unit/test_school_scale_measurement.py": "93e0417a9fe31661625b9fcef7fbfab9e74d36470673add7a005fbe38254bbb1"
+  },
+  "artifacts": {
+    "camera_references.json": {
+      "path": "data/scene_audit/school_v3_scale_calibration_20261006/camera_references.json",
+      "sha256": "e683fe0d4c223201630f8a703515b7f81c381a2a65722edbe344a6c28bf14f63",
+      "size_bytes": 12561
+    },
+    "canonical_references.json": {
+      "path": "data/scene_audit/school_v3_scale_calibration_20261006/canonical_references.json",
+      "sha256": "463dad97e1964c740a8c5f54bbe407fdf1f9af31d76a5b0aed3c4fe5d6ec6c4b",
+      "size_bytes": 2184
+    },
+    "measurements.csv": {
+      "path": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.csv",
+      "sha256": "fae2c030bd5cf1882b5dca36fe4059ecda7a55b7e02363e34997ebb0fd387bf5",
+      "size_bytes": 174736
+    },
+    "measurements.json": {
+      "path": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.json",
+      "sha256": "d57a36b803c53c2c59bf8b2758fa13e8af4400b1c988d09a292151ef69a6f037",
+      "size_bytes": 362466
+    },
+    "measurements.md": {
+      "path": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.md",
+      "sha256": "41c61a171c1707ab109e9678a7434aa6630ea128c0e856b714e1d1f094499c6b",
+      "size_bytes": 7657
+    }
+  },
+  "validation": {
+    "pytest": {
+      "passed": 1131,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 84.83
+    },
+    "ruff": "PASS",
+    "mypy": {
+      "status": "PASS",
+      "source_files": 81
+    },
+    "measurement_script_mypy": "PASS",
+    "source_preserved": true,
+    "measurement_replay_semantics": "IDENTICAL",
+    "architectural_scale_authority": "HUMAN_REVIEW",
+    "formal_benchmark_run": false,
+    "model_scaled": false,
+    "historical_artifacts_rewritten": false
+  }
+}

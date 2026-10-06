@@ -1,5 +1,10 @@
 # School semantic integration gate / 場景語意接入條件
 
+Current school-v3 update: [scale review](../../docs/SCHOOL_V3_SCALE_REVIEW.md) keeps the
+proposed 0.0247 m/BU unapproved; elevator is NOT_APPLICABLE, imported cameras require
+zero active consuming references before exclusion, and unclassified object names grant
+no roles. The dated v2 audit and its 1 m/BU convention below remain historical evidence.
+
 2026-10-02 live read-only evidence:
 [school_v2_semantic_audit.json](school_v2_semantic_audit.json).
 Source `blender/school_v2.blend`, SHA-256

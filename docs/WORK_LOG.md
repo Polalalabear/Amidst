@@ -4,6 +4,38 @@
 
 ## 繁體中文
 
+### 2026-10-06 — school v3 暫定尺度量測與來源整理
+
+於 `phase1/physical-authority-resolution`／checkpoint
+`cdeee3e316e88c87ab63cdcf3acb360485f00dd6` 接受使用者更新：新診斷暫採
+**0.0247 m/BU**。使用者確認目前無可靠實測／設計尺寸，因此 scale authority 保持
+HUMAN_REVIEW，正式 calibration／舊 units config／benchmark／pilot／snapshots 不回寫。
+沒有修改正式 schema、Graph／ranking／metric semantics 或 GT isolation。
+
+[Scale review](SCHOOL_V3_SCALE_REVIEW.md) 與新唯讀 Blender measurement script 產生
+**37 筆量測、6 個未宣告唯一方向的 PORTAL、5 個人工確認 anchors**。Annotation 與
+actual source cross-sections 分列，保留 248 個 hits 的 source object／evaluated polygon／
+vertices／端點、不同高度 profile、confidence 與 ambiguity。餐廳 A 約0.875198 m、
+Office 約1.750392 m、CLASS201 Y 約9.675786 m、CORRIDOR03 的 profile 約3.030764–3.131431 m；
+source support 高差141.732246 BU，暫換算約3.500786 m。未把截面當 approved aperture，
+沒有以合理性批准 architectural scale。三個取樣高度不代表人體／clearance policy。
+兩次獨立 Blender invocation／不同 output directory 的量測 semantics 一致；
+最終 input／script hash bindings 核對通過，原 v3 SHA／size／mtime 前後相同。
+
+Live Blender＋repository camera reference audit：29 CAM research cameras 全保留，
+匯入 SketchUp camera active consuming references=0，可忽略但未刪除原物件。
+Inventory／exclusion／history references 不移除。Active config／schema 無 elevator 規格；
+新 config／index 明列 NOT_APPLICABLE，保留 AREA_*_ELEVATOR，不建立 transition。
+Canonical reference index 保留 byte-identical WALL Markdown 與 content-identical JSON
+的歷史 aliases；1,669 portable surfaces 沒有 exact geometry duplicate groups，未刪資料。
+Bounds／尺寸從 source 自動產生，不新增人工手抄表；group_*／Cube.* 保留且不按名稱定角色。
+
+本次完整 `uv run pytest` **1131 passed in84.83s，0 failed／0 skipped**；Ruff 通過，
+`uv run mypy` 通過（81 source files），另對新 measurement script 的 strict mypy 通過。
+新增11個 diagnosis／source-bound report regressions，targeted run **11 passed in0.05s**。
+52個更新文件的 internal file links 與 diff check 通過。此輪沒有 render／正式 benchmark、
+geometry integration、模型縮放／修改、merge 或 push；physical authority 仍 PROVISIONAL。
+
 ### 2026-10-06 — Geometry checkpoint 發布與 physical authority blocker 審查
 
 使用者指定的 `bb66bb74a4a76430f6fa8f79672345385a79e3f0` 在
@@ -631,6 +663,30 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Provisional school-v3 scale measurements and source review
+
+On `phase1/physical-authority-resolution` from `cdeee3e316e88c87ab63cdcf3acb360485f00dd6`,
+the user proposed 0.0247 m/BU and confirmed no reliable measured/design dimensions exist.
+Architectural scale remains HUMAN_REVIEW. [Scale review](SCHOOL_V3_SCALE_REVIEW.md) adds
+37 automatic measurements, six unresolved portal normals and five human-review anchors.
+Annotation spans and source cross-sections are separate; 248 hits cite object/evaluated polygon
+identity, vertices, endpoints and height-profile ambiguities. Proposed sizes include restaurant A
+0.875198 m, office 1.750392 m, CLASS201 Y 9.675786 m, corridor03 3.030764–3.131431 m,
+and source floor rise 141.732246 BU / 3.500786 m. None approves physical aperture or scale.
+Two independent Blender invocations/output directories reproduce measurement semantics;
+input/code hashes and original source SHA/size/mtime are preserved.
+
+The imported camera has zero active consuming references; ignore it while retaining the
+object and all 29 CAM cameras. Elevator is NOT_APPLICABLE with historical AREA IDs retained.
+Canonical path/hash references preserve historical duplicates and provenance; 1,669 geometry
+surfaces contain no exact duplicate groups. Measurements are generated, and unclassified names
+grant no authority. Formal schemas/configs, core inference, metrics, prior artifacts and GT
+isolation remain unchanged; no model mutation, rendering, formal benchmark, merge or push.
+
+Fresh validation: pytest **1131 passed in84.83s, zero failures/skips**; Ruff, mypy81 files,
+standalone strict mypy for the new script and diff check pass. Eleven targeted diagnostic tests
+pass in0.05s; 52 internal file links pass. Physical authority remains PROVISIONAL.
 
 ### 2026-10-06 — Published geometry checkpoint and physical blocker review
 

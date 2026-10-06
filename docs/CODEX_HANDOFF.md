@@ -10,6 +10,13 @@
 
 ### 目前狀態與續作入口
 
+- 最新使用者設定與 [scale measurement review](SCHOOL_V3_SCALE_REVIEW.md)：school v3
+  診斷暫採 0.0247 m/BU，目前無獨立實測／設計尺寸；先確認 3–5 個 source-bound
+  anchors，再用至少 2–3 組獨立尺寸交叉驗證。不得自動批准 scale、改正式 calibration、
+  rescale 模型或回寫已完成 artifacts。匯入 SketchUp camera 零 active consuming refs，
+  從研究 pipeline 忽略但保留原物件；電梯 NOT_APPLICABLE，historical AREA IDs 保留。
+  後續只引用 canonical source＋hash；derived measurements 自動產生。
+
 - Repository：`/Users/polalabear/Developer/amidst`。第一個semantic checkpoint保留在
   `codex/dataset-infrastructure`；第二個成功pilot checkpoint
   `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 已push於
@@ -128,6 +135,14 @@
 以上是目前缺口，不是新的實作、render 或發布授權。
 
 ## English
+
+Latest user update: see the [scale measurement review](SCHOOL_V3_SCALE_REVIEW.md).
+School-v3 diagnostics propose 0.0247 m/BU without independent real dimensions; confirm
+3–5 source-bound anchors and cross-check at least 2–3 independent dimensions before
+architectural-scale approval. Preserve the model, formal calibration and completed artifacts.
+The imported SketchUp camera has zero active consuming references and may be ignored;
+retain all 29 CAM cameras and the source object. Elevator is NOT_APPLICABLE, historical
+AREA IDs remain, and future active references use canonical source plus hashes.
 
 Status date: 2026-10-06. The first semantic checkpoint remains on
 `codex/dataset-infrastructure`; the successful-pilot checkpoint

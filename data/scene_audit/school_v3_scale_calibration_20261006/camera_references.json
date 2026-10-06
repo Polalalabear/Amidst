@@ -1,0 +1,377 @@
+{
+  "audit_kind": "READ_ONLY_IMPORTED_CAMERA_REFERENCE_AUDIT",
+  "blender_dependency_audit": {
+    "blender_version": "5.2.1 LTS",
+    "camera_count": 30,
+    "driver_camera_refs": [],
+    "embedded_text_camera_refs": [],
+    "nonresearch": [
+      {
+        "data": "skp_camera_Last_Saved_SketchUp_View",
+        "data_dependencies": [
+          {
+            "id_type": "Object",
+            "name": "skp_camera_Last_Saved_SketchUp_View"
+          }
+        ],
+        "data_users": 1,
+        "lens_finite": false,
+        "object": "skp_camera_Last_Saved_SketchUp_View",
+        "object_users": 1,
+        "parent": null,
+        "research_camera_children": [],
+        "users": [
+          {
+            "id_type": "Collection",
+            "name": "Collection"
+          },
+          {
+            "id_type": "Scene",
+            "name": "Scene"
+          }
+        ]
+      }
+    ],
+    "research_camera_count": 29,
+    "research_camera_ids": [
+      "CAM_1F_AUDITORIUM_FRONT",
+      "CAM_1F_AUDITORIUM_REAR",
+      "CAM_1F_BATHROOM",
+      "CAM_1F_CLASS101",
+      "CAM_1F_CLASS102",
+      "CAM_1F_CLASS103",
+      "CAM_1F_CLASS104",
+      "CAM_1F_CORRIDOR_01",
+      "CAM_1F_CORRIDOR_02",
+      "CAM_1F_CORRIDOR_03",
+      "CAM_1F_CORRIDOR_04",
+      "CAM_1F_MAIN_ENTRANCE",
+      "CAM_1F_MEETINGROOM",
+      "CAM_1F_RESTAURANT_01",
+      "CAM_1F_RESTAURANT_02",
+      "CAM_1F_SIDE_ENTRANCE",
+      "CAM_1F_STORAGE",
+      "CAM_2F_BATHROOM",
+      "CAM_2F_CLASS201",
+      "CAM_2F_CLASS202",
+      "CAM_2F_CLASS203",
+      "CAM_2F_CLASS204",
+      "CAM_2F_CORRIDOR_01",
+      "CAM_2F_CORRIDOR_02",
+      "CAM_2F_CORRIDOR_03",
+      "CAM_2F_CORRIDOR_04",
+      "CAM_2F_GALLERY_01",
+      "CAM_2F_GALLERY_02",
+      "CAM_2F_MEETINGROOM"
+    ],
+    "scenes": [
+      {
+        "active_camera": "CAM_1F_CORRIDOR_04",
+        "marker_cameras": [],
+        "scene": "Scene",
+        "sequence_camera_refs": []
+      }
+    ],
+    "viewport_camera_refs": [
+      {
+        "camera": "CAM_2F_CLASS202",
+        "screen": "Animation",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_2F_CLASS202",
+        "screen": "Animation",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_2F_CLASS202",
+        "screen": "Geometry Nodes",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_1F_CORRIDOR_04",
+        "screen": "Layout",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_2F_CLASS202",
+        "screen": "Modeling",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_1F_CORRIDOR_04",
+        "screen": "Scripting",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_2F_CLASS202",
+        "screen": "Sculpting",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_2F_CLASS202",
+        "screen": "Shading",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_2F_CLASS202",
+        "screen": "Texture Paint",
+        "use_local_camera": false
+      },
+      {
+        "camera": "CAM_2F_CLASS202",
+        "screen": "UV Editing",
+        "use_local_camera": false
+      }
+    ]
+  },
+  "decision": {
+    "active_consuming_reference_count": 0,
+    "delete_performed": false,
+    "historical_records_rewritten": false,
+    "imported_camera": "SAFE_TO_IGNORE_IN_RESEARCH_PIPELINE",
+    "membership_reference_note": "Scene/Collection users are object membership, not scene.camera or research pipeline consumption. Historical inventory/excluded_camera_ids/source-hash records must remain.",
+    "research_camera_use": "KEEP_ALL_29_CAM_CAMERAS",
+    "retain_source_object": true,
+    "source_saved": false
+  },
+  "limitations": [
+    "Audited current checkout text configs/scripts/calibrations/pilot artifacts and current source Blender dependencies; no unlisted external project dependencies are claimed.",
+    "Safe to ignore does not authorize deleting from immutable original source or rewriting calibration/provenance artifacts."
+  ],
+  "pipeline_allowlist_evidence": [
+    {
+      "lines": [
+        108,
+        116
+      ],
+      "path": "src/amidst/simulation/blender_camera.py",
+      "rule": "Only sorted CAMERA objects with CAM_ prefix enter extract_camera_catalog."
+    },
+    {
+      "lines": [
+        129,
+        147
+      ],
+      "path": "src/amidst/simulation/camera_calibration.py",
+      "rule": "Only CAM_ objects enter calibration cameras; non-CAM_ identifiers remain in excluded_camera_ids."
+    },
+    {
+      "lines": [
+        19,
+        174,
+        175
+      ],
+      "path": "scripts/plan_blender_pilot.py",
+      "rule": "Pilot camera allowlist uses CAM_1F_CORRIDOR_02 and CAM_1F_CORRIDOR_03."
+    },
+    {
+      "lines": [
+        33,
+        50,
+        266,
+        267
+      ],
+      "path": "scripts/plan_blender_pilot_sites.py",
+      "rule": "Sites use CAM_1F_CLASS101/CORRIDOR_04 and AUDITORIUM_FRONT/REAR."
+    },
+    {
+      "lines": [
+        317,
+        318,
+        368
+      ],
+      "path": "scripts/export_blender_pilot.py",
+      "rule": "Exporter reads plan camera_ids and explicitly selects each plan CAM_ camera for rendering."
+    }
+  ],
+  "repository_search": {
+    "active_runtime_or_pilot_reference_count": 0,
+    "exact_name_reference_count": 22,
+    "included_roots": [
+      "configs",
+      "src",
+      "scripts",
+      "tests",
+      "data",
+      "docs"
+    ],
+    "included_suffixes": [
+      ".json",
+      ".md",
+      ".py",
+      ".toml",
+      ".yaml",
+      ".yml",
+      ".txt"
+    ],
+    "references": [
+      {
+        "classification": "AUDIT_FINDING_RENDERING_ONLY",
+        "excerpt": "\"`skp_camera_Last_Saved_SketchUp_View` 的 lens 為 `inf`；未核准排除或修正前，\"",
+        "line": 177,
+        "path": "scripts/run_scene_audit.py"
+      },
+      {
+        "classification": "EXCLUSION_REGRESSION_ASSERTION",
+        "excerpt": "assert first.excluded_camera_ids == (\"skp_camera_Last_Saved_SketchUp_View\",)",
+        "line": 61,
+        "path": "tests/integration/test_camera_calibration.py"
+      },
+      {
+        "classification": "EXCLUSION_REGRESSION_ASSERTION",
+        "excerpt": "cameras=(_calibration(),), excluded_camera_ids=(\"skp_camera_Last_Saved_SketchUp_View\",),",
+        "line": 73,
+        "path": "tests/unit/test_calibration.py"
+      },
+      {
+        "classification": "CALIBRATION_EXCLUDED_CAMERA_ID",
+        "excerpt": "\"skp_camera_Last_Saved_SketchUp_View\"",
+        "line": 11665,
+        "path": "data/cameras/school_v2_calibration_v1.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "- 29 cameras use the `CAM_*` research naming convention. The audit found 1 imported/navigation camera candidate(s): `skp_camera_Last_Saved_SketchUp_View`.",
+        "line": 53,
+        "path": "data/scene_audit/README.md"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "- **NONFINITE_CAMERA_INTRINSICS**（`blocking_for_camera_allowlist`）：`skp_camera_Last_Saved_SketchUp_View` 的 lens 為 `inf`；未核准排除或修正前，不能把它納入投影 Camera 集合。",
+        "line": 127,
+        "path": "data/scene_audit/README.md"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"skp_camera_Last_Saved_SketchUp_View\": \"7a4f0276d8f297c71913be39f70decf5086abe17b271ab95b360a6c41d884310\",",
+        "line": 2868,
+        "path": "data/scene_audit/phase1_wall_markings_20261005.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"skp_camera_Last_Saved_SketchUp_View\"",
+        "line": 130,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"object_name\": \"skp_camera_Last_Saved_SketchUp_View\"",
+        "line": 144,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"data_name\": \"skp_camera_Last_Saved_SketchUp_View\",",
+        "line": 29250,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"object_name\": \"skp_camera_Last_Saved_SketchUp_View\",",
+        "line": 29321,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"data_name\": \"skp_camera_Last_Saved_SketchUp_View\",",
+        "line": 33922,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"object_name\": \"skp_camera_Last_Saved_SketchUp_View\",",
+        "line": 33993,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"skp_camera_Last_Saved_SketchUp_View\"",
+        "line": 36351,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"data_name\": \"skp_camera_Last_Saved_SketchUp_View\",",
+        "line": 297738,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"name\": \"skp_camera_Last_Saved_SketchUp_View\",",
+        "line": 297786,
+        "path": "data/scene_audit/school_v2_scene_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"skp_camera_Last_Saved_SketchUp_View\"",
+        "line": 2520,
+        "path": "data/scene_audit/school_v2_semantic_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"object\": \"skp_camera_Last_Saved_SketchUp_View\",",
+        "line": 215940,
+        "path": "data/scene_audit/school_v2_semantic_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"skp_camera_Last_Saved_SketchUp_View\"",
+        "line": 25206,
+        "path": "data/scene_audit/school_v3_semantic_audit.json"
+      },
+      {
+        "classification": "AUDIT_INVENTORY_OR_SOURCE_HASH_RECORD",
+        "excerpt": "\"object\": \"skp_camera_Last_Saved_SketchUp_View\",",
+        "line": 245697,
+        "path": "data/scene_audit/school_v3_semantic_audit.json"
+      },
+      {
+        "classification": "DOCUMENTED_EXCLUSION_OR_HISTORICAL_INVENTORY",
+        "excerpt": "Decision: Use only the 29 `CAM_*` camera objects. Exclude `skp_camera_Last_Saved_SketchUp_View` from simulation and projection; its lens is non-finite. Preserve all camera objects in the original `.blend`.",
+        "line": 9,
+        "path": "docs/ISSUES_AND_DECISIONS.md"
+      },
+      {
+        "classification": "DOCUMENTED_EXCLUSION_OR_HISTORICAL_INVENTORY",
+        "excerpt": "決策：只使用 29 台 `CAM_*` 攝影機。焦距為非有限值的 `skp_camera_Last_Saved_SketchUp_View` 不參與模擬與投影；原始 `.blend` 的攝影機物件保留。",
+        "line": 11,
+        "path": "docs/ISSUES_AND_DECISIONS.md"
+      }
+    ],
+    "root_files_checked": [
+      "README.md",
+      "pyproject.toml",
+      ".gitignore"
+    ],
+    "root_reference_documents": [
+      {
+        "classification": "DOCUMENTED_RESEARCH_ALLOWLIST_AND_IMPORTED_CAMERA_EXCLUSION",
+        "excerpt": "Only the 29 CAM_* cameras are research-eligible; imported SketchUp camera is excluded.",
+        "lines": [
+          111,
+          255
+        ],
+        "path": "README.md"
+      }
+    ],
+    "searched_file_count": 938
+  },
+  "source": {
+    "after": {
+      "mtime_ns": 1791198236746106977,
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "size": 468300506
+    },
+    "before": {
+      "mtime_ns": 1791198236746106977,
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "size": 468300506
+    },
+    "path": "blender/school_v3.blend",
+    "unchanged": true
+  },
+  "repository_scan_checkpoint": "cdeee3e316e88c87ab63cdcf3acb360485f00dd6",
+  "scope": "IMPORTED_CAMERA_USE_REVIEW_NOT_CAMERA_PLANE_OR_SCALE_APPROVAL",
+  "pipeline_consumer_files_modified": false
+}

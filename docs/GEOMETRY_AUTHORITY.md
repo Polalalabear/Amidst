@@ -10,6 +10,10 @@
 [完整分類報告](../data/scene_audit/phase1_geometry_authority_20261006/authority.md)
 保留每個 patch 的 source object、位置、檢查及原因；本文件說明使用邊界與重現方式。
 
+最新尺度提案見 [school v3 scale review](SCHOOL_V3_SCALE_REVIEW.md)：新診斷暫採
+0.0247 m/BU，無獨立實測尺寸，仍 HUMAN_REVIEW。本檔下方的 1 m/BU 是舊 checkpoint
+與 replay 契約，不回寫歷史 snapshot，也不核准正式 architectural scale。
+
 ### Authority 層級
 
 | 狀態 | 使用含義 |
@@ -109,6 +113,10 @@ source、content、authorization scope 不相符即拒絕；approval ID 不是�
 也未開始正式 benchmark、Graph／collision integration、Agent 或 Phase 2。
 
 ## English
+
+The pending [school-v3 scale review](SCHOOL_V3_SCALE_REVIEW.md) uses 0.0247 m/BU only
+for new diagnostic measurements. Independent real dimensions are absent; authority remains
+HUMAN_REVIEW. The 1 m/BU values below describe the retained checkpoint/replay contract.
 
 Branch `phase1/geometry-authority` starts from checkpoint
 `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`. The

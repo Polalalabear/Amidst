@@ -100,6 +100,13 @@ Provider 沒有實作 Graph search、ranking、final route validation 或新 met
 
 ### Physical authority resolution 與用途 scope
 
+2026-10-06 pending scale update: new [school-v3 measurement review](SCHOOL_V3_SCALE_REVIEW.md)
+uses 0.0247 m/BU in an independent diagnostic config, with `HUMAN_REVIEW` and formal use
+denied. Historical geometry snapshots, calibration, pilot and benchmarks remain unchanged.
+No body dimensions, clearance, metric settings or doorway protection are implicitly rescaled.
+Automatic measurements cite mesh endpoints/evaluated faces; annotation bounds are not colliders.
+Elevator is `NOT_APPLICABLE`, and unclassified object names confer no authority.
+
 `amidst.physical_authority` 另提供 `physical-authority-v1` sidecar 與
 `ReadOnlyPhysicalAuthorityProvider`，保持 `scene-geometry-v1` 不變。
 它同時綁定獨立核對的 source SHA 和 geometry snapshot canonical SHA；後者取自

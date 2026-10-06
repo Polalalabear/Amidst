@@ -1,0 +1,55 @@
+{
+  "schema_version": "source-canonical-reference-index-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "checkpoint_commit": "cdeee3e316e88c87ab63cdcf3acb360485f00dd6",
+  "historical_artifacts_modified": false,
+  "deletion_performed": false,
+  "canonical_references": [
+    {
+      "canonical_path": "data/scene_audit/phase1_wall_candidates_20261005.md",
+      "file_sha256": "d923d15553062efdffef4c2db131a834b3338b971ca5a00f0fea7e49285cdbdf",
+      "preserved_identical_aliases": [
+        "data/scene_audit/school_v3_wall_candidates.md"
+      ],
+      "equivalence": "EXACT_FILE_BYTES"
+    },
+    {
+      "canonical_path": "data/scene_audit/phase1_wall_candidates_20261005.json",
+      "file_sha256": "25463fc6df1243c7e705e55ed36de525faff4f59f82d9a185fd629a259c70650",
+      "canonical_json_content_sha256": "6900be794df1780e924c5270188f33742215770abe814cbfccb975a0ff896cc8",
+      "schema_version": "source-bound-wall-candidates-pilot-v1",
+      "preserved_content_aliases": [
+        {
+          "path": "data/scene_audit/school_v3_wall_candidates.json",
+          "file_sha256": "ca1084a86dbd28df4a763ce93d0782d4598c0318ac07b7b7fad71673ca35a3bf"
+        }
+      ],
+      "equivalence": "SAME_VERSION_AND_CANONICAL_CONTENT_NOT_IDENTICAL_FILE_BYTES"
+    },
+    {
+      "canonical_path": "data/scene_audit/phase1_geometry_authority_20261006/geometry.json",
+      "file_sha256": "c64605e471ac2eb0024dd6d420b75f3798dbd1edf51148e1459c61fc4910a21b",
+      "schema_version": "scene-geometry-v1",
+      "unit_scale_m": 1.0,
+      "authority": "HISTORICAL_SNAPSHOT_NO_RESCALE"
+    }
+  ],
+  "geometry_surface_count": 1669,
+  "exact_duplicate_geometry_surface_groups": [],
+  "dedup_policy": "NEW_ACTIVE_REFERENCES_ONLY_KEEP_SOURCE_FACE_CONTEXT_AND_HISTORY",
+  "unclassified_object_policy": {
+    "preserve_all": true,
+    "rename_allowed": false,
+    "delete_allowed": false,
+    "name_assigns_role": false,
+    "authority_requires": "EXACT_OBJECT_FACE_SOURCE_BINDING"
+  },
+  "elevator": {
+    "status": "NOT_APPLICABLE",
+    "topology_allowed": false,
+    "historical_area_ids": [
+      "AREA_1F_ELEVATOR",
+      "AREA_2F_ELEVATOR"
+    ]
+  }
+}

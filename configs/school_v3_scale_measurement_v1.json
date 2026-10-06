@@ -1,0 +1,45 @@
+{
+  "schema_version": "school-scale-measurement-config-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "semantic_audit": "data/scene_audit/school_v3_semantic_audit.json",
+  "proposed_metres_per_blender_unit": 0.0247,
+  "scale_authority": "HUMAN_REVIEW",
+  "known_real_dimensions": [],
+  "support_bands_bu": {"1F": [10.0, 30.0], "2F": [150.0, 175.0]},
+  "cross_section_heights_above_support_bu": [20.0, 40.0, 60.0],
+  "maximum_ray_distance_bu": 600.0,
+  "support_normal_abs_z_min": 0.984807753012208,
+  "side_normal_axis_min": 0.9,
+  "excluded_helper_objects": ["WALK_STAIRS_A_LOWERHALF", "WALK_STAIRS_A_UPPERHALF", "WALK_STAIRS_B_LOWERHALF", "WALK_STAIRS_B_UPPERHALF"],
+  "corridors": [
+    {"object": "WALK_1F_CORRIDOR_02", "area": null, "axis": 0},
+    {"object": "WALK_1F_CORRIDOR_03", "area": null, "axis": 1},
+    {"object": "WALK_1F_CORRIDOR_04", "area": null, "axis": 0},
+    {"object": "WALK_2F_CORRIDOR_02", "area": null, "axis": 0},
+    {"object": "WALK_2F_CORRIDOR_03", "area": null, "axis": 1}
+  ],
+  "rooms": [
+    {"object": "WALK_1F_CLASS101", "area": "AREA_1F_CLASS101"},
+    {"object": "WALK_1F_CLASS102", "area": "AREA_1F_CLASS102"},
+    {"object": "WALK_1F_OFFICE", "area": "AREA_1F_OFFICE"},
+    {"object": "WALK_2F_CLASS201", "area": "AREA_2F_CLASS201"},
+    {"object": "WALK_2F_MEETINGROOM", "area": "AREA_2F_MEETINGROOM"}
+  ],
+  "floor_anchor_objects": {"1F": "WALK_1F_CLASS101", "2F": "WALK_2F_CLASS201"},
+  "preferred_human_review_objects": [
+    "PORTAL_1F_RESTAURANT_A", "PORTAL_1F_OFFICE",
+    "WALK_2F_CLASS201", "WALK_1F_CORRIDOR_03"
+  ],
+  "elevator": {"status": "NOT_APPLICABLE", "topology_allowed": false, "preserve_historical_area_ids": true},
+  "policy": {
+    "source_save_allowed": false,
+    "geometry_modification_allowed": false,
+    "object_names_assign_roles": false,
+    "bounds_are_collision_geometry": false,
+    "annotation_width_is_clear_aperture": false,
+    "plausibility_approves_scale": false,
+    "historical_provenance_rewrite_allowed": false,
+    "formal_calibration_change_allowed": false,
+    "benchmark_run": false
+  }
+}

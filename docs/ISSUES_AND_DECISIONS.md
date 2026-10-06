@@ -1,4 +1,30 @@
-## Scene unit-to-metre convention / 場景單位與公尺換算
+## Pending school v3 architectural scale / school v3 建築尺度待核准
+
+2026-10-06 user update: use **1 BU ≈ 0.0247 m** for new, explicitly provisional
+school-v3 diagnostic measurements. No independent measured/design dimensions are currently
+available; plausibility alone cannot approve architectural scale. Generate dimensions and
+source endpoints from the unchanged mesh, then request 2–3 independent real dimensions.
+The [measurement config](../configs/school_v3_scale_measurement_v1.json) and
+[review](SCHOOL_V3_SCALE_REVIEW.md) retain `HUMAN_REVIEW` and deny formal use.
+
+使用者更新：school v3 新診斷量測暫採 **1 BU ≈ 0.0247 m**；目前無可靠實測／設計尺寸，
+保持 HUMAN_REVIEW。門寬、走廊寬與樓層高由 mesh 自動量測，不以合理性核准比例。
+正式 calibration schema 仍限制 1.0；若未來要接入新比例，須另行核准正式單位契約與
+所有單位換算。不得只改 scale 而漏轉 floor planes、clearance、doorway padding。
+既有 benchmark、pilot、geometry snapshots 和歷史 provenance 使用原契約，均不回寫。
+
+Imported cameras may be ignored only after zero active consuming references are established;
+inventory/exclusion/history mentions are retained. Elevator is `NOT_APPLICABLE`; existing
+`AREA_*_ELEVATOR` IDs are preserved and establish no transition. Keep all `group_*`/`Cube.*`
+objects without name-based authority. New active references use canonical source plus hashes;
+historical identical artifacts and provenance are retained.
+
+匯入 camera 先查 active consuming references，零引用才忽略；inventory／排除／歷史紀錄
+保留。電梯 NOT_APPLICABLE，保留既有 AREA IDs，不建立 transition。`group_*`／`Cube.*`
+不改名、不刪除、不按名稱定角色。後續 active 資料採 canonical source＋hash reference；
+尺寸與重心等衍生資訊自動產生，不人工維護重複表。
+
+## Historical scene unit-to-metre convention / 既有 checkpoint 的單位換算
 
 Decision: Use `meters_per_blender_unit = 1.0`: one Blender unit is one metre, as confirmed by the user. Preserve the scene coordinates for Phase 1 distance, speed, and error calculations.
 
