@@ -15,13 +15,26 @@
   `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 已push於
   `phase1/pilot-dataset-and-wall-inference`，origin SHA一致。
   第三個downstream checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e` 已push於
-  `phase1/pilot-downstream-reconstruction`，origin SHA一致。現在只在
-  `phase1/pilot-robustness-validation` 的隔離worktree
+  `phase1/pilot-downstream-reconstruction`，origin SHA一致。Robustness checkpoint為
+  `ce2974b25b31a8cb0ec9bc579a84d708d3356bf7`，保留原robustness branch；本輪只在
+  `phase1/projection-sensitivity` 的隔離worktree
   `/Users/polalabear/.codex/worktrees/pilot-robustness-validation/amidst`；
   並行geometry-authority工作保留於shared checkout，不混入robustness。
+  Projection 實驗由上述 checkpoint 起分支，不混入 geometry-authority。
   核對HEAD／dirty state與source hash，不merge回checkpoint。恢復入口見
   [第一](PHASE1_CHECKPOINT.md)／[第二](PHASE1_PILOT_CHECKPOINT.md)／
   [第三斷點](PHASE1_DOWNSTREAM_CHECKPOINT.md)。
+- 最新實驗與 Phase 1 歷史摘要見 [EXPERIMENT_LOG](EXPERIMENT_LOG.md)。本機 ignored
+  `data/pilot/phase1_projection_sensitivity_20261006/report.md`／`experiment_results.json`
+  保存 noise sweep、camera/geometry/calibration 診斷與四張已檢查 charts。102 variants
+  全部 COMPLETE、3 routes/6 hypotheses；37 STABLE、22 DEGRADED、43 ACCURACY_FAILURE。
+  Peak Jacobian gain12.6041 BU/px（auditorium front，835.136 BU，grazing5.365°）。
+  遠距／斜視 ray-plane conditioning 是已量化的 accuracy bottleneck，未找到 implementation
+  bug。Coverage epsilon未改；boundary隨noise方向/seed變化，不能當正式pixel容忍度。
+  本輪未獨立比較GAP長度；physical/WALL/scale authority仍PARTIAL/PROVISIONAL。
+  998 tests、Ruff、mypy74files通過；3代表variants repeat/GT poison invariant。
+  實驗已停止，未push／merge，未開始正式Cases1–3。續作先確認 source-bound planes、
+  calibration/pixel uncertainty與view conditioning；不要先放寬epsilon。
 - 通用 M0–M8 deterministic 閉環、camera extraction、producer-neutral aggregation、
   multi-gap Events、benchmark runner／MetricConfig／provider contract、GT isolation、
   fake／boundary／reporting regression 均已實作。Evidence 在 WORK_LOG，合成 fixtures
@@ -133,6 +146,21 @@ Durable rules live in DEVELOPMENT_RULES; completed regression evidence belongs t
 The generic deterministic loop, camera extraction, replaceable observation/aggregation
 contracts, multi-gap Events, benchmark runner/MetricConfig, GT isolation, fake/boundary
 validation and reporting are implemented. They do not constitute a formal school benchmark.
+
+Latest experimental branch: `phase1/projection-sensitivity`, starting exactly at
+robustness checkpoint `ce2974b25b31a8cb0ec9bc579a84d708d3356bf7` in the managed isolated
+worktree above. The robustness branch and parallel geometry-authority work are preserved.
+[EXPERIMENT_LOG](EXPERIMENT_LOG.md) summarizes completed Phase 1 pilots and this sensitivity
+round. Ignored data/pilot/phase1_projection_sensitivity_20261006/ contains the human report,
+machine summary, sweep/geometry/calibration tables and four inspected charts. All102variants
+retain3routes/6hypotheses and COMPLETE;37STABLE/22DEGRADED/43ACCURACY_FAILURE distinguish
+healthy search from degraded projection accuracy. Peakgain12.6041BU/px occurs at auditorium
+front, distance835.136BU/grazing5.365°. Geometry conditioning is evidenced; no implementation
+bug was found. GAP length was not independently controlled. No epsilon/core/benchmark change,
+new physical dataset/render, push/merge or formal Cases1–3. Three representative variants
+pass repeat/GT-poison byte equality;998tests/Ruff/mypy74files pass. Physical authority remains
+partial/provisional. Before further formal work, review source-specific plane bindings, real
+pixel/calibration uncertainty, view conditioning and physical scale.
 
 The current source is the explicitly authorized supplemented school_v3.blend. The
 [post-save report](../data/scene_audit/school_v3_semantic_validation.md) concludes

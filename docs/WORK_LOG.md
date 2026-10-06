@@ -4,6 +4,42 @@
 
 ## 繁體中文
 
+### 2026-10-06 — Projection sensitivity 獨立實驗
+
+由 clean robustness checkpoint `ce2974b25b31a8cb0ec9bc579a84d708d3356bf7` 建立
+`phase1/projection-sensitivity`，只在 managed isolated worktree 續作。Shared checkout的
+geometry-authority檔案／branch未混入本任務，原robustness branch保持checkpoint。
+新增 [EXPERIMENT_LOG](EXPERIMENT_LOG.md) 沿用 WORK_LOG 的既有工程證據，整理
+Blender／downstream／S01–S09歷史與本輪事先固定protocol、結果、原因證據與限制。
+
+五個 additive diagnostic/report scripts與55個測試，不修改src/core、Graph、Top-K、
+正式benchmark／metric semantics或Coverage epsilon。復用四個existing visible streams，
+179sample→5,907noise trials／5,370camera-plane diagnostic trials；358jointfocal trials；
+27-celldistance/grazing factorial。兩條existing downstream trajectory做17levels×3seeds，
+102variants全COMPLETE、各3routes/6hypotheses；37STABLE／22DEGRADED／43ACCURACY_FAILURE。
+所有102inference讀取allowlisted，3代表variants加跑repeat與GTpoison（另6calls）逐byte一致；
+GT只在所有inference/reference保存後evaluation，未傳GTpixel進inverse或用GT選candidate。
+
+Office ±0.25px精確重現ADE1.4391408126/FDE2.5490031309BU與maxpoint displacement
+2.5487584854BU。Coverage失效boundary依seed方向而變；最早office(0.003,0.0035]px、
+corridor(0.005,0.01]px，不是連續閾值或正式容忍度。Peak analyticgain12.60410293BU/px：
+auditorium front、distance835.1364BU／grazing5.364988°。Float64/Decimal60差≤6.44e−13BU，
+roundtrip≤8.14e−13px，analytic/finite-difference相符；沒有找到implementation bug。
+Jointfocal±0.1%可偏移2.6164BU，pitch±0.01°1.5573BU；只是指定diagnosticcopies，
+不證明原calibration有錯。主因證據是geometry conditioning及calibration sensitivity，
+未獨立控制GAP長度，不能宣稱其一般影響小於Projection。
+
+本機 ignored `data/pilot/phase1_projection_sensitivity_20261006/` 保存 JSON/CSV／
+report.md／四張charts／分層decomposition／verification.json。QA檢查labels、units、N/A、
+seedrange非confidence interval及PROJECTED-relative error；核對14既有source hash/size/mtime、
+8strictinputs、1,224inference artifacts與4GTdigests保持不變。沒有新Blender render、
+physicaltrajectory或完整dataset；WALL／collision／尺度仍PARTIAL/PROVISIONAL。
+
+Fresh final `uv run pytest`：**998 passed in61.60s，無skips**；`uv run ruff check .`
+通過；`uv run mypy`通過74sourcefiles；`git diff --check`及staged diff通過。
+本機task-scoped commit，不push／merge、不開始正式Cases1–3。下一步／限制留於
+EXPERIMENT_LOG與CODEX_HANDOFF，後續等待使用者指示。
+
 ### 2026-10-06 — 第三個 checkpoint 與 controlled robustness PILOT
 
 起始 `phase1/pilot-downstream-reconstruction` working tree clean，HEAD為
@@ -616,6 +652,36 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — isolated Projection sensitivity experiment
+
+Created `phase1/projection-sensitivity` from clean robustness checkpoint
+`ce2974b25b31a8cb0ec9bc579a84d708d3356bf7` in the existing isolated managed worktree,
+preserving the robustness branch and parallel geometry-authority work. Added five diagnostic
+scripts,55tests and EXPERIMENT_LOG with historical Phase1 evidence plus predeclared controls.
+No src/core,Graph,Top-K,formal benchmark/metric semantics or epsilon changes.
+
+Four existing visible streams provide179samples/5,907noise trials/5,370camera-plane copies,
+plus358jointfocal trials and27synthetic conditioning cells. Two existing downstream routes
+produce102variants (17levels×3seeds):allCOMPLETE/3routes/6hypotheses,37STABLE/22DEGRADED/
+43ACCURACY_FAILURE. All inference reads are allowlisted;exactly3representatives additionally
+pass repeat/GT-poison byte equality. GT is accessed only after frozen inference/reference;
+no GT pixel enters inverse inference or candidate selection.
+
+Office ±0.25px reproduces ADE1.4391408126/FDE2.5490031309BU and2.5487584854BU maxpoint
+shift. Noise failure brackets depend on seed/direction, not universal tolerances. Peak local
+gain12.6041BU/px at auditorium front/distance835.136BU/grazing5.365°. Float64/Decimal60,
+roundtrip and analytic/finite Jacobians agree;no implementation bug found. Jointfocal±0.1%
+shifts up to2.6164BU,pitch±0.01°1.5573BU. Diagnostic copies do not prove source calibration
+wrong. Main evidence is geometry conditioning/calibration sensitivity;GAP length was not
+independently controlled. Physical/WALL/body/scale authority staysPARTIAL/PROVISIONAL.
+
+Ignored data/pilot/phase1_projection_sensitivity_20261006/ contains JSON/CSV,human report,
+four inspected charts,layer evaluation and preservation/QA verification.14checkpoint source
+hashes/size/mtime,8strictinputs,1,224inference artifacts and4GT digests unchanged. No new
+Blender render/physical dataset/formalCases1–3. Fresh regression:998passed in61.60s,no skips;
+Ruff passed,mypy74files passed,working/staged diff checks passed. Local task-scoped commit;
+no push/merge. Unresolved research authority and next steps remain in EXPERIMENT_LOG/HANDOFF.
 
 ### 2026-10-06 — downstream checkpoint and controlled robustness PILOT
 

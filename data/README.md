@@ -6,6 +6,30 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-06 addendum / Projection sensitivity PILOT
+
+Independent branch `phase1/projection-sensitivity` starts at robustness checkpoint
+`ce2974b25b31a8cb0ec9bc579a84d708d3356bf7`; the previous branch is preserved.
+[Experiment log](../docs/EXPERIMENT_LOG.md) records protocol, historical evidence and findings.
+Ignored `data/pilot/phase1_projection_sensitivity_20261006/` is **PILOT / SYNTHETIC SAMPLE**:
+102downstream variants from two existing trajectories,179visible points from four existing
+streams,per-sample pixel/calibration/plane results,JSON/CSV tables,four inspected charts,
+GT-free frozen projection references,separate evaluation-only decomposition and verification.
+No new render or physical trajectory. Private GT/raw evidence/charts remain local and ignored.
+
+All102variants keep3routes/6hypotheses and COMPLETE,but43fail unchanged Coverage;healthy
+inference termination is distinct from accurate Projection. Peak Jacobian gain12.6041BU/px
+occurs at835.136BU/grazing5.365°. Conditioning is evidenced,no implementation bug found;
+no calibration/epsilon/core/benchmark modification. Boundaries depend on seed/direction;
+GAP length is not independently controlled. Three representatives pass repeat/GT-poison
+byte equality;14checkpoint source hash/size/mtime and1,224inference artifacts are preserved.
+Physical/WALL/body/architectural scale authority remainsPARTIAL/PROVISIONAL;no formalCases1–3.
+
+本輪在獨立branch量化pixel noise與camera-plane conditioning；102variants均正常完成，
+但43accuracy failure，不能以search成功當作精度合格。GT只供凍結結果後evaluation；
+校準是diagnosticcopies，原始assets／pilot均保留。JSON、CSV、四張charts及humanreport
+在上述ignored目錄；正式尺度／WALL／physical validity仍未核准，不開始正式Cases1–3。
+
 ### 2026-10-06 addendum / Controlled robustness PILOT
 
 Downstream checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e` is published on
