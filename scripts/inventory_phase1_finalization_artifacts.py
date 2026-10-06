@@ -57,7 +57,7 @@ def main() -> None:
     checkpoint = root / "data/finalization/checkpoint"
     checkpoint.mkdir(parents=True, exist_ok=True)
     with (checkpoint / "artifact_inventory.csv").open("w") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     (checkpoint / "artifact_inventory.json").write_text(json.dumps({

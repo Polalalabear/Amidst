@@ -67,7 +67,7 @@ def main() -> None:
                                                *(["N/A"] * 5), "NOT_CERTIFIED",
                                                *(["N/A"] * 3), "NOT_RUN"], strict=True)))
     with (args.output / "benchmark_table.csv").open("w") as stream:
-        writer = csv.DictWriter(stream, fieldnames=columns)
+        writer = csv.DictWriter(stream, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     table = ["# Phase 1 formal benchmark status / 正式 benchmark 狀態", "",
