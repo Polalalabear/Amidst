@@ -1,7 +1,6 @@
 """Mock composition, canonical queries and strict read-only transport boundaries."""
 
 import json
-import shutil
 import subprocess
 from http import HTTPStatus
 from pathlib import Path
@@ -124,10 +123,10 @@ def test_event_routes_reject_noncanonical_keys(key: str) -> None:
     assert app.handle("GET", "/v1/events/" + key)[0] == HTTPStatus.BAD_REQUEST
 
 
-def test_typescript_route_keys_match_backend_for_arbitrary_ids() -> None:
-    node = shutil.which("node")
-    if node is None:
-        pytest.skip("Node is required for TypeScript route-key coverage")
+def test_typescript_route_keys_match_backend_for_arbitrary_ids(
+    node_with_typescript: str,
+) -> None:
+    node = node_with_typescript
     identities = ["literal%2Fidentifier", "a/b/consumer", "合成 event ?#%"]
     source = ROOT / "frontend/phase2/consumer.ts"
     script = (

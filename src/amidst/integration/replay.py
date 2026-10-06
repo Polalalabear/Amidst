@@ -6,12 +6,12 @@ import hashlib
 from pathlib import Path, PurePosixPath
 from typing import Literal
 
-from pydantic import ValidationError
-
 from amidst.domain.common import DomainModel
 from amidst.domain.experiment import Digest, InputFingerprint
 from amidst.domain.stream import BoundGapEvent, BoundObservation, ObservationAggregation
 from amidst.integration.repositories import RepositorySnapshot
+from amidst.portability.files import open_regular_file
+from amidst.portability.paths import resolve_local_path
 
 
 class BenchmarkImportError(ValueError):
@@ -47,7 +47,7 @@ def _verify_file(path: Path, item: InputFingerprint, *, retain: bool) -> bytes |
     digest = hashlib.sha256()
     size = 0
     chunks: list[bytes] = []
-    with path.open("rb") as stream:
+    with open_regular_file(path) as stream:
         while chunk := stream.read(1024 * 1024):
             digest.update(chunk)
             size += len(chunk)
@@ -60,11 +60,15 @@ def _verify_file(path: Path, item: InputFingerprint, *, retain: bool) -> bytes |
 
 def _verified_artifacts(root: Path) -> tuple[Path, dict[str, bytes]]:
     """Finish all integrity and coverage checks before interpreting any evidence."""
-    root = root.resolve(strict=True)
+    try:
+        root = resolve_local_path(root, base=Path.cwd()).resolve(strict=True)
+    except ValueError as error:
+        raise BenchmarkImportError("benchmark root must be a host-local directory") from error
     if not root.is_dir():
         raise BenchmarkImportError("benchmark package root must be a directory")
     manifest_path = _contained_path(root, "artifacts.json")
-    manifest = _BenchmarkManifest.model_validate_json(manifest_path.read_bytes(), strict=True)
+    with open_regular_file(manifest_path) as stream:
+        manifest = _BenchmarkManifest.model_validate_json(stream.read(), strict=True)
     listed = {item.logical_id for item in manifest.files}
     if len(listed) != len(manifest.files):
         raise BenchmarkImportError("artifact paths must be unique")
@@ -117,7 +121,9 @@ def load_benchmark_snapshot(root: Path) -> RepositorySnapshot:
             else:
                 gaps.append(BoundGapEvent.model_validate_json(contents))
         return RepositorySnapshot(observations=tuple(observations), gaps=tuple(gaps))
-    except (OSError, ValidationError) as error:
+    except BenchmarkImportError:
+        raise
+    except (OSError, ValueError) as error:
         raise BenchmarkImportError(
             "benchmark package violates its artifact/schema contract"
         ) from error
@@ -132,7 +138,9 @@ def load_replay_config(root: Path) -> Path:
     try:
         verified_root, _ = _verified_artifacts(root)
         return _contained_path(verified_root, "replay/config.json")
-    except (OSError, ValidationError) as error:
+    except BenchmarkImportError:
+        raise
+    except (OSError, ValueError) as error:
         raise BenchmarkImportError(
             "benchmark package violates its artifact/schema contract"
         ) from error

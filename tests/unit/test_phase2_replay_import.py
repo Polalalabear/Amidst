@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -209,17 +210,18 @@ def test_manifest_paths_cannot_escape_or_use_noncanonical_spellings(
 
 def test_symlink_escape_is_rejected_even_with_matching_hash(
     package: tuple[Path, ObservationAggregation, BoundGapEvent],
+    symlink_file: Callable[[Path, Path], None],
 ) -> None:
     root, _, _ = package
     outside = root.parent / "outside.json"
     outside.write_bytes((root / OBSERVATIONS).read_bytes())
     (root / OBSERVATIONS).unlink()
-    (root / OBSERVATIONS).symlink_to(outside)
+    symlink_file(outside, root / OBSERVATIONS)
     with pytest.raises(BenchmarkImportError, match="inside the package root"):
         load_benchmark_snapshot(root)
 
 
-def test_duplicate_manifest_paths_and_internal_aliases_are_rejected(
+def test_duplicate_manifest_paths_are_rejected(
     package: tuple[Path, ObservationAggregation, BoundGapEvent],
 ) -> None:
     root, _, _ = package
@@ -228,7 +230,14 @@ def test_duplicate_manifest_paths_and_internal_aliases_are_rejected(
     _write_json(root / "artifacts.json", manifest)
     with pytest.raises(BenchmarkImportError, match="must be unique"):
         load_benchmark_snapshot(root)
-    (root / "alias.json").symlink_to(root / "experiment.json")
+
+
+def test_internal_manifest_aliases_are_rejected(
+    package: tuple[Path, ObservationAggregation, BoundGapEvent],
+    symlink_file: Callable[[Path, Path], None],
+) -> None:
+    root, _, _ = package
+    symlink_file(root / "experiment.json", root / "alias.json")
     _manifest(root)
     with pytest.raises(BenchmarkImportError, match="alias the same file"):
         load_benchmark_snapshot(root)

@@ -3,23 +3,24 @@
 from __future__ import annotations
 
 import os
-import shutil
 import subprocess
 from pathlib import Path
 
 import pytest
 
+from amidst.portability.blender import resolve_blender_executable
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _blender() -> str:
-    executable = os.environ.get("BLENDER_BIN") or shutil.which("blender")
-    if executable is None:
-        installed = Path("/Applications/Blender.app/Contents/MacOS/blender")
-        executable = str(installed) if installed.is_file() else None
-    if executable is None:
-        pytest.skip("Blender CLI unavailable")
-    return executable
+    try:
+        return resolve_blender_executable()
+    except FileNotFoundError:
+        if os.environ.get("BLENDER_BIN"):
+            raise
+        pytest.skip("Blender CLI unavailable; configure BLENDER_BIN or PATH")
+
 
 
 def _run(body: str) -> None:

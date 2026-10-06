@@ -14,7 +14,6 @@ import io
 import json
 import math
 import os
-import shutil
 import subprocess
 import tempfile
 from bisect import bisect_right
@@ -22,6 +21,7 @@ from fractions import Fraction
 from pathlib import Path
 
 from amidst.domain.ground_truth import GroundTruthSample, GroundTruthTrajectory, TrajectoryConfig
+from amidst.portability.blender import resolve_blender_executable
 from amidst.simulation.blender_target import MAX_BLENDER_FRAME
 
 
@@ -111,12 +111,7 @@ def blender_evaluated_trajectory(
     final_frame = 1.0 + analytic.samples[-1].timestamp * frame_rate_hz
     if not math.isfinite(final_frame) or final_frame > MAX_BLENDER_FRAME:
         raise ValueError("trajectory exceeds Blender's supported frame domain")
-    executable = blender_binary or os.environ.get("BLENDER_BIN") or shutil.which("blender")
-    if executable is None:
-        installed = Path("/Applications/Blender.app/Contents/MacOS/blender")
-        executable = str(installed) if installed.is_file() else None
-    if executable is None:
-        raise FileNotFoundError("Blender CLI unavailable; set BLENDER_BIN or --blender-bin")
+    executable = resolve_blender_executable(blender_binary)
     if blend_path is not None:
         blend_path = blend_path.resolve()
         if blend_path.suffix.lower() != ".blend":

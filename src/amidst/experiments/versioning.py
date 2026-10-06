@@ -6,11 +6,7 @@ import hashlib
 import json
 import os
 import platform
-import stat
 import subprocess
-from collections.abc import Iterator
-from contextlib import contextmanager
-from io import BufferedReader
 from pathlib import Path
 
 from amidst.domain.experiment import (
@@ -20,31 +16,14 @@ from amidst.domain.experiment import (
     GitRevision,
     InputFingerprint,
 )
+from amidst.portability.files import open_regular_file
+from amidst.portability.paths import resolve_local_path
 
 PIPELINE_VERSION = "phase1-dataset-infrastructure-v1"
 
 
-@contextmanager
-def _regular_file(path: Path) -> Iterator[BufferedReader]:
-    """Allow regular symlinks while rejecting special inputs without blocking."""
-    if not stat.S_ISREG(path.stat().st_mode):
-        raise ValueError("experiment inputs must be regular files")
-    # A pathname can change after stat. Nonblocking open protects the race where
-    # a regular file is replaced with a FIFO; fstat rechecks the opened object.
-    descriptor = os.open(path, os.O_RDONLY | os.O_NONBLOCK)
-    try:
-        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
-            raise ValueError("experiment inputs must be regular files")
-        with os.fdopen(descriptor, "rb", closefd=False) as stream:
-            if not isinstance(stream, BufferedReader):
-                raise ValueError("experiment inputs require a buffered binary file")
-            yield stream
-    finally:
-        os.close(descriptor)
-
-
 def fingerprint(path: Path, logical_id: str) -> InputFingerprint:
-    with _regular_file(path) as stream:
+    with open_regular_file(path) as stream:
         digest = hashlib.file_digest(stream, "sha256").hexdigest()
         size = os.fstat(stream.fileno()).st_size
     return InputFingerprint(logical_id=logical_id, sha256=digest, size_bytes=size)
@@ -52,14 +31,13 @@ def fingerprint(path: Path, logical_id: str) -> InputFingerprint:
 
 def read_local_bytes(path: Path) -> bytes:
     """Read a regular local input; shared by reference and replay snapshot consumers."""
-    with _regular_file(path) as stream:
+    with open_regular_file(path) as stream:
         return stream.read()
 
 
 def resolve_reference(reference: ArtifactReference, containing_file: Path) -> Path:
     reference = ArtifactReference.model_validate(reference.model_dump(mode="python"))
-    path = Path(reference.path)
-    return (path if path.is_absolute() else containing_file.parent / path).resolve()
+    return resolve_local_path(reference.path, base=containing_file.parent)
 
 
 def read_reference(reference: ArtifactReference, containing_file: Path) -> str:

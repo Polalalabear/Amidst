@@ -4,8 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
-import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -19,13 +17,14 @@ from amidst.geometry.calibration import (
     multiply_matrices,
     rigid_inverse,
 )
+from amidst.portability.blender import resolve_blender_executable
 from amidst.simulation.blender_camera import extract_camera_dict
 
 if TYPE_CHECKING:
     from amidst.domain.calibration import CameraCalibrationCatalog
     from amidst.domain.camera import Matrix4
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
+SOURCE_DIRECTORY = Path(__file__).resolve().parents[2]
 
 
 def extract_camera_calibration_dict(scene: Any, obj: Any) -> dict[str, Any]:
@@ -111,19 +110,17 @@ def read_camera_calibration_catalog(
         raise ValueError("camera extraction requires a .blend source")
     if not camera_config_version or expected_count < 1:
         raise ValueError("camera config version and positive expected camera count are required")
-    executable = blender_binary or os.environ.get("BLENDER_BIN") or shutil.which("blender")
-    if executable is None:
-        installed = Path("/Applications/Blender.app/Contents/MacOS/blender")
-        executable = str(installed) if installed.is_file() else None
-    if executable is None:
-        raise ValueError("Blender CLI unavailable; provide BLENDER_BIN or blender_binary")
+    try:
+        executable = resolve_blender_executable(blender_binary)
+    except FileNotFoundError as error:
+        raise ValueError(str(error)) from error
     fingerprint = _fingerprint(source)
     with tempfile.TemporaryDirectory(prefix="amidst-calibration-") as directory:
         output = Path(directory) / "calibration.json"
         code = f"""
 import json, sys
 from pathlib import Path
-sys.path.insert(0, {str(REPO_ROOT / "src")!r})
+sys.path.insert(0, {str(SOURCE_DIRECTORY)!r})
 import bpy
 from amidst.simulation.camera_calibration import extract_camera_calibration_dict
 scene = bpy.context.scene

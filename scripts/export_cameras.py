@@ -6,13 +6,13 @@ import argparse
 import hashlib
 import json
 import os
-import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 from typing import Any
 
 from amidst.domain.camera import Camera
+from amidst.portability.blender import resolve_blender_executable
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -66,12 +66,10 @@ def main() -> None:
         parser.error("output already exists; choose a new destination or --overwrite")
     if args.expected_count < 1:
         parser.error("--expected-count must be positive")
-    executable = args.blender_bin or os.environ.get("BLENDER_BIN") or shutil.which("blender")
-    if executable is None:
-        installed = Path("/Applications/Blender.app/Contents/MacOS/blender")
-        executable = str(installed) if installed.is_file() else None
-    if executable is None:
-        parser.error("Blender unavailable; provide --blender-bin or BLENDER_BIN")
+    try:
+        executable = resolve_blender_executable(args.blender_bin)
+    except FileNotFoundError as error:
+        parser.error(str(error))
     fingerprint = _fingerprint(source)
     with tempfile.TemporaryDirectory(prefix="amidst-camera-export-") as temporary_dir:
         raw_output = Path(temporary_dir) / "raw_cameras.json"

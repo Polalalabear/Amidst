@@ -1,7 +1,6 @@
 """Freeze audit regressions without expanding the mock Integration Foundation."""
 
 import json
-import shutil
 import subprocess
 from pathlib import Path
 from urllib.parse import urlencode
@@ -117,11 +116,9 @@ def test_local_atomic_publish_failure_preserves_existing_disk(
 
 
 def test_typescript_preserves_nullable_and_empty_incomplete_positive_contracts(
-    tmp_path: Path, service: MockIntegrationService,
+    tmp_path: Path, service: MockIntegrationService, node_with_typescript: str,
 ) -> None:
-    node = shutil.which("node")
-    if node is None:
-        pytest.skip("Node with native type stripping is required for consumer freeze audit")
+    node = node_with_typescript
     original = service.repository.snapshot().gaps[0]
     nullable = original.model_dump(mode="json")
     for endpoint in (nullable["start"], nullable["end"]):

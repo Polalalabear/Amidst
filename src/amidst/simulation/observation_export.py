@@ -4,8 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
-import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -14,6 +12,7 @@ from amidst.domain.camera import Camera
 from amidst.domain.common import Vec3
 from amidst.domain.evidence import ObservationFrame
 from amidst.domain.ground_truth import GroundTruthTrajectory
+from amidst.portability.blender import resolve_blender_executable
 from amidst.simulation.raycast_types import Raycaster, RaycastResult
 from amidst.simulation.visibility import observe_point
 
@@ -65,12 +64,7 @@ def blender_ray_queries(
         return ()
     if len(queries) > 100000 or max_candidates < 1:
         raise ValueError("ray query batch/collider budget is invalid")
-    executable = blender_binary or os.environ.get("BLENDER_BIN") or shutil.which("blender")
-    if executable is None:
-        installed = Path("/Applications/Blender.app/Contents/MacOS/blender")
-        executable = str(installed) if installed.is_file() else None
-    if executable is None:
-        raise FileNotFoundError("Blender CLI unavailable")
+    executable = resolve_blender_executable(blender_binary)
     if blend_path is not None and (
         not blend_path.is_file() or blend_path.suffix.lower() != ".blend"
     ):

@@ -15,13 +15,14 @@ from amidst.integration.local_repository import InMemoryRepository, LocalJsonRep
 from amidst.integration.replay import load_benchmark_snapshot
 from amidst.integration.repositories import IntegrationRepository, RepositorySnapshot
 from amidst.integration.service import MockIntegrationService
+from amidst.portability.paths import resolve_local_path
 
 
 def build_mock_service(
     config_path: Path, *, search_clock: Callable[[], float] = monotonic,
 ) -> MockIntegrationService:
     """Build once; API reads do not rerun inference or open evaluation references."""
-    config_path = config_path.resolve()
+    config_path = resolve_local_path(config_path, base=Path.cwd())
     config = load_service_config(config_path)
     if config.repository_kind == "POSTGRESQL":
         raise NotImplementedError("PostgreSQL is an interface only in Integration Foundation")
@@ -49,7 +50,7 @@ def build_mock_service(
     repository: IntegrationRepository
     if config.repository_kind == "LOCAL_JSON":
         assert config.repository_path is not None
-        store = (config_path.parent / config.repository_path).resolve()
+        store = resolve_local_path(config.repository_path, base=config_path.parent)
         # Never write over any declared input, including evaluation-only references.
         protected = {config_path, manifest_path}
         for case in dataset.cases:

@@ -7,9 +7,14 @@ import hashlib
 import json
 import os
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 from typing import Any
+
+# These source-checkout tools also work without an installed Amidst package.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from amidst.portability.blender import resolve_blender_executable  # noqa: E402
 
 
 def sha256(path: Path) -> str:
@@ -268,7 +273,7 @@ def render_summary(report: dict[str, Any]) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--blend", type=Path, default=Path("blender/school_v2.blend"))
-    parser.add_argument("--blender", default="blender")
+    parser.add_argument("--blender", help="Blender CLI path; otherwise BLENDER_BIN/PATH")
     parser.add_argument("--output-dir", type=Path, default=Path("data/scene_audit"))
     return parser.parse_args()
 
@@ -289,10 +294,10 @@ def main() -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     before_hash = sha256(blend_path)
     before_stat = blend_path.stat()
-    with tempfile.TemporaryDirectory(prefix="school-v2-audit-") as temp_dir:
+    with tempfile.TemporaryDirectory(prefix=".school-v2-audit-", dir=output_dir) as temp_dir:
         temp_json = Path(temp_dir) / "scene_audit.json"
         command = [
-            args.blender,
+            resolve_blender_executable(args.blender),
             "--background",
             "--factory-startup",
             "--disable-autoexec",

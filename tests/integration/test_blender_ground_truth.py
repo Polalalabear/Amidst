@@ -4,26 +4,26 @@ from __future__ import annotations
 
 import csv
 import os
-import shutil
 import subprocess
 from pathlib import Path
 
 import pytest
 
 from amidst.domain.ground_truth import GroundTruthTrajectory, TrajectoryConfig
+from amidst.portability.blender import resolve_blender_executable
 from amidst.simulation.ground_truth import blender_evaluated_trajectory, sample_trajectory
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _blender() -> str:
-    executable = os.environ.get("BLENDER_BIN") or shutil.which("blender")
-    if executable is None:
-        installed = Path("/Applications/Blender.app/Contents/MacOS/blender")
-        executable = str(installed) if installed.is_file() else None
-    if executable is None:
-        pytest.skip("Blender CLI unavailable")
-    return executable
+    try:
+        return resolve_blender_executable()
+    except FileNotFoundError:
+        if os.environ.get("BLENDER_BIN"):
+            raise
+        pytest.skip("Blender CLI unavailable; configure BLENDER_BIN or PATH")
+
 
 
 def _config() -> TrajectoryConfig:

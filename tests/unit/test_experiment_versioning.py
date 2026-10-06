@@ -1,8 +1,10 @@
 """Explicit versions plus content digests, independent of dataset geometry."""
 
+import errno
 import hashlib
 import json
 import os
+import stat
 from pathlib import Path
 
 import pytest
@@ -119,10 +121,12 @@ def test_real_git_metadata_is_explicit() -> None:
 
 
 def test_character_device_inputs_are_rejected_before_reading() -> None:
-    device = Path("/dev/null")
+    device = Path(os.devnull)
+    if not device.exists() or not stat.S_ISCHR(device.stat().st_mode):
+        pytest.skip("the host does not expose a stat-able null character device")
     reference = ArtifactReference(path=str(device), sha256=hashlib.sha256(b"").hexdigest())
     with pytest.raises(ValueError, match="regular files"):
-        read_reference(reference, Path("/tmp/config.json"))
+        read_reference(reference, device.parent / "config.json")
     with pytest.raises(ValueError, match="regular files"):
         fingerprint(device, "device")
     with pytest.raises(ValueError, match="regular files"):
@@ -133,7 +137,14 @@ def test_character_device_inputs_are_rejected_before_reading() -> None:
 
 def test_fifo_inputs_are_rejected_without_waiting_for_a_writer(tmp_path: Path) -> None:
     fifo = tmp_path / "input.fifo"
-    os.mkfifo(fifo)
+    if not hasattr(os, "mkfifo"):
+        pytest.skip("the host does not support POSIX FIFO creation")
+    try:
+        os.mkfifo(fifo)
+    except OSError as error:
+        if error.errno not in {errno.EPERM, errno.EACCES, errno.ENOSYS, errno.ENOTSUP}:
+            raise
+        pytest.skip(f"the test filesystem does not support FIFOs: {error}")
     reference = ArtifactReference(path=fifo.name, sha256="0" * 64)
     with pytest.raises(ValueError, match="regular files"):
         read_reference(reference, tmp_path / "config.json")
@@ -149,7 +160,14 @@ def test_regular_symlinks_and_parent_directory_references_remain_supported(tmp_p
     nested = tmp_path / "configs"
     nested.mkdir()
     link = nested / "input-link.json"
-    link.symlink_to(parent_file)
+    try:
+        link.symlink_to(parent_file)
+    except NotImplementedError:
+        pytest.skip("the host does not implement symlinks")
+    except OSError as error:
+        if error.errno not in {errno.EPERM, errno.EACCES, errno.ENOSYS, errno.ENOTSUP}:
+            raise
+        pytest.skip(f"the host/test filesystem does not support symlinks: {error}")
     digest = hashlib.sha256(parent_file.read_bytes()).hexdigest()
     for path in ("../input.json", "input-link.json"):
         reference = ArtifactReference(path=path, sha256=digest)
@@ -164,7 +182,16 @@ def test_opened_fifo_is_rechecked_if_the_path_changed_after_stat(
     regular = tmp_path / "regular.json"
     regular.write_text("{}")
     fifo = tmp_path / "swapped.fifo"
-    os.mkfifo(fifo)
+    if not hasattr(os, "mkfifo"):
+        pytest.skip("the host does not support POSIX FIFO creation")
+    try:
+        os.mkfifo(fifo)
+    except OSError as error:
+        if error.errno not in {errno.EPERM, errno.EACCES, errno.ENOSYS, errno.ENOTSUP}:
+            raise
+        pytest.skip(f"the test filesystem does not support FIFOs: {error}")
+    if not hasattr(os, "O_NONBLOCK"):
+        pytest.skip("the host has no nonblocking FIFO open flag")
     original_open = os.open
     descriptors: list[int] = []
 

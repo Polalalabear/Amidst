@@ -2,7 +2,6 @@
 
 import json
 import math
-import shutil
 import subprocess
 from pathlib import Path
 
@@ -28,7 +27,6 @@ from amidst.observation.aggregation import AggregationInputError
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG = ROOT / "configs" / "benchmarks" / "mock_stream_v1.json"
 CASES = ("single_path", "branching_top_k", "temporal_slack", "simplified_stair")
-NODE = shutil.which("node")
 
 
 def _gap(case_id: str = "single_path") -> BoundGapEvent:
@@ -185,10 +183,9 @@ def test_consumer_revalidates_unchecked_models_and_version() -> None:
         ReplaySeek(event_id="", timestamp=20)
 
 
-@pytest.mark.skipif(
-    NODE is None, reason="Node is required for TypeScript runtime contract coverage",
-)
-def test_typescript_validates_actual_python_payloads_and_rejects_corruption(tmp_path: Path) -> None:
+def test_typescript_validates_actual_python_payloads_and_rejects_corruption(
+    tmp_path: Path, node_with_typescript: str,
+) -> None:
     fixtures = []
     for case in CASES:
         gap = _gap(case)
@@ -242,7 +239,7 @@ for (const mutate of [
 console.log('TypeScript consumer: 4 mock cases accepted; corrupt contracts rejected');
 """
     result = subprocess.run(
-        [str(NODE), "--input-type=module", "-e", script, str(fixture)],
+        [node_with_typescript, "--input-type=module", "-e", script, str(fixture)],
         check=True, capture_output=True, text=True,
     )
     assert "4 mock cases accepted" in result.stdout

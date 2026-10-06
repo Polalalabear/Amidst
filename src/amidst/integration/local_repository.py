@@ -7,6 +7,7 @@ from pathlib import Path
 from amidst.experiments.versioning import read_local_bytes
 from amidst.integration.repositories import RepositorySnapshot, _merge_snapshots
 from amidst.observation.aggregation import validate_stream_model
+from amidst.portability.paths import resolve_local_path
 from amidst.storage.json_files import write_json
 
 
@@ -34,7 +35,7 @@ class LocalJsonRepository:
     """
 
     def __init__(self, path: Path, initial: RepositorySnapshot | None = None) -> None:
-        self.path = path
+        self.path = resolve_local_path(path, base=Path.cwd())
         if path.suffix.lower() != ".json" or path.resolve().suffix.lower() != ".json":
             raise ValueError("local repository store must be a JSON file")
         incoming = validate_stream_model(

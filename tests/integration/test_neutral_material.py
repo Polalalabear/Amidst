@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import hashlib
 import os
-import shutil
 import subprocess
 from pathlib import Path
 
 import pytest
+
+from amidst.portability.blender import resolve_blender_executable
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -22,9 +23,12 @@ def _sha256(path: Path) -> str:
 def test_neutral_override_restores_original_data_on_success_and_failure(
     source_scene: Path | None,
 ) -> None:
-    blender = os.environ.get("BLENDER_BIN") or shutil.which("blender")
-    if not blender:
-        pytest.skip("Blender CLI is unavailable")
+    try:
+        blender = resolve_blender_executable()
+    except FileNotFoundError:
+        if os.environ.get("BLENDER_BIN"):
+            raise
+        pytest.skip("Blender CLI unavailable; configure BLENDER_BIN or PATH")
     if source_scene is not None and not source_scene.is_file():
         pytest.skip("The local school_v2 source asset is unavailable")
     source_hash = _sha256(source_scene) if source_scene else None

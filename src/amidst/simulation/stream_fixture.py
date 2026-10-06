@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import hashlib
-import os
 from pathlib import Path
 
 from amidst.domain.common import Provenance
@@ -19,6 +18,7 @@ from amidst.domain.metric_config import MetricConfig
 from amidst.domain.pipeline import InferenceInput, PipelineConfig
 from amidst.domain.stream import OcclusionState, RawProjectedFrameSample
 from amidst.experiments.versioning import PIPELINE_VERSION, read_local_bytes
+from amidst.portability.paths import portable_relative_reference
 from amidst.storage.json_files import write_json
 
 
@@ -97,7 +97,7 @@ def export_stream_dataset(legacy_root: Path, destination: Path) -> DatasetManife
         write_json(folder / "frames.json", frames.model_dump(mode="json"))
         truth_path = source.parent / "ground_truth.json"
         # Reference fingerprinting is benchmark metadata, not inference geometry input.
-        truth_relative = os.path.relpath(truth_path, destination)
+        truth_relative = portable_relative_reference(truth_path, destination)
         cases.append(
             DatasetCase(
                 case_id=inputs.dataset_id,
@@ -109,7 +109,7 @@ def export_stream_dataset(legacy_root: Path, destination: Path) -> DatasetManife
                 evaluation_references=(_reference(truth_path, truth_relative),),
                 constraints=_reference(
                     legacy_root / "constraints.json",
-                    os.path.relpath(legacy_root / "constraints.json", destination),
+                    portable_relative_reference(legacy_root / "constraints.json", destination),
                 ),
             )
         )
@@ -146,6 +146,10 @@ def experiment_config(
         topology_version=manifest.topology_version,
         metric_config_version=metric_config.metric_config_version,
         pipeline_version=PIPELINE_VERSION,
-        dataset_manifest=_reference(dataset_path, os.path.relpath(dataset_path, config_directory)),
-        metric_config=_reference(metric_path, os.path.relpath(metric_path, config_directory)),
+        dataset_manifest=_reference(
+            dataset_path, portable_relative_reference(dataset_path, config_directory)
+        ),
+        metric_config=_reference(
+            metric_path, portable_relative_reference(metric_path, config_directory)
+        ),
     )

@@ -5,7 +5,6 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -14,6 +13,7 @@ import pytest
 
 from amidst.domain.calibration import CameraCalibration
 from amidst.geometry.calibration import transform_point, validate_camera_calibration
+from amidst.portability.blender import resolve_blender_executable
 from amidst.simulation.camera_calibration import (
     export_camera_calibration_json,
     load_camera_calibration_json,
@@ -25,13 +25,13 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _blender() -> str:
-    executable = os.environ.get("BLENDER_BIN") or shutil.which("blender")
-    installed = Path("/Applications/Blender.app/Contents/MacOS/blender")
-    if executable is None and installed.is_file():
-        executable = str(installed)
-    if executable is None:
-        pytest.skip("Blender CLI unavailable")
-    return executable
+    try:
+        return resolve_blender_executable()
+    except FileNotFoundError:
+        if os.environ.get("BLENDER_BIN"):
+            raise
+        pytest.skip("Blender CLI unavailable; configure BLENDER_BIN or PATH")
+
 
 
 def _fingerprint(path: Path) -> tuple[str, int, int]:

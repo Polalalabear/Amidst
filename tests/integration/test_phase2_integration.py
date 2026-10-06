@@ -239,10 +239,9 @@ def test_cli_emits_current_json_contract_and_mock_events() -> None:
 
 def test_typescript_consumes_serialized_backend_consumer_and_replay_responses(
     tmp_path: Path, benchmark_package: tuple[Path, BenchmarkResult],
+    node_with_typescript: str,
 ) -> None:
-    node = shutil.which("node")
-    if node is None:
-        pytest.skip("Node is required for backend-to-TypeScript integration coverage")
+    node = node_with_typescript
     application = IntegrationApplication(build_replay_service(benchmark_package[0]))
     payloads = []
     for gap in application.service.repository.snapshot().gaps:

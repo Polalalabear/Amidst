@@ -6,16 +6,21 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
-from run_scene_audit import sha256
+# The bundled Blender audit scripts remain source-checkout tools.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from run_scene_audit import sha256  # noqa: E402
+
+from amidst.portability.blender import resolve_blender_executable  # noqa: E402
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--blend", type=Path, default=Path("blender/school_v2.blend"))
-    parser.add_argument("--blender", default="blender")
+    parser.add_argument("--blender", help="Blender CLI path; otherwise BLENDER_BIN/PATH")
     parser.add_argument("--scope", choices=("structural", "all"), default="structural")
     parser.add_argument(
         "--output", type=Path, default=Path("data/scene_audit/school_v2_geometry_audit.json")
@@ -30,10 +35,13 @@ def main() -> None:
         raise ValueError("output must be a separate JSON report, never the source asset")
     before_hash = sha256(blend)
     before_stat = blend.stat()
-    with tempfile.TemporaryDirectory(prefix="amidst-geometry-audit-") as temporary:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(
+        prefix=".amidst-geometry-audit-", dir=output.parent
+    ) as temporary:
         staged = Path(temporary) / "geometry.json"
         command = [
-            args.blender,
+            resolve_blender_executable(args.blender),
             "--background",
             "--factory-startup",
             "--disable-autoexec",
@@ -95,7 +103,6 @@ def main() -> None:
             + "\n",
             encoding="utf-8",
         )
-        output.parent.mkdir(parents=True, exist_ok=True)
         os.replace(staged, output)
     print(f"geometry diagnostic: {output}")
     print(f"source SHA-256 unchanged: {before_hash}")

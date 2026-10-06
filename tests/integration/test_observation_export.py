@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-import shutil
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -12,6 +12,7 @@ import pytest
 
 from amidst.domain.camera import Camera
 from amidst.domain.ground_truth import PathKeyframe, TrajectoryConfig
+from amidst.portability.blender import resolve_blender_executable
 from amidst.simulation.ground_truth import sample_trajectory
 from amidst.simulation.observation_export import blender_ray_queries, observe_trajectory
 from amidst.simulation.raycast_types import RaycastResult
@@ -86,11 +87,14 @@ def test_cli_rejects_mismatched_source_before_geometry(tmp_path: Path) -> None:
 
 
 def test_blender_ray_batch_roundtrip_never_requires_truth_schema_in_blender() -> None:
-    if (
-        not shutil.which("blender")
-        and not Path("/Applications/Blender.app/Contents/MacOS/blender").is_file()
-    ):
-        pytest.skip("Blender CLI unavailable")
-    results = blender_ray_queries((((0, 0, 10), (0, 0, -2)), ((10, 0, 10), (10, 0, 0))))
+    try:
+        blender = resolve_blender_executable()
+    except FileNotFoundError:
+        if os.environ.get("BLENDER_BIN"):
+            raise
+        pytest.skip("Blender CLI unavailable; configure BLENDER_BIN or PATH")
+    results = blender_ray_queries(
+        (((0, 0, 10), (0, 0, -2)), ((10, 0, 10), (10, 0, 0))), blender_binary=blender
+    )
     assert results[0].occluded and results[0].reason == "OCCLUDED"
     assert not results[1].occluded and results[1].reason == "CLEAR"
