@@ -6,6 +6,41 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-06 addendum / Controlled robustness PILOT
+
+Downstream checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e` is published on
+`phase1/pilot-downstream-reconstruction`, with identical live origin SHA. Work continues
+only on `phase1/pilot-robustness-validation` in an isolated managed worktree;
+[checkpoint record](../docs/PHASE1_DOWNSTREAM_CHECKPOINT.md) preserves recovery.
+
+Ignored `data/pilot/phase1_robustness_20261006/` contains **PILOT / SYNTHETIC SAMPLE**:
+predeclared nine-scenario controls from three existing office/corridor/auditorium
+trajectories, separate strict inference/evaluation fixtures, baseline/repeat/poison
+runs, saved failure prefixes, metrics, source preservation, GT-free projection-noise
+diagnostic, robustness_summary.md/results/verification, and nine Rerun/PNG presentations
+with overview/visualization_qa.json. No new Blender render or physical trajectory.
+Native runs stay 10s/5Hz; office timestamp-compression controls are 5s/10Hz, while
+native auditorium short-gap window is 9.0–9.8s. Removal really deletes a camera's
+calibration/records; no invented visibility or recovery.
+
+Medium office and long corridor retain3routes/6hypotheses. Short compressed office
+speed33/offset12 yields1route/1hypothesis; only changing offset to1 yields3routes/
+3hypotheses. All completed with COMPLETE; speed31 yields NO_FEASIBLE_PATH, not timeout.
+Native same-camera shortgap fails the pilot topology handoff contract; single-camera
+removal fails its min2 calibration contract. Four unavailable cases have null metrics,
+not artificial zero/Coverage=false. ±0.25px noise preserves3routes/6hypotheses but
+ADE/FDE rise to1.43914081/2.54900313native units and Coverage@1/2/3false at fixed
+ADE<0.02BU. Near-zero native/control metrics are endpoint-conditioned diagnostics.
+
+All27inference invocations retain GT isolation and repeat/poison byte equality;
+poisoned mixed GT/waypoints cannot change preparation inputs. Five computable cases
+change only evaluation under GT poison, and all repeated metrics match. Verification
+PASS_WITH_EXPECTED_LIMITATIONS/errors=[]; original pilot/.blend hash/size/mtime preserved.
+All9RRDs and representative PNGs inspected, links/JS syntax checked; HTML UI unverified.
+Physical/WALL/body/scale authority remains PARTIAL/PROVISIONAL, actual mesh collision
+rate unavailable. GT and private images/RRD remain ignored; formal Cases1–3 and full
+dataset expansion are deferred. Source names AREA_*_ELEVATOR never create elevators.
+
 ### 2026-10-05 addendum / 小型 downstream PILOT
 
 Second checkpoint `fdf9e7e8f2dc695917ba42094a63cc06ca910963` is published on

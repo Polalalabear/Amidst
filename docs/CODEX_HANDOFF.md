@@ -4,7 +4,7 @@
 
 ## 繁體中文
 
-狀態日期：2026-10-05。規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，
+狀態日期：2026-10-06。規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，
 完成／驗證紀錄見 [WORK_LOG](WORK_LOG.md)，契約見 [DATA_SCHEMA](DATA_SCHEMA.md)
 與 [INTERFACES](INTERFACES.md)。
 
@@ -14,9 +14,14 @@
   `codex/dataset-infrastructure`；第二個成功pilot checkpoint
   `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 已push於
   `phase1/pilot-dataset-and-wall-inference`，origin SHA一致。
-  現在只在 `phase1/pilot-downstream-reconstruction`；核對HEAD／dirty state與source hash，
-  不merge回任一checkpoint branch。恢復入口見[第一斷點](PHASE1_CHECKPOINT.md)／
-  [第二斷點](PHASE1_PILOT_CHECKPOINT.md)。
+  第三個downstream checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e` 已push於
+  `phase1/pilot-downstream-reconstruction`，origin SHA一致。現在只在
+  `phase1/pilot-robustness-validation` 的隔離worktree
+  `/Users/polalabear/.codex/worktrees/pilot-robustness-validation/amidst`；
+  並行geometry-authority工作保留於shared checkout，不混入robustness。
+  核對HEAD／dirty state與source hash，不merge回checkpoint。恢復入口見
+  [第一](PHASE1_CHECKPOINT.md)／[第二](PHASE1_PILOT_CHECKPOINT.md)／
+  [第三斷點](PHASE1_DOWNSTREAM_CHECKPOINT.md)。
 - 通用 M0–M8 deterministic 閉環、camera extraction、producer-neutral aggregation、
   multi-gap Events、benchmark runner／MetricConfig／provider contract、GT isolation、
   fake／boundary／reporting regression 均已實作。Evidence 在 WORK_LOG，合成 fixtures
@@ -54,7 +59,19 @@
   PARTIAL／PROVISIONAL，沒有升格WALL或完整school navigation authority。
   Repeated run與GT poison的10份inference artifacts逐byte一致；GT只在結果保存後evaluation。
   Rerun／3D PNG保留observed、全部Top-K與獨立GTdebug；HTML已產出、UI未驗證。
-  已停止於這一條existing trajectory，不生成新dataset、不開始formal Cases1–3。
+  這一條existing trajectory的結果保留於第三checkpoint；controlled robustness如下。
+
+- Controlled robustness已停在固定9scenarios／3existing trajectories；入口為本機ignored
+  `data/pilot/phase1_robustness_20261006/robustness_summary.md`／`verification.json`。
+  Office中GAP與corridor長GAP完整閉環；compressed office短GAP由1route到3feasible
+  branches，Top-K保持多解。±0.25px noise仍COMPLETE但ADE/FDE為1.43914081/
+  2.54900313BU、Coverage@1/2/3false；saved projected點對比不用GT就看出noise放大。
+  Native auditorium短GAP的same-camera topology、camera removal min2input contract、
+  speed31短GAP search空解均明示首個失效層，不補造prediction／metrics。四個失敗case
+  metrics/Coverage為null；27次baseline/repeat/poison inference逐byte一致。
+  Nine readableRRDs與PNGoverview含acceptedobserved、全部inferred與獨立GTdebug；
+  invalidcontext只diagnostic，±1BU支路全圖接近重疊需zoom。Physical仍PARTIAL/PROVISIONAL，
+  沒改core/formalbenchmarksemantics，不新增physicaldataset／render，完成後停止。
 
 ### 仍需人工與 geometry integration 處理
 
@@ -101,13 +118,17 @@
 
 ## English
 
-Status date: 2026-10-05. The first semantic checkpoint remains on
+Status date: 2026-10-06. The first semantic checkpoint remains on
 `codex/dataset-infrastructure`; the successful-pilot checkpoint
 `fdf9e7e8f2dc695917ba42094a63cc06ca910963` is published on
-`phase1/pilot-dataset-and-wall-inference` with identical origin SHA. Resume only on
-`phase1/pilot-downstream-reconstruction`, checking HEAD/dirty state/source identity;
-do not merge into either checkpoint. [First](PHASE1_CHECKPOINT.md) and
-[second checkpoint records](PHASE1_PILOT_CHECKPOINT.md) bind recovery and local assets.
+`phase1/pilot-dataset-and-wall-inference` with identical origin SHA. The downstream
+checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e` is published
+on `phase1/pilot-downstream-reconstruction` with identical live origin SHA. Resume only
+on `phase1/pilot-robustness-validation` in the isolated managed worktree; parallel
+geometry-authority files/shared checkout are preserved. Check HEAD/dirty/source identity,
+and do not merge into checkpoints. [First](PHASE1_CHECKPOINT.md),
+[second](PHASE1_PILOT_CHECKPOINT.md) and [third](PHASE1_DOWNSTREAM_CHECKPOINT.md)
+records bind recovery and local assets.
 Durable rules live in DEVELOPMENT_RULES; completed regression evidence belongs to WORK_LOG.
 The generic deterministic loop, camera extraction, replaceable observation/aggregation
 contracts, multi-gap Events, benchmark runner/MetricConfig, GT isolation, fake/boundary
@@ -146,7 +167,16 @@ routes have partial/provisional topology and collision validity. No GT/mixed exp
 plan enters inference, and no school/WALL authority is promoted. Two runs and GT poison
 have byte-identical10inference artifacts. GT loads only after saved inference for
 evaluation/debug. Rerun and inspected3DPNG retain observed/allTop-K/separateGT;
-standaloneHTML is produced but not UI-verified. Work stops here on one existing route.
+standalone HTML is produced but not UI-verified. The original single-route run remains
+at its checkpoint. Controlled robustness
+now stops at nine cases over three existing trajectories, documented in local ignored
+data/pilot/phase1_robustness_20261006/robustness_summary.md. Medium/long cases complete;
+Compressed short controls retain one versus three feasible routes. Pixel noise preserves inference
+completion but degrades metrics/Coverage. Native same-camera topology, single-camera
+input and infeasible speed expose separate failed layers with honest nullmetrics.
+All 27 inference runs are repeat/GT-poison invariant; nine PNG/Rerun presentations verified.
+Physical validity stays partial/provisional, core/formal semantics unchanged, no new
+physical dataset/render, and no formal Cases1–3.
 
 Human work remains: correct fully blocking bathroom footprints while retaining OBSTACLE/BOTH
 roles; confirm real doorway seams/portal positions/normals and aperture conflicts; provide

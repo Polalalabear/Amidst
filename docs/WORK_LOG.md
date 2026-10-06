@@ -4,6 +4,76 @@
 
 ## 繁體中文
 
+### 2026-10-06 — 第三個 checkpoint 與 controlled robustness PILOT
+
+起始 `phase1/pilot-downstream-reconstruction` working tree clean，HEAD為
+`51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`。Fresh checkpoint checks：895 tests
+passed in81.15s（無skips）、Ruff、mypy74sourcefiles、diff check通過；push成功，live
+origin SHA完全一致。由它建立 `phase1/pilot-robustness-validation`；
+[第三斷點](PHASE1_DOWNSTREAM_CHECKPOINT.md)保留恢復資料，checkpoint不另改commit。
+
+並行工作將shared checkout切到 `phase1/geometry-authority`，因此改在managed
+`/Users/polalabear/.codex/worktrees/pilot-robustness-validation/amidst`續作。
+九個本任務未追蹤script/test檔逐hash驗證搬移；parallel geometry檔及原checkout保留，
+未混入本commit。Existing v2 test assets及ignored pilot資料只在worktree連結供唯讀使用。
+
+固定九個 **PILOT / SYNTHETIC SAMPLE** scenarios，復用office/corridor/auditorium
+三條existing trajectories，沒有新Blender render或physical dataset。根目錄為本機ignored
+`data/pilot/phase1_robustness_20261006/`，包含predeclared controls、strict2D/context、
+separateGT evaluation export、27個baseline/repeat/poison inference、metrics、失敗prefixes、
+source preservation、GT-free noise diagnostic、human-readable robustness_summary.md，
+全部結果JSON及visualization overview／QA。只新增五個bounded helper scripts；
+既有core、domain schemas、benchmark／metric semantics、formalCases1–3均未更改。
+
+| Scenario | GAP endpoint window | Candidate routes / hypotheses | Termination / first failed layer | ADE / FDE BU | Coverage@1/2/3 |
+| --- | --- | ---: | --- | ---: | --- |
+| S01 office native medium | 4.0–9.0s | 3 / 6 | COMPLETE | 0.000708092424 / 0.000280838027 | T/T/T |
+| S02 corridor native long | 3.4–9.4s | 3 / 6 | COMPLETE | 0.000081147488 / 0.000082597284 | T/T/T |
+| S03 auditorium native short | 9.2–9.6s | 0 / 0, search not run | NOT_RUN / TOPOLOGY samecamera | N/A | N/A |
+| S04 office removefront | no accepted endpoint pair | 0 / 0, search not run | NOT_RUN / INPUT_CONTEXT min2 cameras | N/A | N/A |
+| S05 office removerear | no accepted endpoint pair | 0 / 0, search not run | NOT_RUN / INPUT_CONTEXT min2 cameras | N/A | N/A |
+| S06 office ±0.25px noise | 4.0–9.0s | 3 / 6 | COMPLETE, projection accuracy degradation | 1.439140813 / 2.549003131 | F/F/F |
+| S07 office compressed tight | 2.0–4.5s | 1 / 1 | COMPLETE, offset12/speed33 | same as S01 | T/T/T |
+| S08 office compressed ambiguity | 2.0–4.5s | 3 / 3 | COMPLETE, offset1/speed33 | same as S01 | T/T/T |
+| S09 office compressed speedfailure | 2.0–4.5s | 0 / 0, exhaustive empty search | NO_FEASIBLE_PATH / SEARCH speed31 | N/A | N/A |
+
+Nativeoffice/corridor仍10s/5Hz；auditorium只截取原生9.0–9.8s，避免完整stream的overlap。
+Office compressed controls用預先宣告timestamp×0.5，為5s/10Hz，不冒充新的原生render。
+GTreference在export/evaluation專用階段套同一mapping，位置不改，不以GT調參。
+Camera removal真正刪除calibration和records；既有strictconsumer min2拒絕，沒有偽造
+OCCLUDED/FOV、self-transition、departure或recovery。Native samecamera短gap可完成
+2D→inverseprojection→aggregation，但pilot拓樸跨camera contract不支援，清楚停在該層。
+
+所有五個可計算case使用原有K1/2/3與first-primary-per-distinct-candidate semantics，
+minADE@1/2/3、minFDE@1/2/3等於table ADE/FDE；Coverage使用固定ADE<0.02BU診斷門檻。
+另外四個prediction不可用case全部metrics/Coverage為null，不填0/false。GT-compatible
+route只能由evaluation判定，never rerank/select；所有合理Top-K與timinghypotheses保留。
+Shorttight只有1route是configured速度可行性，offset改1後三分支都保留，不是collapse。
+Noise影響inverseprojection/端點accuracy，Graph仍可complete；直接比較兩組saved
+PROJECTED points，不用GT即可看到rear frame45在0.316362776px向量擾動下移位
+2.548758485BU（約8.06BU/px）。未改threshold或借GT修補。長gap增加slack但不證明唯一。
+
+每case的repeat/poison inference artifacts逐byte一致：完整case12份，samecam prefix4份，
+invalidcamera2份；27次actual inference都套file-access guards，GT/mixed/plan/manifest讀取
+均拒絕。Poison mixedexport GT/waypoints後重prepare的consumer inputs也完全相同。
+Repeatedmetrics逐byte一致；五個可計算case的GTpoison只改evaluation，四個N/Acase不讀GT。
+Sourceoriginal/derived .blend與原三條pilot dataset/2D/GT/plan hash、size、mtime全部未改。
+總驗證 **PASS_WITH_EXPECTED_LIMITATIONS, errors=[]**。
+
+九組PNG／readableRRD含saved observed、全部inferred、GT獨立debug；inputcontext拒絕
+只顯示diagnostic，不畫untrusted pixels或GT。NineRRDreadback/counts/hashes/provenance，
+overview＋七個代表PNG目視、16份HTML連結及六份interactiveJSsyntax均通過，
+`visualization_qa.json` errors=[]；HTML UI未驗證。S08±1BU支路在全軌跡縮放近重疊，
+RRD/HTML可zoom/toggle，不改保存的三route幾何。
+Physical validity全部PARTIAL/PROVISIONAL：annotation AABB不認證full-body/meshcollision、
+WALKABLEholes、schooltopology、WALL或真實尺度；actualcollisionrate=null。歷史
+AREA_*_ELEVATOR仍不代表電梯，不產生transition。
+
+Final隔離branch checks：**943 pytest passed in77.33s，無skips**；新增48 tests涵蓋
+consumer13/evaluation10/preparation8/visualization7/runtimeguard及noise診斷10。
+Ruff、strictmypy74sourcefiles與diff check通過。只stage本任務code/tests/docs，本機commit；
+不push新branch、merge、擴大dataset或開始正式Cases1–3，至此停止。
+
 ### 2026-10-05 — 第二個 checkpoint 與 bounded pilot downstream 閉環
 
 使用者明確要求將成功pilot `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 作第二斷點。
@@ -546,6 +616,40 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — downstream checkpoint and controlled robustness PILOT
+
+The successful downstream checkpoint started clean at `51f1ec7`. Fresh checks passed:
+895 tests in 81.15s, no skips; Ruff, mypy for 74 source files, and diff validation.
+It was pushed on `phase1/pilot-downstream-reconstruction` and verified against the
+identical live origin SHA. Continuation starts there on `phase1/pilot-robustness-validation`.
+Parallel work changed the shared checkout, so task-owned files were hash-verified and
+moved to its isolated managed worktree; geometry-authority work is preserved and excluded.
+
+Nine fixed PILOT / SYNTHETIC SAMPLE controls reuse three existing trajectories without
+new physical routes or renders. Medium office and long corridor retain three routes
+and six hypotheses. The native short auditorium gap exposes unsupported same-camera
+topology; genuine camera removal exposes the existing minimum-two-camera input contract.
+Half-time office controls are 5s at 10Hz: a 2.5s gap at speed33 yields one route with
+offset12 and three routes with offset1; speed31 yields normal NO_FEASIBLE_PATH. Four
+unavailable predictions have null ADE/FDE/minima/Coverage. With ±0.25px noise, three
+routes and six hypotheses remain, but ADE/FDE become 1.439140813/2.549003131 BU and
+Coverage@1/2/3 is false. Comparing saved projections without GT confirms amplification
+at recovery. Successful minimum metrics equal primary metrics under existing policies;
+the fixed diagnostic epsilon of 0.02 BU is not formal scale or setting authority.
+
+All 27 real inference calls execute under guards denying truth, mixed-container and
+plan reads. Repeat/poison artifacts and repeated metrics are byte-identical; poisoned
+export positions/waypoints cannot affect strict consumer inputs. Five eligible
+evaluations change only metrics; ineligible cases do not read GT. Source pilot and
+Blender identities remain unchanged. Nine Rerun recordings, counts/hashes and overview/
+representative PNGs were inspected; links/JS syntax checked, HTML UI unverified. Closely
+spaced 1 BU routes remain separately saved. Collision, body, WALL, navigation and scale
+authority stays PARTIAL / PROVISIONAL; no actual mesh collision rate or elevator
+transition is asserted. Verification and visual QA pass with expected limitations and
+no errors. The 48 new tests yield 943 passing tests in 77.33s, with no skips; Ruff,
+strict mypy for 74 files and diff validation pass. Only task files are committed locally;
+no new branch push/merge, dataset expansion, formal Cases 1–3 or benchmark semantic change.
 
 ### 2026-10-05 — Second checkpoint and bounded pilot downstream loop
 
