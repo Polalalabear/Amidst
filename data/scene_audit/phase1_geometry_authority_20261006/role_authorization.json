@@ -1,0 +1,28 @@
+{
+  "schema_version": "geometry-role-authorization-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "authority_scope": "SEMANTIC_ROLE_ONLY",
+  "approval_id": "HUMAN_GEOMETRY_AUTHORITY_OBSTACLE_ROLES_20261006",
+  "basis": "Current user request: retain the19 confirmed OBSTACLE roles, blocks_movement=true and occludes_visibility=true; no approval of extrusion/closed-volume/clearance",
+  "approved_obstacle_ids": [
+    "OBSTACLE_1F_BATHROOM",
+    "OBSTACLE_1F_CORRIDOR_01_01",
+    "OBSTACLE_1F_CORRIDOR_01_02",
+    "OBSTACLE_1F_MAIN_ENTRANCE_01",
+    "OBSTACLE_1F_MAIN_ENTRANCE_02",
+    "OBSTACLE_1F_OFFICE_01",
+    "OBSTACLE_1F_OFFICE_02",
+    "OBSTACLE_1F_RESTAURANT_01",
+    "OBSTACLE_1F_RESTAURANT_02",
+    "OBSTACLE_1F_RESTAURANT_03",
+    "OBSTACLE_1F_STORAGE01",
+    "OBSTACLE_1F_STORAGE02",
+    "OBSTACLE_1F_STORAGE03",
+    "OBSTACLE_2F_BATHROOM",
+    "OBSTACLE_2F_GALLERY_01",
+    "OBSTACLE_2F_GALLERY_02",
+    "OBSTACLE_2F_MEETINGROOM",
+    "OBSTACLE_2F_OFFICE_01",
+    "OBSTACLE_2F_OFFICE_02"
+  ]
+}

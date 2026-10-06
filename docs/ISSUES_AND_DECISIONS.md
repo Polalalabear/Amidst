@@ -224,6 +224,28 @@ user's explicit stop conditions, integration awaits source-bound human annotatio
 physical clearance/contact policy. An additive geometry interface is feasible, but is
 not implemented or approved. The original asset and formal schemas remain unchanged.
 
+2026-10-06 authority update: The additive [read-only geometry provider](GEOMETRY_PROVIDER.md)
+is now implemented. Geometry producers own source-bound exact meshes and review evidence;
+Blender objects, names and evaluation/GT geometry do not become Graph authority. Semantic
+role approval is distinct from physical support, floor/scale approval and complete scope.
+Footprints remain review-only without approved volume evidence. A formal physical consumer
+must call `require_approved_physics`; inspection filters, including empty APPROVED results,
+cannot certify collision-free space. Every complete floor needs approved WALKABLE support.
+All promoted WALL surfaces undergo actual triangle/PORTAL protection regardless of declared
+floor. Original extraction-v1 thresholds remain fixed and source/content-bound.
+The [current evidence](GEOMETRY_AUTHORITY.md) remains **PROVISIONAL**; this interface decision
+does not resolve Graph pruning, stair connectivity, clearance policy or formal benchmark
+authority. The previously accepted 1 BU = 1 m calculation convention is unchanged.
+
+2026-10-06 權威更新：新增唯讀 geometry sidecar 已實作；producer 負責 source-bound
+實際 mesh 與審查證據，Graph 不直接依賴 bpy，亦不拿名稱或 evaluation／GT 當權威。
+Semantic role、physical support、floor／scale 及 scope 完整性分開核准；footprint 沒有
+可信 volume 時保持 REVIEW。正式 consumer 必須通過 `require_approved_physics`；空
+inspection collider 集合不代表無碰撞，complete floor 必須有核准 WALKABLE。升級 WALL
+均以實際 triangles 保護全部 PORTAL，floor label 不得繞過。固定 extraction-v1 閾值與
+內容綁定，不降低門檻。當前證據仍 PROVISIONAL；不將新增介面冒充 Graph pruning、
+stair connectivity、clearance policy 或正式 benchmark 已完成，既有 1 BU = 1 m 換算不變。
+
 ## Protocol definitions do not approve research settings / 協定定義不核准研究參數
 
 Problem: Reusable case and comparison definitions can be mistaken for approved school

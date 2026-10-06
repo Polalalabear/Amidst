@@ -6,6 +6,26 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-06 addendum / Geometry authority evidence
+
+Branch `phase1/geometry-authority` starts from `51f1ec7`.
+[Authority report](scene_audit/phase1_geometry_authority_20261006/authority.md),
+[portable geometry](scene_audit/phase1_geometry_authority_20261006/geometry.json) and
+[manifest](scene_audit/phase1_geometry_authority_20261006/manifest.json) bind the unchanged
+`school_v3.blend` source to exact triangle evidence, original extraction-v1 thresholds and
+an explicit role-only authorization for 19 OBSTACLEs. WALL review yields **73 HIGH_CONFIDENCE,
+1,422 HUMAN_REVIEW, 77 REJECTED, 0 APPROVED** from the previous 81 + 1,491 patches.
+All 28 PORTALs are protected; promoted walls have zero aperture contacts. OBSTACLE volume,
+eight obstacle/PORTAL conflict pairs, stair connectivity, openings and clearance remain
+review concerns. Overall physical/collision validity remains **PROVISIONAL**.
+
+This bundle is read-only diagnostic geometry, not an Observation/GT dataset or formal
+benchmark. The [provider](../docs/GEOMETRY_PROVIDER.md) requires explicit approved physical
+scope before formal consumption; an empty inspection collider query cannot certify safety.
+原始及衍生 `.blend` 不變，保留已採用 1 BU = 1 m 計算換算；沒有修改 Graph、ranking、
+GT isolation、benchmark semantics 或開始 Phase 2。完整逐 patch 審查及重現指令見
+[geometry authority contract](../docs/GEOMETRY_AUTHORITY.md)。
+
 ### 2026-10-05 addendum / 小型 downstream PILOT
 
 Second checkpoint `fdf9e7e8f2dc695917ba42094a63cc06ca910963` is published on

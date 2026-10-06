@@ -4,6 +4,42 @@
 
 ## 繁體中文
 
+### 2026-10-06 — 獨立 Phase 1 geometry authority milestone
+
+由穩定 checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e` 建立
+`phase1/geometry-authority`；來源與既有 checkpoint 不改寫、不 merge。
+[Authority report](../data/scene_audit/phase1_geometry_authority_20261006/authority.md)
+及同目錄 source-bound manifest／exact mesh／portable geometry 記錄 81 seeds + 1,491
+review patches 的重驗：**73 HIGH_CONFIDENCE／1,422 HUMAN_REVIEW／77 REJECTED／0 APPROVED**。
+11 seeds 降級（5 continuous WALKABLE intrusion、6 actual support 不足），3 review 升級。
+保留原 threshold；actual triangle unions／continuous intervals 補強舊 sampling／bounds
+漏掉的穿入及缺面。28 PORTAL hard protection 的 accepted contacts 為 0；包含錯誤 floor
+label 的真實相交，禁止封門，未用 `group_*` 名稱猜 role 或回寫 source／衍生 `.blend`。
+
+19 OBSTACLE 的已確認 role APPROVED，movement／visibility 均 true；footprint／open
+surface physical authority 保持 HUMAN_REVIEW，不擠出高度。PORTAL conflicts 為 8 pairs；
+WALKABLE overlap 大於既有 contact ratio 的 pairs 為 0。Stair A/B 各有兩個 PATH
+components，nearest 3D gaps 為 **4.769402／4.896199**，沿用現有 1 m／BU conversion；
+不把它當另行 physical scale 核准。Connectivity／landing／opening／clearance 仍 REVIEW，
+只有樓梯，沒有電梯，也未建立跨層 connector。
+
+新增 [platform-neutral read-only geometry contract](GEOMETRY_PROVIDER.md)：frozen／strict
+models、source SHA binding、exact triangles、role／physical support／floor／scale authority
+分離。無 bpy／GT dependency；unknown fields 與 unchecked model mutation 拒絕。
+`require_approved_physics` 對 incomplete scope、未核准 floor／scale／collider typed fail closed；
+空 inspection collider 集合不能證明無碰撞，沒有 WALKABLE support 的 floor 不能宣稱完整。
+整體 **physical/collision validity = PROVISIONAL**；未修改 Graph、ranking、GT isolation、
+benchmark／metric semantics，未執行正式 Case 1–3、render、merge 或 push。
+
+本次最終驗證：`uv run pytest` **996 passed in 84.79s，0 failed／0 skipped**；
+`uv run ruff check .` 通過，`uv run mypy` 通過（77 source files），`git diff --check`
+通過。包含既有完整 regression 與新增 101 個 authority/provider/physical-review tests；
+跨 process／不同 output directory 的 review artifacts 一致，兩次獨立 read-only Blender
+export 證據一致。Manifest input／code／artifact hashes 核對通過，90 個本輪文件 local
+links 有效。Original source SHA／size／mtime 完全不變；既有衍生 `.blend` SHA／size
+仍與 saved-marking evidence 相同。1,572 個 patches 的 actual welded triangle components
+均為 1；沒有把整體 geometry completeness 或 stair connectivity 升為 APPROVED。
+
 ### 2026-10-05 — 第二個 checkpoint 與 bounded pilot downstream 閉環
 
 使用者明確要求將成功pilot `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 作第二斷點。
@@ -546,6 +582,47 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Independent Phase 1 geometry authority milestone
+
+The independent `phase1/geometry-authority` branch starts from stable checkpoint
+`51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`, without rewriting or merging history.
+The [authority report](../data/scene_audit/phase1_geometry_authority_20261006/authority.md)
+and source-bound manifest/exact mesh/portable geometry revalidate 81 seeds plus 1,491
+review patches: **73 HIGH_CONFIDENCE / 1,422 HUMAN_REVIEW / 77 REJECTED / 0 APPROVED**.
+Eleven seeds are downgraded (five continuous WALKABLE intrusions, six insufficient actual
+supports), while three reviewed patches are promoted. Original thresholds remain intact.
+Actual triangle unions and continuous intervals catch intrusion/absent support missed by
+the previous sampled/bounding evidence. All 28 portals are hard protected, with zero
+accepted contacts; incorrect floor labels cannot bypass real intersections. No doorway
+infill, source/derived asset save or naming-based role inference occurs.
+
+All 19 confirmed OBSTACLE roles remain APPROVED and movement/visibility blocking true;
+footprint/open-surface physical support remains HUMAN_REVIEW, without invented extrusion.
+Eight obstacle/PORTAL conflict pairs remain; zero WALKABLE pairs exceed the existing
+contact ratio. Stair A/B each has two PATH components, with nearest 3D gaps of
+**4.769402 / 4.896199** under the existing 1 m/BU conversion, not a new architectural-scale
+approval. Connectivity, landings, openings and clearance remain REVIEW. There are stairs
+only, no elevator and no new cross-floor connector.
+
+The new [read-only geometry contract](GEOMETRY_PROVIDER.md) separates role, physical support,
+floor and scale authority through source-bound frozen/strict exact-triangle models.
+There is no bpy/GT dependency; unknown fields and unchecked mutations are rejected.
+`require_approved_physics` raises a typed refusal for incomplete or unapproved physical
+scope; empty inspection collider results cannot certify clearance, and floors without
+actual WALKABLE support cannot claim completeness. Overall physical/collision validity
+remains **PROVISIONAL**. Graph, ranking, GT isolation and benchmark/metric semantics stay
+unchanged; no formal Cases 1–3, rendering, merging or pushing are performed.
+
+Fresh final checks: `uv run pytest` **996 passed in 84.79s, no failures or skips**;
+`uv run ruff check .`, `uv run mypy` (77 source files) and `git diff --check` pass.
+The full existing regression suite and 101 new authority/provider/physical-review tests
+pass. Separate processes/output directories reproduce review artifacts; two independent
+read-only Blender exports reproduce identical evidence. All manifest input/code/artifact
+hashes and 90 local documentation links validate. Original source hash/size/mtime stay
+unchanged; the existing derived scene still matches its saved hash/size evidence. All
+1,572 wall patches have one actual welded triangle component. Geometry completeness and
+stair connectivity remain unapproved.
 
 ### 2026-10-05 — Second checkpoint and bounded pilot downstream loop
 

@@ -4,7 +4,7 @@
 
 ## 繁體中文
 
-狀態日期：2026-10-05。規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，
+狀態日期：2026-10-06。規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，
 完成／驗證紀錄見 [WORK_LOG](WORK_LOG.md)，契約見 [DATA_SCHEMA](DATA_SCHEMA.md)
 與 [INTERFACES](INTERFACES.md)。
 
@@ -14,8 +14,9 @@
   `codex/dataset-infrastructure`；第二個成功pilot checkpoint
   `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 已push於
   `phase1/pilot-dataset-and-wall-inference`，origin SHA一致。
-  現在只在 `phase1/pilot-downstream-reconstruction`；核對HEAD／dirty state與source hash，
-  不merge回任一checkpoint branch。恢復入口見[第一斷點](PHASE1_CHECKPOINT.md)／
+  本次由穩定 Phase 1 checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`
+  建立獨立 `phase1/geometry-authority`；核對 HEAD／dirty state 與 source hash，
+  不 merge 回 checkpoint 或 downstream branch。恢復入口見[第一斷點](PHASE1_CHECKPOINT.md)／
   [第二斷點](PHASE1_PILOT_CHECKPOINT.md)。
 - 通用 M0–M8 deterministic 閉環、camera extraction、producer-neutral aggregation、
   multi-gap Events、benchmark runner／MetricConfig／provider contract、GT isolation、
@@ -30,14 +31,25 @@
 - 三個明確不可走 AREA 已 EXCLUDED，兩個 stair AREA 改為 cross-floor 診斷。
   1F=25／2F=165 僅 PROPOSED。已補的 WALKABLE、19 個 OBSTACLE/BOTH 與六個
   stair annotations 都不能替代 physical／floor／camera-plane authority。
-- Checkpoint `91f4ea600805739aa9659dfef6a381d71be9a692` 後新 extraction／
+- Geometry authority [目前報告](../data/scene_audit/phase1_geometry_authority_20261006/authority.md)
+  與 [portable snapshot](../data/scene_audit/phase1_geometry_authority_20261006/geometry.json)
+  保留 1,572 個 WALL patches：73 HIGH_CONFIDENCE／1,422 HUMAN_REVIEW／77 REJECTED，
+  0 APPROVED。28 PORTAL hard protection 下 accepted contact 為 0；不靠名稱猜 role，
+  不填門洞、不降低閾值。19 OBSTACLE role APPROVED，但 footprint physical HUMAN_REVIEW；
+  stair A/B connectivity／opening／clearance 仍 REVIEW，整體 **PROVISIONAL**。
+  [Geometry Provider](GEOMETRY_PROVIDER.md) 唯讀、source-bound、platform-neutral；
+  正式 physical consumer 必須通過 `require_approved_physics`，當前 snapshot 會 typed refuse。
+  Inspection 的空 APPROVED collider 集合不能證明無碰撞。本輪不修改來源 `.blend`、
+  GT isolation、Graph、ranking 或 benchmark，不執行正式 Cases 1–3。
+- 歷史 checkpoint `91f4ea600805739aa9659dfef6a381d71be9a692` 後的 extraction／
   [candidate report](../data/scene_audit/phase1_wall_candidates_20261005.md) 與
   [saved marking report](../data/scene_audit/phase1_wall_markings_20261005.md) 已完成：
-  81個WALL surface patches正式標在本機衍生scene，1,491個候選留HUMAN_REVIEW。
+  曾將 81 個 WALL surface patches 標在本機衍生 scene，1,491 個候選留 HUMAN_REVIEW；
+  這是前一 marking 版本，不是目前 physical APPROVED 數量。
   `blender/working/phase1_wall_pilot_20261005/school_v3_wall_marked.blend` 保存／重開驗證
   原始objects與physical geometry未變，28 PORTAL實際相交為0；不改原source或整個group_*。
   WALL為annotation-only selections，未核准movement/navigation collider。
-- 本次只生成一組新 `data/pilot/phase1_wall_pilot_20261005/office/`
+- 2026-10-05 pilot 只生成一組 `data/pilot/phase1_wall_pilot_20261005/office/`
   **PILOT / SYNTHETIC SAMPLE**：10秒、5FPS、50timestamps／100PNG全部驗證成功。
   原pose的AUDITORIUM_FRONT／REAR cameras，office metadata路線160scene units，
   visible→GAP→visible成立；24個point GAP中19個marker全隱藏、5個partial body。
@@ -67,10 +79,16 @@
 - Stair A/B 缺可信連續 landing；A ENTRY 與 A/B EXIT 未接相應 floor。Slab opening／
   clearance 尚待人工審查。只有角色／方向 annotation，沒有 stair navigation edges。
   正式跨樓層 Case 4 暫緩，不以它展開 benchmark。
-- 衍生scene WALL markings 尚未接入 formal geometry/navigation，仍有 1,491 候選需 review。
+- 最新 authority 有 1,422 個 WALL patches 需 review、77 個不能升級 WALL；
+  11 個 seed 降級（5 個 continuous WALKABLE intrusion、6 個 actual support 不足），
+  3 個原 review patches 升為 HIGH_CONFIDENCE。衍生標記未回寫，尚未接入 formal geometry/navigation。
   OBSTACLE 是原 footprint proxy，沒有已核准的 3D 高度／occlusion volume；physical
   geometry、floor planes／例外與 camera-plane bindings 待核准。使用者已確認只有 stairs、
   沒有 elevator；`AREA_*_ELEVATOR` 只是歷史命名，不建立 transition。
+- 19 個 OBSTACLE 與 PORTAL 有 8 個 conflict pairs；WALKABLE overlap 超過既有
+  contact ratio 的 pair 為 0。Stair A/B PATH 各有兩個 components，nearest 3D gap
+  為 4.769402／4.896199（保留現有 1 m／BU conversion，非另行尺度核准）；
+  ENTRY／EXIT 接地、landing／opening／clearance 與 floor authority 仍待人工證據。
 - Collision Top-K pruning ownership contract 仍 unresolved；現有 evaluation-only fake
   AABB detector 不代替 mesh certification。Graph WALKABLE 仍依 explicit route 設定；
   projected endpoints 需對齊 configured nodes，尚無 arbitrary-point snapping／connector。
@@ -79,7 +97,7 @@
   GT不能進inference。正式adapters仍需共同authority。Downstream diagnostic ADE/FDE為
   0.000708092424／0.000280838027BU，minADE@3／minFDE@3相同；Coverage@3在ADE<0.02BU
   下成立，僅evaluation判定，不以GT選候選、不認證formal epsilon或metric scale。
-  本次pilot forward residual最大0.000314545px、固定診斷plane inverse residual最大
+  既有pilot forward residual最大0.000314545px、固定診斷plane inverse residual最大
   0.001615262scene units，沒有異常；這不是formal floor/camera-plane認證。實際地面
   Z≈20.07885，比 WALKABLE Z=25 低 4.92115；marker plane Z≈75.12885。
   METRIC／1m-per-unit 有建築尺度疑義，不猜測換算比例。完整 generation 待 image policy、
@@ -101,12 +119,13 @@
 
 ## English
 
-Status date: 2026-10-05. The first semantic checkpoint remains on
+Status date: 2026-10-06. The first semantic checkpoint remains on
 `codex/dataset-infrastructure`; the successful-pilot checkpoint
 `fdf9e7e8f2dc695917ba42094a63cc06ca910963` is published on
 `phase1/pilot-dataset-and-wall-inference` with identical origin SHA. Resume only on
-`phase1/pilot-downstream-reconstruction`, checking HEAD/dirty state/source identity;
-do not merge into either checkpoint. [First](PHASE1_CHECKPOINT.md) and
+`phase1/geometry-authority`, created from stable Phase 1 checkpoint
+`51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`. Check HEAD/dirty state/source identity;
+do not merge into checkpoint or downstream branches. [First](PHASE1_CHECKPOINT.md) and
 [second checkpoint records](PHASE1_PILOT_CHECKPOINT.md) bind recovery and local assets.
 Durable rules live in DEVELOPMENT_RULES; completed regression evidence belongs to WORK_LOG.
 The generic deterministic loop, camera extraction, replaceable observation/aggregation
@@ -121,14 +140,27 @@ are bound in the update artifact. The ignored asset is saved locally; portable r
 audit/report evidence refer to the new source, without transferring v2 authority.
 Three intentional nonwalkable areas are excluded; stair areas defer to cross-floor checks.
 Floors 25/165 are only proposed. Semantic metadata and annotations do not grant physical,
-floor or camera-plane authority. Post-checkpoint extraction and saved marking reports
-confirm 81 WALL surface patches, retaining 1,491 HUMAN_REVIEW patches. The ignored
+floor or camera-plane authority. The current [authority report](../data/scene_audit/phase1_geometry_authority_20261006/authority.md)
+retains 1,572 WALL patches: 73 HIGH_CONFIDENCE, 1,422 HUMAN_REVIEW, 77 REJECTED and
+0 APPROVED. Eleven seeds are downgraded (five continuous WALKABLE intrusions and six
+insufficient actual support); three former review patches become HIGH_CONFIDENCE.
+All 28 portals remain hard protected, with zero accepted contacts. Nineteen OBSTACLE
+roles are APPROVED, while their footprint physical support remains HUMAN_REVIEW.
+Stair connectivity/opening/clearance and overall physical validity remain PROVISIONAL.
+The [read-only provider](GEOMETRY_PROVIDER.md) is platform-neutral/source-bound;
+`require_approved_physics` refuses the current incomplete scope. An empty inspection
+collider set never certifies clearance. Source assets, GT isolation, Graph, ranking and
+benchmark semantics stay unchanged; no formal Cases 1–3 are run.
+
+Historical post-checkpoint extraction and saved marking reports
+recorded 81 WALL surface patches, retaining 1,491 HUMAN_REVIEW patches. These are prior
+marking counts, not current physical approvals. The ignored
 blender/working/phase1_wall_pilot_20261005/school_v3_wall_marked.blend stores exact
 existing face selections with annotation-only WALL semantics. Independent reopening
 preserves original objects/physical geometry and all 28 portals, with zero actual
 annotation intersections. Original source and whole mixed group_* objects stay unchanged;
 navigation/movement colliders remain unapproved.
-Exactly one new ignored PILOT / SYNTHETIC SAMPLE at
+Exactly one ignored PILOT / SYNTHETIC SAMPLE was generated on 2026-10-05 at
 data/pilot/phase1_wall_pilot_20261005/office/ has all 50 timestamps / 100 PNGs verified:
 10s at 5 FPS, existing AUDITORIUM_FRONT/REAR poses and a 160-unit 1F office metadata
 route. Visible→GAP→visible succeeds, with 24 landmark GAP samples, 19 fully hidden
@@ -155,6 +187,10 @@ remaining WALL candidates and 3D collider/occlusion volumes; approve source-boun
 planes and exceptions. The user confirms stairs only and no elevator; historical
 AREA_*_ELEVATOR names never create an elevator transition. Six local contacts are diagnostic,
 not approved passage, and two-sided probes can land on the same small threshold.
+Current obstacle checks retain eight PORTAL conflict pairs and zero WALKABLE overlaps
+above the existing contact ratio. A/B PATH each has two components, with nearest 3D
+gaps of 4.769402/4.896199 under the existing 1 m/BU conversion; this does not approve
+architectural scale. Landing, entry/exit floor connections and opening/clearance remain REVIEW.
 
 Collision Top-K pruning remains unresolved; evaluation AABB checks do not certify meshes.
 Graph routes and projected node anchors still require explicit configs, with no arbitrary

@@ -1,0 +1,37 @@
+{
+  "schema_version": "geometry-authority-manifest-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "inputs": {
+    "candidates": {
+      "path": "data/scene_audit/phase1_wall_candidates_20261005.json",
+      "sha256": "25463fc6df1243c7e705e55ed36de525faff4f59f82d9a185fd629a259c70650"
+    },
+    "meshes": {
+      "path": "data/scene_audit/phase1_geometry_authority_20261006/wall_meshes.json",
+      "sha256": "614c017a593f5ff3344b5637a520f057dac9194e7c82acaa2f8cac562af17e08"
+    },
+    "audit": {
+      "path": "data/scene_audit/school_v3_semantic_audit.json",
+      "sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+    },
+    "config": {
+      "path": "configs/scene_validation_school_v3.json",
+      "sha256": "4b20ca8b6ee0e2719ade06945ba8a64c5659cbdc0dce86936ea5052fd4feb031"
+    },
+    "obstacle_authorization": {
+      "path": "data/scene_audit/phase1_geometry_authority_20261006/role_authorization.json",
+      "sha256": "af714f7112561c959a049cac3e4e7b42d91fe2931c0e1c037864b2ae6da41d8b"
+    }
+  },
+  "artifacts": {
+    "authority.json": "5ec665c4a4d22af37d6d101114ced98774dad210968cfb770c24ac9349cdded8",
+    "authority.md": "46ade7929982fbb8f31f6f9375cf0bc5dda8b4b6afa951d4093c983d3ea9406b",
+    "geometry.json": "c64605e471ac2eb0024dd6d420b75f3798dbd1edf51148e1459c61fc4910a21b"
+  },
+  "code_sha256": {
+    "src/amidst/geometry_authority.py": "b386c95556e4e7d7616b688fc1a7b3dcf2e3ee2dd6fdac82b704f691af830a0e",
+    "src/amidst/geometry_physical_review.py": "546fa21c37a671014c4a2d765d4abd63db7f57c7fc41a62f515afac2403bcb24",
+    "src/amidst/scene_geometry.py": "68475d49580c31fe35140241b63fabef10486db720213f5e64317a014751a64f",
+    "scripts/export_geometry_authority_snapshot.py": "2d0fcb88b7e8bd5caeacb8c9c7cffa23898882dd10b68319430e912e69917d59"
+  }
+}
