@@ -1,0 +1,27 @@
+{
+  "schema_version": "phase1-after-human-review-plan-v1",
+  "status": "PREPARED_NOT_EXECUTED",
+  "no_second_manual_data_organization": true,
+  "formal_execution_enabled_this_turn": false,
+  "stages": [
+    {"step": 1, "action": "apply decisions", "entrypoint": "uv run python human_review/apply_decisions.py --decisions <completed.json> --source-asset <school_v3.blend> --apply --output <fresh-application-root>", "gate": "explicit complete decisions, immutable payload, source/input/frame hashes, reviewer/time"},
+    {"step": 2, "action": "regenerate authority certificates", "entrypoint": "included in step1 via bounded-source review adapter", "gate": "exact source mesh/face/bounds receipts plus exhaustive existing support/body/collision proof; failure remains NOT_CERTIFIED"},
+    {"step": 3, "action": "lock formal configs", "entrypoint": "approved_input_lock.json plus source-bound formal context and case-inventory adapters", "gate": "prove Case1 unique route, Case2 >=2 feasible distinct routes, Case3 long-gap instance under existing protocol; freeze schedule/seed/source/config hashes BEFORE dataset; no diagnostic relabel"},
+    {"step": 4, "action": "generate formal dataset", "entrypoint": "fresh source-bound export using existing Blender exporter with reviewed marker/footpoint binding", "gate": "source unchanged; timestamps/calibration/FOV/occlusion and endpoint scope; separate simulation/evaluation GT and inference package"},
+    {"step": 5, "action": "run formal Case 1–3", "entrypoint": "existing projection / graph / reconstruction modules via formal authority adapters", "gate": "no new inference engine, no GT ranking/pruning, physical hard reject only certificate domain"},
+    {"step": 6, "action": "run Baseline A/B/C", "entrypoint": "src/amidst/benchmark/baselines.py existing factor masks", "gate": "same inputs/metrics/K and supported existing ablations; unavailable timed hypotheses N/A"},
+    {"step": 7, "action": "regenerate benchmark table/charts", "entrypoint": "existing benchmark_report and finalization report modules", "gate": "retain failed/empty/N/A rows; frozen epsilon; runtime evidence explicitly separated"},
+    {"step": 8, "action": "regenerate formal Rerun demos", "entrypoint": "existing Rerun recorder with formal source/certificate/projection layers", "gate": "GT isolated optional debug layer; recordings loadable; inference/ordering unchanged"},
+    {"step": 9, "action": "fresh rerun", "entrypoint": "fresh checkout + physical materialization + fresh dataset/inference/report/demo paths", "gate": "compare hashes/metrics/order/termination; GT poison; fresh-process and deterministic checks; tests/Ruff/mypy/diff"},
+    {"step": 10, "action": "freeze Phase1", "entrypoint": "authorized finalization commits/push and annotated freeze tag only after complete exit gate", "gate": "all Phase1 exit requirements pass; no main merge, no force push, Phase2 frozen"}
+  ],
+  "automatic_work_still_required": [
+    "Source-bound landmark-to-footpoint and formal authority adapters (old contracts remain diagnostic).",
+    "School route inventory and formal Case1/2/3 schedule definitions under approved settings; current parallel offsets do not establish formal branching.",
+    "Formal export / evaluation / report / demo orchestration after the above readiness proofs."
+  ],
+  "human_reopen_only_when": [
+    "A genuinely new source geometry contradiction defeats the approved bounded certificate.",
+    "The required legitimate case route/body scope or camera-landmark semantics cannot fit the explicitly approved domain."
+  ]
+}

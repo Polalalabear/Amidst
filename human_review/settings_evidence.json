@@ -1,0 +1,1318 @@
+{
+  "all_approve_means_existing_artifacts_immediately_formal": false,
+  "automatic_readiness_owner": "AGENT_AFTER_EXPLICIT_DECISIONS",
+  "automatic_readiness_requirements": [
+    "Apply source-bound geometry decisions then calculate complete local certificates.",
+    "Prove Case1 uniqueness, Case2 distinct feasible branches, Case3 timing feasibility.",
+    "Verify camera FOV, occlusion, calibration and GAP endpoint domain without GT.",
+    "Add source-bound landmark-to-footpoint and multiview endpoint authority adapters.",
+    "Wrap diagnostic-only context/MetricConfig contracts with formal approval evidence.",
+    "Create frozen source/config hashes, fresh formal dataset and independent inventory."
+  ],
+  "automatic_settings": {
+    "aggregation_max_visible_sample_gap_s": null,
+    "baseline_protocol": "EXISTING_A_B_C_FACTOR_MASKS_AND_SUPPORTED_ABLATIONS",
+    "case4": "DEFERRED",
+    "coverage_comparison": "STRICTLY_LESS_THAN",
+    "cross_case_aggregation": "NONE",
+    "distance_metric": "ADE",
+    "interpolation_policy": "PIECEWISE_LINEAR",
+    "k_values": [
+      1,
+      2,
+      3
+    ],
+    "metres_per_blender_unit": 0.0247,
+    "phase2": "FROZEN",
+    "physical_policy": {
+      "approval_id": "HUMAN_PHASE1_PHYSICAL_POLICY_2026_10_06",
+      "authority": "APPROVED",
+      "body_clearance_m": 0.05,
+      "body_height_m": 1.7,
+      "body_model": "UPRIGHT_CYLINDER",
+      "body_radius_m": 0.3,
+      "clearance_comparison": "MINIMUM_INCLUSIVE",
+      "collision_comparison": "CONTACT_INCLUSIVE",
+      "collision_tolerance_m": 0.001,
+      "config_version": "physical-authority-policy-v2-approved",
+      "evidence_ids": [
+        "USER_EXPLICIT_PHYSICAL_POLICY_APPROVAL_2026_10_06"
+      ],
+      "policy_id": "school-v3-pedestrian-physical-policy",
+      "portal_horizontal_clearance_m": 0.05,
+      "portal_vertical_clearance_m": 0.1,
+      "trajectory_reference": "FLOOR_CONTACT_POINT",
+      "units": "metres"
+    },
+    "pixel_sigma_px": null,
+    "projection_policy": "EXACT_TIME_MULTIVIEW_THEN_SINGLE_VIEW_FIXED_PLANE",
+    "sampling_extent": "SOURCE_ENDPOINTS_INCLUSIVE_NO_REJECTION",
+    "sampling_hz": 5,
+    "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+    "top_k_policy": "FIRST_HYPOTHESIS_PER_DISTINCT_CANDIDATE_IN_INPUT_ORDER",
+    "unavailable_uncertainty": "RETAIN_AND_MARK_LOW_CONFIDENCE"
+  },
+  "case3_instance_status": {
+    "current_preview_is_formal_long_gap_evidence": false,
+    "exact_gap_duration_fixed_by_protocol": false,
+    "extra_human_duration_decision_required_by_protocol": false,
+    "illustrative_prd_gap_s": [
+      20,
+      180
+    ],
+    "illustrative_values_are_existing_school_dataset": false,
+    "instance_owner": "AGENT_PRE_DATASET_AUTOMATIC_CASE_PREFLIGHT",
+    "required_proof": [
+      "AUTHORIZED_LOCAL_ROUTE_AND_SOURCE_CAMERA_VISIBILITY",
+      "GAP_EXCEEDS_MINIMUM_TRAVEL_TIME_WITH_LEGAL_TEMPORAL_SLACK",
+      "SHARED_ENDPOINT_TIMES_FOR_ALL_METHODS",
+      "SOURCE_BOUND_SCHEDULE_DECLARED_AND_HASH_LOCKED_BEFORE_METRICS",
+      "NO_GAP_EVIDENCE_FABRICATED_OR_GT_SELECTED_TIMING"
+    ],
+    "unique_duration_formula_declared": false
+  },
+  "checkpoint_sha": "85f5e6b055e75d286c1519e6c5ba2f2efc416347",
+  "choices": [
+    "APPROVE",
+    "REJECT",
+    "FIX_GEOMETRY",
+    "KEEP_REVIEW"
+  ],
+  "ground_truth_or_evaluation_opened": false,
+  "input_hashes": [
+    {
+      "path": "configs/benchmarks/protocol_v1.json",
+      "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7"
+    },
+    {
+      "path": "configs/architectural_scale_school_v3.json",
+      "sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf"
+    },
+    {
+      "path": "configs/physical_authority_policy_school_v3.json",
+      "sha256": "2427b3670ac8c3748c75deb172fd1f3bfb7da853fb49a7ad2cd5aac2ef8af7ea"
+    },
+    {
+      "path": "configs/physical_policy_runtime_school_v3.json",
+      "sha256": "704b0f2fb115b691ff61249dc8d4521e39a06467aec0bcca913119fce0491f08"
+    },
+    {
+      "path": "configs/physical_collision_numerics_v1.json",
+      "sha256": "cca85ae64f56538f4e2b5352c4962c82d468a3d00622b6c99f35e8a329ac795b"
+    },
+    {
+      "path": "src/amidst/domain/metric_config.py",
+      "sha256": "50b349d6300494d7cd0a89818270cee713a23de441855d8d536ebaabdc4a7532"
+    },
+    {
+      "path": "src/amidst/domain/search.py",
+      "sha256": "c6719aed6832fb6c0ce7217dd254e4cca55b4f6fdf4c8c47442189b534158597"
+    },
+    {
+      "path": "src/amidst/domain/reconstruction.py",
+      "sha256": "9641a3072ed91d4c8ac4f7b35a5560089e052e9397f1bec81401428f62af963e"
+    },
+    {
+      "path": "src/amidst/datasets/pilot.py",
+      "sha256": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792"
+    },
+    {
+      "path": "src/amidst/datasets/pilot_topology.py",
+      "sha256": "980e3670edba58769b75fdea4a115f0a1b135d984787998fb6429eaf97e4caa3"
+    },
+    {
+      "path": "src/amidst/benchmark/baselines.py",
+      "sha256": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1"
+    },
+    {
+      "path": "scripts/phase1_projection_policy.py",
+      "sha256": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_authority_map.json",
+      "sha256": "6e1f8d512c9aaf994ce35890f0d688190e33523edc5eeda7a954e07aeb2ff7fe"
+    }
+  ],
+  "review_decisions": [
+    {
+      "approve_options": [
+        {
+          "conversion": "SUBTRACT_SOURCE_BOUND_Z_OFFSET_KEEP_XY",
+          "fresh_observations_required": true,
+          "id": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET",
+          "inference_reference": "FLOOR_CONTACT_POINT",
+          "landmark_reference": "RIGID_UPRIGHT_SOURCE_BOUND_MARKER",
+          "offset": "PER_CONTEXT_PLANE_MINUS_APPROVED_SOURCE_SUPPORT",
+          "scope": "GEOMETRY_DECISION_APPROVED_LOCAL_DOMAIN_WITHIN_WALK_1F_OFFICE",
+          "single_view_fallback": "ALLOWED_WITH_METHOD_CONFIDENCE_PROVENANCE"
+        },
+        {
+          "fresh_observations_required": true,
+          "id": "FLOOR_CONTACT_MARKER",
+          "inference_reference": "FLOOR_CONTACT_POINT",
+          "landmark_reference": "VISIBLE_FLOOR_CONTACT_POINT",
+          "offset_bu": 0.0,
+          "offset_m": 0.0,
+          "scope": "GEOMETRY_DECISION_APPROVED_LOCAL_DOMAIN_WITHIN_WALK_1F_OFFICE",
+          "single_view_fallback": "ALLOWED_WITH_METHOD_CONFIDENCE_PROVENANCE"
+        }
+      ],
+      "approved_binding_candidate_area": "AREA_1F_OFFICE",
+      "approved_binding_candidate_cameras": [
+        "CAM_1F_AUDITORIUM_FRONT",
+        "CAM_1F_AUDITORIUM_REAR"
+      ],
+      "approved_binding_candidate_floor": "1F",
+      "approved_binding_candidate_site": "office",
+      "approved_binding_candidate_walkable": "WALK_1F_OFFICE",
+      "blocks": [
+        1,
+        2,
+        3
+      ],
+      "category": "PROJECTION_BINDING",
+      "decision": null,
+      "id": "HR-02",
+      "other_streams_role": "HISTORICAL_LIMITATION_EVIDENCE_NOT_BINDING_APPROVAL",
+      "recommended_option": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET",
+      "title": "可見 landmark 如何對應核准地板上的人物落點"
+    },
+    {
+      "approve_options": [
+        {
+          "comparison": "STRICTLY_LESS_THAN",
+          "distance_metric": "ADE",
+          "epsilon_m": 0.5,
+          "id": "ADE_EPSILON_0_50_M"
+        },
+        {
+          "comparison": "STRICTLY_LESS_THAN",
+          "distance_metric": "ADE",
+          "epsilon_m": 1.0,
+          "id": "ADE_EPSILON_1_00_M"
+        }
+      ],
+      "blocks": [
+        1,
+        2,
+        3
+      ],
+      "category": "FORMAL_SETTING",
+      "decision": null,
+      "id": "HR-03",
+      "recommended_option": "ADE_EPSILON_0_50_M",
+      "scale_basis": "EXISTING_PROTOCOL_INITIAL_TARGETS_NOT_APPROVED_COVERAGE",
+      "title": "Coverage 的正式 ADE 容差"
+    },
+    {
+      "approve_options": [
+        {
+          "direct_path_slack_tolerance_s": 1.0,
+          "dwell_location": "DEPARTURE_WAYPOINT_ONLY",
+          "id": "EXISTING_SPEED_WITH_SUPPORTED_DWELL",
+          "include_dwell_hypotheses": true,
+          "max_speed_bu_s": 32.0,
+          "max_speed_m_s": 0.7904,
+          "timing_primary": "UNIFORM_CONTINUOUS_FIRST"
+        },
+        {
+          "direct_path_slack_tolerance_s": 1.0,
+          "dwell_location": null,
+          "id": "EXISTING_SPEED_UNIFORM_ONLY",
+          "include_dwell_hypotheses": false,
+          "max_speed_bu_s": 32.0,
+          "max_speed_m_s": 0.7904,
+          "timing_primary": "UNIFORM_CONTINUOUS_FIRST"
+        }
+      ],
+      "blocks": [
+        1,
+        2,
+        3
+      ],
+      "category": "FORMAL_SETTING",
+      "decision": null,
+      "id": "HR-04",
+      "recommended_option": "EXISTING_SPEED_WITH_SUPPORTED_DWELL",
+      "speed_authority": "PROPOSED_FORMAL_RESEARCH_CEILING_NOT_MEASURED_PERSON_SPEED",
+      "title": "固定現有速度上限與長 GAP 的 timing 假設"
+    }
+  ],
+  "schema_version": "phase1-human-review-settings-evidence-v1",
+  "simulation_recipe_opened": false,
+  "source": {
+    "pinned_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "source_asset_path": "blender/school_v3.blend",
+    "source_immutable": true,
+    "source_size_bytes": 468300506,
+    "verified_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "verified_size_bytes": 468300506
+  },
+  "status": "HUMAN_REVIEW_PENDING_NO_FORMAL_EXECUTION",
+  "streams": [
+    {
+      "approved_floor_plane": {
+        "approval_id": "SOURCE_BOUND_GEOMETRY_REVIEW_PHYSICAL_POLICY_2026_10_06",
+        "authority": "APPROVED",
+        "evidence_ids": [
+          "SOURCE_SHA256:cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM_OFFICE_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_BATHROOM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS101",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS101_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS102",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS102_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS103",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS103_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS104",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS104_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_01",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_02",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_03",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_04",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MAIN_ENTRANCE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MEETINGROOM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MEETINGROOM_01_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_OFFICE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_OFFICE_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_A",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_A_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_B",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_B_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_SIDE_ENTRANCE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_STORAGE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_STORAGE_THRESHOLD"
+        ],
+        "floor_id": "1F",
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "point": [
+          0.0,
+          0.0,
+          20.07884979248047
+        ]
+      },
+      "approved_walkable_id": "WALK_1F_CORRIDOR_01",
+      "cameras": [
+        {
+          "camera_id": "CAM_1F_CORRIDOR_02",
+          "first_observed_endpoint": {
+            "camera_id": "CAM_1F_CORRIDOR_02",
+            "frame_id": 47,
+            "point_2d": [
+              596.6235626988304,
+              93.70090765326776
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_corridor",
+            "timestamp": 9.4
+          },
+          "gap_sample_count": 47,
+          "last_observed_endpoint": {
+            "camera_id": "CAM_1F_CORRIDOR_02",
+            "frame_id": 49,
+            "point_2d": [
+              598.1574103737929,
+              93.10829629730392
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_corridor",
+            "timestamp": 9.8
+          },
+          "observed_frame_ids": [
+            47,
+            48,
+            49
+          ],
+          "observed_sample_count": 3,
+          "position_bu": [
+            526.3782348632812,
+            562.9591064453125,
+            153.3989715576172
+          ],
+          "position_m": [
+            13.001542401123046,
+            13.90508992919922,
+            3.7889545974731447
+          ],
+          "source_calibration": {
+            "camera_id": "CAM_1F_CORRIDOR_02",
+            "camera_to_world": [
+              [
+                0.48862528800964355,
+                0.3659653067588806,
+                -0.7920320630073547,
+                526.3782348632812
+              ],
+              [
+                -0.8724938631057739,
+                0.20495112240314484,
+                -0.4435647130012512,
+                562.9591064453125
+              ],
+              [
+                -1.4487076214209083e-06,
+                0.9077799320220947,
+                0.419446736574173,
+                153.3989715576172
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "clip_end": 1000.0,
+            "clip_start": 0.10000000149011612,
+            "convention": "BLENDER_NEG_Z_UP_Y",
+            "cx": 480.0,
+            "cy": 270.0,
+            "floor_id": "1F",
+            "fx": 586.6666603088379,
+            "fy": 586.6666603088379,
+            "height": 540,
+            "meters_per_unit": 1.0,
+            "pixel_origin": "TOP_LEFT_CONTINUOUS",
+            "width": 960,
+            "zone_id": "CORRIDOR"
+          },
+          "source_calibration_canonical_sha256": "399eff11ba5c085aa4b95b06aaec77877017678d6ee114a43c50592d41799ea9",
+          "visibility_runs": [
+            {
+              "first_frame_id": 0,
+              "first_timestamp": 0.0,
+              "last_frame_id": 46,
+              "last_timestamp": 9.2,
+              "sample_count": 47,
+              "status": "GAP"
+            },
+            {
+              "first_frame_id": 47,
+              "first_timestamp": 9.4,
+              "last_frame_id": 49,
+              "last_timestamp": 9.8,
+              "sample_count": 3,
+              "status": "OBSERVED"
+            }
+          ]
+        },
+        {
+          "camera_id": "CAM_1F_CORRIDOR_03",
+          "first_observed_endpoint": {
+            "camera_id": "CAM_1F_CORRIDOR_03",
+            "frame_id": 0,
+            "point_2d": [
+              77.95772879771204,
+              112.97974228286398
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_corridor",
+            "timestamp": 0.0
+          },
+          "gap_sample_count": 32,
+          "last_observed_endpoint": {
+            "camera_id": "CAM_1F_CORRIDOR_03",
+            "frame_id": 17,
+            "point_2d": [
+              103.17190751008417,
+              117.5201829995923
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_corridor",
+            "timestamp": 3.4
+          },
+          "observed_frame_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "observed_sample_count": 18,
+          "position_bu": [
+            1483.135986328125,
+            504.4393615722656,
+            153.0009002685547
+          ],
+          "position_m": [
+            36.633458862304686,
+            12.45965223083496,
+            3.7791222366333006
+          ],
+          "source_calibration": {
+            "camera_id": "CAM_1F_CORRIDOR_03",
+            "camera_to_world": [
+              [
+                0.8285464644432068,
+                -0.21742476522922516,
+                0.5159817934036255,
+                1483.135986328125
+              ],
+              [
+                0.5599203109741211,
+                0.32174116373062134,
+                -0.7635259628295898,
+                504.4393615722656
+              ],
+              [
+                -3.127556738036219e-06,
+                0.9215254187583923,
+                0.3883180320262909,
+                153.0009002685547
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "clip_end": 1000.0,
+            "clip_start": 0.10000000149011612,
+            "convention": "BLENDER_NEG_Z_UP_Y",
+            "cx": 480.0,
+            "cy": 270.0,
+            "floor_id": "1F",
+            "fx": 640.0000190734863,
+            "fy": 640.0000190734863,
+            "height": 540,
+            "meters_per_unit": 1.0,
+            "pixel_origin": "TOP_LEFT_CONTINUOUS",
+            "width": 960,
+            "zone_id": "CORRIDOR"
+          },
+          "source_calibration_canonical_sha256": "72e9b078367ce7e89f4c5937f01fdf2d2d1a5404a7936b95755adf95087c3e9c",
+          "visibility_runs": [
+            {
+              "first_frame_id": 0,
+              "first_timestamp": 0.0,
+              "last_frame_id": 17,
+              "last_timestamp": 3.4,
+              "sample_count": 18,
+              "status": "OBSERVED"
+            },
+            {
+              "first_frame_id": 18,
+              "first_timestamp": 3.6,
+              "last_frame_id": 49,
+              "last_timestamp": 9.8,
+              "sample_count": 32,
+              "status": "GAP"
+            }
+          ]
+        }
+      ],
+      "context_path": "data/finalization/local_run/dataset/inference/corridor/context.json",
+      "context_sha256": "76a7e49823e917aa9e02ed88fd0e5b82c265f50b501dbd8adbe7405381fabd77",
+      "evidence_status": "DIAGNOSTIC_INFERENCE_ONLY_NOT_FORMAL_CASE_ROUTE",
+      "exact_time_multiple_observed_views_count": 0,
+      "floor_support_z_bu": 20.07884979248047,
+      "floor_support_z_m": 0.49594758987426757,
+      "landmark_plane": {
+        "floor_id": "1F",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "plane_id": "DIAGNOSTIC_CORRIDOR_LANDMARK",
+        "point": [
+          0,
+          0,
+          75.1288516998291
+        ],
+        "zone_id": "AREA_1F_ELEVATOR"
+      },
+      "landmark_z_bu": 75.1288516998291,
+      "landmark_z_m": 1.8556826369857786,
+      "observations_path": "data/finalization/local_run/dataset/inference/corridor/observations.json",
+      "observations_sha256": "ea5398c950453fc8f521cbdefc7db5b43f2c2128985d41f88abfc2f2791a6a82",
+      "offset_basis": "INFERENCE_PLANE_MINUS_APPROVED_SOURCE_SUPPORT_NO_GT",
+      "offset_semantic_authority": "HUMAN_REVIEW",
+      "rigid_landmark_to_floor_offset_bu": 55.05000190734863,
+      "rigid_landmark_to_floor_offset_m": 1.359735047111511,
+      "sampling_hz": 5,
+      "site_id": "corridor",
+      "timestamp_count": 50,
+      "timestamp_first": 0.0,
+      "timestamp_last": 9.8,
+      "zone": {
+        "authority": "ANNOTATION_AABB_ONLY_PROVISIONAL",
+        "bounds_max": [
+          1090.0,
+          900.0,
+          155.0
+        ],
+        "bounds_min": [
+          930.0,
+          700.0,
+          15.0
+        ],
+        "floor_id": "1F",
+        "walkable_object_id": "WALK_1F_CORRIDOR_01",
+        "zone_id": "AREA_1F_ELEVATOR"
+      }
+    },
+    {
+      "approved_floor_plane": {
+        "approval_id": "SOURCE_BOUND_GEOMETRY_REVIEW_PHYSICAL_POLICY_2026_10_06",
+        "authority": "APPROVED",
+        "evidence_ids": [
+          "SOURCE_SHA256:cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM_OFFICE_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_BATHROOM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS101",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS101_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS102",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS102_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS103",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS103_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS104",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS104_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_01",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_02",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_03",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_04",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MAIN_ENTRANCE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MEETINGROOM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MEETINGROOM_01_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_OFFICE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_OFFICE_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_A",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_A_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_B",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_B_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_SIDE_ENTRANCE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_STORAGE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_STORAGE_THRESHOLD"
+        ],
+        "floor_id": "1F",
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "point": [
+          0.0,
+          0.0,
+          20.07884979248047
+        ]
+      },
+      "approved_walkable_id": "WALK_1F_OFFICE",
+      "cameras": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "first_observed_endpoint": {
+            "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+            "frame_id": 0,
+            "point_2d": [
+              774.9788404715257,
+              79.6755717151978
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_office",
+            "timestamp": 0.0
+          },
+          "gap_sample_count": 29,
+          "last_observed_endpoint": {
+            "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+            "frame_id": 20,
+            "point_2d": [
+              838.4602382939759,
+              86.52395569480393
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_office",
+            "timestamp": 4.0
+          },
+          "observed_frame_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "observed_sample_count": 21,
+          "position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "position_m": [
+            50.02349409179688,
+            57.16834296875,
+            3.784387042236328
+          ],
+          "source_calibration": {
+            "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+            "camera_to_world": [
+              [
+                -0.8181571960449219,
+                -0.22697052359580994,
+                0.5283022522926331,
+                2025.24267578125
+              ],
+              [
+                0.574994683265686,
+                -0.32295548915863037,
+                0.7517186999320984,
+                2314.5078125
+              ],
+              [
+                1.2119321013415174e-07,
+                0.9187950491905212,
+                0.3947351574897766,
+                153.21405029296875
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "clip_end": 1000.0,
+            "clip_start": 0.10000000149011612,
+            "convention": "BLENDER_NEG_Z_UP_Y",
+            "cx": 480.0,
+            "cy": 270.0,
+            "floor_id": "1F",
+            "fx": 640.0000190734863,
+            "fy": 640.0000190734863,
+            "height": 540,
+            "meters_per_unit": 1.0,
+            "pixel_origin": "TOP_LEFT_CONTINUOUS",
+            "width": 960,
+            "zone_id": "AUDITORIUM_FRONT"
+          },
+          "source_calibration_canonical_sha256": "769f856881f894b7cd77979f197e72863468e32ef8a5c7893f311596d44d7831",
+          "visibility_runs": [
+            {
+              "first_frame_id": 0,
+              "first_timestamp": 0.0,
+              "last_frame_id": 20,
+              "last_timestamp": 4.0,
+              "sample_count": 21,
+              "status": "OBSERVED"
+            },
+            {
+              "first_frame_id": 21,
+              "first_timestamp": 4.2,
+              "last_frame_id": 49,
+              "last_timestamp": 9.8,
+              "sample_count": 29,
+              "status": "GAP"
+            }
+          ]
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "first_observed_endpoint": {
+            "camera_id": "CAM_1F_AUDITORIUM_REAR",
+            "frame_id": 45,
+            "point_2d": [
+              282.8554840102888,
+              67.5277606992183
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_office",
+            "timestamp": 9.0
+          },
+          "gap_sample_count": 45,
+          "last_observed_endpoint": {
+            "camera_id": "CAM_1F_AUDITORIUM_REAR",
+            "frame_id": 49,
+            "point_2d": [
+              291.64786966616566,
+              66.57285070760534
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_office",
+            "timestamp": 9.8
+          },
+          "observed_frame_ids": [
+            45,
+            46,
+            47,
+            48,
+            49
+          ],
+          "observed_sample_count": 5,
+          "position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "position_m": [
+            50.012678796386716,
+            39.042655615234374,
+            3.784830267333984
+          ],
+          "source_calibration": {
+            "camera_id": "CAM_1F_AUDITORIUM_REAR",
+            "camera_to_world": [
+              [
+                0.8221364617347717,
+                -0.2256315052509308,
+                0.5226683020591736,
+                2024.8048095703125
+              ],
+              [
+                0.5692904591560364,
+                0.32584381103515625,
+                -0.7548074126243591,
+                1580.67431640625
+              ],
+              [
+                1.0944755501895997e-07,
+                0.9181047677993774,
+                0.39633795619010925,
+                153.23199462890625
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "clip_end": 1000.0,
+            "clip_start": 0.10000000149011612,
+            "convention": "BLENDER_NEG_Z_UP_Y",
+            "cx": 480.0,
+            "cy": 270.0,
+            "floor_id": "1F",
+            "fx": 640.0621032714844,
+            "fy": 640.0621032714844,
+            "height": 540,
+            "meters_per_unit": 1.0,
+            "pixel_origin": "TOP_LEFT_CONTINUOUS",
+            "width": 960,
+            "zone_id": "AUDITORIUM_REAR"
+          },
+          "source_calibration_canonical_sha256": "6614324dcc4dcbc3b6e781128fb77cb8154909bfda56437d8fa37cdca6b4ec3f",
+          "visibility_runs": [
+            {
+              "first_frame_id": 0,
+              "first_timestamp": 0.0,
+              "last_frame_id": 44,
+              "last_timestamp": 8.8,
+              "sample_count": 45,
+              "status": "GAP"
+            },
+            {
+              "first_frame_id": 45,
+              "first_timestamp": 9.0,
+              "last_frame_id": 49,
+              "last_timestamp": 9.8,
+              "sample_count": 5,
+              "status": "OBSERVED"
+            }
+          ]
+        }
+      ],
+      "context_path": "data/finalization/local_run/dataset/inference/office/context.json",
+      "context_sha256": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70",
+      "evidence_status": "DIAGNOSTIC_INFERENCE_ONLY_NOT_FORMAL_CASE_ROUTE",
+      "exact_time_multiple_observed_views_count": 0,
+      "floor_support_z_bu": 20.07884979248047,
+      "floor_support_z_m": 0.49594758987426757,
+      "landmark_plane": {
+        "floor_id": "1F",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point": [
+          0,
+          0,
+          75.12884788513183
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      "landmark_z_bu": 75.12884788513183,
+      "landmark_z_m": 1.8556825427627563,
+      "observations_path": "data/finalization/local_run/dataset/inference/office/observations.json",
+      "observations_sha256": "3a8e1244c6374b22bc9866b85b3c917ba7071c6a4821eb8bb65b3efb9c262726",
+      "offset_basis": "INFERENCE_PLANE_MINUS_APPROVED_SOURCE_SUPPORT_NO_GT",
+      "offset_semantic_authority": "HUMAN_REVIEW",
+      "rigid_landmark_to_floor_offset_bu": 55.049998092651364,
+      "rigid_landmark_to_floor_offset_m": 1.3597349528884888,
+      "sampling_hz": 5,
+      "site_id": "office",
+      "timestamp_count": 50,
+      "timestamp_first": 0.0,
+      "timestamp_last": 9.8,
+      "zone": {
+        "authority": "ANNOTATION_AABB_ONLY_PROVISIONAL",
+        "bounds_max": [
+          1495.0,
+          2310.0,
+          155.0
+        ],
+        "bounds_min": [
+          1145.0,
+          1710.0,
+          15.0
+        ],
+        "floor_id": "1F",
+        "walkable_object_id": "WALK_1F_OFFICE",
+        "zone_id": "AREA_1F_OFFICE"
+      }
+    },
+    {
+      "approved_floor_plane": {
+        "approval_id": "SOURCE_BOUND_GEOMETRY_REVIEW_PHYSICAL_POLICY_2026_10_06",
+        "authority": "APPROVED",
+        "evidence_ids": [
+          "SOURCE_SHA256:cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM_OFFICE_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_BATHROOM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS101",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS101_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS102",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS102_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS103",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS103_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS104",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS104_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_01",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_02",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_03",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_04",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MAIN_ENTRANCE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MEETINGROOM",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MEETINGROOM_01_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_OFFICE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_OFFICE_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_A",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_A_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_B",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_B_THRESHOLD",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_SIDE_ENTRANCE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_STORAGE",
+          "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_STORAGE_THRESHOLD"
+        ],
+        "floor_id": "1F",
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "point": [
+          0.0,
+          0.0,
+          20.07884979248047
+        ]
+      },
+      "approved_walkable_id": "WALK_1F_AUDITORIUM",
+      "cameras": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "first_observed_endpoint": {
+            "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+            "frame_id": 0,
+            "point_2d": [
+              429.1911244315919,
+              63.66636103571264
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_auditorium",
+            "timestamp": 0.0
+          },
+          "gap_sample_count": 6,
+          "last_observed_endpoint": {
+            "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+            "frame_id": 43,
+            "point_2d": [
+              940.7774567003878,
+              143.68699640154773
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_auditorium",
+            "timestamp": 8.6
+          },
+          "observed_frame_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43
+          ],
+          "observed_sample_count": 44,
+          "position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "position_m": [
+            50.02349409179688,
+            57.16834296875,
+            3.784387042236328
+          ],
+          "source_calibration": {
+            "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+            "camera_to_world": [
+              [
+                -0.8181571960449219,
+                -0.22697052359580994,
+                0.5283022522926331,
+                2025.24267578125
+              ],
+              [
+                0.574994683265686,
+                -0.32295548915863037,
+                0.7517186999320984,
+                2314.5078125
+              ],
+              [
+                1.2119321013415174e-07,
+                0.9187950491905212,
+                0.3947351574897766,
+                153.21405029296875
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "clip_end": 1000.0,
+            "clip_start": 0.10000000149011612,
+            "convention": "BLENDER_NEG_Z_UP_Y",
+            "cx": 480.0,
+            "cy": 270.0,
+            "floor_id": "1F",
+            "fx": 640.0000190734863,
+            "fy": 640.0000190734863,
+            "height": 540,
+            "meters_per_unit": 1.0,
+            "pixel_origin": "TOP_LEFT_CONTINUOUS",
+            "width": 960,
+            "zone_id": "AUDITORIUM_FRONT"
+          },
+          "source_calibration_canonical_sha256": "769f856881f894b7cd77979f197e72863468e32ef8a5c7893f311596d44d7831",
+          "visibility_runs": [
+            {
+              "first_frame_id": 0,
+              "first_timestamp": 0.0,
+              "last_frame_id": 43,
+              "last_timestamp": 8.6,
+              "sample_count": 44,
+              "status": "OBSERVED"
+            },
+            {
+              "first_frame_id": 44,
+              "first_timestamp": 8.8,
+              "last_frame_id": 49,
+              "last_timestamp": 9.8,
+              "sample_count": 6,
+              "status": "GAP"
+            }
+          ]
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "first_observed_endpoint": {
+            "camera_id": "CAM_1F_AUDITORIUM_REAR",
+            "frame_id": 10,
+            "point_2d": [
+              21.405790668905524,
+              141.97138988284783
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_auditorium",
+            "timestamp": 2.0
+          },
+          "gap_sample_count": 12,
+          "last_observed_endpoint": {
+            "camera_id": "CAM_1F_AUDITORIUM_REAR",
+            "frame_id": 49,
+            "point_2d": [
+              505.3824761753569,
+              65.73514692283285
+            ],
+            "provenance": "OBSERVED",
+            "target_id": "finalization_auditorium",
+            "timestamp": 9.8
+          },
+          "observed_frame_ids": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            48,
+            49
+          ],
+          "observed_sample_count": 38,
+          "position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "position_m": [
+            50.012678796386716,
+            39.042655615234374,
+            3.784830267333984
+          ],
+          "source_calibration": {
+            "camera_id": "CAM_1F_AUDITORIUM_REAR",
+            "camera_to_world": [
+              [
+                0.8221364617347717,
+                -0.2256315052509308,
+                0.5226683020591736,
+                2024.8048095703125
+              ],
+              [
+                0.5692904591560364,
+                0.32584381103515625,
+                -0.7548074126243591,
+                1580.67431640625
+              ],
+              [
+                1.0944755501895997e-07,
+                0.9181047677993774,
+                0.39633795619010925,
+                153.23199462890625
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ],
+            "clip_end": 1000.0,
+            "clip_start": 0.10000000149011612,
+            "convention": "BLENDER_NEG_Z_UP_Y",
+            "cx": 480.0,
+            "cy": 270.0,
+            "floor_id": "1F",
+            "fx": 640.0621032714844,
+            "fy": 640.0621032714844,
+            "height": 540,
+            "meters_per_unit": 1.0,
+            "pixel_origin": "TOP_LEFT_CONTINUOUS",
+            "width": 960,
+            "zone_id": "AUDITORIUM_REAR"
+          },
+          "source_calibration_canonical_sha256": "6614324dcc4dcbc3b6e781128fb77cb8154909bfda56437d8fa37cdca6b4ec3f",
+          "visibility_runs": [
+            {
+              "first_frame_id": 0,
+              "first_timestamp": 0.0,
+              "last_frame_id": 9,
+              "last_timestamp": 1.8,
+              "sample_count": 10,
+              "status": "GAP"
+            },
+            {
+              "first_frame_id": 10,
+              "first_timestamp": 2.0,
+              "last_frame_id": 31,
+              "last_timestamp": 6.2,
+              "sample_count": 22,
+              "status": "OBSERVED"
+            },
+            {
+              "first_frame_id": 32,
+              "first_timestamp": 6.4,
+              "last_frame_id": 32,
+              "last_timestamp": 6.4,
+              "sample_count": 1,
+              "status": "GAP"
+            },
+            {
+              "first_frame_id": 33,
+              "first_timestamp": 6.6,
+              "last_frame_id": 46,
+              "last_timestamp": 9.2,
+              "sample_count": 14,
+              "status": "OBSERVED"
+            },
+            {
+              "first_frame_id": 47,
+              "first_timestamp": 9.4,
+              "last_frame_id": 47,
+              "last_timestamp": 9.4,
+              "sample_count": 1,
+              "status": "GAP"
+            },
+            {
+              "first_frame_id": 48,
+              "first_timestamp": 9.6,
+              "last_frame_id": 49,
+              "last_timestamp": 9.8,
+              "sample_count": 2,
+              "status": "OBSERVED"
+            }
+          ]
+        }
+      ],
+      "context_path": "data/finalization/local_run/dataset/inference/auditorium/context.json",
+      "context_sha256": "5de37aca5e15d84cb053b2a4328536d4ba7dbcb023d163c80aea01ebcd67f5bf",
+      "evidence_status": "DIAGNOSTIC_INFERENCE_ONLY_NOT_FORMAL_CASE_ROUTE",
+      "exact_time_multiple_observed_views_count": 33,
+      "floor_support_z_bu": 20.07884979248047,
+      "floor_support_z_m": 0.49594758987426757,
+      "landmark_plane": {
+        "floor_id": "1F",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "plane_id": "DIAGNOSTIC_AUDITORIUM_LANDMARK",
+        "point": [
+          0,
+          0,
+          75.12884979248047
+        ],
+        "zone_id": "AREA_1F_AUDITORIUM"
+      },
+      "landmark_z_bu": 75.12884979248047,
+      "landmark_z_m": 1.8556825898742675,
+      "observations_path": "data/finalization/local_run/dataset/inference/auditorium/observations.json",
+      "observations_sha256": "140573dc56223a58e2c02f95d34a084fe1c536b161b0f1405d5c92e7b03966ae",
+      "offset_basis": "INFERENCE_PLANE_MINUS_APPROVED_SOURCE_SUPPORT_NO_GT",
+      "offset_semantic_authority": "HUMAN_REVIEW",
+      "rigid_landmark_to_floor_offset_bu": 55.05,
+      "rigid_landmark_to_floor_offset_m": 1.359735,
+      "sampling_hz": 5,
+      "site_id": "auditorium",
+      "timestamp_count": 50,
+      "timestamp_first": 0.0,
+      "timestamp_last": 9.8,
+      "zone": {
+        "authority": "ANNOTATION_AABB_ONLY_PROVISIONAL",
+        "bounds_max": [
+          2030.0,
+          2315.0,
+          155.0
+        ],
+        "bounds_min": [
+          1520.0,
+          1575.0,
+          15.0
+        ],
+        "floor_id": "1F",
+        "walkable_object_id": "WALK_1F_AUDITORIUM",
+        "zone_id": "AREA_1F_AUDITORIUM"
+      }
+    }
+  ]
+}

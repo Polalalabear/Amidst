@@ -1,0 +1,1128 @@
+{
+  "schema_version": "phase1-finalization-human-review-v1",
+  "gate_id": "PHASE1-FINALIZATION-LOCAL-AUTHORITY-AND-FORMAL-SETTINGS",
+  "status": "BLOCKED",
+  "classification": "DIAGNOSTIC",
+  "physical_checkpoint_sha": "f264db1579882e54cecba22db24ec8798822fd0c",
+  "projection_checkpoint_sha": "8f4055ffcdc3bf6efd723c7956ac685e1fe033f1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "metres_per_blender_unit": 0.0247,
+  "original_source_modified": false,
+  "case_ids_blocked": [
+    "case1",
+    "case2",
+    "case3"
+  ],
+  "allowed_choices": [
+    "APPROVE",
+    "REJECT",
+    "FIX_GEOMETRY",
+    "KEEP_REVIEW"
+  ],
+  "approved": {
+    "architectural_scale": "APPROVED",
+    "body_policy": {
+      "approval_id": "HUMAN_PHASE1_PHYSICAL_POLICY_2026_10_06",
+      "authority": "APPROVED",
+      "body_clearance_m": 0.05,
+      "body_height_m": 1.7,
+      "body_model": "UPRIGHT_CYLINDER",
+      "body_radius_m": 0.3,
+      "clearance_comparison": "MINIMUM_INCLUSIVE",
+      "collision_comparison": "CONTACT_INCLUSIVE",
+      "collision_tolerance_m": 0.001,
+      "config_version": "physical-authority-policy-v2-approved",
+      "evidence_ids": [
+        "USER_EXPLICIT_PHYSICAL_POLICY_APPROVAL_2026_10_06"
+      ],
+      "policy_id": "school-v3-pedestrian-physical-policy",
+      "portal_horizontal_clearance_m": 0.05,
+      "portal_vertical_clearance_m": 0.1,
+      "trajectory_reference": "FLOOR_CONTACT_POINT",
+      "units": "metres"
+    },
+    "supported_walkable_subdomains": 48,
+    "known_collision_components": 58,
+    "complete_local_physical_scopes": 0
+  },
+  "minimal_blockers": [
+    {
+      "id": "LOCAL_NAVIGATION_AUTHORITY",
+      "current_authority": "REVIEW / NOT_CERTIFIED",
+      "issue": "No complete source-bound local physical scope certificate exists. Shared unclassified group_0 enclosure has uncertain solid interior; sampled windows can also encounter contact or degenerate triangles.",
+      "required_decision_payload": "Select a limited review domain and decide intended surface/solid ownership only for source faces relevant to that domain, or authorize a traceable derived-geometry correction. No whole group_0 component approval is requested. The agent computes clearance and exact local certification after this semantic decision; failures remain REVIEW.",
+      "not_requested": [
+        "global school approval",
+        "1422 WALL patch reviews",
+        "73 provisional WALL collider upgrades",
+        "eight unrelated portal approvals",
+        "Stair A/B approval",
+        "whole group_0 component authority",
+        "human calculation of clearance or local certificates"
+      ]
+    },
+    {
+      "id": "CAMERA_LANDMARK_AND_FLOOR_SEMANTIC_BINDING",
+      "current_authority": "UNRESOLVED_RESEARCH_SETTING",
+      "issue": "Existing calibration/diagnostic pilot bindings do not establish approved case-specific floor/contact plane, endpoint access, camera topology and unique/branched feasible route inventory.",
+      "required_decision_payload": "Confirm the observed landmark definition and its intended floor/contact-plane relation for the selected local domain and existing source-bound cameras. The agent extracts and verifies calibration, endpoint access and topology, then computes route uniqueness, branch count and feasible route inventory after geometry semantics are resolved."
+    },
+    {
+      "id": "FORMAL_METRIC_SETTINGS",
+      "current_authority": "UNRESOLVED_RESEARCH_SETTING",
+      "issue": "Formal Coverage distance/epsilon and temporal alignment/interpolation/reference sampling are still null in committed protocol. Historical diagnostic epsilon is not a formal choice.",
+      "required_decision_payload": "Declare Coverage D and strictly positive epsilon in metres plus supported alignment/interpolation/reference sampling settings before any formal run. Requested K=[1,2,3] is already supplied by this Sprint request.",
+      "configuration": "configs/benchmarks/protocol_v1.json",
+      "current_formal_settings": {
+        "status": "UNRESOLVED_RESEARCH_SETTING",
+        "distance_metric": null,
+        "epsilon": null,
+        "epsilon_unit": null,
+        "k_values": null,
+        "temporal_alignment_policy": null,
+        "interpolation_policy": null,
+        "reference_sampling_policy": null
+      },
+      "epsilon_proposed_by_this_package": null
+    }
+  ],
+  "programmatic_checks_after_semantic_decision": [
+    "source and calibration hash verification",
+    "clearance, floor containment and exact local scope certification",
+    "endpoint access and authorized adjacency extraction",
+    "Case1 route uniqueness and Case2 branch count",
+    "feasible route inventory, speed/time pruning and timing hypotheses",
+    "independent simulation/evaluation movement and dwell annotations",
+    "formal input versioning and all Sprint exit gates"
+  ],
+  "choice_semantics": {
+    "APPROVE": "Approve only a fully specified, source-bound scope/binding/setting payload. Geometry still must pass the existing programmatic certificate and all finalization exit gates.",
+    "REJECT": "Exclude the reviewed proposed domain or settings; retain approved component/floor evidence and seek an independently eligible bounded replacement.",
+    "FIX_GEOMETRY": "Authorize a separate traceable derived geometry/evidence correction plan; original school_v3.blend remains immutable. Regenerate and validate source bindings before approval.",
+    "KEEP_REVIEW": "Keep this gate pending and prohibit formal Case1-3/freeze while preserving completed independent work."
+  },
+  "candidate_region_evidence": [
+    {
+      "region_id": "BODY:WALK_1F_CORRIDOR_01",
+      "walkable_id": "WALK_1F_CORRIDOR_01",
+      "floor_id": "1F",
+      "area_id": null,
+      "portal_id": null,
+      "portal_required_for_this_bounded_review": false,
+      "floor_support_authority": "APPROVED",
+      "full_annotation_supported": true,
+      "floor_support_z_bu": 20.07884979248047,
+      "floor_support_z_m": 0.49594758987426757,
+      "floor_support_area_m2": 139.93772659479987,
+      "body_or_ceiling_clearance_approved": false,
+      "physical_scope_status": "REVIEW",
+      "certificate": null,
+      "searched_window_count": 180,
+      "search_is_exhaustive_geometric_window_enumeration": false,
+      "preview_proxy_vertices_bu": [
+        [
+          972.0720825195312,
+          508.96783447265625,
+          25.0
+        ],
+        [
+          1484.5445556640625,
+          508.96783447265625,
+          25.0
+        ],
+        [
+          1484.5445556640625,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          531.8611450195312,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          538.608642578125,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          538.608642578125,
+          531.8611450195312,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          972.0720825195312,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          878.9989013671875,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          878.9989013671875,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          878.9989013671875,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          538.608642578125,
+          754.0654907226562,
+          25.0
+        ],
+        [
+          538.608642578125,
+          718.0277709960938,
+          25.0
+        ],
+        [
+          878.9989013671875,
+          718.0277709960938,
+          25.0
+        ],
+        [
+          538.608642578125,
+          718.0277709960938,
+          25.0
+        ],
+        [
+          538.608642578125,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          841.061279296875,
+          688.5774536132812,
+          25.0
+        ],
+        [
+          841.061279296875,
+          718.0277709960938,
+          25.0
+        ],
+        [
+          538.608642578125,
+          508.96783447265625,
+          25.0
+        ],
+        [
+          912.7913208007812,
+          508.96783447265625,
+          25.0
+        ],
+        [
+          912.7913208007812,
+          531.8611450195312,
+          25.0
+        ],
+        [
+          538.608642578125,
+          531.8611450195312,
+          25.0
+        ]
+      ],
+      "preview_proxy_triangles": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          4,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          8,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          12,
+          14,
+          15
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          16,
+          18,
+          19
+        ],
+        [
+          20,
+          21,
+          22
+        ],
+        [
+          20,
+          22,
+          23
+        ]
+      ],
+      "witness_excerpts": [
+        {
+          "distance_lower_m": 0.0,
+          "distance_upper_m": 1.9203499681334887e-16,
+          "exact_distance_queries": 1,
+          "reason": "UNCLASSIFIED_SOURCE_BODY_CONTACT",
+          "source_face_index": 1030,
+          "source_object_id": "group_0.003",
+          "source_triangles_screened": 8912,
+          "status": "REVIEW",
+          "triangle_bu": [
+            [
+              948.0122375488281,
+              894.0296783447266,
+              20.07884979248047
+            ],
+            [
+              948.0122375488281,
+              703.1018829345703,
+              153.93710327148438
+            ],
+            [
+              948.0122375488281,
+              703.1018829345703,
+              20.07884979248047
+            ]
+          ],
+          "triangle_m": [
+            [
+              23.415902267456055,
+              22.082533055114745,
+              0.49594758987426757
+            ],
+            [
+              23.415902267456055,
+              17.366616508483887,
+              3.802246450805664
+            ],
+            [
+              23.415902267456055,
+              17.366616508483887,
+              0.49594758987426757
+            ]
+          ],
+          "location_bu": [
+            948.0122375488281,
+            766.7444814046224,
+            64.69826761881511
+          ],
+          "location_m": [
+            23.415902267456055,
+            18.938588690694175,
+            1.5980472101847332
+          ]
+        },
+        {
+          "exact_distance_queries": 0,
+          "reason": "DEGENERATE_SOURCE_BODY_CONTEXT_TRIANGLE",
+          "source_face_index": 1308,
+          "source_object_id": "group_0.003",
+          "source_triangles_screened": 8912,
+          "status": "REVIEW",
+          "triangle_bu": [
+            [
+              1089.7444763183594,
+              703.1018829345703,
+              20.07884979248047
+            ],
+            [
+              1089.7444763183594,
+              909.7776641845703,
+              20.07884979248047
+            ],
+            [
+              1089.7444763183594,
+              775.9365997314453,
+              20.07884979248047
+            ]
+          ],
+          "triangle_m": [
+            [
+              26.916688565063478,
+              17.366616508483887,
+              0.49594758987426757
+            ],
+            [
+              26.916688565063478,
+              22.471508305358885,
+              0.49594758987426757
+            ],
+            [
+              26.916688565063478,
+              19.1656340133667,
+              0.49594758987426757
+            ]
+          ],
+          "location_bu": [
+            1089.7444763183594,
+            796.2720489501953,
+            20.07884979248047
+          ],
+          "location_m": [
+            26.916688565063478,
+            19.667919609069823,
+            0.49594758987426757
+          ]
+        },
+        {
+          "enclosure_evidence": {
+            "topology": {
+              "boundary_edge_count": 0,
+              "closed_consistent_nonzero_volume": false,
+              "degenerate_triangle_count": 1456,
+              "enclosed_volume_bu3": 1.2210530501346416e-07,
+              "inconsistent_winding_edge_count": 0,
+              "nonmanifold_edge_count": 11635,
+              "signed_volume_bu3": 1.2210530501346416e-07,
+              "triangle_count": 17596
+            }
+          },
+          "location_bu": [
+            1248.0605773925781,
+            631.5166625976562,
+            54.491805258067515
+          ],
+          "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+          "source_component_id": "component-00000000",
+          "source_object_id": "group_0",
+          "status": "REVIEW",
+          "location_m": [
+            30.82709626159668,
+            15.59846156616211,
+            1.3459475898742677
+          ]
+        }
+      ],
+      "full_witness_reference": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json#BODY:WALK_1F_CORRIDOR_01"
+    },
+    {
+      "region_id": "BODY:WALK_1F_CORRIDOR_02",
+      "walkable_id": "WALK_1F_CORRIDOR_02",
+      "floor_id": "1F",
+      "area_id": null,
+      "portal_id": null,
+      "portal_required_for_this_bounded_review": false,
+      "floor_support_authority": "APPROVED",
+      "full_annotation_supported": true,
+      "floor_support_z_bu": 20.07884979248047,
+      "floor_support_z_m": 0.49594758987426757,
+      "floor_support_area_m2": 80.57796162505157,
+      "body_or_ceiling_clearance_approved": false,
+      "physical_scope_status": "REVIEW",
+      "certificate": null,
+      "searched_window_count": 180,
+      "search_is_exhaustive_geometric_window_enumeration": false,
+      "preview_proxy_vertices_bu": [
+        [
+          1379.873779296875,
+          512.191650390625,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          512.191650390625,
+          25.0
+        ],
+        [
+          1491.412353515625,
+          1696.31591796875,
+          25.0
+        ],
+        [
+          1379.873779296875,
+          1696.31591796875,
+          25.0
+        ]
+      ],
+      "preview_proxy_triangles": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ]
+      ],
+      "witness_excerpts": [
+        {
+          "enclosure_evidence": {
+            "topology": {
+              "boundary_edge_count": 0,
+              "closed_consistent_nonzero_volume": false,
+              "degenerate_triangle_count": 1456,
+              "enclosed_volume_bu3": 1.2210530501346416e-07,
+              "inconsistent_winding_edge_count": 0,
+              "nonmanifold_edge_count": 11635,
+              "signed_volume_bu3": 1.2210530501346416e-07,
+              "triangle_count": 17596
+            }
+          },
+          "location_bu": [
+            1435.64306640625,
+            1163.1483203657417,
+            54.491805258067515
+          ],
+          "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+          "source_component_id": "component-00000000",
+          "source_object_id": "group_0",
+          "status": "REVIEW",
+          "location_m": [
+            35.46038374023438,
+            28.72976351303382,
+            1.3459475898742677
+          ]
+        }
+      ],
+      "full_witness_reference": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json#BODY:WALK_1F_CORRIDOR_02"
+    },
+    {
+      "region_id": "BODY:WALK_1F_OFFICE",
+      "walkable_id": "WALK_1F_OFFICE",
+      "floor_id": "1F",
+      "area_id": "AREA_1F_OFFICE",
+      "portal_id": null,
+      "portal_required_for_this_bounded_review": false,
+      "floor_support_authority": "APPROVED",
+      "full_annotation_supported": true,
+      "floor_support_z_bu": 20.07884979248047,
+      "floor_support_z_m": 0.49594758987426757,
+      "floor_support_area_m2": 37.93231822873877,
+      "body_or_ceiling_clearance_approved": false,
+      "physical_scope_status": "REVIEW",
+      "certificate": null,
+      "searched_window_count": 180,
+      "search_is_exhaustive_geometric_window_enumeration": false,
+      "preview_proxy_vertices_bu": [
+        [
+          1145.0,
+          1710.0,
+          25.0
+        ],
+        [
+          1495.0,
+          1710.0,
+          25.0
+        ],
+        [
+          1495.0,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1145.0,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1495.0,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1495.0,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1380.3240966796875,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1380.3240966796875,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1164.0628662109375,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1145.0,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1145.0,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1164.0628662109375,
+          1715.883544921875,
+          25.0
+        ],
+        [
+          1495.0,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1495.0,
+          2310.0,
+          25.0
+        ],
+        [
+          1488.606689453125,
+          2310.0,
+          25.0
+        ],
+        [
+          1488.606689453125,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1168.8525390625,
+          2310.0,
+          25.0
+        ],
+        [
+          1145.0,
+          2310.0,
+          25.0
+        ],
+        [
+          1145.0,
+          2125.791015625,
+          25.0
+        ],
+        [
+          1168.8525390625,
+          2125.791015625,
+          25.0
+        ],
+        [
+          1145.0,
+          2125.791015625,
+          25.0
+        ],
+        [
+          1145.0,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1164.0628662109375,
+          2123.23876953125,
+          25.0
+        ],
+        [
+          1164.0628662109375,
+          2125.791015625,
+          25.0
+        ]
+      ],
+      "preview_proxy_triangles": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          4,
+          6,
+          7
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          8,
+          10,
+          11
+        ],
+        [
+          12,
+          13,
+          14
+        ],
+        [
+          12,
+          14,
+          15
+        ],
+        [
+          16,
+          17,
+          18
+        ],
+        [
+          16,
+          18,
+          19
+        ],
+        [
+          20,
+          21,
+          22
+        ],
+        [
+          20,
+          22,
+          23
+        ]
+      ],
+      "witness_excerpts": [
+        {
+          "exact_distance_queries": 0,
+          "reason": "DEGENERATE_SOURCE_BODY_CONTEXT_TRIANGLE",
+          "source_face_index": 1975,
+          "source_object_id": "group_0",
+          "source_triangles_screened": 1274,
+          "status": "REVIEW",
+          "triangle_bu": [
+            [
+              1396.8341979980469,
+              2111.2383575439453,
+              20.07884979248047
+            ],
+            [
+              1396.8341979980469,
+              2123.0493927001953,
+              20.07884979248047
+            ],
+            [
+              1396.8341979980469,
+              1713.4693145751953,
+              20.07884979248047
+            ]
+          ],
+          "triangle_m": [
+            [
+              34.50180469055176,
+              52.147587431335445,
+              0.49594758987426757
+            ],
+            [
+              34.50180469055176,
+              52.439319999694824,
+              0.49594758987426757
+            ],
+            [
+              34.50180469055176,
+              42.32269207000732,
+              0.49594758987426757
+            ]
+          ],
+          "location_bu": [
+            1396.8341979980469,
+            1982.585688273112,
+            20.07884979248047
+          ],
+          "location_m": [
+            34.50180469055176,
+            48.969866500345866,
+            0.49594758987426757
+          ]
+        },
+        {
+          "enclosure_evidence": {
+            "topology": {
+              "boundary_edge_count": 0,
+              "closed_consistent_nonzero_volume": false,
+              "degenerate_triangle_count": 1456,
+              "enclosed_volume_bu3": 1.2210530501346416e-07,
+              "inconsistent_winding_edge_count": 0,
+              "nonmanifold_edge_count": 11635,
+              "signed_volume_bu3": 1.2210530501346416e-07,
+              "triangle_count": 17596
+            }
+          },
+          "location_bu": [
+            1437.6620483398438,
+            2010.7002322281564,
+            54.491805258067515
+          ],
+          "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+          "source_component_id": "component-00000000",
+          "source_object_id": "group_0",
+          "status": "REVIEW",
+          "location_m": [
+            35.51025259399414,
+            49.66429573603546,
+            1.3459475898742677
+          ]
+        },
+        {
+          "distance_lower_m": 0.0,
+          "distance_upper_m": 6.148790707022896e-16,
+          "exact_distance_queries": 1,
+          "reason": "UNCLASSIFIED_SOURCE_BODY_CONTACT",
+          "source_face_index": 7356,
+          "source_object_id": "group_0",
+          "source_triangles_screened": 1274,
+          "status": "REVIEW",
+          "triangle_bu": [
+            [
+              1467.7002868652344,
+              2123.0493927001953,
+              153.93710327148438
+            ],
+            [
+              1467.7002868652344,
+              2111.2383575439453,
+              153.93710327148438
+            ],
+            [
+              1467.7002868652344,
+              2111.2383575439453,
+              20.07884979248047
+            ]
+          ],
+          "triangle_m": [
+            [
+              36.25219708557129,
+              52.439319999694824,
+              3.802246450805664
+            ],
+            [
+              36.25219708557129,
+              52.147587431335445,
+              3.802246450805664
+            ],
+            [
+              36.25219708557129,
+              52.147587431335445,
+              0.49594758987426757
+            ]
+          ],
+          "location_bu": [
+            1467.7002868652344,
+            2115.1753692626953,
+            109.31768544514973
+          ],
+          "location_m": [
+            36.25219708557129,
+            52.244831620788574,
+            2.7001468304951985
+          ]
+        }
+      ],
+      "full_witness_reference": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json#BODY:WALK_1F_OFFICE"
+    },
+    {
+      "region_id": "BODY:WALK_2F_CLASS201",
+      "walkable_id": "WALK_2F_CLASS201",
+      "floor_id": "2F",
+      "area_id": "AREA_2F_CLASS201",
+      "portal_id": null,
+      "portal_required_for_this_bounded_review": false,
+      "floor_support_authority": "APPROVED",
+      "full_annotation_supported": true,
+      "floor_support_z_bu": 161.81109619140625,
+      "floor_support_z_m": 3.9967340759277343,
+      "floor_support_area_m2": 60.911385599999996,
+      "body_or_ceiling_clearance_approved": false,
+      "physical_scope_status": "REVIEW",
+      "certificate": null,
+      "searched_window_count": 180,
+      "search_is_exhaustive_geometric_window_enumeration": false,
+      "preview_proxy_vertices_bu": [
+        [
+          232.0,
+          235.0,
+          165.0
+        ],
+        [
+          488.0,
+          235.0,
+          165.0
+        ],
+        [
+          488.0,
+          625.0,
+          165.0
+        ],
+        [
+          232.0,
+          625.0,
+          165.0
+        ]
+      ],
+      "preview_proxy_triangles": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ]
+      ],
+      "witness_excerpts": [
+        {
+          "enclosure_evidence": {
+            "topology": {
+              "boundary_edge_count": 0,
+              "closed_consistent_nonzero_volume": false,
+              "degenerate_triangle_count": 1456,
+              "enclosed_volume_bu3": 1.2210530501346416e-07,
+              "inconsistent_winding_edge_count": 0,
+              "nonmanifold_edge_count": 11635,
+              "signed_volume_bu3": 1.2210530501346416e-07,
+              "triangle_count": 17596
+            }
+          },
+          "location_bu": [
+            360.0,
+            488.8630905151367,
+            196.2240516569933
+          ],
+          "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+          "source_component_id": "component-00000000",
+          "source_object_id": "group_0",
+          "status": "REVIEW",
+          "location_m": [
+            8.892,
+            12.074918335723877,
+            4.846734075927735
+          ]
+        },
+        {
+          "distance_lower_m": 0.03547788505554195,
+          "distance_upper_m": 0.0354778850555816,
+          "exact_distance_queries": 1,
+          "reason": "UNCLASSIFIED_SOURCE_BODY_CLEARANCE",
+          "source_face_index": 11380,
+          "source_object_id": "group_0",
+          "source_triangles_screened": 498,
+          "status": "REVIEW",
+          "triangle_bu": [
+            [
+              233.44623947143555,
+              488.8630828857422,
+              197.24420166015625
+            ],
+            [
+              233.44623947143555,
+              370.7528991699219,
+              197.24420166015625
+            ],
+            [
+              233.44623947143555,
+              370.7528991699219,
+              161.81109619140625
+            ]
+          ],
+          "triangle_m": [
+            [
+              5.766122114944458,
+              12.074918147277831,
+              4.871931781005859
+            ],
+            [
+              5.766122114944458,
+              9.15759660949707,
+              4.871931781005859
+            ],
+            [
+              5.766122114944458,
+              9.15759660949707,
+              3.9967340759277343
+            ]
+          ],
+          "location_bu": [
+            233.44623947143555,
+            410.1229604085286,
+            185.43316650390625
+          ],
+          "location_m": [
+            5.766122114944458,
+            10.130037122090657,
+            4.580199212646484
+          ]
+        }
+      ],
+      "full_witness_reference": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json#BODY:WALK_2F_CLASS201"
+    },
+    {
+      "region_id": "BODY:WALK_2F_CORRIDOR_03",
+      "walkable_id": "WALK_2F_CORRIDOR_03",
+      "floor_id": "2F",
+      "area_id": null,
+      "portal_id": null,
+      "portal_required_for_this_bounded_review": false,
+      "floor_support_authority": "APPROVED",
+      "full_annotation_supported": true,
+      "floor_support_z_bu": 161.81109619140625,
+      "floor_support_z_m": 3.9967340759277343,
+      "floor_support_area_m2": 67.5950949225855,
+      "body_or_ceiling_clearance_approved": false,
+      "physical_scope_status": "REVIEW",
+      "certificate": null,
+      "searched_window_count": 180,
+      "search_is_exhaustive_geometric_window_enumeration": false,
+      "preview_proxy_vertices_bu": [
+        [
+          538.608642578125,
+          1582.4937744140625,
+          165.0
+        ],
+        [
+          1484.5445556640625,
+          1582.4937744140625,
+          165.0
+        ],
+        [
+          1484.5445556640625,
+          1699.6214599609375,
+          165.0
+        ],
+        [
+          538.608642578125,
+          1699.6214599609375,
+          165.0
+        ]
+      ],
+      "preview_proxy_triangles": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          3
+        ]
+      ],
+      "witness_excerpts": [
+        {
+          "enclosure_evidence": {
+            "topology": {
+              "boundary_edge_count": 0,
+              "closed_consistent_nonzero_volume": false,
+              "degenerate_triangle_count": 1456,
+              "enclosed_volume_bu3": 1.2210530501346416e-07,
+              "inconsistent_winding_edge_count": 0,
+              "nonmanifold_edge_count": 11635,
+              "signed_volume_bu3": 1.2210530501346416e-07,
+              "triangle_count": 17596
+            }
+          },
+          "location_bu": [
+            1011.5765991210938,
+            1641.0576171875,
+            196.2240516569933
+          ],
+          "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+          "source_component_id": "component-00000000",
+          "source_object_id": "group_0",
+          "status": "REVIEW",
+          "location_m": [
+            24.985941998291015,
+            40.53412314453125,
+            4.846734075927735
+          ]
+        }
+      ],
+      "full_witness_reference": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json#BODY:WALK_2F_CORRIDOR_03"
+    }
+  ],
+  "scope_domain_warning": "Listed regions are existing bounded search candidates, not approved navigation routes. No route is invented here.",
+  "source_component_summary": {
+    "source_object_id": "group_0",
+    "source_component_id": "component-00000000",
+    "triangle_count": 17596,
+    "degenerate_triangle_count": 1456,
+    "nonmanifold_edge_count": 11635,
+    "boundary_edge_count": 0,
+    "closed_consistent_nonzero_volume": false
+  },
+  "case_impact": {
+    "case1": "Unique feasible route and full body clearance cannot be certified from a floor-support approval alone.",
+    "case2": "Two or three routes must be independently authorized; timing duplicates or hand-made branch offsets are not feasible-route evidence.",
+    "case3": "Long-gap feasibility needs the same approved routes plus frozen speed/timing and independent movement/dwell reference policy."
+  },
+  "source_files": [
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json",
+      "sha256": "19a472c7fae5bf3e3dc63bc314c3e751467fc8abac636e237c300719ac557c71"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_authority_map.json",
+      "sha256": "6e1f8d512c9aaf994ce35890f0d688190e33523edc5eeda7a954e07aeb2ff7fe"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/body_clearance_policy.json",
+      "sha256": "84eb3050c1873e9f25ba3618209f6285fb2e539433aee216f230765c7e7617ec"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/physical_authority.json",
+      "sha256": "dbea2bf7f375db161d0b6c9a664b9eba511c9dcc28b61091a4e8fbd53379d60d"
+    },
+    {
+      "path": "data/scene_audit/school_v3_semantic_audit.json",
+      "sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+    },
+    {
+      "path": "configs/benchmarks/protocol_v1.json",
+      "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7"
+    }
+  ]
+}

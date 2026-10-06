@@ -198,3 +198,39 @@ cleanup inventory deletes nothing. No freeze tag while blocked.
 [Final report](PHASE1_FINAL_REPORT.md), [reproduction](PHASE1_REPRODUCTION.md),
 [reproducibility](../data/finalization/checkpoint/reproducibility.json),
 [result table](../data/finalization/checkpoint/benchmark_table.md).
+
+## 2026-10-06 — Minimal Phase 1 Human Review Gate
+
+Blocked checkpoint `85f5e6b055e75d286c1519e6c5ba2f2efc416347` 的 gate 已重整為
+**4 個 pending decisions**：[dashboard](../human_review/index.html)、
+[decisions](../human_review/decisions.json)、[review text](../human_review/README.md)。
+HR-01 合併 1F office bounded source surface/solid ownership 與 exact-zero-area
+`group_0` faces1975/2398；HR-02 camera/marker/floor binding；HR-03 Coverage epsilon；
+HR-04 speed/timing。Scale、body/clearance/contact、K1/2/3、5 Hz 和現有 alignment /
+interpolation 直接採用。Case3 exact duration 在 protocol 未唯一指定，stress instance 是
+pre-dataset agent work，不新增第五個人工 duration 決策。
+
+只使用 public observations/projection/candidates 和 approved source authority；50 frames /
+5 Hz / 10 s 的 Blender preview、source-camera stills、top/side views 與 exact scope
+closeups 已產生。原 source SHA/mtime 保持不變；floor seam 的 display lift 只供定位。
+Face7356 東側牆在 body guard 外，只是 context。Left candidate clearance0.18956 m
+低於已核准0.35 m，程式自動拒絕，沒有交給人類調 threshold。Office obstacle 語意已核准但
+solid components=0，不假造 collider 或 local certificate PASS。
+
+新增 hash-bound scoped semantic receipt、reviewed certificate/provider 和
+[application pipeline](../human_review/DECISION_APPLICATION.md)，原 atlas、10 個 pinned
+physical producers 與歷史 manifests 不變。Pipeline 拒絕未決/非核准、改動 immutable
+questions/profiles/hash/bounds；APPROVE 後仍完整重算原 source proof。只有 synthetic
+測試 receipt 被套用；本輪 school approvals=0，formal Cases/A–C=NOT_RUN，沒有 main merge
+或 freeze tag。Current parallel direct/right routes 尚未證明 Case2 branching；formal
+adapters、Case1 uniqueness、Case2 inventory、Case3 stress feasibility 留待決策後自動工作。
+
+本次完整驗證：`AMIDST_PHYSICAL_SOURCE_SCENE=<unchanged school_v3.blend> uv run pytest
+--require-physical-evidence -rs` **1580 passed /5 historical school-v2 prerequisite skips**；
+Ruff passed；mypy **93 source files** passed；diff check passed。Pending application 的
+source/public-input/57 PNG hashes 驗證通過。Dashboard 預設未選決策、closeup 圖片、
+連續 player 與最後 frame49 已實際開啟檢查；前端 import tamper guards 通過。
+
+Raw review renders 保留 local ignored；package hashes、reproduction scripts、texts 和
+pending decision template 保留。舊 generic gate 另存 human_review/history/blocked_checkpoint，
+沒有刪除任何 source 或 DELETE_CANDIDATE。

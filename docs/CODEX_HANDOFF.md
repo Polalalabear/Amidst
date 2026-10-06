@@ -12,6 +12,10 @@
 
 唯一續作入口是 [human_review](../human_review/README.md)：限定 domain/相關 face 的
 語意或 derived correction、camera landmark/floor semantic binding、正式研究容差。
+最小審查已產生 [dashboard](../human_review/index.html) 和
+[decisions.json](../human_review/decisions.json)，共 **4** 個 pending：HR-01 office bounded
+source semantics、HR-02 marker/floor binding、HR-03 Coverage epsilon、HR-04 speed/timing。
+附 10 秒 GT-free 連續 frames 與 exact scope closeups；先審 HR-01→02→03→04。
 只提供 APPROVE/REJECT/FIX_GEOMETRY/KEEP_REVIEW；不要求人工計算 clearance、certificate、
 route uniqueness/branch count 或 feasible inventory，這些由 agent 在語意決策後重跑。
 不審 1,422 WALL patches、無關 portal conflicts 或 Stair A/B。
@@ -21,6 +25,11 @@ components 保留；overall PARTIAL_APPROVED，complete local certificates=0。
 正式 Coverage/MetricConfig 和 Case-specific navigation/camera authority 未定案；
 formal Cases1–3/A–C/GT isolation/determinism/fresh benchmark 均 NOT_RUN。
 不能由 diagnostic PASS、annotation AABB 或空 collider 集合解除 gate。
+[Decision application](../human_review/DECISION_APPLICATION.md) 可驗證 hashes、完整 explicit
+decisions、重新計算 bounded certificate 並鎖定選定值；本輪未套用 school approval。
+全部 APPROVE 後先完成 agent-owned formal adapters / case inventory：現有 office direct/right
+平行 offset 不能代替 Case2 branching proof，Case1 uniqueness / Case3 stress instance 亦待證明。
+不能承諾立即 formal run；不用人類再整理資料，只有真正新矛盾或超出核准 domain 才重開 gate。
 
 [Input lock](../data/finalization/checkpoint/input_lock.json) 固定本輪 diagnostic inputs/code；
 [reproduction guide](PHASE1_REPRODUCTION.md) 重建資料、physical evidence、projection/Graph、
@@ -52,6 +61,13 @@ camera-landmark/floor semantics and formal research tolerance. Subsequent cleara
 certification and route/time inventory checks belong to the agent. Existing scale, policy,
 floor support and approved components remain PARTIAL_APPROVED with zero complete local
 certificates. Formal Cases1–3 and A/B/C are NOT_RUN; diagnostics do not authorize them.
+The new offline dashboard contains four pending decisions (geometry, marker/floor binding,
+Coverage epsilon, speed/timing), a GT-free 10-second sequence and bounded scope closeups.
+The application pipeline validates explicit decisions and hashes, regenerates the bounded
+certificate and locks inputs. No school decision has been applied. Formal adapters and an
+independent case inventory still need automatic completion; current parallel routes do not
+establish Case2 branching. Resume directly from completed decisions, without another manual
+evidence-organization round; reopen only for a real contradiction or an unapproved domain.
 
 The input lock and reproduction guide bind the diagnostic package and code. Optional
 projection uses legal exact-time multiview then fixed-plane fallback, preserving all evidence

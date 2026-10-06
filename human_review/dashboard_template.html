@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Phase 1 — Human Review Gate</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;color:#172a37;background:#edf3f7;line-height:1.65}
+*{box-sizing:border-box}body{margin:0}main{max-width:1240px;margin:auto;padding:28px 22px 40px}
+h1{font-size:25px;margin:0 0 20px;font-weight:750}h2{font-size:20px;margin:24px 0 10px}h3{font-size:16px;margin:20px 0 8px}
+.counts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.count{background:white;border:1px solid #d8e3ec;border-radius:10px;padding:16px 18px;min-height:95px}
+.count strong{display:block;font-size:30px;line-height:1.2;color:#105675}.count span{font-size:14px;color:#526677}
+.table-wrap{overflow-x:auto;border:1px solid #d8e3ec;border-radius:10px;background:white}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:14px 15px;text-align:left;border-bottom:1px solid #e2eaf0;vertical-align:top}
+th{font-size:13px;background:#f6f9fb;color:#465d6d}tr:last-child td{border-bottom:0}td:first-child{white-space:nowrap}
+button,select,input{font:inherit}button{border:1px solid #b5ccdc;background:#f7fbff;color:#125879;cursor:pointer;border-radius:7px;padding:8px 12px}
+button:hover{background:#eaf4fb}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #3797c8;outline-offset:3px}
+button.primary{background:#116789;color:white;border-color:#116789}button.primary:hover{background:#09526f}
+a{color:#10678f;text-decoration:none}a:hover{text-decoration:underline}.id-button{border:0;background:none;font-weight:750;padding:0;font-size:14px}
+.pending{color:#6a7282}.decided{font-weight:650;color:#245d48}.recommended{display:inline-block;font-size:12px;background:#e5f2f7;color:#116285;border-radius:4px;padding:2px 6px;margin-left:6px}
+footer{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:18px;font-size:14px}footer label{display:flex;align-items:center;gap:8px}
+input[type=text]{border:1px solid #bbcbd7;border-radius:6px;padding:8px;background:white;max-width:190px}
+#message{min-height:24px;color:#33596e;font-size:13px;margin-top:8px}.danger{color:#a22f36!important}
+dialog{width:min(1000px,95vw);max-height:92vh;border:1px solid #b7cbd9;border-radius:12px;padding:0;color:inherit;background:white;overflow:auto}
+dialog::backdrop{background:#0c263db3}.modal-header{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:15px;background:#f3f8fb;padding:16px 22px;border-bottom:1px solid #d8e3ec}
+.modal-header h2{margin:0;font-size:20px}.modal-body{padding:10px 22px 22px}.modal-footer{display:flex;justify-content:flex-end;gap:12px;padding:16px 22px;background:#f4f8fa;border-top:1px solid #d8e3ec}
+.location{display:grid;grid-template-columns:160px 1fr;gap:5px 14px;font-size:14px}.location dt{font-weight:650;color:#506271}.location dd{margin:0;overflow-wrap:anywhere}
+.section{border-bottom:1px solid #e3ebf0;padding-bottom:16px}.section:last-child{border:0}.section p{margin:5px 0;font-size:14px}
+ul{padding-left:24px;margin:6px 0}li{margin:4px 0;font-size:14px}.evidence-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+figure{margin:0;background:#f4f8fa;border:1px solid #d9e4eb;border-radius:8px;overflow:hidden}figure img{display:block;width:100%;height:auto}figcaption{padding:10px;font-size:13px;color:#506575}
+iframe{display:block;width:100%;height:990px;border:1px solid #cfdae2;border-radius:8px;margin:12px 0}.compact-vector{font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,monospace;line-height:1.5;font-size:13px;overflow-wrap:anywhere}.technical-provenance{font-size:12px;margin:4px 0}.technical-provenance summary{cursor:pointer;color:#45677d}.technical-provenance code{display:block;overflow-wrap:anywhere;margin:7px 0}.technical-provenance button{font-size:12px;padding:4px 8px}.case-readiness{background:#f3f8fb;border-left:3px solid #7faec4;padding:8px 12px;margin:8px 0;font-size:13px}.case-readiness strong{display:block}.case-readiness p{font-size:13px}.nested{margin-top:8px;font-size:14px}.nested dt{font-weight:600}.nested dd{margin-left:18px;overflow-wrap:anywhere}
+.profile{border:1px solid #ccdbe5;border-radius:8px;padding:12px 14px;margin:10px 0}.profile label{cursor:pointer;display:flex;gap:9px;align-items:flex-start;font-weight:600}
+.profile p{font-size:13px;color:#506777;margin:6px 0 0 24px}.profile details{margin:8px 0 0 24px;font-size:13px}select{border:1px solid #b3c7d6;border-radius:6px;padding:9px 12px;background:white;width:min(100%,330px)}
+.choice-note{font-size:13px;color:#607586;margin-top:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#f4f7f9;padding:10px;border-radius:6px}
+@media(max-width:760px){.counts{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding:18px 12px}.evidence-grid{grid-template-columns:1fr}.location{grid-template-columns:115px 1fr}dialog{width:97vw}.modal-body{padding:8px 14px}iframe{height:830px}}
+</style>
+</head>
+<body>
+<main>
+<h1>Phase 1 Human Review Gate</h1>
+<section class="counts" id="counts" aria-label="Blocking decision counts"></section>
+<div class="table-wrap"><table><thead><tr>
+<th>ID</th><th>Human-readable location/problem</th><th>Blocks</th><th>Recommended</th><th>Decision</th>
+</tr></thead><tbody id="decision-table"></tbody></table></div>
+<footer>
+<label>審查者<input id="reviewer" type="text" autocomplete="off" placeholder="姓名或代號"></label>
+<button id="export" class="primary">匯出 decisions.json</button>
+<button id="import">匯入 decisions.json</button><input id="import-file" type="file" accept=".json,application/json" hidden>
+</footer>
+<div id="message" role="status" aria-live="polite"></div>
+</main>
+<dialog id="item-dialog" aria-labelledby="item-title">
+<div class="modal-header"><h2 id="item-title"></h2><button id="close-dialog" aria-label="關閉">關閉</button></div>
+<div class="modal-body" id="item-content"></div>
+<div class="modal-footer"><button id="cancel-choice">取消</button><button id="save-choice" class="primary">儲存此決策</button></div>
+</dialog>
+<script type="application/json" id="review-data">__DECISIONS_JSON__</script>
+<script>
+'use strict';
+const embedded=JSON.parse(document.getElementById('review-data').textContent);
+const immutableHash='__REVIEW_PAYLOAD_HASH__';
+let documentState=structuredClone(embedded),activeItem=null;
+const allowed=['APPROVE','REJECT','FIX_GEOMETRY','KEEP_REVIEW'];
+const dialog=document.getElementById('item-dialog');
+const metadata=d=>d.metadata||d;
+const baseMetadata=metadata(embedded);
+const storageKey=['amidst.phase1.review',baseMetadata.checkpoint_sha,baseMetadata.source_sha256,immutableHash].join('.');
+const fieldLabels={floor:'Floor',area:'AREA',portal:'PORTAL',nearby_object:'Nearby object',outliner_search:'Blender Outliner 搜尋',current_authority:'Current authority',objects:'Object IDs',faces:'Face IDs',bounds:'Bounds / centroid',measurements:'BU + meter measurements',relevant_frames:'Camera / trajectory frames',epsilon_m:'Coverage epsilon（m）',coverage_epsilon_m:'Coverage epsilon（m）',D:'Coverage D',alignment:'Alignment',sampling:'Sampling',interpolation:'Interpolation',K:'K',radius_m:'Body radius（m）',height_m:'Body height（m）',clearance_m:'Clearance（m）',why:'理由'};
+function el(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
+function notify(text,error=false){const n=document.getElementById('message');n.textContent=text;n.className=error?'danger':'';}
+function cases(item){return (item.blocks||[]).map(x=>Number(String(x).replace(/\D/g,''))).filter(x=>[1,2,3].includes(x));}
+function reviewIdentity(d){const v=structuredClone(d);delete v.review_payload_sha256;delete v.metadata.reviewer;delete v.metadata.submitted_at;for(const i of v.items){delete i.decision;delete i.selected_option;}return v;}
+function canonical(v){if(v===null||typeof v!=='object')return JSON.stringify(v);if(Array.isArray(v))return '['+v.map(canonical).join(',')+']';return '{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canonical(v[k])).join(',')+'}';}
+function samePayload(candidate){const m=metadata(candidate);return m.checkpoint_sha===baseMetadata.checkpoint_sha&&m.source_sha256===baseMetadata.source_sha256&&candidate.review_payload_sha256===immutableHash&&canonical(reviewIdentity(candidate))===canonical(reviewIdentity(embedded));}
+function validDecisions(candidate){const m=metadata(candidate);if(typeof m.reviewer!=='string'||!(m.submitted_at===null||typeof m.submitted_at==='string'))return false;return candidate.items.every(i=>(i.decision===null||allowed.includes(i.decision))&&(i.selected_option===null||(i.approve_options||[]).some(o=>o.id===i.selected_option))&&(i.decision==='APPROVE'?(!(i.approve_options||[]).length||i.selected_option!==null):i.selected_option===null));}
+function importEditableFields(candidate){const target=structuredClone(embedded);target.metadata.reviewer=candidate.metadata.reviewer;target.metadata.submitted_at=candidate.metadata.submitted_at;for(let index=0;index<target.items.length;index++){target.items[index].decision=candidate.items[index].decision;target.items[index].selected_option=candidate.items[index].selected_option;}return target;}
+function saveDraft(){try{localStorage.setItem(storageKey,JSON.stringify({review_payload_hash:immutableHash,document:documentState}));}catch(_){} }
+function restoreDraft(){try{const raw=localStorage.getItem(storageKey);if(!raw)return;const draft=JSON.parse(raw);if(draft.review_payload_hash!==immutableHash||!samePayload(draft.document)||!validDecisions(draft.document))return;documentState=importEditableFields(draft.document);notify('已載入這一份 checkpoint／source／review payload 的本機草稿。');}catch(_){} }
+function renderCounts(){const items=documentState.items;const cards=[['Total blocking decisions',items.length],['Case 1 blockers',items.filter(i=>cases(i).includes(1)).length],['Case 2 blockers',items.filter(i=>cases(i).includes(2)).length],['Case 3 blockers',items.filter(i=>cases(i).includes(3)).length],['Geometry decisions',items.filter(i=>i.category==='GEOMETRY').length],['Projection binding decisions',items.filter(i=>i.category==='PROJECTION_BINDING').length],['Formal-setting decisions',items.filter(i=>i.category==='FORMAL_SETTING').length]];const container=document.getElementById('counts');container.replaceChildren();for(const [label,count]of cards){const card=el('div',undefined,'count');card.append(el('strong',String(count)),el('span',label));container.append(card);} }
+function renderTable(){const body=document.getElementById('decision-table');body.replaceChildren();for(const item of documentState.items){const row=el('tr');const idCell=el('td'),idButton=el('button',item.id,'id-button');idButton.addEventListener('click',()=>openItem(item.id));idCell.append(idButton);row.append(idCell,el('td',item.title),el('td',cases(item).map(x=>'Case '+x).join(' / ')));const recommended=el('td');recommended.append(el('div',item.recommended_decision||'KEEP_REVIEW'));const option=(item.approve_options||[]).find(o=>o.id===item.recommended_option);if(option)recommended.append(el('small',option.label));row.append(recommended);const choiceCell=el('td'),choiceButton=el('button',item.decision||'尚未決定',item.decision?'decided':'pending');choiceButton.addEventListener('click',()=>openItem(item.id));choiceCell.append(choiceButton);if(item.selected_option){const selected=item.approve_options.find(o=>o.id===item.selected_option);choiceCell.append(el('div',selected?.label||item.selected_option));}row.append(choiceCell);body.append(row);}document.getElementById('reviewer').value=metadata(documentState).reviewer||''; }
+function displayNumber(value){return Number.isInteger(value)?String(value):Number(value.toFixed(6)).toString();}
+function vectorText(values){return '['+values.map(displayNumber).join(', ')+']';}
+function isNumericVector(value){return Array.isArray(value)&&value.length>0&&value.every(n=>typeof n==='number'&&Number.isFinite(n));}
+async function copyTechnical(value,button){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(value);}else{const field=el('textarea');field.value=value;field.style.position='fixed';field.style.opacity='0';document.body.append(field);field.select();const success=document.execCommand('copy');field.remove();if(!success)throw new Error('copy unavailable');}button.textContent='已複製';}catch(_){button.textContent='請選取字串複製';}}
+function structuredValue(container,value,keyHint=''){if(value===null||value===undefined){container.append(el('p','N/A'));return;}if(typeof value==='number'){container.append(el('p',displayNumber(value)));return;}if(typeof value==='string'&&/^[a-f0-9]{41,128}$/i.test(value)){const detail=el('details',undefined,'technical-provenance');detail.append(el('summary','SHA provenance（點開查看）'),el('code',value));const button=el('button','複製完整 SHA');button.type='button';button.addEventListener('click',()=>copyTechnical(value,button));detail.append(button);container.append(detail);return;}if(typeof value!=='object'){container.append(el('p',String(value)));return;}if(isNumericVector(value)){container.append(el('p',vectorText(value),'compact-vector'));return;}if(Array.isArray(value)&&value.length===2&&value.every(isNumericVector)&&/bounds|envelope|footpoint|guard/i.test(keyHint)){const block=el('div',undefined,'compact-vector');block.append(el('div','min '+vectorText(value[0])),el('div','max '+vectorText(value[1])));container.append(block);return;}if(Array.isArray(value)){const list=el('ul');for(const v of value){const li=el('li');structuredValue(li,v,keyHint);list.append(li);}container.append(list);return;}const dl=el('dl',undefined,'nested');for(const [key,v]of Object.entries(value)){dl.append(el('dt',fieldLabels[key]||key));const dd=el('dd');structuredValue(dd,v,key);dl.append(dd);}container.append(dl);}
+function appendCaseReadiness(container,item){const map=baseMetadata.case_blocker_map||{};const casesAffected=cases(item);const shared=casesAffected.map(n=>map[String(n)]||map['case'+n]).filter(Boolean);if(!shared.length)return;const common=shared[0].blocker_ids||[];container.append(el('p','這 '+common.length+' 項人工 blocker 為 Case 1–3 共用：'+common.join(' / ')));for(let index=0;index<casesAffected.length;index++){const number=casesAffected[index],row=map[String(number)]||map['case'+number];if(!row)continue;const block=el('div',undefined,'case-readiness');block.append(el('strong','Case '+number+' — '+(row.immediately_run_after_approve?'決策後可立即 run':'全部 APPROVE 後仍需自動驗證，目前不能立即 formal run')));const checks=row.automatic_exit_checks||[];block.append(el('p','自動 exit checks：'+checks.join('；')));container.append(block);}}
+function section(title){const node=el('section',undefined,'section');node.append(el('h3',title));return node;}
+function safeLocalPath(path){if(typeof path!=='string'||!path||/^(?:[a-z]+:|\/\/|\/)/i.test(path)||path.split('/').includes('..'))return null;return path.replace(/^human_review\//,'');}
+function openItem(id){activeItem=id;const item=documentState.items.find(i=>i.id===id);document.getElementById('item-title').textContent=item.id+' — '+item.title;const body=document.getElementById('item-content');body.replaceChildren();const location=section('Location:');const dl=el('dl',undefined,'location');for(const k of ['floor','area','portal','nearby_object','outliner_search']){dl.append(el('dt',fieldLabels[k]));const dd=el('dd');const v=item.location?.[k];dd.textContent=Array.isArray(v)?v.join(' / '):(v??'N/A');dl.append(dd);}location.append(dl);body.append(location);
+const why=section('Why it blocks:');why.append(el('p','阻塞 '+cases(item).map(x=>'Case '+x).join(' / ')));structuredValue(why,item.why_it_blocks);appendCaseReadiness(why,item);body.append(why);
+const evidence=section('Evidence:');const grid=el('div',undefined,'evidence-grid');for(const image of item.evidence?.images||[]){const path=safeLocalPath(image.path);if(!path)continue;const figure=el('figure'),link=el('a');link.href=path;link.target='_blank';link.rel='noopener';const img=el('img');img.src=path;img.alt=image.caption||item.title;img.loading='lazy';link.append(img);figure.append(link,el('figcaption',image.caption||path));grid.append(figure);}evidence.append(grid);
+const sequence=safeLocalPath(item.evidence?.sequence);if(sequence){const link=el('a','開啟完整連續預覽（可播放／逐 frame）');link.href=sequence;link.target='_blank';link.rel='noopener';evidence.append(link);const iframe=el('iframe');iframe.src=sequence;iframe.title='GT-free continuous local scope evidence';iframe.loading='lazy';evidence.append(iframe);}
+for(const k of ['objects','faces','bounds','centroid','measurements','current_authority','relevant_frames']){if(item.evidence?.[k]!==undefined){evidence.append(el('h3',fieldLabels[k]||k));structuredValue(evidence,item.evidence[k],k);}}body.append(evidence);
+const conclusion=section('Current machine conclusion:');conclusion.append(el('h3','已經確定'));structuredValue(conclusion,item.machine_conclusion?.known);conclusion.append(el('h3','還不能確定'));structuredValue(conclusion,item.machine_conclusion?.unknown);body.append(conclusion);
+const recommended=section('Recommended decision:');recommended.append(el('p',item.recommended_decision||'KEEP_REVIEW'));if(item.recommendation_reason!==undefined)structuredValue(recommended,item.recommendation_reason);const selectedRecommended=(item.approve_options||[]).find(o=>o.id===item.recommended_option);if(selectedRecommended){recommended.append(el('p',selectedRecommended.label));structuredValue(recommended,selectedRecommended.why);}body.append(recommended);
+const human=section('Human choices:');const select=el('select');select.id='decision-select';select.setAttribute('aria-label','Human decision');const blank=el('option','請選擇決策');blank.value='';select.append(blank);for(const choice of allowed){const option=el('option',choice);option.value=choice;select.append(option);}select.value=item.decision||'';human.append(select);const profiles=el('div');profiles.id='approve-profiles';human.append(profiles,el('p','只有按「儲存此決策」才會記錄；不會自動核准或套用 authority。','choice-note'));body.append(human);
+function renderProfiles(){profiles.replaceChildren();if(select.value!=='APPROVE')return;const options=item.approve_options||[];if(!options.length){profiles.append(el('p','APPROVE 核准上方已完整列出的 payload。'));return;}profiles.append(el('p','選擇 APPROVE 的明確設定：'));for(const option of options){const profile=el('div',undefined,'profile'),label=el('label'),radio=el('input');radio.type='radio';radio.name='approval-profile';radio.value=option.id;radio.checked=option.id===(item.selected_option||item.recommended_option);label.append(radio,el('span',option.label));if(option.id===item.recommended_option)label.append(el('span','建議','recommended'));profile.append(label);if(option.why)structuredValue(profile,option.why);if(option.payload!==undefined){const detail=el('details');detail.append(el('summary','完整設定 payload'));structuredValue(detail,option.payload);profile.append(detail);}profiles.append(profile);} }
+select.addEventListener('change',renderProfiles);renderProfiles();dialog.showModal();dialog.scrollTop=0;}
+function closeItem(){dialog.close();activeItem=null;}
+document.getElementById('close-dialog').addEventListener('click',closeItem);document.getElementById('cancel-choice').addEventListener('click',closeItem);
+document.getElementById('save-choice').addEventListener('click',()=>{const item=documentState.items.find(i=>i.id===activeItem);const choice=document.getElementById('decision-select').value;if(!allowed.includes(choice)){notify('請先選擇這一項的決策。',true);document.getElementById('decision-select').focus();return;}let option=null;if(choice==='APPROVE'&&(item.approve_options||[]).length){option=document.querySelector('input[name="approval-profile"]:checked')?.value||null;if(!option){notify('請選擇 APPROVE 的具體設定。',true);return;}}item.decision=choice;item.selected_option=option;metadata(documentState).submitted_at=null;metadata(documentState).reviewer=document.getElementById('reviewer').value.trim();saveDraft();closeItem();renderTable();notify(item.id+' 已儲存於本機草稿；匯出 decisions.json 後交給 decision application pipeline。');});
+document.getElementById('reviewer').addEventListener('input',e=>{metadata(documentState).reviewer=e.target.value.trim();saveDraft();});
+document.getElementById('export').addEventListener('click',()=>{metadata(documentState).reviewer=document.getElementById('reviewer').value.trim();const complete=documentState.items.every(i=>i.decision!==null);if(complete&&!metadata(documentState).reviewer){notify('完整決策匯出前，請填審查者姓名或代號。',true);document.getElementById('reviewer').focus();return;}metadata(documentState).submitted_at=complete?new Date().toISOString():null;const blob=new Blob([JSON.stringify(documentState,null,2)+'\n'],{type:'application/json'});const url=URL.createObjectURL(blob),link=el('a');link.href=url;link.download='decisions.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),0);saveDraft();const pending=documentState.items.filter(i=>i.decision===null).length;notify(pending?'已匯出草稿；還有 '+pending+' 項未決定。':'已匯出完整決策。下一步可由 application pipeline 驗證並套用。');});
+document.getElementById('import').addEventListener('click',()=>document.getElementById('import-file').click());
+document.getElementById('import-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const candidate=JSON.parse(await file.text());if(!samePayload(candidate))throw new Error('checkpoint／source／review payload 不一致，拒絕載入。');if(!validDecisions(candidate))throw new Error('決策或 APPROVE profile 不符合這份 package。');documentState=importEditableFields(candidate);saveDraft();renderTable();notify('已載入相同 review payload 的 decisions.json。');}catch(error){notify('匯入失敗：'+error.message,true);}finally{e.target.value='';}});
+restoreDraft();renderCounts();renderTable();
+</script>
+</body>
+</html>

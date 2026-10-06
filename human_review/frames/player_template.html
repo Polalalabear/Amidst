@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1F Office — Human review continuous evidence</title>
+<style>
+:root{color-scheme:dark}body{margin:0;background:#101b24;color:#eff6fa;font:15px system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:12px}h1{font-size:18px;margin:0 0 8px}
+button,input{font:inherit}button{background:#1e4256;border:1px solid #397b9c;color:white;border-radius:6px;padding:7px 16px;cursor:pointer}
+#render{width:100%;display:block;border-radius:8px}#controls{display:flex;align-items:center;gap:12px;margin:10px 0}
+#slider{flex:1}.note{color:#becfda;font-size:13px;margin:8px 0}.evidence{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.camera{border:1px solid #354a5b;border-radius:8px;padding:8px}.camera h2{font-size:14px;margin:0 0 4px}
+svg{width:100%;height:auto;background:#13212c}.caption{font-size:13px;color:#cde3ef}a{color:#73cff3}
+</style><main>
+<h1>1F OFFICE：連續 10 秒診斷預覽（50 frames / 5 fps）</h1>
+<p class="note">只讀 public 2D observations／projection 和既有 inferred candidates；未讀 GT、evaluation 或 simulation recipe。這是待審查的 foot-contact model，不代表真實走法。</p>
+<img id="render" src="sequence_000.png" alt="Blender source geometry with observed or inferred body, routes, scope and witness overlays">
+<div id="controls"><button id="play">播放</button><input id="slider" type="range" min="0" max="49" value="0" aria-label="Frame"><span id="time">0.0 s</span></div>
+<div id="description" class="caption"></div>
+<div class="evidence"><section class="camera"><h2>CAM_1F_AUDITORIUM_FRONT — public 2D evidence</h2><svg id="FRONT" viewBox="0 0 960 540" role="img" aria-label="Front camera observation position"></svg><div id="FRONT-status" class="caption"></div></section>
+<section class="camera"><h2>CAM_1F_AUDITORIUM_REAR — public 2D evidence</h2><svg id="REAR" viewBox="0 0 960 540" role="img" aria-label="Rear camera observation position"></svg><div id="REAR-status" class="caption"></div></section></div>
+<p class="note">Cyan＝OBSERVED／projected landmark；orange＝GAP 中的 inferred direct route；red left branch＝程式排除（clearance不足）；amber direct/right＝NOT_CERTIFIED。Green＝WALKABLE annotation/source-supported footprint；red fill＝已核准 semantic OBSTACLE footprint，辦公室尚無 APPROVED solid components。原 sequence 的 bright red face7356 東側牆是 body guard 外的定位 context，並非本次 blocker。HR-01 只審 1975／2398 同一零面積 floor seam 與精確 body guard 内的 surface ownership，請看下方近看圖。Body r=0.30m、h=1.70m、clearance=0.05m；landmark→floor offset=55.0499981 BU，binding 待人類核准。</p>
+<p class="note"><a href="office_scope_closeup.png">HR-01 exact scope 斜視近看</a> · <a href="office_scope_top_closeup.png">HR-01 exact scope 俯視近看</a>；紫色接縫的高度 lift 僅供顯示，不修改 source、support 或物理測量。</p>
+<p class="note">Portal cyan footprints 僅供定位，這條既有 route 沒有跨 portal；不要求此次核准 portal/stairs。Camera 2D panels 是 public observation coordinates（非 Blender screenshot）。</p>
+<p><a href="office_top.png">完整 office top view</a> · <a href="office_side.png">source side view</a> · <a href="office_oblique.png">source oblique view</a> · <a href="camera_cam_1f_auditorium_front_frame20.png">Front t=4.0s source-camera diagnostic</a> · <a href="camera_cam_1f_auditorium_rear_frame46.png">Rear t=9.2s source-camera diagnostic</a> · <a href="visual_manifest.json">Hash／provenance</a></p>
+<p class="note">Source-camera stills 使用 bounded evaluated source snapshot；不是完整 school occlusion certification。Original school_v3.blend 未儲存、未修改。</p>
+</main><script>
+const records=__RECORDS__;
+let index=0,timer=null;const slider=document.getElementById('slider'),play=document.getElementById('play');
+function show(i){index=i;const r=records[i];document.getElementById('render').src=r.path.replace('frames/','');slider.value=i;document.getElementById('time').textContent=r.timestamp.toFixed(1)+' s';document.getElementById('description').textContent='Frame '+r.frame_id+' · '+r.role+' · '+r.projection_method+' / '+r.confidence_state+' / uncertainty '+r.uncertainty.status+' · body base = ['+r.body_base_bu.map(v=>v.toFixed(4)).join(', ')+'] BU';for(const s of r.camera_evidence){const suffix=s.camera_id.endsWith('FRONT')?'FRONT':'REAR',svg=document.getElementById(suffix);svg.innerHTML='<rect x="1" y="1" width="958" height="538" fill="none" stroke="#67808f"/><path d="M480 0V540 M0 270H960" stroke="#324551"/>';if(s.uv){const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',s.uv[0]);c.setAttribute('cy',s.uv[1]);c.setAttribute('r','10');c.setAttribute('fill','#08baff');svg.appendChild(c);}else{const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x','480');t.setAttribute('y','270');t.setAttribute('text-anchor','middle');t.setAttribute('font-size','36');t.setAttribute('fill','#ff9c2e');t.textContent='GAP — no 2D observation';svg.appendChild(t);}document.getElementById(suffix+'-status').textContent=s.visibility+(s.uv?' · UV = ['+s.uv.map(v=>v.toFixed(2)).join(', ')+']':' · '+s.gap_reason+' · source occluder: '+s.occluder_id);}}
+play.addEventListener('click',()=>{if(timer){clearInterval(timer);timer=null;play.textContent='播放';}else{play.textContent='暫停';timer=setInterval(()=>show((index+1)%records.length),200);}});slider.addEventListener('input',()=>show(Number(slider.value)));show(0);
+</script></html>

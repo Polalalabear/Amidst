@@ -1,0 +1,483 @@
+{
+  "schema_version": "human-review-office-geometry-inspection-v1",
+  "status": "DIAGNOSTIC_PROSPECTIVE_SCOPE_NOT_CERTIFIED",
+  "gt_used": false,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+  "input_hashes": {
+    "configs/physical_collision_numerics_v1.json": "cca85ae64f56538f4e2b5352c4962c82d468a3d00622b6c99f35e8a329ac795b",
+    "data/finalization/local_run/diagnostics/office/policy_graph_primary/candidates.json": "0212756864986ee5044313058144c7e3fcb56c72e68ebd30b7062e508b9c9b02",
+    "data/finalization/local_run/diagnostics/office/policy_graph_primary/projected_frames.json": "0ebdb3762fe181c44ea25456b4525204aaa19dbe957a923c360f2bffdf5d6e48",
+    "data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0",
+    "data/scene_audit/phase1_physical_policy_approval_20261006/source_evidence.json.gz": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c"
+  },
+  "floor_id": "1F",
+  "area": "AREA_1F_OFFICE",
+  "walkable": "WALK_1F_OFFICE",
+  "portal": null,
+  "portal_reason": "public reviewed candidates do not require a portal transition",
+  "scope_basis": "all public observed projections and all support-eligible public candidate vertices plus approved body guard; support-failing left route excluded automatically",
+  "prospective_footpoint_bounds_bu": [
+    [
+      1399.9985317206952,
+      1939.9994361310253,
+      20.07884979248047
+    ],
+    [
+      1411.9999242955855,
+      2096.8005463472678,
+      20.07884979248047
+    ]
+  ],
+  "prospective_footpoint_bounds_m": [
+    [
+      34.57996373350117,
+      47.91798607243632,
+      0.49594758987426757
+    ],
+    [
+      34.87639813010096,
+      51.79097349477751,
+      0.49594758987426757
+    ]
+  ],
+  "body_envelope_bounds_bu": [
+    [
+      1385.8284912348652,
+      1925.8293956451953,
+      18.014072464545244
+    ],
+    [
+      1426.1699647814155,
+      2110.9705868330975,
+      90.96953805158978
+    ]
+  ],
+  "body_envelope_bounds_m": [
+    [
+      34.22996373350117,
+      47.56798607243633,
+      0.4449475898742675
+    ],
+    [
+      35.22639813010096,
+      52.140973494777505,
+      2.2469475898742677
+    ]
+  ],
+  "body_policy_m": {
+    "radius": 0.3,
+    "height": 1.7,
+    "clearance": 0.05,
+    "contact": 0.001
+  },
+  "source_triangles_selected_by_envelope": 12,
+  "legal_actual_support_triangles": 10,
+  "findings": [
+    {
+      "source_object_id": "group_0",
+      "source_face_index": 1975,
+      "source_triangle_index": 1975,
+      "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+      "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+      "triangle_bu": [
+        [
+          1396.8341979980469,
+          2111.2383575439453,
+          20.07884979248047
+        ],
+        [
+          1396.8341979980469,
+          2123.0493927001953,
+          20.07884979248047
+        ],
+        [
+          1396.8341979980469,
+          1713.4693145751953,
+          20.07884979248047
+        ]
+      ],
+      "triangle_m": [
+        [
+          34.50180469055176,
+          52.147587431335445,
+          0.49594758987426757
+        ],
+        [
+          34.50180469055176,
+          52.439319999694824,
+          0.49594758987426757
+        ],
+        [
+          34.50180469055176,
+          42.32269207000732,
+          0.49594758987426757
+        ]
+      ],
+      "centroid_bu": [
+        1396.8341979980469,
+        1982.585688273112,
+        20.07884979248047
+      ],
+      "centroid_m": [
+        34.50180469055176,
+        48.969866500345866,
+        0.49594758987426757
+      ],
+      "bounds_bu": [
+        [
+          1396.8341979980469,
+          1713.4693145751953,
+          20.07884979248047
+        ],
+        [
+          1396.8341979980469,
+          2123.0493927001953,
+          20.07884979248047
+        ]
+      ],
+      "current_authority": "SOURCE_CONTEXT_ONLY_NOT_APPROVED_COLLIDER",
+      "machine_status": "EXACT_ZERO_AREA_DEGENERATE"
+    },
+    {
+      "source_object_id": "group_0",
+      "source_face_index": 2398,
+      "source_triangle_index": 2398,
+      "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+      "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+      "triangle_bu": [
+        [
+          1396.8341979980469,
+          2123.0493927001953,
+          20.07884979248047
+        ],
+        [
+          1396.8341979980469,
+          2111.2383575439453,
+          20.07884979248047
+        ],
+        [
+          1396.8341979980469,
+          1713.4693145751953,
+          20.07884979248047
+        ]
+      ],
+      "triangle_m": [
+        [
+          34.50180469055176,
+          52.439319999694824,
+          0.49594758987426757
+        ],
+        [
+          34.50180469055176,
+          52.147587431335445,
+          0.49594758987426757
+        ],
+        [
+          34.50180469055176,
+          42.32269207000732,
+          0.49594758987426757
+        ]
+      ],
+      "centroid_bu": [
+        1396.8341979980469,
+        1982.585688273112,
+        20.07884979248047
+      ],
+      "centroid_m": [
+        34.50180469055176,
+        48.969866500345866,
+        0.49594758987426757
+      ],
+      "bounds_bu": [
+        [
+          1396.8341979980469,
+          1713.4693145751953,
+          20.07884979248047
+        ],
+        [
+          1396.8341979980469,
+          2123.0493927001953,
+          20.07884979248047
+        ]
+      ],
+      "current_authority": "SOURCE_CONTEXT_ONLY_NOT_APPROVED_COLLIDER",
+      "machine_status": "EXACT_ZERO_AREA_DEGENERATE"
+    }
+  ],
+  "paths": [
+    {
+      "candidate_id": "candidate:57da8c26c5e395bbc3c4f47f101730169c8957b4d9c9b3a0cc5a3f744e906ae1",
+      "route": [
+        "pilot_route:direct"
+      ],
+      "prospective_foot_polyline_bu": [
+        [
+          1399.9987750348005,
+          2003.9994308285259,
+          20.07884979248047
+        ],
+        [
+          1399.9999242968238,
+          2084.000270429096,
+          20.07884979248047
+        ]
+      ],
+      "source_landmark_polyline_bu": [
+        [
+          1399.9987750348005,
+          2003.9994308285259,
+          75.12884788513183
+        ],
+        [
+          1399.9999242968238,
+          2084.000270429096,
+          75.12884788513183
+        ]
+      ],
+      "support_checks": [
+        {
+          "valid": true,
+          "reason": "PASS",
+          "clearance_bu": 19.674678355112974,
+          "clearance_m": 0.48596455537129046,
+          "required_clearance_bu": 14.170040485829958,
+          "required_clearance_m": 0.35
+        }
+      ],
+      "support_eligible_for_prospective_scope": true,
+      "physical_route_approved": false,
+      "status": "DIAGNOSTIC_PUBLIC_INFERRED_CANDIDATE_NOT_GT"
+    },
+    {
+      "candidate_id": "candidate:0ce8346ee35884a72affb6e14671e0594c3c4d6d1560362565cd170cb1e352c3",
+      "route": [
+        "pilot_route:left"
+      ],
+      "prospective_foot_polyline_bu": [
+        [
+          1399.9987750348005,
+          2003.9994308285259,
+          20.07884979248047
+        ],
+        [
+          1387.9987750360388,
+          2003.9996032160202,
+          20.07884979248047
+        ],
+        [
+          1387.999924298062,
+          2084.0004428165903,
+          20.07884979248047
+        ],
+        [
+          1399.9999242968238,
+          2084.000270429096,
+          20.07884979248047
+        ]
+      ],
+      "source_landmark_polyline_bu": [
+        [
+          1399.9987750348005,
+          2003.9994308285259,
+          75.12884788513183
+        ],
+        [
+          1387.9987750360388,
+          2003.9996032160202,
+          75.12884788513183
+        ],
+        [
+          1387.999924298062,
+          2084.0004428165903,
+          75.12884788513183
+        ],
+        [
+          1399.9999242968238,
+          2084.000270429096,
+          75.12884788513183
+        ]
+      ],
+      "support_checks": [
+        {
+          "valid": false,
+          "reason": "INSUFFICIENT_WALKABLE_CLEARANCE",
+          "clearance_bu": 7.674678356351251,
+          "clearance_m": 0.1895645554018759,
+          "required_clearance_bu": 14.170040485829958,
+          "required_clearance_m": 0.35
+        },
+        {
+          "valid": false,
+          "reason": "INSUFFICIENT_WALKABLE_CLEARANCE",
+          "clearance_bu": 7.674678356351251,
+          "clearance_m": 0.1895645554018759,
+          "required_clearance_bu": 14.170040485829958,
+          "required_clearance_m": 0.35
+        },
+        {
+          "valid": false,
+          "reason": "INSUFFICIENT_WALKABLE_CLEARANCE",
+          "clearance_bu": 7.675827618374569,
+          "clearance_m": 0.18959294217385186,
+          "required_clearance_bu": 14.170040485829958,
+          "required_clearance_m": 0.35
+        }
+      ],
+      "support_eligible_for_prospective_scope": false,
+      "physical_route_approved": false,
+      "status": "DIAGNOSTIC_PUBLIC_INFERRED_CANDIDATE_NOT_GT"
+    },
+    {
+      "candidate_id": "candidate:416fbc425189f291434e9f4e70fd778e718c11f6fc7a5338f5bc70c1f2d7304d",
+      "route": [
+        "pilot_route:right"
+      ],
+      "prospective_foot_polyline_bu": [
+        [
+          1399.9987750348005,
+          2003.9994308285259,
+          20.07884979248047
+        ],
+        [
+          1411.9987750335622,
+          2003.9992584410315,
+          20.07884979248047
+        ],
+        [
+          1411.9999242955855,
+          2084.0000980416016,
+          20.07884979248047
+        ],
+        [
+          1399.9999242968238,
+          2084.000270429096,
+          20.07884979248047
+        ]
+      ],
+      "source_landmark_polyline_bu": [
+        [
+          1399.9987750348005,
+          2003.9994308285259,
+          75.12884788513183
+        ],
+        [
+          1411.9987750335622,
+          2003.9992584410315,
+          75.12884788513183
+        ],
+        [
+          1411.9999242955855,
+          2084.0000980416016,
+          75.12884788513183
+        ],
+        [
+          1399.9999242968238,
+          2084.000270429096,
+          75.12884788513183
+        ]
+      ],
+      "support_checks": [
+        {
+          "valid": true,
+          "reason": "PASS",
+          "clearance_bu": 19.674678355112974,
+          "clearance_m": 0.48596455537129046,
+          "required_clearance_bu": 14.170040485829958,
+          "required_clearance_m": 0.35
+        },
+        {
+          "valid": true,
+          "reason": "PASS",
+          "clearance_bu": 31.674678353874693,
+          "clearance_m": 0.7823645553407049,
+          "required_clearance_bu": 14.170040485829958,
+          "required_clearance_m": 0.35
+        },
+        {
+          "valid": true,
+          "reason": "PASS",
+          "clearance_bu": 19.675827617136292,
+          "clearance_m": 0.48599294214326644,
+          "required_clearance_bu": 14.170040485829958,
+          "required_clearance_m": 0.35
+        }
+      ],
+      "support_eligible_for_prospective_scope": true,
+      "physical_route_approved": false,
+      "status": "DIAGNOSTIC_PUBLIC_INFERRED_CANDIDATE_NOT_GT"
+    }
+  ],
+  "certificate_result": {
+    "status": "REVIEW",
+    "reason": "DEGENERATE_SOURCE_BODY_CONTEXT_TRIANGLE",
+    "source_object_id": "group_0",
+    "source_face_index": 1975,
+    "triangle_bu": [
+      [
+        1396.8341979980469,
+        2111.2383575439453,
+        20.07884979248047
+      ],
+      [
+        1396.8341979980469,
+        2123.0493927001953,
+        20.07884979248047
+      ],
+      [
+        1396.8341979980469,
+        1713.4693145751953,
+        20.07884979248047
+      ]
+    ],
+    "source_triangles_screened": 1274,
+    "exact_distance_queries": 0
+  },
+  "certificate_generated": false,
+  "enclosure_witness_bu": [
+    1405.9992280081403,
+    2018.3999912391464,
+    54.491805258067515
+  ],
+  "enclosing_context_components": [
+    {
+      "source_object_id": "group_0",
+      "component_id": "component-00000000",
+      "topology": {
+        "triangle_count": 17596,
+        "boundary_edge_count": 0,
+        "nonmanifold_edge_count": 11635,
+        "inconsistent_winding_edge_count": 0,
+        "degenerate_triangle_count": 1456,
+        "signed_volume_bu3": 1.2210530501346416e-07,
+        "enclosed_volume_bu3": 1.2210530501346416e-07,
+        "closed_consistent_nonzero_volume": false
+      }
+    }
+  ],
+  "enclosure": {
+    "source_object_id": "group_0",
+    "component_id": "component-00000000",
+    "bounds_bu": {
+      "maximum": [
+        2048.9632263183594,
+        2331.854446411133,
+        323.2284851074219
+      ],
+      "minimum": [
+        213.76119995117188,
+        216.2252960205078,
+        0.0
+      ]
+    },
+    "full_component_approval_requested": false,
+    "current_semantics": "UNKNOWN_SOLID_INTERIOR_OR_SOURCE_SURFACE"
+  },
+  "limitations": [
+    "Prospective foot coordinates require the separate landmark/floor binding decision.",
+    "Exact zero area is machine determined; whether these seams have physical ownership is human semantics.",
+    "The original strict certificate rejects degenerate source context and unknown component enclosure. An additive reviewed-scope certifier is prepared but unapplied.",
+    "APPROVE never sets certificate=PASS. The bound human receipt and original-source exhaustive support/body/clearance/enclosure checks must still run.",
+    "Configured direct/left/right routes do not prove school topology, Case 1 uniqueness or Case 2 independent branch diversity."
+  ]
+}

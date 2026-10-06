@@ -4,6 +4,15 @@
 
 ## 繁體中文
 
+### 2026-10-06 — Minimal Human Review Gate
+
+已產生 [4 項 pending review dashboard](../human_review/index.html)、固定格式證據、
+10 秒 GT-free frame player、精確 office scope closeups、decisions.json 和 hash-bound
+decision application pipeline。完整 regression **1580 passed /5 既有 school-v2 skips**；
+Ruff、mypy93 files、diff check 通過。沒有套用 school approval、執行 formal Case、修改
+source Blender、merge main 或建立 tag。證據與限制記於
+[experiment log](EXPERIMENT_LOG.md#2026-10-06--minimal-phase-1-human-review-gate)。
+
 ### 2026-10-06 — Finalization blocked checkpoint
 
 已在 `phase1/finalization-sprint` selective integrate exact physical/projection
