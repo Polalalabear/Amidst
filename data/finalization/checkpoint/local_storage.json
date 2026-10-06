@@ -1,0 +1,19 @@
+{
+  "archives": [
+    {
+      "byte_copy_verified": true,
+      "bytes": 60589843,
+      "file_count": 859,
+      "path": "data/pilot/phase1_finalization_20261006/local_run"
+    },
+    {
+      "byte_copy_verified": true,
+      "bytes": 16824630,
+      "file_count": 281,
+      "path": "data/pilot/phase1_finalization_20261006/fresh_run"
+    }
+  ],
+  "no_deletions": true,
+  "source_preserved": true,
+  "status": "LOCAL_ONLY_HASH_VERIFIED"
+}

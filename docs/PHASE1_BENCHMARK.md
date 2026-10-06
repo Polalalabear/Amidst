@@ -2,6 +2,14 @@
 
 [繁體中文](#繁體中文) | [English](#english)
 
+2026-10-06 finalization：**PHASE1_FINALIZATION_BLOCKED**。正式 Cases 1–3 的完整
+27-row matrix 保留 N/A；[final report](PHASE1_FINAL_REPORT.md) 與
+[reproduction guide](PHASE1_REPRODUCTION.md) 說明 fresh diagnostic dataset/replay。
+`amidst.benchmark.baselines` 的 A/B/C adapters 共用原 traversal，支援既有可執行
+single-factor ablations；缺 physical scope／formal metric authority 不執行正式比較。
+This checkpoint implements diagnostic baseline adapters without changing the formal
+protocol definitions or relabeling old fake runs. Formal execution remains gated.
+
 正式 Case 1–4、metric／baseline／ablation 與分項 acceptance specification 見
 [BENCHMARK_PROTOCOL](PHASE1_BENCHMARK_PROTOCOL.md)。該 protocol 尚有
 `UNRESOLVED_RESEARCH_SETTING`，不能直接作為可執行的 ExperimentConfig。

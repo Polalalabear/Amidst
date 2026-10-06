@@ -1,0 +1,16 @@
+{
+  "all_artifact_bytes_verified": true,
+  "all_dataset_hashes_equal": true,
+  "all_six_rrd_reader_checks_pass": true,
+  "baseline_regression_byte_equal": true,
+  "both_technical_verification_pass": true,
+  "canonical_diagnostic_hashes_equal": true,
+  "dataset_manifest_byte_equal": true,
+  "formal_fresh_rerun": "NOT_RUN",
+  "freeze_permitted": false,
+  "fresh_manifest_sha256": "2c524e0074d06091aa330e2e0ca3ebf9639761ed96749fde07b0e9ab2fcac417",
+  "fresh_physical_materialization_pass": true,
+  "local_manifest_sha256": "2c524e0074d06091aa330e2e0ca3ebf9639761ed96749fde07b0e9ab2fcac417",
+  "scope": "DIAGNOSTIC_DATASET_AND_REPLAY_NOT_FORMAL_CASES",
+  "status": "PASS"
+}

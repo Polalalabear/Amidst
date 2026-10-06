@@ -1,0 +1,27 @@
+{
+  "artifacts": {
+    "accuracy.png": "07068c5d3194e36c96dbb1ce2e9b339e00c623583c22305a4a7ec7a5fc12a7e0",
+    "baseline_regression.json": "bde1ec9717c3ead255f299b3f12e1c04725905165be623604cd3e10b6a696586",
+    "benchmark_table.csv": "bbfb789afb5dc3391932188bc863fd12b15985318d14805b6e33482c208f9f6e",
+    "benchmark_table.md": "998899f70649ba40699a30fcc2e9f1e0b6e4e2091873a13590a1329e5c4793bf",
+    "coverage.png": "48a4ed385262c3fb12ae865bb320f283d49a6f37f77f40c925b1d8830db81d18",
+    "dataset_manifest.json": "2c524e0074d06091aa330e2e0ca3ebf9639761ed96749fde07b0e9ab2fcac417",
+    "exit_gate.json": "e5ac5f6e67f5346bff5a5fff314316bd04fc7cb5dbb395c28761a460a4bb445c",
+    "input_lock.json": "ba350a4200018b7295f8985e6864f35b1aef28ea9efcc5003d521e8de3074ceb",
+    "physical_reproducibility.json": "ff8fc93b8073f2216e366d831238fbe2c885ac60d83b917ee32fc291dfe7f66f",
+    "physical_validity.png": "a23b8e9a3a8c061257894fc0dcb14fdc1205e923eacea8377b6b18e0b100e2c8",
+    "projection_confidence.png": "b900519ecd19db1ae084dac4fb04f7d67a8c5776ceff603cc241d9e0666f8133",
+    "projection_methods.png": "c192da7aa81d4c7c7bf4ce528f2758fc3e7814392af942c2a822bccbe25cde38",
+    "reproducibility.json": "4b140ba38a32ba35048405dbc2510628b3f2efef59d68a0584bab0c602ccd5a5",
+    "runtime_search.png": "4507c0ceeebc9a68118c67c019a0d0dcdb52d883a891a830974cc8663febb754",
+    "termination.png": "c028ee50fb2375fa97162b72b2aa3d5dabfa125470ad82deecd46a67fd89f33b",
+    "top_k_candidates.png": "f3d831c50eb44c3fae26aa8cbc079a50c21e67602fb416bb46bde4761d434100",
+    "verification_fresh.json": "856cb0771383f175b6806e1fae158bc1e5f125025e1e38ff8e1903a0133a5477",
+    "verification_local.json": "856cb0771383f175b6806e1fae158bc1e5f125025e1e38ff8e1903a0133a5477"
+  },
+  "hash_excludes": [
+    "package_hashes.json",
+    "runtime and RRD container UUIDs"
+  ],
+  "status": "BLOCKED_CHECKPOINT_NOT_FROZEN_BENCHMARK"
+}

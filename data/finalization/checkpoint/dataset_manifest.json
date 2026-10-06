@@ -1,0 +1,67 @@
+{
+  "artifacts": {
+    "evaluation/auditorium/ground_truth.json": "2ce1396c0546581835171a7835a119202f284ebff0ec475daad5929a6046b25b",
+    "evaluation/corridor/ground_truth.json": "c6d259b9348179d50044525be548d1f40dbaedebbe8148e79aa767151bdf1125",
+    "evaluation/office/ground_truth.json": "98f8f497c7d19cae3c32e7cd7d8fec1dc43c008d0820c9b34a4f16fe7d22befa",
+    "inference/auditorium/context.json": "5de37aca5e15d84cb053b2a4328536d4ba7dbcb023d163c80aea01ebcd67f5bf",
+    "inference/auditorium/observations.json": "140573dc56223a58e2c02f95d34a084fe1c536b161b0f1405d5c92e7b03966ae",
+    "inference/auditorium/visibility.json": "bae1965670664d8577411db43c4bfd7b9f8cb7495aa577af304cca6ae5527f21",
+    "inference/corridor/context.json": "76a7e49823e917aa9e02ed88fd0e5b82c265f50b501dbd8adbe7405381fabd77",
+    "inference/corridor/observations.json": "ea5398c950453fc8f521cbdefc7db5b43f2c2128985d41f88abfc2f2791a6a82",
+    "inference/corridor/visibility.json": "8ca7ea3c093ffb13c40c24657356d6e19389fa5efa3764171faeb8ffb148c993",
+    "inference/office/context.json": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70",
+    "inference/office/observations.json": "3a8e1244c6374b22bc9866b85b3c917ba7071c6a4821eb8bb65b3efb9c262726",
+    "inference/office/visibility.json": "156efa115616c577c687140ebe0b818846fbb9314b031a02f01f0da6d4d9dd6c",
+    "simulation/auditorium/recipe.json": "4f0abc3c408743f83b436572b803c6c0a8a7d328b78995e927c55bd307454c09",
+    "simulation/corridor/recipe.json": "6dea6bf8a6fd571ba24545c131004e6ca7003f163c7056db0daafc100f704884",
+    "simulation/office/recipe.json": "b6cb3f70375f94dea9dc19508ded4bd557b47add8b03197504d456a25ac5baba"
+  },
+  "blender_build": "9e2066aef7ef",
+  "blender_version": "5.2.1 LTS",
+  "camera_plane_authority": "PROVISIONAL",
+  "config_sha256": "0d4e1e5c1fea4aa869fa2ae5b4b7d327ffb41b260f68605340aee28c471862f7",
+  "coordinate_storage": "BLENDER_NATIVE_UNITS",
+  "dataset_version": "phase1-finalization-inputs-v1-diagnostic",
+  "formal_cases_executed": false,
+  "gt_isolation": "evaluation/ and simulation/ forbidden to inference",
+  "legacy_context_scale_authority": "UNVERIFIED_LEGACY_SCHEMA_LABEL",
+  "legacy_domain_m_fields_are_native_bu": true,
+  "metres_per_blender_unit": 0.0247,
+  "physical_scope": "NOT_CERTIFIED",
+  "producer_hashes": {
+    "scripts/export_blender_pilot.py": "33ee1f1ebf7f0511cbe0c7128bd7ce225ddaa94698a98c7bf3e478f3afdcfe23",
+    "scripts/export_phase1_finalization_inputs.py": "d13abfe1493b50f5d7557600345193cf6adb4345c5ef17d92b2ba0821e9d47ed",
+    "src/amidst/simulation/blender_camera.py": "395675bbe0d1f3160fa94c843cd704380c554333aa2dfb9aba10c74b19758d7a",
+    "src/amidst/simulation/blender_visibility.py": "60b6d83a489610e25d61f73cee765c82c271f485327cd029992a2f0bb8bcb4a8"
+  },
+  "reporting_conversion": "multiply native distances by 0.0247",
+  "scale_authority": "APPROVED",
+  "seed": 20261005,
+  "source_saved": false,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_size_bytes": 468300506,
+  "status": "DIAGNOSTIC",
+  "streams": [
+    {
+      "observed_records": 26,
+      "records": 100,
+      "stream": "office",
+      "synchronized_dual_timestamps": 0,
+      "timestamps": 50
+    },
+    {
+      "observed_records": 82,
+      "records": 100,
+      "stream": "auditorium",
+      "synchronized_dual_timestamps": 33,
+      "timestamps": 50
+    },
+    {
+      "observed_records": 21,
+      "records": 100,
+      "stream": "corridor",
+      "synchronized_dual_timestamps": 0,
+      "timestamps": 50
+    }
+  ]
+}

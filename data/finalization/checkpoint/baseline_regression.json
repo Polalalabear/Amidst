@@ -1,0 +1,1015 @@
+{
+  "accuracy_metrics_evaluated": false,
+  "capabilities": {
+    "ablations": [
+      {
+        "ablation_id": "remove_travel_time",
+        "changed_factor": "TRAVEL_TIME_FILTER",
+        "diagnostic_available": true,
+        "engineering_prerequisites": [],
+        "existing_entrypoint": null,
+        "formal_available": false,
+        "reference_method": "C"
+      },
+      {
+        "ablation_id": "remove_collision",
+        "changed_factor": "COLLISION_FILTER",
+        "diagnostic_available": true,
+        "engineering_prerequisites": [
+          "REFERENCE_RUN_REQUIRES_APPROVED_COLLISION_CONSUMER"
+        ],
+        "existing_entrypoint": null,
+        "formal_available": false,
+        "reference_method": "C"
+      },
+      {
+        "ablation_id": "remove_topology",
+        "changed_factor": "CAMERA_TOPOLOGY_FILTER",
+        "diagnostic_available": true,
+        "engineering_prerequisites": [],
+        "existing_entrypoint": null,
+        "formal_available": false,
+        "reference_method": "C"
+      },
+      {
+        "ablation_id": "shortest_path_only",
+        "changed_factor": "CANDIDATE_ENUMERATOR",
+        "diagnostic_available": true,
+        "engineering_prerequisites": [],
+        "existing_entrypoint": "amidst.pipeline.reconstruct_input(inputs, max_paths=1)",
+        "formal_available": false,
+        "reference_method": "C"
+      },
+      {
+        "ablation_id": "full_deterministic_graph",
+        "changed_factor": null,
+        "diagnostic_available": true,
+        "engineering_prerequisites": [],
+        "existing_entrypoint": "amidst.pipeline.reconstruct_input(inputs)",
+        "formal_available": false,
+        "reference_method": "C"
+      },
+      {
+        "ablation_id": "add_semantic_information",
+        "changed_factor": "SEMANTIC_FEATURE_POLICY",
+        "diagnostic_available": false,
+        "engineering_prerequisites": [
+          "APPROVED_SEMANTIC_POLICY_NOT_IMPLEMENTED"
+        ],
+        "existing_entrypoint": null,
+        "formal_available": false,
+        "reference_method": "C"
+      },
+      {
+        "ablation_id": "add_agent_ranking",
+        "changed_factor": "RANKING_POLICY",
+        "diagnostic_available": false,
+        "engineering_prerequisites": [
+          "AGENT_RANKING_NOT_IMPLEMENTED"
+        ],
+        "existing_entrypoint": null,
+        "formal_available": false,
+        "reference_method": "D"
+      }
+    ],
+    "baseline_order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "baselines": [
+      {
+        "baseline_id": "A",
+        "candidate_policy": "ONE_CANONICAL_SHORTEST_AUTHORIZED_GEOMETRIC_ROUTE",
+        "current_mask": {
+          "camera_topology_filter": false,
+          "collision_filter": false,
+          "travel_time_filter": false
+        },
+        "diagnostic_available": true,
+        "engineering_prerequisites": [
+          "APPROVED_CASE_LOCAL_PHYSICAL_SCOPE_REQUIRED",
+          "FROZEN_FORMAL_METRIC_AND_CASE_CONFIG_REQUIRED"
+        ],
+        "formal_available": false,
+        "limitations": [
+          "TIMING_INFEASIBLE_ROUTES_RETAINED_AS_UNTIMED_NA"
+        ],
+        "method_id": "shortest_path",
+        "required_mask": {
+          "camera_topology_filter": false,
+          "collision_filter": true,
+          "travel_time_filter": false
+        }
+      },
+      {
+        "baseline_id": "B",
+        "candidate_policy": "DETERMINISTIC_MULTIPLE_AUTHORIZED_GEOMETRIC_ROUTES",
+        "current_mask": {
+          "camera_topology_filter": false,
+          "collision_filter": false,
+          "travel_time_filter": false
+        },
+        "diagnostic_available": true,
+        "engineering_prerequisites": [
+          "APPROVED_CASE_LOCAL_PHYSICAL_SCOPE_REQUIRED",
+          "FROZEN_FORMAL_METRIC_AND_CASE_CONFIG_REQUIRED"
+        ],
+        "formal_available": false,
+        "limitations": [
+          "TIMING_INFEASIBLE_ROUTES_RETAINED_AS_UNTIMED_NA"
+        ],
+        "method_id": "geometry",
+        "required_mask": {
+          "camera_topology_filter": false,
+          "collision_filter": true,
+          "travel_time_filter": false
+        }
+      },
+      {
+        "baseline_id": "C",
+        "candidate_policy": "CURRENT_BOUNDED_SPATIOTEMPORAL_GRAPH",
+        "current_mask": {
+          "camera_topology_filter": true,
+          "collision_filter": false,
+          "travel_time_filter": true
+        },
+        "diagnostic_available": true,
+        "engineering_prerequisites": [
+          "APPROVED_CASE_LOCAL_PHYSICAL_SCOPE_REQUIRED",
+          "FROZEN_FORMAL_METRIC_AND_CASE_CONFIG_REQUIRED"
+        ],
+        "formal_available": false,
+        "limitations": [
+          "CONFIGURED_TIME_AND_CAMERA_TOPOLOGY_DIAGNOSTIC_ONLY",
+          "SUPPLIED_GRAPH_CONFIG_DOES_NOT_GRANT_SCHOOL_GEOMETRY_AUTHORITY",
+          "COLLISION_FILTER_REQUIRES_SUPPLIED_APPROVED_PURPOSE_BOUND_CONSUMER"
+        ],
+        "method_id": "spatiotemporal",
+        "required_mask": {
+          "camera_topology_filter": true,
+          "collision_filter": true,
+          "travel_time_filter": true
+        }
+      },
+      {
+        "baseline_id": "D",
+        "candidate_policy": "INTERFACE_ONLY",
+        "current_mask": null,
+        "diagnostic_available": false,
+        "engineering_prerequisites": [
+          "APPROVED_SEMANTIC_POLICY_NOT_IMPLEMENTED"
+        ],
+        "formal_available": false,
+        "limitations": [],
+        "method_id": "semantic",
+        "required_mask": null
+      },
+      {
+        "baseline_id": "E",
+        "candidate_policy": "INTERFACE_ONLY",
+        "current_mask": null,
+        "diagnostic_available": false,
+        "engineering_prerequisites": [
+          "AGENT_RANKING_NOT_IMPLEMENTED"
+        ],
+        "formal_available": false,
+        "limitations": [],
+        "method_id": "agent",
+        "required_mask": null
+      }
+    ],
+    "formal_execution_enabled": false,
+    "gt_read": false,
+    "inference_executed": false,
+    "protocol_version": "phase1-benchmark-protocol-v1",
+    "schema_version": "phase1-baseline-capability-v1",
+    "shared_contracts": {
+      "factor_masks": "EXPLICIT_FILTER_MASKS_NO_SPEED_TIME_OR_TOPOLOGY_SUBSTITUTION",
+      "geometry": "EXPLICIT_DIRECTED_NAVIGATION_WITH_FLOOR_STAIR_AUTHORIZATION",
+      "ordering": "EXISTING_GRAPH_DISTANCE_THEN_EDGE_IDS_THEN_TRANSITION_IDS",
+      "requested_k": "UNCHANGED_NO_DUPLICATE_ROUTE_PADDING",
+      "timing": "EXISTING_BLIND_GAP_RECONSTRUCTOR"
+    },
+    "status": "DIAGNOSTIC_PREFLIGHT"
+  },
+  "case4": "DEFERRED",
+  "configuration_ordering_equal": true,
+  "default_c_artifact_parity": true,
+  "fixture_only": true,
+  "formal_school_cases_executed": false,
+  "ground_truth_read": false,
+  "producer_hashes": {
+    "configs/benchmarks/protocol_v1.json": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+    "src/amidst/benchmark/baselines.py": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1",
+    "src/amidst/domain/trajectory.py": "2ade5475040bae2daa27d454cd8ee1383bd6b8c7450123ccffb2f145b8ab3286",
+    "src/amidst/graph/engine.py": "f0c9e018067f05666056217d65afdaeeff651dbb8bf6a62e5721245b919c0562",
+    "src/amidst/reconstruction/blind_gap.py": "8338e8033ebe0d5035151974da938d3fd368ab36ca1ead17784a237f509a183f",
+    "src/amidst/simulation/mock_scenarios.py": "75dcf200695062a456263b14a3f5f55a8e1322c783b4a7b5f5f04e4d9a07d5cc"
+  },
+  "repeated_inference_equal": true,
+  "result_type": "DIAGNOSTIC",
+  "runs": [
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:69872427492dfa8dd33c3586ec3af420b1d533f46019962d8170aa52a2e3d80a"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 2,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": false
+      },
+      "fixture_id": "single_path",
+      "inference_sha256": "2dfaaaada294970c6087113f3c12affcd7be1684b5ad6e1ccc79f3e0e06f14ba",
+      "input_sha256": "16b1f01b69164fe52d63c0467677775a084a6c9e788a3cf1130e72accd2ed9c2",
+      "method_id": "shortest_path",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:69872427492dfa8dd33c3586ec3af420b1d533f46019962d8170aa52a2e3d80a"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 2,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": false
+      },
+      "fixture_id": "single_path",
+      "inference_sha256": "5cf6e83008968d36e0c05304d67c6fcf6965f1722f4f11b8a9dfd99f19fd01d1",
+      "input_sha256": "16b1f01b69164fe52d63c0467677775a084a6c9e788a3cf1130e72accd2ed9c2",
+      "method_id": "geometry",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:ba7aee53a620746ca390472aae1514884ef01e4109d8915706b32b71b8fbe79a"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 2,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "single_path",
+      "inference_sha256": "b21b2989ec04fa186863cea8c58d370b98eb6a52177491115703207bff42c739",
+      "input_sha256": "16b1f01b69164fe52d63c0467677775a084a6c9e788a3cf1130e72accd2ed9c2",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_travel_time",
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:ba7aee53a620746ca390472aae1514884ef01e4109d8915706b32b71b8fbe79a"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 2,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": false
+      },
+      "fixture_id": "single_path",
+      "inference_sha256": "918e01f59ded824c6c504f7786129af454fe1010cf756d2a0726197c1fc2bdb5",
+      "input_sha256": "16b1f01b69164fe52d63c0467677775a084a6c9e788a3cf1130e72accd2ed9c2",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_topology",
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:69872427492dfa8dd33c3586ec3af420b1d533f46019962d8170aa52a2e3d80a"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 2,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": true
+      },
+      "fixture_id": "single_path",
+      "inference_sha256": "76e06d8d1d128d4db1752e7dda0a71cd9b54515e4e359a7016066e915110077e",
+      "input_sha256": "16b1f01b69164fe52d63c0467677775a084a6c9e788a3cf1130e72accd2ed9c2",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "shortest_path_only",
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:ba7aee53a620746ca390472aae1514884ef01e4109d8915706b32b71b8fbe79a"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 2,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "single_path",
+      "inference_sha256": "d1d087f634ce9be691b64fe8d07106f5e1c2cdf19c7a0866af6c0735387f97c7",
+      "input_sha256": "16b1f01b69164fe52d63c0467677775a084a6c9e788a3cf1130e72accd2ed9c2",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "full_deterministic_graph",
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:ba7aee53a620746ca390472aae1514884ef01e4109d8915706b32b71b8fbe79a"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 2,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "single_path",
+      "inference_sha256": "46f64f92ac9feabad210fde9feb022252ba89edef9e97778fa47fc2511b17411",
+      "input_sha256": "16b1f01b69164fe52d63c0467677775a084a6c9e788a3cf1130e72accd2ed9c2",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_collision",
+      "fixture_id": "single_path",
+      "method_id": "spatiotemporal",
+      "reason": "REFERENCE_FIXTURE_HAS_NO_SUPPLIED_APPROVED_COLLISION_CONSUMER",
+      "result_type": "N/A",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:20d4333c4c70b1dfcd9d4aadebf4961b7fd53a840dbecbbb1523b40409d57ab6"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": false
+      },
+      "fixture_id": "branching_top_k",
+      "inference_sha256": "7c0f023af17106b5a241279c7e27e83b619c386c6023bb02428eeb0687f7aed0",
+      "input_sha256": "a64f584f439fef392f386f38937cd3ab55aa226fd1cf2d74aa8b150fc21aa6fc",
+      "method_id": "shortest_path",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": false,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "MAX_PATHS_REACHED",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 3,
+      "candidate_order": [
+        "candidate:20d4333c4c70b1dfcd9d4aadebf4961b7fd53a840dbecbbb1523b40409d57ab6",
+        "candidate:f2fa2bc1ca413bd60ee1fd51dd9deff4e7b31ef2b4a737a67fe593e63ee2786b",
+        "candidate:cbc3d1a131449cfa0240235caff040d59cdfe185efd99adfc9ff72c754e53791"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "upper"
+        ],
+        [
+          "lower"
+        ]
+      ],
+      "expanded_states": 4,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": false
+      },
+      "fixture_id": "branching_top_k",
+      "inference_sha256": "7c79933d66dcbdc45f6bc5ab1a05ad004ffc86571986cf30a71a6f1e08bef5ec",
+      "input_sha256": "a64f584f439fef392f386f38937cd3ab55aa226fd1cf2d74aa8b150fc21aa6fc",
+      "method_id": "geometry",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 3,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 3,
+      "candidate_order": [
+        "candidate:8fec9ecdff93f373aebd0c76eb8248676e51046aa2797d5bfc48b9042f1a0d20",
+        "candidate:cbb340fa52df3ec7eb638dc31ab2cab481de70846aa5b5cc9a787641f2df10d1",
+        "candidate:f078df71b860a150b4057db2af44042f00b7b5756f0d9bdf2eb517ce79b97f81"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "upper"
+        ],
+        [
+          "lower"
+        ]
+      ],
+      "expanded_states": 4,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "branching_top_k",
+      "inference_sha256": "ccdcf3cac1e462f46f926673a2337dc976c2626e68ca2289d17a387077c14635",
+      "input_sha256": "a64f584f439fef392f386f38937cd3ab55aa226fd1cf2d74aa8b150fc21aa6fc",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 3,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_travel_time",
+      "accuracy_metrics": null,
+      "candidate_count": 3,
+      "candidate_order": [
+        "candidate:8fec9ecdff93f373aebd0c76eb8248676e51046aa2797d5bfc48b9042f1a0d20",
+        "candidate:cbb340fa52df3ec7eb638dc31ab2cab481de70846aa5b5cc9a787641f2df10d1",
+        "candidate:f078df71b860a150b4057db2af44042f00b7b5756f0d9bdf2eb517ce79b97f81"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "upper"
+        ],
+        [
+          "lower"
+        ]
+      ],
+      "expanded_states": 4,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": false
+      },
+      "fixture_id": "branching_top_k",
+      "inference_sha256": "ca5f074d3c412ca00c0eb9015c7ef616c010d4801c1c78bf562a7eef9259d835",
+      "input_sha256": "a64f584f439fef392f386f38937cd3ab55aa226fd1cf2d74aa8b150fc21aa6fc",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 3,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_topology",
+      "accuracy_metrics": null,
+      "candidate_count": 3,
+      "candidate_order": [
+        "candidate:20d4333c4c70b1dfcd9d4aadebf4961b7fd53a840dbecbbb1523b40409d57ab6",
+        "candidate:f2fa2bc1ca413bd60ee1fd51dd9deff4e7b31ef2b4a737a67fe593e63ee2786b",
+        "candidate:cbc3d1a131449cfa0240235caff040d59cdfe185efd99adfc9ff72c754e53791"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "upper"
+        ],
+        [
+          "lower"
+        ]
+      ],
+      "expanded_states": 4,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": true
+      },
+      "fixture_id": "branching_top_k",
+      "inference_sha256": "6f1437d60e63783938f33d77607aa52b1e485b2c6a6807c04ee39c9f4fd637c1",
+      "input_sha256": "a64f584f439fef392f386f38937cd3ab55aa226fd1cf2d74aa8b150fc21aa6fc",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 3,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "shortest_path_only",
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:8fec9ecdff93f373aebd0c76eb8248676e51046aa2797d5bfc48b9042f1a0d20"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "branching_top_k",
+      "inference_sha256": "004206bb64cf90eb945e637aa8d211d76234bfb8f1dc5febe18cb43a4886afb3",
+      "input_sha256": "a64f584f439fef392f386f38937cd3ab55aa226fd1cf2d74aa8b150fc21aa6fc",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": false,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "MAX_PATHS_REACHED",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "full_deterministic_graph",
+      "accuracy_metrics": null,
+      "candidate_count": 3,
+      "candidate_order": [
+        "candidate:8fec9ecdff93f373aebd0c76eb8248676e51046aa2797d5bfc48b9042f1a0d20",
+        "candidate:cbb340fa52df3ec7eb638dc31ab2cab481de70846aa5b5cc9a787641f2df10d1",
+        "candidate:f078df71b860a150b4057db2af44042f00b7b5756f0d9bdf2eb517ce79b97f81"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "upper"
+        ],
+        [
+          "lower"
+        ]
+      ],
+      "expanded_states": 4,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "branching_top_k",
+      "inference_sha256": "f0c13d849c1c5d5b51e8319b5babb4890551fe85f655ce04eba3afad978c636c",
+      "input_sha256": "a64f584f439fef392f386f38937cd3ab55aa226fd1cf2d74aa8b150fc21aa6fc",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 3,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_collision",
+      "fixture_id": "branching_top_k",
+      "method_id": "spatiotemporal",
+      "reason": "REFERENCE_FIXTURE_HAS_NO_SUPPLIED_APPROVED_COLLISION_CONSUMER",
+      "result_type": "N/A",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:2dbe0604907b09cd1199d0ccd9d8690bdc2ecded09d22bae3959529553b6a1d5"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": false
+      },
+      "fixture_id": "temporal_slack",
+      "inference_sha256": "2821915c46c3da8fe066af581d06e82f84fdac7a0853bb2e060c575001235e45",
+      "input_sha256": "8a63a473ab46973340f009aece66d0fef19b6e547f60c3c56f2559bee76dbea7",
+      "method_id": "shortest_path",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": false,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "MAX_PATHS_REACHED",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 2,
+      "candidate_order": [
+        "candidate:2dbe0604907b09cd1199d0ccd9d8690bdc2ecded09d22bae3959529553b6a1d5",
+        "candidate:0312b17a7a406745de057df3f2846c7db71a99b0fd2ffbbac32707450790a810"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "detour"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": false
+      },
+      "fixture_id": "temporal_slack",
+      "inference_sha256": "c667500f6ad7a27ca62908e7fc2756e1a28521fbeb9a6e04ecf5fc069fc21928",
+      "input_sha256": "8a63a473ab46973340f009aece66d0fef19b6e547f60c3c56f2559bee76dbea7",
+      "method_id": "geometry",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 2,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": null,
+      "accuracy_metrics": null,
+      "candidate_count": 2,
+      "candidate_order": [
+        "candidate:929e85a7f11d89c2ddf6f7098d8a2492ce67c9f270d4980c9213c14f36833f1b",
+        "candidate:a1006a4fb9a859ea8db24d831a270e1562c3d7648adf8e9d49e3658d238c9248"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "detour"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "temporal_slack",
+      "inference_sha256": "ca87c0e78f4551929b4c593448af00790b68932b38bf30887721ab6a059acb02",
+      "input_sha256": "8a63a473ab46973340f009aece66d0fef19b6e547f60c3c56f2559bee76dbea7",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 2,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_travel_time",
+      "accuracy_metrics": null,
+      "candidate_count": 2,
+      "candidate_order": [
+        "candidate:929e85a7f11d89c2ddf6f7098d8a2492ce67c9f270d4980c9213c14f36833f1b",
+        "candidate:a1006a4fb9a859ea8db24d831a270e1562c3d7648adf8e9d49e3658d238c9248"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "detour"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": false
+      },
+      "fixture_id": "temporal_slack",
+      "inference_sha256": "bfc8617ad8763b7538ef78f35b43013db586c49b912c64de056a98290d7774e6",
+      "input_sha256": "8a63a473ab46973340f009aece66d0fef19b6e547f60c3c56f2559bee76dbea7",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 2,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_topology",
+      "accuracy_metrics": null,
+      "candidate_count": 2,
+      "candidate_order": [
+        "candidate:2dbe0604907b09cd1199d0ccd9d8690bdc2ecded09d22bae3959529553b6a1d5",
+        "candidate:0312b17a7a406745de057df3f2846c7db71a99b0fd2ffbbac32707450790a810"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "detour"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": false,
+        "travel_time_filter": true
+      },
+      "fixture_id": "temporal_slack",
+      "inference_sha256": "4749e1b4210d2d9d0968c020029ad61e499e484ab450103daf8a390425913086",
+      "input_sha256": "8a63a473ab46973340f009aece66d0fef19b6e547f60c3c56f2559bee76dbea7",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 2,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "shortest_path_only",
+      "accuracy_metrics": null,
+      "candidate_count": 1,
+      "candidate_order": [
+        "candidate:929e85a7f11d89c2ddf6f7098d8a2492ce67c9f270d4980c9213c14f36833f1b"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "temporal_slack",
+      "inference_sha256": "9f5ad49037658f2783ce43ea44bfc67e1ca8057f90d8198080464c870fbe11b2",
+      "input_sha256": "8a63a473ab46973340f009aece66d0fef19b6e547f60c3c56f2559bee76dbea7",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": false,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "MAX_PATHS_REACHED",
+      "timed_candidate_count": 1,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "full_deterministic_graph",
+      "accuracy_metrics": null,
+      "candidate_count": 2,
+      "candidate_order": [
+        "candidate:929e85a7f11d89c2ddf6f7098d8a2492ce67c9f270d4980c9213c14f36833f1b",
+        "candidate:a1006a4fb9a859ea8db24d831a270e1562c3d7648adf8e9d49e3658d238c9248"
+      ],
+      "configuration_ordering_equal": true,
+      "corridor_order": [
+        [
+          "direct"
+        ],
+        [
+          "detour"
+        ]
+      ],
+      "expanded_states": 3,
+      "factors": {
+        "camera_topology_filter": true,
+        "travel_time_filter": true
+      },
+      "fixture_id": "temporal_slack",
+      "inference_sha256": "1d905ddd107593e4bc84b4666fe9edbe5e42f52430b031b43def1b8eb7184d12",
+      "input_sha256": "8a63a473ab46973340f009aece66d0fef19b6e547f60c3c56f2559bee76dbea7",
+      "method_id": "spatiotemporal",
+      "physical_status": "N/A",
+      "repeat_equal": true,
+      "requested_k": 3,
+      "result_type": "DIAGNOSTIC",
+      "search_complete": true,
+      "seed": 20261001,
+      "status": "EXECUTED_SYNTHETIC_FIXTURE",
+      "termination": "COMPLETE",
+      "timed_candidate_count": 2,
+      "timed_metrics_status": "AVAILABLE",
+      "timing_unavailable_count": 0
+    },
+    {
+      "ablation_id": "remove_collision",
+      "fixture_id": "temporal_slack",
+      "method_id": "spatiotemporal",
+      "reason": "REFERENCE_FIXTURE_HAS_NO_SUPPLIED_APPROVED_COLLISION_CONSUMER",
+      "result_type": "N/A",
+      "status": "NOT_EXECUTED"
+    }
+  ],
+  "schema_version": "phase1-baseline-regression-v1"
+}

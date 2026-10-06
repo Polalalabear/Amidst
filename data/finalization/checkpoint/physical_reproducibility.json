@@ -1,0 +1,30 @@
+{
+  "artifact_byte_sha256": {
+    "floor_support_details.json.gz": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0",
+    "geometry.json.gz": "bd2287428bba9d983285dbf5f0bd301963a6a2bceb988a27fa6ab6b898e182fc",
+    "obstacle_collider_details.json.gz": "1452b297e1bc6f19284179f4f260803b058c487535d9971cbd5f3cf4fcf4ae77",
+    "source_evidence.json.gz": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c"
+  },
+  "both_materializations_research_equivalent": true,
+  "canonical_manifest_sha256": "547c5a310a12855bc766596ae7fdcc6143dd45ea79735960070180bbf7a1008d",
+  "historical_provenance_retained": true,
+  "research_results": {
+    "architectural_scale": "APPROVED",
+    "collision_after": 2,
+    "collision_before": 4,
+    "floor_supported_subdomains": 48,
+    "obstacle_annotation_count": 19,
+    "obstacle_approved_components": 58,
+    "obstacles_with_approved_components": 5,
+    "overall": "PARTIAL_APPROVED",
+    "physical_policy": "APPROVED",
+    "portal_authority": "HUMAN_REVIEW",
+    "portal_conflicts": 8,
+    "stair_authority": {
+      "A": "HUMAN_REVIEW",
+      "B": "HUMAN_REVIEW"
+    }
+  },
+  "source_preserved": true,
+  "status": "PASS"
+}

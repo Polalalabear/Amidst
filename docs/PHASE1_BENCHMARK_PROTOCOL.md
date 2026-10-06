@@ -6,6 +6,13 @@ Protocol version: `phase1-benchmark-protocol-v1`.
 Machine-readable specification: [protocol_v1.json](../configs/benchmarks/protocol_v1.json).
 Formal setting status: **UNRESOLVED_RESEARCH_SETTING**; formal execution is disabled.
 
+2026-10-06 Finalization checkpoint: **PHASE1_FINALIZATION_BLOCKED**.
+Additive A/B/C adapters and the projection policy are implemented and validated as
+DIAGNOSTIC; the existing formulas, formal Coverage settings and protocol JSON are unchanged.
+K=1/2/3 is requested by this Sprint; it does not approve a formal epsilon or local scope.
+See [final report](PHASE1_FINAL_REPORT.md), [input lock](../data/finalization/checkpoint/input_lock.json)
+and the [single human gate](../human_review/README.md). No formal Case result or freeze is claimed.
+
 ## 繁體中文
 
 ### 協定範圍與執行條件
@@ -112,9 +119,9 @@ Coverage=0。Input rejection／failed case 保留 row 與原因，未量測欄�
 
 | ID／method_id | 比較定義 | 本輪／下一階段狀態 |
 | --- | --- | --- |
-| A／`shortest_path` | 在相同 authorized geometric graph 找一條 canonical shortest route；共用 timing policy，不套 elapsed-time 或 camera-topology filter | 下一階段 deterministic baseline；collision filtering 仍需 inference authority |
-| B／`geometry` | 在同一 directed geometric graph deterministic 列舉多條 route；共用 timing，不套 elapsed-time／camera-topology filter | 下一階段 deterministic baseline；不得創造未核准 floor／stair edge |
-| C／`spatiotemporal` | Full deterministic graph：同一 geometry，加 explicit directed camera topology、travel-time constraints 與核准的 collision filter | 下一階段 deterministic baseline；目前 Graph 沒有 inference collision authority，不能宣稱已完成 full physical baseline |
+| A／`shortest_path` | 在相同 authorized geometric graph 找一條 canonical shortest route；共用 timing policy，不套 elapsed-time 或 camera-topology filter | Additive adapter 已實作；formal local scope／MetricConfig 仍 gated；不可行 timing 保留 untimed N/A |
+| B／`geometry` | 在同一 directed geometric graph deterministic 列舉多條 route；共用 timing，不套 elapsed-time／camera-topology filter | Additive adapter 已實作，共用既有 traversal；不創造未核准 floor／stair edge |
+| C／`spatiotemporal` | Full deterministic graph：同一 geometry，加 explicit directed camera topology、travel-time constraints 與核准的 collision filter | Default C 相容性已驗證；可顯式提供 approved purpose-bound consumer，缺完整 local scope 不宣稱 formal full physical baseline |
 | D／`semantic` | C 加 source-bound、approved semantic features；physical hard constraints 保留 | 只定義 interface／比較；semantic policy 與權重未定案，不實作 |
 | E／`agent` | 在 D 的 deterministic feasible candidates 上由 Agent rerank，不能生成 geometry、放寬 physics 或讀 GT | 只定義 interface；不開始 Agent Semantic Ranking |
 
@@ -124,7 +131,9 @@ A/B 在比較中保留 geometric floor／stair authorization，移除 camera-top
 的能力，不能冠名為通過正式全物理限制的結果。D/E interface 接收 source/context-bound
 observations、feasible candidates、公開 semantic features、政策版本；輸出 candidate-ID
 permutation／可追蹤 scoring provenance。GT、evaluation metrics、隱藏 trajectory 都不輸入。
-上述 A–C 定義可作下一階段起點；演算法、排序／tie break 與詳細 mask 尚需 freeze。
+上述 A–C 定義已由同一既有 heap traversal 的 additive masks 實作；排序沿用 distance、
+edge IDs、transition IDs。Formal case eligibility／search budgets 與 authority 尚須與
+case config 一同 freeze；diagnostic fixture 設定不自動變成正式研究設定。
 
 ### Single-factor ablation
 

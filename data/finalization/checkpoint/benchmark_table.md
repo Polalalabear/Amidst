@@ -1,0 +1,35 @@
+# Phase 1 formal benchmark status / 正式 benchmark 狀態
+
+Status: **PHASE1_FINALIZATION_BLOCKED**. No formal Case was executed.
+
+All requested Case/method/K rows remain visible. N/A is not zero or PASS.
+
+| Case | Method | K | Status | ADE | FDE | minADE@K | minFDE@K | Coverage@K | Physical validity | Candidates | Expanded states | Runtime | Termination |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Case 1 — Unique Route | A — shortest_path | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 1 — Unique Route | A — shortest_path | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 1 — Unique Route | A — shortest_path | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 1 — Unique Route | B — geometry | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 1 — Unique Route | B — geometry | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 1 — Unique Route | B — geometry | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 1 — Unique Route | C — spatiotemporal | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 1 — Unique Route | C — spatiotemporal | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 1 — Unique Route | C — spatiotemporal | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | A — shortest_path | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | A — shortest_path | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | A — shortest_path | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | B — geometry | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | B — geometry | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | B — geometry | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | C — spatiotemporal | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | C — spatiotemporal | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 2 — Branching Top-K | C — spatiotemporal | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | A — shortest_path | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | A — shortest_path | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | A — shortest_path | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | B — geometry | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | B — geometry | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | B — geometry | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | C — spatiotemporal | 1 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | C — spatiotemporal | 2 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |
+| Case 3 — Long Gap / Timing Ambiguity | C — spatiotemporal | 3 | N/A / NOT_RUN | N/A | N/A | N/A | N/A | N/A | NOT_CERTIFIED | N/A | N/A | N/A | NOT_RUN |

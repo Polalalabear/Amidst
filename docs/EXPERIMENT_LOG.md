@@ -156,3 +156,45 @@ Remaining human review concerns whole-object volume evidence, the eight portal o
 conflicts, and A/B actual support/opening/body-clearance evidence, rather than selecting
 the already-approved policy values again. Final pytest/Ruff/mypy/diff gates are recorded
 in [WORK_LOG](WORK_LOG.md).
+
+
+## 2026-10-06 — PHASE1_FINALIZATION_SPRINT
+
+**PHASE1_FINALIZATION_BLOCKED / DIAGNOSTIC; formal Cases1–3 NOT_RUN.**
+Branch `phase1/finalization-sprint`; source milestone
+`e9ade14ffd0838712935f210f17c947563a08a29`. Physical parent
+`f264db1579882e54cecba22db24ec8798822fd0c`; selective projection source
+`8f4055ffcdc3bf6efd723c7956ac685e1fe033f1`. No experimental-history merge.
+
+Dataset `phase1-finalization-inputs-v1-diagnostic`, manifest SHA256
+`2c524e0074d06091aa330e2e0ca3ebf9639761ed96749fde07b0e9ab2fcac417`.
+Source unchanged `cd46fa03...e84e`, approved 0.0247m/BU. Fresh original-scene export
+of three existing streams yields 300 two-camera records, 150 timestamps.
+Office/corridor paired evidence=0; auditorium exact-time pairs=33/49 visible timestamps.
+Additive policy and strict optional Graph projector preserve full evidence; no GT camera/pair
+selection, sample rejection or Coverage epsilon changes. Covariance stays sidecar.
+
+Two independent physical materializations are research-equivalent:48 supported domains,
+58 approved components, diagnostic pruning4→2, PARTIAL_APPROVED, local certificates=0.
+Baseline adapters share one traversal; 21 fixture comparisons execute and three collision
+ablation reference rows remain N/A. Existing default C artifacts remain compatible.
+
+Repeated, ordering, fresh-process and poisoned GT leave inference/candidate ordering/
+termination unchanged; only evaluation changes. All inference freezes before GT/recipe
+integrity reads. Clean checkout reproduces15 dataset and217 canonical replay artifacts;
+19 report artifacts byte-match. Six RRD reader checks pass, three PNG previews inspected.
+Runtime/RRD containers are noncanonical; no inference results excluded.
+
+完整 pytest physical-evidence profile：1532 passed /5 historical school-v2 skips；
+Ruff、mypy92 files、diff check通過。Final report/table contains27 explicit N/A formal
+case/method/K rows, availability charts and diagnostic method/confidence charts.
+Formal physical/local-navigation, camera-landmark/floor semantics and research tolerance
+remain one [human gate](../human_review/README.md); post-decision route/clearance/certificate
+checks are agent-owned. No WALL/portal/stair authority promotion. Case4 deferred, Phase2 frozen.
+Raw local/fresh artifacts retained in ignored `data/pilot/phase1_finalization_20261006/`;
+cleanup inventory deletes nothing. No freeze tag while blocked.
+
+中文版與 English 的完整結果、limits 和 command evidence：
+[Final report](PHASE1_FINAL_REPORT.md), [reproduction](PHASE1_REPRODUCTION.md),
+[reproducibility](../data/finalization/checkpoint/reproducibility.json),
+[result table](../data/finalization/checkpoint/benchmark_table.md).

@@ -1,0 +1,17 @@
+{
+  "diff_check": "PASS",
+  "formal_cases": "NOT_RUN",
+  "mypy": {
+    "source_files": 92,
+    "status": "PASS"
+  },
+  "pytest": {
+    "command": "AMIDST_PHYSICAL_SOURCE_SCENE=<exact school_v3> uv run --frozen pytest --require-physical-evidence -rs",
+    "passed": 1532,
+    "skip_scope": "historical school-v2 asset/calibration only",
+    "skipped": 5
+  },
+  "ruff": "PASS",
+  "source_checkpoint": "e9ade14ffd0838712935f210f17c947563a08a29",
+  "stage": "SOURCE_VALIDATION_BEFORE_REPORT_ONLY_COMMITS"
+}

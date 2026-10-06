@@ -4,6 +4,23 @@
 
 ## 繁體中文
 
+### 2026-10-06 — Finalization blocked checkpoint
+
+已在 `phase1/finalization-sprint` selective integrate exact physical/projection
+checkpoints，source milestone `e9ade14ffd0838712935f210f17c947563a08a29`。
+已完成 fresh物化／source export、additive projector、共用 traversal 的 A/B/C、
+GT poison／ordering／fresh-process replay、六份 RRD reader checks、三份 PNG QA。
+獨立 clean checkout 的15 dataset、217 canonical replay、19 report artifacts
+及 baseline regression 完全一致。1532 pytest passed、5 historical school-v2
+prerequisite skips；Ruff、mypy92 source files、diff check通過。
+
+正式 Cases1–3 沒有執行，27 rows 明示 N/A/NOT_CERTIFIED。
+唯一 [human gate](../human_review/README.md) pending；
+[final report](PHASE1_FINAL_REPORT.md)／[experiment record](EXPERIMENT_LOG.md)
+保存具體數值與限制，[cleanup](PHASE1_ARTIFACT_CLEANUP.md)只有inventory，沒有刪除。
+已準備任務限定 publication；不 merge main、Phase2保持FROZEN、不建立freeze tag。
+
+
 ### 2026-10-06 — Lightweight physical-policy checkpoint
 
 `phase1/physical-policy-lightweight` 直接由已同步遠端的
@@ -796,6 +813,18 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Finalization blocked checkpoint
+
+The exact physical/projection checkpoints are selectively integrated; source milestone
+`e9ade14ffd0838712935f210f17c947563a08a29`. Fresh materialization/export, shared A/B/C
+adapters, optional projection hook, GT poison/order/fresh-process checks and six RRD
+reader checks pass diagnostically. The clean checkout matches15 dataset,217 replay,
+19 report artifacts and baseline regression. Tests1532 passed/5 historical school-v2
+skips; Ruff, mypy92 files and diff check pass. Formal Cases1–3 remain NOT_RUN;
+the single human gate is pending. The final report/experiment log own details;
+cleanup is inventory-only, Phase2 frozen and no freeze tag or main merge.
+
 
 ### 2026-10-06 — Lightweight physical-policy checkpoint
 

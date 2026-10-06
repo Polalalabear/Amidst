@@ -3,6 +3,11 @@
 Formal Case 1–3 recordings: **N/A / NOT_RUN** until the
 [human gate](../human_review/README.md) passes.
 
+Persistent local copies are in the canonical repository's ignored
+`data/pilot/phase1_finalization_20261006/local_run/diagnostics/<stream>/demo/`.
+Streams are `office`, `auditorium`, and `corridor`. The matching fresh copies are
+under `data/pilot/phase1_finalization_20261006/fresh_run/diagnostics/`.
+
 Fresh exported office / corridor / auditorium recordings are local DIAGNOSTIC
 artifacts under `data/finalization/local_run/diagnostics/`. Each stream has
 `summary.json` and `demo/presentation.json`; its recording and PNG are

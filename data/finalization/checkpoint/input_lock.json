@@ -1,0 +1,62 @@
+{
+  "dataset_version": "phase1-finalization-inputs-v1-diagnostic",
+  "date": "2026-10-06",
+  "diagnostic_sampling": "existing pilot 5 Hz, [0,10), 50 timestamps",
+  "diagnostic_seed": 20261005,
+  "excluded": [
+    "unapproved WALLs",
+    "8 portal conflicts",
+    "Stair A/B",
+    "uncertified local navigation",
+    "surface-constrained inference",
+    "Case 4",
+    "Phase 2"
+  ],
+  "formal_baselines": "existing protocol A/B/C; no GT ordering",
+  "formal_coverage_settings": {
+    "distance_metric": null,
+    "epsilon": null,
+    "epsilon_unit": null,
+    "interpolation_policy": null,
+    "k_values": null,
+    "reference_sampling_policy": null,
+    "status": "UNRESOLVED_RESEARCH_SETTING",
+    "temporal_alignment_policy": null
+  },
+  "formal_execution_enabled": false,
+  "input_hashes": {
+    "configs/architectural_scale_school_v3.json": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf",
+    "configs/benchmarks/protocol_v1.json": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+    "configs/phase1_finalization_export_v1.json": "0d4e1e5c1fea4aa869fa2ae5b4b7d327ffb41b260f68605340aee28c471862f7",
+    "configs/physical_authority_policy_school_v3.json": "2427b3670ac8c3748c75deb172fd1f3bfb7da853fb49a7ad2cd5aac2ef8af7ea",
+    "configs/physical_context_school_v3.json": "032f3acb279b41add5d3a5b4551aab4836ef90b718f5781b7a5a21c9fb9b1905",
+    "configs/physical_policy_runtime_school_v3.json": "704b0f2fb115b691ff61249dc8d4521e39a06467aec0bcca913119fce0491f08",
+    "scripts/export_phase1_finalization_inputs.py": "d13abfe1493b50f5d7557600345193cf6adb4345c5ef17d92b2ba0821e9d47ed",
+    "scripts/phase1_projection_policy.py": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6",
+    "scripts/replay_phase1_finalization_diagnostics.py": "63a1242a8ffc44e01ffc05e3af3f76baaa47f96b1bec4a2b42b34da91831f6c6",
+    "scripts/report_phase1_finalization.py": "2b196a3f4acb7647bd13a4a4194a42a400fc5002e10c03be9dfbd09e7355dcd3",
+    "src/amidst/benchmark/baselines.py": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1",
+    "src/amidst/datasets/pilot.py": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792",
+    "src/amidst/graph/engine.py": "f0c9e018067f05666056217d65afdaeeff651dbb8bf6a62e5721245b919c0562",
+    "uv.lock": "c2fa5d90c4333857c2f4b1fd53abe8b281da1062c68ec10b6884cd1159bef521"
+  },
+  "k_values_requested": [
+    1,
+    2,
+    3
+  ],
+  "physical_checkpoint": "f264db1579882e54cecba22db24ec8798822fd0c",
+  "post_benchmark_rule_change": "forbidden; new inputs require new version",
+  "projection_checkpoint": "8f4055ffcdc3bf6efd723c7956ac685e1fe033f1",
+  "projection_policy": "EXACT_TIME_MULTIVIEW -> SINGLE_VIEW_FIXED_PLANE; conditioning/uncertainty -> LOW_CONFIDENCE/UNAVAILABLE",
+  "protocol_version": "phase1-benchmark-protocol-v1",
+  "selective_projection_files": {
+    "scripts/projection_conditioning.py": "a6928dfc56866d8b76a45ec8eca8042866af249cee830d982768c1fec27e8728",
+    "scripts/projection_mitigation_policy.py": "a1f595ec1e6e9a63c10de8ea8571cae8b118771e93b7459dace5616d38a6448a",
+    "scripts/projection_multiview_model.py": "63f170bfd40b06583bbb0841976a82d49df37e988d4d1d461f07fb5bc3a803ea",
+    "scripts/projection_uncertainty_model.py": "fadf8ddc6859024a61fa41f4f7fc27a7795ee6be99c6786ad760fc7e7234ebfc"
+  },
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "status": "FROZEN_DIAGNOSTIC_INPUTS_FORMAL_SETTINGS_PENDING",
+  "version": "phase1-finalization-input-lock-v1"
+}
