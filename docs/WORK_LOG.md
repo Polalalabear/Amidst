@@ -36,6 +36,13 @@ Bounds／尺寸從 source 自動產生，不新增人工手抄表；group_*／Cu
 52個更新文件的 internal file links 與 diff check 通過。此輪沒有 render／正式 benchmark、
 geometry integration、模型縮放／修改、merge 或 push；physical authority 仍 PROVISIONAL。
 
+後續 staged diff check 抓到 CSV 預設 CRLF 被判 trailing whitespace；先前已建立的
+`84ff020` 保留，追加 LF writer／regression guard 修正，不改寫 commit 歷史。
+重新唯讀產生報告，所有 source measurements 完全相同，JSON 僅 producer script hash
+更新；manifest 保留前版 JSON／CSV hash 與 commit reference。修正後完整重跑
+**1131 passed in85.57s，0 failed／0 skipped**，Ruff／mypy／script mypy／diff check 通過；
+最終92個 internal links有效，原 v3 與既有 benchmark／pilot artifacts 不變。
+
 ### 2026-10-06 — Geometry checkpoint 發布與 physical authority blocker 審查
 
 使用者指定的 `bb66bb74a4a76430f6fa8f79672345385a79e3f0` 在
@@ -687,6 +694,13 @@ isolation remain unchanged; no model mutation, rendering, formal benchmark, merg
 Fresh validation: pytest **1131 passed in84.83s, zero failures/skips**; Ruff, mypy81 files,
 standalone strict mypy for the new script and diff check pass. Eleven targeted diagnostic tests
 pass in0.05s; 52 internal file links pass. Physical authority remains PROVISIONAL.
+
+The subsequent staged check caught CSV CRLF as trailing whitespace. Retain `84ff020` and
+append an LF-writer fix with a regression assertion; do not rewrite history. Fresh read-only
+exports preserve every measurement value; JSON changes only its producer-script hash.
+The manifest retains the previous JSON/CSV hashes and commit reference. Final rerun:
+**1131 passed in85.57s, zero failures/skips**; Ruff, mypy, script mypy and diff check pass.
+All92 internal file links pass; source and previous benchmark/pilot artifacts remain unchanged.
 
 ### 2026-10-06 — Published geometry checkpoint and physical blocker review
 

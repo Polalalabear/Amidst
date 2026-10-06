@@ -17,13 +17,13 @@
   },
   "inputs": {
     "config_sha256": "c0882dcf18dd3f8cb387291beb9e65decfae43e971dc69907be927f4965b3e44",
-    "script_sha256": "eb57e75e7f503b60af50ca07a16566ed0e7fff587dcbd6ad8ca40d4caa42323a",
+    "script_sha256": "8e1ae06876ec1ad65aa2e01416fe3522ce23882cb6d7ff59e2f8d243aee9ff8b",
     "audit_sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
   },
   "code_config_tests": {
-    "scripts/measure_school_scale.py": "eb57e75e7f503b60af50ca07a16566ed0e7fff587dcbd6ad8ca40d4caa42323a",
+    "scripts/measure_school_scale.py": "8e1ae06876ec1ad65aa2e01416fe3522ce23882cb6d7ff59e2f8d243aee9ff8b",
     "configs/school_v3_scale_measurement_v1.json": "c0882dcf18dd3f8cb387291beb9e65decfae43e971dc69907be927f4965b3e44",
-    "tests/unit/test_school_scale_measurement.py": "93e0417a9fe31661625b9fcef7fbfab9e74d36470673add7a005fbe38254bbb1"
+    "tests/unit/test_school_scale_measurement.py": "8f6d91b865e6d323cc257646bd6a23b4a937ab9a6443ba4b3dd594d1c4eff8b9"
   },
   "artifacts": {
     "camera_references.json": {
@@ -38,12 +38,12 @@
     },
     "measurements.csv": {
       "path": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.csv",
-      "sha256": "fae2c030bd5cf1882b5dca36fe4059ecda7a55b7e02363e34997ebb0fd387bf5",
-      "size_bytes": 174736
+      "sha256": "01664599bd37076879c8f3209353bd316857e70bb5ea3e27b9b8882af649e36b",
+      "size_bytes": 174698
     },
     "measurements.json": {
       "path": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.json",
-      "sha256": "d57a36b803c53c2c59bf8b2758fa13e8af4400b1c988d09a292151ef69a6f037",
+      "sha256": "31fbdf46bace93bb88314d9ca6a6a22ff8c4456a6598d12872d844c84d181db1",
       "size_bytes": 362466
     },
     "measurements.md": {
@@ -57,7 +57,7 @@
       "passed": 1131,
       "failed": 0,
       "skipped": 0,
-      "seconds": 84.83
+      "seconds": 85.57
     },
     "ruff": "PASS",
     "mypy": {
@@ -70,6 +70,16 @@
     "architectural_scale_authority": "HUMAN_REVIEW",
     "formal_benchmark_run": false,
     "model_scaled": false,
-    "historical_artifacts_rewritten": false
+    "historical_artifacts_rewritten": false,
+    "csv_line_ending": "LF",
+    "csv_normalization_preserves_values": true,
+    "internal_file_links_checked": 92,
+    "diff_check": "PASS"
+  },
+  "previous_report_revision": {
+    "git_commit": "84ff020239b74eb6b6db4c07eb4910066c6e110c",
+    "measurements_json_sha256": "d57a36b803c53c2c59bf8b2758fa13e8af4400b1c988d09a292151ef69a6f037",
+    "measurements_csv_sha256": "fae2c030bd5cf1882b5dca36fe4059ecda7a55b7e02363e34997ebb0fd387bf5",
+    "preserved_in_git_history": true
   }
 }

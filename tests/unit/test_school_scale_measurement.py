@@ -106,6 +106,7 @@ def test_real_source_report_keeps_endpoints_units_and_review_authority() -> None
 
 def test_source_width_and_annotation_span_are_distinct_and_csv_agrees() -> None:
     report = json.loads((OUTPUT / "measurements.json").read_text())
+    assert b"\r" not in (OUTPUT / "measurements.csv").read_bytes()
     row = next(r for r in report["measurements"] if r["object"] == "PORTAL_1F_RESTAURANT_A")
     assert row["annotation_length_bu"] == 40
     assert row["actual_source_length_bu"] == pytest.approx(35.43310547)

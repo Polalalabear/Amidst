@@ -15,7 +15,7 @@
   },
   "inputs": {
     "config_sha256": "c0882dcf18dd3f8cb387291beb9e65decfae43e971dc69907be927f4965b3e44",
-    "script_sha256": "eb57e75e7f503b60af50ca07a16566ed0e7fff587dcbd6ad8ca40d4caa42323a",
+    "script_sha256": "8e1ae06876ec1ad65aa2e01416fe3522ce23882cb6d7ff59e2f8d243aee9ff8b",
     "audit_sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
   },
   "blender_version": "5.2.1 LTS",

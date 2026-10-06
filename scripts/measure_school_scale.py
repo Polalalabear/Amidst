@@ -410,7 +410,9 @@ def main() -> None:
                   "confidence", "human_confirmation_candidate", "suitable_for_scale_approval",
                   "annotation_endpoints_bu", "source_cross_sections", "floor_support_hit",
                   "source_width_range_bu", "source_length_aggregation", "ambiguities"]
-        writer = csv.DictWriter(stream, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(
+            stream, fieldnames=fields, extrasaction="ignore", lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows({key: json.dumps(value) if isinstance(value, (dict, list)) else value
                           for key, value in row.items()} for row in rows)
