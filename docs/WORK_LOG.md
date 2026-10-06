@@ -4,6 +4,23 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Human review spatial context supplement
+
+在 `ef0f88ad373373c3a8222d510772440103839f2a` 延續 HR-01/02 review，新增
+[五步空間導覽](../human_review/frames/spatial_context/guide.html)：school、1F/cameras、
+office 鏡頭接近、原有 10 秒 public observation / GAP candidate 移動、exact source issue。
+來源模型產生 3 張 stills 與 25 張 camera-only frames（5 Hz、5 秒）；29,517,434 bytes
+的新 PNG 留在本機。Source XY 圖保留完整 camera/office/body guard 座標，不作 FOV proof。
+人物原首末位移約 3.873 m；HR-02 的 1.3597 m 是 landmark→floor conversion。
+
+Source Blender 未保存或改動；29 個 frozen inputs、57 張既有圖與四項 immutable questions
+保持原 hash，disk decisions 全部 pending。未讀 GT/recipe/evaluation、未改 authority、
+未執行 formal Cases。成功 renderer 的 exact archive / SHA 與未成功 render 的改進版分開
+記錄；空間不足後僅清除本輪 validation caches，沒有刪除來源或 evidence。
+本次 **56 passed**（21 spatial +35 existing review guards）；repository Ruff、strict mypy
+93 core files +4 review tools、diff check 通過。1580-test full suite 是前一 checkpoint 的
+歷史結果，本次未重跑。無 push、merge 或 freeze tag。
+
 ### 2026-10-06 — Minimal Human Review Gate
 
 已產生 [4 項 pending review dashboard](../human_review/index.html)、固定格式證據、

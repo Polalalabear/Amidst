@@ -1,2 +1,3 @@
 # Raw diagnostic renders stay local; exact hashes and reproducible renderer are tracked.
 frames/*.png
+frames/spatial_context/*.png

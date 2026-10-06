@@ -6,6 +6,15 @@ Status: **inventory only** after completed diagnostic verification. Formal valid
 
 DELETE_CANDIDATE: none selected; no automatic deletion is authorized.
 
+2026-10-07 review supplement: `human_review/frames/spatial_context/*.png` contains
+28 locally retained source-model diagnostic views (3 stills +25 camera frames), classified
+REGENERABLE. Its separate manifest, HTML/template/builder, exact successful producer archive
+and current renderer are KEEP. Regeneration uses the archived producer staged at its original
+path in a fresh materialized checkout, then `uv run python human_review/build_spatial_guide.py`;
+see [review guide](../human_review/README.md). Original 57 images and all source/decision files
+remain unchanged. Only this task's generated mypy/pytest caches were discarded after a
+storage error; no source, render, evidence or DELETE_CANDIDATE item was deleted.
+
 | Path | Category | Size (bytes) | Reason | Canonical replacement | Regeneration |
 | --- | --- | --- | --- | --- | --- |
 | src | KEEP | 2193916 | source/config/tests/docs or checkpoint evidence | this published finalization branch | git checkout <published-finalization-SHA> |
@@ -44,6 +53,8 @@ DELETE_CANDIDATE: none selected; no automatic deletion is authorized.
 | data/scene_audit/phase1_physical_authority_20261006 | ARCHIVE | 11940265 | inherited historical provenance; retained unchanged | active physical context plus finalization input lock | git checkout f264db1579882e54cecba22db24ec8798822fd0c -- data/scene_audit/phase1_physical_authority_20261006 |
 | data/scene_audit/school_v3_approved_scale_20261006 | ARCHIVE | 11256456 | inherited historical provenance; retained unchanged | active physical context plus finalization input lock | git checkout f264db1579882e54cecba22db24ec8798822fd0c -- data/scene_audit/school_v3_approved_scale_20261006 |
 | blender/school_v3.blend (external local source) | KEEP | 468300506 | immutable private/local research source | SHA256 cd46fa03...e84e; no regenerated replacement | supply exact source; never synthesize or rescale |
+| human_review/frames/spatial_context/*.png | REGENERABLE | 29517434 | 28 diagnostic source context views retained locally | spatial_context_manifest.json; no replacement of original 57 images | archived producer at original path in fresh checkout; --frames 25 |
+| human_review/history/spatial_context_initial_renderer.py | KEEP | 24686 | exact successful producer provenance | SHA256 8a5d52f4...305cd92 | git checkout finalization review commit |
 
 Detailed machine-readable inventory: [CSV](../data/finalization/checkpoint/artifact_inventory.csv).
 

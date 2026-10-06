@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 1 — 完整空間導覽</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;line-height:1.6;background:#edf3f7;color:#162e3e}
+*{box-sizing:border-box}body{margin:0}main{max-width:1180px;margin:auto;padding:24px 22px 40px}
+h1{font-size:26px;margin:0 0 8px}h2{font-size:21px;margin:0 0 10px}h3{font-size:17px;margin:14px 0 8px}
+p{margin:7px 0}.intro{font-size:14px;color:#526c7b}.badge{font-size:12px;font-weight:700;display:inline-block;padding:3px 8px;border-radius:5px;background:#dcecf3;color:#175d7c}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 16px}button{font:inherit;cursor:pointer;background:white;border:1px solid #bfd0dc;border-radius:7px;padding:8px 12px;color:#174f6e}
+button:hover{background:#e4f2fa}button.active,button.primary{background:#146b91;color:white;border-color:#146b91}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #41a1cf;outline-offset:3px}
+.panel{background:white;border:1px solid #d6e3eb;border-radius:12px;padding:19px;margin-bottom:14px}.step[hidden]{display:none}
+.hero{width:100%;height:auto;display:block;border:1px solid #cedce5;border-radius:8px;background:#182c36}.caption{font-size:13px;color:#4e697a;margin:8px 0 14px}
+.explanation{border-left:4px solid #72a5bf;background:#f0f7fb;padding:10px 14px;font-size:14px;margin:12px 0}.motion-label{background:#e7f4fa;color:#125673;border-radius:6px;padding:9px 12px;margin:10px 0;font-weight:650;font-size:14px}
+.controls{display:flex;align-items:center;gap:12px;margin:10px 0}input[type=range]{flex:1}.step-footer{display:flex;justify-content:space-between;gap:10px;margin-top:18px}.step-position{font-size:13px;color:#5c7482}
+iframe{display:block;width:100%;height:1050px;border:1px solid #d0dde5;border-radius:8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}figure{margin:0}figure img{width:100%;height:auto;display:block;border:1px solid #cddce5;border-radius:8px}figcaption{font-size:13px;color:#567081;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{text-align:left;padding:8px 10px;border-bottom:1px solid #dfebf1;vertical-align:top}th{color:#486371;font-size:13px}svg{width:100%;height:auto;display:block;background:#f1f7fa;border:1px solid #dae5eb;border-radius:8px}
+a{color:#126d93;text-decoration:none}a:hover{text-decoration:underline}details{font-size:12px;color:#546f7e;margin-top:14px}code{overflow-wrap:anywhere}footer{font-size:12px;color:#607785;margin-top:20px}
+@media(max-width:760px){main{padding:18px 12px}.panel{padding:14px}.grid{grid-template-columns:1fr}nav button{font-size:13px;padding:7px 9px}iframe{height:875px}h1{font-size:23px}}
+</style>
+</head>
+<body><main>
+<h1>空間導覽：school → office → 行走帶</h1>
+<p class="intro">依序看全校 → 1F → office → 原有 10 秒 OBSERVED／GAP → 接縫與 landmark。這份導覽補充位置感；四項人工決策與原始證據保持原樣。</p>
+<span class="badge">DIAGNOSTIC · public evidence / inferred candidate · GT 未使用</span>
+<nav aria-label="Spatial guide steps">
+<button class="active" data-step="0">1 全校定位</button><button data-step="1">2 一樓與 cameras</button>
+<button data-step="2">3 接近 office</button><button data-step="3">4 原有 10 秒路徑</button><button data-step="4">5 Source issue／landmark</button>
+</nav>
+<section class="step panel" data-panel="0">
+<h2>1 — 先找 office 在整棟 school 的位置</h2>
+<a target="_blank" rel="noopener"><img class="hero" id="school-overview" alt="Original evaluated school geometry with bounded office highlighted"></a>
+<p id="school-caption" class="caption"></p>
+<div class="explanation">圖中的 office 標示指向本輪限定的 <strong>AREA_1F_OFFICE／WALK_1F_OFFICE</strong>。全校圖提供定位；本輪 geometry 決策限於 office body guard 的兩個零面積 floor seam 與局部 interior 語意。</div>
+</section>
+<section class="step panel" data-panel="1" hidden>
+<h2>2 — 看一樓、office 與兩個既有 cameras 的相對位置</h2>
+<a target="_blank" rel="noopener"><img class="hero" id="floor-overview" alt="First floor evaluated source context with office and source-bound cameras"></a>
+<p id="floor-caption" class="caption"></p>
+<p class="caption">上方 3D 圖保留 renderer 的 ROI／cutaway framing。下方位置圖以完整座標範圍顯示 office、body guard 與兩個 cameras，補足 3D 取景邊緣的位置資訊。</p>
+<h3>1F／office／camera 的 XY 位置示意</h3>
+<svg id="position-map" viewBox="0 0 960 610" role="img" aria-label="Display-only native Blender XY positions of office, body guard, public endpoints and both cameras"></svg>
+<p class="caption"><strong>DISPLAY_ONLY</strong> · 軸是 Blender +X／+Y，地理北向未宣告。Outer box＝display ROI；amber＝office annotation context；purple＝pending HR-01 body guard；cyan dots＝existing source cameras／public projected 首末落點。這張圖只表示位置，沒有 FOV／visibility proof，也不核准 camera binding。</p>
+<table><thead><tr><th>Existing source camera</th><th>Native XY（BU）</th><th>Native Z（BU／m）</th></tr></thead><tbody id="camera-position-table"></tbody></table>
+<div class="explanation"><strong>CAM_1F_AUDITORIUM_FRONT</strong> 提供 GAP 前的 public observations；<strong>CAM_1F_AUDITORIUM_REAR</strong> 提供 GAP 後的 public observations。既有 office 片段沒有合法同步雙視角，HR-02 要確認 landmark→floor 語意與 single-view fallback。</div>
+</section>
+<section class="step panel" data-panel="2" hidden>
+<h2>3 — 視角逐步接近 office</h2>
+<div class="motion-label">CAMERA VIEW 接近／縮放：本段移動的是觀看視角，沒有新增人物路徑。</div>
+<a target="_blank" rel="noopener"><img class="hero" id="approach-frame" alt="Diagnostic camera approach into the original office context"></a>
+<div class="controls"><button id="approach-play" class="primary">播放視角接近</button><input id="approach-slider" type="range" min="0" value="0" aria-label="Camera approach frame"><span id="approach-time"></span></div>
+<p class="caption">此動畫固定 source geometry context，將全校／一樓的觀看視角帶到 office。人物位置變化請看下一步的原有 public／inferred 片段。</p>
+<details><summary>Office 靜態 context</summary><a target="_blank" rel="noopener"><img class="hero" id="office-context" alt="Bounded office source context"></a><p id="office-caption" class="caption"></p></details>
+</section>
+<section class="step panel" data-panel="3" hidden>
+<h2>4 — 播放已存在的 10 秒 OBSERVED → GAP → OBSERVED</h2>
+<div class="motion-label" id="person-motion"></div>
+<p class="caption">在下方按「播放」。Cyan cylinder＝public projection；GAP 時 orange cylinder＝既有 inferred direct candidate。畫面保留 WALKABLE、source scope、clearance 與 camera observations；既有候選尚未正式認證。</p>
+<iframe id="route-player" title="Existing unchanged GT-free ten-second observed-gap-observed preview"></iframe>
+</section>
+<section class="step panel" data-panel="4" hidden>
+<h2>5 — 看清 HR-01 source issue，再理解 HR-02 的座標轉換</h2>
+<div class="grid">
+<figure><a id="closeup-link" target="_blank" rel="noopener"><img id="issue-closeup" alt="Actual source-floor seam faces 1975 and 2398 with body guard"></a><figcaption>HR-01：原始 <strong>group_0 faces 1975／2398</strong> 是同一 floor seam 的零面積三角形。這張 closeup 顯示原始 source、approved support 與 pending body guard。</figcaption></figure>
+<figure><a id="top-closeup-link" target="_blank" rel="noopener"><img id="issue-top-closeup" alt="Top view of the bounded office body guard and exact source-floor seam"></a><figcaption>限定 scope 的俯視。兩個 source faces 與 bounded interior 語意共用一個 HR-01；其他 WALL／portal／stairs 保持原 authority。</figcaption></figure>
+</div>
+<div class="explanation"><strong>HR-01 審語意：</strong>這個 floor seam 是否沒有實際佔用體積，以及 body guard 內 room interior 是否由 source boundary surfaces 表示為可行走空間。程式繼續自動檢查非零面積 geometry、floor support、clearance 與 certificate。</div>
+<div class="grid">
+<section><h3>HR-02 — Landmark 與人物落點</h3>
+<svg viewBox="0 0 540 350" role="img" aria-label="Height conversion from observed landmark to floor-contact coordinate">
+<line x1="40" y1="285" x2="500" y2="285" stroke="#41805b" stroke-width="5"/><text x="42" y="317" fill="#285f42" font-size="18">APPROVED floor support</text>
+<rect x="180" y="95" width="95" height="190" rx="26" fill="#e2f2f8" stroke="#327b9e" stroke-width="3"/>
+<circle cx="227" cy="285" r="7" fill="#368460"/><circle cx="227" cy="132" r="8" fill="#039ed8"/>
+<text x="40" y="69" fill="#2c6079" font-size="17">Pending floor-contact model · NOT GT</text>
+<text x="293" y="129" fill="#127091" font-size="18">projected landmark</text>
+<text x="293" y="162" fill="#127091" font-size="18" id="landmark-height"></text>
+<line x1="138" y1="132" x2="138" y2="285" stroke="#cb8a2a" stroke-width="3"/>
+<path d="M132 141L138 132L144 141 M132 276L138 285L144 276" stroke="#cb8a2a" fill="none" stroke-width="3"/>
+<text x="24" y="205" fill="#976617" font-size="18" id="offset-height"></text>
+<text x="292" y="273" fill="#286644" font-size="18">FLOOR_CONTACT_POINT</text>
+</svg>
+<p class="caption">語意示意圖，非 Blender screenshot。數值由既有 landmark plane 與 approved floor 相減。</p>
+</section>
+<section><h3>已由程式算好的值</h3><table><thead><tr><th>量</th><th>現有值</th></tr></thead><tbody id="binding-table"></tbody></table>
+<div class="explanation"><strong id="binding-distinction"></strong><p>這個轉換保持 XY／calibration，將位置語意轉成 floor contact point。HR-02 核准的是 landmark 定義與 floor binding；約 3.87 m 的原有位置變化另列於步驟 4。</p></div>
+</section>
+</div>
+</section>
+<div class="step-footer"><button id="previous">← 上一步</button><span id="step-position" class="step-position">1 / 5</span><button id="next" class="primary">下一步 →</button></div>
+<footer>Original school_v3.blend preserved · DIAGNOSTIC · authority 未升級 · 原有 57 PNG／visual manifest／decisions 保持 byte-identical。
+<details><summary>Source／review provenance</summary><div id="provenance"></div></details></footer>
+</main>
+<script type="application/json" id="spatial-guide-data">__SPATIAL_GUIDE_DATA__</script>
+<script>
+'use strict';
+const guide=JSON.parse(document.getElementById('spatial-guide-data').textContent);
+let step=0,approachIndex=0,approachTimer=null;
+const panels=[...document.querySelectorAll('[data-panel]')],buttons=[...document.querySelectorAll('[data-step]')];
+function image(id,record){const img=document.getElementById(id);img.src=record.path;img.closest('a').href=record.path;}
+image('school-overview',guide.overview);image('floor-overview',guide.floor);image('office-context',guide.office);
+document.getElementById('school-caption').textContent=guide.overview.caption;
+document.getElementById('floor-caption').textContent=guide.floor.caption;
+document.getElementById('office-caption').textContent=guide.office.caption;
+function showApproach(index){approachIndex=index;document.getElementById('approach-frame').src=guide.approach_frames[index].path;document.getElementById('approach-frame').closest('a').href=guide.approach_frames[index].path;document.getElementById('approach-slider').value=index;document.getElementById('approach-time').textContent='視角 '+(index/guide.approach_fps).toFixed(1)+' s';}
+function pauseApproach(){if(approachTimer){clearInterval(approachTimer);approachTimer=null;}document.getElementById('approach-play').textContent='播放視角接近';}
+document.getElementById('approach-slider').max=guide.approach_frames.length-1;
+document.getElementById('approach-slider').addEventListener('input',e=>{pauseApproach();showApproach(Number(e.target.value));});
+function startApproach(){if(approachTimer)return;if(approachIndex===guide.approach_frames.length-1)showApproach(0);document.getElementById('approach-play').textContent='暫停視角接近';approachTimer=setInterval(()=>{if(approachIndex>=guide.approach_frames.length-1){pauseApproach();return;}showApproach(approachIndex+1);},1000/guide.approach_fps);}document.getElementById('approach-play').addEventListener('click',()=>{if(approachTimer)pauseApproach();else startApproach();});showApproach(0);
+function showStep(index){step=Math.max(0,Math.min(4,index));panels.forEach((p,i)=>p.hidden=i!==step);buttons.forEach((b,i)=>b.classList.toggle('active',i===step));document.getElementById('step-position').textContent=(step+1)+' / 5';document.getElementById('previous').disabled=step===0;document.getElementById('next').disabled=step===4;if(step!==2)pauseApproach();else startApproach();if(step===3&&!document.getElementById('route-player').getAttribute('src'))document.getElementById('route-player').src=guide.existing_route_player;}
+buttons.forEach(button=>button.addEventListener('click',()=>showStep(Number(button.dataset.step))));
+document.getElementById('previous').addEventListener('click',()=>showStep(step-1));document.getElementById('next').addEventListener('click',()=>showStep(step+1));
+const movement=guide.movement,binding=guide.binding;
+function svgElement(tag,attributes={},text){const node=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [key,value]of Object.entries(attributes))node.setAttribute(key,String(value));if(text!==undefined)node.textContent=text;return node;}
+function drawPositionMap(){const svg=document.getElementById('position-map'),lo=guide.display_roi_bu.minimum,hi=guide.display_roi_bu.maximum;const spanX=hi[0]-lo[0],spanY=hi[1]-lo[1],scale=Math.min(660/spanX,460/spanY);const left=80+(660-spanX*scale)/2,top=55+(460-spanY*scale)/2;const xy=p=>[left+(p[0]-lo[0])*scale,top+(hi[1]-p[1])*scale];function append(tag,attributes,text){const node=svgElement(tag,attributes,text);svg.append(node);return node;}function label(text,x,y,color='#36566b',anchor='start'){append('text',{x,y,fill:color,'font-size':16,'text-anchor':anchor},text);}function rectangle(bounds,color,fill,dashed){const [min,max]=bounds,[x,y]=xy([min[0],max[1]]);append('rect',{x,y,width:(max[0]-min[0])*scale,height:(max[1]-min[1])*scale,stroke:color,fill,'stroke-width':2,...(dashed?{'stroke-dasharray':'6 4'}:{})});}
+rectangle([lo,hi],'#a7bdca','#f8fbfd',true);label('Display ROI — schematic positions',left,top-15,'#5c7382');
+rectangle(guide.office_context.bounds_bu,'#bd8a21','#fff1d3',false);rectangle(guide.review_body_scope_bounds_bu,'#8b64b0','#e6d8f1',false);
+const office=guide.office_context.bounds_bu,officeLabel=xy([office[0][0],office[1][1]]);label('AREA_1F_OFFICE',officeLabel[0]-14,officeLabel[1]+15,'#977019','end');append('line',{x1:officeLabel[0]-9,y1:officeLabel[1]+11,x2:officeLabel[0],y2:officeLabel[1]+11,stroke:'#bd8a21'});
+const guard=guide.review_body_scope_bounds_bu,guardCenter=xy([(guard[0][0]+guard[1][0])/2,(guard[0][1]+guard[1][1])/2]);label('HR-01 body guard',guardCenter[0]-115,guardCenter[1]+75,'#755398','end');append('line',{x1:guardCenter[0]-110,y1:guardCenter[1]+69,x2:guardCenter[0],y2:guardCenter[1],stroke:'#9475b1','stroke-dasharray':'4 4'});
+for(const [name,point,offset]of [['t='+movement.start_timestamp_seconds.toFixed(1)+' public start',movement.start_footpoint_bu,20],['t='+movement.end_timestamp_seconds.toFixed(1)+' public end',movement.end_footpoint_bu,-12]]){const [x,y]=xy(point);append('circle',{cx:x,cy:y,r:4,fill:'#099cd0'});label(name,x+19,y+offset,'#14708f');append('line',{x1:x+4,y1:y,x2:x+14,y2:y+offset/2,stroke:'#099cd0'});}
+for(const camera of guide.camera_locations){const [x,y]=xy(camera.position_bu);append('circle',{cx:x,cy:y,r:6,fill:'#0798c4',stroke:'white','stroke-width':2});label(camera.camera_id.replace('CAM_1F_AUDITORIUM_',''),x+13,y+5,'#087997');}
+append('line',{x1:left-20,y1:top+460,x2:left+spanX*scale+90,y2:top+460,stroke:'#536d7d','stroke-width':2});append('path',{d:'M'+(left+spanX*scale+90)+','+(top+460)+'l-10,-5v10z',fill:'#536d7d'});label('Blender +X (BU)',left+spanX*scale+35,top+490,'#36566b','middle');
+append('line',{x1:left-20,y1:top+460,x2:left-20,y2:top-15,stroke:'#536d7d','stroke-width':2});append('path',{d:'M'+(left-20)+','+(top-15)+'l-5,10h10z',fill:'#536d7d'});label('Blender +Y (BU)',left-29,top+230,'#36566b','end');label('['+lo[0].toFixed(1)+', '+lo[1].toFixed(1)+']',left,top+490,'#728895');
+const table=document.getElementById('camera-position-table');for(const camera of guide.camera_locations){const row=document.createElement('tr');const values=[camera.camera_id,'['+camera.position_bu.slice(0,2).map(v=>v.toFixed(6)).join(', ')+']',camera.position_bu[2].toFixed(6)+' BU / '+camera.position_m[2].toFixed(6)+' m'];for(const value of values){const cell=document.createElement('td');cell.textContent=value;row.append(cell);}table.append(row);}}
+drawPositionMap();
+document.getElementById('person-motion').textContent='原有 public projection＋inferred GAP：首末 footpoint 位置相差約 '+movement.distance_m.toFixed(2)+' m（'+movement.distance_bu.toFixed(3)+' BU）；片段 t='+movement.start_timestamp_seconds.toFixed(1)+'→'+movement.end_timestamp_seconds.toFixed(1)+' s。';
+document.getElementById('issue-closeup').src=guide.issue_closeup;document.getElementById('closeup-link').href=guide.issue_closeup;
+document.getElementById('issue-top-closeup').src=guide.issue_top_closeup;document.getElementById('top-closeup-link').href=guide.issue_top_closeup;
+document.getElementById('landmark-height').textContent='floor + '+binding.offset_m.toFixed(3)+' m';document.getElementById('offset-height').textContent=binding.offset_m.toFixed(3)+' m';
+const rows=[['Landmark plane Z',binding.landmark_z_bu.toFixed(8)+' BU'],['Approved floor Z',binding.floor_z_bu.toFixed(8)+' BU'],['Landmark → floor offset',binding.offset_bu.toFixed(8)+' BU / '+binding.offset_m.toFixed(8)+' m'],['Body cylinder', 'r='+binding.body_radius_m.toFixed(2)+' m；h='+binding.body_height_m.toFixed(2)+' m'],['Clearance',binding.clearance_m.toFixed(2)+' m'],['Binding authority',binding.authority]];
+const table=document.getElementById('binding-table');for(const [name,value]of rows){const tr=document.createElement('tr');for(const text of [name,value]){const td=document.createElement('td');td.textContent=text;tr.append(td);}table.append(tr);}
+document.getElementById('binding-distinction').textContent=binding.offset_m.toFixed(2)+' m 是垂直座標轉換。';
+const provenance=document.getElementById('provenance');for(const [label,value]of [['Source SHA-256',guide.source_asset_sha256],['Frozen review payload',guide.review_payload_sha256],['Spatial context manifest',guide.context_manifest_sha256]]){const p=document.createElement('p');p.textContent=label+': ';const code=document.createElement('code');code.textContent=value;p.append(code);provenance.append(p);}showStep(0);
+</script>
+</body>
+</html>

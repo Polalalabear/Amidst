@@ -20,6 +20,20 @@ def main() -> None:
     document = json.loads((HERE / "decisions.json").read_text())
     if any(item["decision"] is not None for item in document["items"]):
         raise ValueError("package finalization cannot rewrite completed human decisions")
+    spatial_path = HERE / "frames/spatial_context/spatial_context_manifest.json"
+    spatial_summary = {}
+    if spatial_path.is_file():
+        spatial = json.loads(spatial_path.read_text())
+        spatial_summary = {
+            "manifest": str(spatial_path.relative_to(HERE)),
+            "manifest_sha256": hashlib.sha256(spatial_path.read_bytes()).hexdigest(),
+            "result_type": spatial["result_type"],
+            "camera_approach_frames": len(spatial["approach_frames"]),
+            "camera_approach_fps": spatial["approach_fps"],
+            "static_frames": 3,
+            "person_movement_changed": spatial["person_movement_changed"],
+            "guide": "frames/spatial_context/guide.html",
+        }
     write_json(
         HERE / "gate.json",
         {
@@ -72,6 +86,7 @@ def main() -> None:
             },
             "gt_used_for_review": False,
             "formal_cases_run": False,
+            "spatial_context_supplement": spatial_summary,
             "artifacts": artifacts,
         },
     )

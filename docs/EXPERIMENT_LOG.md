@@ -237,3 +237,27 @@ scripts 通過，原 Phase1 inference source 無改動。
 Raw review renders 保留 local ignored；package hashes、reproduction scripts、texts 和
 pending decision template 保留。舊 generic gate 另存 human_review/history/blocked_checkpoint，
 沒有刪除任何 source 或 DELETE_CANDIDATE。
+
+## 2026-10-07 — Human Review spatial context supplement
+
+**DIAGNOSTIC / HUMAN_REVIEW_PENDING**；沿用 `ef0f88ad373373c3a8222d510772440103839f2a`。
+HR-01/02 新增 [school→office 五步導覽](../human_review/frames/spatial_context/guide.html)：
+全校 /1F /camera 位置、5 秒 camera-only approach、原 10 秒移動、source face /landmark
+近看。3 張 still +25 camera frames 共29,517,434 bytes，source XY 圖使用原 manifest
+座標；camera 圖示不證明 FOV，剖視只供顯示。人物原首末位移3.872988342 m；1.359734953 m
+只表示 landmark→floor offset，沒有增加較長的人物軌跡或改 certified scope。
+
+新 evidence 用獨立 spatial manifest 保留來源與 producer hash。成功初版 renderer 已 exact
+封存（`8a5d52f4...305cd92`）；改進版構圖因磁碟不足未完成 render，沒有冒稱已產生圖片。
+來源 Blender/hash、29 frozen inputs、57 原 PNG、四項問題/e105 payload 逐項保持不變。
+既有 browser decision draft 未重新載入；disk 全部 pending，application readonly 驗證通過。
+未讀 GT/recipe/evaluation，未套用人工核准、執行 formal Cases、push/merge/tag。
+
+本輪56 tests通過、Ruff全 repo、mypy93 core +4 review tools、diff check通過。
+原1580-test全套屬2026-10-06 evidence，本輪未重跑。只清除本輪 generated validation caches
+以完成小檔保存；來源、raw evidence、既有 renders 與 DELETE_CANDIDATE 全保留。
+
+完整 local package 保存於 canonical checkout 的 ignored
+`data/pilot/phase1_finalization_human_review_20261007/human_review/`；採 APFS copy-on-write
+獨立檔案副本，123 個 manifest artifacts 全部 hash 核對一致。Package manifest SHA256：
+`a42feef8adc07ab6e4b718907bd716a74dfe855c0658dec4a8c2b99a9026e8a7`。

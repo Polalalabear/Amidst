@@ -14,11 +14,21 @@
   },
   "gt_used_for_review": false,
   "formal_cases_run": false,
+  "spatial_context_supplement": {
+    "manifest": "frames/spatial_context/spatial_context_manifest.json",
+    "manifest_sha256": "04da3eb11f051cc7470659874424ad25f980e3712925a1c9655dc150f22a1fe4",
+    "result_type": "DIAGNOSTIC",
+    "camera_approach_frames": 25,
+    "camera_approach_fps": 5,
+    "static_frames": 3,
+    "person_movement_changed": false,
+    "guide": "frames/spatial_context/guide.html"
+  },
   "artifacts": [
     {
       "path": ".gitignore",
-      "bytes": 102,
-      "sha256": "1029b73f28893d14e5846ba9c5db5ed0d78531ac4b69feba465cf7ec7a7195ba"
+      "bytes": 131,
+      "sha256": "29c1d7b7863da43f3efb40295520ad817f1080feb7a2f68f7fc544628c377fdb"
     },
     {
       "path": "DECISION_APPLICATION.md",
@@ -27,8 +37,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21676,
-      "sha256": "ce6cab5579f6bad3d887fd8c90efb63acc58c4f5e0fd4964256c51967e06c04f"
+      "bytes": 23092,
+      "sha256": "8ee023cf4b2d9180731dbfd98cacfd34e05f40f4df360fee443b37f8708a0b94"
     },
     {
       "path": "apply_decisions.py",
@@ -56,6 +66,11 @@
       "sha256": "b11e852731586f3a69dcd445d09b4b66a3cfafbf2adb6ff267840985d4bcce88"
     },
     {
+      "path": "build_spatial_guide.py",
+      "bytes": 9988,
+      "sha256": "a00a74511fab65b7739f2cb515b4c0b17efefd2926aab220037722e80f0bdb60"
+    },
+    {
       "path": "candidate_regions_xy.png",
       "bytes": 163420,
       "sha256": "dc217793168617b2eeb4f4f00114a2f8e98d6483485d03a6994c6c21cab19420"
@@ -67,8 +82,8 @@
     },
     {
       "path": "dashboard_template.html",
-      "bytes": 22671,
-      "sha256": "35a98fed3af41e602cda820d36909c744af519bc7047c6ad2ab7878518e0fe99"
+      "bytes": 23188,
+      "sha256": "103a3edc6d67c5ed5c8385e433fbc49408b9177098ab8a8d3a90cf63631cbec4"
     },
     {
       "path": "decisions.json",
@@ -77,8 +92,8 @@
     },
     {
       "path": "finalize_package.py",
-      "bytes": 3505,
-      "sha256": "e2e73f948ebd5db1f59798b4607416d86804493d4535f437b956c09ec7971a3b"
+      "bytes": 4288,
+      "sha256": "ceaaaf2ec9de82d35f80ebba88b88666a7d2576fafbfe93c3b844c57c53a978b"
     },
     {
       "path": "formal_settings.md",
@@ -381,6 +396,161 @@
       "sha256": "08dd32129f5581fe03b7a04e6b69da5d3c663f9e80eac2e728ba4b6ce25e1c62"
     },
     {
+      "path": "frames/spatial_context/approach_000.png",
+      "bytes": 947109,
+      "sha256": "ba1a76bf8f9e093083708aa6caf072125c5a2b15859f028d5365a0931073e0da"
+    },
+    {
+      "path": "frames/spatial_context/approach_001.png",
+      "bytes": 948176,
+      "sha256": "bc3e1c412e51d93a253cef72964c2f6fb6c3a2a8ddfce754d8068a2b0bc6e24c"
+    },
+    {
+      "path": "frames/spatial_context/approach_002.png",
+      "bytes": 950111,
+      "sha256": "28fa8e7c7e7b13f046c4e5bf8faa3bb0405473ca7448a83f0cb1592377965526"
+    },
+    {
+      "path": "frames/spatial_context/approach_003.png",
+      "bytes": 953098,
+      "sha256": "ed7f2df033f541ea51c6217d3a934cb5e3a7e0dd718f57e45067957523cfebd4"
+    },
+    {
+      "path": "frames/spatial_context/approach_004.png",
+      "bytes": 951222,
+      "sha256": "cb9e19d1a8ce6b4bf7fb61e49b451b9e4f28207b3a4d35341e6df2ff08858ebe"
+    },
+    {
+      "path": "frames/spatial_context/approach_005.png",
+      "bytes": 964266,
+      "sha256": "5f58b66bcd66b55acbc500ac4d7ac44b1ba0c56c86bbbb287fb753b0c864e1d2"
+    },
+    {
+      "path": "frames/spatial_context/approach_006.png",
+      "bytes": 967125,
+      "sha256": "ffee406b348455c0398498266719a5f592d38d2a27682bdae97146bf8bdb841a"
+    },
+    {
+      "path": "frames/spatial_context/approach_007.png",
+      "bytes": 963293,
+      "sha256": "f36e466467247e1cc33810ad15705cf5c17e1cf957e29690a0e3522e51608bfa"
+    },
+    {
+      "path": "frames/spatial_context/approach_008.png",
+      "bytes": 953863,
+      "sha256": "db52162fa344546fdac782e36bd3adad28366e4c81f8cb88b239a21d8f9cb98b"
+    },
+    {
+      "path": "frames/spatial_context/approach_009.png",
+      "bytes": 1070128,
+      "sha256": "d86e5b9c70b5e3e249745109d387a1210b24014d1ddd21b6f8f946e417cfb6e7"
+    },
+    {
+      "path": "frames/spatial_context/approach_010.png",
+      "bytes": 1077953,
+      "sha256": "41c106c3f2c49acf7a75464b94ccc5873e6806ad0f2a77af4bb7654420228d53"
+    },
+    {
+      "path": "frames/spatial_context/approach_011.png",
+      "bytes": 1066667,
+      "sha256": "42fba2382d23fb7713f242877c975f7053517fc48208c460fbeb443c4bfca913"
+    },
+    {
+      "path": "frames/spatial_context/approach_012.png",
+      "bytes": 1056067,
+      "sha256": "aa828c252b1d5ad5d02e7babb178e1752b0f08f19e85c84bbcd96090c9b47ba0"
+    },
+    {
+      "path": "frames/spatial_context/approach_013.png",
+      "bytes": 1058177,
+      "sha256": "8e634f716419ecd461ba705b9005c0c7f581bf1881de3504a2cbfdaba12895f5"
+    },
+    {
+      "path": "frames/spatial_context/approach_014.png",
+      "bytes": 1057650,
+      "sha256": "353b3240f5d721f95dbf87e1f69fdbbb3968400a59c69eec9e3c275c0b23fb55"
+    },
+    {
+      "path": "frames/spatial_context/approach_015.png",
+      "bytes": 1029983,
+      "sha256": "6e3e7062e947a6b7b3fb0519c17684877e70d9f20b8f7dfed06407d1f8c12292"
+    },
+    {
+      "path": "frames/spatial_context/approach_016.png",
+      "bytes": 1011277,
+      "sha256": "5321aca84acea28795c3346210a7042bbe40b74104cec3f711feb97a2c751e63"
+    },
+    {
+      "path": "frames/spatial_context/approach_017.png",
+      "bytes": 970929,
+      "sha256": "38ce8ff229e90cf514b11ea8ad09df727521178a164f2e56af689dd9b5f0411d"
+    },
+    {
+      "path": "frames/spatial_context/approach_018.png",
+      "bytes": 939415,
+      "sha256": "e52145104da2e728efa14b2ef0d59677e83eca6760ebdf794208fc2805dab2b1"
+    },
+    {
+      "path": "frames/spatial_context/approach_019.png",
+      "bytes": 1012748,
+      "sha256": "ae4623d1e1da5b0aaf7b0610eab8affb349e7f228bc430be0397edc724ea0a65"
+    },
+    {
+      "path": "frames/spatial_context/approach_020.png",
+      "bytes": 1032061,
+      "sha256": "1fa8b227f88fac47ccb8df38f61701351f5be3621e7b225b5a97fdd6f9c09647"
+    },
+    {
+      "path": "frames/spatial_context/approach_021.png",
+      "bytes": 1024150,
+      "sha256": "169f0791c85e81ee131dd8e49304d95daa50755840638fc64113fd3855e93c7b"
+    },
+    {
+      "path": "frames/spatial_context/approach_022.png",
+      "bytes": 1002283,
+      "sha256": "becb61e8a033c4cc0442e4eccf23415bec76649400383421334b936bd4087f33"
+    },
+    {
+      "path": "frames/spatial_context/approach_023.png",
+      "bytes": 1045082,
+      "sha256": "078ed3683a0958d65d5339c7eab8b5e3498ad0841654a5c5c7e633f11b5c54b1"
+    },
+    {
+      "path": "frames/spatial_context/approach_024.png",
+      "bytes": 1041800,
+      "sha256": "1c50d031eb06bde8f8d2fd95da6b19134448e2b24d3732d1ce3461401754cb9f"
+    },
+    {
+      "path": "frames/spatial_context/floor_1f_overview.png",
+      "bytes": 1371417,
+      "sha256": "72bb398c23334dad28d27769e2ce8a9860290689f97d59d1e0fe1309447ee602"
+    },
+    {
+      "path": "frames/spatial_context/guide.html",
+      "bytes": 39087,
+      "sha256": "5c7e308da32f7d457eb86aca80a4e4aaae13febbbf870afd0a27b63b2eb3ff6c"
+    },
+    {
+      "path": "frames/spatial_context/guide_template.html",
+      "bytes": 19170,
+      "sha256": "76d74e1ca2de5f496a87bad0c91e6befdd7758812075744d8c414a251557bd67"
+    },
+    {
+      "path": "frames/spatial_context/office_context.png",
+      "bytes": 1596143,
+      "sha256": "50e2842767d90bba1f0eaab2f62c0a941b3a67813e6f3264a0c6dfcb3636370f"
+    },
+    {
+      "path": "frames/spatial_context/school_overview.png",
+      "bytes": 1455241,
+      "sha256": "079b7de9b1a98a9c9f859c26ce766bf09a815e6710c6eacc59b52dc383d0b792"
+    },
+    {
+      "path": "frames/spatial_context/spatial_context_manifest.json",
+      "bytes": 31786,
+      "sha256": "04da3eb11f051cc7470659874424ad25f980e3712925a1c9655dc150f22a1fe4"
+    },
+    {
       "path": "frames/visual_manifest.json",
       "bytes": 78104,
       "sha256": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c"
@@ -421,9 +591,14 @@
       "sha256": "488c9895a0d634dbfcaea12c562710b059bd27dd037938b82f7381a64ea17967"
     },
     {
+      "path": "history/spatial_context_initial_renderer.py",
+      "bytes": 24686,
+      "sha256": "8a5d52f4ffa9f03d4686212da7f72d1d84a8d0bf77907ec9a9b48842f305cd92"
+    },
+    {
       "path": "index.html",
-      "bytes": 47157,
-      "sha256": "dcac433c3cf8b2c74616d1ba4d73dfd079cfe14e474c4b6939e85690916f4559"
+      "bytes": 47674,
+      "sha256": "e8b896c62ceb4f320f60753eaff78c6d118eb93e2fb4d9170bc56a4a781826a9"
     },
     {
       "path": "inspect_review_settings.py",
@@ -434,6 +609,11 @@
       "path": "render_review_evidence.py",
       "bytes": 35083,
       "sha256": "a2ee50559d0c48312710660182cadb1ff618e7a5acf444045bfba7b7400abb9a"
+    },
+    {
+      "path": "render_spatial_context.py",
+      "bytes": 29036,
+      "sha256": "6fa453f90ad5020e7412aaf81bd7dc76ef052fc4080ab41fc40726de15993e91"
     },
     {
       "path": "resume_plan.json",
@@ -457,8 +637,8 @@
     },
     {
       "path": "write_review_docs.py",
-      "bytes": 10764,
-      "sha256": "b855b4470d285a64e13f68d069f3106b9e3ff5ab8a846ee4a3f5f56ce7aacb04"
+      "bytes": 12378,
+      "sha256": "87f8a6c3616e391f3aaa38b4530e2f1f611c03ee33219d7581e988875067b7c1"
     }
   ]
 }
