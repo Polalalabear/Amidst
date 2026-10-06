@@ -2,6 +2,28 @@
 
 狀態：**HUMAN_REVIEW_PENDING**；4 項決策全部未選擇。推薦值不等於核准。
 
+2026-10-07 另增：[10 秒模型人物行走](frames/motion_context/player.html)，
+可播放、暫停、逐格查看；另有 [GIF 動作預覽](frames/motion_context/motion_preview.gif)。
+鏡頭固定，簡化人物在實際 evaluated office 來源模型中移動，包含 body / clearance、
+投影點、floor support、待審 body guard 與 OBSERVED → GAP → OBSERVED。
+50 frames /5 Hz 的位置、時間與 projection provenance 完全沿用原預覽；
+GAP 是既有候選假設，肢體姿態是 DISPLAY_ONLY 示意，不是 measured motion capture。
+原有導覽、鏡頭接近動畫、預覽與 85 張圖全部保留；沒有新增路徑或核准 authority。
+新段落的獨立來源紀錄：[motion manifest](frames/motion_context/motion_manifest.json)。
+
+在保有原 29 frozen inputs 與 85 舊圖的 fresh checkout 中，可重建新增段落：
+
+```sh
+/Applications/Blender.app/Contents/MacOS/Blender \
+  --background --threads 2 --factory-startup --disable-autoexec /absolute/path/to/school_v3.blend \
+  --python-exit-code 2 --python "$PWD/human_review/render_motion_context.py" -- --frames 50 --width 960
+uv run python human_review/make_motion_gif.py
+uv run python human_review/build_motion_player.py \
+  --gif-provenance human_review/frames/motion_context/gif_manifest.json
+```
+
+輸出必須是新位置；不覆寫既有 PNG /GIF。GIF 是獨立縮圖版本，完整圖與逐格來源在播放器中。
+
 2026-10-07 補充：[先看完整空間導覽](frames/spatial_context/guide.html)。
 依序看整體 school 中的 office 位置、一樓與 camera 位置、鏡頭推進、原有 10 秒移動，
 最後看 HR-01 接縫 / body guard 與 HR-02 landmark→floor 對照。

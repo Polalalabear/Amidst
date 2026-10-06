@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新增 10 秒模型行走動畫 — Phase 1 Human Review</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:#eef4f7;color:#172e3c;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:1180px;margin:auto;padding:24px 20px 35px}
+h1{font-size:25px;margin:0 0 8px}.intro{font-size:14px;color:#526c7a;margin:6px 0 12px}.badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 8px;border-radius:5px;background:#dbeef6;color:#155d79;margin-bottom:12px}
+#render{display:block;width:100%;height:auto;background:#243642;border:1px solid #cbdce6;border-radius:10px}.controls{display:flex;align-items:center;gap:12px;margin:12px 0;flex-wrap:wrap}
+button,input{font:inherit}button{background:#176d90;color:white;border:1px solid #176d90;border-radius:7px;padding:8px 15px;cursor:pointer}button:hover{background:#0d5472}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #43a1c9;outline-offset:3px}#slider{flex:1;min-width:160px}#time{font-size:14px;font-variant-numeric:tabular-nums}.loop{font-size:13px;display:flex;align-items:center;gap:6px}
+.frame-state{font-size:16px;font-weight:700;border-left:4px solid #1394c7;padding:10px 14px;background:#e5f4fb;margin:14px 0}.frame-state.gap{border-color:#d68b25;background:#fff3df;color:#8a5616}.details{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{background:white;border:1px solid #d5e2ea;border-radius:9px;padding:12px 15px;font-size:14px}.card h2{font-size:16px;margin:0 0 8px}.card p{margin:5px 0}.small{font-size:12px;color:#587181}.coordinates{font-variant-numeric:tabular-nums;overflow-wrap:anywhere}a{color:#156c90;text-decoration:none}a:hover{text-decoration:underline}.links{display:flex;gap:17px;flex-wrap:wrap;margin-top:18px;font-size:14px}footer{font-size:12px;color:#5a7483;margin-top:18px}details{margin-top:14px;font-size:12px}code{overflow-wrap:anywhere}
+@media(max-width:700px){main{padding:17px 12px}.details{grid-template-columns:1fr}h1{font-size:22px}}
+</style></head><body><main>
+<h1>新增 10 秒模型行走動畫</h1>
+<p class="intro">Actual evaluated <strong>school_v3</strong> 的 local source geometry 中，顯示原有 public projection／inferred GAP 位置上的簡化 body。相機取景固定；這一段移動的是 body preview。</p>
+<span class="badge">DIAGNOSTIC · GT 未使用 · joint pose DISPLAY_ONLY</span>
+<a id="full-frame" target="_blank" rel="noopener"><img id="render" alt="Source-model body motion with frozen public or inferred footpoint placement"></a>
+<div class="controls"><button id="play">播放 10 秒</button><input id="slider" type="range" min="0" max="49" value="0" aria-label="Body motion frame"><span id="time">0.0 s</span><label class="loop"><input id="loop" type="checkbox">循環</label></div>
+<div id="state" class="frame-state"></div>
+<div class="details">
+<section class="card"><h2>此 frame 的來源</h2><p id="method"></p><p id="cameras"></p><p id="body-point" class="coordinates"></p><p id="landmark-point" class="coordinates"></p></section>
+<section class="card"><h2>姿勢／物理範圍</h2><p>Joint pose 是顯示用的簡化動作；原始 observations 不提供 joint measurement。</p><p id="body-dimensions"></p><p>Footpoint binding：<strong>pending HR-02</strong>；local certificate：<strong>NOT_CERTIFIED / pending HR-01</strong>。</p><p class="small">這份動畫保留原 trajectory、timestamps、method／confidence；姿勢沒有新增 inference evidence，也不表示真人姿勢或正式 collision PASS。</p></section>
+</div>
+<div class="links"><a id="back-guide">回原有完整空間導覽</a><a id="old-player">原有 public／GAP 觀察預覽</a><a id="gif-link" hidden>Derived GIF 預覽</a></div>
+<footer>Source／questions／原有 guide 與動畫保留原樣。50 PNG · 5 Hz · 10 秒播放（原 timestamp 0.0→9.8 s）。
+<details><summary>Provenance</summary><div id="provenance"></div></details></footer>
+</main>
+<script type="application/json" id="motion-player-data">__MOTION_PLAYER_DATA__</script>
+<script>
+'use strict';
+const motion=JSON.parse(document.getElementById('motion-player-data').textContent);
+let index=0,timer=null;const play=document.getElementById('play'),slider=document.getElementById('slider');
+function pause(){if(timer){clearInterval(timer);timer=null;}play.textContent='播放 10 秒';}
+function vector(values){return '['+values.map(v=>Number(v.toFixed(6)).toString()).join(', ')+'] BU';}
+function show(frameIndex){index=frameIndex;const frame=motion.frames[index];document.getElementById('render').src=frame.path;document.getElementById('full-frame').href=frame.path;slider.value=index;document.getElementById('time').textContent=frame.timestamp.toFixed(1)+' s · '+(index+1)+'/50';const gap=frame.role.includes('GAP');const state=document.getElementById('state');state.className='frame-state'+(gap?' gap':'');state.textContent=(gap?'GAP — existing inferred direct candidate':'OBSERVED — public projected placement')+' · '+frame.role;document.getElementById('method').textContent=frame.projection_method+' / '+frame.confidence_state;document.getElementById('cameras').textContent=(frame.camera_evidence||[]).map(c=>c.camera_id.replace('CAM_1F_AUDITORIUM_','')+': '+c.visibility).join(' / ');document.getElementById('body-point').textContent='Body base: '+vector(frame.body_base_bu);document.getElementById('landmark-point').textContent='Landmark: '+vector(frame.landmark_position_bu);}
+play.addEventListener('click',()=>{if(timer){pause();return;}if(index===motion.frames.length-1)show(0);play.textContent='暫停';timer=setInterval(()=>{if(index===motion.frames.length-1){if(document.getElementById('loop').checked)show(0);else pause();}else show(index+1);},1000/motion.fps);});slider.addEventListener('input',()=>{pause();show(Number(slider.value));});document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
+document.getElementById('back-guide').href=motion.old_guide;document.getElementById('old-player').href=motion.old_public_player;
+const body=motion.body_dimensions_m;document.getElementById('body-dimensions').textContent='既有 body policy: r='+body.radius.toFixed(2)+' m；h='+body.height.toFixed(2)+' m；clearance='+body.clearance.toFixed(2)+' m。';
+if(motion.gif_asset){const link=document.getElementById('gif-link');link.href=motion.gif_asset.path;link.hidden=false;}
+const provenance=document.getElementById('provenance');for(const [label,value]of [['Source SHA-256',motion.source_sha256],['Frozen review payload',motion.review_payload_sha256],['Motion manifest',motion.manifest_sha256],['Trajectory basis',motion.trajectory_basis],['Joint pose authority',motion.joint_pose_authority]]){const p=document.createElement('p');p.textContent=label+': ';const code=document.createElement('code');code.textContent=value;p.append(code);provenance.append(p);}show(0);
+</script></body></html>

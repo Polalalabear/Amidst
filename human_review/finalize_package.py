@@ -34,6 +34,19 @@ def main() -> None:
             "person_movement_changed": spatial["person_movement_changed"],
             "guide": "frames/spatial_context/guide.html",
         }
+    motion_path = HERE / "frames/motion_context/motion_manifest.json"
+    motion_summary = {}
+    if motion_path.is_file():
+        motion = json.loads(motion_path.read_text())
+        motion_summary = {
+            "manifest": str(motion_path.relative_to(HERE)),
+            "manifest_sha256": hashlib.sha256(motion_path.read_bytes()).hexdigest(),
+            "result_type": motion["result_type"],
+            "frames": len(motion["frames"]),
+            "sampling_hz": motion["sampling_hz"],
+            "duration_seconds": motion["duration_seconds"],
+            "player": "frames/motion_context/player.html",
+        }
     write_json(
         HERE / "gate.json",
         {
@@ -87,6 +100,7 @@ def main() -> None:
             "gt_used_for_review": False,
             "formal_cases_run": False,
             "spatial_context_supplement": spatial_summary,
+            "body_motion_supplement": motion_summary,
             "artifacts": artifacts,
         },
     )

@@ -261,3 +261,28 @@ HR-01/02 新增 [school→office 五步導覽](../human_review/frames/spatial_co
 `data/pilot/phase1_finalization_human_review_20261007/human_review/`；採 APFS copy-on-write
 獨立檔案副本，123 個 manifest artifacts 全部 hash 核對一致。Package manifest SHA256：
 `a42feef8adc07ab6e4b718907bd716a74dfe855c0658dec4a8c2b99a9026e8a7`。
+
+## 2026-10-07 — Additive source-model body motion preview
+
+**DIAGNOSTIC / HUMAN_REVIEW_PENDING**；base `5ea82587fa205d8ce4d7bec7288ca7bf0b8055a5`。
+保留舊 guide/player/85PNG，新增 [10 秒模型人物動作](../human_review/frames/motion_context/player.html)。
+Fixed review camera、actual audited source110 triangles、50frames /5Hz；body/clearance、
+public projections、floor/body guard、OBSERVED→GAP→OBSERVED 連續可見。人體位移約3.873m，
+舊 positions/time/camera/method/confidence/uncertainty 逐值完全沿用；joint swing 是DISPLAY_ONLY
+示意，GAP仍是existing inferred candidate，不是假造真實隱藏動作或formal physical PASS。
+
+Renderer SHA256 `94664643b90772011e182b38e8ce403bdbd654d1b5a06493d24ad92af82b140f`。
+Source `.blend` hash/size/mtime、29frozen inputs、原85PNG/11guide-decision檔均保留。
+First/mid/final PNG視覺QA通過，browser實際播放到50/50與GAP逐格檢查通過。Pillow12.3
+derivedGIF實際50格、200ms/frame、10s/loop，SHA256
+`c066c0a55e248bdd0e74f1ca6b3ef2be8e47af9b4764cdd1994da337b421056b`；full-resolution PNG
+保留，GIF palette/resize明標preview。原ImageMagick嘗試cache不足且未留下輸出。
+
+61相關tests通過；repo Ruff、review工具 strict mypy、diff gate通過。只清除可重建task bytecode
+與untracked fresh-validation mypy cache來完成保存，不刪任何source/evidence/render/decision。
+No GT/recipe/evaluation reads、school approvals、formal Cases、push、merge 或freeze tag。
+
+獨立 local APFS copy-on-write 副本：canonical checkout 的
+`data/pilot/phase1_finalization_human_review_20261007/body_motion/human_review/`。
+181個manifest artifacts全部hash一致，上一版package未覆寫。新package manifest SHA256：
+`db61758c2daf9701fa40a77936941274b60ffa6f03f6d083e3c742c493852214`。

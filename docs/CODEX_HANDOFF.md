@@ -20,6 +20,10 @@ HR-01/02 另附 [完整空間導覽](../human_review/frames/spatial_context/guid
 school 定位、1F/camera 座標、5 秒鏡頭接近、原有 10 秒局部移動、問題近看。
 新增 display context 不改四項問題、原 57 張 evidence 或使用者 browser draft；
 鏡頭移動不是新增人物路徑，HR-02 的 1.3597 m 是 landmark→floor offset。
+另有 [新增 10 秒模型人物動作](../human_review/frames/motion_context/player.html)：
+固定鏡頭下，人物在 actual bounded source model 內移動，含 body /clearance 與 GAP。
+50 frames 的位置 /time /camera /projection 全部沿用原預覽，joint pose 只供顯示；
+原 85 張圖、原 guide/player 與四項問題均保留，不是 school approval 或 formal run。
 只提供 APPROVE/REJECT/FIX_GEOMETRY/KEEP_REVIEW；不要求人工計算 clearance、certificate、
 route uniqueness/branch count 或 feasible inventory，這些由 agent 在語意決策後重跑。
 不審 1,422 WALL patches、無關 portal conflicts 或 Stair A/B。
@@ -46,6 +50,8 @@ Raw local/fresh data 與 demos 持久保存在 ignored
 `data/pilot/phase1_finalization_20261006/`；source Blender 不變。
 含 spatial guide 的完整 review 本機副本在 canonical checkout 的
 `data/pilot/phase1_finalization_human_review_20261007/human_review/`。
+新增模型動作的完整副本另存
+`data/pilot/phase1_finalization_human_review_20261007/body_motion/human_review/`；上一版保留。
 [Artifact inventory](PHASE1_ARTIFACT_CLEANUP.md) 沒有刪除或移動來源資產。
 既有任意 endpoint snapping/connectors、visibility arbitration 與 missing-frame/origin
 attestation 仍暫緩；未由本輪診斷結果升格 school topology。
@@ -72,6 +78,9 @@ Coverage epsilon, speed/timing), a GT-free 10-second sequence and bounded scope 
 The [spatial guide](../human_review/frames/spatial_context/guide.html) adds school/floor/camera
 location, a five-second camera approach and the unchanged local movement/issue views.
 Its display context preserves the four questions, original image hashes and browser drafts.
+The separate [ten-second body-motion player](../human_review/frames/motion_context/player.html)
+adds a moving illustrated body in actual local source geometry with a fixed camera.
+It preserves all 85 older images and every existing trajectory/evidence field; joints are display-only.
 The application pipeline validates explicit decisions and hashes, regenerates the bounded
 certificate and locks inputs. No school decision has been applied. Formal adapters and an
 independent case inventory still need automatic completion; current parallel routes do not

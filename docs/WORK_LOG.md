@@ -4,6 +4,23 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Additive ten-second source-model body motion
+
+在 `5ea82587fa205d8ce4d7bec7288ca7bf0b8055a5` 上另加
+[模型人物行走播放器](../human_review/frames/motion_context/player.html) 與獨立 10 秒 GIF。
+Blender unsaved process 產生50 frames /5 Hz，固定鏡頭下顯示移動的人物、body/clearance、
+投影點、floor/body guard 與 OBSERVED/GAP。Actual local source110 triangles 來自
+`group_0` /`group_0.002` 的 audited evaluated frame；display crop/cutaway 不改 source。
+50 個位置/time/camera/method/confidence/uncertainty 完整複用既有 trace；joint pose 只供顯示。
+第0、25、49格已視覺檢查，播放器實際播至50/50；GIF decode50格、每格200ms、總10秒。
+
+新增 PNG 共19,765,351 bytes、GIF8,505,740 bytes；原85PNG、11個既有guide/decision檔與
+29 frozen inputs 不變。Source hash/size/mtime 不變；4項仍pending，無GT/recipe/evaluation，
+未改 physical authority、未跑formal Cases。ImageMagick optional編碼因cache資源失敗且無輸出，
+改用既有Pillow12.3的indexed frames成功。僅清除task bytecode及fresh-validation mypy caches，
+沒有刪除來源、任何 preview、decision 或研究 evidence。61相關tests、全repo Ruff與review工具
+strict typing通過；完整1580-suite仍是前checkpoint歷史證據，這次沒有重跑。無push/merge/tag。
+
 ### 2026-10-07 — Human review spatial context supplement
 
 在 `ef0f88ad373373c3a8222d510772440103839f2a` 延續 HR-01/02 review，新增
