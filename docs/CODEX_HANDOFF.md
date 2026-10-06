@@ -14,10 +14,11 @@
   `codex/dataset-infrastructure`；第二個成功pilot checkpoint
   `fdf9e7e8f2dc695917ba42094a63cc06ca910963` 已push於
   `phase1/pilot-dataset-and-wall-inference`，origin SHA一致。
-  本次由穩定 Phase 1 checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`
-  建立獨立 `phase1/geometry-authority`；核對 HEAD／dirty state 與 source hash，
+  Geometry checkpoint `bb66bb74a4a76430f6fa8f79672345385a79e3f0` 已 push 至
+  `phase1/geometry-authority`，origin SHA 一致；由它建立目前
+  `phase1/physical-authority-resolution`。核對 HEAD／dirty state 與 source hash，
   不 merge 回 checkpoint 或 downstream branch。恢復入口見[第一斷點](PHASE1_CHECKPOINT.md)／
-  [第二斷點](PHASE1_PILOT_CHECKPOINT.md)。
+  [第二斷點](PHASE1_PILOT_CHECKPOINT.md)／[geometry 斷點](PHASE1_GEOMETRY_CHECKPOINT.md)。
 - 通用 M0–M8 deterministic 閉環、camera extraction、producer-neutral aggregation、
   multi-gap Events、benchmark runner／MetricConfig／provider contract、GT isolation、
   fake／boundary／reporting regression 均已實作。Evidence 在 WORK_LOG，合成 fixtures
@@ -41,6 +42,15 @@
   正式 physical consumer 必須通過 `require_approved_physics`，當前 snapshot 會 typed refuse。
   Inspection 的空 APPROVED collider 集合不能證明無碰撞。本輪不修改來源 `.blend`、
   GT isolation、Graph、ranking 或 benchmark，不執行正式 Cases 1–3。
+- 最新 [physical blocker report](../data/scene_audit/phase1_physical_authority_20261006/resolution.md)
+  以實際來源 mesh 重查：8 組 OBSTACLE／PORTAL 保持 REVIEW，其中兩組 MEETINGROOM
+  可解釋為 annotation depth overlap；未縮 footprint、移 portal 或批准 volume。
+  1F／2F source support 約 Z=20.07885／161.811096，與25／165不一致；38個 local scopes
+  有完整量測例外，10個保留 complexity budget 與 partial ray evidence，沒有強制統一。
+  A/B 未找到支援兩段 proxy endpoints 的共同 landing，opening／clearance／connectivity
+  仍 REVIEW。[用途 scope contract](GEOMETRY_PROVIDER.md) 分別約束 pruning、collision-free、
+  topology 與 physical metrics；body／portal／contact policy 的未核准項目保持 null。
+  整體仍 PROVISIONAL，四個 formal gates 均拒絕，尚不可開始正式 collision hard-pruning。
 - 歷史 checkpoint `91f4ea600805739aa9659dfef6a381d71be9a692` 後的 extraction／
   [candidate report](../data/scene_audit/phase1_wall_candidates_20261005.md) 與
   [saved marking report](../data/scene_audit/phase1_wall_markings_20261005.md) 已完成：
@@ -123,11 +133,21 @@ Status date: 2026-10-06. The first semantic checkpoint remains on
 `codex/dataset-infrastructure`; the successful-pilot checkpoint
 `fdf9e7e8f2dc695917ba42094a63cc06ca910963` is published on
 `phase1/pilot-dataset-and-wall-inference` with identical origin SHA. Resume only on
-`phase1/geometry-authority`, created from stable Phase 1 checkpoint
-`51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`. Check HEAD/dirty state/source identity;
+`phase1/physical-authority-resolution`, created from the published geometry checkpoint
+`bb66bb74a4a76430f6fa8f79672345385a79e3f0` on `phase1/geometry-authority`, whose live
+origin SHA matches. Check HEAD/dirty state/source identity;
 do not merge into checkpoint or downstream branches. [First](PHASE1_CHECKPOINT.md) and
-[second checkpoint records](PHASE1_PILOT_CHECKPOINT.md) bind recovery and local assets.
+[second checkpoint records](PHASE1_PILOT_CHECKPOINT.md), plus the
+[geometry checkpoint](PHASE1_GEOMETRY_CHECKPOINT.md), bind recovery and local assets.
 Durable rules live in DEVELOPMENT_RULES; completed regression evidence belongs to WORK_LOG.
+The latest [physical blocker report](../data/scene_audit/phase1_physical_authority_20261006/resolution.md)
+keeps all eight obstacle/portal pairs REVIEW, with two meeting-room annotation-depth
+overlaps explained without scene edits. Actual floor support near20.07885/161.811096
+does not match proposed25/165:38 local scopes have measured exceptions, ten retain
+complexity limits and partial rays. A/B have no shared source-supported landing near
+the proxy joins; opening, clearance and full connectivity remain REVIEW. Purpose-specific
+provider scopes and nullable body/portal/contact policy preserve typed formal refusal.
+Overall remains PROVISIONAL; formal collision hard-pruning is not ready.
 The generic deterministic loop, camera extraction, replaceable observation/aggregation
 contracts, multi-gap Events, benchmark runner/MetricConfig, GT isolation, fake/boundary
 validation and reporting are implemented. They do not constitute a formal school benchmark.

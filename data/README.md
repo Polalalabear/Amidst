@@ -6,6 +6,24 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-06 addendum / Physical authority resolution
+
+The geometry checkpoint `bb66bb7` is published on `phase1/geometry-authority`, with
+identical origin SHA; new work is isolated on `phase1/physical-authority-resolution`.
+[Blocker report](scene_audit/phase1_physical_authority_20261006/resolution.md), JSON,
+physical-authority sidecar and manifest record read-only source-mesh review of eight
+obstacle/portal conflicts, actual floor support and A/B stair context. The source export
+contains157,589 selected triangles in69 spatial regions; selection completeness does
+not certify physical ownership or empty-space clearance. Three unrelated obstacle
+regions retain export budget limitations with explicit reasons.
+
+Eight pairs remain REVIEW, including two explained meeting-room annotation margins.
+Thirty-eight floor scopes have measured support-plane exceptions; ten retain diagnostic
+geometry budgets and partial ray evidence. Body/portal/contact parameters remain nullable,
+config-driven and unapproved. **Physical authority = PROVISIONAL**; all four formal-purpose
+gates refuse. No source `.blend`, old dataset, benchmark, ranking or GT contract is changed.
+原 footprint、門洞及樓梯均未任意修改或補造，未開始正式 Case 1–3。
+
 ### 2026-10-06 addendum / Geometry authority evidence
 
 Branch `phase1/geometry-authority` starts from `51f1ec7`.

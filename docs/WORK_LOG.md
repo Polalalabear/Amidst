@@ -4,6 +4,55 @@
 
 ## 繁體中文
 
+### 2026-10-06 — Geometry checkpoint 發布與 physical authority blocker 審查
+
+使用者指定的 `bb66bb74a4a76430f6fa8f79672345385a79e3f0` 在
+`phase1/geometry-authority` 起始 working tree clean。重新執行完整 gates：pytest
+**996 passed in 85.24s，無 failed／skipped**，Ruff、mypy（77 source files）、diff check
+通過。正常 push 後，live `git ls-remote` 的 origin SHA 完全一致；由這個確切 commit
+建立獨立 `phase1/physical-authority-resolution`，沒有修改 checkpoint／merge／rebase。
+恢復入口見 [geometry checkpoint](PHASE1_GEOMETRY_CHECKPOINT.md)。
+
+[Physical blocker report](../data/scene_audit/phase1_physical_authority_20261006/resolution.md)
+及 JSON／sidecar／manifest 綁定來源與兩種 config。Read-only Blender survey 選取
+69 個局部 regions／157,589 個三角面 records，保留 source object／face identity；bbox
+僅篩選 evidence，不當 collider、不依 `group_*` 名稱猜 role，不 save／render。
+三個非衝突餐廳／storage obstacle regions 達 export budget，明確標 selection incomplete。
+
+8 組 OBSTACLE／PORTAL 均保持 physical HUMAN_REVIEW；兩組 2F MEETINGROOM 已確認
+annotation depth margin overlap、declared center plane 未被 footprint 擋住，但不核准
+aperture／body clearance。廁所四組完全覆蓋，主入口兩組仍無法可靠判別實體 blocker、
+footprint 過大或 portal 位置。19 個 role approval 保留，volume／height 仍未批准；
+局部 source meshes 沒有一對一 collider ownership，未以 proximity／closed fragment
+自動配對。**0 scene repairs**；沒有任意縮 obstacle 或移 portal。
+
+48 個 WALKABLE floor scopes 保持 HUMAN_REVIEW：38 個精確量測到 proposed plane
+與 source support 的例外，10 個保留既有 complexity limits 與 partial ray evidence。
+主要 actual support 為1F Z≈20.07885、2F≈161.811096，與25／165相差約4.92115／3.188904。
+AREA／PORTAL 是 annotation context；v2 calibration 不給 v3 physical floor-plane authority。
+沿用已確認 1 BU = 1 m 計算 convention，不自行 rescale 或強制統一 floor。
+Stair A/B 的 actual ROI 各有932／422 triangles，找不到支援兩個 proxy half endpoints
+的共同 landing；ENTRY／EXIT 對 actual horizontal support 距離 A2.783161／0.811096、
+B5.047535／3.061096，皆超出既有0.25 join tolerance。Opening／clearance／connectivity
+仍 REVIEW；未造 landing 或 connector，也未修改原始／衍生 `.blend`。
+
+新增 `physical-authority-v1` purpose-specific sidecar／read-only wrapper，沒有修改
+`scene-geometry-v1`、正式 Phase 1 domain schemas 或 Graph。Policy config 明列 body
+model／reference、radius／height、body clearance、portal horizontal／vertical clearance、
+contact tolerance 與比較方式；未核准欄位為 null／HUMAN_REVIEW，沒有自行採用研究數值。
+四種 formal purposes 的 scope、coverage、exact IDs、source／canonical geometry hashes
+分開驗證。當前全部 typed refuse，整體 **PROVISIONAL**；沒有可開始正式 hard-pruning、
+collision-free／topology certification 或 physical-validity metrics 的 scope。
+73 HIGH_CONFIDENCE WALL 只作 provisional evidence；原 doorway protection／threshold
+保留，沒有升級剩餘1,422 patches。沒有變更 benchmark、ranking、GT isolation，也未開始
+正式 Case 1–3、Agent 或 Phase 2。
+
+最終 `uv run pytest` **1120 passed in 86.99s，0 failed／0 skipped**；Ruff、mypy
+（81 source files）、diff check 通過。新增124個 physical policy／scope／source evidence／
+report regressions，包括 forgery、GT guards、partial scope 不認證完整無碰撞、source mesh
+budget、actual floors／stairs／8 pairs，以及錯誤報告呈現修正。獨立 report replay 保持
+authority decision／source measurements一致；原 `.blend` SHA／size／mtime 不變。
+
 ### 2026-10-06 — 獨立 Phase 1 geometry authority milestone
 
 由穩定 checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e` 建立
@@ -582,6 +631,48 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Published geometry checkpoint and physical blocker review
+
+The requested geometry-authority checkpoint bb66bb74a4a76430f6fa8f79672345385a79e3f0
+starts clean. Fresh validation passes996pytest tests in85.24s without failures/skips,
+Ruff, mypy77sourcefiles and diff check. A normal push publishes phase1/geometry-authority;
+live origin SHA matches exactly. The independent phase1/physical-authority-resolution
+branch starts from that exact commit without changing the checkpoint or merging/rebasing.
+The [checkpoint record](PHASE1_GEOMETRY_CHECKPOINT.md) binds recovery and local assets.
+
+The [physical report](../data/scene_audit/phase1_physical_authority_20261006/resolution.md)
+and source-bound artifacts review157,589 selected triangle records in69 spatial regions.
+Selection boxes never become colliders. Three unrelated obstacle regions retain explicit
+export-budget limits. All eight obstacle/portal pairs remain physical REVIEW: two
+meeting-room overlaps are explained by annotation depth margins, while bathroom/main
+entrance blocker identity, footprint extent or portal placement remain unresolved.
+The19 approved roles retain unapproved footprint volumes; no reliable one-to-one source
+mesh ownership is inferred. Zero scene repairs are applied; footprints/portals stay intact.
+
+All48 floor scopes remain REVIEW:38 measured source-support exceptions and ten bounded
+measurement cases with partial rays. Dominant1F/2F source support is near20.07885/161.811096,
+not proposed25/165. Annotation volumes and v2 camera calibration do not approve v3 physical
+planes. The accepted1BU=1m computation convention remains unchanged. Actual stair A/B
+context contains932/422triangles but no shared landing supporting the proxy-half endpoints.
+ENTRY/EXIT source-horizontal distances are2.783161/.811096 for A and5.047535/3.061096 for B,
+above the existing.25join tolerance. Openings, clearance and complete connectivity remain
+REVIEW; no landing/connector or original/derived asset changes are invented.
+
+An additive physical-authority-v1 sidecar separates policy and purpose-specific scopes
+without altering geometry-v1 or formal domain schemas. Pending body/reference/dimensions,
+body/portal clearances and contact comparisons remain nullable, config-driven and REVIEW.
+All four formal gates refuse; overall authority stays PROVISIONAL and formal hard-pruning,
+free-space/topology certification and physical-validity metrics are not ready. The73HIGH
+walls remain provisional with doorway protection and original thresholds;1422ambiguous
+patches are not forcibly approved. Benchmark, ranking, GT isolation, formal Cases1–3,
+Agent and Phase2 remain unchanged or unstarted.
+
+Fresh final checks pass **1120pytest tests in86.99s**, no failures/skips; Ruff; mypy81source
+files; diff check. The124new regressions cover policy/scope/source forgery, GT guards,
+partial versus complete authority, actual floor/stair/conflict evidence, budget protection
+and report formatting. Independent replay preserves measurements and authority decisions;
+the original source hash/size/mtime remains unchanged.
 
 ### 2026-10-06 — Independent Phase 1 geometry authority milestone
 
