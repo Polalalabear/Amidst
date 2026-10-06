@@ -51,8 +51,15 @@ PRD 的 30 m corridor、20 s／180 s gap 是 case 意圖的示例，不是已存
 
 ### 指標定義與可取得性
 
-所有距離用 3D Euclidean distance，座標單位為公尺、時間為秒；沿用已確認的
-1 Blender unit = 1 m。`P_1` 指 deterministic 輸入順序第一條 distinct route 的第一個
+所有距離用 3D Euclidean distance，座標單位為公尺、時間為秒。
+School v3 architectural scale 已核准 **1 BU = 0.0247 m**，authority basis 為
+`APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING`；geometry 與原始 BU 保留。新的 physical-unit
+adapter 一致換算 inputs／physical reporting，既有 camera／pilot／synthetic 與已完成
+benchmark 的 1 unit = 1 m 契約及 BU provenance 不回寫。這是單位接入說明，不修改
+下列 metric 公式、formal epsilon、ranking、candidate／timing population 或 GT isolation。
+Mesh 只作 sanity-check；floor／stair／collider／body-clearance 仍需個別核准。
+既有 runner／pilot 保留 legacy 契約，須由 caller 顯式接入 normalization，並非自動切換。
+`P_1` 指 deterministic 輸入順序第一條 distinct route 的第一個
 timing；不使用 GT 挑 route 或 timing。Top-K 同樣只選每個 distinct candidate 的第一個
 timing。ADE／FDE 對 primary route 的量測與 minADE／minFDE 的 evaluation oracle minima
 分開呈現；後者不得用於 inference 或 baseline 排序。
@@ -238,6 +245,16 @@ original scene. Ground Truth belongs only to independent evaluation/debug consum
 must not influence inference, route/timing selection, baseline ordering or Agent input.
 
 ### Cases and measures
+
+School-v3 architectural scale is explicitly approved at **1 BU = 0.0247 m** with
+`APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING` authority. Native geometry/BU values stay intact;
+new physical inputs/reports use one consistent unit adapter. Historical camera, pilot,
+synthetic and completed benchmark artifacts retain their existing unit contracts and BU
+provenance. This clarification changes no metric formula, formal epsilon, ranking,
+candidate/timing population or GT isolation. Mesh measurements are sanity checks; floor,
+stair, collider and body-clearance approvals remain separate prerequisites.
+Existing runner/pilot flows retain their legacy contracts until their caller explicitly
+integrates normalization; no automatic migration is implied.
 
 **Case 1** asks whether observed endpoints recover the single authorized same-floor route.
 It requires approved walkability, relevant colliders, accessible portals/anchors, camera-plane

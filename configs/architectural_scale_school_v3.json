@@ -1,0 +1,13 @@
+{
+  "schema_version": "architectural-scale-v1",
+  "scope": "PHASE1_SCHOOL_V3_RESEARCH_MODEL",
+  "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "metres_per_blender_unit": 0.0247,
+  "authority": "APPROVED",
+  "approval_id": "HUMAN_PHASE1_ARCHITECTURAL_SCALE_2026_10_06_0247",
+  "approval_basis": "USER_DEFINED_RESEARCH_MODEL_SETTING",
+  "evidence_ids": ["USER_EXPLICIT_APPROVAL_1_BU_EQUALS_0_0247_M_2026_10_06"],
+  "measurement_role": "SANITY_CHECK_EVIDENCE",
+  "source_geometry_scaled": false,
+  "external_dimensions_required": false
+}

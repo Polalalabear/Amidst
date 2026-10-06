@@ -31,6 +31,17 @@ evaluated vertices／triangles 和 geometry diagnostics。Synthetic fixtures 與
 
 ### 設定與 authority
 
+[School-v3 config](../configs/scene_validation_school_v3.json) 使用明確核准的
+**1 BU = 0.0247 m**、**APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING architectural scale**。
+原始 BU vertices／量測保留，meter／square-meter 設定依同一比例換算；既有 diagnostic
+heuristics 的 native 幾何比較範圍不因單位更新而放寬。新 active
+[scene validation](../data/scene_audit/school_v3_approved_scale_20261006/scene_validation.md) 與
+[geometry/scale validation](../data/scene_audit/school_v3_approved_scale_20261006/geometry_scale_validation.md)
+引用核准尺度；mesh 量測只作 sanity-check，不要求外部尺寸再次核准。Floor planes、
+stair connectivity／opening、obstacle volumes、body／clearance policy 仍分別待核准。
+舊 school-v2／mock config 與已完成 reports、benchmark BU provenance 保留原契約；
+exact historical replay 須使用該版本的 code／config，不用新設定覆寫舊證據。
+
 [scene_validation_v1.json](../configs/scene_validation_v1.json) 將 coverage thresholds、
 距離／高度 tolerances、small islands、contact overlap、tiny／giant geometry、scale 與
 geometry complexity budgets 外部化。預設 `coverage_pass_ratio=0.8`，AREA 不要求 100%
@@ -122,6 +133,14 @@ The config controls coverage, adjacency, portal/stair distances, contact overlap
 anomalies and complexity budgets. AREA does not require 100% coverage. Defaults are diagnostic
 heuristics, not approved clearance or benchmark criteria. Floor authority requires explicit
 source/review binding and valid supported plane evidence; otherwise results are HEURISTIC/REVIEW.
+School-v3 config uses explicit **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING** architectural scale,
+**1 BU = 0.0247 m**. Original BU coordinates/measurements remain; metre and square-metre
+settings are converted consistently without changing native diagnostic comparison ranges.
+Mesh measurements are sanity checks and do not require external dimensions to reapprove
+scale. Floor/stair/opening/volume/body-clearance authorities remain separate and pending.
+New active scene and geometry/scale validation are in `school_v3_approved_scale_20261006`;
+historical reports and benchmark provenance remain unchanged. Exact historical replay requires
+the matching historical code/config. The generic mock/school-v2 config keeps its own contract.
 Collection policy is configurable. No objects are renamed, reclassified from unlabeled names,
 or moved. New source content requires renewed source binding.
 

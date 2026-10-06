@@ -24,7 +24,10 @@ world-space vertices 與原始 triangle connectivity；provider 不匯入 `bpy`�
 這些 guards 不自動批准 clearance，也不宣稱已排除所有 mesh self-intersection。
 
 Floor plane 各自保留 authority，宣告 `unit_scale_m` 與 `scale_authority` 也分開。
-沿用既有 conversion 不代表本次批准 physical scale。Physical APPROVED surface
+School v3 目前為使用者明確核准的 `unit_scale_m=0.0247`、`scale_authority=APPROVED`，
+authority basis 是 `USER_DEFINED_RESEARCH_MODEL_SETTING`；mesh 只提供 sanity-check evidence。
+這不批准 floor planes、stair connectivity、obstacle volumes 或 body／clearance policy。
+Physical APPROVED surface
 必須引用 APPROVED floor，且 scale 也已批准。`physical_complete=true` 在 floor、scale、
 相關 surface、portal 或 stair authority 未解決時會 fail fast；預設為 false。
 
@@ -100,10 +103,21 @@ Provider 沒有實作 Graph search、ranking、final route validation 或新 met
 
 ### Physical authority resolution 與用途 scope
 
-2026-10-06 pending scale update: new [school-v3 measurement review](SCHOOL_V3_SCALE_REVIEW.md)
-uses 0.0247 m/BU in an independent diagnostic config, with `HUMAN_REVIEW` and formal use
-denied. Historical geometry snapshots, calibration, pilot and benchmarks remain unchanged.
-No body dimensions, clearance, metric settings or doorway protection are implicitly rescaled.
+2026-10-06 approved scale update: the [school-v3 scale review](SCHOOL_V3_SCALE_REVIEW.md)
+records **1 BU = 0.0247 m**, **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**. External dimensions
+are not required to rederive this declared model setting. Native vertices and BU measurements
+remain unchanged; metre quantities use the approved factor explicitly. The active
+[geometry snapshot](../data/scene_audit/school_v3_approved_scale_20261006/geometry.json) and
+[physical sidecar](../data/scene_audit/school_v3_approved_scale_20261006/physical_authority.json)
+are separate from retained historical snapshots, calibration, pilot and benchmark artifacts.
+Body radius/height, clearance, portal width/height, contact tolerance and speed use the same
+conversion as ADE/FDE physical-unit reporting. The physical-unit adapter converts the complete
+input consistently before existing core consumers, preserving native BU separately; it does
+not rewrite old artifacts or change Graph/Top-K, metric definitions or GT isolation.
+This is an explicit caller boundary; existing runner/pilot flows keep their legacy contracts
+until a caller invokes normalization. Providing the adapter does not silently migrate them.
+Existing native doorway padding remains 0.28 BU, represented as 0.006916 m in the new snapshot;
+the protection distance is unchanged. Other physical authorities remain pending independently.
 Automatic measurements cite mesh endpoints/evaluated faces; annotation bounds are not colliders.
 Elevator is `NOT_APPLICABLE`, and unclassified object names confer no authority.
 
@@ -182,6 +196,12 @@ Semantic approval and physical support are separate. APPROVED requires explicit 
 identity and traceable evidence; HIGH_CONFIDENCE records rule-supported evidence without
 human approval. Footprints and annotations remain physical HUMAN_REVIEW. Floor and scale
 authority are independent; incomplete geometry cannot claim `physical_complete=true`.
+School-v3 architectural scale is explicitly **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING** at
+**0.0247 m/BU**. Mesh measurements are sanity evidence rather than scale inference. Original
+BU vertices remain unchanged, and the physical-unit adapter applies one consistent conversion
+to new physical inputs/reports. Historical calibration, pilot and benchmark artifacts retain
+their original unit contracts and provenance. Scale approval does not approve floors, stairs,
+collider volumes, body/clearance policy or a formal physical scope.
 
 Loading requires the caller's independently verified source SHA-256. Models reject extra
 fields, non-finite/degenerate geometry, invalid references and unchecked Python model

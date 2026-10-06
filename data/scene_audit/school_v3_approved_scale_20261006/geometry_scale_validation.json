@@ -1,0 +1,214 @@
+{
+  "schema_version": "approved-school-scale-validation-v1",
+  "status": "PASS",
+  "architectural_scale": {
+    "schema_version": "architectural-scale-v1",
+    "scope": "PHASE1_SCHOOL_V3_RESEARCH_MODEL",
+    "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "metres_per_blender_unit": 0.0247,
+    "authority": "APPROVED",
+    "approval_id": "HUMAN_PHASE1_ARCHITECTURAL_SCALE_2026_10_06_0247",
+    "approval_basis": "USER_DEFINED_RESEARCH_MODEL_SETTING",
+    "evidence_ids": [
+      "USER_EXPLICIT_APPROVAL_1_BU_EQUALS_0_0247_M_2026_10_06"
+    ],
+    "measurement_role": "SANITY_CHECK_EVIDENCE",
+    "source_geometry_scaled": false,
+    "external_dimensions_required": false
+  },
+  "source": {
+    "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "size_bytes": 468300506,
+    "mtime_ns": 1791198236746106977
+  },
+  "native_geometry_unchanged": true,
+  "native_surface_count": 1669,
+  "native_doorway_protection_bu": 0.28,
+  "portal_protection_tolerance_m": 0.006916,
+  "measurement_role": "SANITY_CHECK_EVIDENCE",
+  "conversion_pairs_checked": 285,
+  "measurement_count": 37,
+  "unresolved_portal_directions": 6,
+  "floor_rise_bu": 141.73224639892578,
+  "floor_rise_m": 3.5007864860534665,
+  "physical_authority_level": "PROVISIONAL",
+  "physical_scope_gates": [
+    {
+      "scope_id": "school-v3-known_collision_pruning",
+      "purpose": "KNOWN_COLLISION_PRUNING",
+      "status": "REFUSED_PENDING_OTHER_AUTHORITIES",
+      "remaining_reason_counts": {
+        "SCOPE_NOT_APPROVED": 1,
+        "UNRESOLVED": 6,
+        "POLICY_NOT_APPROVED": 1,
+        "POLICY_PENDING": 10,
+        "FLOOR_NOT_APPROVED": 2,
+        "SURFACE_NOT_APPROVED": 92,
+        "OBSTACLE_VOLUME_NOT_APPROVED": 19,
+        "SEMANTIC_SURFACE_NOT_APPROVED": 73,
+        "PORTAL_NOT_APPROVED": 28,
+        "STAIR_NOT_APPROVED": 6
+      }
+    },
+    {
+      "scope_id": "school-v3-collision_free_validation",
+      "purpose": "COLLISION_FREE_VALIDATION",
+      "status": "REFUSED_PENDING_OTHER_AUTHORITIES",
+      "remaining_reason_counts": {
+        "SCOPE_NOT_APPROVED": 1,
+        "UNRESOLVED": 6,
+        "POLICY_NOT_APPROVED": 1,
+        "POLICY_PENDING": 10,
+        "FLOOR_NOT_APPROVED": 2,
+        "SURFACE_NOT_APPROVED": 140,
+        "OBSTACLE_VOLUME_NOT_APPROVED": 19,
+        "SEMANTIC_SURFACE_NOT_APPROVED": 121,
+        "PORTAL_NOT_APPROVED": 28,
+        "STAIR_NOT_APPROVED": 6,
+        "COMPLETE_SCOPE_REQUIRED": 1
+      }
+    },
+    {
+      "scope_id": "school-v3-topology_validation",
+      "purpose": "TOPOLOGY_VALIDATION",
+      "status": "REFUSED_PENDING_OTHER_AUTHORITIES",
+      "remaining_reason_counts": {
+        "SCOPE_NOT_APPROVED": 1,
+        "UNRESOLVED": 6,
+        "POLICY_NOT_APPROVED": 1,
+        "POLICY_PENDING": 10,
+        "FLOOR_NOT_APPROVED": 2,
+        "SURFACE_NOT_APPROVED": 140,
+        "OBSTACLE_VOLUME_NOT_APPROVED": 19,
+        "SEMANTIC_SURFACE_NOT_APPROVED": 121,
+        "PORTAL_NOT_APPROVED": 28,
+        "STAIR_NOT_APPROVED": 6,
+        "COMPLETE_SCOPE_REQUIRED": 1
+      }
+    },
+    {
+      "scope_id": "school-v3-physical_validity_metrics",
+      "purpose": "PHYSICAL_VALIDITY_METRICS",
+      "status": "REFUSED_PENDING_OTHER_AUTHORITIES",
+      "remaining_reason_counts": {
+        "SCOPE_NOT_APPROVED": 1,
+        "UNRESOLVED": 6,
+        "POLICY_NOT_APPROVED": 1,
+        "POLICY_PENDING": 10,
+        "FLOOR_NOT_APPROVED": 2,
+        "SURFACE_NOT_APPROVED": 140,
+        "OBSTACLE_VOLUME_NOT_APPROVED": 19,
+        "SEMANTIC_SURFACE_NOT_APPROVED": 121,
+        "PORTAL_NOT_APPROVED": 28,
+        "STAIR_NOT_APPROVED": 6,
+        "COMPLETE_SCOPE_REQUIRED": 1
+      }
+    }
+  ],
+  "physical_policy_units": {
+    "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "scale_authority": "APPROVED",
+    "scale_approval_id": "HUMAN_PHASE1_ARCHITECTURAL_SCALE_2026_10_06_0247",
+    "metres_per_blender_unit": 0.0247,
+    "policy_metres": {
+      "policy_id": "school-v3-pedestrian-physical-policy",
+      "config_version": "physical-authority-policy-v1",
+      "units": "metres",
+      "authority": "HUMAN_REVIEW",
+      "body_model": null,
+      "trajectory_reference": null,
+      "body_radius_m": null,
+      "body_height_m": null,
+      "body_clearance_m": null,
+      "portal_horizontal_clearance_m": null,
+      "portal_vertical_clearance_m": null,
+      "collision_tolerance_m": null,
+      "clearance_comparison": null,
+      "collision_comparison": null,
+      "evidence_ids": [
+        "PENDING_HUMAN_BODY_AND_CLEARANCE_RESEARCH_DECISION"
+      ],
+      "approval_id": null
+    },
+    "lengths_blender_units": {
+      "body_radius_bu": null,
+      "body_height_bu": null,
+      "body_clearance_bu": null,
+      "portal_horizontal_clearance_bu": null,
+      "portal_vertical_clearance_bu": null,
+      "collision_tolerance_bu": null
+    },
+    "physical_authority_upgraded": false
+  },
+  "sanity_result": "NO_RELIABLE_EVIDENCE_OF_IMPLAUSIBLE_SCALE",
+  "binding_anomalies": [
+    {
+      "measurement_id": "PORTAL_1F_MEETINGROOM_01:Y",
+      "actual_source_length_bu": 526.2467651367188,
+      "actual_source_length_m": 12.998295098876953,
+      "source_to_annotation_length_ratio": 4.784061501242897,
+      "ambiguities": [
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
+        "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
+        "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
+      ]
+    },
+    {
+      "measurement_id": "PORTAL_2F_GALLERY:X",
+      "actual_source_length_bu": 992.1274719238281,
+      "actual_source_length_m": 24.505548556518555,
+      "source_to_annotation_length_ratio": 14.17324959891183,
+      "ambiguities": [
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
+        "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
+        "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
+      ]
+    },
+    {
+      "measurement_id": "PORTAL_2F_MEETINGROOM_01:Y",
+      "actual_source_length_bu": 526.2466888427734,
+      "actual_source_length_m": 12.998293214416504,
+      "source_to_annotation_length_ratio": 26.31233444213867,
+      "ambiguities": [
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
+        "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
+        "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
+      ]
+    },
+    {
+      "measurement_id": "PORTAL_2F_MEETINGROOM_02:Y",
+      "actual_source_length_bu": 526.2466888427734,
+      "actual_source_length_m": 12.998293214416504,
+      "source_to_annotation_length_ratio": 5.262466888427735,
+      "ambiguities": [
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
+        "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
+        "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
+      ]
+    },
+    {
+      "measurement_id": "WALK_2F_MEETINGROOM:X",
+      "actual_source_length_bu": 10.9124755859375,
+      "actual_source_length_m": 0.26953814697265627,
+      "source_to_annotation_length_ratio": 0.041971059945913464,
+      "ambiguities": [
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
+        "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
+        "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
+        "WIDTH_VARIES_WITH_HEIGHT"
+      ]
+    }
+  ],
+  "anomaly_interpretation": "UNAPPROVED_NEAREST_HIT_BINDINGS_NOT_CONFIRMED_ROOM_OR_DOOR_SIZES",
+  "source_geometry_scaled": false,
+  "formal_benchmark_run": false,
+  "history_rewritten": false,
+  "inputs": {
+    "configs/architectural_scale_school_v3.json": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf",
+    "data/scene_audit/phase1_geometry_authority_20261006/geometry.json": "c64605e471ac2eb0024dd6d420b75f3798dbd1edf51148e1459c61fc4910a21b",
+    "data/scene_audit/school_v3_approved_scale_20261006/geometry.json": "a1423622d23f9267ba345922e96e91e3852e1e16dc7d33ecf5b33405ca131e89",
+    "data/scene_audit/school_v3_approved_scale_20261006/physical_authority.json": "35d3170af5a6a7478ea036f724fc62e5949af83d22b0f7b2f43fca9f01f44920",
+    "data/scene_audit/school_v3_scale_calibration_20261006/measurements.json": "cd8b333ff4683c086ddf5ce961d181af6307f6082a9252c8c1cadaac7394010e",
+    "scripts/validate_school_scale.py": "efadc03fa53c98ac8be27c64c34a6f10c40894384edec42311988b236928f45e"
+  }
+}

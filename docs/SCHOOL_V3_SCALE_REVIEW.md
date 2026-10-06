@@ -4,11 +4,15 @@
 
 ## 繁體中文
 
-使用者暫定 **1 BU ≈ 0.0247 m**。目前沒有可靠實測／設計尺寸；本輪只產生
+使用者於 2026-10-06 明確核准 **1 BU = 0.0247 m**，architectural scale authority
+為 **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**。這是研究模型的尺度設定，不是由
+mesh 反推的估計值；不再要求外部實測／設計尺寸重新推導比例。既有
 [自動量測表](../data/scene_audit/school_v3_scale_calibration_20261006/measurements.md)、
 [source endpoints JSON](../data/scene_audit/school_v3_scale_calibration_20261006/measurements.json)
 與 [CSV](../data/scene_audit/school_v3_scale_calibration_20261006/measurements.csv)。
-Scale／floor／physical authority 仍 HUMAN_REVIEW，不 rescale／save／render 或改 geometry。
+量測改列 **sanity-check evidence**；來源 BU 數值與端點保留，meter 值依核准比例換算。
+Floor、stair、obstacle volume 與 body／clearance authority 仍各自待核准；尺度核准不會
+升級它們。不 rescale／save／render 或改 geometry。
 
 ### 量測含義與人工確認
 
@@ -25,16 +29,33 @@ index、世界座標端點／法向與 face vertices。AABB 僅縮小 query 工�
 表內 source length 是可用截面的 median，各高度結果／缺側／不一致皆保留。
 這不是全高度 minimum clearance、正式 door aperture 或通行性判定。
 Floor height 由兩個 source support candidates 的 Z 差量測，不用標記 25／165 相減。
-建議 anchors 見報告 shortlist；人工需先確認對應室內邊界，再提供至少 2–3 組
-獨立真實尺寸。既有比例換算值、相同門型在另一樓層重複，不能用作獨立證據。
+既有 anchor shortlist 只供核對量測邊界，不再是尺度核准的前置條件。
+門洞常見截面約 0.875／1.361／1.750 m、走廊約 3.015–3.598 m、教室約
+6.321 × 9.676 m，兩個 source support candidates 的高差約 3.500786 m。
+這些支持合理性，沒有用來重新推導或批准比例。
+
+五筆截面需保留 boundary-binding review：1F MEETINGROOM 與兩個 2F MEETINGROOM
+PORTAL 約 12.998 m、2F GALLERY PORTAL 約 24.506 m，2F MEETINGROOM X 截面約
+0.270 m 且隨高度變化。它們引用的是未分類的最近 source hits，不能宣稱是真實
+巨大門洞／極小房間，也不構成尺度錯誤的證據。
 
 ### 單位與來源邊界
 
-- 新 [diagnostic config](../configs/school_v3_scale_measurement_v1.json) 保存暫定比例，
-  `known_real_dimensions=[]`、`HUMAN_REVIEW`、formal physical use denied。
+- [Measurement config](../configs/school_v3_scale_measurement_v1.json) 記錄核准比例與
+  approval identity，`known_real_dimensions=[]` 不再阻擋尺度核准；量測不授予其他
+  physical authority。
 - 正式 calibration schema 目前是 `meters_per_blender_unit: Literal[1]`；既有 builder、
-  floor planes、padding、pilot、benchmark 都有舊單位契約。本輪不修改正式 schema／
-  runner／metrics。未來接入比例須另行核准完整換算，不只替換一個 scalar。
+  camera／pilot／synthetic artifacts 的舊單位契約保留。新的 physical-unit adapter
+  使用核准尺度一致換算 input 與 physical-unit reporting，保留原始 BU，不把舊資料
+  冒充已換算的 meter 值。人體半徑／高度、clearance、門洞寬高、contact tolerance、
+  speed 與 ADE／FDE reporting 共用同一尺度；Graph／Top-K、metric 定義與 GT isolation
+  保持不變。
+  Adapter 是顯式 caller boundary；既有 runner／pilot 不會自動切換單位，接入
+  normalization 前仍沿用其 legacy 契約。
+- 新 active [geometry snapshot](../data/scene_audit/school_v3_approved_scale_20261006/geometry.json)、
+  [physical sidecar](../data/scene_audit/school_v3_approved_scale_20261006/physical_authority.json) 與
+  [geometry/scale validation](../data/scene_audit/school_v3_approved_scale_20261006/geometry_scale_validation.md)
+  綁定未變來源；舊 checkpoint snapshots、benchmark artifacts 與 BU provenance 不回寫。
 - [Camera reference audit](../data/scene_audit/school_v3_scale_calibration_20261006/camera_references.json)
   區分 active consuming references 與 inventory／exclusion／history mentions。
   匯入 camera 可忽略，原物件不刪除；正式 29 CAM cameras 保留。
@@ -63,9 +84,13 @@ Blender 路徑可替換為該平台 executable；不修改原始資產。
 
 ## English
 
-The user proposes **0.0247 m/BU** for new diagnostics. No reliable measured/design
-dimensions are available, so architectural scale remains HUMAN_REVIEW. The immutable
-source is surveyed without scaling, geometry changes, saving, rendering or benchmark runs.
+On 2026-10-06 the user explicitly approved **1 BU = 0.0247 m** as
+**APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING architectural scale authority**. This is a declared
+research-model setting, not a mesh-derived estimate. External measured/design dimensions are
+no longer required to rederive it. The measurement table is sanity-check evidence; source BU
+coordinates and endpoints remain alongside converted metre values. Floors, stairs, obstacle
+volumes and body/clearance policy retain their separate pending authorities. The immutable
+source is not scaled, changed, saved or rendered, and no benchmark is started.
 JSON/CSV/Markdown are generated from source measurements rather than maintained by hand.
 
 Annotation spans and actual source cross-sections are separate. Portal orientation must
@@ -75,11 +100,24 @@ normals and face vertices. Nearest hits retain unassigned semantic roles; they d
 walls, aperture, body clearance or connectivity. Summaries use the median of available
 samples and preserve incomplete/varying profiles. Floor rise uses source support candidates.
 
-Confirm the shortlisted mesh boundaries and provide at least 2–3 independent real dimensions
-before approving scale. Repeated door types and values derived from this proposed ratio are
-not independent evidence. Formal calibration currently fixes its unit scalar to one; changing
-that contract and converting all planes/tolerances is a separate approved integration task.
-Historical pilot/benchmark/provenance artifacts remain unchanged.
+The former anchor shortlist now supports boundary sanity review only. Typical measured source
+sections are about 0.875/1.361/1.750 m for doors, 3.015–3.598 m for corridors and
+6.321 × 9.676 m for classrooms; source-support floor rise is about 3.500786 m. These are
+plausibility checks, not the source of authority. Five records retain unresolved boundary
+bindings: three meeting-room portal sections near 12.998 m, the gallery portal near 24.506 m
+and a meeting-room X section near 0.270 m. Unassigned nearest ray hits do not establish giant
+doorways, a tiny room or an invalid scale.
+
+Legacy formal calibration keeps its unit scalar fixed to one for existing camera/pilot and
+synthetic artifacts. The physical-unit adapter consistently converts new inputs and physical
+reports using the approved factor while retaining native BU; it never relabels historical
+coordinates as converted metres. Body dimensions, clearance, portal width/height, contact
+tolerance, speed and ADE/FDE reporting share that boundary without changing Graph/Top-K,
+metric definitions or GT isolation. New active geometry and physical sidecars are in
+`data/scene_audit/school_v3_approved_scale_20261006/`; historical snapshots, pilot/benchmark
+artifacts and BU provenance remain unchanged.
+The adapter is an explicit caller boundary. Existing runner/pilot flows stay on their
+legacy contracts until their caller invokes normalization; they are not automatically migrated.
 
 The imported SketchUp camera has zero active consuming references and can be ignored while
 retaining the source object and all 29 research CAM cameras. Elevator is NOT_APPLICABLE;

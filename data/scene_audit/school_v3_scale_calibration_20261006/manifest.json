@@ -16,14 +16,15 @@
     }
   },
   "inputs": {
-    "config_sha256": "c0882dcf18dd3f8cb387291beb9e65decfae43e971dc69907be927f4965b3e44",
-    "script_sha256": "8e1ae06876ec1ad65aa2e01416fe3522ce23882cb6d7ff59e2f8d243aee9ff8b",
+    "config_sha256": "0a9decea55c02bc575c4ae565d8f219a186119a4f3e8f6985851add2cc168a7e",
+    "script_sha256": "8f34855eac864f52cc4aa0fabfc9d849715040b3613e16a32beda0846e8a3c1c",
+    "architectural_scale_sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf",
     "audit_sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
   },
   "code_config_tests": {
-    "scripts/measure_school_scale.py": "8e1ae06876ec1ad65aa2e01416fe3522ce23882cb6d7ff59e2f8d243aee9ff8b",
-    "configs/school_v3_scale_measurement_v1.json": "c0882dcf18dd3f8cb387291beb9e65decfae43e971dc69907be927f4965b3e44",
-    "tests/unit/test_school_scale_measurement.py": "8f6d91b865e6d323cc257646bd6a23b4a937ab9a6443ba4b3dd594d1c4eff8b9"
+    "scripts/measure_school_scale.py": "8f34855eac864f52cc4aa0fabfc9d849715040b3613e16a32beda0846e8a3c1c",
+    "configs/school_v3_scale_measurement_v1.json": "0a9decea55c02bc575c4ae565d8f219a186119a4f3e8f6985851add2cc168a7e",
+    "tests/unit/test_school_scale_measurement.py": "93afdff334d0107a05ff84acfc27eac07a301b1a0f559733048bd784814d69c5"
   },
   "artifacts": {
     "camera_references.json": {
@@ -33,53 +34,62 @@
     },
     "canonical_references.json": {
       "path": "data/scene_audit/school_v3_scale_calibration_20261006/canonical_references.json",
-      "sha256": "463dad97e1964c740a8c5f54bbe407fdf1f9af31d76a5b0aed3c4fe5d6ec6c4b",
-      "size_bytes": 2184
+      "sha256": "cf7157aa49a1b388d6ae8011f6a3b739992caa13b517a87bfa81695a8d44355b",
+      "size_bytes": 2781
     },
     "measurements.csv": {
       "path": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.csv",
-      "sha256": "01664599bd37076879c8f3209353bd316857e70bb5ea3e27b9b8882af649e36b",
-      "size_bytes": 174698
+      "sha256": "42fd78b5cb2ede9f3b95c2dfc4ca640da135e053823b57faabf73466c7b525b8",
+      "size_bytes": 174138
     },
     "measurements.json": {
       "path": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.json",
-      "sha256": "31fbdf46bace93bb88314d9ca6a6a22ff8c4456a6598d12872d844c84d181db1",
-      "size_bytes": 362466
+      "sha256": "cd8b333ff4683c086ddf5ce961d181af6307f6082a9252c8c1cadaac7394010e",
+      "size_bytes": 363220
     },
     "measurements.md": {
       "path": "data/scene_audit/school_v3_scale_calibration_20261006/measurements.md",
-      "sha256": "41c61a171c1707ab109e9678a7434aa6630ea128c0e856b714e1d1f094499c6b",
-      "size_bytes": 7657
+      "sha256": "467ce273fd36a14e0bcbc96279cfb83acba135c2383f04a8041678438cf059be",
+      "size_bytes": 7753
     }
   },
   "validation": {
     "pytest": {
-      "passed": 1131,
+      "passed": 1199,
       "failed": 0,
       "skipped": 0,
-      "seconds": 85.57
+      "seconds": 91.34
     },
     "ruff": "PASS",
     "mypy": {
       "status": "PASS",
-      "source_files": 81
+      "source_files": 83
     },
     "measurement_script_mypy": "PASS",
     "source_preserved": true,
-    "measurement_replay_semantics": "IDENTICAL",
-    "architectural_scale_authority": "HUMAN_REVIEW",
+    "measurement_replay_semantics": "NATIVE_EVIDENCE_IDENTICAL_AUTHORITY_METADATA_UPDATED",
+    "architectural_scale_authority": "APPROVED",
     "formal_benchmark_run": false,
     "model_scaled": false,
     "historical_artifacts_rewritten": false,
     "csv_line_ending": "LF",
     "csv_normalization_preserves_values": true,
-    "internal_file_links_checked": 92,
-    "diff_check": "PASS"
+    "internal_file_links_checked": 195,
+    "diff_check": "PASS",
+    "geometry_scale_validation": "PASS",
+    "scale_validation_script_mypy": "PASS",
+    "native_geometry_preserved": true,
+    "bu_metre_conversion_pairs_checked": 285,
+    "markdown_files_checked": 17
   },
   "previous_report_revision": {
-    "git_commit": "84ff020239b74eb6b6db4c07eb4910066c6e110c",
-    "measurements_json_sha256": "d57a36b803c53c2c59bf8b2758fa13e8af4400b1c988d09a292151ef69a6f037",
-    "measurements_csv_sha256": "fae2c030bd5cf1882b5dca36fe4059ecda7a55b7e02363e34997ebb0fd387bf5",
-    "preserved_in_git_history": true
-  }
+    "git_commit": "7798f0cfd0b4501d0831c82b06d35ddf21d8da29",
+    "measurement_sha256": "31fbdf46bace93bb88314d9ca6a6a22ff8c4456a6598d12872d844c84d181db1",
+    "role": "HISTORICAL_PROVISIONAL_DIAGNOSTIC_RETAINED_IN_GIT"
+  },
+  "architectural_scale_authority": "APPROVED",
+  "measurement_role": "SANITY_CHECK_EVIDENCE",
+  "approval_checkpoint_commit": "7798f0cfd0b4501d0831c82b06d35ddf21d8da29",
+  "architectural_scale_config": "configs/architectural_scale_school_v3.json",
+  "approval_basis": "USER_DEFINED_RESEARCH_MODEL_SETTING"
 }

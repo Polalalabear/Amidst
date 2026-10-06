@@ -4,6 +4,43 @@
 
 ## 繁體中文
 
+### 2026-10-06 — 正式核准 Phase 1 architectural scale
+
+於 `phase1/physical-authority-resolution`，由 checkpoint
+`7798f0cfd0b4501d0831c82b06d35ddf21d8da29` 接受使用者正式核准
+**1 BU = 0.0247 m**。核准依據為 **USER_DEFINED_RESEARCH_MODEL_SETTING**，
+[source-bound authority record](../configs/architectural_scale_school_v3.json) 為 APPROVED；
+不再要求外部尺寸重新推導。下面先前的暫定尺度與 1:1 checkpoint 記錄保留為歷史。
+
+[Active physical context](../configs/physical_context_school_v3.json)、school-v3 validation／
+measurement configs、provider authority 與驗證文件同步更新。[新 geometry／scale validation](../data/scene_audit/school_v3_approved_scale_20261006/geometry_scale_validation.md)
+核對 **1,669 surfaces** 的原始 BU vertices／faces／planes／ownership 完全不變；
+原 doorway margin 0.28 BU 換算為0.006916 m，原始診斷邊界不變。
+新增 source-bound 單位 adapter，一致處理 camera／plane／PROJECTED／navigation、
+速度與 distance bounds；SI body／clearance／contact policy 可換回 BU，pending null
+與 authority 不變。ADE／FDE scalar reporting 保留 BU 並加 meter，不重算 Coverage／epsilon。
+既有 runner／pilot 不會自動遷移；新 native inputs 必須由 caller 顯式 normalization。
+沒有修改正式 domain schemas、Graph／Top-K／benchmark／GT isolation。
+
+Read-only Blender 量測重新產生 **37 筆 SANITY_CHECK_EVIDENCE**，285 組 BU／meter
+換算通過；floor support rise141.732246 BU＝3.500786 m。可靠門洞截面約0.875–1.750 m、
+走廊3.015–3.598 m、教室6.321×9.676 m，未找到支持明顯尺度錯誤的可靠尺寸。
+5筆 meeting-room／gallery nearest-hit 截面保持 boundary-binding review，不宣稱為
+真實巨門或極小房間。原 v3 SHA-256／size／mtime 前後相同，geometry 不縮放／save／render。
+原 benchmark／pilot／camera／geometry checkpoint artifacts 與 BU provenance 保留。
+Scale APPROVED 不核准 floor、stair、obstacle volume、body／clearance；四種 formal scope
+仍 typed refuse，整體 physical authority 為 PROVISIONAL，沒有開始正式 benchmark。
+
+驗證抓到 stair source `path_segment_points_json` 是 BU、卻與 meter mesh 直接比較的
+診斷錯誤；只修正這個單位邊界，明確 `path_points_m`／clearance_m 保持 SI。
+新增 alignment／direction／anchor／join 與 source-binding guard regressions。
+第一輪完整 pytest 的3個 fake obstacle assertions 因共用 active school scale失敗；
+將合成 fixture 明確綁至原1:1通用 config，保留原 assertions／production 計算後重跑。
+最終 `uv run pytest` **1199 passed in91.34s，0 failed／0 skipped**；
+`uv run ruff check .`／`uv run mypy`（83 source files）／兩支 scripts strict mypy／
+`git diff --check` 通過。所有新 evidence 的 input／code／artifact hashes 核對通過。
+本輪只建立獨立核准 commit，不 merge／rebase／改寫歷史，不開始 Case 1–3 或 Agent。
+
 ### 2026-10-06 — school v3 暫定尺度量測與來源整理
 
 於 `phase1/physical-authority-resolution`／checkpoint
@@ -670,6 +707,46 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Approved Phase 1 architectural scale
+
+On `phase1/physical-authority-resolution` from checkpoint
+7798f0cfd0b4501d0831c82b06d35ddf21d8da29, the user explicitly approves
+**1 BU = 0.0247 m**, **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**. The
+[source-bound record](../configs/architectural_scale_school_v3.json) defines a research-model
+setting; external dimensions are no longer an approval prerequisite. Earlier provisional
+and 1:1 checkpoint entries below remain historical records.
+
+The [active physical context](../configs/physical_context_school_v3.json), school-v3 configs,
+provider authority, measurements and validation docs use the approved ratio. The
+[geometry/scale validation](../data/scene_audit/school_v3_approved_scale_20261006/geometry_scale_validation.md)
+confirms all 1,669 surfaces retain identical native vertices, faces, planes and ownership.
+The 0.28 BU doorway guard becomes 0.006916 m with unchanged native diagnostic boundaries.
+Source-bound adapters normalize camera/plane/projected/navigation inputs, speeds and length
+bounds; SI body/clearance/contact policy converts to BU without filling pending values or
+approving authority. Scalar ADE/FDE reports retain BU and add metres without recomputing
+Coverage or epsilon. Existing runner/pilot flows keep legacy contracts until callers explicitly
+normalize complete native inputs. Formal schemas, Graph/Top-K, benchmark semantics and GT
+isolation remain intact.
+
+Read-only Blender measurement produces 37 SANITY_CHECK_EVIDENCE rows and 285 consistent
+BU/metre pairs. Floor support rise 141.732246 BU becomes 3.500786 m. Reliable sections show
+roughly 0.875–1.750 m doors, 3.015–3.598 m corridors and 6.321×9.676 m classrooms, without reliable
+evidence of implausible scale. Five meeting-room/gallery nearest-hit anomalies retain boundary
+review and are not confirmed giant doors or tiny rooms. Original v3 SHA/size/mtime stay
+identical; no geometry scaling, save or render occurs. Historical artifacts and BU provenance
+remain. Scale approval does not approve floors, stairs, obstacle volumes or body/clearance
+policy; all four formal scopes still refuse consumption and physical authority stays PROVISIONAL.
+
+Validation catches a diagnostic unit bug: native stair `path_segment_points_json` was compared
+directly with metre meshes. Only this unit boundary is fixed; explicit `path_points_m` and
+clearance_m stay SI. New regressions cover alignment/direction/anchors/joins and authority
+binding. The first full run finds 3 synthetic obstacle assertions coupled to the active school
+scale; binding those fixtures to their original generic 1:1 context preserves every assertion
+and production calculation. Final `uv run pytest`: **1199 passed in 91.34s, zero failures/skips**;
+Ruff, mypy 83 files, strict mypy for both scripts and diff check pass. Input/code/artifact hashes
+are verified. This approval is an independent commit without merge/rebase/history rewrite,
+formal Cases 1–3, Agent work or benchmark execution.
 
 ### 2026-10-06 — Provisional school-v3 scale measurements and source review
 

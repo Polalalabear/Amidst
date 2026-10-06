@@ -107,7 +107,13 @@ Blender 或所需本機資產時，相關 integration tests 可能跳過。
   4 個獨立 GT trajectories（252 samples）與完整 config，不代表 Blender scene 已驗證。
 - 本機 ignored 的 `data/candidates/fake_downstream_20261001/` 有四組 Event／metrics／Rerun
   recordings；沒有正式 school dataset 或專案產生的 Blender rendered images。
-- 座標採 Blender 右手座標、Z 向上，且 1 Blender unit = 1 metre。只有 29 台
+- 座標採 Blender 右手座標、Z 向上。School v3 architectural scale 已明確核准
+  **1 BU = 0.0247 m**（`APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING`）；geometry 不縮放，
+  原始 BU 與歷史 1 m/unit camera／pilot／synthetic artifacts 保留。新 physical inputs／
+  ADE／FDE reporting 透過一致的單位 adapter 換算，mesh 量測只作 sanity-check。
+  既有 runner／pilot 保留 legacy 契約，須由 caller 顯式接入 normalization 才切換。
+  Floor／stair／volume／body-clearance authority 仍各自待核准；見
+  [scale review](docs/SCHOOL_V3_SCALE_REVIEW.md)。只有 29 台
   `CAM_*` 可用於研究；imported SketchUp camera 因 lens 為非有限值而排除。
 
 精確檔案、雜湊、筆數與目前 materialization 狀態請見
@@ -251,8 +257,15 @@ local asset may skip.
   These do not certify a Blender scene.
 - Local ignored `data/candidates/fake_downstream_20261001/` contains four Event/metric/Rerun
   output sets. No formal school dataset or project-generated Blender rendered images exist.
-- Coordinates use Blender's right-handed, Z-up world with one Blender unit per
-  metre. Only the 29 `CAM_*` cameras are research-eligible; the imported SketchUp
+- Coordinates use Blender's right-handed, Z-up world. School-v3 architectural scale is
+  explicitly **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**, **1 BU = 0.0247 m**. Geometry is
+  not scaled; native BU and historical 1 m/unit camera/pilot/synthetic artifacts remain.
+  New physical inputs and ADE/FDE reporting use a consistent unit adapter; mesh measurements
+  are sanity checks. Existing runner/pilot flows retain their legacy contracts until callers
+  explicitly integrate normalization. Floor/stair/volume/body-clearance authorities remain
+  pending; see
+  the [scale review](docs/SCHOOL_V3_SCALE_REVIEW.md). Only the 29 `CAM_*` cameras are
+  research-eligible; the imported SketchUp
   camera is excluded because its lens is non-finite.
 
 See [`data/README.md`](data/README.md) for exact files, hashes, counts and current

@@ -1,0 +1,42 @@
+{
+  "schema_version": "geometry-authority-manifest-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "inputs": {
+    "candidates": {
+      "path": "data/scene_audit/phase1_wall_candidates_20261005.json",
+      "sha256": "25463fc6df1243c7e705e55ed36de525faff4f59f82d9a185fd629a259c70650"
+    },
+    "meshes": {
+      "path": "data/scene_audit/phase1_geometry_authority_20261006/wall_meshes.json",
+      "sha256": "614c017a593f5ff3344b5637a520f057dac9194e7c82acaa2f8cac562af17e08"
+    },
+    "audit": {
+      "path": "data/scene_audit/school_v3_semantic_audit.json",
+      "sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+    },
+    "config": {
+      "path": "configs/scene_validation_school_v3.json",
+      "sha256": "4a8f5f6139da9f333f53e3deb6c0026d6f543d667045468bd81ab165323d259b"
+    },
+    "obstacle_authorization": {
+      "path": "data/scene_audit/phase1_geometry_authority_20261006/role_authorization.json",
+      "sha256": "af714f7112561c959a049cac3e4e7b42d91fe2931c0e1c037864b2ae6da41d8b"
+    },
+    "architectural_scale": {
+      "path": "configs/architectural_scale_school_v3.json",
+      "sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf"
+    }
+  },
+  "artifacts": {
+    "authority.json": "82a473c87fdbf252d6a9e494c34bb0f9d4fe75ed7c43a582ced65d52a4e8f7f2",
+    "authority.md": "b9ecf7f88ea0e084a31b55955b7f371f7d45fa9019259b59e1276d9e6c15159a",
+    "geometry.json": "a1423622d23f9267ba345922e96e91e3852e1e16dc7d33ecf5b33405ca131e89"
+  },
+  "code_sha256": {
+    "src/amidst/geometry_authority.py": "65f9431215910c6744576cebea0fb056d699ce070394a75f2e26153b1b1d8527",
+    "src/amidst/architectural_scale.py": "cc85249ee7563663eae245f83babc8d8a66913671f74a578bd55db4d2ca81381",
+    "src/amidst/geometry_physical_review.py": "dbbcc7b154762ac837c926a4b5f0c6170fd053fb3f1e46a2943abee528e198e5",
+    "src/amidst/scene_geometry.py": "68475d49580c31fe35140241b63fabef10486db720213f5e64317a014751a64f",
+    "scripts/export_geometry_authority_snapshot.py": "2d0fcb88b7e8bd5caeacb8c9c7cffa23898882dd10b68319430e912e69917d59"
+  }
+}

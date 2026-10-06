@@ -17,7 +17,9 @@ SOURCE = "a" * 64
 
 @pytest.fixture
 def config() -> dict[str, Any]:
-    return json.loads((ROOT / "configs/scene_validation_school_v3.json").read_text())
+    # Existing fake coordinates and explicit path_points_m use legacy 1:1;
+    # non-1 source annotation conversion is exercised separately below.
+    return json.loads((ROOT / "configs/scene_validation_v1.json").read_text())
 
 
 def rectangle(
@@ -313,6 +315,101 @@ def test_insufficient_declared_clearance_is_rejected_without_threshold_change(
     assert review(rows, config)["stair_reviews"][0]["checks"]["clearance"] == "REJECTED"
     rows[2]["custom_properties"]["measured_clearance_m"] = 1
     assert review(rows, config)["stair_reviews"][0]["checks"]["clearance"] == "HUMAN_REVIEW"
+
+
+def native_scale_config(config: dict[str, Any]) -> dict[str, Any]:
+    result = copy.deepcopy(config)
+    scale = result["meters_per_blender_unit"] = 0.0247
+    for key, value in result["tolerances"].items():
+        if value is None or key == "minimum_clearance_m":
+            continue
+        if key.endswith("_m2"):
+            result["tolerances"][key] = value * scale ** 2
+        elif key.endswith("_m"):
+            result["tolerances"][key] = value * scale
+    return result
+
+
+@pytest.mark.parametrize("encoding", ["NATIVE_SOURCE_SEGMENTS", "EXPLICIT_METRES"])
+def test_non1_stair_alignment_binding_and_direction_preserve_units(
+    config: dict[str, Any], encoding: str,
+) -> None:
+    rows = stair_rows()
+    props = rows[2]["custom_properties"]
+    del props["path_points_m"]
+    if encoding == "NATIVE_SOURCE_SEGMENTS":
+        props["path_segment_points_json"] = json.dumps(
+            [[[0, 0, 0], [1, 0, 1]], [[1, 0, 1], [2, 0, 2]]]
+        )
+    else:
+        props["path_points_m"] = [[0, 0, 0], [0.0247, 0, 0.0247], [0.0494, 0, 0.0494]]
+    unchanged = copy.deepcopy(rows)
+    result = review(rows, native_scale_config(config))["stair_reviews"][0]
+    assert rows == unchanged
+    assert result["status"] == "HUMAN_REVIEW"
+    for check in (
+        "ordered_segment_alignment", "ordered_traversal_anchor_binding", "z_direction",
+        "ordered_segment_continuity", "entry_path_contact", "exit_path_contact",
+    ):
+        assert result["checks"][check] == "HIGH_CONFIDENCE"
+    assert result["entry_walkable"]["position_m"] == [0, 0, 0]
+    assert result["exit_walkable"]["position_m"] == [0.0494, 0, 0.0494]
+    assert all(gap == 0 for gap in result["ordered_segment_join_gaps_m"])
+    assert result["physical_collision_certified"] is False
+
+
+@pytest.mark.parametrize(
+    "points, failed_check",
+    [
+        ([[0, 0, 0], [1.5, 0, 1.5], [1, 0, 1], [2, 0, 2]], "z_direction"),
+        ([[0.5, 0, 0.5], [2, 0, 2]], "ordered_traversal_anchor_binding"),
+    ],
+)
+def test_non1_native_stair_rejects_real_direction_or_binding_failure(
+    config: dict[str, Any], points: list[list[float]], failed_check: str,
+) -> None:
+    rows = stair_rows()
+    props = rows[2]["custom_properties"]
+    del props["path_points_m"]
+    props["path_segment_points_json"] = json.dumps([points])
+    result = review(rows, native_scale_config(config))["stair_reviews"][0]
+    assert result["checks"]["ordered_segment_alignment"] == "HIGH_CONFIDENCE"
+    assert result["checks"][failed_check] == "REJECTED"
+    assert result["status"] == "REJECTED"
+
+
+def test_non1_native_stair_join_gap_is_measured_and_not_bridged(config: dict[str, Any]) -> None:
+    rows = stair_rows()
+    props = rows[2]["custom_properties"]
+    del props["path_points_m"]
+    props["path_segment_points_json"] = json.dumps(
+        [[[0, 0, 0], [1, 0, 1]], [[1.5, 0, 1.5], [2, 0, 2]]]
+    )
+    result = review(rows, native_scale_config(config))["stair_reviews"][0]
+    assert result["checks"]["ordered_segment_alignment"] == "HIGH_CONFIDENCE"
+    assert result["checks"]["ordered_traversal_anchor_binding"] == "HIGH_CONFIDENCE"
+    assert result["checks"]["z_direction"] == "HIGH_CONFIDENCE"
+    assert result["checks"]["ordered_segment_continuity"] == "HUMAN_REVIEW"
+    assert result["ordered_segment_join_gaps_m"] == [pytest.approx(0.5 ** 0.5 * 0.0247)]
+    assert "ORDERED_SEGMENTS_HAVE_UNSUPPORTED_JOIN_GAP" in result["reason_codes"]
+    assert result["connectivity_created"] is False
+
+
+@pytest.mark.parametrize("clearance, expected", [(1.79, "REJECTED"), (1.85, "HUMAN_REVIEW")])
+def test_non1_declared_clearance_remains_si(
+    config: dict[str, Any], clearance: float, expected: str,
+) -> None:
+    rows = stair_rows()
+    props = rows[2]["custom_properties"]
+    del props["path_points_m"]
+    props["path_segment_points_json"] = json.dumps([[[0, 0, 0], [2, 0, 2]]])
+    props["measured_clearance_m"] = clearance
+    metric = native_scale_config(config)
+    metric["tolerances"]["minimum_clearance_m"] = 1.8
+    result = review(rows, metric)["stair_reviews"][0]
+    assert result["checks"]["clearance"] == expected
+    assert result["clearance_evidence"]["declared_measurement_m"] == clearance
+    assert result["clearance_evidence"]["configured_minimum_m"] == 1.8
 
 
 def test_config_invalid_and_complexity_guard(config: dict[str, Any]) -> None:

@@ -1,17 +1,21 @@
-## Pending school v3 architectural scale / school v3 建築尺度待核准
+## Approved school v3 architectural scale / school v3 建築尺度核准
 
-2026-10-06 user update: use **1 BU ≈ 0.0247 m** for new, explicitly provisional
-school-v3 diagnostic measurements. No independent measured/design dimensions are currently
-available; plausibility alone cannot approve architectural scale. Generate dimensions and
-source endpoints from the unchanged mesh, then request 2–3 independent real dimensions.
-The [measurement config](../configs/school_v3_scale_measurement_v1.json) and
-[review](SCHOOL_V3_SCALE_REVIEW.md) retain `HUMAN_REVIEW` and deny formal use.
+2026-10-06 explicit user approval: **1 BU = 0.0247 m** is the defined Phase 1
+research-model architectural scale, not an estimate inferred from meshes. Authority is
+**APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**. The source-bound
+[approval record](../configs/architectural_scale_school_v3.json) identifies this decision;
+[measurements](SCHOOL_V3_SCALE_REVIEW.md) are sanity-check evidence. External dimensions
+are not an approval prerequisite and source geometry is never rescaled.
 
-使用者更新：school v3 新診斷量測暫採 **1 BU ≈ 0.0247 m**；目前無可靠實測／設計尺寸，
-保持 HUMAN_REVIEW。門寬、走廊寬與樓層高由 mesh 自動量測，不以合理性核准比例。
-正式 calibration schema 仍限制 1.0；若未來要接入新比例，須另行核准正式單位契約與
-所有單位換算。不得只改 scale 而漏轉 floor planes、clearance、doorway padding。
-既有 benchmark、pilot、geometry snapshots 和歷史 provenance 使用原契約，均不回寫。
+使用者正式核准 **1 BU = 0.0247 m**，作為明確研究模型設定；architectural scale
+為 APPROVED，不再要求外部尺寸重新推導。Mesh 量測僅 sanity check，不自動核准
+floor、stair、obstacle volume、body／clearance policy。原 `.blend` geometry 保持不變。
+BU 坐標保留；長度／半徑／高度／淨空／接觸容差乘尺度，面積／體積用平方／立方，
+速度 BU/s 乘尺度；SI physical policy 供 native geometry 時除尺度。Timestamp、normal、
+角度、ratio／count 不換算。進入既有 core 的完整空間輸入須先一致正規化成公尺。
+ADE／FDE meter reporting 保留原 BU 與不可用值，不重算 Coverage 或偷改 epsilon。
+正式 schemas 與 Graph／Top-K 不修改；舊 calibration／pilot／benchmark／snapshots 的
+原始契約與 provenance 保留，不能把它們的 Literal[1] 當新 architectural authority。
 
 Imported cameras may be ignored only after zero active consuming references are established;
 inventory/exclusion/history mentions are retained. Elevator is `NOT_APPLICABLE`; existing
@@ -250,7 +254,9 @@ user's explicit stop conditions, integration awaits source-bound human annotatio
 physical clearance/contact policy. An additive geometry interface is feasible, but is
 not implemented or approved. The original asset and formal schemas remain unchanged.
 
-2026-10-06 authority update: The additive [read-only geometry provider](GEOMETRY_PROVIDER.md)
+2026-10-06 historical checkpoint authority update (its scale convention is superseded by
+the approved architectural-scale decision above): The additive
+[read-only geometry provider](GEOMETRY_PROVIDER.md)
 is now implemented. Geometry producers own source-bound exact meshes and review evidence;
 Blender objects, names and evaluation/GT geometry do not become Graph authority. Semantic
 role approval is distinct from physical support, floor/scale approval and complete scope.
@@ -263,7 +269,8 @@ The [current evidence](GEOMETRY_AUTHORITY.md) remains **PROVISIONAL**; this inte
 does not resolve Graph pruning, stair connectivity, clearance policy or formal benchmark
 authority. The previously accepted 1 BU = 1 m calculation convention is unchanged.
 
-2026-10-06 權威更新：新增唯讀 geometry sidecar 已實作；producer 負責 source-bound
+2026-10-06 歷史 checkpoint 權威更新（其中尺度慣例已由上方正式核准決策取代）：
+新增唯讀 geometry sidecar 已實作；producer 負責 source-bound
 實際 mesh 與審查證據，Graph 不直接依賴 bpy，亦不拿名稱或 evaluation／GT 當權威。
 Semantic role、physical support、floor／scale 及 scope 完整性分開核准；footprint 沒有
 可信 volume 時保持 REVIEW。正式 consumer 必須通過 `require_approved_physics`；空

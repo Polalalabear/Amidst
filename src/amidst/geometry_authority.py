@@ -10,10 +10,12 @@ import argparse
 import hashlib
 import json
 import math
+import os
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from amidst.architectural_scale import ArchitecturalScale, scale_for_scene_config
 from amidst.geometry_physical_review import review_physical_geometry
 from amidst.scene_geometry import (
     Authority,
@@ -697,6 +699,7 @@ def build_snapshot(
     *,
     approved_obstacle_ids: set[str] | None = None,
     obstacle_approval_id: str | None = None,
+    architectural_scale: ArchitecturalScale | None = None,
 ) -> SceneGeometrySnapshot:
     """Publish exact, reviewable surfaces, never a wall envelope or obstacle extrusion."""
     surfaces = audit_surfaces(audit, approved_obstacle_ids, obstacle_approval_id)
@@ -772,15 +775,30 @@ def build_snapshot(
                 "evidence_ids": [row["object"] for row in rows],
             }
         )
+    if architectural_scale is not None:
+        # A copied Pydantic object may bypass validation; this public boundary
+        # rechecks approval, evidence, finite scale and exact source ownership.
+        architectural_scale = ArchitecturalScale.model_validate_json(
+            architectural_scale.model_dump_json()
+        )
+        architectural_scale.require_source_sha256(document["source"]["sha256"])
+    unit_scale = (
+        1.0 if architectural_scale is None else architectural_scale.metres_per_blender_unit
+    )
     payload = {
         "schema_version": "scene-geometry-v1",
         "source_sha256": document["source"]["sha256"],
         "scene_id": Path(document["source"]["path"]).stem,
-        "unit_scale_m": 1.0,
-        "scale_authority": "HUMAN_REVIEW",
+        "unit_scale_m": unit_scale,
+        "scale_authority": "HUMAN_REVIEW" if architectural_scale is None else "APPROVED",
+        "scale_approval_id": (
+            None if architectural_scale is None else architectural_scale.approval_id
+        ),
         "physical_complete": False,
         "coordinate_convention": "RIGHT_HANDED_Z_UP",
-        "portal_protection_tolerance_m": document["parameters"]["portal_padding"],
+        # Extraction-v1 margins and all source coordinates are native BU. Keep
+        # the same doorway guard when the provider converts this metre value.
+        "portal_protection_tolerance_m": document["parameters"]["portal_padding"] * unit_scale,
         "floors": [
             {
                 "floor_id": floor,
@@ -837,8 +855,7 @@ def review_authority(
         raise ValueError("candidate content differs from source-bound extraction evidence")
     if meshes.get("audit_content_sha256") != value_digest(audit):
         raise ValueError("semantic audit content differs from source-bound extraction evidence")
-    if config.get("meters_per_blender_unit") != 1.0:
-        raise ValueError("geometry review must preserve the accepted 1m-per-unit conversion")
+    architectural_scale = scale_for_scene_config(config, expected_source_sha256)
     if candidates["policy"]["gt_used"] or candidates["policy"]["whole_objects_reclassified"]:
         raise ValueError("candidate extraction must be geometry-only and patch-only")
     if not meshes["source_preserved"] or meshes["saved"] or meshes["rendered"]:
@@ -880,6 +897,7 @@ def review_authority(
         walls,
         approved_obstacle_ids=authorized,
         obstacle_approval_id=approval_id,
+        architectural_scale=architectural_scale,
     )
     provider = ReadOnlySceneGeometryProvider(snapshot, expected_source_sha256)
     seed_rows = [row for row in walls if row["baseline_status"] == SEED_STATUS]
@@ -893,6 +911,13 @@ def review_authority(
         "baseline_git_commit": baseline_git_commit,
         "scope": "PHASE1_GEOMETRY_AUTHORITY_NOT_BENCHMARK",
         "physical_authority": "PROVISIONAL",
+        "architectural_scale": {
+            "metres_per_blender_unit": snapshot.unit_scale_m,
+            "authority": snapshot.scale_authority.value,
+            "approval_id": snapshot.scale_approval_id,
+            "coordinates": "BLENDER_NATIVE_UNITS",
+            "measurements": "SANITY_CHECK_EVIDENCE",
+        },
         "thresholds": candidates["parameters"],
         "thresholds_lowered": False,
         "policy": {
@@ -965,8 +990,9 @@ def review_authority(
             "Supply source-bound OBSTACLE height/volume and visibility evidence; "
             "no invented extrusion",
             "Reconcile proposed WALKABLE floors with actual mesh support; approve floor authority",
-            "Confirm independent architectural dimensions; preserve the accepted "
-            "1m-per-unit calculation config",
+            *([] if architectural_scale is not None else [
+                "Approve an explicit source-bound architectural scale before physical use",
+            ]),
             "Provide stair landing, floor endpoint connections and opening/clearance evidence",
             "Approve geometry completeness and clearance/contact policy before "
             "formal collision validity",
@@ -988,6 +1014,12 @@ def write_report(report: dict[str, Any], output: Path) -> None:
     approved_roles = sum(row["semantic_role_status"] == "APPROVED" for row in obstacle_rows)
     walk_conflicts = sum(len(row["conflicts"]["walkable"]) for row in obstacle_rows)
     portal_conflicts = sum(len(row["conflicts"]["portal"]) for row in obstacle_rows)
+    scale_metadata = report.get("architectural_scale", {})
+    approved_scale = scale_metadata.get("authority") == "APPROVED"
+    mesh_binding = report.get("input_bindings", {}).get("meshes", {}).get("path")
+    mesh_reference = "wall_meshes.json" if mesh_binding is None else Path(os.path.relpath(
+        Path(mesh_binding).resolve(), output.parent.resolve(),
+    )).as_posix()
     lines = [
         "# Phase 1 geometry authority",
         "",
@@ -995,10 +1027,13 @@ def write_report(report: dict[str, Any], output: Path) -> None:
         "本報告為幾何審查，不執行 benchmark 或建立 Graph connectivity。",
         f"Source SHA-256: `{report['source_sha256']}`；"
         f"checkpoint `{report['baseline_git_commit']}`。",
+        f"Architectural scale: **{scale_metadata.get('authority', 'HUMAN_REVIEW')}**; "
+        f"1 BU = {scale_metadata.get('metres_per_blender_unit', 1.0)} m。",
+        "Mesh measurements are sanity-check evidence; original source geometry remains BU。",
         "",
         "APPROVED 是明確人工 role/physical approval；HIGH_CONFIDENCE 是可重驗幾何信心，",
         "不等於完整 physical approval；HUMAN_REVIEW 保留歧義；REJECTED 禁止安裝成 WALL，",
-        "但不刪除原始 source faces。沒有降低原閾值、填 rectangle、封門、改米制換算或讀 GT。",
+        "但不刪除原始 source faces。沒有降低原 native 閾值、填 rectangle、封門或讀 GT。",
         "",
         f"## WALL: {wall['baseline_seeds']} seeds + {wall['baseline_human_review']} review patches",
         "",
@@ -1070,7 +1105,12 @@ def write_report(report: dict[str, Any], output: Path) -> None:
     lines.extend(
         [
             "",
-            "Distances 保留已採用1m-per-unit配置；不等於建築尺寸另行認證。",
+            (
+                f"Distances 依 APPROVED architectural scale "
+                f"{scale_metadata['metres_per_blender_unit']} m/BU 換算；mesh 僅作 sanity check。"
+                if approved_scale else
+                "Distances 保留歷史1m-per-unit配置；architectural scale 尚待明確核准。"
+            ),
             "PATH components / nearest3Dgap 與中心線join不同。ENTRY/PATH/EXIT及UP metadata",
             "可核對，但landing／opening／clearance未核准，不生成跨層 connector。",
             "只有樓梯，沒有電梯。",
@@ -1078,7 +1118,7 @@ def write_report(report: dict[str, Any], output: Path) -> None:
             "## Read-only provider",
             "",
             "[Contract](../../../docs/GEOMETRY_PROVIDER.md)；[portable geometry](geometry.json)；",
-            "[raw exact mesh evidence](wall_meshes.json)。",
+            f"[raw exact mesh evidence]({mesh_reference})。",
             "Frozen tuples/models、source/content SHA binding、exact triangle holes、",
             "explicit authority filters；require_approved_physics 對 PROVISIONAL 明確拒絕。",
             "無 bpy、GT、ranking 或 benchmark dependency。",
@@ -1142,6 +1182,8 @@ def main() -> None:
         obstacle_authorization=documents["obstacle_authorization"],
         baseline_git_commit=args.baseline_git_commit,
     )
+    if documents["config"].get("architectural_scale_config") is not None:
+        paths["architectural_scale"] = Path(documents["config"]["architectural_scale_config"])
     report["input_bindings"] = {
         name: {"path": str(path), "sha256": digest(path)} for name, path in paths.items()
     }
@@ -1160,6 +1202,7 @@ def main() -> None:
                     name: digest(Path(name))
                     for name in (
                         "src/amidst/geometry_authority.py",
+                        "src/amidst/architectural_scale.py",
                         "src/amidst/geometry_physical_review.py",
                         "src/amidst/scene_geometry.py",
                         "scripts/export_geometry_authority_snapshot.py",

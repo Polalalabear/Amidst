@@ -20,6 +20,8 @@ from contextvars import ContextVar
 from pathlib import Path
 from typing import Any
 
+from amidst.architectural_scale import architectural_scale_metadata, scale_for_scene_config
+
 Point = tuple[float, float]
 Polygon = list[Point]
 KINDS = ("AREA", "WALKABLE", "WALL", "OBSTACLE", "STAIR", "PORTAL", "CAM")
@@ -467,6 +469,12 @@ def _area_declaration(
 
 def validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
     """Bounded validation; excessive geometry is explicitly incomplete and queued for review."""
+    architectural_scale = None
+    if config.get("architectural_scale_config") is not None:
+        source_sha256 = _source_hash(scene)
+        if source_sha256 is None:
+            raise ValueError("approved architectural scale requires source-bound scene evidence")
+        architectural_scale = scale_for_scene_config(config, source_sha256)
     token = _GEOMETRY_BUDGET.set(config["geometry_complexity"])
     try:
         report = _validate_scene(scene, config)
@@ -513,6 +521,11 @@ def validate_scene(scene: dict[str, Any], config: dict[str, Any]) -> dict[str, A
     declarations = _declared_area_evidence(scene)
     if declarations:
         report["area_semantic_declarations"] = declarations
+    if architectural_scale is not None:
+        report["architectural_scale"] = architectural_scale_metadata(architectural_scale)
+        report["scale_authority"] = "APPROVED"
+        report["native_geometry_units"] = "BLENDER_SCENE_UNITS"
+        report["validation_quantity_units"] = "metres"
     return report
 
 

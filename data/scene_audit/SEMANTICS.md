@@ -1,9 +1,15 @@
 # School semantic integration gate / 場景語意接入條件
 
-Current school-v3 update: [scale review](../../docs/SCHOOL_V3_SCALE_REVIEW.md) keeps the
-proposed 0.0247 m/BU unapproved; elevator is NOT_APPLICABLE, imported cameras require
-zero active consuming references before exclusion, and unclassified object names grant
-no roles. The dated v2 audit and its 1 m/BU convention below remain historical evidence.
+Current school-v3 update: the [scale review](../../docs/SCHOOL_V3_SCALE_REVIEW.md) records
+explicit **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING** architectural scale, **1 BU = 0.0247 m**.
+Mesh measurements are sanity-check evidence, not scale inference; external dimensions are
+not required to reapprove this declared setting. Source geometry/native BU remain unchanged.
+The new [active geometry snapshot](school_v3_approved_scale_20261006/geometry.json) and
+[geometry/scale validation](school_v3_approved_scale_20261006/geometry_scale_validation.md)
+use this scale; floor/stair/volume/body-clearance authorities remain pending independently.
+Elevator is NOT_APPLICABLE, imported cameras require zero active consuming references before
+exclusion, and unclassified object names grant no roles. The dated v2 audit and its 1 m/BU
+convention below remain historical evidence; benchmark artifacts and BU provenance are not rewritten.
 
 2026-10-02 live read-only evidence:
 [school_v2_semantic_audit.json](school_v2_semantic_audit.json).

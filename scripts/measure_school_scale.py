@@ -1,4 +1,4 @@
-"""Read-only native-mesh scale measurements, never architectural scale approval.
+"""Read-only native-mesh sanity checks of a user-approved architectural scale.
 
 Run in Blender with --background --disable-autoexec and a fresh output directory.
 Annotation dimensions and actual source cross-sections are intentionally separate.
@@ -28,13 +28,27 @@ def fingerprint(path: Path) -> dict[str, Any]:
 def validate_config(config: dict[str, Any]) -> float:
     if config["schema_version"] != "school-scale-measurement-config-v1":
         raise ValueError("unsupported scale measurement config")
-    scale = config["proposed_metres_per_blender_unit"]
+    scale = config["metres_per_blender_unit"]
     if isinstance(scale, bool) or not isinstance(scale, (int, float)) or (
         not math.isfinite(scale) or scale <= 0
     ):
-        raise ValueError("proposed scale must be finite and positive")
-    if config["scale_authority"] != "HUMAN_REVIEW" or config["known_real_dimensions"]:
-        raise ValueError("measurement-only review cannot approve scale or validate real dimensions")
+        raise ValueError("scale must be finite and positive")
+    if config["scale_authority"] != "APPROVED":
+        raise ValueError("active measurements require user-approved architectural scale")
+    record = json.loads(Path(config["architectural_scale_config"]).read_text())
+    if record.get("authority") != "APPROVED" or (
+        record.get("schema_version") != "architectural-scale-v1"
+        or record.get("scope") != "PHASE1_SCHOOL_V3_RESEARCH_MODEL"
+        or record.get("measurement_role") != "SANITY_CHECK_EVIDENCE"
+        or config.get("measurements_role") != "SANITY_CHECK_EVIDENCE"
+        or record.get("approval_basis") != "USER_DEFINED_RESEARCH_MODEL_SETTING"
+        or not record.get("approval_id") or not record.get("evidence_ids")
+        or record.get("metres_per_blender_unit") != scale
+        or record.get("source_asset_sha256") != config["source_sha256"]
+        or record.get("source_geometry_scaled") is not False
+        or record.get("external_dimensions_required") is not False
+    ):
+        raise ValueError("measurement config differs from source-bound approved scale")
     if any(config["policy"].values()):
         raise ValueError("read-only measurement policy must deny mutation and formal use")
     for floor, band in config["support_bands_bu"].items():
@@ -60,14 +74,14 @@ def measurement_row(
         "area": area, "portal": object_id if kind == "DOOR" else None,
         "floor": floor, "axis": "XYZ"[axis],
         "annotation_endpoints_bu": [first, second],
-        "annotation_length_bu": length, "annotation_length_proposed_m": length * scale,
+        "annotation_length_bu": length, "annotation_length_m": length * scale,
         "source_cross_sections": [], "actual_source_length_bu": None,
-        "actual_source_length_proposed_m": None,
-        "known_real_length_m": None, "scale_ratio_from_known_dimension": None,
-        "suitable_for_scale_approval": False,
+        "actual_source_length_m": None,
+        "known_real_length_m": None,
+        "used_to_derive_scale": False, "measurement_role": "SANITY_CHECK_EVIDENCE",
         "human_confirmation_candidate": False,
         "confidence": "ANNOTATION_ONLY", "ambiguities": [
-            "NO_INDEPENDENT_REAL_DIMENSION", "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
+            "BOUNDARY_OWNERSHIP_UNAPPROVED", "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         ],
     }
 
@@ -81,7 +95,7 @@ def finish_cross_sections(row: dict[str, Any], scale: float) -> None:
     lengths = sorted(s["length_bu"] for s in complete)
     row["actual_source_length_bu"] = statistics.median(lengths)
     row["source_length_aggregation"] = "MEDIAN_OF_AVAILABLE_SAMPLED_CROSS_SECTIONS"
-    row["actual_source_length_proposed_m"] = row["actual_source_length_bu"] * scale
+    row["actual_source_length_m"] = row["actual_source_length_bu"] * scale
     row["source_to_annotation_length_ratio"] = (
         row["actual_source_length_bu"] / row["annotation_length_bu"]
         if row["annotation_length_bu"] else None
@@ -259,9 +273,9 @@ def generate_rows(
             ) if complete else None
             row["source_cross_sections"].append({
                 "origin_bu": origin, "height_above_support_bu": offset,
-                "height_above_support_proposed_m": offset * scale,
+                "height_above_support_m": offset * scale,
                 "hits": hits, "length_bu": length,
-                "length_proposed_m": length * scale if length is not None else None,
+                "length_m": length * scale if length is not None else None,
                 "side_orientation_matches": complete and all(
                     abs(h["normal_world"][axis]) >= config["side_normal_axis_min"]
                     for h in valid_hits
@@ -275,18 +289,19 @@ def generate_rows(
 def render_markdown(report: dict[str, Any]) -> str:
     lines = [
         "# School v3 scale-calibration measurements / 尺度量測",
-        "", f"Proposed scale: **{report['proposed_metres_per_blender_unit']} m/BU — "
-        "HUMAN_REVIEW**. Independent real dimensions: **0**.",
-        "量測不核准尺度；不縮放、不修改／儲存模型、不執行 benchmark。",
+        "", f"Architectural scale: **{report['metres_per_blender_unit']} m/BU — APPROVED**.",
+        "Basis: USER_DEFINED_RESEARCH_MODEL_SETTING; measurements: SANITY_CHECK_EVIDENCE.",
+        "尺度由使用者明確核准；mesh 只作合理性檢查，不要求外部尺寸重新推導。",
+        "不縮放、不修改／儲存模型、不執行 benchmark；幾何邊界仍待各自核准。",
         "Annotation 是標記尺寸；source 是指定高度的最近實體 mesh 兩側截面，",
         "不自動證明牆、門框、全高度淨寬或通行性。完整端點／source polygons 見 JSON。",
         "", "## Measurement table / 自動量測表", "",
-        "| Object / axis | Kind | Floor | Annotation BU | Source BU | Proposed source m | Review |",
+        "| Object / axis | Kind | Floor | Annotation BU | Source BU | Source m | Boundary |",
         "| --- | --- | --- | ---: | ---: | ---: | --- |",
     ]
     for row in report["measurements"]:
         value = row["actual_source_length_bu"]
-        metres = row["actual_source_length_proposed_m"]
+        metres = row["actual_source_length_m"]
         lines.append(
             f"| {row['measurement_id']} | {row['kind']} | {row['floor']} | "
             f"{row['annotation_length_bu']:.6f} | "
@@ -297,16 +312,16 @@ def render_markdown(report: dict[str, Any]) -> str:
               "```json",
               json.dumps(report["floor_height"], ensure_ascii=False, indent=2),
               "```",
-              "", "## Human anchor shortlist / 人工確認候選", ""]
-    lines += ["| Anchor | Source BU / range | Proposed m / range | Limitation |",
+              "", "## Boundary sanity-check shortlist / 邊界合理性檢查候選", ""]
+    lines += ["| Anchor | Source BU / range | m / range | Limitation |",
               "| --- | --- | --- | --- |"]
     for row in report["human_anchor_shortlist"]:
         lines.append(
             f"| {row['measurement_id']} | {row['source_length_bu']} | "
-            f"{row['source_length_proposed_m']} | {row['reason']} |"
+            f"{row['source_length_m']} | {row['reason']} |"
         )
-    lines += ["", "確認每個 anchor 的實際室內邊界、量測方向，以及獨立實測／設計尺寸。",
-              "同一門型重複樓層或由本比例換算的數值，不算獨立尺度證據。",
+    lines += ["", "若作為正式通行／碰撞資料，仍需確認來源面的角色與室內邊界。",
+              "這與已核准的 research architectural scale 是獨立的 authority。",
               "缺法向門洞保留 unresolved；不從 bbox 中挑看起來像門寬的一邊。",
               "", "## Missing portal orientation / 門洞方向待確認", ""]
     lines += [f"- {r['object']}: {r['reason']}" for r in report["unresolved_portals"]]
@@ -322,7 +337,10 @@ def main() -> None:
         raise FileExistsError("scale measurement output must be new")
     initial_inputs = {"config": fingerprint(args.config), "script": fingerprint(Path(__file__))}
     config = json.loads(args.config.read_text())
+    authority_path = Path(config["architectural_scale_config"])
+    initial_inputs["architectural_scale"] = fingerprint(authority_path)
     scale = validate_config(config)
+    authority = json.loads(authority_path.read_text())
     audit_path = Path(config["semantic_audit"])
     initial_inputs["audit"] = fingerprint(audit_path)
     audit = json.loads(audit_path.read_text())
@@ -339,6 +357,9 @@ def main() -> None:
         raise ValueError("scale measurement evaluated context differs from semantic audit")
     survey = MeshSurvey(bpy, audit, config)
     rows, unresolved = generate_rows(audit, config, survey, scale)
+    for row in rows:
+        row["scale_authority"] = authority["authority"]
+        row["metres_per_blender_unit"] = scale
     floors = []
     for floor, identity in sorted(config["floor_anchor_objects"].items()):
         obj = next(row for row in audit["objects"] if row["object"] == identity)
@@ -357,39 +378,42 @@ def main() -> None:
         shortlist.append({
             "measurement_id": row["measurement_id"], "object": identity,
             "source_length_bu": row.get("source_width_range_bu"),
-            "source_length_proposed_m": [v * scale for v in row["source_width_range_bu"]]
+            "source_length_m": [v * scale for v in row["source_width_range_bu"]]
             if "source_width_range_bu" in row else None,
-            "reason": "Stable sampled cross-section; confirm physical boundary and real dimension"
+            "reason": "Stable sampled cross-section; confirm physical boundary ownership"
             if row["human_confirmation_candidate"] else
             "Variable/incomplete profile; confirm which cited boundaries define actual clear width",
             "source_geometry_measured": row["actual_source_length_bu"] is not None,
-            "suitable_for_scale_approval": False,
+            "used_to_derive_scale": False,
         })
     if rise is not None:
         shortlist.append({
             "measurement_id": "FLOOR_1F_TO_2F:Z", "object": config["floor_anchor_objects"],
-            "source_length_bu": rise, "source_length_proposed_m": rise * scale,
-            "reason": "Two horizontal-support candidates; confirm floor ownership and real rise",
-            "source_geometry_measured": True, "suitable_for_scale_approval": False,
+            "source_length_bu": rise, "source_length_m": rise * scale,
+            "reason": "Two horizontal-support candidates; floor authority remains separate",
+            "source_geometry_measured": True, "used_to_derive_scale": False,
         })
     after = fingerprint(source)
     if before != after:
         raise RuntimeError("immutable source changed during scale measurement")
     final_inputs = {"config": fingerprint(args.config), "script": fingerprint(Path(__file__)),
-                    "audit": fingerprint(audit_path)}
+                    "audit": fingerprint(audit_path),
+                    "architectural_scale": fingerprint(authority_path)}
     if initial_inputs != final_inputs:
         raise RuntimeError("scale measurement inputs changed during execution")
     report = {
-        "schema_version": "school-scale-measurement-report-v1",
+        "schema_version": "school-scale-measurement-report-v2",
         "source": {"path": "blender/school_v3.blend", "before": before, "after": after},
         "inputs": {f"{name}_sha256": value["sha256"]
                    for name, value in initial_inputs.items()},
         "blender_version": bpy.app.version_string, "evaluated_scene": audit["scene"],
-        "proposed_metres_per_blender_unit": scale, "scale_authority": "HUMAN_REVIEW",
-        "independent_known_dimensions": [], "cross_validation_status": "AWAITING_REAL_DIMENSIONS",
+        "metres_per_blender_unit": scale, "scale_authority": "APPROVED",
+        "architectural_scale": authority, "measurement_role": "SANITY_CHECK_EVIDENCE",
+        "independent_known_dimensions": [],
+        "cross_validation_status": "NOT_REQUIRED_USER_DEFINED_RESEARCH_MODEL_SCALE",
         "measurements": rows, "unresolved_portals": unresolved,
         "floor_height": {"support_candidates": floors, "vertical_height_bu": rise,
-                         "vertical_height_proposed_m": rise * scale if rise is not None else None,
+                         "vertical_height_m": rise * scale if rise is not None else None,
                          "authority": "HUMAN_REVIEW"},
         "human_anchor_shortlist": shortlist,
         "source_query": {"mesh_count": len(survey.objects), "skipped": survey.skipped,
@@ -405,9 +429,11 @@ def main() -> None:
     (args.output / "measurements.md").write_text(render_markdown(report))
     with (args.output / "measurements.csv").open("w", newline="") as stream:
         fields = ["measurement_id", "kind", "object", "area", "portal", "floor", "axis",
-                  "annotation_length_bu", "annotation_length_proposed_m",
-                  "actual_source_length_bu", "actual_source_length_proposed_m",
-                  "confidence", "human_confirmation_candidate", "suitable_for_scale_approval",
+                  "scale_authority", "metres_per_blender_unit",
+                  "annotation_length_bu", "annotation_length_m",
+                  "actual_source_length_bu", "actual_source_length_m",
+                  "confidence", "human_confirmation_candidate", "used_to_derive_scale",
+                  "measurement_role",
                   "annotation_endpoints_bu", "source_cross_sections", "floor_support_hit",
                   "source_width_range_bu", "source_length_aggregation", "ambiguities"]
         writer = csv.DictWriter(
@@ -416,7 +442,7 @@ def main() -> None:
         writer.writeheader()
         writer.writerows({key: json.dumps(value) if isinstance(value, (dict, list)) else value
                           for key, value in row.items()} for row in rows)
-    print(f"Scale measurement: {len(rows)} rows; source preserved; scale HUMAN_REVIEW")
+    print(f"Scale sanity check: {len(rows)} rows; source preserved; scale APPROVED")
 
 
 if __name__ == "__main__":

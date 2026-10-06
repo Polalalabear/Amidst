@@ -17,7 +17,9 @@ SOURCE = "a" * 64
 
 @pytest.fixture
 def config() -> dict[str, Any]:
-    return json.loads((ROOT / "configs/scene_validation_school_v3.json").read_text())
+    # These synthetic rectangles retain their original 1:1 metre coordinates;
+    # the source-bound school-v3 architectural setting does not define their units.
+    return json.loads((ROOT / "configs/scene_validation_v1.json").read_text())
 
 
 def rectangle(name: str, x0: float, y0: float, x1: float, y1: float) -> dict[str, Any]:

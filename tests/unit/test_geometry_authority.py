@@ -8,15 +8,17 @@ from typing import Any
 
 import pytest
 
+from amidst.architectural_scale import load_architectural_scale
 from amidst.geometry_authority import (
     actual_bounds,
+    build_snapshot,
     exact_walkable_intrusions,
     parallel_support,
     section_intervals,
     value_digest,
     welded_component_count,
 )
-from amidst.scene_geometry import GeometrySurface
+from amidst.scene_geometry import Authority, GeometrySurface, SceneGeometrySnapshot
 
 ROOT = Path(__file__).resolve().parents[2]
 EVIDENCE = ROOT / "data/scene_audit/phase1_geometry_authority_20261006"
@@ -206,6 +208,28 @@ def test_authority_replay_reproducible_across_processes_and_output_directories(
     assert report["physical_authority"] == "PROVISIONAL"
     assert report["thresholds_lowered"] is False
     assert report["policy"]["gt_used"] is False
+    current = SceneGeometrySnapshot.model_validate_json(
+        (directories[0] / "geometry.json").read_text()
+    )
+    historical = SceneGeometrySnapshot.model_validate_json((EVIDENCE / "geometry.json").read_text())
+    assert current.scale_authority.value == "APPROVED"
+    assert current.unit_scale_m == 0.0247
+    assert current.scale_approval_id
+    assert current.source_sha256 == historical.source_sha256 == SOURCE
+    assert current.floors == historical.floors
+    assert current.surfaces == historical.surfaces
+    assert current.portals == historical.portals and current.stairs == historical.stairs
+    assert current.portal_protection_tolerance_m == pytest.approx(
+        historical.portal_protection_tolerance_m * 0.0247
+    )
+    assert current.physical_complete is False
+    assert not any(
+        "architectural dimensions" in row for row in report["unresolved_human_decisions"]
+    )
+    manifest = json.loads((directories[0] / "manifest.json").read_text())
+    assert manifest["inputs"]["architectural_scale"]["path"] == (
+        "configs/architectural_scale_school_v3.json"
+    )
     refused = subprocess.run(
         command + ["--output", str(directories[0])],
         cwd=ROOT,
@@ -216,3 +240,27 @@ def test_authority_replay_reproducible_across_processes_and_output_directories(
     )
     assert refused.returncode != 0
     assert "output exists" in refused.stderr
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"metres_per_blender_unit": 0},
+        {"metres_per_blender_unit": float("nan")},
+        {"authority": Authority.HIGH_CONFIDENCE},
+        {"evidence_ids": ()},
+        {"approval_id": " "},
+        {"source_asset_sha256": "a" * 64},
+    ],
+)
+def test_public_snapshot_boundary_revalidates_copied_scale_authority(
+    change: dict[str, Any],
+) -> None:
+    scale = load_architectural_scale("configs/architectural_scale_school_v3.json", SOURCE)
+    forged = scale.model_copy(update=change)
+    with pytest.raises(ValueError):
+        build_snapshot(
+            {"source": {"sha256": SOURCE, "path": "school_v3.blend"},
+             "parameters": {"portal_padding": 0.28}, "floor_planes": {"1F": 25}},
+            {"patches": []}, {"objects": []}, [], architectural_scale=forged,
+        )

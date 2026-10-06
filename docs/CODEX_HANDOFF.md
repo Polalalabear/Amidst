@@ -10,10 +10,17 @@
 
 ### 目前狀態與續作入口
 
-- 最新使用者設定與 [scale measurement review](SCHOOL_V3_SCALE_REVIEW.md)：school v3
-  診斷暫採 0.0247 m/BU，目前無獨立實測／設計尺寸；先確認 3–5 個 source-bound
-  anchors，再用至少 2–3 組獨立尺寸交叉驗證。不得自動批准 scale、改正式 calibration、
-  rescale 模型或回寫已完成 artifacts。匯入 SketchUp camera 零 active consuming refs，
+- 最新使用者設定與 [scale review](SCHOOL_V3_SCALE_REVIEW.md)：school v3
+  **1 BU = 0.0247 m** 為 **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING architectural scale**。
+  Mesh 量測只作 sanity-check，不再要求外部尺寸重新推導尺度。新的
+  [active geometry snapshot](../data/scene_audit/school_v3_approved_scale_20261006/geometry.json)
+  與 [geometry/scale validation](../data/scene_audit/school_v3_approved_scale_20261006/geometry_scale_validation.md)
+  使用核准比例；physical-unit adapter 一致換算新 inputs／physical reporting，保留
+  native BU，Graph／Top-K、metrics 定義與 GT isolation 不變。
+  既有 runner／pilot 不自動切換，接入前沿用 legacy 契約；caller 須顯式 normalization。
+  Floor／stair／volume／body／clearance 仍待核准；不 rescale 模型、改舊 calibration
+  或回寫已完成 artifacts。
+  匯入 SketchUp camera 零 active consuming refs，
   從研究 pipeline 忽略但保留原物件；電梯 NOT_APPLICABLE，historical AREA IDs 保留。
   後續只引用 canonical source＋hash；derived measurements 自動產生。
 
@@ -39,7 +46,7 @@
 - 三個明確不可走 AREA 已 EXCLUDED，兩個 stair AREA 改為 cross-floor 診斷。
   1F=25／2F=165 僅 PROPOSED。已補的 WALKABLE、19 個 OBSTACLE/BOTH 與六個
   stair annotations 都不能替代 physical／floor／camera-plane authority。
-- Geometry authority [目前報告](../data/scene_audit/phase1_geometry_authority_20261006/authority.md)
+- Geometry authority [historical 分類報告](../data/scene_audit/phase1_geometry_authority_20261006/authority.md)
   與 [portable snapshot](../data/scene_audit/phase1_geometry_authority_20261006/geometry.json)
   保留 1,572 個 WALL patches：73 HIGH_CONFIDENCE／1,422 HUMAN_REVIEW／77 REJECTED，
   0 APPROVED。28 PORTAL hard protection 下 accepted contact 為 0；不靠名稱猜 role，
@@ -49,7 +56,7 @@
   正式 physical consumer 必須通過 `require_approved_physics`，當前 snapshot 會 typed refuse。
   Inspection 的空 APPROVED collider 集合不能證明無碰撞。本輪不修改來源 `.blend`、
   GT isolation、Graph、ranking 或 benchmark，不執行正式 Cases 1–3。
-- 最新 [physical blocker report](../data/scene_audit/phase1_physical_authority_20261006/resolution.md)
+- 保留的 [physical blocker checkpoint report](../data/scene_audit/phase1_physical_authority_20261006/resolution.md)
   以實際來源 mesh 重查：8 組 OBSTACLE／PORTAL 保持 REVIEW，其中兩組 MEETINGROOM
   可解釋為 annotation depth overlap；未縮 footprint、移 portal 或批准 volume。
   1F／2F source support 約 Z=20.07885／161.811096，與25／165不一致；38個 local scopes
@@ -104,7 +111,7 @@
   沒有 elevator；`AREA_*_ELEVATOR` 只是歷史命名，不建立 transition。
 - 19 個 OBSTACLE 與 PORTAL 有 8 個 conflict pairs；WALKABLE overlap 超過既有
   contact ratio 的 pair 為 0。Stair A/B PATH 各有兩個 components，nearest 3D gap
-  為 4.769402／4.896199（保留現有 1 m／BU conversion，非另行尺度核准）；
+  為 4.769402／4.896199 BU（舊 checkpoint 原值保留；新尺度約 0.117804／0.120936 m）；
   ENTRY／EXIT 接地、landing／opening／clearance 與 floor authority 仍待人工證據。
 - Collision Top-K pruning ownership contract 仍 unresolved；現有 evaluation-only fake
   AABB detector 不代替 mesh certification。Graph WALKABLE 仍依 explicit route 設定；
@@ -117,8 +124,9 @@
   既有pilot forward residual最大0.000314545px、固定診斷plane inverse residual最大
   0.001615262scene units，沒有異常；這不是formal floor/camera-plane認證。實際地面
   Z≈20.07885，比 WALKABLE Z=25 低 4.92115；marker plane Z≈75.12885。
-  METRIC／1m-per-unit 有建築尺度疑義，不猜測換算比例。完整 generation 待 image policy、
-  physical scale 與正式 authority；marker 裁切、地板明暗塊、短 GAP／恢復視窗與 camera
+  舊 pilot 的 METRIC／1m-per-unit 記錄保持 historical；新 school-v3 architectural scale
+  已核准 0.0247 m/BU，不改寫 pilot provenance。完整 generation 待 image policy 與
+  正式 floor／physical authority；marker 裁切、地板明暗塊、短 GAP／恢復視窗與 camera
   coverage 限制已在 comparison 記錄，agent 判斷不替代人類 authority。
   點可見性不當作整個人體 CV detection。
 - Rerun 已支援合成 waypoint graph、navigation anchors、portable calibrated poses／
@@ -136,10 +144,15 @@
 
 ## English
 
-Latest user update: see the [scale measurement review](SCHOOL_V3_SCALE_REVIEW.md).
-School-v3 diagnostics propose 0.0247 m/BU without independent real dimensions; confirm
-3–5 source-bound anchors and cross-check at least 2–3 independent dimensions before
-architectural-scale approval. Preserve the model, formal calibration and completed artifacts.
+Latest user update: see the [scale review](SCHOOL_V3_SCALE_REVIEW.md). School-v3 architectural
+scale is **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**, **1 BU = 0.0247 m**. Mesh measurements
+are sanity checks, not scale inference; external dimensions are no longer a prerequisite.
+New active geometry and scale validation are in `school_v3_approved_scale_20261006`.
+The physical-unit adapter consistently converts new inputs and physical reports while
+preserving native BU; Graph/Top-K, metric definitions and GT isolation stay unchanged.
+Existing runner/pilot flows remain legacy until callers explicitly invoke normalization.
+Floor/stair/volume/body/clearance authority remain pending. Preserve the model, legacy formal
+calibration and completed artifact provenance.
 The imported SketchUp camera has zero active consuming references and may be ignored;
 retain all 29 CAM cameras and the source object. Elevator is NOT_APPLICABLE, historical
 AREA IDs remain, and future active references use canonical source plus hashes.
@@ -155,7 +168,7 @@ do not merge into checkpoint or downstream branches. [First](PHASE1_CHECKPOINT.m
 [second checkpoint records](PHASE1_PILOT_CHECKPOINT.md), plus the
 [geometry checkpoint](PHASE1_GEOMETRY_CHECKPOINT.md), bind recovery and local assets.
 Durable rules live in DEVELOPMENT_RULES; completed regression evidence belongs to WORK_LOG.
-The latest [physical blocker report](../data/scene_audit/phase1_physical_authority_20261006/resolution.md)
+The retained [physical blocker checkpoint report](../data/scene_audit/phase1_physical_authority_20261006/resolution.md)
 keeps all eight obstacle/portal pairs REVIEW, with two meeting-room annotation-depth
 overlaps explained without scene edits. Actual floor support near20.07885/161.811096
 does not match proposed25/165:38 local scopes have measured exceptions, ten retain
@@ -224,8 +237,9 @@ AREA_*_ELEVATOR names never create an elevator transition. Six local contacts ar
 not approved passage, and two-sided probes can land on the same small threshold.
 Current obstacle checks retain eight PORTAL conflict pairs and zero WALKABLE overlaps
 above the existing contact ratio. A/B PATH each has two components, with nearest 3D
-gaps of 4.769402/4.896199 under the existing 1 m/BU conversion; this does not approve
-architectural scale. Landing, entry/exit floor connections and opening/clearance remain REVIEW.
+gaps of 4.769402/4.896199 BU preserved from the old checkpoint, or about
+0.117804/0.120936 m at the approved scale. Landing, entry/exit floor connections and
+opening/clearance remain REVIEW; a small nearest gap does not establish a traversable join.
 
 Collision Top-K pruning remains unresolved; evaluation AABB checks do not certify meshes.
 Graph routes and projected node anchors still require explicit configs, with no arbitrary
@@ -237,8 +251,9 @@ GT stays excluded from inference. This pilot's forward/inverse errors are at mos
 0.000314545 pixels / 0.001615262
 scene units, with no unexpected failures; the static landmark plane is diagnostic only.
 Actual 1F support is Z≈20.07885, 4.92115 below the WALKABLE annotation; landmark plane
-Z≈75.12885. Declared metric scale is not certified architectural scale. Full generation
-awaits image policy and physical scale/plane authority. Boundary clipping, floor appearance,
+Z≈75.12885. Historical pilot scale/provenance remain unchanged; new school-v3 architectural
+scale is approved at 0.0247 m/BU. Full generation awaits image policy and floor/physical
+authority. Boundary clipping, floor appearance,
 short gap/recovery windows and limited camera coverage are documented in comparison;
 agent judgments do not grant human authority. Point visibility is not whole-body CV.
 Portable Rerun poses/frustums are supported, while real mesh visualization remains pending.

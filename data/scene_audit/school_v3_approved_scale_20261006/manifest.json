@@ -1,0 +1,60 @@
+{
+  "schema_version": "physical-resolution-manifest-v1",
+  "checkpoint_commit": "7798f0cfd0b4501d0831c82b06d35ddf21d8da29",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "inputs": {
+    "audit": {
+      "path": "data/scene_audit/school_v3_semantic_audit.json",
+      "sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+    },
+    "baseline": {
+      "path": "data/scene_audit/school_v3_approved_scale_20261006/authority.json",
+      "sha256": "82a473c87fdbf252d6a9e494c34bb0f9d4fe75ed7c43a582ced65d52a4e8f7f2"
+    },
+    "geometry": {
+      "path": "data/scene_audit/school_v3_approved_scale_20261006/geometry.json",
+      "sha256": "a1423622d23f9267ba345922e96e91e3852e1e16dc7d33ecf5b33405ca131e89"
+    },
+    "survey": {
+      "path": "data/scene_audit/phase1_physical_authority_20261006/source_mesh_evidence.json",
+      "sha256": "a27ac87ed335ebfaf129eba6cfcad13233c1bf116b2634db750030105aed1195"
+    },
+    "selection_config": {
+      "path": "configs/physical_authority_resolution_school_v3.json",
+      "sha256": "84c804113166f29bbe0d19ee2943ae29b065567888a79981e1132f792d37db41"
+    },
+    "scene_config": {
+      "path": "configs/scene_validation_school_v3.json",
+      "sha256": "4a8f5f6139da9f333f53e3deb6c0026d6f543d667045468bd81ab165323d259b"
+    },
+    "policy_config": {
+      "path": "configs/physical_authority_policy_school_v3.json",
+      "sha256": "39266f2e6ee8b6cefb71de42044f05b6286a99d51b4de72c271c2d2d39ec77c6"
+    },
+    "baseline_manifest": {
+      "path": "data/scene_audit/school_v3_approved_scale_20261006/geometry_manifest.json",
+      "sha256": "adede0f49fa667d8b96a499f52545a7df2f6d1b49c062cfef2464c779e55ad79"
+    },
+    "camera_calibration": {
+      "path": "data/cameras/school_v2_calibration_v1.json",
+      "sha256": "5eaa94b97b188514ceb2f2e4cc6c6cc6ab63583c6fb6bb2ebda375d5be296bd7"
+    },
+    "architectural_scale": {
+      "path": "configs/architectural_scale_school_v3.json",
+      "sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf"
+    }
+  },
+  "artifacts": {
+    "resolution.json": "18bd33ba34ea1666cfa536c67fdde6ab8b72f54c445db1011990e434cdf618a9",
+    "resolution.md": "b2c439566d370c198493bc25f152bab6e1d7f81f61b9fb6c2bbd99feed3bebfb",
+    "physical_authority.json": "35d3170af5a6a7478ea036f724fc62e5949af83d22b0f7b2f43fca9f01f44920"
+  },
+  "code_sha256": {
+    "src/amidst/physical_resolution.py": "aa510c5e37d01659f2bc6004122fbd913ec42ad11b03418558b6d2d461d00070",
+    "src/amidst/architectural_scale.py": "cc85249ee7563663eae245f83babc8d8a66913671f74a578bd55db4d2ca81381",
+    "src/amidst/physical_authority.py": "4a2e57f155bea0a2b41ced7db55357577433e7a99fe7244256a1506bad6fa622",
+    "src/amidst/physical_obstacle_resolution.py": "d7ce9270fb9244bdd5db5b6a4fe91de9e2589f92beec84ca04f909221cb06921",
+    "src/amidst/physical_floor_stair_review.py": "438797dc47e0de0adcf827fc3f11503a8c8a645c3781a10679772a0d3903146a",
+    "scripts/export_physical_authority_evidence.py": "b7e2e6af06bc99fdf1b01f6553c59c7d6c6492edb6778899b8f762560de4eed5"
+  }
+}

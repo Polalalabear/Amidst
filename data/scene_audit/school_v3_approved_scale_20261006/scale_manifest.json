@@ -1,0 +1,132 @@
+{
+  "schema_version": "approved-scale-validation-manifest-v1",
+  "checkpoint_commit": "7798f0cfd0b4501d0831c82b06d35ddf21d8da29",
+  "architectural_scale": {
+    "schema_version": "architectural-scale-v1",
+    "scope": "PHASE1_SCHOOL_V3_RESEARCH_MODEL",
+    "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "metres_per_blender_unit": 0.0247,
+    "authority": "APPROVED",
+    "approval_id": "HUMAN_PHASE1_ARCHITECTURAL_SCALE_2026_10_06_0247",
+    "approval_basis": "USER_DEFINED_RESEARCH_MODEL_SETTING",
+    "evidence_ids": [
+      "USER_EXPLICIT_APPROVAL_1_BU_EQUALS_0_0247_M_2026_10_06"
+    ],
+    "measurement_role": "SANITY_CHECK_EVIDENCE",
+    "source_geometry_scaled": false,
+    "external_dimensions_required": false
+  },
+  "source": {
+    "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "size_bytes": 468300506,
+    "mtime_ns": 1791198236746106977
+  },
+  "coordinate_provenance": "ORIGINAL_BLENDER_NATIVE_UNITS_PRESERVED",
+  "physical_authority": "PROVISIONAL",
+  "inputs": {
+    "configs/architectural_scale_school_v3.json": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf",
+    "configs/physical_context_school_v3.json": "d483721bc1f0efaff03e9d9cd525d92c523abba4d6a78010273c926fb2a64f38",
+    "configs/scene_validation_school_v3.json": "4a8f5f6139da9f333f53e3deb6c0026d6f543d667045468bd81ab165323d259b",
+    "configs/school_v3_scale_measurement_v1.json": "0a9decea55c02bc575c4ae565d8f219a186119a4f3e8f6985851add2cc168a7e",
+    "configs/physical_authority_policy_school_v3.json": "39266f2e6ee8b6cefb71de42044f05b6286a99d51b4de72c271c2d2d39ec77c6",
+    "src/amidst/architectural_scale.py": "cc85249ee7563663eae245f83babc8d8a66913671f74a578bd55db4d2ca81381",
+    "src/amidst/physical_units.py": "caef2fe9dd7dbb070e36769cf391adc1bb2fe38153630157d83098f2429353cb",
+    "scripts/measure_school_scale.py": "8f34855eac864f52cc4aa0fabfc9d849715040b3613e16a32beda0846e8a3c1c",
+    "scripts/validate_school_scale.py": "efadc03fa53c98ac8be27c64c34a6f10c40894384edec42311988b236928f45e",
+    "data/scene_audit/school_v3_scale_calibration_20261006/manifest.json": "585e9cef8ad162de470bdf3c5e150dfc7d8ec8a455fd7bb8c4a7829e851aa81e",
+    "data/scene_audit/school_v3_scale_calibration_20261006/canonical_references.json": "cf7157aa49a1b388d6ae8011f6a3b739992caa13b517a87bfa81695a8d44355b",
+    "data/scene_audit/phase1_geometry_authority_20261006/geometry.json": "c64605e471ac2eb0024dd6d420b75f3798dbd1edf51148e1459c61fc4910a21b"
+  },
+  "artifacts": {
+    "authority.json": {
+      "sha256": "82a473c87fdbf252d6a9e494c34bb0f9d4fe75ed7c43a582ced65d52a4e8f7f2",
+      "size_bytes": 2565779
+    },
+    "authority.md": {
+      "sha256": "b9ecf7f88ea0e084a31b55955b7f371f7d45fa9019259b59e1276d9e6c15159a",
+      "size_bytes": 602042
+    },
+    "geometry.json": {
+      "sha256": "a1423622d23f9267ba345922e96e91e3852e1e16dc7d33ecf5b33405ca131e89",
+      "size_bytes": 6496240
+    },
+    "geometry_manifest.json": {
+      "sha256": "adede0f49fa667d8b96a499f52545a7df2f6d1b49c062cfef2464c779e55ad79",
+      "size_bytes": 2128
+    },
+    "geometry_scale_validation.json": {
+      "sha256": "e2e043e2ccd63d1c14bb1cb309f39e866e8d19121e9df7b39b031e188ffb0b8f",
+      "size_bytes": 8144
+    },
+    "geometry_scale_validation.md": {
+      "sha256": "63bc0696cd000c1f783b6280cbaa5fc0a0703ad8f3e09c436f1779c2c63d1813",
+      "size_bytes": 1809
+    },
+    "manifest.json": {
+      "sha256": "df76ddcacbff817431d5556d7261fb335c3ae0c651d79e57ea0c03945861d2a0",
+      "size_bytes": 3085
+    },
+    "physical_authority.json": {
+      "sha256": "35d3170af5a6a7478ea036f724fc62e5949af83d22b0f7b2f43fca9f01f44920",
+      "size_bytes": 23468
+    },
+    "resolution.json": {
+      "sha256": "18bd33ba34ea1666cfa536c67fdde6ab8b72f54c445db1011990e434cdf618a9",
+      "size_bytes": 1084055
+    },
+    "resolution.md": {
+      "sha256": "b2c439566d370c198493bc25f152bab6e1d7f81f61b9fb6c2bbd99feed3bebfb",
+      "size_bytes": 15872
+    },
+    "scene_validation.json": {
+      "sha256": "c33dc0dee65d50066e14feb3dbe5b6a26e477b6c3d34df1efc72f561fc12a6c0",
+      "size_bytes": 401907
+    },
+    "scene_validation.md": {
+      "sha256": "6e0ebf677dbc7e8c8d221cf422bd63025cc3b5cb3368591d74da6d56b03218ae",
+      "size_bytes": 46280
+    }
+  },
+  "validation": {
+    "pytest": {
+      "passed": 1199,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 91.34
+    },
+    "ruff": "PASS",
+    "mypy": {
+      "status": "PASS",
+      "source_files": 83
+    },
+    "measurement_script_mypy": "PASS",
+    "scale_validation_script_mypy": "PASS",
+    "source_preserved": true,
+    "native_geometry_preserved": true,
+    "architectural_scale_authority": "APPROVED",
+    "geometry_scale_validation": "PASS",
+    "bu_metre_conversion_pairs_checked": 285,
+    "formal_benchmark_run": false,
+    "model_scaled": false,
+    "historical_artifacts_rewritten": false,
+    "internal_file_links_checked": 195,
+    "markdown_files_checked": 17,
+    "diff_check": "PASS"
+  },
+  "initial_regression_run": {
+    "passed": 1196,
+    "failed": 3,
+    "seconds": 89.24,
+    "cause": "SYNTHETIC_OBSTACLE_FIXTURE_COUPLED_TO_ACTIVE_SCHOOL_UNIT_CONFIG",
+    "resolution": "BIND_ORIGINAL_SYNTHETIC_1_TO_1_CONTEXT_KEEP_ASSERTIONS_AND_PRODUCTION_BEHAVIOR"
+  },
+  "unit_contract": {
+    "new_native_inputs_must_be_normalized_before_core": true,
+    "legacy_exports_are_formal_metric_inputs": false,
+    "legacy_artifacts_automatically_migrated": false,
+    "pending_policy_values_filled_by_scale": false,
+    "gt_isolation_changed": false,
+    "graph_topk_logic_changed": false,
+    "benchmark_semantics_changed": false
+  }
+}

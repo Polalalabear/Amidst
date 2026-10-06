@@ -15,6 +15,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Any
 
+from amidst.architectural_scale import ArchitecturalScale, scale_for_scene_config
 from amidst.geometry_physical_review import (
     Triangle,
     Vector,
@@ -36,6 +37,33 @@ def _digest(value: Any) -> str:
     ).hexdigest()
 
 
+def _dual_unit_measurements(
+    document: dict[str, Any], scale: ArchitecturalScale,
+) -> dict[str, Any]:
+    """Append metre evidence while preserving every original native measurement."""
+    def convert(value: Any, *, area: bool = False) -> Any:
+        if value is None:
+            return None
+        if isinstance(value, list):
+            return [convert(item, area=area) for item in value]
+        return scale.to_square_metres(value) if area else scale.to_metres(value)
+
+    def walk(value: Any) -> Any:
+        if isinstance(value, list):
+            return [walk(item) for item in value]
+        if not isinstance(value, dict):
+            return value
+        result = {key: walk(item) for key, item in value.items()}
+        for key, item in value.items():
+            if key.endswith("_units2"):
+                result[key.removesuffix("_units2") + "_m2"] = convert(item, area=True)
+            elif key.endswith("_units"):
+                result[key.removesuffix("_units") + "_m"] = convert(item)
+        return result
+
+    return {key: walk(value) for key, value in document.items()}
+
+
 def _number(value: Any, label: str, *, positive: bool = False) -> float:
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
         raise ValueError(f"{label} must be finite numeric evidence")
@@ -55,6 +83,28 @@ def _vector(value: Any) -> Vector:
     ):
         raise ValueError("world coordinate must contain three finite numbers")
     return float(value[0]), float(value[1]), float(value[2])
+
+
+def _plane_height_units(plane: Mapping[str, Any], unit_scale: float) -> float:
+    """Prefer retained BU only after checking its metre representation agrees."""
+    metres = plane["height_m"]
+    if (
+        isinstance(metres, bool)
+        or not isinstance(metres, (int, float))
+        or not math.isfinite(metres)
+    ):
+        raise ValueError("proposed floor height must be finite")
+    native = plane.get("height_bu")
+    if native is None:
+        return float(metres) / unit_scale
+    if (
+        isinstance(native, bool)
+        or not isinstance(native, (int, float))
+        or not math.isfinite(native)
+        or not math.isclose(native * unit_scale, metres, abs_tol=1e-12, rel_tol=1e-12)
+    ):
+        raise ValueError("proposed floor height BU/metre representations disagree")
+    return float(native)
 
 
 @dataclass(frozen=True)
@@ -266,7 +316,9 @@ def _floor_review(
     proposed = config["floor_planes"].get(floor_id, {}).get("height_m")
     if proposed is None:
         raise ValueError("walkable floor lacks a configured proposed plane")
-    proposed_units = float(proposed) / config["meters_per_blender_unit"]
+    proposed_units = _plane_height_units(
+        config["floor_planes"][floor_id], config["meters_per_blender_unit"],
+    )
     physical_layers: list[dict[str, Any]] = []
     for layer in _layers(
         faces, settings["horizontal_normal_abs_z_min"], settings["horizontal_layer_tolerance_units"]
@@ -387,6 +439,8 @@ def _stair_review(
     faces: list[_Face],
     config: Mapping[str, Any],
     settings: Mapping[str, Any],
+    *,
+    scale_approved: bool = False,
 ) -> dict[str, Any]:
     roles: dict[str, Mapping[str, Any]] = {}
     for row in rows:
@@ -488,7 +542,9 @@ def _stair_review(
                 "position_units": list(point),
                 "proposed_floor_plane_z_units": None
                 if floor_plane is None
-                else floor_plane / config["meters_per_blender_unit"],
+                else _plane_height_units(
+                    config["floor_planes"][floor_id], config["meters_per_blender_unit"],
+                ),
                 "actual_horizontal_surface_distance_units": None if nearest is None else nearest[0],
                 "actual_source_object_id": None if nearest is None else nearest[1].object_id,
                 "actual_source_face_index": None
@@ -499,7 +555,7 @@ def _stair_review(
     reasons = [
         "BODY_CLEARANCE_POLICY_UNAPPROVED",
         "SLAB_OPENING_AUTHORITY_UNAPPROVED",
-        "FLOOR_AND_SCALE_AUTHORITY_UNAPPROVED",
+        "FLOOR_AUTHORITY_UNAPPROVED" if scale_approved else "FLOOR_AND_SCALE_AUTHORITY_UNAPPROVED",
     ]
     if region.get("complete") is not True:
         reasons.append("SOURCE_REGION_SELECTION_INCOMPLETE")
@@ -571,6 +627,7 @@ def review_floor_stairs(
     if isinstance(pair_maximum, bool) or not isinstance(pair_maximum, int) or pair_maximum <= 0:
         raise ValueError("floor/stair complexity budgets must be positive integers")
     _number(config.get("meters_per_blender_unit"), "meters_per_blender_unit", positive=True)
+    architectural_scale = scale_for_scene_config(dict(config), source)
     regions = survey.get("regions")
     if not isinstance(regions, list):
         raise ValueError("physical survey regions must be an array")
@@ -648,7 +705,8 @@ def review_floor_stairs(
                 continue
             try:
                 result = _stair_review(
-                    stair_id, rows, region, _region_faces(region, maximum), config, settings
+                    stair_id, rows, region, _region_faces(region, maximum), config, settings,
+                    scale_approved=architectural_scale is not None,
                 )
             except GeometryBudgetExceeded as error:
                 result = {
@@ -684,14 +742,17 @@ def review_floor_stairs(
                 "authority": "ANNOTATION_CONTEXT_NOT_PHYSICAL_FLOOR_EVIDENCE",
             }
         )
-    return {
+    report = {
         "schema_version": "physical-floor-stair-review-v1",
         "source_sha256": source,
-        "units": "BLENDER_SCENE_UNITS_WITH_ACCEPTED_1M_PER_UNIT_CONVERSION",
+        "units": "BLENDER_NATIVE_SCENE_UNITS_WITH_EXPLICIT_METRE_CONVERSION",
         "meters_per_blender_unit": config["meters_per_blender_unit"],
         "floor_authority": "HUMAN_REVIEW",
         "stair_authority": "HUMAN_REVIEW",
-        "scale_authority": "HUMAN_REVIEW",
+        "scale_authority": "HUMAN_REVIEW" if architectural_scale is None else "APPROVED",
+        "scale_approval_id": (
+            None if architectural_scale is None else architectural_scale.approval_id
+        ),
         "camera_plane_authority": "HUMAN_REVIEW",
         "camera_reason": camera_reason,
         "floor_reviews": floor_reviews,
@@ -701,3 +762,6 @@ def review_floor_stairs(
         "geometry_modified": False,
         "connectivity_created": False,
     }
+    return report if architectural_scale is None else _dual_unit_measurements(
+        report, architectural_scale,
+    )

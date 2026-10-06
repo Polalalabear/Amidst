@@ -1,5 +1,5 @@
 {
-  "schema_version": "school-scale-measurement-report-v1",
+  "schema_version": "school-scale-measurement-report-v2",
   "source": {
     "path": "blender/school_v3.blend",
     "before": {
@@ -14,8 +14,9 @@
     }
   },
   "inputs": {
-    "config_sha256": "c0882dcf18dd3f8cb387291beb9e65decfae43e971dc69907be927f4965b3e44",
-    "script_sha256": "8e1ae06876ec1ad65aa2e01416fe3522ce23882cb6d7ff59e2f8d243aee9ff8b",
+    "config_sha256": "0a9decea55c02bc575c4ae565d8f219a186119a4f3e8f6985851add2cc168a7e",
+    "script_sha256": "8f34855eac864f52cc4aa0fabfc9d849715040b3613e16a32beda0846e8a3c1c",
+    "architectural_scale_sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf",
     "audit_sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
   },
   "blender_version": "5.2.1 LTS",
@@ -24,10 +25,26 @@
     "frame": 220,
     "subframe": 0.0
   },
-  "proposed_metres_per_blender_unit": 0.0247,
-  "scale_authority": "HUMAN_REVIEW",
+  "metres_per_blender_unit": 0.0247,
+  "scale_authority": "APPROVED",
+  "architectural_scale": {
+    "schema_version": "architectural-scale-v1",
+    "scope": "PHASE1_SCHOOL_V3_RESEARCH_MODEL",
+    "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "metres_per_blender_unit": 0.0247,
+    "authority": "APPROVED",
+    "approval_id": "HUMAN_PHASE1_ARCHITECTURAL_SCALE_2026_10_06_0247",
+    "approval_basis": "USER_DEFINED_RESEARCH_MODEL_SETTING",
+    "evidence_ids": [
+      "USER_EXPLICIT_APPROVAL_1_BU_EQUALS_0_0247_M_2026_10_06"
+    ],
+    "measurement_role": "SANITY_CHECK_EVIDENCE",
+    "source_geometry_scaled": false,
+    "external_dimensions_required": false
+  },
+  "measurement_role": "SANITY_CHECK_EVIDENCE",
   "independent_known_dimensions": [],
-  "cross_validation_status": "AWAITING_REAL_DIMENSIONS",
+  "cross_validation_status": "NOT_REQUIRED_USER_DEFINED_RESEARCH_MODEL_SCALE",
   "measurements": [
     {
       "measurement_id": "PORTAL_1F_AUDITORIUM:Y",
@@ -50,7 +67,7 @@
         ]
       ],
       "annotation_length_bu": 72.0,
-      "annotation_length_proposed_m": 1.7784,
+      "annotation_length_m": 1.7784,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -59,7 +76,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -133,7 +150,7 @@
             }
           ],
           "length_bu": 70.8662109375,
-          "length_proposed_m": 1.75039541015625,
+          "length_m": 1.75039541015625,
           "side_orientation_matches": true
         },
         {
@@ -143,7 +160,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -217,7 +234,7 @@
             }
           ],
           "length_bu": 70.8662109375,
-          "length_proposed_m": 1.75039541015625,
+          "length_m": 1.75039541015625,
           "side_orientation_matches": true
         },
         {
@@ -227,7 +244,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -301,19 +318,19 @@
             }
           ],
           "length_bu": 70.8662109375,
-          "length_proposed_m": 1.75039541015625,
+          "length_m": 1.75039541015625,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 70.8662109375,
-      "actual_source_length_proposed_m": 1.75039541015625,
+      "actual_source_length_m": 1.75039541015625,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -359,7 +376,9 @@
       "source_width_range_bu": [
         70.8662109375,
         70.8662109375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_AUDITORIUM_OFFICE:Y",
@@ -382,7 +401,7 @@
         ]
       ],
       "annotation_length_bu": 70.0,
-      "annotation_length_proposed_m": 1.729,
+      "annotation_length_m": 1.729,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -391,7 +410,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0.002",
@@ -465,7 +484,7 @@
             }
           ],
           "length_bu": 70.865966796875,
-          "length_proposed_m": 1.7503893798828125,
+          "length_m": 1.7503893798828125,
           "side_orientation_matches": true
         },
         {
@@ -475,7 +494,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0.002",
@@ -549,7 +568,7 @@
             }
           ],
           "length_bu": 70.865966796875,
-          "length_proposed_m": 1.7503893798828125,
+          "length_m": 1.7503893798828125,
           "side_orientation_matches": true
         },
         {
@@ -559,7 +578,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0.002",
@@ -633,19 +652,19 @@
             }
           ],
           "length_bu": 70.865966796875,
-          "length_proposed_m": 1.7503893798828125,
+          "length_m": 1.7503893798828125,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 70.865966796875,
-      "actual_source_length_proposed_m": 1.7503893798828125,
+      "actual_source_length_m": 1.7503893798828125,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -691,7 +710,9 @@
       "source_width_range_bu": [
         70.865966796875,
         70.865966796875
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_CLASS101:Y",
@@ -714,7 +735,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -723,7 +744,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -797,7 +818,7 @@
             }
           ],
           "length_bu": 55.11810302734375,
-          "length_proposed_m": 1.3614171447753907,
+          "length_m": 1.3614171447753907,
           "side_orientation_matches": true
         },
         {
@@ -807,7 +828,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -881,7 +902,7 @@
             }
           ],
           "length_bu": 55.11810302734375,
-          "length_proposed_m": 1.3614171447753907,
+          "length_m": 1.3614171447753907,
           "side_orientation_matches": true
         },
         {
@@ -891,7 +912,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -965,19 +986,19 @@
             }
           ],
           "length_bu": 55.11810302734375,
-          "length_proposed_m": 1.3614171447753907,
+          "length_m": 1.3614171447753907,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 55.11810302734375,
-      "actual_source_length_proposed_m": 1.3614171447753907,
+      "actual_source_length_m": 1.3614171447753907,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -1023,7 +1044,9 @@
       "source_width_range_bu": [
         55.11810302734375,
         55.11810302734375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_CLASS102:Y",
@@ -1046,7 +1069,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -1055,7 +1078,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -1129,7 +1152,7 @@
             }
           ],
           "length_bu": 55.1181640625,
-          "length_proposed_m": 1.36141865234375,
+          "length_m": 1.36141865234375,
           "side_orientation_matches": true
         },
         {
@@ -1139,7 +1162,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -1213,7 +1236,7 @@
             }
           ],
           "length_bu": 55.1181640625,
-          "length_proposed_m": 1.36141865234375,
+          "length_m": 1.36141865234375,
           "side_orientation_matches": true
         },
         {
@@ -1223,7 +1246,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -1297,19 +1320,19 @@
             }
           ],
           "length_bu": 55.1181640625,
-          "length_proposed_m": 1.36141865234375,
+          "length_m": 1.36141865234375,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 55.1181640625,
-      "actual_source_length_proposed_m": 1.36141865234375,
+      "actual_source_length_m": 1.36141865234375,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -1355,7 +1378,9 @@
       "source_width_range_bu": [
         55.1181640625,
         55.1181640625
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_CLASS103:Y",
@@ -1378,7 +1403,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -1387,7 +1412,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -1461,7 +1486,7 @@
             }
           ],
           "length_bu": 55.1180419921875,
-          "length_proposed_m": 1.3614156372070312,
+          "length_m": 1.3614156372070312,
           "side_orientation_matches": true
         },
         {
@@ -1471,7 +1496,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -1545,7 +1570,7 @@
             }
           ],
           "length_bu": 55.1180419921875,
-          "length_proposed_m": 1.3614156372070312,
+          "length_m": 1.3614156372070312,
           "side_orientation_matches": true
         },
         {
@@ -1555,7 +1580,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -1629,19 +1654,19 @@
             }
           ],
           "length_bu": 55.1180419921875,
-          "length_proposed_m": 1.3614156372070312,
+          "length_m": 1.3614156372070312,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 55.1180419921875,
-      "actual_source_length_proposed_m": 1.3614156372070312,
+      "actual_source_length_m": 1.3614156372070312,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -1687,7 +1712,9 @@
       "source_width_range_bu": [
         55.1180419921875,
         55.1180419921875
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_CLASS104:Y",
@@ -1710,7 +1737,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -1719,7 +1746,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -1793,7 +1820,7 @@
             }
           ],
           "length_bu": 55.118896484375,
-          "length_proposed_m": 1.3614367431640624,
+          "length_m": 1.3614367431640624,
           "side_orientation_matches": true
         },
         {
@@ -1803,7 +1830,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -1877,7 +1904,7 @@
             }
           ],
           "length_bu": 55.118896484375,
-          "length_proposed_m": 1.3614367431640624,
+          "length_m": 1.3614367431640624,
           "side_orientation_matches": true
         },
         {
@@ -1887,7 +1914,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -1961,19 +1988,19 @@
             }
           ],
           "length_bu": 55.118896484375,
-          "length_proposed_m": 1.3614367431640624,
+          "length_m": 1.3614367431640624,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 55.118896484375,
-      "actual_source_length_proposed_m": 1.3614367431640624,
+      "actual_source_length_m": 1.3614367431640624,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -2019,7 +2046,9 @@
       "source_width_range_bu": [
         55.118896484375,
         55.118896484375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_MAIN_ENTRANCE:X",
@@ -2042,7 +2071,7 @@
         ]
       ],
       "annotation_length_bu": 160.0,
-      "annotation_length_proposed_m": 3.952,
+      "annotation_length_m": 3.952,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -2051,7 +2080,7 @@
             44.40883445739746
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -2125,7 +2154,7 @@
             }
           ],
           "length_bu": 142.6634521484375,
-          "length_proposed_m": 3.5237872680664064,
+          "length_m": 3.5237872680664064,
           "side_orientation_matches": true
         },
         {
@@ -2135,7 +2164,7 @@
             64.40883445739746
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -2209,7 +2238,7 @@
             }
           ],
           "length_bu": 142.6634521484375,
-          "length_proposed_m": 3.5237872680664064,
+          "length_m": 3.5237872680664064,
           "side_orientation_matches": true
         },
         {
@@ -2219,7 +2248,7 @@
             84.40883445739746
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -2293,19 +2322,19 @@
             }
           ],
           "length_bu": 142.6634521484375,
-          "length_proposed_m": 3.5237872680664064,
+          "length_m": 3.5237872680664064,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 142.6634521484375,
-      "actual_source_length_proposed_m": 3.5237872680664064,
+      "actual_source_length_m": 3.5237872680664064,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -2356,7 +2385,9 @@
       "source_width_range_bu": [
         142.6634521484375,
         142.6634521484375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_MEETINGROOM_01:Y",
@@ -2379,7 +2410,7 @@
         ]
       ],
       "annotation_length_bu": 110.0,
-      "annotation_length_proposed_m": 2.717,
+      "annotation_length_m": 2.717,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -2388,7 +2419,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -2462,7 +2493,7 @@
             }
           ],
           "length_bu": 526.2467651367188,
-          "length_proposed_m": 12.998295098876953,
+          "length_m": 12.998295098876953,
           "side_orientation_matches": true
         },
         {
@@ -2472,7 +2503,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -2546,7 +2577,7 @@
             }
           ],
           "length_bu": 526.2467651367188,
-          "length_proposed_m": 12.998295098876953,
+          "length_m": 12.998295098876953,
           "side_orientation_matches": true
         },
         {
@@ -2556,7 +2587,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -2630,19 +2661,19 @@
             }
           ],
           "length_bu": 526.2467651367188,
-          "length_proposed_m": 12.998295098876953,
+          "length_m": 12.998295098876953,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 526.2467651367188,
-      "actual_source_length_proposed_m": 12.998295098876953,
+      "actual_source_length_m": 12.998295098876953,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -2688,7 +2719,9 @@
       "source_width_range_bu": [
         526.2467651367188,
         526.2467651367188
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_OFFICE:X",
@@ -2711,7 +2744,7 @@
         ]
       ],
       "annotation_length_bu": 70.0,
-      "annotation_length_proposed_m": 1.729,
+      "annotation_length_m": 1.729,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -2720,7 +2753,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -2794,7 +2827,7 @@
             }
           ],
           "length_bu": 70.8660888671875,
-          "length_proposed_m": 1.7503923950195313,
+          "length_m": 1.7503923950195313,
           "side_orientation_matches": true
         },
         {
@@ -2804,7 +2837,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -2878,7 +2911,7 @@
             }
           ],
           "length_bu": 70.8660888671875,
-          "length_proposed_m": 1.7503923950195313,
+          "length_m": 1.7503923950195313,
           "side_orientation_matches": true
         },
         {
@@ -2888,7 +2921,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -2962,19 +2995,19 @@
             }
           ],
           "length_bu": 70.8660888671875,
-          "length_proposed_m": 1.7503923950195313,
+          "length_m": 1.7503923950195313,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 70.8660888671875,
-      "actual_source_length_proposed_m": 1.7503923950195313,
+      "actual_source_length_m": 1.7503923950195313,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -3020,7 +3053,9 @@
       "source_width_range_bu": [
         70.8660888671875,
         70.8660888671875
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_RESTAURANT_A:X",
@@ -3043,7 +3078,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -3052,7 +3087,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -3126,7 +3161,7 @@
             }
           ],
           "length_bu": 35.43310546875,
-          "length_proposed_m": 0.875197705078125,
+          "length_m": 0.875197705078125,
           "side_orientation_matches": true
         },
         {
@@ -3136,7 +3171,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -3210,7 +3245,7 @@
             }
           ],
           "length_bu": 35.43310546875,
-          "length_proposed_m": 0.875197705078125,
+          "length_m": 0.875197705078125,
           "side_orientation_matches": true
         },
         {
@@ -3220,7 +3255,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -3294,19 +3329,19 @@
             }
           ],
           "length_bu": 35.43310546875,
-          "length_proposed_m": 0.875197705078125,
+          "length_m": 0.875197705078125,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 35.43310546875,
-      "actual_source_length_proposed_m": 0.875197705078125,
+      "actual_source_length_m": 0.875197705078125,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -3352,7 +3387,9 @@
       "source_width_range_bu": [
         35.43310546875,
         35.43310546875
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_RESTAURANT_B:X",
@@ -3375,7 +3412,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -3384,7 +3421,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -3458,7 +3495,7 @@
             }
           ],
           "length_bu": 35.4329833984375,
-          "length_proposed_m": 0.8751946899414063,
+          "length_m": 0.8751946899414063,
           "side_orientation_matches": true
         },
         {
@@ -3468,7 +3505,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -3542,7 +3579,7 @@
             }
           ],
           "length_bu": 35.4329833984375,
-          "length_proposed_m": 0.8751946899414063,
+          "length_m": 0.8751946899414063,
           "side_orientation_matches": true
         },
         {
@@ -3552,7 +3589,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -3626,19 +3663,19 @@
             }
           ],
           "length_bu": 35.4329833984375,
-          "length_proposed_m": 0.8751946899414063,
+          "length_m": 0.8751946899414063,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 35.4329833984375,
-      "actual_source_length_proposed_m": 0.8751946899414063,
+      "actual_source_length_m": 0.8751946899414063,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -3684,7 +3721,9 @@
       "source_width_range_bu": [
         35.4329833984375,
         35.4329833984375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_1F_STORAGE:Y",
@@ -3707,7 +3746,7 @@
         ]
       ],
       "annotation_length_bu": 70.0,
-      "annotation_length_proposed_m": 1.729,
+      "annotation_length_m": 1.729,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -3716,7 +3755,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -3790,7 +3829,7 @@
             }
           ],
           "length_bu": 70.86614990234375,
-          "length_proposed_m": 1.7503939025878905,
+          "length_m": 1.7503939025878905,
           "side_orientation_matches": true
         },
         {
@@ -3800,7 +3839,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -3874,7 +3913,7 @@
             }
           ],
           "length_bu": 70.86614990234375,
-          "length_proposed_m": 1.7503939025878905,
+          "length_m": 1.7503939025878905,
           "side_orientation_matches": true
         },
         {
@@ -3884,7 +3923,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -3958,19 +3997,19 @@
             }
           ],
           "length_bu": 70.86614990234375,
-          "length_proposed_m": 1.7503939025878905,
+          "length_m": 1.7503939025878905,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 70.86614990234375,
-      "actual_source_length_proposed_m": 1.7503939025878905,
+      "actual_source_length_m": 1.7503939025878905,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -4016,7 +4055,9 @@
       "source_width_range_bu": [
         70.86614990234375,
         70.86614990234375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_BALCONY_LEFT:X",
@@ -4039,7 +4080,7 @@
         ]
       ],
       "annotation_length_bu": 70.0,
-      "annotation_length_proposed_m": 1.729,
+      "annotation_length_m": 1.729,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -4048,7 +4089,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "instance_187",
@@ -4122,7 +4163,7 @@
             }
           ],
           "length_bu": 67.74713134765625,
-          "length_proposed_m": 1.6733541442871094,
+          "length_m": 1.6733541442871094,
           "side_orientation_matches": true
         },
         {
@@ -4132,7 +4173,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "instance_187",
@@ -4206,7 +4247,7 @@
             }
           ],
           "length_bu": 67.74713134765625,
-          "length_proposed_m": 1.6733541442871094,
+          "length_m": 1.6733541442871094,
           "side_orientation_matches": true
         },
         {
@@ -4216,7 +4257,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "instance_187",
@@ -4290,19 +4331,19 @@
             }
           ],
           "length_bu": 67.74713134765625,
-          "length_proposed_m": 1.6733541442871094,
+          "length_m": 1.6733541442871094,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 67.74713134765625,
-      "actual_source_length_proposed_m": 1.6733541442871094,
+      "actual_source_length_m": 1.6733541442871094,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -4348,7 +4389,9 @@
       "source_width_range_bu": [
         67.74713134765625,
         67.74713134765625
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_BALCONY_RIGHT:X",
@@ -4371,7 +4414,7 @@
         ]
       ],
       "annotation_length_bu": 70.0,
-      "annotation_length_proposed_m": 1.729,
+      "annotation_length_m": 1.729,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -4380,7 +4423,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "instance_188",
@@ -4454,7 +4497,7 @@
             }
           ],
           "length_bu": 67.7471923828125,
-          "length_proposed_m": 1.6733556518554686,
+          "length_m": 1.6733556518554686,
           "side_orientation_matches": true
         },
         {
@@ -4464,7 +4507,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "instance_188",
@@ -4538,7 +4581,7 @@
             }
           ],
           "length_bu": 67.7471923828125,
-          "length_proposed_m": 1.6733556518554686,
+          "length_m": 1.6733556518554686,
           "side_orientation_matches": true
         },
         {
@@ -4548,7 +4591,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "instance_188",
@@ -4622,19 +4665,19 @@
             }
           ],
           "length_bu": 67.7471923828125,
-          "length_proposed_m": 1.6733556518554686,
+          "length_m": 1.6733556518554686,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 67.7471923828125,
-      "actual_source_length_proposed_m": 1.6733556518554686,
+      "actual_source_length_m": 1.6733556518554686,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -4680,7 +4723,9 @@
       "source_width_range_bu": [
         67.7471923828125,
         67.7471923828125
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_CLASS201:Y",
@@ -4703,7 +4748,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -4712,7 +4757,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -4786,7 +4831,7 @@
             }
           ],
           "length_bu": 55.11810302734375,
-          "length_proposed_m": 1.3614171447753907,
+          "length_m": 1.3614171447753907,
           "side_orientation_matches": true
         },
         {
@@ -4796,7 +4841,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -4870,7 +4915,7 @@
             }
           ],
           "length_bu": 55.11810302734375,
-          "length_proposed_m": 1.3614171447753907,
+          "length_m": 1.3614171447753907,
           "side_orientation_matches": true
         },
         {
@@ -4880,7 +4925,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -4954,19 +4999,19 @@
             }
           ],
           "length_bu": 55.11810302734375,
-          "length_proposed_m": 1.3614171447753907,
+          "length_m": 1.3614171447753907,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 55.11810302734375,
-      "actual_source_length_proposed_m": 1.3614171447753907,
+      "actual_source_length_m": 1.3614171447753907,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -5012,7 +5057,9 @@
       "source_width_range_bu": [
         55.11810302734375,
         55.11810302734375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_CLASS202:Y",
@@ -5035,7 +5082,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -5044,7 +5091,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -5118,7 +5165,7 @@
             }
           ],
           "length_bu": 55.1181640625,
-          "length_proposed_m": 1.36141865234375,
+          "length_m": 1.36141865234375,
           "side_orientation_matches": true
         },
         {
@@ -5128,7 +5175,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -5202,7 +5249,7 @@
             }
           ],
           "length_bu": 55.1181640625,
-          "length_proposed_m": 1.36141865234375,
+          "length_m": 1.36141865234375,
           "side_orientation_matches": true
         },
         {
@@ -5212,7 +5259,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -5286,19 +5333,19 @@
             }
           ],
           "length_bu": 55.1181640625,
-          "length_proposed_m": 1.36141865234375,
+          "length_m": 1.36141865234375,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 55.1181640625,
-      "actual_source_length_proposed_m": 1.36141865234375,
+      "actual_source_length_m": 1.36141865234375,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -5344,7 +5391,9 @@
       "source_width_range_bu": [
         55.1181640625,
         55.1181640625
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_CLASS203:Y",
@@ -5367,7 +5416,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -5376,7 +5425,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -5450,7 +5499,7 @@
             }
           ],
           "length_bu": 55.1180419921875,
-          "length_proposed_m": 1.3614156372070312,
+          "length_m": 1.3614156372070312,
           "side_orientation_matches": true
         },
         {
@@ -5460,7 +5509,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -5534,7 +5583,7 @@
             }
           ],
           "length_bu": 55.1180419921875,
-          "length_proposed_m": 1.3614156372070312,
+          "length_m": 1.3614156372070312,
           "side_orientation_matches": true
         },
         {
@@ -5544,7 +5593,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -5618,19 +5667,19 @@
             }
           ],
           "length_bu": 55.1180419921875,
-          "length_proposed_m": 1.3614156372070312,
+          "length_m": 1.3614156372070312,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 55.1180419921875,
-      "actual_source_length_proposed_m": 1.3614156372070312,
+      "actual_source_length_m": 1.3614156372070312,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -5676,7 +5725,9 @@
       "source_width_range_bu": [
         55.1180419921875,
         55.1180419921875
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_CLASS204:Y",
@@ -5699,7 +5750,7 @@
         ]
       ],
       "annotation_length_bu": 40.0,
-      "annotation_length_proposed_m": 0.988,
+      "annotation_length_m": 0.988,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -5708,7 +5759,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -5782,7 +5833,7 @@
             }
           ],
           "length_bu": 55.118896484375,
-          "length_proposed_m": 1.3614367431640624,
+          "length_m": 1.3614367431640624,
           "side_orientation_matches": true
         },
         {
@@ -5792,7 +5843,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -5866,7 +5917,7 @@
             }
           ],
           "length_bu": 55.118896484375,
-          "length_proposed_m": 1.3614367431640624,
+          "length_m": 1.3614367431640624,
           "side_orientation_matches": true
         },
         {
@@ -5876,7 +5927,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -5950,19 +6001,19 @@
             }
           ],
           "length_bu": 55.118896484375,
-          "length_proposed_m": 1.3614367431640624,
+          "length_m": 1.3614367431640624,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 55.118896484375,
-      "actual_source_length_proposed_m": 1.3614367431640624,
+      "actual_source_length_m": 1.3614367431640624,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -6008,7 +6059,9 @@
       "source_width_range_bu": [
         55.118896484375,
         55.118896484375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_GALLERY:X",
@@ -6031,7 +6084,7 @@
         ]
       ],
       "annotation_length_bu": 70.0,
-      "annotation_length_proposed_m": 1.729,
+      "annotation_length_m": 1.729,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -6040,7 +6093,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -6114,7 +6167,7 @@
             }
           ],
           "length_bu": 992.1274719238281,
-          "length_proposed_m": 24.505548556518555,
+          "length_m": 24.505548556518555,
           "side_orientation_matches": true
         },
         {
@@ -6124,7 +6177,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -6198,7 +6251,7 @@
             }
           ],
           "length_bu": 992.1274719238281,
-          "length_proposed_m": 24.505548556518555,
+          "length_m": 24.505548556518555,
           "side_orientation_matches": true
         },
         {
@@ -6208,7 +6261,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -6282,19 +6335,19 @@
             }
           ],
           "length_bu": 992.1274108886719,
-          "length_proposed_m": 24.505547048950195,
+          "length_m": 24.505547048950195,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 992.1274719238281,
-      "actual_source_length_proposed_m": 24.505548556518555,
+      "actual_source_length_m": 24.505548556518555,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -6340,7 +6393,9 @@
       "source_width_range_bu": [
         992.1274108886719,
         992.1274719238281
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_MEETINGROOM_01:Y",
@@ -6363,7 +6418,7 @@
         ]
       ],
       "annotation_length_bu": 20.0,
-      "annotation_length_proposed_m": 0.494,
+      "annotation_length_m": 0.494,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -6372,7 +6427,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -6446,7 +6501,7 @@
             }
           ],
           "length_bu": 526.2466888427734,
-          "length_proposed_m": 12.998293214416504,
+          "length_m": 12.998293214416504,
           "side_orientation_matches": true
         },
         {
@@ -6456,7 +6511,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -6530,7 +6585,7 @@
             }
           ],
           "length_bu": 526.2466888427734,
-          "length_proposed_m": 12.998293214416504,
+          "length_m": 12.998293214416504,
           "side_orientation_matches": true
         },
         {
@@ -6540,7 +6595,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -6614,19 +6669,19 @@
             }
           ],
           "length_bu": 526.2466888427734,
-          "length_proposed_m": 12.998293214416504,
+          "length_m": 12.998293214416504,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 526.2466888427734,
-      "actual_source_length_proposed_m": 12.998293214416504,
+      "actual_source_length_m": 12.998293214416504,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -6672,7 +6727,9 @@
       "source_width_range_bu": [
         526.2466888427734,
         526.2466888427734
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_MEETINGROOM_02:Y",
@@ -6695,7 +6752,7 @@
         ]
       ],
       "annotation_length_bu": 100.0,
-      "annotation_length_proposed_m": 2.4699999999999998,
+      "annotation_length_m": 2.4699999999999998,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -6704,7 +6761,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -6778,7 +6835,7 @@
             }
           ],
           "length_bu": 526.2466888427734,
-          "length_proposed_m": 12.998293214416504,
+          "length_m": 12.998293214416504,
           "side_orientation_matches": true
         },
         {
@@ -6788,7 +6845,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -6862,7 +6919,7 @@
             }
           ],
           "length_bu": 526.2466888427734,
-          "length_proposed_m": 12.998293214416504,
+          "length_m": 12.998293214416504,
           "side_orientation_matches": true
         },
         {
@@ -6872,7 +6929,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -6946,19 +7003,19 @@
             }
           ],
           "length_bu": 526.2466888427734,
-          "length_proposed_m": 12.998293214416504,
+          "length_m": 12.998293214416504,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 526.2466888427734,
-      "actual_source_length_proposed_m": 12.998293214416504,
+      "actual_source_length_m": 12.998293214416504,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -7004,7 +7061,9 @@
       "source_width_range_bu": [
         526.2466888427734,
         526.2466888427734
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "PORTAL_2F_OFFICE:X",
@@ -7027,7 +7086,7 @@
         ]
       ],
       "annotation_length_bu": 70.0,
-      "annotation_length_proposed_m": 1.729,
+      "annotation_length_m": 1.729,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -7036,7 +7095,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -7110,7 +7169,7 @@
             }
           ],
           "length_bu": 70.8660888671875,
-          "length_proposed_m": 1.7503923950195313,
+          "length_m": 1.7503923950195313,
           "side_orientation_matches": true
         },
         {
@@ -7120,7 +7179,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -7194,7 +7253,7 @@
             }
           ],
           "length_bu": 70.8660888671875,
-          "length_proposed_m": 1.7503923950195313,
+          "length_m": 1.7503923950195313,
           "side_orientation_matches": true
         },
         {
@@ -7204,7 +7263,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -7278,19 +7337,19 @@
             }
           ],
           "length_bu": 70.8660888671875,
-          "length_proposed_m": 1.7503923950195313,
+          "length_m": 1.7503923950195313,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 70.8660888671875,
-      "actual_source_length_proposed_m": 1.7503923950195313,
+      "actual_source_length_m": 1.7503923950195313,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -7336,7 +7395,9 @@
       "source_width_range_bu": [
         70.8660888671875,
         70.8660888671875
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_CLASS101:X",
@@ -7359,7 +7420,7 @@
         ]
       ],
       "annotation_length_bu": 256.0,
-      "annotation_length_proposed_m": 6.3232,
+      "annotation_length_m": 6.3232,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -7368,7 +7429,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -7442,7 +7503,7 @@
             }
           ],
           "length_bu": 255.9055633544922,
-          "length_proposed_m": 6.320867414855957,
+          "length_m": 6.320867414855957,
           "side_orientation_matches": true
         },
         {
@@ -7452,7 +7513,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             null,
             {
@@ -7492,7 +7553,7 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         },
         {
@@ -7502,7 +7563,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             null,
             {
@@ -7542,19 +7603,19 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         }
       ],
       "actual_source_length_bu": 255.9055633544922,
-      "actual_source_length_proposed_m": 6.320867414855957,
+      "actual_source_length_m": 6.320867414855957,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "INCOMPLETE_HEIGHT_PROFILE"
@@ -7601,7 +7662,9 @@
       "source_width_range_bu": [
         255.9055633544922,
         255.9055633544922
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_CLASS101:Y",
@@ -7624,7 +7687,7 @@
         ]
       ],
       "annotation_length_bu": 390.0,
-      "annotation_length_proposed_m": 9.633,
+      "annotation_length_m": 9.633,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -7633,7 +7696,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -7707,7 +7770,7 @@
             }
           ],
           "length_bu": 391.73223876953125,
-          "length_proposed_m": 9.675786297607422,
+          "length_m": 9.675786297607422,
           "side_orientation_matches": true
         },
         {
@@ -7717,7 +7780,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "Plane.020",
@@ -7796,7 +7859,7 @@
             }
           ],
           "length_bu": 212.12106323242406,
-          "length_proposed_m": 5.2393902618408745,
+          "length_m": 5.2393902618408745,
           "side_orientation_matches": true
         },
         {
@@ -7806,7 +7869,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -7880,19 +7943,19 @@
             }
           ],
           "length_bu": 391.73223876953125,
-          "length_proposed_m": 9.675786297607422,
+          "length_m": 9.675786297607422,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 391.73223876953125,
-      "actual_source_length_proposed_m": 9.675786297607422,
+      "actual_source_length_m": 9.675786297607422,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "WIDTH_VARIES_WITH_HEIGHT"
@@ -7939,7 +8002,9 @@
       "source_width_range_bu": [
         212.12106323242406,
         391.73223876953125
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_CLASS102:X",
@@ -7962,7 +8027,7 @@
         ]
       ],
       "annotation_length_bu": 256.0,
-      "annotation_length_proposed_m": 6.3232,
+      "annotation_length_m": 6.3232,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -7971,7 +8036,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -8045,7 +8110,7 @@
             }
           ],
           "length_bu": 255.90557861328125,
-          "length_proposed_m": 6.3208677917480465,
+          "length_m": 6.3208677917480465,
           "side_orientation_matches": true
         },
         {
@@ -8055,7 +8120,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             null,
             {
@@ -8095,7 +8160,7 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         },
         {
@@ -8105,7 +8170,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             null,
             {
@@ -8145,19 +8210,19 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         }
       ],
       "actual_source_length_bu": 255.90557861328125,
-      "actual_source_length_proposed_m": 6.3208677917480465,
+      "actual_source_length_m": 6.3208677917480465,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "INCOMPLETE_HEIGHT_PROFILE"
@@ -8204,7 +8269,9 @@
       "source_width_range_bu": [
         255.90557861328125,
         255.90557861328125
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_CLASS102:Y",
@@ -8227,7 +8294,7 @@
         ]
       ],
       "annotation_length_bu": 390.0,
-      "annotation_length_proposed_m": 9.633,
+      "annotation_length_m": 9.633,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -8236,7 +8303,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -8310,7 +8377,7 @@
             }
           ],
           "length_bu": 391.73236083984375,
-          "length_proposed_m": 9.67578931274414,
+          "length_m": 9.67578931274414,
           "side_orientation_matches": true
         },
         {
@@ -8320,7 +8387,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "Plane.027",
@@ -8399,7 +8466,7 @@
             }
           ],
           "length_bu": 219.76049804687713,
-          "length_proposed_m": 5.428084301757865,
+          "length_m": 5.428084301757865,
           "side_orientation_matches": true
         },
         {
@@ -8409,7 +8476,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -8483,19 +8550,19 @@
             }
           ],
           "length_bu": 391.73236083984375,
-          "length_proposed_m": 9.67578931274414,
+          "length_m": 9.67578931274414,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 391.73236083984375,
-      "actual_source_length_proposed_m": 9.67578931274414,
+      "actual_source_length_m": 9.67578931274414,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "WIDTH_VARIES_WITH_HEIGHT"
@@ -8542,7 +8609,9 @@
       "source_width_range_bu": [
         219.76049804687713,
         391.73236083984375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_CORRIDOR_02:X",
@@ -8565,7 +8634,7 @@
         ]
       ],
       "annotation_length_bu": 111.53857421875,
-      "annotation_length_proposed_m": 2.7550027832031247,
+      "annotation_length_m": 2.7550027832031247,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -8574,7 +8643,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0.003",
@@ -8648,7 +8717,7 @@
             }
           ],
           "length_bu": 122.0469970703125,
-          "length_proposed_m": 3.0145608276367186,
+          "length_m": 3.0145608276367186,
           "side_orientation_matches": true
         },
         {
@@ -8658,7 +8727,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             null,
             {
@@ -8698,7 +8767,7 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         },
         {
@@ -8708,7 +8777,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             null,
             {
@@ -8748,19 +8817,19 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         }
       ],
       "actual_source_length_bu": 122.0469970703125,
-      "actual_source_length_proposed_m": 3.0145608276367186,
+      "actual_source_length_m": 3.0145608276367186,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "INCOMPLETE_HEIGHT_PROFILE"
@@ -8807,7 +8876,9 @@
       "source_width_range_bu": [
         122.0469970703125,
         122.0469970703125
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_CORRIDOR_03:Y",
@@ -8830,7 +8901,7 @@
         ]
       ],
       "annotation_length_bu": 117.127685546875,
-      "annotation_length_proposed_m": 2.8930538330078126,
+      "annotation_length_m": 2.8930538330078126,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -8839,7 +8910,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0.003",
@@ -8913,7 +8984,7 @@
             }
           ],
           "length_bu": 122.7030029296875,
-          "length_proposed_m": 3.0307641723632814,
+          "length_m": 3.0307641723632814,
           "side_orientation_matches": true
         },
         {
@@ -8923,7 +8994,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0.003",
@@ -8997,7 +9068,7 @@
             }
           ],
           "length_bu": 126.77856445318376,
-          "length_proposed_m": 3.131430541993639,
+          "length_m": 3.131430541993639,
           "side_orientation_matches": true
         },
         {
@@ -9007,7 +9078,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0.003",
@@ -9081,19 +9152,19 @@
             }
           ],
           "length_bu": 126.77856445318376,
-          "length_proposed_m": 3.131430541993639,
+          "length_m": 3.131430541993639,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 126.77856445318376,
-      "actual_source_length_proposed_m": 3.131430541993639,
+      "actual_source_length_m": 3.131430541993639,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "WIDTH_VARIES_WITH_HEIGHT"
@@ -9140,7 +9211,9 @@
       "source_width_range_bu": [
         122.7030029296875,
         126.77856445318376
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_CORRIDOR_04:X",
@@ -9163,7 +9236,7 @@
         ]
       ],
       "annotation_length_bu": 111.53857421875,
-      "annotation_length_proposed_m": 2.7550027832031247,
+      "annotation_length_m": 2.7550027832031247,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -9172,7 +9245,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -9246,7 +9319,7 @@
             }
           ],
           "length_bu": 145.66741943359375,
-          "length_proposed_m": 3.5979852600097657,
+          "length_m": 3.5979852600097657,
           "side_orientation_matches": true
         },
         {
@@ -9256,7 +9329,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -9296,7 +9369,7 @@
             null
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         },
         {
@@ -9306,7 +9379,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -9346,19 +9419,19 @@
             null
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         }
       ],
       "actual_source_length_bu": 145.66741943359375,
-      "actual_source_length_proposed_m": 3.5979852600097657,
+      "actual_source_length_m": 3.5979852600097657,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "INCOMPLETE_HEIGHT_PROFILE"
@@ -9405,7 +9478,9 @@
       "source_width_range_bu": [
         145.66741943359375,
         145.66741943359375
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_OFFICE:X",
@@ -9428,7 +9503,7 @@
         ]
       ],
       "annotation_length_bu": 350.0,
-      "annotation_length_proposed_m": 8.645,
+      "annotation_length_m": 8.645,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -9437,7 +9512,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -9516,7 +9591,7 @@
             }
           ],
           "length_bu": 331.86230468752245,
-          "length_proposed_m": 8.196998925781804,
+          "length_m": 8.196998925781804,
           "side_orientation_matches": false
         },
         {
@@ -9526,7 +9601,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -9605,7 +9680,7 @@
             }
           ],
           "length_bu": 336.1016845703125,
-          "length_proposed_m": 8.301711608886718,
+          "length_m": 8.301711608886718,
           "side_orientation_matches": true
         },
         {
@@ -9615,7 +9690,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -9655,19 +9730,19 @@
             null
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         }
       ],
       "actual_source_length_bu": 333.9819946289175,
-      "actual_source_length_proposed_m": 8.249355267334263,
+      "actual_source_length_m": 8.249355267334263,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "INCOMPLETE_HEIGHT_PROFILE",
@@ -9716,7 +9791,9 @@
       "source_width_range_bu": [
         331.86230468752245,
         336.1016845703125
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_1F_OFFICE:Y",
@@ -9739,7 +9816,7 @@
         ]
       ],
       "annotation_length_bu": 600.0,
-      "annotation_length_proposed_m": 14.82,
+      "annotation_length_m": 14.82,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -9748,7 +9825,7 @@
             40.07884979248047
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -9822,7 +9899,7 @@
             }
           ],
           "length_bu": 307.8739013671875,
-          "length_proposed_m": 7.604485363769531,
+          "length_m": 7.604485363769531,
           "side_orientation_matches": true
         },
         {
@@ -9832,7 +9909,7 @@
             60.07884979248047
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -9906,7 +9983,7 @@
             }
           ],
           "length_bu": 307.8739013671875,
-          "length_proposed_m": 7.604485363769531,
+          "length_m": 7.604485363769531,
           "side_orientation_matches": true
         },
         {
@@ -9916,7 +9993,7 @@
             80.07884979248047
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -9990,19 +10067,19 @@
             }
           ],
           "length_bu": 307.8739013671875,
-          "length_proposed_m": 7.604485363769531,
+          "length_m": 7.604485363769531,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 307.8739013671875,
-      "actual_source_length_proposed_m": 7.604485363769531,
+      "actual_source_length_m": 7.604485363769531,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -10048,7 +10125,9 @@
       "source_width_range_bu": [
         307.8739013671875,
         307.8739013671875
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_2F_CLASS201:X",
@@ -10071,7 +10150,7 @@
         ]
       ],
       "annotation_length_bu": 256.0,
-      "annotation_length_proposed_m": 6.3232,
+      "annotation_length_m": 6.3232,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -10080,7 +10159,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -10154,7 +10233,7 @@
             }
           ],
           "length_bu": 255.90554809570312,
-          "length_proposed_m": 6.320867037963867,
+          "length_m": 6.320867037963867,
           "side_orientation_matches": true
         },
         {
@@ -10164,7 +10243,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             null,
             {
@@ -10204,7 +10283,7 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         },
         {
@@ -10214,7 +10293,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             null,
             {
@@ -10254,19 +10333,19 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         }
       ],
       "actual_source_length_bu": 255.90554809570312,
-      "actual_source_length_proposed_m": 6.320867037963867,
+      "actual_source_length_m": 6.320867037963867,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "INCOMPLETE_HEIGHT_PROFILE"
@@ -10313,7 +10392,9 @@
       "source_width_range_bu": [
         255.90554809570312,
         255.90554809570312
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_2F_CLASS201:Y",
@@ -10336,7 +10417,7 @@
         ]
       ],
       "annotation_length_bu": 390.0,
-      "annotation_length_proposed_m": 9.633,
+      "annotation_length_m": 9.633,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -10345,7 +10426,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -10419,7 +10500,7 @@
             }
           ],
           "length_bu": 391.73223876953125,
-          "length_proposed_m": 9.675786297607422,
+          "length_m": 9.675786297607422,
           "side_orientation_matches": true
         },
         {
@@ -10429,7 +10510,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -10503,7 +10584,7 @@
             }
           ],
           "length_bu": 391.73223876953125,
-          "length_proposed_m": 9.675786297607422,
+          "length_m": 9.675786297607422,
           "side_orientation_matches": true
         },
         {
@@ -10513,7 +10594,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -10587,19 +10668,19 @@
             }
           ],
           "length_bu": 391.7322540283203,
-          "length_proposed_m": 9.675786674499511,
+          "length_m": 9.675786674499511,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 391.73223876953125,
-      "actual_source_length_proposed_m": 9.675786297607422,
+      "actual_source_length_m": 9.675786297607422,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": true,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED"
       ],
@@ -10645,7 +10726,9 @@
       "source_width_range_bu": [
         391.73223876953125,
         391.7322540283203
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_2F_CORRIDOR_02:X",
@@ -10668,7 +10751,7 @@
         ]
       ],
       "annotation_length_bu": 111.53857421875,
-      "annotation_length_proposed_m": 2.7550027832031247,
+      "annotation_length_m": 2.7550027832031247,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -10677,7 +10760,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0.119",
@@ -10751,7 +10834,7 @@
             }
           ],
           "length_bu": 122.0469970703125,
-          "length_proposed_m": 3.0145608276367186,
+          "length_m": 3.0145608276367186,
           "side_orientation_matches": true
         },
         {
@@ -10761,7 +10844,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             null,
             {
@@ -10801,7 +10884,7 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         },
         {
@@ -10811,7 +10894,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             null,
             {
@@ -10851,19 +10934,19 @@
             }
           ],
           "length_bu": null,
-          "length_proposed_m": null,
+          "length_m": null,
           "side_orientation_matches": false
         }
       ],
       "actual_source_length_bu": 122.0469970703125,
-      "actual_source_length_proposed_m": 3.0145608276367186,
+      "actual_source_length_m": 3.0145608276367186,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "INCOMPLETE_HEIGHT_PROFILE"
@@ -10910,7 +10993,9 @@
       "source_width_range_bu": [
         122.0469970703125,
         122.0469970703125
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_2F_CORRIDOR_03:Y",
@@ -10933,7 +11018,7 @@
         ]
       ],
       "annotation_length_bu": 117.127685546875,
-      "annotation_length_proposed_m": 2.8930538330078126,
+      "annotation_length_m": 2.8930538330078126,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -10942,7 +11027,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0.119",
@@ -11016,7 +11101,7 @@
             }
           ],
           "length_bu": 122.7030029296875,
-          "length_proposed_m": 3.0307641723632814,
+          "length_m": 3.0307641723632814,
           "side_orientation_matches": true
         },
         {
@@ -11026,7 +11111,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0.119",
@@ -11100,7 +11185,7 @@
             }
           ],
           "length_bu": 126.77856445318469,
-          "length_proposed_m": 3.131430541993662,
+          "length_m": 3.131430541993662,
           "side_orientation_matches": true
         },
         {
@@ -11110,7 +11195,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0.119",
@@ -11184,19 +11269,19 @@
             }
           ],
           "length_bu": 126.77856445318469,
-          "length_proposed_m": 3.131430541993662,
+          "length_m": 3.131430541993662,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 126.77856445318469,
-      "actual_source_length_proposed_m": 3.131430541993662,
+      "actual_source_length_m": 3.131430541993662,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "WIDTH_VARIES_WITH_HEIGHT"
@@ -11243,7 +11328,9 @@
       "source_width_range_bu": [
         122.7030029296875,
         126.77856445318469
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_2F_MEETINGROOM:X",
@@ -11266,7 +11353,7 @@
         ]
       ],
       "annotation_length_bu": 260.0,
-      "annotation_length_proposed_m": 6.422,
+      "annotation_length_m": 6.422,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -11275,7 +11362,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "LAS cathedra.001",
@@ -11359,7 +11446,7 @@
             }
           ],
           "length_bu": 10.9124755859375,
-          "length_proposed_m": 0.26953814697265627,
+          "length_m": 0.26953814697265627,
           "side_orientation_matches": true
         },
         {
@@ -11369,7 +11456,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "LAS cathedra.001",
@@ -11453,7 +11540,7 @@
             }
           ],
           "length_bu": 10.9124755859375,
-          "length_proposed_m": 0.26953814697265627,
+          "length_m": 0.26953814697265627,
           "side_orientation_matches": true
         },
         {
@@ -11463,7 +11550,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -11537,19 +11624,19 @@
             }
           ],
           "length_bu": 255.9061279296875,
-          "length_proposed_m": 6.320881359863281,
+          "length_m": 6.320881359863281,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 10.9124755859375,
-      "actual_source_length_proposed_m": 0.26953814697265627,
+      "actual_source_length_m": 0.26953814697265627,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "WIDTH_VARIES_WITH_HEIGHT"
@@ -11596,7 +11683,9 @@
       "source_width_range_bu": [
         10.9124755859375,
         255.9061279296875
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     },
     {
       "measurement_id": "WALK_2F_MEETINGROOM:Y",
@@ -11619,7 +11708,7 @@
         ]
       ],
       "annotation_length_bu": 520.0,
-      "annotation_length_proposed_m": 12.844,
+      "annotation_length_m": 12.844,
       "source_cross_sections": [
         {
           "origin_bu": [
@@ -11628,7 +11717,7 @@
             181.81109619140625
           ],
           "height_above_support_bu": 20.0,
-          "height_above_support_proposed_m": 0.494,
+          "height_above_support_m": 0.494,
           "hits": [
             {
               "object": "group_0",
@@ -11707,7 +11796,7 @@
             }
           ],
           "length_bu": 297.6316375732426,
-          "length_proposed_m": 7.351501448059092,
+          "length_m": 7.351501448059092,
           "side_orientation_matches": true
         },
         {
@@ -11717,7 +11806,7 @@
             201.81109619140625
           ],
           "height_above_support_bu": 40.0,
-          "height_above_support_proposed_m": 0.988,
+          "height_above_support_m": 0.988,
           "hits": [
             {
               "object": "group_0",
@@ -11796,7 +11885,7 @@
             }
           ],
           "length_bu": 297.6316375732426,
-          "length_proposed_m": 7.351501448059092,
+          "length_m": 7.351501448059092,
           "side_orientation_matches": true
         },
         {
@@ -11806,7 +11895,7 @@
             221.81109619140625
           ],
           "height_above_support_bu": 60.0,
-          "height_above_support_proposed_m": 1.482,
+          "height_above_support_m": 1.482,
           "hits": [
             {
               "object": "group_0",
@@ -11880,19 +11969,19 @@
             }
           ],
           "length_bu": 414.6981658935547,
-          "length_proposed_m": 10.2430446975708,
+          "length_m": 10.2430446975708,
           "side_orientation_matches": true
         }
       ],
       "actual_source_length_bu": 297.6316375732426,
-      "actual_source_length_proposed_m": 7.351501448059092,
+      "actual_source_length_m": 7.351501448059092,
       "known_real_length_m": null,
-      "scale_ratio_from_known_dimension": null,
-      "suitable_for_scale_approval": false,
+      "used_to_derive_scale": false,
+      "measurement_role": "SANITY_CHECK_EVIDENCE",
       "human_confirmation_candidate": false,
       "confidence": "SOURCE_GEOMETRY_MEASURED_ROLE_REVIEW",
       "ambiguities": [
-        "NO_INDEPENDENT_REAL_DIMENSION",
+        "BOUNDARY_OWNERSHIP_UNAPPROVED",
         "ANNOTATION_IS_NOT_PHYSICAL_CLEAR_BOUNDARY",
         "SOURCE_HIT_ROLES_AND_TRUE_APERTURE_UNAPPROVED",
         "WIDTH_VARIES_WITH_HEIGHT"
@@ -11939,7 +12028,9 @@
       "source_width_range_bu": [
         297.6316375732426,
         414.6981658935547
-      ]
+      ],
+      "scale_authority": "APPROVED",
+      "metres_per_blender_unit": 0.0247
     }
   ],
   "unresolved_portals": [
@@ -12158,7 +12249,7 @@
       }
     ],
     "vertical_height_bu": 141.73224639892578,
-    "vertical_height_proposed_m": 3.5007864860534665,
+    "vertical_height_m": 3.5007864860534665,
     "authority": "HUMAN_REVIEW"
   },
   "human_anchor_shortlist": [
@@ -12169,13 +12260,13 @@
         35.43310546875,
         35.43310546875
       ],
-      "source_length_proposed_m": [
+      "source_length_m": [
         0.875197705078125,
         0.875197705078125
       ],
-      "reason": "Stable sampled cross-section; confirm physical boundary and real dimension",
+      "reason": "Stable sampled cross-section; confirm physical boundary ownership",
       "source_geometry_measured": true,
-      "suitable_for_scale_approval": false
+      "used_to_derive_scale": false
     },
     {
       "measurement_id": "PORTAL_1F_OFFICE:X",
@@ -12184,13 +12275,13 @@
         70.8660888671875,
         70.8660888671875
       ],
-      "source_length_proposed_m": [
+      "source_length_m": [
         1.7503923950195313,
         1.7503923950195313
       ],
-      "reason": "Stable sampled cross-section; confirm physical boundary and real dimension",
+      "reason": "Stable sampled cross-section; confirm physical boundary ownership",
       "source_geometry_measured": true,
-      "suitable_for_scale_approval": false
+      "used_to_derive_scale": false
     },
     {
       "measurement_id": "WALK_2F_CLASS201:Y",
@@ -12199,13 +12290,13 @@
         391.73223876953125,
         391.7322540283203
       ],
-      "source_length_proposed_m": [
+      "source_length_m": [
         9.675786297607422,
         9.675786674499511
       ],
-      "reason": "Stable sampled cross-section; confirm physical boundary and real dimension",
+      "reason": "Stable sampled cross-section; confirm physical boundary ownership",
       "source_geometry_measured": true,
-      "suitable_for_scale_approval": false
+      "used_to_derive_scale": false
     },
     {
       "measurement_id": "WALK_1F_CORRIDOR_03:Y",
@@ -12214,13 +12305,13 @@
         122.7030029296875,
         126.77856445318376
       ],
-      "source_length_proposed_m": [
+      "source_length_m": [
         3.0307641723632814,
         3.131430541993639
       ],
       "reason": "Variable/incomplete profile; confirm which cited boundaries define actual clear width",
       "source_geometry_measured": true,
-      "suitable_for_scale_approval": false
+      "used_to_derive_scale": false
     },
     {
       "measurement_id": "FLOOR_1F_TO_2F:Z",
@@ -12229,10 +12320,10 @@
         "2F": "WALK_2F_CLASS201"
       },
       "source_length_bu": 141.73224639892578,
-      "source_length_proposed_m": 3.5007864860534665,
-      "reason": "Two horizontal-support candidates; confirm floor ownership and real rise",
+      "source_length_m": 3.5007864860534665,
+      "reason": "Two horizontal-support candidates; floor authority remains separate",
       "source_geometry_measured": true,
-      "suitable_for_scale_approval": false
+      "used_to_derive_scale": false
     }
   ],
   "source_query": {

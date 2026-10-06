@@ -1,13 +1,15 @@
 # School v3 scale-calibration measurements / 尺度量測
 
-Proposed scale: **0.0247 m/BU — HUMAN_REVIEW**. Independent real dimensions: **0**.
-量測不核准尺度；不縮放、不修改／儲存模型、不執行 benchmark。
+Architectural scale: **0.0247 m/BU — APPROVED**.
+Basis: USER_DEFINED_RESEARCH_MODEL_SETTING; measurements: SANITY_CHECK_EVIDENCE.
+尺度由使用者明確核准；mesh 只作合理性檢查，不要求外部尺寸重新推導。
+不縮放、不修改／儲存模型、不執行 benchmark；幾何邊界仍待各自核准。
 Annotation 是標記尺寸；source 是指定高度的最近實體 mesh 兩側截面，
 不自動證明牆、門框、全高度淨寬或通行性。完整端點／source polygons 見 JSON。
 
 ## Measurement table / 自動量測表
 
-| Object / axis | Kind | Floor | Annotation BU | Source BU | Proposed source m | Review |
+| Object / axis | Kind | Floor | Annotation BU | Source BU | Source m | Boundary |
 | --- | --- | --- | ---: | ---: | ---: | --- |
 | PORTAL_1F_AUDITORIUM:Y | DOOR | 1F | 72.000000 | 70.866211 | 1.750395 | HUMAN_REVIEW |
 | PORTAL_1F_AUDITORIUM_OFFICE:Y | DOOR | 1F | 70.000000 | 70.865967 | 1.750389 | HUMAN_REVIEW |
@@ -132,23 +134,23 @@ Annotation 是標記尺寸；source 是指定高度的最近實體 mesh 兩側�
     }
   ],
   "vertical_height_bu": 141.73224639892578,
-  "vertical_height_proposed_m": 3.5007864860534665,
+  "vertical_height_m": 3.5007864860534665,
   "authority": "HUMAN_REVIEW"
 }
 ```
 
-## Human anchor shortlist / 人工確認候選
+## Boundary sanity-check shortlist / 邊界合理性檢查候選
 
-| Anchor | Source BU / range | Proposed m / range | Limitation |
+| Anchor | Source BU / range | m / range | Limitation |
 | --- | --- | --- | --- |
-| PORTAL_1F_RESTAURANT_A:X | [35.43310546875, 35.43310546875] | [0.875197705078125, 0.875197705078125] | Stable sampled cross-section; confirm physical boundary and real dimension |
-| PORTAL_1F_OFFICE:X | [70.8660888671875, 70.8660888671875] | [1.7503923950195313, 1.7503923950195313] | Stable sampled cross-section; confirm physical boundary and real dimension |
-| WALK_2F_CLASS201:Y | [391.73223876953125, 391.7322540283203] | [9.675786297607422, 9.675786674499511] | Stable sampled cross-section; confirm physical boundary and real dimension |
+| PORTAL_1F_RESTAURANT_A:X | [35.43310546875, 35.43310546875] | [0.875197705078125, 0.875197705078125] | Stable sampled cross-section; confirm physical boundary ownership |
+| PORTAL_1F_OFFICE:X | [70.8660888671875, 70.8660888671875] | [1.7503923950195313, 1.7503923950195313] | Stable sampled cross-section; confirm physical boundary ownership |
+| WALK_2F_CLASS201:Y | [391.73223876953125, 391.7322540283203] | [9.675786297607422, 9.675786674499511] | Stable sampled cross-section; confirm physical boundary ownership |
 | WALK_1F_CORRIDOR_03:Y | [122.7030029296875, 126.77856445318376] | [3.0307641723632814, 3.131430541993639] | Variable/incomplete profile; confirm which cited boundaries define actual clear width |
-| FLOOR_1F_TO_2F:Z | 141.73224639892578 | 3.5007864860534665 | Two horizontal-support candidates; confirm floor ownership and real rise |
+| FLOOR_1F_TO_2F:Z | 141.73224639892578 | 3.5007864860534665 | Two horizontal-support candidates; floor authority remains separate |
 
-確認每個 anchor 的實際室內邊界、量測方向，以及獨立實測／設計尺寸。
-同一門型重複樓層或由本比例換算的數值，不算獨立尺度證據。
+若作為正式通行／碰撞資料，仍需確認來源面的角色與室內邊界。
+這與已核准的 research architectural scale 是獨立的 authority。
 缺法向門洞保留 unresolved；不從 bbox 中挑看起來像門寬的一邊。
 
 ## Missing portal orientation / 門洞方向待確認

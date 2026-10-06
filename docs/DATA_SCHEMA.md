@@ -55,7 +55,21 @@ Phase 2 track IDs, stitching/fragment counts, appearance embeddings/labels/quali
 
 The schema deliberately permits an empty `OBSERVED` shell so upstream aggregation can represent a declared interval before evidence is attached. That shell is not valid graph evidence. Projection and graph callers must require the projected endpoint(s) needed by their operation; M8 candidate generation must reject observations without projected endpoints.
 
-All time values are synthetic seconds. World coordinates are right-handed Blender coordinates with Z up and one unit equal to one metre. Camera local axes are +X right, +Y up, -Z forward. Pixels use `0 <= u < width`, `0 <= v < height`; near/far clipping uses axial depth. Schema validation does not certify walkability; deterministic geometry/topology modules must do so.
+All time values are synthetic seconds. World coordinates use Blender's right-handed, Z-up
+convention. Existing domain/calibration, pilot and synthetic artifacts retain their historical
+one-unit/one-metre contract; they are not retroactively rescaled or relabelled. School-v3
+architectural scale is explicitly **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**, **1 BU = 0.0247 m**.
+The physical-unit adapter consistently converts new input coordinates and dimensional settings
+before existing metre-based consumers, retains native BU separately, and provides physical-unit
+reporting. Body dimensions, clearance, portal dimensions, contact tolerance, speed and ADE/FDE
+use the same conversion; no domain schema, Graph/Top-K or metric definition is changed.
+Mesh measurements are sanity evidence; scale approval does not approve floor/stair/collider
+or body-clearance authority. See the [scale review](SCHOOL_V3_SCALE_REVIEW.md).
+The caller must explicitly invoke normalization; existing runner/pilot flows retain their
+legacy contracts until that boundary is integrated, with no automatic conversion.
+Camera local axes are +X right, +Y up, -Z forward. Pixels use `0 <= u < width`, `0 <= v < height`;
+near/far clipping uses axial depth. Schema validation does not certify walkability;
+deterministic geometry/topology modules must do so.
 
 ## 繁體中文
 
@@ -91,4 +105,15 @@ Schema 明確允許空的 `OBSERVED` shell，讓上游 aggregation 表示尚未�
 
 Tracking、stitching、appearance、quality、方向與 video reference 欄位維持 nullable，不代表已實作 Phase 2。Projection quality 是幾何品質指標，不是校準機率。
 
-時間是合成秒數；世界座標為 Blender 右手座標、Z 向上、1 unit = 1 公尺。Camera local 為 +X 右、+Y 上、-Z 前；像素左上為原點、採半開邊界；clip 使用軸向深度。Schema 驗證不等於可行走認證，仍需確定性的幾何與拓撲檢查。
+時間是合成秒數；世界座標採 Blender 右手座標、Z 向上。既有 domain／calibration、pilot
+與 synthetic artifacts 保留歷史 1 unit = 1 公尺契約，不回寫或重新標示舊數值。
+School v3 architectural scale 是明確核准的 **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**、
+**1 BU = 0.0247 m**。Physical-unit adapter 一致換算新 input 座標與 dimensional settings，
+再交給既有 meter-based consumers；原始 BU 另保留並提供 physical-unit reporting。
+人體尺寸、clearance、門洞尺寸、contact tolerance、speed 與 ADE／FDE 共用此換算，
+domain schema、Graph／Top-K 與 metric 定義保持原樣。Mesh 量測只作 sanity evidence；
+尺度核准不批准 floor／stair／collider／body-clearance，見 [scale review](SCHOOL_V3_SCALE_REVIEW.md)。
+Caller 須明確接入 normalization；既有 runner／pilot 在接入前保留 legacy 契約，
+不會因新增 adapter 自動切換單位。
+Camera local 為 +X 右、+Y 上、-Z 前；像素左上為原點、採半開邊界；clip 使用軸向深度。
+Schema 驗證不等於可行走認證，仍需確定性的幾何與拓撲檢查。

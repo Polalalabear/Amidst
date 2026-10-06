@@ -10,9 +10,14 @@
 [完整分類報告](../data/scene_audit/phase1_geometry_authority_20261006/authority.md)
 保留每個 patch 的 source object、位置、檢查及原因；本文件說明使用邊界與重現方式。
 
-最新尺度提案見 [school v3 scale review](SCHOOL_V3_SCALE_REVIEW.md)：新診斷暫採
-0.0247 m/BU，無獨立實測尺寸，仍 HUMAN_REVIEW。本檔下方的 1 m/BU 是舊 checkpoint
-與 replay 契約，不回寫歷史 snapshot，也不核准正式 architectural scale。
+最新尺度決策見 [school v3 scale review](SCHOOL_V3_SCALE_REVIEW.md)：使用者明確核准
+**1 BU = 0.0247 m**、**APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**。Mesh 量測只作
+sanity-check evidence，不再要求外部尺寸重新推導尺度。新 active
+[geometry snapshot](../data/scene_audit/school_v3_approved_scale_20261006/geometry.json) 與
+[geometry/scale validation](../data/scene_audit/school_v3_approved_scale_20261006/geometry_scale_validation.md)
+使用核准比例；floor、stair、volume、body／clearance authority 仍待核准。
+以下分類與舊 snapshot 的 1 m/BU 是 **historical checkpoint evidence**，保留原始 BU
+與 provenance，不回寫為新尺度，也不因此升級 physical / collision validity。
 
 ### Authority 層級
 
@@ -71,13 +76,15 @@ disconnected surface components。最近實際 3D surface gaps 分別為 **4.769
 本輪 export／review 不 save、render 或修改 `.blend`。World-space source vertices 與
 triangle connectivity 原樣保留；geometry provider 不需要 `bpy`。
 
-沿用[既有使用者確認的 1 Blender unit = 1 公尺換算](ISSUES_AND_DECISIONS.md)，不 rescale。
-Sidecar 的 `scale_authority=HUMAN_REVIEW` 表示本輪尚未獨立認證建築實際尺度，
-不撤銷或更改既有計算 convention。Floor planes 仍需核准：WALKABLE Z=25／165
+Historical checkpoint 的 1 Blender unit = 1 公尺與 `scale_authority=HUMAN_REVIEW`
+只描述原輸出，不是目前 architectural scale authority；舊 artifact 與來源 geometry
+均不 rescale。目前核准比例為 0.0247 m/BU。Floor planes 仍需核准：WALKABLE Z=25／165 BU
 與 actual mesh floor candidates 約 20.07885／161.81110 的差異要由人工確認。
 
-從 repository root 執行下方 replay，使用新的暫存輸出目錄；CLI 拒絕覆寫既有 artifact。
-這只重算幾何 review，不執行 benchmark、Graph、ranking 或 GT inference：
+從 repository root 執行下方入口，使用新的暫存輸出目錄；CLI 拒絕覆寫既有 artifact。
+目前 school-v3 config 使用核准尺度，因此會產生新尺度 review；若要 exact replay
+historical checkpoint，須使用該 checkpoint 的 code 與 config，不能用目前設定宣稱
+重現舊 hashes。這只重算幾何 review，不執行 benchmark、Graph、ranking 或 GT inference：
 
 ```sh
 geometry_review_output=$(mktemp -d "${TMPDIR:-/tmp}/amidst-geometry-authority.XXXXXX")
@@ -106,7 +113,7 @@ source、content、authorization scope 不相符即拒絕；approval ID 不是�
 - 審查剩餘牆／窗／門片／裝飾物角色，確認十一個 seed 的幾何邊界及整體牆體完整性。
 - 修正廁所、主入口、2F MEETINGROOM 的 obstacle／PORTAL 衝突；保留 19 個 BOTH roles。
 - 補充或確認 obstacle 的 source-bound 3D height／volume 與 visibility evidence。
-- 核准 floor authority，確認建築實際尺度及 physical clearance／contact policy。
+- 核准 floor authority 與 physical clearance／contact policy；architectural scale 已核准。
 - 提供 stair landing、入口／出口接地、slab opening／clearance 的完整幾何與核准證據。
 
 本輪沒有修改正式 Phase 1 schemas、benchmark semantics、ranking 或 GT isolation，
@@ -114,9 +121,13 @@ source、content、authorization scope 不相符即拒絕；approval ID 不是�
 
 ## English
 
-The pending [school-v3 scale review](SCHOOL_V3_SCALE_REVIEW.md) uses 0.0247 m/BU only
-for new diagnostic measurements. Independent real dimensions are absent; authority remains
-HUMAN_REVIEW. The 1 m/BU values below describe the retained checkpoint/replay contract.
+The [school-v3 scale review](SCHOOL_V3_SCALE_REVIEW.md) records explicit user approval of
+**1 BU = 0.0247 m**, **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**. Mesh measurements are
+sanity-check evidence, with no external-dimension requirement to rederive the declared scale.
+New active geometry and scale validation live in `school_v3_approved_scale_20261006`.
+The classification results and 1 m/BU values below describe historical checkpoint evidence;
+historical BU/provenance are preserved. Floors, stairs, volumes and body/clearance policy
+remain pending, so overall physical/collision validity stays PROVISIONAL.
 
 Branch `phase1/geometry-authority` starts from checkpoint
 `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e`. The
@@ -161,12 +172,16 @@ invented. The scene has stairs and no elevator.
 
 The source SHA and shared replay command above bind this review to `school_v3.blend`.
 Export/review preserves the asset without save or render. Exact world-space vertices and
-triangle connectivity are portable without `bpy`. The existing user-confirmed computational
-conversion, **1 Blender unit = 1 metre**, is preserved. Sidecar scale HUMAN_REVIEW concerns
-independent architectural dimensional certification, not a replacement conversion. Floor
+triangle connectivity are portable without `bpy`. Historical outputs preserve their
+**1 Blender unit = 1 metre** calculation convention and pending-scale status; these are
+not the current authority. New active outputs use approved **0.0247 m/BU** without scaling
+source geometry. Floor
 authority must reconcile WALKABLE Z=25/165 with mesh floor candidates around 20.07885/161.81110.
 
-Replay into a fresh temporary directory creates `authority.json`, `authority.md`,
+The entry point above with the current config produces a new approved-scale review. Exact
+historical replay requires the checkpoint's own code and config; current settings do not
+reproduce old artifact hashes. Replay into a fresh temporary directory creates
+`authority.json`, `authority.md`,
 `geometry.json` and `manifest.json`. The manifest binds input, artifact and code hashes;
 mesh evidence binds both `candidate_content_sha256` and `audit_content_sha256`, and the
 read-only exporter explicitly requires `--audit`. Callers independently verify source SHA;
@@ -176,7 +191,7 @@ geometry, reasons and bindings, excluding temporary paths and execution timing.
 
 Before physical approval, humans must resolve remaining wall/window/panel roles and downgraded
 seeds, confirm geometry completeness, reconcile obstacle/portal conflicts while retaining BOTH
-roles, supply obstacle 3D/visibility evidence, approve floors and architectural scale/contact
+roles, supply obstacle 3D/visibility evidence, approve floors and physical contact/clearance
 policy, and provide stair landing, endpoint, opening and clearance evidence. This work does not
 change formal Phase 1 schemas, benchmark semantics, ranking or GT isolation and does not start
 formal benchmarking, Graph/collision integration, Agent work or Phase 2.

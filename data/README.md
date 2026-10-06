@@ -6,7 +6,32 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
-### 2026-10-06 addendum / Physical authority resolution
+### 2026-10-06 current architectural scale / 目前建築尺度
+
+School-v3 architectural scale is explicitly **APPROVED**, **1 BU = 0.0247 m**, with
+approval basis `USER_DEFINED_RESEARCH_MODEL_SETTING`. The
+[source-bound approval](../configs/architectural_scale_school_v3.json),
+[active physical context](../configs/physical_context_school_v3.json),
+[active geometry](scene_audit/school_v3_approved_scale_20261006/geometry.json) and
+[geometry/scale validation](scene_audit/school_v3_approved_scale_20261006/geometry_scale_validation.md)
+record the declared research-model setting. The
+[measurement table](scene_audit/school_v3_scale_calibration_20261006/measurements.md)
+is sanity-check evidence; no external dimensions are required to rederive scale.
+Source geometry and BU values stay intact. Floor/stair/volume/body-clearance authority
+remain pending independently, and no formal benchmark is started.
+
+目前 school v3 尺度正式核准為 **1 BU = 0.0247 m**；核准依據是使用者明確的研究模型
+設定，mesh 量測只作合理性驗證。新 inputs／physical reporting 必須顯式透過
+`amidst.physical_units` 換算；既有 runner／pilot 不會自動切換，仍沿用原單位契約，
+直到 caller 明確接入 normalization。下面 dated checkpoint／pilot inventory 與
+1 m/unit 記錄保留為 historical；已完成 benchmark artifact 的 BU provenance 不回寫。
+
+Existing runner/pilot flows retain their legacy unit contracts until a caller explicitly
+invokes approved normalization; the adapter does not silently switch them. The dated
+checkpoint/pilot sections and former 1 m/unit convention below are historical evidence,
+not current architectural authority. Completed benchmark artifacts retain BU provenance.
+
+### 2026-10-06 historical addendum / Physical authority resolution
 
 The geometry checkpoint `bb66bb7` is published on `phase1/geometry-authority`, with
 identical origin SHA; new work is isolated on `phase1/physical-authority-resolution`.
@@ -24,7 +49,7 @@ config-driven and unapproved. **Physical authority = PROVISIONAL**; all four for
 gates refuse. No source `.blend`, old dataset, benchmark, ranking or GT contract is changed.
 原 footprint、門洞及樓梯均未任意修改或補造，未開始正式 Case 1–3。
 
-### 2026-10-06 addendum / Geometry authority evidence
+### 2026-10-06 historical addendum / Geometry authority evidence
 
 Branch `phase1/geometry-authority` starts from `51f1ec7`.
 [Authority report](scene_audit/phase1_geometry_authority_20261006/authority.md),
@@ -44,7 +69,7 @@ scope before formal consumption; an empty inspection collider query cannot certi
 GT isolation、benchmark semantics 或開始 Phase 2。完整逐 patch 審查及重現指令見
 [geometry authority contract](../docs/GEOMETRY_AUTHORITY.md)。
 
-### 2026-10-05 addendum / 小型 downstream PILOT
+### 2026-10-05 historical addendum / 小型 downstream PILOT
 
 Second checkpoint `fdf9e7e8f2dc695917ba42094a63cc06ca910963` is published on
 `phase1/pilot-dataset-and-wall-inference`; continuation is only on

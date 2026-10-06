@@ -381,19 +381,21 @@ def _segment_on_mesh(a: Vector, b: Vector, mesh: _Mesh, eps: float) -> bool:
     return covered >= 1 - eps
 
 
-def _ordered_segments(props: Mapping[str, Any]) -> list[list[Vector]] | None:
+def _ordered_segments(props: Mapping[str, Any], native_scale: float) -> list[list[Vector]] | None:
     points = props.get("path_points_m")
     if points is not None:
         raw = [points]
+        point_scale = 1.0  # This explicitly named field is already SI.
     elif props.get("path_segment_points_json") is not None:
         raw = json.loads(props["path_segment_points_json"])
+        point_scale = native_scale  # Source annotation points retain native BU.
     else:
         return None
     if not isinstance(raw, list) or not raw:
         raise ValueError("ordered stair segments must be a nonempty list")
     if any(not isinstance(segment, list) or len(segment) < 2 for segment in raw):
         raise ValueError("each ordered stair segment must have at least two finite points")
-    return [[_point(p, 1.0) for p in segment] for segment in raw]
+    return [[_point(p, point_scale) for p in segment] for segment in raw]
 
 
 def _stair_review(
@@ -517,7 +519,7 @@ def _stair_review(
             reasons.append(role.upper() + "_NOT_CONNECTED_TO_PATH_SURFACE")
         if checks[role + "_walkable_contact"] == "HUMAN_REVIEW":
             reasons.append(role.upper() + "_NOT_CONNECTED_TO_DECLARED_FLOOR_WALKABLE")
-    segments = _ordered_segments(props)
+    segments = _ordered_segments(props, scale)
     checks["z_direction"] = "HUMAN_REVIEW"
     checks["ordered_segment_alignment"] = "HUMAN_REVIEW"
     if segments is not None:

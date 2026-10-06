@@ -4,9 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 from typing import Any
 
+from amidst.architectural_scale import scale_for_scene_config
 from amidst.geometry_authority import _reject_truth, digest, value_digest
 from amidst.physical_authority import (
     PhysicalAuthorityResolution,
@@ -69,6 +71,15 @@ def resolve_physical_authority(
     geometry = geometry_provider.snapshot
     if canonical_geometry_sha256(geometry) != expected_geometry_sha256:
         raise ValueError("physical resolution geometry content binding mismatch")
+    architectural_scale = scale_for_scene_config(scene_config, expected_source_sha256)
+    if (
+        geometry.unit_scale_m != scene_config["meters_per_blender_unit"]
+        or architectural_scale is not None and (
+            geometry.scale_authority != Authority.APPROVED
+            or geometry.scale_approval_id != architectural_scale.approval_id
+        )
+    ):
+        raise ValueError("physical resolution scene/geometry scale authority mismatch")
     policy = PhysicalPolicy.model_validate_json(json.dumps(policy_config))
     obstacles = review_obstacle_portal_conflicts(
         audit,
@@ -221,6 +232,10 @@ def write_report(report: dict[str, Any], path: Path) -> None:
     obstacles, floors = report["obstacles"], report["floors_stairs"]
     volume_count = len(obstacles["obstacle_volume_evidence"])
     wall_count = report["wall_scope"]["count"]
+    mesh_binding = report.get("input_bindings", {}).get("survey", {}).get("path")
+    mesh_reference = "source_mesh_evidence.json" if mesh_binding is None else Path(os.path.relpath(
+        Path(mesh_binding).resolve(), path.parent.resolve(),
+    )).as_posix()
     annotation_pairs = sum(
         row["classification"] == "SEMANTIC_ANNOTATION_DEPTH_OVERLAP_CLEAR_DECLARED_CENTER_PLANE"
         for row in obstacles["pairs"]
@@ -230,7 +245,8 @@ def write_report(report: dict[str, Any], path: Path) -> None:
         "",
         f"Overall authority: **{report['physical_authority']}**。",
         f"Checkpoint `{report['checkpoint_commit']}`；source `{report['source_sha256']}`。",
-        "沿用既有已確認的 1 BU = 1 m 計算換算；本輪未另行核准 physical scale。",
+        f"Architectural scale: **{floors['scale_authority']}**; "
+        f"1 BU = {floors['meters_per_blender_unit']} m。原始幾何座標保留 BU。",
         "Annotation consistency 不等於 physical approval。",
         "",
         "## OBSTACLE ↔ PORTAL",
@@ -345,7 +361,7 @@ def write_report(report: dict[str, Any], path: Path) -> None:
             "",
             "[Strict provider contract](../../../docs/GEOMETRY_PROVIDER.md)；",
             "[authority sidecar](physical_authority.json)；"
-            "[mesh evidence](source_mesh_evidence.json)。",
+            f"[mesh evidence]({mesh_reference})。",
             f"WALL 保留 {wall_count} HIGH_CONFIDENCE provisional evidence，"
             "原 doorway guard 與閾值不變。",
             f"Collision hard-pruning ready: **{report['collision_hard_pruning_ready']}**。",
@@ -427,6 +443,8 @@ def main() -> None:
         checkpoint_commit=args.checkpoint_commit,
         camera_calibration=documents.get("camera_calibration"),
     )
+    if documents["scene_config"].get("architectural_scale_config") is not None:
+        paths["architectural_scale"] = Path(documents["scene_config"]["architectural_scale_config"])
     report["input_bindings"] = {
         name: {"path": str(path), "sha256": digest(path)} for name, path in paths.items()
     }
@@ -436,6 +454,7 @@ def main() -> None:
     outputs[2].write_text(resolution.model_dump_json(indent=2) + "\n")
     code_paths = [
         "src/amidst/physical_resolution.py",
+        "src/amidst/architectural_scale.py",
         "src/amidst/physical_authority.py",
         "src/amidst/physical_obstacle_resolution.py",
         "src/amidst/physical_floor_stair_review.py",

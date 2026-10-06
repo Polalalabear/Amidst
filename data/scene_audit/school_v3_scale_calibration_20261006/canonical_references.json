@@ -51,5 +51,17 @@
       "AREA_1F_ELEVATOR",
       "AREA_2F_ELEVATOR"
     ]
-  }
+  },
+  "active_geometry": {
+    "canonical_path": "data/scene_audit/school_v3_approved_scale_20261006/geometry.json",
+    "file_sha256": "a1423622d23f9267ba345922e96e91e3852e1e16dc7d33ecf5b33405ca131e89",
+    "schema_version": "scene-geometry-v1",
+    "unit_scale_m": 0.0247,
+    "scale_authority": "APPROVED",
+    "scale_approval_id": "HUMAN_PHASE1_ARCHITECTURAL_SCALE_2026_10_06_0247",
+    "physical_authority": "PROVISIONAL",
+    "raw_coordinates": "BLENDER_NATIVE_UNITS",
+    "historical_snapshot_rewritten": false
+  },
+  "architectural_scale_config": "configs/architectural_scale_school_v3.json"
 }

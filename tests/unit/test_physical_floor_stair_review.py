@@ -72,7 +72,12 @@ def _survey(audit: dict[str, Any], patches: list[dict[str, Any]] | None = None) 
 
 
 def _config() -> dict[str, Any]:
-    config = json.loads(Path("configs/scene_validation_school_v3.json").read_text())
+    # These fake source coordinates intentionally exercise the historical 1:1
+    # diagnostic contract; the active school authority is tested separately.
+    config = json.loads(Path("configs/scene_validation_v1.json").read_text())
+    config["floor_planes"] = {
+        "1F": {"height_m": 25.0}, "2F": {"height_m": 165.0},
+    }
     config["floor_stair_review"] = {
         "horizontal_normal_abs_z_min": math.cos(math.radians(10)),
         "horizontal_layer_tolerance_units": 0.25,
@@ -379,3 +384,94 @@ def test_school_v3_source_floor_exceptions_and_missing_landings_are_preserved() 
     assert stairs["B"]["anchors"][1]["actual_horizontal_surface_distance_units"] == pytest.approx(
         3.06109619140625
     )
+
+
+def test_approved_scale_preserves_native_diagnostics_and_dual_unit_measurements() -> None:
+    root = Path("data/scene_audit")
+    audit = json.loads((root / "school_v3_semantic_audit.json").read_text())
+    survey = json.loads(
+        (root / "phase1_physical_authority_20261006/source_mesh_evidence.json").read_text()
+    )
+    identities = {"WALK_1F_OFFICE_THRESHOLD", "WALK_2F_CLASS201_THRESHOLD", "A", "B"}
+    survey["regions"] = [row for row in survey["regions"] if row["region_id"] in identities]
+    legacy_config = _config()
+    active = json.loads(Path("configs/scene_validation_school_v3.json").read_text())
+    active["floor_stair_review"] = legacy_config["floor_stair_review"]
+    before = review_floor_stairs(audit, survey, legacy_config)
+    after = review_floor_stairs(audit, survey, active)
+    assert after["scale_authority"] == "APPROVED"
+    assert after["scale_approval_id"]
+    assert after["floor_authority"] == after["stair_authority"] == "HUMAN_REVIEW"
+    assert after["floor_counts"] == before["floor_counts"]
+    for original, converted in zip(before["floor_reviews"], after["floor_reviews"], strict=True):
+        assert original["status"] == converted["status"]
+        assert original["reason_codes"] == converted["reason_codes"]
+        if original.get("dominant_support") is None:
+            continue
+        assert converted["proposed_plane_z_units"] == original["proposed_plane_z_units"]
+        assert converted["proposed_plane_z_m"] == pytest.approx(
+            original["proposed_plane_z_units"] * 0.0247
+        )
+        old_support, new_support = original["dominant_support"], converted["dominant_support"]
+        assert new_support["representative_z_units"] == old_support["representative_z_units"]
+        assert new_support["representative_z_m"] == pytest.approx(
+            old_support["representative_z_units"] * 0.0247
+        )
+        assert new_support["covered_area_m2"] == pytest.approx(
+            old_support["covered_area_units2"] * 0.0247 ** 2
+        )
+        assert converted["physical_floor_approved"] is False
+    for original, converted in zip(before["stair_reviews"], after["stair_reviews"], strict=True):
+        assert converted["reason_codes"] == [
+            "FLOOR_AUTHORITY_UNAPPROVED"
+            if reason == "FLOOR_AND_SCALE_AUTHORITY_UNAPPROVED" else reason
+            for reason in original["reason_codes"]
+        ]
+        assert not any("SCALE" in reason for reason in converted["reason_codes"])
+        assert converted["physical_stair_approved"] is False
+        old_join = original["landing_join_measurements"][0]
+        new_join = converted["landing_join_measurements"][0]
+        assert new_join["proxy_centerline_join_gap_units"] == (
+            old_join["proxy_centerline_join_gap_units"]
+        )
+        assert new_join["proxy_centerline_join_gap_m"] == pytest.approx(
+            old_join["proxy_centerline_join_gap_units"] * 0.0247
+        )
+
+
+def test_active_scale_cannot_approve_a_different_source() -> None:
+    active = json.loads(Path("configs/scene_validation_school_v3.json").read_text())
+    active["floor_stair_review"] = _config()["floor_stair_review"]
+    audit = _audit()
+    with pytest.raises(ValueError, match="architectural scale source SHA-256 mismatch"):
+        review_floor_stairs(audit, _survey(audit), active)
+
+
+def test_active_diagnostic_thresholds_preserve_native_quantities() -> None:
+    active = json.loads(Path("configs/scene_validation_school_v3.json").read_text())
+    legacy = _config()
+    scale = active["meters_per_blender_unit"]
+    for key, value in legacy["tolerances"].items():
+        if value is None:
+            assert active["tolerances"][key] is None
+        elif key.endswith("_m2"):
+            assert active["tolerances"][key] / scale ** 2 == pytest.approx(value)
+        elif key.endswith("_m"):
+            assert active["tolerances"][key] / scale == pytest.approx(value)
+        else:
+            assert active["tolerances"][key] == value
+    for floor, plane in active["floor_planes"].items():
+        assert plane["height_m"] / scale == pytest.approx(
+            legacy["floor_planes"][floor]["height_m"]
+        )
+        assert plane["height_bu"] == legacy["floor_planes"][floor]["height_m"]
+        assert plane["status"] == "PROPOSED"
+
+
+@pytest.mark.parametrize("height_bu", [False, math.nan, math.inf, 250])
+def test_conflicting_native_floor_height_cannot_enter_report(height_bu: Any) -> None:
+    config = _config()
+    config["floor_planes"]["1F"]["height_bu"] = height_bu
+    audit = _audit()
+    with pytest.raises(ValueError, match="BU/metre representations disagree"):
+        review_floor_stairs(audit, _survey(audit), config)

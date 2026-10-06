@@ -251,3 +251,18 @@ def test_report_counts_follow_measured_subset(tmp_path: Path) -> None:
     assert "1 個 OBSTACLE；其中 0 個 semantic roles APPROVED。" in text
     assert "WALKABLE 超過配置 contact ratio：1 pairs；PORTAL：2 pairs。" in text
     assert "0 個 seeds 降級" in text
+
+
+def test_approved_scale_report_and_canonical_mesh_reference(
+    unauthorised_report: Document, tmp_path: Path,
+) -> None:
+    report = copy.deepcopy(unauthorised_report)
+    report["input_bindings"] = {"meshes": {"path": str(AUTHORITY_DIR / "wall_meshes.json")}}
+    output = tmp_path / "authority.md"
+    write_report(report, output)
+    text = output.read_text()
+    assert "Distances 依 APPROVED architectural scale 0.0247 m/BU" in text
+    assert "1m-per-unit" not in text
+    assert not any("architectural scale" in row for row in report["unresolved_human_decisions"])
+    reference = text.split("[raw exact mesh evidence](", 1)[1].split(")", 1)[0]
+    assert (output.parent / reference).resolve() == (AUTHORITY_DIR / "wall_meshes.json").resolve()
