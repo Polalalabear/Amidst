@@ -4,6 +4,37 @@
 
 ## 繁體中文
 
+### 2026-10-06 — Mitigation checkpoint 與 Projection model preflight / upgrade
+
+Clean `phase1/projection-conditioning-mitigation` HEAD `5f020b075d4a670f60007eab7baeb12055f2f5d9`
+fresh通過1091tests in66.00s、Ruff、mypy74files、diffcheck；push成功，liveoriginSHA一致。
+從它建立 `phase1/projection-model-upgrade`，只在既有managedworktree；並行primaryphysical
+工作未混入。[斷點](PHASE1_MITIGATION_CHECKPOINT.md)保存恢復入口。
+
+先固定measurement/authority preflight，再新增4個additive diagnostic/report scripts及75tests。
+Camera/floor-landmark/WALKABLE/scale/evidencepolicy PROVISIONAL；pixelnoise/caluncertainty MISSING。
+Read-only authority pinnedcdeee3e有0approvedphysicalsurface，不能借用v2或originalsceneauthority。
+復用4existingstreams ×31fixedtreatments=124modelcases，不增render／trajectory／dataset，src/core未改。
+A/B/F保留5,549pointtrials；C exacttime所有合法pairs，不GT選pair、camera、surface、hypothesis。
+Auditorium33/49visibletimestamps可用，eligible33/33；全部既有GAP endpoints無paired evidence。
+Same-evidence paired-plane-mean RMS at±.25px，3fixedseeds pooled0.613887→C0.196418BU，改善68.004%。
+29/31controls改善，cx±.1px兩組校準copies退化113–115%；C並非通用calibrationrobustness。
+62office/corridorbaseline全部COMPLETE3routes/6hypotheses；B/F只引用相同coordinatesmetrics。
+C無GAPreconstructiongain；D/E school UNAVAILABLE_AUTHORITY，5toycontrols只驗unique/all-hit
+與拒絕gates，保留兩個合法surfacehypotheses，GTreference僅freeze後evaluation。
+
+F conditional covariance/use-state sidecar：3863REVIEW/1149USABLE/537ZEROVARIANCE；坐標/evidence
+不變、Graph未consumecovariance。Conditional inclusion5011/5012不是實測95%或full3Dcalibration；
+missingmeasurements與unmodelednormalheight明示。MODEL_UPGRADE_PROMISING，formalCases1–3仍不ready。
+
+GT只在124models/868artifacts凍結後evaluation；3representatives重跑+GTpoison逐byte一致。
+原replaywrapper的Python tuple/list比較假警報已有minimalregression；persistedmodelbytes在修正前後
+124/124一致，原failedtrial保留，不是Projectionbug。14sourcehash/size/mtime、372pureinputhashes、
+4GTdigests保持不變，2charts已visualQA。Ignoredverified_run/保存report、JSON、CSV、uncertainty、
+surfacecontrols、runtime、receipts與verification。Freshfullregression：**1166passed in61.51s,no skips**；
+Ruff、mypy74files及working/stageddiffcheck通過。本機独立commit；不merge、不push新branch、不跑Cases1–3。
+完整原因、same-evidence與availabilitytradeoff、remainingblockers留EXPERIMENT_LOG。
+
 ### 2026-10-06 — Projection checkpoint 與 conditioning mitigation
 
 Clean `phase1/projection-sensitivity` HEAD `b90e81adb3acc1a0c1e599d488f3113f0842cfb4`
@@ -685,6 +716,31 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Mitigation checkpoint and additive Projection model preflight
+
+Published clean5f020b0 mitigation checkpoint with fresh1091tests/66.00s,Ruff,mypy74files,
+diffchecks and matching originSHA. Independentphase1/projection-model-upgrade uses the managed
+worktree;parallelprimaryphysical work remains untouched. Measurement/authority preflight precedes
+implementation:fivebindings/policies PROVISIONAL,two uncertaintymeasurements MISSING,0approved
+physicalsurfaces. Four additive scripts and75tests reuse124cases over4existingstreams;no core,
+Observation/Graph/metric/epsilon/benchmark change or newrender/trajectory.
+
+Auditorium33/49visible timestamps have exact-time pairs;all33eligible accepted. Three-seed
+same-evidence paired-plane mean RMS0.613887→C0.196418BU at±.25px (68.004%).29/31controls improve,
+but cx±.1px copies degrade113–115%. All GAP endpoints lack paired evidence,no C reconstruction
+gain claimed.62baselineoffice/corridor runs COMPLETE3routes/6hypotheses;B/F identical-coordinate
+metrics are references,not uncertainty-aware consumer runs. D/Eschoolunavailable;five synthetic
+controls retain unique/alllegal surfacehits/provenance,not school efficacy or Graphintegration.
+F conditional covariance states distinguish usable/review/zero,but retain allpoints;full3D and
+empirical probability calibration remainUNVALIDATED. MODEL_UPGRADE_PROMISING,formalCases1–3 notready.
+
+All868inference hashes and3representative repeat/GTpoison bytechecks pass;14sourcehash/size/mtime,
+372pureinputs and4GTdigests preserved. Initialreplaywrapper tuple/list falsealarm fixed with a
+canonicalpersisted-hash regression;all124before/aftermodelbytes match. Two charts visually checked;
+ignoredverified_run/containsreport,JSON/CSV,receipts andverification. Freshfullsuite1166passed in61.51s,
+no skips,Ruff,mypy74files,working/stageddiffchecks pass. Independentlocalcommit,no merge,newbranch
+push,formalCases1–3 or dataset expansion. EXPERIMENT_LOG retains conclusions and authority/evidence blockers.
 
 ### 2026-10-06 — Projection checkpoint and conditioning mitigation
 

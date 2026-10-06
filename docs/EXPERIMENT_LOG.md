@@ -488,3 +488,205 @@ mypy74files pass;working/staged diff checks pass. An initial full run caught the
 script still changing during a source-snapshot test (1090passed/1snapshot failure); code
 was frozen and the complete suite rerun successfully. Independent local commit follows;
 no merge or push of the mitigation branch is performed.
+
+
+## 2026-10-06 Projection model upgrade / measurement-authority preflight
+
+Published clean mitigation checkpoint `5f020b075d4a670f60007eab7baeb12055f2f5d9` freshly
+passes1091tests in66.00s,Ruff,mypy74files anddiffcheck. Live origin SHA matches.
+New independent branch `phase1/projection-model-upgrade` starts exactly there.
+
+### Preflight completed before model implementation
+
+Fresh pinned physical-authority snapshot `cdeee3e316e88c87ab63cdcf3acb360485f00dd6` was
+read without merging/importing it. Camera binding, floor/landmark plane, WALKABLE/surface,
+architectural scale and departure/recovery policy are **PROVISIONAL**. Real pixel-noise
+and calibration-uncertainty estimates are **MISSING**. Zero APPROVED physical surfaces;
+48 WALKABLE physical HUMAN_REVIEW, floor/scale approval IDs absent. Office uses derived
+b4d3394 source, so original cd46fa03 authority cannot be borrowed. A reviewed external
+v2 camera calibration is also not a v3 pilot camera approval.
+
+Strict2D audit:office/corridor/classroom have0same-time camera pairs;auditorium has33
+same-target/source/exact-timestamp FRONT+REAR pairs (2.0–6.2s,6.6–8.6s). Synthetic
+exporter samples all cameras inside the same timestamp loop;this is synthetic sync,
+not physical clock authority. Existing auditorium departure9.2/recovery9.6 are single
+REAR observations. No multi-view repair of existing GAP endpoints is promised.
+
+### Predeclared additive controls
+
+Reuse the31treatments/source from mitigation:7noiselevels×3seeds+10calibrationcopies.
+A fixed-plane remains intact;B diagnostic-only preserves points. C uses all exact-time
+pairs, closest-ray least squares with acute angle≥1°,positive/clip checks and explicit
+fail-closed insufficient evidence;no asynchronous interpolation,GT alignment or GT pair
+selection. D/E school surfaces remainUNAVAILABLE_AUTHORITY;separate synthetic approved
+fixtures demonstrate unique/all-hit behavior without school efficacy claims.
+F adds sidecar uncertainty contracts,not Observation/Graph changes:known injected uniform
+pixel/control sigma=halfwidth/√3;calibration common-mode covariance matches the assigned
+synthetic perturbation only. Planar covariance is conditional on exact plane and lacks
+unmeasured landmark-height/plane uncertainty. Tangential coverage must not be called
+full3D calibration. Zero/noise covariance and missing uncertainty remain explicit.
+
+GT is inaccessible to pair/surface/model/hypothesis selection. Freeze every model output
+before evaluation;paired comparison uses exactly the same camera evidence/timestamps,
+with duplicate camera rays not counted as independent fused target points. No epsilon
+change,deletion-based improvement,core model replacement,new render or formalCases1–3.
+Only same-evidence gain plus GT isolation,sufficient authority and acceptable downstream
+availability can yieldMODEL_UPGRADE_VALIDATED;otherwise reportPROMISING orINSUFFICIENT.
+### Frozen results / bounded model comparison
+
+**Classification: MODEL_UPGRADE_PROMISING, not MODEL_UPGRADE_VALIDATED.** The authority
+preflight is still insufficient for formal accuracy claims. This is **PILOT / SYNTHETIC
+SAMPLE** only. There is same-evidence point improvement on eligible auditorium pairs;
+there is no measured improvement to existing GAP reconstruction.
+
+Projection became the priority because S06 and the sensitivity round showed healthy
+Graph/Search termination with inaccurate inverse-projected endpoints. Far-distance/grazing
+ray-plane conditioning and calibration copies amplified noise; no implementation bug was
+found. Conditioning mitigation did not repair coordinates: B was a warning, D was the same
+plane, and C's lower retained RMS discarded evidence. C-standard lost every office recovery
+segment, preventing downstream reconstruction. Model upgrades must preserve evidence counts
+and measure point gains on identical inputs, rather than lower error through endpoint loss.
+
+#### Actual variants and same-evidence comparison
+
+Four existing streams, 31 controls each: **124 frozen model cases**. A/B/F keep all5,549
+observed point trials (179original points repeated under fixed controls), identical A
+coordinates/quality, and unchanged Coverage epsilon0.02BU. A executes62office/corridor
+reconstructions, allCOMPLETE with3routes/6timing hypotheses each. B/F cite those exact-coordinate
+metrics; no uncertainty-aware Graph consumer is claimed. Per-case ADE/FDE/minADE@K/minFDE@K/
+Coverage@K forK1/2/3 are inJSON/CSV. Auditorium/classroom baseline GAP metrics areN/A;
+C/D/E reconstruction metrics areN/A, not fabricated zero or comparison wins.
+
+C closest-ray triangulation accepts33/33eligible auditorium pairs in every treatment:
+33/49visible timestamps (67.35%),66/82camera observations; other three sites have0pairs.
+All legal pairs retain evidence refs, source/target/exact-time/pixels and diagnostic hypothesis
+provenance; deterministic pair IDs do not select a GT-best pair. No asynchronous matching,
+GT alignment, fixed-plane fallback or evidence deletion is counted as a triangulation success.
+Every existing GAP endpoint lacks paired evidence, so C downstream is fail-closed
+NOT_RUN_NO_SYNCHRONIZED_ENDPOINTS. No new Graph projection adapter was introduced.
+
+The comparison baseline is a **predeclared equal mean of the two fixed-plane predictions**,
+using the same33timestamp pairs and both camera observations as C. Thus improvement is beyond
+merely averaging two camera points. Pooled three fixed seeds (repeated trials, not independent
+captures) give:
+
+| Pixel half-width per u/v, px | Same-pair plane mean RMS, BU | C RMS, BU | Reduction |
+| --- | ---: | ---: | ---: |
+| 0 | 0.000603103 | 0.000175249 | 70.94% |
+| 0.001 | 0.00254587 | 0.000809531 | 68.20% |
+| 0.002 | 0.00496549 | 0.00158571 | 68.07% |
+| 0.004 | 0.00985779 | 0.00315219 | 68.02% |
+| 0.01 | 0.0245785 | 0.00786321 | 68.01% |
+| 0.1 | 0.245555 | 0.0785704 | 68.00% |
+| 0.25 | **0.613887** | **0.196418** | **68.004%** |
+
+Seed20261006 at±0.25px:0.590293→0.192536BU (67.383%). All33eligible pairs remain
+available. The joint four-coordinate pixel gain peaks1.016866BU/px over pixel controls;
+its input norm differs from the earlier single-camera2D Jacobian peak12.604BU/px. The
+old worst point at auditoriumt0 has no eligible pair; this experiment does not demonstrate
+its repair or a global conditioning guarantee. Absolute±0.25px C error still exceeds the
+unchanged0.02BU diagnostic tolerance. No formal Coverage improvement is inferred from RMS.
+
+29/31auditorium controls improve; **cx±0.1px common-mode calibration copies degrade**:
+0.0492675→0.105105BU (113.335%worse),0.0489112→0.105350BU (115.389%worse). The equal-plane
+mean cancels part of this particular directional error; C is not universally calibration
+robust. Other copies improve on this cohort: jointfocal±0.1% about75.98–76.08%,cy±0.1px
+82.59–82.64%,pitch±0.01°83.11–83.16%,worldZ±0.1BU82.44%. These are shared parameter
+copies of existing calibrations, not measured independent-camera uncertainty or a diagnosis
+of original calibration error. No GT camera/pair/model selection is performed.
+
+#### Approved surfaces / hypothesis availability
+
+D/E cannot run school inference: approved physical surface count0; WALKABLE roles, WALL
+annotations and HUMAN_REVIEW support geometry are not physical approval. Office's derived
+asset cannot borrow original-scene authority. Read-only cdeee3e receipts bind the preflight;
+parallel physical-authority code/working changes remain outside this branch.
+
+Five separate SYNTHETIC_FIXTURE_ONLY controls reuse approved/source/floor/reference/footprint
+gates. Unique hit1; multiple legal surfaces2hits retained with surface/evidence provenance;
+review-only/wrongsource/wrongreference0hits. Frozen output retains the farther reference
+hypothesis (post-freeze evaluation min-error0BU), without GT choosing a surface. Same approved
+plane versus fixed plane has identical conditioning; there is no measured school accuracy
+advantage or full downstream multi-surface integration. Hypothesis preservation is a contract
+result, not evidence that Graph currently consumes multiple surfaces.
+
+#### Additive uncertainty contract / limits
+
+F emits analytic pixel-Jacobian and calibration-derivative covariance beside the unchanged
+baseline point. Known injected uniform controls use sigma=halfwidth/√3; assigned calibration
+copies use that diagnostic assumption. Source pixel/calibration measurements remain missing.
+Plane/landmark-height uncertainty is unmodeled. Zero covariance isUNAVAILABLE_ZERO_VARIANCE,
+not certainty; absent real sigma isUNMEASURED_ASSUMPTION. Calibration-only copies have rank1,
+pixel controls rank2: these are conditional modeled subspaces, not full3D uncertainty.
+
+Of5,549sidecars:3,863REVIEW_REQUIRED,1,149USABLE_WITH_UNCERTAINTY,537ZERO_VARIANCE.
+Nominal radius≤0.02BU is a fixed **diagnostic** use-state budget, not a new Coverage threshold
+or approved physical tolerance. All observations/points are retained; Graph does not yet
+consume covariance, reweight candidates or reject endpoints. The additive state can express
+usable-but-uncertain versus review/unavailable; downstream policy integration is still needed.
+
+Conditional ellipsoid inclusion5011/5012≈99.980% is explicitly **not empirical95% probability
+calibration**: Gaussian-style χ² ellipsoids tested against bounded controls and three fixed
+seeds are conservative, partial and unmeasured. Maximum unsupported residual0.00178228BU
+is separately reported. Full3D calibration remainsUNVALIDATED. No accuracy gain is claimed
+for F; the improvement is diagnostic uncertainty/provenance, not changed point coordinates.
+
+#### Reproducibility, runtime and preservation
+
+All124cases/868inference artifacts plus surface hypotheses freeze before any GT access;
+GT is then evaluation/debug-only. Three representative office/auditorium/classroom model
+replays and GT poison are byte-identical, including uncertainty and camera-pair hypotheses.
+Runtime inference reads are allowlisted. No GT fits planes/calibration or ranks/selects
+models, cameras, pairs, surfaces, hypotheses or routes. The classification gate separately
+requires same-evidence gain, GT isolation, authority and acceptable downstream availability.
+
+An initial replay harness compared Python tuples with JSON-loaded lists and falsely reported
+a mismatch. The saved model files were already byte-identical. Regression now compares
+canonical persisted model SHA-256; this is a serialization-check fix, not a Projection bug.
+The first run remains preserved; the same bounded controls were rerun inverified_run/, and
+all124original/retry model file bytes match. Final explicit grade gate replay over frozen
+results yieldsPROMISING. No sample or mathematical result changed to make validation pass.
+
+Single-machine combined model+baseline-downstream runtime: median82.23ms/case,
+range62.17–144.14ms. Per-variant overhead was not separately measured; this is not formal
+runtime performance. Fourteen original source/pilot hash/size/mtime receipts,372pure input
+hashes,4GTdigests and868frozen inference hashes are unchanged. Two saved charts were visually
+inspected; all Fsidecars were independently revalidated against their strict additive schema.
+
+#### Artifacts, blockers and next step
+
+Local ignored root:
+`data/pilot/phase1_projection_model_upgrade_20261006/verified_run/`.
+
+- authority_preflight.json / protocol.json / receipts/: predeclared scope and pinned authority.
+- cases/ / replay/ / inference_rows_before_gt.json / inference_freeze_before_gt.json:
+  pure-source model outputs, unchanged baseline Top-K and isolation receipts.
+- upgrade_results.json / machine_summary.json / upgrade_table.csv / report.md:
+  same-evidence point errors, all baseline Kmetrics, availability, uncertainty and limitations.
+- surface_models.json / surface_evaluation.json: separate frozen synthetic hypotheses/evaluation.
+- multiview_error_availability.png / uncertainty_coverage_states.png / visualization_qa.json /
+  verification.json: two inspected charts and preservation receipts.
+
+Reproduce only into a fresh directory containing the sameprotocol/preflight:
+
+```sh
+uv run python scripts/compare_projection_upgrade.py \
+  --mitigation-input data/pilot/phase1_projection_conditioning_mitigation_20261006 \
+  --inventory data/pilot/phase1_projection_sensitivity_20261006/source_inventory.json \
+  --output <fresh-directory-with-protocol-and-preflight>
+uv run python scripts/report_projection_upgrade.py --experiment <fresh-directory>
+```
+
+**Projection remains the bottleneck where pairs are absent, including all existing GAP
+endpoints. Case1–3 readiness remainsNO.** Source-specific camera/floor/landmark/approved
+surfaces and architectural scale/tolerance must be approved; pixel/calibration/clock
+uncertainty must be measured; synchronized departure/recovery evidence and a GT-free
+hypothesis/uncertainty downstream policy must be validated. Multi-view point gains are
+promising synthetic diagnostics, with principal-point degradation and availability limits.
+Do not markMODEL_UPGRADE_VALIDATED until the four completion gates hold. No formal cases,
+core replacement,metric/epsilon change,newdataset/render,merge or checkpoint rewrite.
+
+Final frozen-code regression: **1166 passed in61.51s,no skips**; repositoryRuff and
+mypy74sourcefiles pass. Working/stageddiffchecks and81localdocumentationlinks pass.
+Only this independent branch is committed; checkpoint/origin5f020b0 remain unchanged.
+No merge,newbranch push,formalCases1–3 or dataset expansion.

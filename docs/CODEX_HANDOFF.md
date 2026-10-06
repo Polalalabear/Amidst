@@ -18,26 +18,31 @@
   `phase1/pilot-downstream-reconstruction`，origin SHA一致。Robustness checkpoint為
   `ce2974b25b31a8cb0ec9bc579a84d708d3356bf7`，保留原robustness branch。第四個Projection
   checkpoint `b90e81adb3acc1a0c1e599d488f3113f0842cfb4` 已push且origin SHA一致；
-  本輪只在 `phase1/projection-conditioning-mitigation` 的隔離worktree
+  Mitigation checkpoint `5f020b075d4a670f60007eab7baeb12055f2f5d9` 已push且origin SHA一致；
+  本輪只在 `phase1/projection-model-upgrade` 的隔離worktree
   `/Users/polalabear/.codex/worktrees/pilot-robustness-validation/amidst`；
   並行physical-authority-resolution工作保留於shared checkout，不混入本branch。
   核對HEAD／dirty state與source hash，不merge回checkpoint。恢復入口見
   [第一](PHASE1_CHECKPOINT.md)／[第二](PHASE1_PILOT_CHECKPOINT.md)／
   [第三](PHASE1_DOWNSTREAM_CHECKPOINT.md)／
-  [Projection斷點](PHASE1_PROJECTION_CHECKPOINT.md)。
-- 最新 conditioning mitigation 與歷史結果見 [EXPERIMENT_LOG](EXPERIMENT_LOG.md)。本機 ignored
-  `data/pilot/phase1_projection_conditioning_mitigation_20261006/report.md`／JSON／CSV與三張charts
-  保存620variantrows、310downstream attempts；279COMPLETE／31NOT_RUN。
-  **沒有找到兼顧accuracy與availability的mitigation**：B風險標記不改points，D仍為同一plane，
-  Cstandard拒絕562/5549pointtrials，但office全部31cases喪失rear recovery evidence。
-  所有相同retainedcohort accuracy改善0；較小RMS僅cohort deletion。Cextreme拒絕0也不改善精度。
-  E/F school surfaces沒有approved/source/target-reference authority；五個toycontrols只驗合約。
-  實驗thresholds固定、confidence是nominal0.002px heuristic，classroom即使無flags仍可因
-  ±0.25px偏移0.503BU，不能當precision保證。Projection仍是accuracy bottleneck。
-  1091tests／Ruff／mypy74files通過；3組完整Projection/policy重跑與GTpoison inference bytes一致。
-  規則／Graph／Top-K／metrics／epsilon未改，physical/WALL/body/scale仍PARTIAL/PROVISIONAL。
-  本輪已停止，不merge、不開始正式Cases1–3。續作需核准source-bound floor/landmark/camera/
-  surfaces、量測pixel/calibration uncertainty，並解決高conditioning時的departure/recovery evidence。
+  [Projection斷點](PHASE1_PROJECTION_CHECKPOINT.md)／[Mitigation斷點](PHASE1_MITIGATION_CHECKPOINT.md)。
+- 最新 measurement/authority preflight 與 additive model comparison 見
+  [EXPERIMENT_LOG](EXPERIMENT_LOG.md)，本機ignored
+  `data/pilot/phase1_projection_model_upgrade_20261006/verified_run/report.md`／JSON／CSV／兩張charts。
+  **MODEL_UPGRADE_PROMISING，尚未VALIDATED**：四個既有streams共124cases；A/B/F不改points或刪evidence，
+  C只在auditorium33/49visibletimestamps有exact-time雙視角。±0.25px三fixedseeds的same-evidence
+  paired-plane-mean RMS0.613887→C0.196418BU（68.004%）；29/31controls改善，但cx±0.1px兩組
+  校準copies退化113–115%。所有既有GAP endpoints無paired evidence，C reconstruction仍NOT_RUN。
+  D/E schoolapprovedsurface=0，只跑unique/all-hit syntheticfixture；正確遠端hypothesis保留，未接Graph。
+  F covariance/use-state是conditional-on-plane additive sidecar，不是完整3D或實測probability calibration；
+  source pixel/calibration uncertainty缺失，Graph尚未消費covariance，不用flags刪endpoint。
+  Camera/floor/landmark/WALKABLE/scale/evidencepolicy為PROVISIONAL，noise/calibrationmeasurements為MISSING；
+  pinnedphysicalreceipt cdeee3e只讀不import。62baselineoffice/corridor仍COMPLETE3routes/6hypotheses，
+  B/F引用相同coordinate metrics；3modelrepeat/GTpoison一致。1166tests/Ruff/mypy74files通過。
+  原conditioningrejection喪失office recovery，不能作accuracy改善；歷史620rows保留於EXPERIMENT_LOG。
+  Projection在無合法pairs的GAP endpoints仍是bottleneck，physical/WALL/body仍PARTIAL/PROVISIONAL。
+  已停止，不merge、不跑Cases1–3。下一步需source-boundapprovedbindings/scale、量測uncertainty、
+  synchronizedendpointcoverage與保留hypothesis/uncertainty provenance的downstreampolicy。
 - 通用 M0–M8 deterministic 閉環、camera extraction、producer-neutral aggregation、
   multi-gap Events、benchmark runner／MetricConfig／provider contract、GT isolation、
   fake／boundary／reporting regression 均已實作。Evidence 在 WORK_LOG，合成 fixtures
@@ -140,7 +145,7 @@ Status date: 2026-10-06. The first semantic checkpoint remains on
 `phase1/pilot-dataset-and-wall-inference` with identical origin SHA. The downstream
 checkpoint `51f1ec7c34b8766b44ce2bb2ba98bdb8c9ca321e` is published
 on `phase1/pilot-downstream-reconstruction` with identical live origin SHA. Resume only
-on `phase1/pilot-robustness-validation` in the isolated managed worktree; parallel
+on `phase1/projection-model-upgrade` in the isolated managed worktree; parallel
 geometry-authority files/shared checkout are preserved. Check HEAD/dirty/source identity,
 and do not merge into checkpoints. [First](PHASE1_CHECKPOINT.md),
 [second](PHASE1_PILOT_CHECKPOINT.md) and [third](PHASE1_DOWNSTREAM_CHECKPOINT.md)
@@ -150,23 +155,26 @@ The generic deterministic loop, camera extraction, replaceable observation/aggre
 contracts, multi-gap Events, benchmark runner/MetricConfig, GT isolation, fake/boundary
 validation and reporting are implemented. They do not constitute a formal school benchmark.
 
-Latest experimental branch: `phase1/projection-conditioning-mitigation`, starting exactly
-at published Projection checkpoint `b90e81adb3acc1a0c1e599d488f3113f0842cfb4` in the managed
-isolated worktree. Origin SHA matched;[checkpoint](PHASE1_PROJECTION_CHECKPOINT.md) preserves
-recovery. Parallel physical-authority work and all checkpoint branches are preserved.
-[EXPERIMENT_LOG](EXPERIMENT_LOG.md) records620controlled rows,310downstream attempts,
-279COMPLETE/31NOT_RUN and local ignored report/JSON/CSV/three charts under
- data/pilot/phase1_projection_conditioning_mitigation_20261006/.
-No acceptable accuracy/availability mitigation was found: B labels risk without changing
-points,D is the same source-bound landmark plane,Cstandard discards562/5549pointtrials
-and loses every office recovery segment. Same-retained-cohort accuracy gain is0; apparent
-RMS drops are deletion. E/F school authority is unavailable;five toy controls prove contracts
-only. The nominal0.002px confidence assumption is not an accuracy guarantee. Projection
-remains the bottleneck;formalCases1–3 are not ready.1091tests/Ruff/mypy74files pass;three
-full Projection/policy repeat/GT-poison checks preserve bytes. No core/Graph/Top-K/epsilon/
-benchmark change,new physical dataset/render,merge or formal cases. Source-specific approved
-plane/surface/camera bindings,physical scale and measured uncertainty/evidence policy remain
-needed;WALL/body/collision validity staysPARTIAL/PROVISIONAL.
+Latest branch: `phase1/projection-model-upgrade`, starting exactly at published mitigation
+checkpoint `5f020b075d4a670f60007eab7baeb12055f2f5d9`; origin SHA matched.
+[Mitigation checkpoint](PHASE1_MITIGATION_CHECKPOINT.md) preserves recovery. Parallel physical
+work remains outside this branch; pinned cdeee3e authority receipts are read-only evidence.
+[EXPERIMENT_LOG](EXPERIMENT_LOG.md) and local ignored
+`data/pilot/phase1_projection_model_upgrade_20261006/verified_run/` retain124cases,JSON/CSV,
+report,two inspected charts,source/freeze receipts and three identical model repeat/GT-poison
+checks. **MODEL_UPGRADE_PROMISING, not VALIDATED**: auditorium C uses33/49visible timestamps;
+all33eligible pairs accepted. Same-evidence paired-plane mean RMS0.613887→0.196418BU
+at±0.25px over3fixedseeds (68.004%);29/31controls improve,but cx±0.1px copies worsen113–115%.
+No existing GAP endpoint has paired evidence,so no C reconstruction/metric gain is claimed.
+D/E school surfaces are unavailable;synthetic all-hit hypotheses retain provenance but are
+not integrated with Graph. F is a conditional covariance/use-state sidecar,not full3D or
+empirical calibration;Graph does not yet consume it. A/B/F keep coordinates/evidence unchanged;
+62baselineoffice/corridor runs retain3routes/6hypotheses and COMPLETE.1166tests/Ruff/mypy74files
+pass. Camera/plane/WALKABLE/scale/evidencepolicy remainPROVISIONAL;pixel/calibration estimates
+MISSING. Projection remains the bottleneck at unpaired GAP endpoints;formalCases1–3 notready.
+No epsilon/core/benchmark change,newrender/dataset,merge or formalcases. Approvedsourcebindings,
+measured uncertainty,synchronizedendpointcoverage and provenance-aware downstream policy remain
+needed;physical/WALL/body validity staysPARTIAL/PROVISIONAL.
 
 The current source is the explicitly authorized supplemented school_v3.blend. The
 [post-save report](../data/scene_audit/school_v3_semantic_validation.md) concludes

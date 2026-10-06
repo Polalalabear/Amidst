@@ -6,6 +6,31 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-06 addendum / Projection model preflight and additive upgrade PILOT
+
+Mitigationcheckpoint `5f020b075d4a670f60007eab7baeb12055f2f5d9` published on
+`phase1/projection-conditioning-mitigation`,matchingoriginSHA. Follow-up only on
+`phase1/projection-model-upgrade`;[record](../docs/PHASE1_MITIGATION_CHECKPOINT.md).
+Ignored `data/pilot/phase1_projection_model_upgrade_20261006/verified_run/` holds
+**PILOT / SYNTHETIC SAMPLE**:preflight/protocol,124frozenmodelcases from4existingstreams,
+62unchangedbaselineTop-Kruns,GT-after-freezeevaluation,uncertaintysidecars,syntheticapproved
+surfacehypotheses,JSON/CSV/humanreport,2inspectedcharts,repeat/poison andpreservationreceipts.
+No newBlender render/trajectory/dataset. Private outputs remainlocalignored.
+
+C auditorium pairs33/49visibletimestamps,33/33eligibleaccepted;same-evidence paired-plane-mean
+RMS at±.25px0.613887→0.196418BU over3fixedseeds (68.004%).29/31controls improve,butcx±.1px
+copies degrade113–115%. All GAP endpoints unpaired,no C reconstructiongain. D/E school approved
+surface count0;toy all-hit/provenance results do not grant physicalauthority. Fconditional
+covariance states retain everypoint;full3D/empiricalcalibration UNVALIDATED,Graphnotcovariance-aware.
+Fiveauthorityitems PROVISIONAL,two measurements MISSING. MODEL_UPGRADE_PROMISING,notVALIDATED.
+1166tests/Ruff/mypy74filespass;14sources/372inputs/4GTdigests/868inferencehashes unchanged.
+No formalCases1–3,core/benchmark/epsilonchange,merge orprivateartifactpublication.
+
+先做preflight後才跑additivecontrols，沒有把provisionalgeometry當approved。
+Multi-view可降低現有auditorium合法pairs的point error，但缺同步endpoint、實測uncertainty與authority；
+Projection仍限制目前GAPaccuracy，不能宣稱完整closed-loopaccuracy已改善。詳見
+[Experiment log](../docs/EXPERIMENT_LOG.md)。原wrappertrial保留，verified_run是完成驗證的輸出。
+
 ### 2026-10-06 addendum / Projection conditioning mitigation PILOT
 
 Projection checkpoint `b90e81adb3acc1a0c1e599d488f3113f0842cfb4` is published on
