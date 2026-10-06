@@ -277,3 +277,214 @@ tracked; private raw pilot inputs, GT, charts and inference artifacts remain ign
 Fresh final regression: **998 passed in61.60s, no skips**, repository Ruff passed,
 `uv run mypy` passed for74 source files. Final diff and local commit verification are
 recorded in WORK_LOG; no push or merge is performed for this experiment.
+
+
+## 2026-10-06 Projection conditioning mitigation / 預先宣告
+
+Checkpoint `b90e81adb3acc1a0c1e599d488f3113f0842cfb4` on
+`phase1/projection-sensitivity` is clean and freshly passes998tests in63.54s, Ruff,
+mypy74files and diff check. It is pushed; live origin SHA is identical. New independent
+branch `phase1/projection-conditioning-mitigation` starts exactly there. Parallel
+physical-authority work in the primary checkout remains untouched.
+
+Projection is the priority because the earlier noise sweep retained healthy Top-K/search
+but lost accuracy: peakgain12.604BU/px, remote/grazing geometry, tiny seed-dependent
+Coverage boundaries, and consistent baseline numerical checks. GAP length was not
+independently controlled. This round does not modify benchmark semantics/Graph/Top-K,
+raise Coverage epsilon, change target-reference semantics or select using GT.
+
+### Predeclared controls and authority
+
+- Reuse noise half-widths0/0.001/0.002/0.004/0.01/0.1/0.25px, seeds20261006/42/20261007,
+  original office/corridor downstream trajectories and auditorium/classroom visible samples.
+- Calibration copies: jointfx/fy±0.1%,cx/cy±0.1px,pitch±0.01°,worldZ±0.1BU.
+- A: existing fixed landmark-plane baseline.
+- B: confidence labels only; identical projected positions/quality and downstream inputs.
+- C-standard: reject if Jacobian maxgain>10BU/px OR normalized incidence<0.1.
+  C-extreme-only: gain>20BU/px OR incidence<0.05. Boundary comparisons are explicit.
+- B/C review if maxgain>5BU/px OR incidence<0.2. Confidence is the heuristic
+  min(1,incidence/0.2)/(1+(gain×0.002px/0.02BU)^2), not a measured probability.
+  The0.002px uncertainty radius and0.02BU point budget are synthetic diagnostic assumptions;
+  thresholds are fixed before GT evaluation, not an approved physical tolerance.
+- D: exact source/floor/zone/landmark binding with local independent mesh-probe anchor.
+  It represents the same horizontal landmark plane; it is expected to preserve geometry.
+  Body-landmark pixels cannot be rebound directly to a floor/footpoint surface.
+- E/F school surface intersection/multiple legitimate surfaces: UNAVAILABLE_AUTHORITY.
+  Separate committed provider snapshot `bb66bb74a4a76430f6fa8f79672345385a79e3f0`
+  has48WALKABLE surfaces but0physicalAPPROVED surfaces; floor/scale remainHUMAN_REVIEW.
+  That source snapshot also differs from the office derived asset. Do not import unrelated
+  dirty authority work or promote REVIEW mesh. Any E/F toy controls are separately labeled
+  SYNTHETIC_FIXTURE_ONLY and are not school accuracy improvement evidence.
+
+Projection rejection is an availability decision, not camera occlusion. Keep original2D
+observations, rejection reasons and diagnostics; the downstream adapter uses null
+GEOMETRY_UNCERTAIN availability gaps, without fabricating pixels or endpoints. Report
+original observation recall, retained-cohort error, paired baseline error, endpoint/gap-window
+changes and downstream completion. Error reductions from deleting bad samples must be
+explicitly separated from improvements on the same evidence. Runtime costs are diagnostic
+single-machine measurements, not a deployment benchmark.
+
+All inference/projection artifacts are frozen before GT evaluation. Repeat/poison checks
+must preserve inference bytes. Physical validity remainsPARTIAL/PROVISIONAL. Final results,
+limits and next steps will follow this predeclared section after the bounded comparison.
+
+
+### Mitigation results / 受控比較結果
+
+**結論：未找到可接受的 accepted-point accuracy mitigation。** B 是可用的
+conditioning risk diagnostic，保留 evidence，但不修正 coordinates。C 只拒絕高風險
+points；D 強化 source／landmark／local binding 檢查，實際仍是相同平面。
+Projection 仍是這些 pilot 的主要 accuracy bottleneck，正式 Cases1–3 未準備完成。
+
+31 treatments/source = seven noise levels × three fixed seeds + ten calibration copies；
+four existing streams × five variants = **620 rows**。只 office/corridor 做 downstream，
+共 **310 attempts：279 COMPLETE / 31 NOT_RUN**；其餘 auditorium/classroom101
+只做 point diagnostic，不列為 downstream failure。179 original visible samples
+重複形成5,549 point trials/variant；不是5,549個獨立 physical observations。
+
+| Variant | Accepted / original trials | LOW_CONFIDENCE | Downstream COMPLETE / attempts | Same-retained-cohort RMS gain |
+| --- | ---: | ---: | ---: | ---: |
+| A baseline | 5549/5549 | 0, policy inactive | 62/62 | 0 BU |
+| B confidence | 5549/5549 | 3999 | 62/62 | 0 BU |
+| C standard | 4987/5549 | 3999 including rejected | 31/62 | 0 BU |
+| C extreme-only | 5549/5549 | 3999 | 62/62 | 0 BU |
+| D local binding | 5549/5549 | 0, policy inactive | 62/62 | 0 BU |
+| E approved school surface | UNAVAILABLE_AUTHORITY | N/A | NOT_RUN | N/A |
+| F legal school multi-surface | UNAVAILABLE_AUTHORITY | N/A | NOT_RUN | N/A |
+
+B and D match A's **entire FrameSampleDataset** in all124 source/treatment groups:
+positions, service quality, provenance, raw UV/GAP and identities. C's accepted rows
+also exactly match the original points. Scores are kept outside existing projection_quality,
+Graph/ranking and reconstruction. No implementation/coordinate/plane-binding bug was
+found within the tested contracts; no core fix was made.
+
+#### Accuracy versus evidence loss
+
+C-standard rejects **562/5549 =10.13%** point trials. Office loses5/26 visible points
+in every treatment: all rear recovery frames45–49/t9.0–9.8 are unavailable. Remaining
+21/26 points =80.77% recall, but the closing endpoint is gone, so **31/31 office attempts
+stop before search** with INSUFFICIENT_PROJECTED_ENDPOINT_EVIDENCE. Metrics remain null,
+not zero or Coverage=false. Corridor loses no points and remains31/31 COMPLETE.
+Auditorium rejects13–14/82 points per treatment; classroom rejects none.
+
+Representative office ±0.25px/seed20261006:
+
+| Quantity | A baseline | C standard |
+| --- | ---: | ---: |
+| Retained points | 26/26 | 21/26 |
+| Displayed cohort point RMS BU | 1.267219729 | 1.140864389 |
+| Baseline on the identical retained cohort BU | 1.267219729 | 1.140864389 |
+| Paired accuracy improvement | 0% | 0% |
+| Maximum retained point error BU | 2.549003131 | 1.975700058 |
+| GAP ADE/FDE BU | 1.439140813 / 2.549003131 | N/A |
+| Coverage@1/2/3 | F/F/F | N/A |
+| Top-K / termination | 3 routes / 6 hypotheses / COMPLETE | Search NOT_RUN |
+
+The approximately10% displayed RMS drop is **cohort deletion**, not a corrected
+projection. Across all fixed treatments pooled RMS drops0.546492→0.477400BU with
+C-standard, while its same-cohort baseline is0.477400BU: paired gain remains0.
+C-extreme-only rejects0 points, preserving availability and unchanged noise failures;
+zero rejection does not demonstrate an accuracy solution.
+
+A/B/D/C-extreme all have25/62 computed Coverage@1/2/3 true at unchanged ADE<0.02BU;
+C-standard has14/31 true among available corridor reconstructions. The latter is a
+different set of cases, not better coverage of the original62 attempts. Every completed
+run retains3candidate routes/6timed hypotheses. GT is never used to rank/select them.
+
+#### Conditioning policy applicability
+
+The predeclared REVIEW region is gain>5BU/px OR incidence<0.2 (grazing<11.537°).
+Standard rejection uses gain>10 OR incidence<0.1 (grazing<5.739°); extreme-only uses
+20/0.05 (grazing<2.866°). Equality remains accepted. They are **experimental policies**,
+not approved compulsory thresholds, world tolerances or GT-optimized cutoffs.
+
+B flags3999/5549 trials (72.07%): every office/corridor/auditorium point in this matrix,
+zero classroom points. The fixed nominal0.002px uncertainty radius is conditional and
+unmeasured. Classroom ±0.25px reaches maxerror0.502557BU across three seeds despite
+zero geometry flags. A CONDITIONED label therefore does not certify accuracy under
+larger pixel/calibration error. Real noise/calibration uncertainty must be measured and
+propagated before treating confidence as an acceptance guarantee.
+
+Saved conditioning per observed candidate includes Euclidean camera-point/intersection
+distance, axial projected depth, off-axis/ray-normal/grazing angles, signed ray-plane
+denominator, normalized incidence,1/incidence indicator, analyticJacobian/SVD gain,
+service quality and a separate nonprobabilistic score. Rejected diagnostic candidates
+are kept for inspection; they are not emitted as reliable points to Graph consumers.
+
+#### Plane / approved surface controls
+
+D verifies independent source SHA, site/floor/zone, mesh-probe anchor and
+physical_floor_z + foot_clearance + landmark_offset. Reanchoring along that same
+horizontal landmark plane leaves the intersection and Jacobian unchanged. Direct
+substitution of foot/floor plane for body-landmark pixels is refused; it would change
+reference semantics rather than repair conditioning. No plane is fitted to GT.
+
+Read-only pinned geometry receipt (authority_preflight.json) confirms48WALKABLE surfaces,
+all physicalHUMAN_REVIEW,0approved; floors/scaleHUMAN_REVIEW,physical_complete=false.
+Original-school provider SHA differs from the derived office source. The provider and
+unrelated dirty physical-authority branch are not imported/merged into this experiment.
+
+E/F have **no school accuracy result**. Five separate SYNTHETIC_FIXTURE_ONLY controls
+exercise authority/source/floor/target-reference/footprint gates: unique surface1hit,
+multiple legal surfaces2hits both retained,review-only/wrongsource/wrongreference0hits.
+Stable surface-ID ordering is not GT/nearest selection. These tests demonstrate contracts,
+not school surface authority, a physical dataset or downstream multi-surface integration.
+
+#### Calibration / runtime / stability
+
+All ten calibration copies leave source assets unchanged. Same-cohort accuracy gain is
+0 for every mitigation; C's smaller retained errors are again deletion. Pooled A point RMS
+is about1.26–1.27BU for jointfocal±0.1%,0.639–0.642BU for cy±0.1px,0.777–0.781BU for
+pitch±0.01°,0.709–0.710BU for worldZ±0.1BU;cx±0.1px about0.0794–0.0798BU.
+These repeated synthetic copies do not measure real calibration uncertainty.
+
+Single-machine diagnostic shared-cost accounting: office median Projection stage
+A13.70ms/B20.50ms/C-standard20.09ms/D13.40ms. Confidence diagnostics add about6.8ms
+per office case in this accounting; IQR bands describe fixed treatments, not confidence
+intervals. C downstream can run faster because its office search is skipped, not because
+it reconstructs more efficiently. No deployment/runtime benchmark claim is made.
+
+All620 variants and248 conditioning/reference files are frozen **before any GT access**.
+All runtime inference reads are allowlisted. Three representative full Projection/policy/
+Graph runs (including a rejected endpoint case) replay and pass GT-poison byte equality;
+only evaluation can change. Source verification preserves14 checkpoint file hashes/size/mtime,
+12strict2D/context/independent-metadata files,4123frozen inference artifacts and four GTdigests.
+Three charts are visually inspected; raw2D evidence and rejected reasons remain available.
+
+#### Artifacts / next steps
+
+Local ignored **PILOT / SYNTHETIC SAMPLE** root:
+`data/pilot/phase1_projection_conditioning_mitigation_20261006/`.
+
+- protocol.json / authority_preflight.json / receipts/: predeclared controls and independent bindings.
+- cases/: original2D inputs, conditioning, A reference, policy decisions, frozen outputs and metrics.
+- mitigation_results.json / summarized_comparison.json / mitigation_table.csv / report.md:
+  all controlled point errors,ADE/FDE/minima/Coverage,rejection,availability,termination and runtime.
+- noise_error_availability.png / downstream_availability.png / diagnostic_runtime.png:
+  three inspected charts; prior layout retained inqa_before_layout/, measured results unchanged.
+- synthetic_surface_controls.json / projection_freeze_before_gt.json /
+  visualization_qa.json / verification.json: explicitly scoped control and isolation evidence.
+
+Reproduce using the existing sensitivity inventory and a fresh directory containing the
+same predeclared protocol (do not overwrite frozen artifacts):
+
+```sh
+uv run python scripts/compare_projection_mitigations.py \
+  --inventory data/pilot/phase1_projection_sensitivity_20261006/source_inventory.json \
+  --output <fresh-directory-with-protocol>
+uv run python scripts/report_projection_mitigations.py --experiment <fresh-directory>
+```
+
+**Readiness remains NO.** Before formal Cases1–3: establish source-specific approved floor/
+landmark/camera and surface bindings, architectural scale/tolerance, measured pixel and
+calibration uncertainty, and an evidence policy that preserves or replaces missing departure/
+recovery evidence. Review eligible camera geometry, appropriate landmarks and uncertainty
+propagation; source-bound multi-view/multi-surface hypotheses need an approved additive
+contract. This round does not implement those future strategies, tune epsilon or start
+formal cases. WALL/body/collision validity remainsPARTIAL/PROVISIONAL.
+
+Final frozen-code regression: **1091 passed in62.95s,no skips**, repository Ruff and
+mypy74files pass;working/staged diff checks pass. An initial full run caught the report
+script still changing during a source-snapshot test (1090passed/1snapshot failure); code
+was frozen and the complete suite rerun successfully. Independent local commit follows;
+no merge or push of the mitigation branch is performed.

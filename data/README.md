@@ -6,6 +6,29 @@ Snapshot date: **2026-10-01**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-06 addendum / Projection conditioning mitigation PILOT
+
+Projection checkpoint `b90e81adb3acc1a0c1e599d488f3113f0842cfb4` is published on
+`phase1/projection-sensitivity`,live origin SHA identical. Independent follow-up branch
+`phase1/projection-conditioning-mitigation` preserves it;[record](../docs/PHASE1_PROJECTION_CHECKPOINT.md).
+Ignored `data/pilot/phase1_projection_conditioning_mitigation_20261006/` contains
+**PILOT / SYNTHETIC SAMPLE**:620controlled rows from four existing streams,310office/corridor
+inference attempts,source-bound local plane receipts,conditioning/decisions/preserved2D,
+frozen inference,GT-after-freeze evaluation,JSON/CSV/human report,three inspected charts,
+authority preflight and five separate synthetic E/F surface contracts. No new render/trajectory.
+
+A/B/D projection datasets match;C retainedpoints remainunchanged. Standard rejection discards
+562/5549pointtrials and every office recovery segment,so31attempts areNOT_RUN;279COMPLETE
+runs retain3routes/6hypotheses. Paired accuracy gain0;smaller retainedRMS is cohort deletion.
+E/F school authority unavailable;physical/WALL/body/scale remainPARTIAL/PROVISIONAL.
+Nominal confidence is not a guarantee under realnoise/calibration error.1091tests/Ruff/mypy
+pass;threefullProjection/policy repeat/GT-poison checks preserve inference. No formalCases1–3,
+benchmark/metric/epsilon changes,merge or publication of private GT/outputs.
+
+本輪找出可用risklabel，尚未找到accuracy與evidence availability都合格的mitigation。
+所有outputs本機ignored且標示PILOT；projection拒絕不是physical occlusion，原始2D保留。
+Checkpoint已push，新branch只localcommit；來源／舊pilot／physical-authority並行工作均保留。
+
 ### 2026-10-06 addendum / Projection sensitivity PILOT
 
 Independent branch `phase1/projection-sensitivity` starts at robustness checkpoint

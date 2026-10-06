@@ -4,6 +4,39 @@
 
 ## 繁體中文
 
+### 2026-10-06 — Projection checkpoint 與 conditioning mitigation
+
+Clean `phase1/projection-sensitivity` HEAD `b90e81adb3acc1a0c1e599d488f3113f0842cfb4`
+fresh通過998tests in63.54s、Ruff、mypy74files、diffcheck；push成功，live origin SHA一致。
+由它建立 `phase1/projection-conditioning-mitigation`，只在managedisolated worktree續作；
+primary dirtyphysical-authority-resolution保留。恢復資訊見
+[Projection checkpoint](PHASE1_PROJECTION_CHECKPOINT.md)。
+
+五個additive diagnostic scripts與93tests，不改src/core／Graph／Top-K／metric／benchmark
+semantics／Coverage epsilon。先在EXPERIMENT_LOG及ignoredprotocol固定閾值，再跑四個existing
+streams × (7noiselevels×3seeds +10calibrationcopies) ×5variants =620rows；兩條downstream
+trajectories共310attempts，279COMPLETE/31NOT_RUN。A/B/D全部projecteddataset一致；
+Cacceptedpoints也未變。B3999/5549trials標LOW_CONFIDENCE；Cstandard丟562/5549，office全部
+rear45–49frames喪失，31/31office NOT_RUN；Cextreme丟0、不改善accuracy。
+Office±.25px retainedRMS1.26722→1.14086BU僅cohort deletion，paired改善0%。
+
+D保留獨立probe+landmarkoffset，同一plane換localorigin不能改善conditioning；foot/body
+reference替代會被拒絕。Pinnedproviderbb66bb74有48reviewWALKABLE、0approvedphysicalsurface，
+故E/F school UNAVAILABLE；5toycontrols驗unique/alllegalhits與authority/source/reference拒絕，
+不宣稱school efficacy。Confidence0.002px是未量測假設；classroom無flags也能因±.25px達.503BU。
+沒有發現implementationbug或可接受的accuracy mitigation；formalCases1–3仍不ready。
+
+GT只在全部620outputs/248references凍結後evaluation。3代表完整Projection/policy重跑與
+GTpoison inference bytes一致。14checkpoint source hash/size/mtime、12pure2D/context/probe
+metadata、4123inference artifacts與4GTdigests不變。原始2D、projection-unavailability原因、
+JSON/CSV/humanreport/三張charts與verification保存於localignored
+`data/pilot/phase1_projection_conditioning_mitigation_20261006/`；沒有新render／physicaldataset。
+
+初次fullsuite捕捉reportscript在snapshot期間仍有變動（1090passed/1snapshotfailure），
+所有script凍結後完整重跑：**1091passed in62.95s,no skips**。RepositoryRuff、mypy74files、
+working/stageddiffcheck通過。本機独立commit，不merge、不pushmitigationbranch、不開始Cases1–3。
+規則／現況／研究原因與nextsteps分別留DEVELOPMENT_RULES／HANDOFF／EXPERIMENT_LOG。
+
 ### 2026-10-06 — Projection sensitivity 獨立實驗
 
 由 clean robustness checkpoint `ce2974b25b31a8cb0ec9bc579a84d708d3356bf7` 建立
@@ -652,6 +685,26 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Projection checkpoint and conditioning mitigation
+
+Fresh clean b90e81a checkpoint passed998tests/63.54s,Ruff,mypy74files,diff;push succeeded
+and live origin matched. Created phase1/projection-conditioning-mitigation in the existing
+isolated managed worktree, preserving the dirty primary physical-authority work.
+Added five diagnostic scripts/93tests;no src/core/Graph/Top-K/metric/epsilon changes.
+Four existing streams provide620variantrows,310office/corridor downstream attempts,
+279COMPLETE/31NOT_RUN. A/B/D datasets are identical;C retainedpoints are unchanged.
+Cstandard discards562/5549trials and alloffice closingevidence;paired accuracy gain0.
+B is risktriage only;nominal.002px confidence is not a calibratedaccuracy guarantee.
+
+E/F schoolauthority unavailable (48reviewwalkables/0approvedphysicalsurface);five separate
+toy controls proveauthority/all-hit contracts only. No implementationbug/acceptableaccuracy
+mitigation found;Cases1–3 remainnotready. ThreefullProjection/policy repeat/GT-poison checks
+preservebytes;all620outputs frozenbeforeGT.14sources/12pureinputs/4123inferencefiles/fourGT
+preserved. Ignored local report/JSON/CSV/threecharts/verification documenttradeoffs.
+An initial source-snapshot race was resolved by freezing scripts and rerunning thefullsuite:
+1091passed/62.95s,no skips;Ruff,mypy74files anddiffchecks pass. Localindependentcommit,
+no merge/pushofnewbranch,no formalcases/newrender/physicaldataset;authority remainsprovisional.
 
 ### 2026-10-06 — isolated Projection sensitivity experiment
 
