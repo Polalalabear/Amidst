@@ -10,6 +10,8 @@
 `b11edb9d6157699d395c112298f8fab518f202a6` 建立。2026-10-02 的使用者授權僅涵蓋
 既有 fake/mock data 的 Integration Foundation；這不是 Phase 1 研究驗收，亦不將
 [PRD](PRD.md) 的完整產品 backlog 提升為本輪需求。
+後續獨立 branch 的 portability／stress 結果見
+[Phase 2 Integration Hardening](PHASE2_INTEGRATION_HARDENING.md)。
 
 Graph Engine、Top-K、Reconstruction、Metrics、benchmark runner、domain schemas、
 既有 fixtures、dependencies／lock 與 Blender assets 均沿用 Phase 1。Integration Foundation
@@ -154,6 +156,9 @@ change must stop for a report before implementation. This branch is not merged i
 Real CV, production Detection/Tracking, ReID, production Vector DB, PostgreSQL deployment,
 high-concurrency load tests, Agent Semantic Ranking and Blender semantic geometry changes remain
 excluded. This foundation does not certify Phase 1 research acceptance or a school dataset.
+
+Subsequent work on the separate hardening branch is recorded in
+[Phase 2 Integration Hardening](PHASE2_INTEGRATION_HARDENING.md).
 
 ### Additive architecture
 

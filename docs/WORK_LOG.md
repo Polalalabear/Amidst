@@ -4,6 +4,23 @@
 
 ## 繁體中文
 
+### 2026-10-06 — Phase 2 Integration Hardening
+
+從 clean foundation `e4e5afc` 建立獨立 `phase2/integration-hardening`；建立前重跑
+baseline **668 passed in 53.80s**、Ruff／mypy 80 files 通過。修正平台 IO、Windows/native
+path recognition、POSIX JSON references、Blender discovery、destination-local staging 與
+CWD anchoring；Phase 1 protected schemas/inference/benchmark/configs/fixtures 無 diff。
+
+本輪完整 **723 passed in 80.41s，0 failed／skipped**；Ruff、strict mypy（84 files）、
+diff／Markdown link checks 通過。Focused portability／consumer **120 passed**；dedicated
+stress **19 passed in 30.38s**；Blender adapters **21 passed**。Targeted counts 包含在 full
+total。96 events／192 observations、1,152 samples、Node 96 consumers／288 frames 與
+relocated existing／producer-neutral synthetic packages 都保留原契約，GT／metrics hash-only。
+
+[Hardening 文件](PHASE2_INTEGRATION_HARDENING.md) 記錄 native Windows/Linux 未驗證、
+filesystem/capability 與 Git provenance/source-checkout 限制。沒有 render/save assets、
+production PostgreSQL/CV/UI、schema／研究語意修改、merge／push／history rewrite。完成後停止。
+
 ### 2026-10-02 — Phase 2 驗證與凍結
 
 從 clean `b839254` 在隔離 `phase2/integration-foundation` 驗證；merge-base 仍為
@@ -185,6 +202,17 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-06 — Phase 2 Integration Hardening
+
+Created isolated `phase2/integration-hardening` from clean `e4e5afc` after a fresh 668-test
+foundation baseline. Local/mock portability adapters and bounded stress tests changed; protected
+Phase 1 contracts/configs/fixtures and Phase 2 API/consumer schemas did not. Full pytest:
+**723 passed in 80.41s, no skips/failures**; Ruff, strict mypy for 84 files, diff and link checks
+passed. Targeted portability/consumer 120, dedicated stress 19 and Blender adapters 21 all passed
+(included in the full total). See [hardening evidence](PHASE2_INTEGRATION_HARDENING.md) for
+96-event/1,152-sample coverage, unchanged output/GT boundaries and remaining platform assumptions.
+No assets were saved/rendered, production feature added, history rewritten, published or merged.
 
 ### 2026-10-02 — Phase 2 validation and freeze
 

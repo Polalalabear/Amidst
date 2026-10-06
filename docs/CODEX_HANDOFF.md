@@ -4,13 +4,16 @@
 
 ## 繁體中文
 
-狀態日期：2026-10-02。規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，
+狀態日期：2026-10-06。規則見 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)，
 完成／驗證紀錄見 [WORK_LOG](WORK_LOG.md)，契約見 [DATA_SCHEMA](DATA_SCHEMA.md)
 與 [INTERFACES](INTERFACES.md)。
 
 ### 目前狀態與續作入口
 
-- 本輪 branch：`phase2/integration-foundation`，基底 `b11edb9`；使用隔離 worktree。
+- 本輪 branch：`phase2/integration-hardening`，由 foundation `e4e5afc` 建立；使用隔離 worktree。
+  [Hardening 紀錄](PHASE2_INTEGRATION_HARDENING.md) 保存 portability／stress 結果；
+  723 pytest passed、Ruff／mypy 84 files 通過，protected contracts 無 diff。
+  `phase2/integration-foundation` 保持獨立與原 checkpoint；本輪完成後停止、不 merge／push。
   以 `git worktree list` 找到該 branch 的 checkout，再核對 HEAD／dirty state。原 Phase 1
   checkout 的並行修改不屬於本 branch，不能搬入或一併 stage。
 - 新增 [Phase 2 Integration Foundation](PHASE2_INTEGRATION.md)：backend API contracts、
@@ -18,14 +21,15 @@
   TypeScript/Three.js consumer contract 與 benchmark/replay importer。只允許 synthetic/mock。
 - **PHASE2_INTEGRATION_FOUNDATION_VALIDATED**：完成既有 foundation 驗證與凍結；
   [Phase 2 Integration Validation 整合驗證與凍結](PHASE2_INTEGRATION_VALIDATION.md) 保存 Git 邊界、契約與 portability 結果。
-  本輪完整 pytest 668 passed、Ruff／mypy 通過。後續建議回 Phase 1 Blender research
+  Foundation 凍結時完整 pytest 668 passed、Ruff／mypy 通過。後續建議回 Phase 1 Blender research
   closed loop；本 branch 停止擴張，新增 Phase 2 scope 需另行授權。
 - 通用 M0–M8 與 deterministic fake-data 後半段閉環已實作。四組 curated fixtures 在
   [`data/mock/`](../data/mock/README.md)，可直接替換符合相同契約的合成 producer。
 - 已有 timed blind-gap reconstruction、ADE／FDE／Top-K／physical metrics 與 Rerun
   recording；不等於正式 school dataset／benchmark 或完整 Phase 1 研究驗收。
-- 本輪 Integration Foundation 到此結束；未進入 Real CV、production storage/deployment、
-  高併發測試或 Agent Semantic Ranking；未 push／PR／merge，不 merge 回 Phase 1。
+- Foundation 保持封存與 synthetic scope；其 `e4e5afc` 已於上一輪 push。
+  Hardening 未進入 Real CV、production storage/deployment、高併發或 Agent Semantic Ranking；
+  本 hardening branch 未 push／PR／merge，不 merge 回 Phase 1。
 - School 樓梯／跨樓層與正式 Case 4 仍暫緩；Simplified Stair 只測後半段 interface。
 
 ### Blender-derived dataset 接入缺口
@@ -49,7 +53,11 @@
 
 ## English
 
-Status date: 2026-10-02. `phase2/integration-foundation`, based on `b11edb9`, is
+Status date: 2026-10-06. Current branch `phase2/integration-hardening` starts from foundation
+`e4e5afc` in a separate worktree. [Hardening evidence](PHASE2_INTEGRATION_HARDENING.md):
+723 pytest passed, Ruff passed, strict mypy passed for 84 files, protected contracts unchanged.
+Work stops here without publication or merge. The separate `phase2/integration-foundation`,
+based on `b11edb9`, remains
 **PHASE2_INTEGRATION_FOUNDATION_VALIDATED** and frozen. See the
 [Phase 2 Integration Validation and freeze](PHASE2_INTEGRATION_VALIDATION.md): 668 pytest passed, Ruff and mypy passed.
 Find the isolated checkout with `git worktree list` and verify actual HEAD/dirty state. Preserve
@@ -62,8 +70,9 @@ DATA_SCHEMA/INTERFACES for replaceable contracts. The additive
 [Phase 2 Integration Foundation](PHASE2_INTEGRATION.md) supplies mock API/service/storage, PostgreSQL
 factory interface, TypeScript consumer contracts and verified benchmark/replay import.
 
-This foundation stops here: no Real CV, production database/deployment, concurrency load tests,
-Agent Semantic Ranking, formal school dataset/benchmark, publication or merge into Phase 1.
+The foundation remains frozen and synthetic-only; its `e4e5afc` was pushed in the previous
+round. Hardening adds no Real CV, production database/deployment, concurrency load tests, Agent
+Semantic Ranking or formal school acceptance, and is not published or merged into Phase 1.
 School stairs/cross-floor/formal Case 4 remain deferred; the
 simplified stair only tests a synthetic interface.
 

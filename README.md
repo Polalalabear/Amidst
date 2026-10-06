@@ -84,10 +84,10 @@ uv run mypy
 git diff --check
 ```
 
-Blender-backed integration tests 需要 Blender CLI，可透過 `BLENDER_BIN` 指定：
+Blender-backed integration tests 需要 Blender CLI：加入 PATH，或依作業系統設定
+`BLENDER_BIN` 為本機 executable。Discovery 不猜測特定平台的安裝位置：
 
 ```sh
-export BLENDER_BIN=/Applications/Blender.app/Contents/MacOS/blender
 uv run pytest tests/integration
 ```
 
@@ -133,6 +133,7 @@ docs/                   產品、設計、契約、決策與交接文件
 
 ### 文件導覽
 
+- [Phase 2 Integration Hardening portability 與 stress 驗證](docs/PHASE2_INTEGRATION_HARDENING.md)
 - [Phase 2 Integration Foundation 架構與 mock API](docs/PHASE2_INTEGRATION.md)
 - [Phase 2 Integration Validation 整合驗證與凍結](docs/PHASE2_INTEGRATION_VALIDATION.md)
 - [Phase 1 research benchmark 研究實驗執行](docs/BENCHMARK.md)
@@ -224,11 +225,10 @@ uv run mypy
 git diff --check
 ```
 
-Blender-backed integration tests require the Blender CLI. Set `BLENDER_BIN` when
-needed:
+Blender-backed integration tests require Blender on PATH or a host-local executable
+configured by `BLENDER_BIN`. Discovery does not guess a platform installation path:
 
 ```sh
-export BLENDER_BIN=/Applications/Blender.app/Contents/MacOS/blender
 uv run pytest tests/integration
 ```
 
@@ -278,6 +278,7 @@ docs/                   Product, design, contract, decision and handoff docs
 
 ### Documentation
 
+- [Phase 2 Integration Hardening portability and stress validation](docs/PHASE2_INTEGRATION_HARDENING.md)
 - [Phase 2 Integration Foundation architecture and mock API](docs/PHASE2_INTEGRATION.md)
 - [Phase 2 Integration Validation and freeze](docs/PHASE2_INTEGRATION_VALIDATION.md)
 - [Phase 1 research benchmark](docs/BENCHMARK.md)
