@@ -4,6 +4,18 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Post-approval implementation handoff checkpoint
+
+使用者要求保存 checkpoint／commit 並交給新對話，可大規模實作剩餘原 Phase 1 收尾。
+新增 PHASE1_POST_APPROVAL_HANDOFF.md 與 hash-bound CHECKPOINT.json；current handoff
+只保留有效續作入口，舊展示／驗證細節留在原 README、logs 與 Git 歷史。
+實作位置明定 /private/tmp/amidst-phase1-finalization，canonical asset checkout 不變。
+本次重新核對 source hash、29 review-bound inputs、57 original frames、完整 submitted
+決策與 durable copy 一致、Phase2 frozen ref；全部 PASS。只有文件／checkpoint變更，
+未 apply、run certificate、formal Cases、render、push、merge 或建 freeze tag。
+177 review tests／Ruff／4-tool mypy 是 10a3fcc 的歷史結果，本次沒有重跑程式測試。
+交接 commit 保存可查的新對話起點；新對話在派送後依該 handoff 自主續作。
+
 ### 2026-10-07 — Four explicit human approvals recorded
 
 使用者確認房間／鏡頭「綁對」，接受 rigid landmark→floor 建議並明示其餘全部 APPROVE。
@@ -946,6 +958,16 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-07 — Post-approval implementation handoff checkpoint
+
+The user authorized a new conversation for substantial implementation of the remaining
+original Phase 1 sprint. Added a focused handoff and hash-bound checkpoint; shortened the
+current handoff to active work. Verified source SHA, 29 locked inputs, 57 original frames,
+submitted/durable decision equality and the frozen Phase 2 ref. Documentation/checkpoint
+changes only: no application, certificate, formal run, render, push, merge or freeze tag.
+The 177 tests/Ruff/4-tool mypy record belongs to historical approval commit 10a3fcc and was
+not rerun here. The new task receives the exact handoff commit and continues autonomously.
 
 ### 2026-10-07 — Four explicit human approvals recorded
 
