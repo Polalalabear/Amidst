@@ -16,6 +16,9 @@ def test_runtime_values_excluded_counts_and_availability_retained(tmp_path: Path
     assert _canonical({"max_search_time_s": 1}, tmp_path) != (
         _canonical({"max_search_time_s": 2}, tmp_path)
     )
+    assert _canonical({"runtime_s": {"mean": .1, "available_runs": 1}}, tmp_path) != (
+        _canonical({"runtime_s": {"mean": .2, "available_runs": 2}}, tmp_path)
+    )
 
 
 def test_output_root_normalized_without_erasing_other_paths(tmp_path: Path) -> None:

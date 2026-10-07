@@ -15,6 +15,7 @@ RUNTIME_FIELDS = frozenset({"runtime_s", "inference_runtime_s", "runtime_seconds
 COUNT_FIELDS = frozenset({
     "count", "run_count", "gap_count", "sample_count", "missing_count", "failed_count",
     "available_count", "value_count", "measured_count",
+    "available_runs", "total_runs", "missing_runs", "failed_runs",
 })
 RUNTIME_CHARTS = frozenset({"runtime_s.png", "runtime.png"})
 
