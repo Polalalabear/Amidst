@@ -20,11 +20,13 @@ COUNT_FIELDS = frozenset({
 RUNTIME_CHARTS = frozenset({"runtime_s.png", "runtime.png"})
 
 
-def _canonical(value: Any, root: Path, *, runtime: bool = False) -> Any:
+def _canonical(
+    value: Any, root: Path, *, runtime: bool = False, artifact_location: bool = False,
+) -> Any:
     if isinstance(value, dict):
         return {key: _canonical(item, root, runtime=(
             key in RUNTIME_FIELDS or runtime and key not in COUNT_FIELDS
-        )) for key, item in value.items()}
+        ), artifact_location=key in {"recording", "preview"}) for key, item in value.items()}
     if isinstance(value, list):
         return [_canonical(item, root, runtime=runtime) for item in value]
     if isinstance(value, (int, float)) and not isinstance(value, bool) and runtime:
@@ -33,6 +35,14 @@ def _canonical(value: Any, root: Path, *, runtime: bool = False) -> Any:
         prefix = str(root.resolve()) + "/"
         if value.startswith(prefix):
             return "<EVALUATION>/" + value[len(prefix):]
+        if artifact_location and not Path(value).is_absolute():
+            # The CLI may record its output argument relative to its own checkout.
+            # Match that exact suffix of the known root only for artifact locations.
+            parts, root_parts = Path(value).parts, root.resolve().parts
+            for index in range(len(root_parts)):
+                suffix = root_parts[index:]
+                if len(parts) > len(suffix) and parts[:len(suffix)] == suffix:
+                    return "<EVALUATION>/" + "/".join(parts[len(suffix):])
     return value
 
 

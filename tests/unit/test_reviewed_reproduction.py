@@ -46,3 +46,17 @@ def test_semantic_changes_and_na_not_removed(tmp_path: Path) -> None:
     canonical = _canonical(value, tmp_path)
     assert canonical == value
     assert canonical != _canonical(value | {"coverage_at_k": False}, tmp_path)
+
+
+def test_relative_demo_locations_normalized_without_changing_route_strings(tmp_path: Path) -> None:
+    local = tmp_path / "repo" / "data/local/evaluation"
+    fresh = tmp_path / "fresh" / "data/fresh/evaluation"
+    a = {"recording": "data/local/evaluation/demos/case1/reviewed.rrd"}
+    b = {"recording": "data/fresh/evaluation/demos/case1/reviewed.rrd"}
+    assert _canonical(a, local) == _canonical(b, fresh)
+    assert _canonical({"navmesh_corridor": a["recording"]}, local) != (
+        _canonical({"navmesh_corridor": b["recording"]}, fresh)
+    )
+    assert _canonical({"recording": "/outside/evaluation/demo.rrd"}, local) == {
+        "recording": "/outside/evaluation/demo.rrd"
+    }
