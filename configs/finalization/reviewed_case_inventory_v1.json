@@ -1,0 +1,201 @@
+{
+  "aggregation_max_visible_sample_gap_s": 0.200001,
+  "baseline_protocol": "EXISTING_A_B_C_FACTOR_MASKS_AND_SUPPORTED_ABLATIONS",
+  "branch_count": 0,
+  "cases": [
+    {
+      "blockers": [],
+      "camera_ids": [
+        "CAM_1F_AUDITORIUM_FRONT",
+        "CAM_1F_AUDITORIUM_REAR"
+      ],
+      "case_id": "case1",
+      "floor_id": "1F",
+      "footpoint_bounds_max": [
+        1411.9999242955855,
+        2096.8005463472678,
+        20.07884979248047
+      ],
+      "footpoint_bounds_min": [
+        1399.9985317206952,
+        1939.9994361310253,
+        20.07884979248047
+      ],
+      "landmark_offset_bu": 55.049998092651364,
+      "landmark_plane_z_bu": 75.12884788513183,
+      "site_id": "office",
+      "status": "FROZEN_PENDING_FRESH_VISIBILITY",
+      "support_z_bu": 20.07884979248047,
+      "trajectory_id": "REVIEWED_OFFICE_CASE1_V1",
+      "walkable_id": "WALK_1F_OFFICE",
+      "waypoints": [
+        {
+          "position": [
+            1405.9992280081403,
+            1940.0,
+            20.07884979248047
+          ],
+          "timestamp": 0.0
+        },
+        {
+          "position": [
+            1405.9992280081403,
+            2096.0,
+            20.07884979248047
+          ],
+          "timestamp": 9.8
+        }
+      ],
+      "zone_id": "AREA_1F_OFFICE"
+    },
+    {
+      "blockers": [
+        "CASE2_REQUIRES_SOURCE_DISTINCT_BRANCHES_OUTSIDE_APPROVED_RECTANGLE"
+      ],
+      "camera_ids": [
+        "CAM_1F_AUDITORIUM_FRONT",
+        "CAM_1F_AUDITORIUM_REAR"
+      ],
+      "case_id": "case2",
+      "floor_id": "1F",
+      "footpoint_bounds_max": [
+        1411.9999242955855,
+        2096.8005463472678,
+        20.07884979248047
+      ],
+      "footpoint_bounds_min": [
+        1399.9985317206952,
+        1939.9994361310253,
+        20.07884979248047
+      ],
+      "landmark_offset_bu": 55.049998092651364,
+      "landmark_plane_z_bu": 75.12884788513183,
+      "site_id": "office",
+      "status": "BLOCKED_SCOPE",
+      "support_z_bu": 20.07884979248047,
+      "trajectory_id": "REVIEWED_OFFICE_CASE2_V1",
+      "walkable_id": "WALK_1F_OFFICE",
+      "waypoints": [],
+      "zone_id": "AREA_1F_OFFICE"
+    },
+    {
+      "blockers": [],
+      "camera_ids": [
+        "CAM_1F_AUDITORIUM_FRONT",
+        "CAM_1F_AUDITORIUM_REAR"
+      ],
+      "case_id": "case3",
+      "floor_id": "1F",
+      "footpoint_bounds_max": [
+        1411.9999242955855,
+        2096.8005463472678,
+        20.07884979248047
+      ],
+      "footpoint_bounds_min": [
+        1399.9985317206952,
+        1939.9994361310253,
+        20.07884979248047
+      ],
+      "landmark_offset_bu": 55.049998092651364,
+      "landmark_plane_z_bu": 75.12884788513183,
+      "site_id": "office",
+      "status": "FROZEN_PENDING_FRESH_VISIBILITY",
+      "support_z_bu": 20.07884979248047,
+      "trajectory_id": "REVIEWED_OFFICE_CASE3_V1",
+      "walkable_id": "WALK_1F_OFFICE",
+      "waypoints": [
+        {
+          "position": [
+            1405.9992280081403,
+            1940.0,
+            20.07884979248047
+          ],
+          "timestamp": 0.0
+        },
+        {
+          "position": [
+            1405.9992280081403,
+            2004.0,
+            20.07884979248047
+          ],
+          "timestamp": 4.0
+        },
+        {
+          "position": [
+            1405.9992280081403,
+            2084.0,
+            20.07884979248047
+          ],
+          "timestamp": 184.0
+        },
+        {
+          "position": [
+            1405.9992280081403,
+            2096.0,
+            20.07884979248047
+          ],
+          "timestamp": 184.8
+        }
+      ],
+      "zone_id": "AREA_1F_OFFICE"
+    }
+  ],
+  "config_locked_before_simulation": true,
+  "eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+  "export_seed": 20261005,
+  "ground_truth_used_for_inventory": false,
+  "height": 540,
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "inference_seed": 42,
+  "interpolation_policy": "PIECEWISE_LINEAR",
+  "k_values": [
+    1,
+    2,
+    3
+  ],
+  "metres_per_blender_unit": 0.0247,
+  "movement": {
+    "max_speed_m_s": 0.7904
+  },
+  "overall_exit_gate_enabled": false,
+  "protocol_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+  "protocol_version": "phase1-benchmark-protocol-v1",
+  "reconstruction_policy": {
+    "direct_path_slack_tolerance_s": 1.0,
+    "endpoint_tolerance_m": 2.47e-08,
+    "include_dwell_hypotheses": true
+  },
+  "reference_sampling_policy": "ALL_REFERENCE_TIMESTAMPS_5HZ_ENDPOINTS_INCLUSIVE",
+  "reviewed_certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+  "sampling_extent": "SOURCE_ENDPOINTS_INCLUSIVE_NO_REJECTION",
+  "sampling_fps": 5,
+  "schema_version": "phase1-reviewed-case-inventory-v1",
+  "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+  "search_policy": {
+    "max_branch_factor": 3,
+    "max_candidate_paths": 3,
+    "max_detour_ratio": 2.0,
+    "max_path_length_m": 24.7,
+    "max_search_nodes": 1000,
+    "max_search_time_s": 10.0
+  },
+  "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+  "simulation_or_evaluation_executed_before_lock": false,
+  "source_camera_zones": {
+    "CAM_1F_AUDITORIUM_FRONT": "AUDITORIUM_FRONT",
+    "CAM_1F_AUDITORIUM_REAR": "AUDITORIUM_REAR"
+  },
+  "source_distinct_route_classes": 1,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_size_bytes": 468300506,
+  "status": "FROZEN_BEFORE_SIMULATION_AND_EVALUATION",
+  "supported_ablations": [
+    "remove_travel_time",
+    "remove_topology",
+    "remove_collision",
+    "shortest_path_only",
+    "full_deterministic_graph"
+  ],
+  "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+  "width": 960
+}

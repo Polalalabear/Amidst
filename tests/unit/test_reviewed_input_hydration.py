@@ -73,3 +73,17 @@ def test_symlink_escape_refused(tmp_path: Path) -> None:
     (root / "human_review").symlink_to(durable, target_is_directory=True)
     with pytest.raises(ValueError, match="escapes"):
         hydrate_historical_inputs(root, historical_root=historical, durable_review=durable)
+
+
+def test_review_bound_package_overlap_retains_original_hash(tmp_path: Path) -> None:
+    root, historical, durable = _fixture(tmp_path)
+    path = root / "docs/PHASE1_POST_APPROVAL_CHECKPOINT.json"
+    checkpoint = json.loads(path.read_text())
+    checkpoint["review_bound_inputs"].append({
+        "path": "human_review/frames/frame.json",
+        "sha256": hashlib.sha256((durable / "frames/frame.json").read_bytes()).hexdigest(),
+    })
+    _write(path, checkpoint)
+    result = hydrate_historical_inputs(root, historical_root=historical, durable_review=durable)
+    assert result["verified_file_count"] == 3
+    assert result["review_bound_input_count"] == 2

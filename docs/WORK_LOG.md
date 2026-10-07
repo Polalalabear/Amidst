@@ -4,6 +4,25 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Reviewed adapters, GT-free policy lock and route-scope proof
+
+新增 additive reviewed context／rigid landmark→footpoint／metric／A-B-C provider adapters；
+實際 application loader 重驗原 29 inputs 與 immutable profiles。保留原 diagnostic producer
+bytes/literals，exact-time multiview 保留 NO_PLANE provenance，不偽造 fixed-plane evidence。
+Semantic receipt、certificate、source、scope、decision hashes 在所有 consumers 保留。
+在 simulation 前凍結 `configs/finalization/reviewed_case_inventory_v1.json`；
+另拆 GT-free `reviewed_case_inference_lock_v1.json`，Graph 不讀 simulation waypoints。
+原 pilot budgets 正規化成 SI（24.7 m max path、0.7904 m/s）而非換 core defaults。
+Actual reviewed rectangle 解析 proof：寬 0.29643439659979187 m、長 3.8729874223411893 m，
+只有一個 major source-route class、0 branches/holes/authorized cross-scope portals。
+`data/finalization/reviewed_route_inventory_v1/proof.json` 保留原完整 authority hashes；
+Case2 需要批准範圍以外的 source-distinct branches，parallel offsets／timing 不增加 route。
+Case3 long-GAP 可獨立執行；detour/candidate-growth 完整 stress gate 仍不可滿足。
+新增 original Exit Gate accounting，逐項 fail closed 並列 prerequisite blockers，PASS certificate
+不開啟 overall freeze。57 focused reviewed/hydration/exit tests、Ruff、strict mypy 4 modules PASS。
+Real durable hydration 297 files／29 locked inputs 全部匹配，copied=0、overwritten=0。
+修正 review package 與 locked-input 交集的相同 hash 合併，衝突仍在寫入前拒絕。
+
 ### 2026-10-07 — Applied approved bounded authority and historical hydration
 
 接管既有 clean worktree `phase1/finalization-sprint / 62ea9b1`，未切換 canonical checkout。

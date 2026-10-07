@@ -56,8 +56,10 @@ def hydrate_historical_inputs(
         if any(part in forbidden for part in Path(relative).parts):
             raise ValueError("review hydration cannot read GT/evaluation/simulation")
         if relative in records:
-            raise ValueError("duplicate historical review input")
-        records[relative] = (_inside(historical_root, relative), item["sha256"])
+            if records[relative][1] != item["sha256"]:
+                raise ValueError("conflicting historical review input hashes")
+        else:
+            records[relative] = (_inside(historical_root, relative), item["sha256"])
 
     missing: list[tuple[Path, Path, str]] = []
     for relative, (source, expected) in sorted(records.items()):

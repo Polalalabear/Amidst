@@ -1,0 +1,40 @@
+{
+  "all_geometric_curves_enumerated": false,
+  "approved_portal_or_cross_scope_transitions": 0,
+  "branch_count": 0,
+  "case2_blockers": [
+    "CASE2_REQUIRES_SOURCE_DISTINCT_BRANCHES_OUTSIDE_APPROVED_RECTANGLE"
+  ],
+  "complete_free_space_basis": "COMPLETE_RESTRICTED_FOOTPOINT_DOMAIN",
+  "eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+  "footpoint_bounds_bu": [
+    [
+      1399.9985317206952,
+      1939.9994361310253,
+      20.038363962520954
+    ],
+    [
+      1411.9999242955855,
+      2096.8005463472678,
+      20.119335622439984
+    ]
+  ],
+  "ground_truth_read": false,
+  "hole_count": 0,
+  "homotopy": "H(s,t)=(1-s)*p(t)+s*((1-t)*a+t*b)",
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "length_m": 3.8729874223411893,
+  "parallel_offsets_are_distinct_branches": false,
+  "proof": "FIXED_ENDPOINT_STRAIGHT_LINE_HOMOTOPY_IN_CONVEX_COMPLETE_FREE_RECTANGLE",
+  "reviewed_certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+  "schema_version": "reviewed-rectangle-route-proof-v1",
+  "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+  "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+  "simulation_recipe_read": false,
+  "source_distinct_route_classes": 1,
+  "source_evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "status": "PASS_SINGLE_MAJOR_ROUTE_CLASS",
+  "timing_hypotheses_are_distinct_routes": false,
+  "width_m": 0.29643439659979187
+}
