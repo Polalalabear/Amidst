@@ -397,3 +397,45 @@ GT、render、formal Cases、decision application、push、merge或freeze tag。
 逐檔hash相符。Package manifest SHA256：
 `c7c3abc17c65b449b33558400bcb177edb46c351c3520351ddbed054902b3a72`。
 8768 loopback preview指向新副本；copy_verification.json保存核對結果。
+
+## 2026-10-07 — HR02 source-camera visibility and pending body-point binding
+
+**DIAGNOSTIC / HUMAN_REVIEW_PENDING**；base `7140062019a00256df0543d7dc3e513c53090d9d`。
+固定 Scene/frame220/subframe0、原校準、0.0247m/BU、public observations／投影與既有
+GAP candidate；未讀原始3D點、GT、evaluation或recipe。完整source射線200次：landmark
+26 CLEAR／74 OCCLUDED，與26原OBSERVED相容；候選腳底10 CLEAR／90 OCCLUDED，
+16筆landmark通視但腳底被擋。Foot像素與原landmark差48.14–60.33px；1.3597349529m
+仍是pending landmark→floor offset，不是ceiling。兩camera在AUDITORIUM annotation
+AABB、OFFICE AABB之外，不據此認定room ownership。人工只確認目標房間／鏡頭與
+追蹤點語意；fallback沿既有protocol，不新增人工設定。四項decisions及e105payload保留。
+
+Frozen query producer `5efab2df3097b31f8a5a0e1d7439d6f426e79704f48e4e75016f76a7b0da65b6`
+在 fresh process/output 重跑，audit JSON與producer receipt bytes/hash完全一致：
+`5bda3a45843649ec2a3074bda87694847534a7401dd51e084a48b9cfac332035`／
+`6105a46a1d753c94ab4e0083d2c59b01fb16c27d04abeb0dcf3b9fd22570d51f`。
+這是source診斷重現，不是formal benchmark fresh gate。
+
+Renderer以live VIEWPORT instance在iterator前進／任何BlenderID建立前保存owned arrays，
+保留converted FONT及hidden prototypes；2,576instances、5,585,184triangles，完整
+name/matrix inventory與原raycaster相同。先前cached evaluated RNA或original-name
+lookup會失效／缺hidden prototype，失敗run未產生canonical PNG，未skip blockers。
+Successful producer `1132d68ffa969196f640708f7635c0ada669663b6b379d3c37ae5e3a27b9d87e`
+生成8張1920x1080PNG，共10,855,553bytes；wide/side無固定人物／ray，50frame overlay
+單獨同步。最初8PNG共10,910,996bytes及精確producer/receipts/view另外保留。
+六張camera still也因snapshot修正而hash改變，render_verification如實記錄；未宣稱不同
+producer的像素完全一致。灰模render不是CV pixel或physical certification。
+
+新頁整合原dashboard/HR02dialog，display-only recommendation為KEEP_REVIEW；原
+APPROVE profiles與payload不變。Native IAB核對50格motion/wide/side同步、唯一一組
+layout geometry、獨立代表stills、完整播放至49停止，HR02defaultaudit/HR01defaultmotion
+及單一iframe/close cleanup。172相關tests（78既有＋94新增/整合）、repoRuff、mypy
+93core＋6reviewtools、diffcheck通過。220個prior artifacts未改，7個明確UI/source/docs
+更新；166舊PNG／1GIF／4JPEG、32frozen inputs、decisions/template及source hashes保留。
+沒有authority升級、source保存、formal Cases、push、merge或freeze tag。
+
+完整獨立副本保存於 canonical checkout ignored
+`data/pilot/phase1_finalization_human_review_20261007/hr02_camera_audit/human_review/`。
+267個artifacts共130,717,159bytes，source／副本逐檔hash、大小與inventory一致；前版227個
+artifacts仍逐檔hash相符。Package manifest SHA256：
+`b58ab23c76ad19e9997a337f4547d59c296e869c4e0da1369034a96277facdeb`。
+同一8768 loopback網址指向新副本，copy_verification.json保存核對結果。

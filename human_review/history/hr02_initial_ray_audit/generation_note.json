@@ -1,0 +1,7 @@
+{
+  "status": "NON_CANONICAL_DIAGNOSTIC_TRIAL",
+  "reason": "Pure input-validation guard was updated during the initial source-audit process; retain trial bytes and regenerate with a frozen producer before review.",
+  "source_modified": false,
+  "gt_used": false,
+  "formal_execution_enabled": false
+}

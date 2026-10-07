@@ -32,6 +32,20 @@ def main() -> None:
         "",
         "狀態：**HUMAN_REVIEW_PENDING**；4 項決策全部未選擇。推薦值不等於核准。",
         "",
+        "## HR02 相機／落點核對補充",
+        "",
+        "先看 [HR02 camera audit](frames/hr02_camera_audit/view.html) 與",
+        "[核對結果／重現方式](HR02_CAMERA_AUDIT.md)。兩台 source cameras 在數值上位於",
+        "`AREA_1F_AUDITORIUM` AABB、OFFICE AABB 之外；物件名稱／外框不能核准 room ownership。",
+        "50 timestamps × 2 cameras：原 public 記錄 26 OBSERVED／74 GAP；回推 landmark 射線",
+        "26 CLEAR／74 OCCLUDED，候選腳底 10 CLEAR／90 OCCLUDED；16 筆 landmark 通視但腳底被擋。",
+        "**1.35973495 m 是待核准 landmark→floor 偏移，不是地板到天花板高度。**",
+        "人工只確認目標房間／鏡頭是否正確，以及追蹤點是固定身體 landmark 還是腳底。",
+        "fallback 沿用既有 protocol，不新增研究設定問題；原四項 decision 全部保持 null。",
+        "人物是 public projection／GAP candidate，不是原始3D軌跡；沒有使用 GT。wide／side",
+        "是 display-only cutaway，射線使用完整 allowed source mesh；20／25／45 是獨立代表",
+        "camera still，不代表當前連續影格或 CV pixel certification。矛盾未釐清時維持 KEEP_REVIEW。",
+        "",
         "新增審查辨識補充：空間導覽第 2 步提供完整測試空間與相機定位，第 3 步保持 FRONT／REAR",
         "位置對照，第 5 步與 HR-02 問題區加入實際 source 空間中的示意人物及腳底／landmark 高度。",
         "[獨立補充來源](frames/review_clarity/manifest.json)；舊圖、舊動畫及四項決策全部保留。",
@@ -204,7 +218,8 @@ def main() -> None:
             (
                 "| Projection / reference | HR-02 | source calibration + approved floor"
                 " + public endpoint pixels | exact-time multiview → single-view fixed p"
-                "lane；exact marker→floor offset | 語意與 fallback 必須核准 |"
+                "lane；exact marker→floor offset | HR-02 確認房間／marker 語意；"
+                "fallback 沿用 protocol |"
             ),
             (
                 "| Coverage | HR-03 | protocol initial targets；現有 D=ADE | ADE < 0.50 m；"

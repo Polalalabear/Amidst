@@ -9,6 +9,7 @@ import shutil
 from pathlib import Path
 
 from assemble_review import write_json
+from build_dashboard import hr02_camera_view_hash
 
 HERE = Path(__file__).resolve().parent
 
@@ -77,6 +78,28 @@ def main() -> None:
             "original_media_preserved": True,
             "human_decisions_applied": False,
         }
+    hr02_summary = {}
+    hr02_hash = hr02_camera_view_hash(document)
+    if hr02_hash:
+        audit_path = HERE / "frames/hr02_camera_audit/audit_data.json"
+        audit = json.loads(audit_path.read_text())
+        hr02_summary = {
+            "view": "frames/hr02_camera_audit/view.html",
+            "view_sha256": hr02_hash,
+            "audit_sha256": hashlib.sha256(audit_path.read_bytes()).hexdigest(),
+            "result_type": "DIAGNOSTIC_NOT_CERTIFIED",
+            "source_ray_queries": 200,
+            "public_record_counts": audit["summary"]["recorded_counts"],
+            "landmark_replay_counts": audit["summary"]["replay_counts"],
+            "foot_replay_counts": audit["summary"]["foot_replay_counts"],
+            "landmark_clear_foot_occluded_count": len(
+                audit["summary"]["landmark_clear_foot_occluded"]
+            ),
+            "room_ownership": "NOT_CERTIFIED",
+            "human_decisions_applied": False,
+            "formal_execution_enabled": False,
+            "original_media_preserved": True,
+        }
     write_json(
         HERE / "gate.json",
         {
@@ -133,6 +156,7 @@ def main() -> None:
             "body_motion_supplement": motion_summary,
             "topology_supplement": topology_summary,
             "review_clarity_supplement": clarity_summary,
+            "hr02_camera_audit_supplement": hr02_summary,
             "artifacts": artifacts,
         },
     )

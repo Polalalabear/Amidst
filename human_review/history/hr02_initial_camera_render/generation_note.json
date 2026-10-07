@@ -1,0 +1,9 @@
+{
+  "status": "ARCHIVED_DIAGNOSTIC_REFERENCE",
+  "reason": "Initial wide/side bake a fixed person and rays. They remain preserved; canonical playback uses frame-independent backgrounds with one moving overlay. Six representative camera stills are unchanged in intent.",
+  "wide_reference_frame": 25,
+  "side_reference_frame": 20,
+  "source_modified": false,
+  "gt_used": false,
+  "formal_cases_run": false
+}

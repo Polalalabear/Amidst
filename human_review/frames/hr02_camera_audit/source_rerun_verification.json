@@ -1,0 +1,12 @@
+{
+  "status": "DIAGNOSTIC_SOURCE_RAY_REPEAT_MATCH",
+  "fresh_output_path": "/private/tmp/amidst-hr02-source-rays-verified",
+  "exact_frame_rows_match": true,
+  "exact_camera_rows_match": true,
+  "ray_queries_per_run": 200,
+  "producer_sha256": "5efab2df3097b31f8a5a0e1d7439d6f426e79704f48e4e75016f76a7b0da65b6",
+  "fresh_producer_frozen_during_run": true,
+  "original_trial_preserved": "human_review/history/hr02_initial_ray_audit",
+  "gt_used": false,
+  "formal_cases_run": false
+}

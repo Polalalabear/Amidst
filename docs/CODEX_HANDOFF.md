@@ -29,6 +29,13 @@ school 定位、1F/camera 座標、5 秒鏡頭接近、原有 10 秒局部移動
 人物拓樸定位另以 P(t) 隨既有影格同步更新；N1／N2及四個vertex固定，顯示目前N1、E1
 進度、N2或GAP graph外。播放載入提示浮在模型內，動態狀態與控制列保留固定尺寸，避免每格重排。
 Body位置／binding仍為pending HR02；沒有新增Graph nodes。
+HR02 另有 [相機／遮擋核對](../human_review/frames/hr02_camera_audit/view.html) 與
+[審查說明](../human_review/HR02_CAMERA_AUDIT.md)：完整來源 mesh 的 200 次 landmark／
+候選腳底射線，分開原 2D record、投影／候選位置及新射線結果。兩鏡頭數值上位於
+AUDITORIUM annotation AABB、OFFICE AABB 外；不據此認定實際房間 ownership。
+26 筆 OBSERVED landmark 通視一致，但 16 筆 landmark 通視而候選腳底被擋。
+HR02 只待確認預期房間／鏡頭與觀測點的人體語意；既有 fallback 不新增人工選項。
+新圖為 diagnostic 灰模，wide／side cutaway 僅導覽；不等於原始人物位置或 CV 偵測證據。
 另有 [新增 10 秒模型人物動作](../human_review/frames/motion_context/player.html)：
 固定鏡頭下，人物在 actual bounded source model 內移動，含 body /clearance 與 GAP。
 50 frames 的位置 /time /camera /projection 全部沿用原預覽，joint pose 只供顯示；
@@ -74,6 +81,8 @@ Raw local/fresh data 與 demos 持久保存在 ignored
 `data/pilot/phase1_finalization_human_review_20261007/topology_motion/human_review/`；前版保留。
 穩定播放版另存於
 `data/pilot/phase1_finalization_human_review_20261007/topology_playback_stable/human_review/`。
+HR02 相機核對完整副本另存
+`data/pilot/phase1_finalization_human_review_20261007/hr02_camera_audit/human_review/`。
 [Artifact inventory](PHASE1_ARTIFACT_CLEANUP.md) 沒有刪除或移動來源資產。
 既有任意 endpoint snapping/connectors、visibility arbitration 與 missing-frame/origin
 attestation 仍暫緩；未由本輪診斷結果升格 school topology。
@@ -112,6 +121,13 @@ The topology locator synchronizes P(t) with each existing motion frame while nod
 vertices remain fixed; it identifies N1, E1 progress, N2 or positions outside the GAP graph.
 Loading status overlays the model, and fixed status/control dimensions prevent per-frame
 layout shifts. Person placement remains pending HR02, with no additional graph nodes.
+The [HR02 camera audit](../human_review/frames/hr02_camera_audit/view.html) separates public
+2D records from 200 full-source landmark/foot ray queries. Both cameras are numerically
+inside the AUDITORIUM annotation AABB and outside OFFICE; actual room ownership remains
+uncertified. All 26 observed landmarks are clear, while 16 have occluded candidate feet.
+Only the intended room/cameras and tracked body-point semantics need human confirmation.
+Existing fallback adds no decision. Grey renders and cutaway navigation do not certify
+original person positions or camera-image detection; old evidence and pending choices remain.
 The separate [ten-second body-motion player](../human_review/frames/motion_context/player.html)
 adds a moving illustrated body in actual local source geometry with a fixed camera.
 It preserves all 85 older images and every existing trajectory/evidence field; joints are display-only.

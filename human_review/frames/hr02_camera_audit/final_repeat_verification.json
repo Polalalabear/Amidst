@@ -1,0 +1,21 @@
+{
+  "status": "DIAGNOSTIC_FRESH_PROCESS_EXACT_MATCH",
+  "fresh_output_path": "/private/tmp/amidst-hr02-source-rays-final-repeat",
+  "artifacts": [
+    {
+      "path": "audit_data.json",
+      "sha256": "5bda3a45843649ec2a3074bda87694847534a7401dd51e084a48b9cfac332035",
+      "exact_bytes_match": true
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "6105a46a1d753c94ab4e0083d2c59b01fb16c27d04abeb0dcf3b9fd22570d51f",
+      "exact_bytes_match": true
+    }
+  ],
+  "ray_queries_per_run": 200,
+  "producer_sha256": "5efab2df3097b31f8a5a0e1d7439d6f426e79704f48e4e75016f76a7b0da65b6",
+  "gt_used": false,
+  "formal_cases_run": false,
+  "human_decisions_applied": false
+}

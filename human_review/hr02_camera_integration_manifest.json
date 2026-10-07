@@ -1,0 +1,80 @@
+{
+  "schema_version": "phase1-hr02-camera-review-integration-v1",
+  "base_sha": "7140062019a00256df0543d7dc3e513c53090d9d",
+  "result_type": "DIAGNOSTIC_SOURCE_CAMERA_REVIEW",
+  "status": "HUMAN_REVIEW_PENDING",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "source_geometry_modified": false,
+  "physical_authority_changed": false,
+  "raw_graph_changed": false,
+  "projection_changed": false,
+  "gt_used": false,
+  "evaluation_files_read": false,
+  "simulation_recipe_read": false,
+  "formal_cases_run": false,
+  "human_decisions_applied": false,
+  "decisions_changed": false,
+  "frozen_inputs_verified": 32,
+  "preserved_prior_files": 220,
+  "intentional_prior_updates": [
+    ".gitignore",
+    "README.md",
+    "build_dashboard.py",
+    "dashboard_template.html",
+    "finalize_package.py",
+    "index.html",
+    "write_review_docs.py"
+  ],
+  "original_media_preserved": {
+    "png": 166,
+    "jpg": 4,
+    "gif": 1
+  },
+  "renderer_sha256": "1132d68ffa969196f640708f7635c0ada669663b6b379d3c37ae5e3a27b9d87e",
+  "source_mesh_instances": 2576,
+  "source_full_triangles": 5585184,
+  "source_geometry_snapshot_sha256": "eeff98cc3f7dbc5db54ad1d3dfd5585233789557cdc66c7aef256500d81d23e6",
+  "renderer_manifest_sha256": "70998fdb1fe6a0fbfaafb7d7c1a8817e79a74913e8ea9658f4f8f69fdb8e2260",
+  "view_sha256": "2857540009dcb9cf34a553e620c6ff541f11889edbca751df7033e08eac45e9e",
+  "dashboard_sha256": "720824aa36e65e506eccd88ba307cf0019a116ba5ece6e7d4f07b5785f6b3f37",
+  "fresh_process_source_query_verification": {
+    "path": "frames/hr02_camera_audit/final_repeat_verification.json",
+    "sha256": "4806ab18138db9ea0d239507752e4b86c11615928745bcb8be3d3785fbd67d06",
+    "scope": "DIAGNOSTIC_QUERY_NOT_FORMAL_FRESH_BENCHMARK"
+  },
+  "initial_camera_images_preserved": "history/hr02_initial_camera_render",
+  "different_renderer_still_hash_comparison": "frames/hr02_camera_audit/render_verification.json",
+  "native_ui_verification": {
+    "path": "frames/hr02_camera_audit/native_ui_verification.json",
+    "sha256": "278f4c0aa4af19cce6dcc2493635799c3c58bff3f0a073570d91a608fe65cdf5",
+    "scrubbed_frames": 50,
+    "unique_layouts": 1,
+    "synchronized": true,
+    "playback_termination_frame": 49,
+    "representative_stills_independent": true,
+    "hr02_default": "camera-audit",
+    "hr01_default": "motion",
+    "hr02_display_recommendation": "KEEP_REVIEW"
+  },
+  "screenshot": {
+    "path": "frames/dashboard_context/hr02_camera_review.jpg",
+    "bytes": 114494,
+    "sha256": "4695891334a6855a9377250d9d2209d08dc85b6ed5eb575ce4e6325677775aba",
+    "type": "NATIVE_BROWSER_SCREENSHOT",
+    "frame": 45
+  },
+  "validation": {
+    "related_tests_passed": 172,
+    "skipped": 0,
+    "ruff": "PASS",
+    "mypy_core_files": 93,
+    "mypy_review_tools": 6,
+    "diff_check": "PASS"
+  },
+  "human_decisions_total": 4,
+  "hr02_pending_semantics": [
+    "TARGET_ROOM_AND_CAMERA_BINDING",
+    "TRACKED_FIXED_BODY_LANDMARK_OR_FOOTPOINT"
+  ]
+}

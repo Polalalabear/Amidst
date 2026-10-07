@@ -1,0 +1,49 @@
+{
+  "status": "DIAGNOSTIC_SOURCE_RENDER_COMPLETE",
+  "source_mesh_instances": 2576,
+  "source_full_triangles": 5585184,
+  "source_geometry_snapshot_sha256": "eeff98cc3f7dbc5db54ad1d3dfd5585233789557cdc66c7aef256500d81d23e6",
+  "initial_images_preserved": "history/hr02_initial_camera_render",
+  "camera_still_comparison": [
+    {
+      "path": "camera_FRONT_frame020.png",
+      "old_sha256": "2390126f91fe805eb9e1c2e04ee6b69ae79e9172137e6d2d893ef487be405599",
+      "new_sha256": "fc72536b911b0686a2589614fdd0a24fb0c22f7cabeac80a3147eef336d9448d",
+      "exact_image_match": false
+    },
+    {
+      "path": "camera_FRONT_frame025.png",
+      "old_sha256": "b5fa29710eba8d97a1ba723e2756936adf65eecd76a0ebb93f3565f9c8ca12ac",
+      "new_sha256": "f90e8281a372f1ae5f176ef5938668c47f1b5f92d83eef0c06d82b402b5af74c",
+      "exact_image_match": false
+    },
+    {
+      "path": "camera_FRONT_frame045.png",
+      "old_sha256": "7035e8e2f157dc9dc947ef364563844e5ad0ed5f0450e2068b296e4769543156",
+      "new_sha256": "c09f580d6da04b89c39f92c6528c18588655cb46883b0211ef305c0fcf0042cc",
+      "exact_image_match": false
+    },
+    {
+      "path": "camera_REAR_frame020.png",
+      "old_sha256": "e984a6ae7c45aeed7674acb76c14e1f04ea8a801a8d6d76be148861b566d839b",
+      "new_sha256": "17801891ebe51c0a6822a9b565eb23068d9f0b731d4d4c9c132b996de3ac5686",
+      "exact_image_match": false
+    },
+    {
+      "path": "camera_REAR_frame025.png",
+      "old_sha256": "e8cd8568723c7296726cfc8dcba9a9f8b5bfcbb8f277c61ebb30871173b23e6b",
+      "new_sha256": "0fe9e896fc2d86c07b28deff9acbf06882be0d651767b03f756aede15f1f315d",
+      "exact_image_match": false
+    },
+    {
+      "path": "camera_REAR_frame045.png",
+      "old_sha256": "403a6670b0a55de319fc16523fa57c9df3ffdd8ba8c228b2c5d3f59c154258bd",
+      "new_sha256": "d828c8b5967deaa904484634bf61d843b9b85bbbc0948275dee03701d71ad593",
+      "exact_image_match": false
+    }
+  ],
+  "static_backgrounds_have_no_baked_person_or_rays": true,
+  "source_modified": false,
+  "gt_used": false,
+  "formal_cases_run": false
+}

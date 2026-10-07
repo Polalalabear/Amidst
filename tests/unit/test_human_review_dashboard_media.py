@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import hashlib
 import importlib.util
 import json
@@ -159,6 +160,70 @@ def browser_model(html: str, embedded: dict, action: str) -> Any:
     )
     assert result.returncode == 0, result.stderr
     return json.loads(result.stdout)
+
+
+@pytest.fixture
+def camera_enabled_dashboard(dashboard: tuple[str, dict, Any]) -> tuple[str, dict, str]:
+    """Exercise feature-gated JS even when regenerable renderer images are absent."""
+    html, document, _ = dashboard
+    match = re.search(r"const hr02CameraViewHash='([a-f0-9]*)';", html)
+    assert match is not None
+    if match[1]:
+        return html, document, match[1]
+    # This is synthetic DOM input only. No receipt, real browser, decision or
+    # package file is edited; the separate gate test checks actual hash binding.
+    synthetic_hash = hashlib.sha256(b"synthetic HR02 media-navigation fixture").hexdigest()
+    return (
+        html.replace(match[0], f"const hr02CameraViewHash='{synthetic_hash}';"),
+        document,
+        synthetic_hash,
+    )
+
+
+@pytest.fixture
+def camera_hash_fixture(
+    dashboard: tuple[str, dict, Any], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> tuple[Any, dict, Path, dict]:
+    _, document, module = dashboard
+    fixture_root = tmp_path / "camera-hash-fixture"
+    directory = fixture_root / "human_review/frames/hr02_camera_audit"
+    directory.mkdir(parents=True)
+    manifest = {
+        "source_sha256": document["metadata"]["source_sha256"],
+        "review_payload_sha256": document["review_payload_sha256"],
+        "result_type": "DIAGNOSTIC",
+        "frame_count": 50,
+        "fps": 5,
+        "camera_still_frames": [20, 25, 45],
+        "separate_public_record_and_projected_replay": True,
+        "camera_stills_are_representative_not_current_playback": True,
+        **dict.fromkeys(
+            (
+                "gt_used",
+                "evaluation_files_read",
+                "simulation_recipe_read",
+                "physical_authority_changed",
+                "formal_execution_enabled",
+                "decisions_changed",
+                "projection_changed",
+                "raw_graph_changed",
+                "original_source_point_available",
+            ),
+            False,
+        ),
+    }
+    for key, filename in (
+        ("view", "view.html"),
+        ("data", "audit_data.json"),
+        ("producer", "manifest.json"),
+        ("renderer", "renderer_manifest.json"),
+    ):
+        path = directory / filename
+        path.write_text("<p>Synthetic diagnostic fixture</p>" if key == "view" else "{}\n")
+        manifest[key] = {"path": filename, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+    (directory / "view_manifest.json").write_text(json.dumps(manifest))
+    monkeypatch.setattr(module, "ROOT", fixture_root)
+    return module, document, directory, manifest
 
 
 def test_dashboard_media_preserves_four_questions_storage_and_import_export_guards(
@@ -417,3 +482,241 @@ def test_hr01_hr02_keep_original_images_and_lazy_sequence_as_exclusive_evidence(
         assert result["clarityData"]["gt_used"] is False
         assert result["clarityData"]["physical_authority_changed"] is False
         assert result["clarityData"]["formal_execution_enabled"] is False
+
+
+def test_hr02_camera_tab_and_modal_use_one_player_without_recording_decisions(
+    camera_enabled_dashboard: tuple[str, dict, str],
+) -> None:
+    html, document, camera_hash = camera_enabled_dashboard
+    result = browser_model(
+        html,
+        document,
+        r"""(async()=>{
+          const before=canonical(documentState),counts=[];
+          const frames=()=>document.querySelectorAll('iframe');
+          const sample=()=>counts.push(frames().length);
+          const sharedTabs=sharedMediaWorkspace.host.querySelectorAll('button[role="tab"]')
+            .map(button=>({id:button.id,label:button.textContent}));
+          sample();const first=frames()[0];
+          const cameraSelected=sharedMediaWorkspace.select('camera-audit');sample();
+          const cameraFrame=frames()[0],cameraPath=cameraFrame.src;
+          const cameraLink=sharedMediaWorkspace.host.querySelector('.media-links')
+            .querySelector('a').href;
+          sharedMediaWorkspace.select('camera-audit');sample();
+          const repeatedCameraKeptPlayer=cameraFrame===frames()[0];
+          sharedMediaWorkspace.select('topology');sample();
+          const oldCameraUnloaded=cameraFrame.src==='about:blank'&&cameraFrame.parentElement===null;
+          sharedMediaWorkspace.select('issues');sample();
+          await document.getElementById('shared-review-issues').fire('keydown',{key:'ArrowRight'});
+          sample();const keyboardSelection=sharedMediaWorkspace.selectedView;
+          const playingShared=frames()[0];openItem('HR-02');sample();
+          const hr02Initial=modalMediaWorkspace.selectedView;
+          const hr02Path=frames()[0].src;
+          const hr02Choices=document.getElementById('decision-select').children.map(e=>e.value);
+          const hr02NoChoice=document.getElementById('decision-select').value==='';
+          const sharedUnloaded=playingShared.src==='about:blank'&&
+            playingShared.parentElement===null&&
+            document.getElementById('visual-review-workspace').querySelectorAll('iframe').length===0;
+          const modalCamera=frames()[0];modalMediaWorkspace.select('motion');sample();
+          const modalCameraUnloaded=modalCamera.src==='about:blank'&&
+            modalCamera.parentElement===null;
+          modalMediaWorkspace.select('camera-audit');sample();
+          const closingFrame=frames()[0];closeItem();sample();
+          const closeUnloaded=closingFrame.src==='about:blank'&&closingFrame.parentElement===null;
+          openItem('HR-01');sample();const hr01Initial=modalMediaWorkspace.selectedView;
+          const hr01Path=frames()[0].src;closeItem();sample();
+          return {counts,sharedTabs,cameraSelected,cameraPath,cameraLink,hr02Initial,hr02Path,
+            hr02Choices,hr02NoChoice,hr01Initial,hr01Path,keyboardSelection,
+            firstUnloaded:first.src==='about:blank'&&first.parentElement===null,
+            repeatedCameraKeptPlayer,oldCameraUnloaded,sharedUnloaded,modalCameraUnloaded,
+            closeUnloaded,documentUnchanged:before===canonical(documentState),
+            decisions:documentState.items.map(i=>i.decision),
+            selectedOptions:documentState.items.map(i=>i.selected_option),draftWrites:stored.size};
+        })()""",
+    )
+    assert [tab["id"] for tab in result["sharedTabs"]] == [
+        "shared-review-context",
+        "shared-review-motion",
+        "shared-review-topology",
+        "shared-review-issues",
+        "shared-review-camera-audit",
+    ]
+    assert [tab["label"] for tab in result["sharedTabs"]][:4] == [
+        "1 空間定位",
+        "2 行走動畫",
+        "3 模型＋拓樸",
+        "4 接縫／binding",
+    ]
+    assert result["sharedTabs"][-1]["label"] == "HR02 相機／遮擋"
+    expected_path = f"frames/hr02_camera_audit/view.html?review={camera_hash}"
+    assert result["cameraPath"] == result["cameraLink"] == result["hr02Path"] == expected_path
+    assert result["hr02Initial"] == result["keyboardSelection"] == "camera-audit"
+    assert result["hr01Initial"] == "motion"
+    assert result["hr01Path"] == "frames/motion_context/player.html"
+    assert result["hr02Choices"] == ["", "APPROVE", "REJECT", "FIX_GEOMETRY", "KEEP_REVIEW"]
+    assert result["decisions"] == [item["decision"] for item in document["items"]]
+    assert result["selectedOptions"] == [item["selected_option"] for item in document["items"]]
+    assert result["counts"] == [1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0]
+    assert result["draftWrites"] == 0
+    assert all(
+        result[key]
+        for key in (
+            "cameraSelected",
+            "hr02NoChoice",
+            "firstUnloaded",
+            "repeatedCameraKeptPlayer",
+            "oldCameraUnloaded",
+            "sharedUnloaded",
+            "modalCameraUnloaded",
+            "closeUnloaded",
+            "documentUnchanged",
+        )
+    )
+
+
+def test_camera_media_requires_verified_view_receipt_and_preserves_missing_receipt_fallback(
+    dashboard: tuple[str, dict, Any], camera_hash_fixture: tuple[Any, dict, Path, dict]
+) -> None:
+    html, document, _ = dashboard
+    module, fixture_document, directory, manifest = camera_hash_fixture
+    original = copy.deepcopy(fixture_document)
+    assert module.hr02_camera_view_hash(fixture_document) == manifest["view"]["sha256"]
+    assert fixture_document == original
+    (directory / "view_manifest.json").unlink()
+    assert module.hr02_camera_view_hash(fixture_document) == ""
+    match = re.search(r"const hr02CameraViewHash='([a-f0-9]*)';", html)
+    assert match is not None
+    canonical_receipt = REVIEW / "frames/hr02_camera_audit/view_manifest.json"
+    if canonical_receipt.is_file():
+        receipt = json.loads(canonical_receipt.read_text())
+        expected_hash = hashlib.sha256(
+            (canonical_receipt.parent / "view.html").read_bytes()
+        ).hexdigest()
+        assert match[1] == receipt["view"]["sha256"] == expected_hash
+    else:
+        assert match[1] == ""
+    without_camera = html.replace(match[0], "const hr02CameraViewHash='';")
+    result = browser_model(
+        without_camera,
+        document,
+        r"""(()=>{
+          const before=canonical(documentState),original=document.querySelector('iframe');
+          const rejected=sharedMediaWorkspace.select('camera-audit')===false;
+          openItem('HR-02');const fallback=modalMediaWorkspace.selectedView;
+          closeItem();return {rejected,fallback,originalUnloaded:original.src==='about:blank',
+            tabs:sharedMediaWorkspace.host.querySelectorAll('button[role="tab"]').map(e=>e.id),
+            documentUnchanged:before===canonical(documentState),draftWrites:stored.size};
+        })()""",
+    )
+    assert result["rejected"] is True
+    assert result["fallback"] == "motion"
+    assert len(result["tabs"]) == 4
+    assert result["originalUnloaded"] is result["documentUnchanged"] is True
+    assert result["draftWrites"] == 0
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        "source",
+        "review",
+        "formal",
+        "gt",
+        "original_source_3d",
+        "frame_count",
+        "merged_visibility",
+        "canonical_path",
+        "view_drift",
+        "renderer_drift",
+    ],
+)
+def test_camera_dashboard_gate_rejects_promoted_or_changed_evidence(
+    camera_hash_fixture: tuple[Any, dict, Path, dict], change: str
+) -> None:
+    module, document, directory, original = camera_hash_fixture
+    assert module.hr02_camera_view_hash(document) == original["view"]["sha256"]
+    changed = copy.deepcopy(original)
+    if change == "source":
+        changed["source_sha256"] = "0" * 64
+    elif change == "review":
+        changed["review_payload_sha256"] = "0" * 64
+    elif change == "formal":
+        changed["formal_execution_enabled"] = True
+    elif change == "gt":
+        changed["gt_used"] = True
+    elif change == "original_source_3d":
+        changed["original_source_point_available"] = True
+    elif change == "frame_count":
+        changed["frame_count"] = 49
+    elif change == "merged_visibility":
+        changed["separate_public_record_and_projected_replay"] = False
+    elif change == "canonical_path":
+        changed["data"]["path"] = "../unlisted.json"
+    elif change == "view_drift":
+        (directory / "view.html").write_text("changed view")
+    elif change == "renderer_drift":
+        (directory / "renderer_manifest.json").write_text("changed renderer")
+    (directory / "view_manifest.json").write_text(json.dumps(changed))
+    with pytest.raises(ValueError):
+        module.hr02_camera_view_hash(document)
+
+
+@pytest.mark.parametrize("with_camera_evidence", [True, False])
+def test_hr02_evidence_recommendation_changes_display_only_and_keeps_original_profiles(
+    camera_enabled_dashboard: tuple[str, dict, str], with_camera_evidence: bool
+) -> None:
+    html, document, _ = camera_enabled_dashboard
+    if not with_camera_evidence:
+        html = re.sub(
+            r"const hr02CameraViewHash='[a-f0-9]{64}';",
+            "const hr02CameraViewHash='';",
+            html,
+        )
+    result = browser_model(
+        html,
+        document,
+        r"""(async()=>{
+          const before=canonical(documentState),original=embedded.items.find(i=>i.id==='HR-02');
+          const display=evidenceRecommendation(original);
+          const tableRow=document.getElementById('decision-table').children
+            .find(row=>row.children[0].textContent==='HR-02');
+          const tableRecommendation=tableRow.children[3].textContent;
+          const originalRecommendation=original.recommended_decision;
+          openItem('HR-02');const body=document.getElementById('item-content');
+          const recommendedSection=body.querySelectorAll('section')
+            .find(section=>section.children[0]?.textContent==='Recommended decision:');
+          const modalRecommendation=recommendedSection.textContent;
+          const select=document.getElementById('decision-select'),initialChoice=select.value;
+          select.value='APPROVE';await select.fire('change');
+          const radios=body.querySelectorAll('input[name="approval-profile"]');
+          const profileIds=radios.map(r=>r.value);
+          const checked=radios.filter(r=>r.checked).map(r=>r.value);
+          closeItem();
+          return {tableRecommendation,modalRecommendation,displayDecision:display.decision,
+            displayOption:display.option?.id||null,originalRecommendation,initialChoice,
+            profileIds,checked,documentUnchanged:before===canonical(documentState),
+            questionsUnchanged:canonical(reviewIdentity(documentState))===
+              canonical(reviewIdentity(embedded)),draftWrites:stored.size,
+            decisions:documentState.items.map(i=>i.decision)};
+        })()""",
+    )
+    original = next(item for item in document["items"] if item["id"] == "HR-02")
+    assert result["originalRecommendation"] == original["recommended_decision"] == "APPROVE"
+    if with_camera_evidence:
+        assert result["displayDecision"] == "KEEP_REVIEW"
+        assert result["displayOption"] is None
+        for field in ("tableRecommendation", "modalRecommendation"):
+            assert "KEEP_REVIEW" in result[field]
+            assert "先確認目標房間／鏡頭與追蹤點語意" in result[field]
+            assert "原 offset 提案保留供核對" in result[field]
+    else:
+        assert result["displayDecision"] == "APPROVE"
+        assert result["displayOption"] == original["recommended_option"]
+        assert "APPROVE" in result["tableRecommendation"]
+        assert "APPROVE" in result["modalRecommendation"]
+    assert result["profileIds"] == [option["id"] for option in original["approve_options"]]
+    assert result["checked"] == [original["recommended_option"]]
+    assert result["initialChoice"] == ""
+    assert result["documentUnchanged"] is result["questionsUnchanged"] is True
+    assert result["draftWrites"] == 0
+    assert result["decisions"] == [item["decision"] for item in document["items"]]

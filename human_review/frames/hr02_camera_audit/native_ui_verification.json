@@ -1,0 +1,109 @@
+{
+  "type": "NATIVE_IAB_UI_VERIFICATION",
+  "scrubbed_frames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "synchronized": true,
+  "unique_layout_count": 1,
+  "layout": [
+    {
+      "h": 60.3984375,
+      "w": 1128,
+      "x": 16,
+      "y": 239.78125
+    },
+    {
+      "h": 41.59375,
+      "w": 1128,
+      "x": 16,
+      "y": 312.1796875
+    },
+    {
+      "h": 1013.140625,
+      "w": 1128,
+      "x": 16,
+      "y": 395.5703125
+    },
+    {
+      "h": 56.5,
+      "w": 1128,
+      "x": 16,
+      "y": 1585.09375
+    },
+    {
+      "h": 490.984375,
+      "w": 1128,
+      "x": 16,
+      "y": 1653.59375
+    }
+  ],
+  "representative_stills_independent": true,
+  "full_playback_termination": {
+    "loaded_frame": 49,
+    "time": "9.8 s · 50/50",
+    "button": "播放 10 秒"
+  },
+  "modal": {
+    "hr02_default": "camera-audit",
+    "hr01_default": "motion",
+    "active_iframe_count": 1,
+    "closed_iframe_count": 0,
+    "hr02_recommendation": "KEEP_REVIEW",
+    "decision_selected": false
+  },
+  "all_four_decisions_pending": true,
+  "screenshot": "frames/dashboard_context/hr02_camera_review.jpg",
+  "source_modified": false,
+  "gt_used": false,
+  "human_decisions_applied": false,
+  "formal_cases_run": false
+}

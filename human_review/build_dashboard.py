@@ -106,6 +106,53 @@ def topology_view_hash(document: dict[str, Any]) -> str:
     return str(manifest["view"]["sha256"])
 
 
+def hr02_camera_view_hash(document: dict[str, Any]) -> str:
+    """Add hash-versioned diagnostic evidence without changing review choices."""
+    directory = ROOT / "human_review/frames/hr02_camera_audit"
+    receipt = directory / "view_manifest.json"
+    if not receipt.is_file():
+        return ""
+    manifest = json.loads(receipt.read_text())
+    if (
+        manifest["source_sha256"] != document["metadata"]["source_sha256"]
+        or manifest["review_payload_sha256"] != document["review_payload_sha256"]
+        or manifest["result_type"] != "DIAGNOSTIC"
+        or (manifest["frame_count"], manifest["fps"]) != (50, 5)
+        or manifest["camera_still_frames"] != [20, 25, 45]
+        or manifest["separate_public_record_and_projected_replay"] is not True
+        or manifest["camera_stills_are_representative_not_current_playback"] is not True
+        or any(
+            manifest[key] is not False
+            for key in (
+                "gt_used",
+                "evaluation_files_read",
+                "simulation_recipe_read",
+                "physical_authority_changed",
+                "formal_execution_enabled",
+                "decisions_changed",
+                "projection_changed",
+                "raw_graph_changed",
+                "original_source_point_available",
+            )
+        )
+    ):
+        raise ValueError("HR02 camera evidence must remain diagnostic and pending")
+    for key, filename in (
+        ("view", "view.html"),
+        ("data", "audit_data.json"),
+        ("producer", "manifest.json"),
+        ("renderer", "renderer_manifest.json"),
+    ):
+        path = directory / filename
+        if (
+            manifest[key]["path"] != filename
+            or path.resolve().parent != directory.resolve()
+            or hashlib.sha256(path.read_bytes()).hexdigest() != manifest[key]["sha256"]
+        ):
+            raise ValueError("HR02 camera evidence differs from its canonical hash receipt")
+    return str(manifest["view"]["sha256"])
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--decisions", type=Path, default=ROOT / "human_review/decisions.json")
@@ -142,6 +189,7 @@ def main() -> None:
         .replace("__REVIEW_PAYLOAD_HASH__", payload_hash(document))
         .replace("__REVIEW_CLARITY_DATA__", encoded_clarity)
         .replace("__REVIEW_TOPOLOGY_VIEW_HASH__", topology_view_hash(document))
+        .replace("__HR02_CAMERA_VIEW_HASH__", hr02_camera_view_hash(document))
     )
     print(
         json.dumps(

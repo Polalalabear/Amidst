@@ -4,6 +4,22 @@
 
 ## 繁體中文
 
+### 2026-10-07 — HR02 source-camera and landmark/foot evidence
+
+在 `7140062019a00256df0543d7dc3e513c53090d9d` 上補齊 HR02 的自動證據。唯讀 source
+frame220／subframe0、原 calibration、public projection／既有 GAP candidate 與完整
+allowed evaluated VIEWPORT meshes，共200次 landmark／候選腳底射線。26原OBSERVED
+landmark通視一致，腳底為10CLEAR／90OCCLUDED，16筆landmark可見但腳底被擋。
+兩鏡頭在AUDITORIUM annotation AABB而非OFFICE；不据外框認證真實room ownership。
+1.3597349529m是pending landmark→floor差，不是樓高。HR02只待確認目標房間／鏡頭及
+追蹤點語意；fallback既有protocol不新增人工問題。四項decision仍null，未apply decisions。
+重複source query的50frame與2camera資料精確一致；不是formal fresh benchmark gate。
+新相機／遮擋頁整合原dashboard，保留所有舊render；灰模stills不是CVpixel認證。
+沒有GT／evaluation／recipe reads、原blend修改、authority升級、formal Cases或發布。
+8張新1920x1080圖使用完整2,576instances／5,585,184triangles；舊图全部保留。
+172相關tests、repoRuff、mypy93core＋6reviewtools與diff gate通過。Native50格同步、
+版面只有一組geometry，完整播放正常終止；原payload與4pending choices不變。
+
 ### 2026-10-07 — Stable model/topology playback layout
 
 在 `095af134dfb22eab51277e7affcce1198f67b0fd` 修正每影格loading文字切換造成的重排；
@@ -919,6 +935,24 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-07 — HR02 source-camera and landmark/foot evidence
+
+Added read-only HR02 evidence from base `7140062019a00256df0543d7dc3e513c53090d9d`:
+source frame220/subframe0, unchanged calibration, public projections/frozen GAP candidate
+and 200 full allowed evaluated VIEWPORT landmark/foot ray queries. All26observed landmarks
+are clear; feet have10CLEAR/90OCCLUDED, including16clear-landmark/occluded-foot records.
+Both cameras lie within the AUDITORIUM annotation AABB and outside OFFICE, which does not
+certify actual room ownership. The pending1.3597349529m offset is not ceiling height.
+Only intended room/cameras and tracked body-point semantics remain human questions;
+existing fallback adds no decision. All four choices remain null. Repeated source queries
+match exactly, without claiming the formal fresh benchmark gate. The diagnostic viewer
+is additive; old renders remain. No GT/evaluation/recipe reads, original scene changes,
+authority promotion, formal Cases or publication occurred. Grey stills do not certify CV pixels.
+Eight new1920x1080views retain all2,576instances/5,585,184triangles. All older images remain.
+172related tests, repoRuff, mypy93core/six review tools and diff gate pass. Native50frame
+scrubbing is synchronized with one layout geometry; full playback terminates normally.
+The original payload and all four pending choices remain unchanged.
 
 ### 2026-10-07 — Stable model/topology playback layout
 
