@@ -282,10 +282,20 @@ def test_media_tabs_load_one_active_player_and_pause_for_modal_without_saving_de
         ]
     else:
         assert context_url.query == ""
-    assert result["paths"][1:] == [
-        "frames/motion_context/player.html",
-        "frames/topology_context/view.html",
-    ]
+    assert result["paths"][1] == "frames/motion_context/player.html"
+    topology_url = urlsplit(result["paths"][2])
+    assert topology_url.path == "frames/topology_context/view.html"
+    assert topology_url.scheme == topology_url.netloc == topology_url.fragment == ""
+    topology_manifest = REVIEW / "frames/topology_context/topology_manifest.json"
+    if topology_manifest.is_file():
+        expected_hash = json.loads(topology_manifest.read_text())["view"]["sha256"]
+        assert (
+            expected_hash
+            == hashlib.sha256((topology_manifest.parent / "view.html").read_bytes()).hexdigest()
+        )
+        assert parse_qsl(topology_url.query) == [("review", expected_hash)]
+    else:
+        assert topology_url.query == ""
     assert result["linkPaths"] == result["paths"]
     assert result["counts"] == [1, 1, 1, 1, 1, 0, 1, 1, 0]
     assert result["modalCount"] == 1 and result["finalFrames"] == 0

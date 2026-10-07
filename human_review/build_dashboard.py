@@ -65,6 +65,47 @@ def clarity_display_data(path: Path, output: Path) -> dict[str, Any]:
     }
 
 
+def topology_view_hash(document: dict[str, Any]) -> str:
+    """Version the local topology frame without adding anything to decisions."""
+    directory = ROOT / "human_review/frames/topology_context"
+    manifest_path = directory / "topology_manifest.json"
+    if not manifest_path.is_file():
+        return ""
+    manifest = json.loads(manifest_path.read_text())
+    if (
+        manifest["source_sha256"] != document["metadata"]["source_sha256"]
+        or manifest["review_payload_sha256"] != document["review_payload_sha256"]
+        or manifest["result_type"] != "DIAGNOSTIC"
+        or (manifest["node_count"], manifest["edge_count"], manifest["interior_vertex_count"])
+        != (2, 3, 4)
+        or any(
+            manifest[key] is not False
+            for key in (
+                "gt_used",
+                "evaluation_files_read",
+                "simulation_recipe_read",
+                "physical_authority_changed",
+                "formal_execution_enabled",
+                "raw_graph_changed",
+            )
+        )
+    ):
+        raise ValueError("topology display must retain its source, graph and pending review")
+    for key, name in (("view", "view.html"), ("data", "topology_data.json")):
+        if manifest[key]["path"] != name:
+            raise ValueError("topology display accepts only its canonical local files")
+        actual = hashlib.sha256((directory / name).read_bytes()).hexdigest()
+        if actual != manifest[key]["sha256"]:
+            raise ValueError("topology display differs from its hash-bound manifest")
+    data = json.loads((directory / "topology_data.json").read_text())
+    navigation_hash = hashlib.sha256(
+        json.dumps(data["raw_navigation"], sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
+    if navigation_hash != "9bbedd163e9a195943cfe82f3473a97ac3bc0ff3be31e83d5866cccfba4278fd":
+        raise ValueError("topology display must preserve the original configured graph")
+    return str(manifest["view"]["sha256"])
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--decisions", type=Path, default=ROOT / "human_review/decisions.json")
@@ -100,6 +141,7 @@ def main() -> None:
         template.replace("__DECISIONS_JSON__", encoded)
         .replace("__REVIEW_PAYLOAD_HASH__", payload_hash(document))
         .replace("__REVIEW_CLARITY_DATA__", encoded_clarity)
+        .replace("__REVIEW_TOPOLOGY_VIEW_HASH__", topology_view_hash(document))
     )
     print(
         json.dumps(

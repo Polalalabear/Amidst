@@ -350,3 +350,30 @@ frame24離屏camera定位及HR02人物/腳底/雙尺；實際JPEG與integration 
 223個manifest artifacts共107,121,780bytes，source／副本每項hash與完整file inventory一致。
 Package manifest SHA256：`e09e86998bed4248bcc9950084233a1ea141f1bf785f52176177e3c13a416bc5`；
 copy_verification.json另記錄核對結果，四項決策仍pending。
+
+## 2026-10-07 — Person position synchronized with fixed model/topology
+
+**DIAGNOSTIC / HUMAN_REVIEW_PENDING**；base `e4b7821f1e6c282ff571f6d56322b74e6354a958`。
+原50張行走render上新增同步P(t)候選腳底游標與L(t) landmark、右圖小人物及目前關係。
+N1／N2與4個vertices固定；t=4s是N1、4.2–8.8s沿既有E1 candidate並顯示進度、t=9s是
+N2，前後public片段顯示GAP graph外。Raw／floor mode只改fixed graph顯示高度；人物
+floor marker保留原render座標。Node association採原public double projection與既有
+1e-6m tolerance，未放寬matching門檻，也未snap float32人物座標。未重建或排序候選。
+
+UI僅在image載入後共同更新人物、diagram、time／state，拒絕stalecallbacks；播放控制
+移至圖上方。Native browser確認N1／N2、frame25 E1進度20%、完整播至frame49後自動停、
+raw／floor切換時foot pixel同為[472.1593683200794,415.5180004800999]。Fixed graph、
+nodes／edges／vertices與前版deep equality，212原files及166PNG／1GIF／2JPEG、29inputs、
+source SHA256與四項pending decisions全部保留；前版clarity package223artifact hashes
+仍相符。新的UI JPEG60,323bytes；view SHA256
+`9b6c675b519052b7d4f9f32d8cdcbbc49dd651c2c1047fad720ea4fd8666c153`。
+
+79相關tests通過；控制項移位後13項相關tests再驗證通過，repo Ruff、mypy93core＋5review
+tools、diff gate通過。本輪沒有Blender render、GT／evaluation／recipe reads、source或
+physical authority／protocol修改、formal Cases、push、merge或freeze tag。
+
+完整獨立APFS副本保存於canonical checkout的ignored
+`data/pilot/phase1_finalization_human_review_20261007/topology_motion/human_review/`；
+225個manifest artifacts共107,304,824bytes，source／副本每項hash與完整file inventory一致。
+Package manifest SHA256：`c60c8193747039e25891a63ad2be5b04878c0f487f870b4345cd791ed2e8a06c`；
+copy_verification.json另記錄核對結果。所有舊副本保留，localhost preview改指向新副本。

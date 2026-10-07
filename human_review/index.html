@@ -68,6 +68,7 @@ iframe{display:block;width:100%;height:990px;border:1px solid #cfdae2;border-rad
 'use strict';
 const embedded=JSON.parse(document.getElementById('review-data').textContent);
 const reviewClarity=JSON.parse(document.getElementById('review-clarity-data')?.textContent||'{}')||{};
+const topologyViewHash='9b6c675b519052b7d4f9f32d8cdcbbc49dd651c2c1047fad720ea4fd8666c153';
 const immutableHash='e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463';
 let documentState=structuredClone(embedded),activeItem=null;
 const allowed=['APPROVE','REJECT','FIX_GEOMETRY','KEEP_REVIEW'];
@@ -99,7 +100,7 @@ function safeLocalPath(path){if(typeof path!=='string'||!path||/^(?:[a-z]+:|\/\/
 const reviewMediaViews=[
 {id:'context',label:'1 空間定位',title:'School／1F／office 空間導覽',path:'frames/spatial_context/guide.html'+(reviewClarity.manifest_sha256?'?review='+encodeURIComponent(reviewClarity.manifest_sha256):''),description:'從模型範圍定位到 office 行走帶；相機靠近動畫只改變取景，不表示人物走過整棟模型。'},
 {id:'motion',label:'2 行走動畫',title:'10 秒模型行走動畫',path:'frames/motion_context/player.html',description:'沿用 public observations 與 inferred GAP 的 body preview；姿勢僅供顯示，footpoint binding 仍 pending HR-02。'},
-{id:'topology',label:'3 模型＋拓樸',title:'模型中的節點、邊與折線頂點',path:'frames/topology_context/view.html',description:'用同一組 ID 對照模型與原 graph；轉折頂點不是新增 graph node，三條原 edges 保留。'}
+{id:'topology',label:'3 模型＋拓樸',title:'模型中的節點、邊與人物目前位置',path:'frames/topology_context/view.html'+(topologyViewHash?'?review='+encodeURIComponent(topologyViewHash):''),description:'固定 N1／N2 與轉折頂點維持原位；P(t) 隨人物同步移動，標明目前 node、所在 E1 或 GAP graph 範圍外。'}
 ];
 let sharedMediaWorkspace=null,modalMediaWorkspace=null,activeLegacySequence=null;
 function unloadMediaFrames(container){for(const frame of container.querySelectorAll('iframe')){frame.src='about:blank';frame.remove();}}

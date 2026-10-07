@@ -62,6 +62,9 @@ def main() -> None:
             "static_preview": "frames/topology_context/topology_preview.png",
             "raw_graph_changed": topology["raw_graph_changed"],
         }
+        if "person_marker_policy" in topology:
+            topology_summary["person_marker_policy"] = topology["person_marker_policy"]
+            topology_summary["person_locator_frames"] = 50
     clarity_path = HERE / "frames/review_clarity/manifest.json"
     clarity_summary = {}
     if clarity_path.is_file():

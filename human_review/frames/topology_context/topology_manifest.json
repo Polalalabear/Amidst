@@ -23,6 +23,22 @@
     "xy_preserved": true,
     "raw_graph_changed": false
   },
+  "person_marker_policy": {
+    "schema_version": "phase1-review-person-topology-locator-v1",
+    "marker_is_graph_node": false,
+    "graph_nodes_move": false,
+    "graph_vertices_move": false,
+    "marker_authority": "DISPLAY_ONLY_PENDING_HR02_BINDING",
+    "spatial_unit_scale_m": 0.0247,
+    "node_match_tolerance_m": 1e-06,
+    "gap_start_timestamp": 4.0,
+    "gap_end_timestamp": 9.0,
+    "node_association_coordinates": "EXACT_PUBLIC_PROJECTION_BEFORE_BLENDER_FLOAT32",
+    "render_marker_coordinates": "EXACT_FROZEN_MOTION_FLOAT32_NO_SNAPPING",
+    "gap_relation_basis": "EXISTING_RENDERED_DIRECT_CANDIDATE_NO_NEW_PATH",
+    "new_route_generated": false,
+    "gt_used": false
+  },
   "inputs": [
     {
       "path": "configs/architectural_scale_school_v3.json",
@@ -155,17 +171,21 @@
     {
       "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/topology_evidence.json",
       "sha256": "1bc6f6c108d1fc3775f3c0836132138bf852bcabd1bb9489deef6b4f298dbcf9"
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/projected_frames.json",
+      "sha256": "0ebdb3762fe181c44ea25456b4525204aaa19dbe957a923c360f2bffdf5d6e48"
     }
   ],
-  "builder_sha256": "04934d4d31ad8ee28bf8ae979e51b67ddf8935192635b0ac3de88b39b0c92aad",
-  "template_sha256": "787f1d5fdf4612702936119dfcdb3c75b12ce5fda13a36ee2c465f90b4ae798c",
+  "builder_sha256": "10eb8c2adf182c490cf872601368a1ae6cdf234866ca7907289d381afa22f28a",
+  "template_sha256": "903e903541affbdc1afbc78ae367fa641caf199602d1bbf453642963dfd8e9cd",
   "view": {
     "path": "view.html",
-    "sha256": "dca6282c500dbffa05ca9e74aa0208e83bc45ec86305a5473366fdbecb7154e4"
+    "sha256": "9b6c675b519052b7d4f9f32d8cdcbbc49dd651c2c1047fad720ea4fd8666c153"
   },
   "data": {
     "path": "topology_data.json",
-    "sha256": "6ee76cc5b5d3bb70adcd20fe8d17ed53c05e4ea3e6998266f45d7ce95c35ac6d"
+    "sha256": "c8a1a46b74837651e280660f1c380c1eae869b1d028630b5a85ff4808723c952"
   },
   "preserved_original_files": {
     "human_review/decisions.json": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
@@ -174,9 +194,9 @@
     "human_review/frames/player.html": "a124414617b2a81cf34a3d7509453d9cb72307f6e7957ce7a7a6b8758213092a",
     "human_review/frames/player_template.html": "15e196615bd1ed1bda3994dc62eda8f2ff7474d066fc6386e20b58f64d6476c7",
     "human_review/build_frame_player.py": "22af24ecdcda9ef8251c83ac1c4f2cf87e199c8d7d11e48c6b9ccf79237eb21b",
-    "human_review/build_spatial_guide.py": "a00a74511fab65b7739f2cb515b4c0b17efefd2926aab220037722e80f0bdb60",
-    "human_review/frames/spatial_context/guide.html": "5c7e308da32f7d457eb86aca80a4e4aaae13febbbf870afd0a27b63b2eb3ff6c",
-    "human_review/frames/spatial_context/guide_template.html": "76d74e1ca2de5f496a87bad0c91e6befdd7758812075744d8c414a251557bd67",
+    "human_review/build_spatial_guide.py": "23b6890e50d8efbca2839efe9d67f93e048f1f6fd94689755485553486e55f5d",
+    "human_review/frames/spatial_context/guide.html": "c5d4add33a535b6c9aa84c789745520a983cb8ae19789d59b06cf81c6ee70480",
+    "human_review/frames/spatial_context/guide_template.html": "7ed7b060ad60bf85072be972a18086b6f16b474361af12525707651c8fc08747",
     "human_review/frames/spatial_context/spatial_context_manifest.json": "04da3eb11f051cc7470659874424ad25f980e3712925a1c9655dc150f22a1fe4",
     "human_review/frames/motion_context/motion_manifest.json": "e77628c145fceb42ae086a76f4de60741147ea525eb12d46e7f23d7ba83d7b69",
     "human_review/frames/motion_context/gif_manifest.json": "17f949dad38209371547ec7245d9997488b58171e330d221f36c5cf153740f02",
@@ -238,6 +258,34 @@
     "human_review/frames/office_scope_top_closeup.png": "3c01326d30b87aca75736520f148deb584964931df998fbd802653759ae00f2d",
     "human_review/frames/office_side.png": "81ad25e0ea3e93e0a37c51d14fdcd321124373af254de4532cbd90ce5a38762a",
     "human_review/frames/office_top.png": "2b9b5c603b8305ba5ba7f5c519c84438cbd26a16e91a82ea75dea5e32c6acd9d",
+    "human_review/frames/review_clarity/approach_000.png": "17e21aa9cd7cc6c88da8603fdeaf0b6492f52c42398ddbcfab71b273d5a82d11",
+    "human_review/frames/review_clarity/approach_001.png": "0dafb28433f36d20beb8dc53841a554e549eab524e489d2cc5252fb27a59c9ec",
+    "human_review/frames/review_clarity/approach_002.png": "5bcdfd4c829d191cc9382d2d5a51764feaee15369dd0883d4f32412c77d558e4",
+    "human_review/frames/review_clarity/approach_003.png": "84bd467cec158e1b1189f41f599eb158b8d7371e99f376b2c6be9d4aec3cd486",
+    "human_review/frames/review_clarity/approach_004.png": "176a7a9548e3c4058304d0f2e7b531c92d83aaf6d753dfb147c29157410473fb",
+    "human_review/frames/review_clarity/approach_005.png": "8ff145f56b8752425a4e1fc9bd5675cdc9b4582f8459bb152a555f957671eb2a",
+    "human_review/frames/review_clarity/approach_006.png": "7cbbc6ef32b416c8698306fad41ace244b4cbf9e40a15d2d60fb4b5fe34cf787",
+    "human_review/frames/review_clarity/approach_007.png": "eaa2833d068bd56653175d853ce57e41722e51449c80e3fbf5d528b3c11a7202",
+    "human_review/frames/review_clarity/approach_008.png": "2023144e7dc24331c7c7013cb0ab02eb42eb1c3569bdfb490a358670941a307b",
+    "human_review/frames/review_clarity/approach_009.png": "addc71edafaa4079efd2100892772c072cd25abeaa5e04f66322988adaf97ce6",
+    "human_review/frames/review_clarity/approach_010.png": "445c3b6c2b626f08031dcee04db5aa9c6dc2fb866de70add324cce267f66d89d",
+    "human_review/frames/review_clarity/approach_011.png": "a90012e257f95093f3fa646ee16680d5e9d2d6b0a2367dad4fbb35a0d099632f",
+    "human_review/frames/review_clarity/approach_012.png": "d1894ea8ad81b9fa0754aec80e1ea2556ff76877b33266b25f2e519d83cd975a",
+    "human_review/frames/review_clarity/approach_013.png": "e2752003f7e4bf50d14f25bef5db22d3a54077d2afb79598fbbae23028dab29d",
+    "human_review/frames/review_clarity/approach_014.png": "b5d6713bd0922ef8a9f54fd91daa9c78fc3a29e72abc3a0f3bd727ed208ea937",
+    "human_review/frames/review_clarity/approach_015.png": "5741bdef618683c84d844c9f2eb9e4b6cfe7068d6fe32eeaf51dc9a9a89e5c58",
+    "human_review/frames/review_clarity/approach_016.png": "4c68d08f24f97b1c549a8cd78d8f3feb56c8573cf628366e2d6a9d9f7e99c2c9",
+    "human_review/frames/review_clarity/approach_017.png": "374a27c9e18eeda4debf16d06c42fe3455f789286fcb7768ea8934468f536103",
+    "human_review/frames/review_clarity/approach_018.png": "22f401d8ed582747620444f620bf992d64cda98bbd70db4895e77c8b7be2a723",
+    "human_review/frames/review_clarity/approach_019.png": "7c6eda45a5ce208701a6f7939858ff7c76fdd651dffe05a6e7390f12730cb08b",
+    "human_review/frames/review_clarity/approach_020.png": "f1d02e92b4d44f8531d7d4dd01f4a183ffd0dc30fbbf737f142072a5d4f4beb8",
+    "human_review/frames/review_clarity/approach_021.png": "c45b7f3da8d14bc00c29892b6552e540cc06fdb03b8b35db175d14f7a2f07a62",
+    "human_review/frames/review_clarity/approach_022.png": "7e4b1e0d2babf6d255e3baad9c1d296802b14ee60c81e449745ba7a070f4c634",
+    "human_review/frames/review_clarity/approach_023.png": "0cc7e3f77493ed9ef6deb212ea4026c73fdd116c1b7c93806f40838ccf206a05",
+    "human_review/frames/review_clarity/approach_024.png": "f7b691b8fe72db4879596154c3c168e7301b7f02e2aef848429c0194ba83855e",
+    "human_review/frames/review_clarity/floor_complete.png": "6a0ff12005df23ab828d6395cd542675e3e971c9fce320ee241cb4c2dde843d7",
+    "human_review/frames/review_clarity/hr02_body_side.png": "96ae47a626c5c2234fcde6324f9560e76f982db6230de32da1768e9f4b836203",
+    "human_review/frames/review_clarity/office_context.png": "bb4345a8583de6233f1e044471ff3d7be62bee6e91f0de1d40ca73626e3d05ad",
     "human_review/frames/sequence_000.png": "039a9fcdcc96c89804475543404b398774dcf8efaea2c95b17be8d55921432d0",
     "human_review/frames/sequence_001.png": "4dfe4b16c4246b35bc3d03f4663b39521dfc237dd937c03abedc6ed1909b5c3f",
     "human_review/frames/sequence_002.png": "b1e53031b2ade04567f90af4e736de7b90fdb6da4962855809d27c3f00a76784",

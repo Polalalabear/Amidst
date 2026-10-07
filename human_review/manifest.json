@@ -35,14 +35,31 @@
   },
   "topology_supplement": {
     "manifest": "frames/topology_context/topology_manifest.json",
-    "manifest_sha256": "2f93a20f657d50b6b8a363f6125458cd87543c7abdd3b2ec00525dc0aaf204aa",
+    "manifest_sha256": "6c10e52aa8fea5f5fce26a2c77756e5d04d2cc3995c8210481329d0753b3a977",
     "result_type": "DIAGNOSTIC",
     "nodes": 2,
     "edges": 3,
     "polyline_vertices": 4,
     "view": "frames/topology_context/view.html",
     "static_preview": "frames/topology_context/topology_preview.png",
-    "raw_graph_changed": false
+    "raw_graph_changed": false,
+    "person_marker_policy": {
+      "schema_version": "phase1-review-person-topology-locator-v1",
+      "marker_is_graph_node": false,
+      "graph_nodes_move": false,
+      "graph_vertices_move": false,
+      "marker_authority": "DISPLAY_ONLY_PENDING_HR02_BINDING",
+      "spatial_unit_scale_m": 0.0247,
+      "node_match_tolerance_m": 1e-06,
+      "gap_start_timestamp": 4.0,
+      "gap_end_timestamp": 9.0,
+      "node_association_coordinates": "EXACT_PUBLIC_PROJECTION_BEFORE_BLENDER_FLOAT32",
+      "render_marker_coordinates": "EXACT_FROZEN_MOTION_FLOAT32_NO_SNAPPING",
+      "gap_relation_basis": "EXISTING_RENDERED_DIRECT_CANDIDATE_NO_NEW_PATH",
+      "new_route_generated": false,
+      "gt_used": false
+    },
+    "person_locator_frames": 50
   },
   "review_clarity_supplement": {
     "manifest": "frames/review_clarity/manifest.json",
@@ -66,8 +83,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 29286,
-      "sha256": "af0828b1e392a9e2b663f20fd66baafb3aaeef5f2263b03c31fb59ec00444071"
+      "bytes": 30066,
+      "sha256": "341d0bafbdb6759be9781a3420c9aac9627ae3fa74549bdc2d9f2bbc53249140"
     },
     {
       "path": "apply_decisions.py",
@@ -81,8 +98,8 @@
     },
     {
       "path": "build_dashboard.py",
-      "bytes": 4417,
-      "sha256": "a83a52793f581b707c712b236ebdd8131e9625d2418b1997561da191de6f8c23"
+      "bytes": 6498,
+      "sha256": "89b7b41438243cac70239bda82d28bb041788fb878af0fc40ea08872b309a08f"
     },
     {
       "path": "build_frame_player.py",
@@ -106,8 +123,8 @@
     },
     {
       "path": "build_topology_view.py",
-      "bytes": 19052,
-      "sha256": "04934d4d31ad8ee28bf8ae979e51b67ddf8935192635b0ac3de88b39b0c92aad"
+      "bytes": 29274,
+      "sha256": "10eb8c2adf182c490cf872601368a1ae6cdf234866ca7907289d381afa22f28a"
     },
     {
       "path": "candidate_regions_xy.png",
@@ -131,8 +148,8 @@
     },
     {
       "path": "dashboard_template.html",
-      "bytes": 39693,
-      "sha256": "a0364f0bbf2a47b8e6bea955481031e698f1f81df5ca956e02f67fc6cbeb5ec0"
+      "bytes": 39849,
+      "sha256": "b5196035f5cdbe2253e0d3fbc52046c02ae667fb6b601816f1082c5c78393a57"
     },
     {
       "path": "decisions.json",
@@ -141,8 +158,8 @@
     },
     {
       "path": "finalize_package.py",
-      "bytes": 6449,
-      "sha256": "49451984bcb8113fc036ca8196c921a9caf87c750528ede469551a0f853643f9"
+      "bytes": 6643,
+      "sha256": "908c9cfdc7a2aaf76da22832ec47acdfc765518872e00cd0a1d4e2c34f1c1a04"
     },
     {
       "path": "formal_settings.md",
@@ -168,6 +185,11 @@
       "path": "frames/dashboard_context/integrated_review.jpg",
       "bytes": 69496,
       "sha256": "d3e917ca91ffab42d9895056920867c3961f101c8030288e2e6f2cd6a4d43182"
+    },
+    {
+      "path": "frames/dashboard_context/topology_motion_review.jpg",
+      "bytes": 60323,
+      "sha256": "22aa2b25049e3d4bb374e857fcaedf2c5dbd734f8f87c4b299d5ed53270e8e6f"
     },
     {
       "path": "frames/motion_context/gif_manifest.json",
@@ -1036,18 +1058,18 @@
     },
     {
       "path": "frames/topology_context/template.html",
-      "bytes": 11230,
-      "sha256": "787f1d5fdf4612702936119dfcdb3c75b12ce5fda13a36ee2c465f90b4ae798c"
+      "bytes": 18858,
+      "sha256": "903e903541affbdc1afbc78ae367fa641caf199602d1bbf453642963dfd8e9cd"
     },
     {
       "path": "frames/topology_context/topology_data.json",
-      "bytes": 23058,
-      "sha256": "6ee76cc5b5d3bb70adcd20fe8d17ed53c05e4ea3e6998266f45d7ce95c35ac6d"
+      "bytes": 65812,
+      "sha256": "c8a1a46b74837651e280660f1c380c1eae869b1d028630b5a85ff4808723c952"
     },
     {
       "path": "frames/topology_context/topology_manifest.json",
-      "bytes": 24946,
-      "sha256": "2f93a20f657d50b6b8a363f6125458cd87543c7abdd3b2ec00525dc0aaf204aa"
+      "bytes": 29399,
+      "sha256": "6c10e52aa8fea5f5fce26a2c77756e5d04d2cc3995c8210481329d0753b3a977"
     },
     {
       "path": "frames/topology_context/topology_preview.png",
@@ -1056,8 +1078,8 @@
     },
     {
       "path": "frames/topology_context/view.html",
-      "bytes": 34270,
-      "sha256": "dca6282c500dbffa05ca9e74aa0208e83bc45ec86305a5473366fdbecb7154e4"
+      "bytes": 84652,
+      "sha256": "9b6c675b519052b7d4f9f32d8cdcbbc49dd651c2c1047fad720ea4fd8666c153"
     },
     {
       "path": "frames/visual_manifest.json",
@@ -1106,8 +1128,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 71831,
-      "sha256": "f4fc7d582dc8e2c79f764d8e0c29d6578696454425ab21c0a1c1922c936d7684"
+      "bytes": 72022,
+      "sha256": "d826b5b6f5604ec094bd091399b2fae2997413e5de7797d0bf51af04ee404d68"
     },
     {
       "path": "inspect_review_settings.py",
@@ -1165,9 +1187,14 @@
       "sha256": "40c6f60a8bfcde8fa090af51623b069f01f99925f75e9db75fc4ff88d0313596"
     },
     {
+      "path": "topology_motion_integration_manifest.json",
+      "bytes": 3012,
+      "sha256": "a378cb0d782428aceb64b5dc0819dba4ee2518d01457b295664fd1cc7ad259a7"
+    },
+    {
       "path": "write_review_docs.py",
-      "bytes": 19648,
-      "sha256": "cd730464f8a5c3933608b65f775a9be2bc21a381fe92cadf9c91b3e1db9a9e5b"
+      "bytes": 20516,
+      "sha256": "59d73ac5e7de3a016d36b52e9f05ead8d0ced0abb7ded079e1849ed8bb3bfd3f"
     }
   ]
 }

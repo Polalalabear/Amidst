@@ -12,6 +12,7 @@ import hashlib
 import json
 import math
 import os
+import struct
 from pathlib import Path
 from typing import Any, cast
 
@@ -25,6 +26,8 @@ MOTION_RELATIVE = "human_review/frames/motion_context/motion_manifest.json"
 DIGESTS_RELATIVE = PIPELINE_RELATIVE.replace("pipeline_config.json", "digests.json")
 TOPOLOGY_RELATIVE = PIPELINE_RELATIVE.replace("pipeline_config.json", "topology_evidence.json")
 CANDIDATES_RELATIVE = PIPELINE_RELATIVE.replace("pipeline_config.json", "candidates.json")
+PROJECTED_RELATIVE = PIPELINE_RELATIVE.replace("pipeline_config.json", "projected_frames.json")
+SCALE_RELATIVE = "configs/architectural_scale_school_v3.json"
 SOURCE_SHA256 = "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
 REVIEW_HASH = "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463"
 PUBLIC_JSON = frozenset(
@@ -32,6 +35,9 @@ PUBLIC_JSON = frozenset(
         PIPELINE_RELATIVE,
         DIGESTS_RELATIVE,
         MOTION_RELATIVE,
+        CANDIDATES_RELATIVE,
+        PROJECTED_RELATIVE,
+        SCALE_RELATIVE,
         "human_review/frames/visual_manifest.json",
         "human_review/review_template.json",
         "human_review/geometry_evidence.json",
@@ -207,6 +213,193 @@ def validate_motion(manifest: dict[str, Any]) -> None:
         raise ValueError("topology references the existing 50 motion frames at 5 Hz")
 
 
+def build_person_markers(
+    navigation: dict[str, Any],
+    motion: dict[str, Any],
+    original: dict[str, Any],
+    projected: dict[str, Any],
+    candidates: dict[str, Any],
+    scale_m: float,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Locate the frozen displayed person without relocating graph geometry.
+
+    Render positions are Blender float32 values and stay byte-for-value intact.
+    Node association uses the original public projection and existing graph
+    tolerance instead of widening that tolerance to absorb render quantization.
+    During GAP the marker only names the direct candidate already rendered.
+    """
+    validate_navigation(navigation)
+    validate_motion(motion)
+    if scale_m != 0.0247:
+        raise ValueError("person locator requires the approved architectural scale")
+    if any(
+        original.get(key) is not False
+        for key in (
+            "gt_used",
+            "evaluation_files_read",
+            "simulation_recipe_read",
+        )
+    ):
+        raise ValueError("person locator cannot consume GT or simulation evidence")
+    if original.get("source_asset_sha256") != SOURCE_SHA256:
+        raise ValueError("person locator source differs from school_v3")
+    if len(original.get("frames", [])) != 50:
+        raise ValueError("person locator requires the original 50 public motion frames")
+    direct = candidates["results"][0]["candidates"][0]
+    if (
+        direct["navmesh_corridor"] != [EDGE_IDS[0]]
+        or direct["polyline"] != navigation["edges"][0]["polyline"]
+        or direct["provenance"] != "INFERRED_GAP"
+    ):
+        raise ValueError("person locator must retain the existing rendered direct candidate")
+    tolerance = navigation["node_match_tolerance_m"]
+    if not math.isfinite(tolerance) or tolerance <= 0:
+        raise ValueError("invalid existing graph node tolerance")
+    samples: dict[int, list[dict[str, Any]]] = {}
+    for sample in projected["dataset"]["samples"]:
+        if sample["source_asset_sha256"] != SOURCE_SHA256:
+            raise ValueError("public projected sample source differs from school_v3")
+        samples.setdefault(sample["frame_id"], []).append(sample)
+    if sorted(samples) != list(range(50)):
+        raise ValueError("person locator requires the frozen public frame inventory")
+    observed: dict[int, dict[str, Any]] = {}
+    node_matches: dict[int, tuple[int, float]] = {}
+    endpoint_frames: dict[int, list[int]] = {0: [], 1: []}
+    for index, frame in enumerate(motion["frames"]):
+        old = original["frames"][index]
+        if frame["frame_id"] != index or frame["timestamp"] != index / 5:
+            raise ValueError("person locator must retain frozen timestamps and frame order")
+        for key in (
+            "frame_id",
+            "timestamp",
+            "role",
+            "landmark_position_bu",
+            "body_base_bu",
+            "camera_evidence",
+            "projection_method",
+            "confidence_state",
+        ):
+            if frame[key] != old[key]:
+                raise ValueError("person locator changed original motion evidence: " + key)
+        raw, floor = frame["landmark_position_bu"], frame["body_base_bu"]
+        if (
+            len(raw) != 3
+            or len(floor) != 3
+            or not all(math.isfinite(value) for value in (*raw, *floor))
+            or raw[:2] != floor[:2]
+            or floor[2] != original["approved_support_z_bu"]
+        ):
+            raise ValueError("person locator must preserve pending footpoint placement")
+        rows = samples[index]
+        if any(row["timestamp"] != frame["timestamp"] for row in rows):
+            raise ValueError("public evidence timestamp differs from displayed frame")
+        visible = [row for row in rows if row["projected_point"] is not None]
+        if len(visible) > 1:
+            raise ValueError("frozen single-view motion cannot select a new camera hypothesis")
+        if visible:
+            row = visible[0]
+            point = row["projected_point"]["world_position"]
+            if row["visibility"] != "OBSERVED" or row["provenance"] != "OBSERVED":
+                raise ValueError("person locator needs public observed projection provenance")
+            # Exact quantization identity, not a new geometric matching epsilon.
+            quantized = [struct.unpack("!f", struct.pack("!f", value))[0] for value in point]
+            if raw != quantized:
+                raise ValueError("rendered person differs from its original public projection")
+            if frame["state"] != "OBSERVED" or frame["role"] != "OBSERVED / PUBLIC PROJECTED":
+                raise ValueError("observed person provenance differs from frozen motion")
+            observed[index] = row
+            for node_index, node in enumerate(navigation["nodes"]):
+                distance_m = math.dist(point, node["position"]) * scale_m
+                if distance_m <= tolerance:
+                    if index in node_matches:
+                        raise ValueError("public person position ambiguously matches graph nodes")
+                    node_matches[index] = (node_index, distance_m)
+                    endpoint_frames[node_index].append(index)
+        elif frame["state"] != "INFERRED_GAP" or frame["role"] != "GAP / INFERRED DIRECT CANDIDATE":
+            raise ValueError("GAP person must retain existing inferred direct provenance")
+    if any(len(rows) != 1 for rows in endpoint_frames.values()):
+        raise ValueError("person locator needs the existing two unique public GAP endpoints")
+    departure, recovery = endpoint_frames[0][0], endpoint_frames[1][0]
+    start = motion["frames"][departure]["timestamp"]
+    end = motion["frames"][recovery]["timestamp"]
+    if start >= end or direct["estimated_travel_time"] != end - start:
+        raise ValueError("person locator timing differs from the already rendered candidate")
+    markers = []
+    for index, frame in enumerate(motion["frames"]):
+        relation: dict[str, Any] = {
+            "kind": "OUTSIDE_GAP_GRAPH",
+            "node_alias": None,
+            "node_id": None,
+            "edge_alias": None,
+            "edge_id": None,
+            "from_node": "N1",
+            "to_node": "N2",
+            "progress": None,
+            "scope": "BEFORE_DEPARTURE" if index < departure else "AFTER_RECOVERY",
+            "association_position_bu": (
+                observed[index]["projected_point"]["world_position"] if index in observed else None
+            ),
+            "association_source": "EXACT_PUBLIC_PROJECTION",
+            "node_distance_m": None,
+            "candidate_id": None,
+        }
+        if index in node_matches:
+            node_index, distance_m = node_matches[index]
+            relation.update(
+                kind="NODE",
+                node_alias=f"N{node_index + 1}",
+                node_id=navigation["nodes"][node_index]["node_id"],
+                progress=float(node_index),
+                node_distance_m=distance_m,
+                scope="AT_DEPARTURE" if node_index == 0 else "AT_RECOVERY",
+            )
+        elif index not in observed:
+            if not start < frame["timestamp"] < end:
+                raise ValueError("inferred person falls outside the existing GAP interval")
+            relation.update(
+                kind="EDGE",
+                edge_alias="E1",
+                edge_id=EDGE_IDS[0],
+                progress=(frame["timestamp"] - start) / (end - start),
+                scope="ON_EXISTING_DIRECT_CANDIDATE",
+                association_source="EXISTING_RENDERED_DIRECT_CANDIDATE",
+                candidate_id=direct["candidate_id"],
+            )
+        elif departure < index < recovery:
+            raise ValueError("public observations changed the frozen GAP interval")
+        raw, floor = frame["landmark_position_bu"], frame["body_base_bu"]
+        camera, policy = motion["review_camera"], motion["render_policy"]
+        markers.append(
+            {
+                "raw_position_bu": raw,
+                "floor_position_bu": floor,
+                "raw_pixel": project_point(raw, camera, policy["width"], policy["height"]),
+                "floor_pixel": project_point(floor, camera, policy["width"], policy["height"]),
+                "schematic_position_bu": raw,
+                "state": "OBSERVED" if index in observed else "GAP",
+                "source_state": frame["state"],
+                "role": frame["role"],
+                "graph_relation": relation,
+            }
+        )
+    return markers, {
+        "schema_version": "phase1-review-person-topology-locator-v1",
+        "marker_is_graph_node": False,
+        "graph_nodes_move": False,
+        "graph_vertices_move": False,
+        "marker_authority": "DISPLAY_ONLY_PENDING_HR02_BINDING",
+        "spatial_unit_scale_m": scale_m,
+        "node_match_tolerance_m": tolerance,
+        "gap_start_timestamp": start,
+        "gap_end_timestamp": end,
+        "node_association_coordinates": "EXACT_PUBLIC_PROJECTION_BEFORE_BLENDER_FLOAT32",
+        "render_marker_coordinates": "EXACT_FROZEN_MOTION_FLOAT32_NO_SNAPPING",
+        "gap_relation_basis": "EXISTING_RENDERED_DIRECT_CANDIDATE_NO_NEW_PATH",
+        "new_route_generated": False,
+        "gt_used": False,
+    }
+
+
 def build_topology(
     pipeline_config_path: Path, motion_manifest_path: Path, output_path: Path
 ) -> dict[str, Any]:
@@ -232,6 +425,17 @@ def build_topology(
     if any(source.get("gt_used") is not False for source in (original, geometry)):
         raise ValueError("topology display cannot consume GT evidence")
     inputs = verified_original_inputs(read_public(HERE / "review_template.json"))
+    scale = read_public(ROOT / SCALE_RELATIVE)
+    if scale["authority"] != "APPROVED" or scale["source_asset_sha256"] != SOURCE_SHA256:
+        raise ValueError("person locator requires the approved source-bound architectural scale")
+    markers, marker_policy = build_person_markers(
+        navigation,
+        motion,
+        original,
+        read_public(ROOT / PROJECTED_RELATIVE),
+        read_public(ROOT / CANDIDATES_RELATIVE),
+        scale["metres_per_blender_unit"],
+    )
     protected = {path: digest(path) for path in frozen_files()}
     camera = motion["review_camera"]
     width, height = motion["render_policy"]["width"], motion["render_policy"]["height"]
@@ -309,6 +513,7 @@ def build_topology(
                 "frame_id": index,
                 "timestamp": frame["timestamp"],
                 "role": frame["role"],
+                "current_position": markers[index],
             }
         )
     data = {
@@ -343,6 +548,7 @@ def build_topology(
         "height": height,
         "fps": 5,
         "frames": frames,
+        "person_marker_policy": marker_policy,
         "model_frame": frames[25],
         "old_motion_player": relative_path(HERE / "frames/motion_context/player.html", output_path),
         "old_guide": relative_path(HERE / "frames/spatial_context/guide.html", output_path),
@@ -352,6 +558,7 @@ def build_topology(
             {"path": MOTION_RELATIVE, "sha256": digest(motion_manifest_path)},
             {"path": DIGESTS_RELATIVE, "sha256": digest(ROOT / DIGESTS_RELATIVE)},
             {"path": TOPOLOGY_RELATIVE, "sha256": digest(ROOT / TOPOLOGY_RELATIVE)},
+            {"path": PROJECTED_RELATIVE, "sha256": digest(ROOT / PROJECTED_RELATIVE)},
         ],
         "pipeline_output_digests_verified": {
             name: digests["outputs"][name] for _path, name in graph_inputs
@@ -385,6 +592,7 @@ def build_topology(
         "edge_count": 3,
         "interior_vertex_count": 4,
         "conversion": data["conversion"],
+        "person_marker_policy": marker_policy,
         "inputs": data["inputs"],
         "builder_sha256": digest(Path(__file__).resolve()),
         "template_sha256": digest(OUT / "template.html"),

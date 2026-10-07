@@ -4,6 +4,19 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Synchronized person position in model/topology review
+
+在 `e4b7821f1e6c282ff571f6d56322b74e6354a958` 上補齊人物與拓樸對照：每個既有
+影格新增 P(t) 腳底游標、L(t) landmark及模型／拓樸同步位置。固定N1／N2與四個vertex
+不隨人移動；人物在t=4s標為N1、GAP中標E1與進度、t=9s標N2，前後可見片段明標
+graph範圍外。Marker保留原50影格float32座標，node association用原public double
+projection與既有1e-6m tolerance，未放寬門檻或吸附人物。Image load就緒才提交畫面／
+游標／時間，過期load不覆蓋新影格。全部三條原edges、所有raw renders及四項決策保留。
+
+新增5tests驗證50影格同步、fixed topology、端點／edge／範圍外、raw/floor mode與stale
+image callbacks；79相關tests、repo Ruff、mypy93corefiles及5reviewtools通過。
+Source／protocol／authority不變，沒有GT讀取、正式Cases、push、merge或freeze tag。
+
 ### 2026-10-07 — Complete framing, source cameras and HR02 body-height clarity
 
 在 `92366d882a23c356f56ea87830463d6417576875` 上補強原人工審查介面：完整一樓與
@@ -898,6 +911,22 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-07 — Synchronized person position in model/topology review
+
+Starting from `e4b7821f1e6c282ff571f6d56322b74e6354a958`, each existing motion frame
+now locates the person as P(t) at the frozen footpoint, with a separate L(t) landmark.
+The model and fixed world-XY diagram identify N1 at4s, the existing E1 candidate
+during GAP, N2 at9s, and positions outside this GAP graph before/after those endpoints.
+Nodes and vertices remain fixed. Original float32 render positions stay unchanged;
+node association uses public double projections and the existing1e-6m tolerance.
+Images, markers and status commit together after load, with stale-load protection.
+All original edges, renders and pending decisions are preserved.
+
+Five new regressions cover all50positions, graph preservation, relation labels,
+height modes, playback and asynchronous loads.79related tests, repository Ruff,
+mypy for93corefiles and5reviewtools pass. No GT access, source/authority/protocol
+changes, formal execution or publication occurred.
 
 ### 2026-10-07 — Complete framing, source cameras and HR02 body-height clarity
 

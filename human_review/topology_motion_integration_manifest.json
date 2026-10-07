@@ -1,0 +1,79 @@
+{
+  "schema_version": "phase1-person-topology-integration-v1",
+  "base_sha": "e4b7821f1e6c282ff571f6d56322b74e6354a958",
+  "status": "HUMAN_REVIEW_PENDING",
+  "result_type": "DIAGNOSTIC_UI_INTEGRATION",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "questions": 4,
+  "decisions_applied": false,
+  "source_geometry_modified": false,
+  "physical_authority_changed": false,
+  "raw_graph_changed": false,
+  "gt_used": false,
+  "formal_cases_run": false,
+  "frozen_inputs_verified": 29,
+  "preserved_prior_files": 212,
+  "preserved_prior_hash_set_sha256": "3ffa5ecf84d7ce8de161600601dcb3ff5c357f6652dffedcae1ebe0c16fbfbd9",
+  "original_media_preserved": {
+    "png": 166,
+    "gif": 1,
+    "jpg": 2
+  },
+  "previous_durable_package_preserved": {
+    "path": "/Users/polalabear/Developer/amidst/data/pilot/phase1_finalization_human_review_20261007/clarity/human_review",
+    "artifacts_verified": 223,
+    "manifest_sha256": "e09e86998bed4248bcc9950084233a1ea141f1bf785f52176177e3c13a416bc5"
+  },
+  "graph_counts": {
+    "nodes": 2,
+    "edges": 3,
+    "interior_vertices": 4
+  },
+  "person_marker_frames": 50,
+  "person_marker_policy": {
+    "schema_version": "phase1-review-person-topology-locator-v1",
+    "marker_is_graph_node": false,
+    "graph_nodes_move": false,
+    "graph_vertices_move": false,
+    "marker_authority": "DISPLAY_ONLY_PENDING_HR02_BINDING",
+    "spatial_unit_scale_m": 0.0247,
+    "node_match_tolerance_m": 1e-06,
+    "gap_start_timestamp": 4.0,
+    "gap_end_timestamp": 9.0,
+    "node_association_coordinates": "EXACT_PUBLIC_PROJECTION_BEFORE_BLENDER_FLOAT32",
+    "render_marker_coordinates": "EXACT_FROZEN_MOTION_FLOAT32_NO_SNAPPING",
+    "gap_relation_basis": "EXISTING_RENDERED_DIRECT_CANDIDATE_NO_NEW_PATH",
+    "new_route_generated": false,
+    "gt_used": false
+  },
+  "topology_view_sha256": "9b6c675b519052b7d4f9f32d8cdcbbc49dd651c2c1047fad720ea4fd8666c153",
+  "topology_manifest_sha256": "6c10e52aa8fea5f5fce26a2c77756e5d04d2cc3995c8210481329d0753b3a977",
+  "native_browser_qa": {
+    "gap_frame25": "E1 N1->N2 20%",
+    "departure_frame20": "N1 projected_departure",
+    "recovery_frame45": "N2 projected_recovery",
+    "full_playback_last_frame49": "OUTSIDE_GAP_GRAPH AFTER_RECOVERY and automatically paused",
+    "raw_floor_toggle_foot_pixel_unchanged": [
+      472.1593683200794,
+      415.5180004800999
+    ],
+    "controls_above_model": true,
+    "versioned_iframe_verified": true
+  },
+  "validation": {
+    "related_tests_passed": 79,
+    "after_control_placement_tests_passed": 13,
+    "ruff": "PASS",
+    "mypy_core_files": 93,
+    "mypy_review_tools": 5,
+    "diff_check": "PASS"
+  },
+  "screenshot": {
+    "path": "frames/dashboard_context/topology_motion_review.jpg",
+    "bytes": 60323,
+    "sha256": "22aa2b25049e3d4bb374e857fcaedf2c5dbd734f8f87c4b299d5ed53270e8e6f",
+    "type": "NATIVE_BROWSER_SCREENSHOT",
+    "frame": 25
+  }
+}
