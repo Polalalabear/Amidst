@@ -286,3 +286,23 @@ No GT/recipe/evaluation reads、school approvals、formal Cases、push、merge �
 `data/pilot/phase1_finalization_human_review_20261007/body_motion/human_review/`。
 181個manifest artifacts全部hash一致，上一版package未覆寫。新package manifest SHA256：
 `db61758c2daf9701fa40a77936941274b60ffa6f03f6d083e3c742c493852214`。
+
+## 2026-10-07 — Node/edge model locator
+
+**DIAGNOSTIC / HUMAN_REVIEW_PENDING**；base `346124510727e06ed68745197b1eeb32358617f7`。
+新增 [模型與拓樸對照](../human_review/frames/topology_context/view.html)：既有
+`projected_departure`／`projected_recovery` 對應 N1／N2，`pilot_route:direct/left/right`
+對應 E1–E3。全部三條 N1→N2 edges 保留；4 個 corners 是 polyline vertices，不是假節點。
+模型疊圖由既有 review camera 正交投影；可切 raw landmark 高度或既有 HR-02 待審 floor
+換算。E2 的獨立 support rejection 不是 Graph pruning，三條 configured hypotheses
+不構成 formal school branching proof。原 135PNG、GIF、13 protected core files、29 inputs
+與四項 pending questions 保留。66相關 tests、Ruff、review-tools strict mypy、diff check 通過。
+模型 player 全50格、raw/floor mode 與並排圖視覺 QA 通過。無 GT、source modification、
+human approval、formal Case 執行、push/merge/tag。
+完整新副本保存於 canonical checkout 的 ignored
+`data/pilot/phase1_finalization_human_review_20261007/topology/human_review/`；舊副本保留。
+189個artifact hashes全部核對一致；package manifest SHA256：
+`55f3a8e9bd035f0fbb70665bb2e313e472b41423a2099a032a4a588f0f05b551`。
+靜態 PNG 511,640 bytes，SHA256
+`e092393cfbad9206998c824f70d2f52bb13152a99f28f9bea459f20405f4cea1`；未採用的本輪 QA
+版本另存 private temporary archive，沒有刪除既有 artifacts。

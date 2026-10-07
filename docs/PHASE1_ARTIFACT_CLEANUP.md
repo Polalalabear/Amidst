@@ -57,6 +57,8 @@ storage error; no source, render, evidence or DELETE_CANDIDATE item was deleted.
 | human_review/history/spatial_context_initial_renderer.py | KEEP | 24686 | exact successful producer provenance | SHA256 8a5d52f4...305cd92 | git checkout finalization review commit |
 | human_review/frames/motion_context/*.png | REGENERABLE | 19765351 | new 50-frame source-model body-motion review; older 85 images retained | motion_manifest.json and player.html | source Blender +render_motion_context.py --frames 50 --width 960 in fresh materialized checkout |
 | human_review/frames/motion_context/motion_preview.gif | REGENERABLE | 8505740 | independent 10-second palette preview; original PNGs retained | gif_manifest.json; full-resolution player.html | uv run python human_review/make_motion_gif.py |
+| human_review/frames/topology_context/topology_preview.png | REGENERABLE | 511640 | model/node/edge comparison from existing motion_025 image; original135PNG/GIF retained | topology_manifest.json and preview_manifest.json | uv run python human_review/render_topology_preview.py in fresh review checkout |
+| human_review/frames/topology_context/ template/view/data/manifests | KEEP | small metadata | exact raw graph, display coordinates and hashes | source-bound topology_data.json | uv run python human_review/build_topology_view.py |
 
 Detailed machine-readable inventory: [CSV](../data/finalization/checkpoint/artifact_inventory.csv).
 The two later human-review supplements above have their own hash-bound manifests;

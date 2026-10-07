@@ -4,6 +4,19 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Model/topology location supplement
+
+在 `346124510727e06ed68745197b1eeb32358617f7` 上新增
+[模型＋拓樸對照](../human_review/frames/topology_context/view.html)。模型與空白圖例採用
+N1／N2、E1–E3 相同標號；2 registered nodes、3 directed parallel edges 原樣保留，
+4 個 polyline vertices 使用空心點，不加入 Graph。沿用原 50 張動畫，另輸出靜態 PNG。
+疊圖用原 review camera 矩陣，raw landmark / pending HR-02 floor footprint 可切換。
+沒有新路徑、Graph pruning、GT 使用或 physical authority 升級；E2 floor-review rejection
+與 raw edge retention 分開記錄。原135PNG、GIF、13個既有 evidence/decision/guide檔與
+29 frozen inputs 全部 hash 一致。只加 review links，四項決策仍 pending。
+66相關 tests、全repo Ruff、新增 review tools strict mypy、diff gate 通過。
+瀏覽器並排版面、完整50格播放、兩種高度顯示已檢查；不執行 formal Cases/push/merge/tag。
+
 ### 2026-10-07 — Additive ten-second source-model body motion
 
 在 `5ea82587fa205d8ce4d7bec7288ca7bf0b8055a5` 上另加

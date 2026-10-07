@@ -20,7 +20,7 @@ button,input{font:inherit}button{background:#176d90;color:white;border:1px solid
 <section class="card"><h2>此 frame 的來源</h2><p id="method"></p><p id="cameras"></p><p id="body-point" class="coordinates"></p><p id="landmark-point" class="coordinates"></p></section>
 <section class="card"><h2>姿勢／物理範圍</h2><p>Joint pose 是顯示用的簡化動作；原始 observations 不提供 joint measurement。</p><p id="body-dimensions"></p><p>Footpoint binding：<strong>pending HR-02</strong>；local certificate：<strong>NOT_CERTIFIED / pending HR-01</strong>。</p><p class="small">這份動畫保留原 trajectory、timestamps、method／confidence；姿勢沒有新增 inference evidence，也不表示真人姿勢或正式 collision PASS。</p></section>
 </div>
-<div class="links"><a id="back-guide">回原有完整空間導覽</a><a id="old-player">原有 public／GAP 觀察預覽</a><a id="gif-link" hidden>Derived GIF 預覽</a></div>
+<div class="links"><a id="back-guide">回原有完整空間導覽</a><a id="old-player">原有 public／GAP 觀察預覽</a><a id="gif-link" hidden>Derived GIF 預覽</a><a id="topology-link" hidden>模型中的節點與邊</a></div>
 <footer>Source／questions／原有 guide 與動畫保留原樣。50 PNG · 5 Hz · 10 秒播放（原 timestamp 0.0→9.8 s）。
 <details><summary>Provenance</summary><div id="provenance"></div></details></footer>
 </main>
@@ -36,5 +36,6 @@ play.addEventListener('click',()=>{if(timer){pause();return;}if(index===motion.f
 document.getElementById('back-guide').href=motion.old_guide;document.getElementById('old-player').href=motion.old_public_player;
 const body=motion.body_dimensions_m;document.getElementById('body-dimensions').textContent='既有 body policy: r='+body.radius.toFixed(2)+' m；h='+body.height.toFixed(2)+' m；clearance='+body.clearance.toFixed(2)+' m。';
 if(motion.gif_asset){const link=document.getElementById('gif-link');link.href=motion.gif_asset.path;link.hidden=false;}
+if(motion.topology_view){const link=document.getElementById('topology-link');link.href=motion.topology_view;link.hidden=false;}
 const provenance=document.getElementById('provenance');for(const [label,value]of [['Source SHA-256',motion.source_sha256],['Frozen review payload',motion.review_payload_sha256],['Motion manifest',motion.manifest_sha256],['Trajectory basis',motion.trajectory_basis],['Joint pose authority',motion.joint_pose_authority]]){const p=document.createElement('p');p.textContent=label+': ';const code=document.createElement('code');code.textContent=value;p.append(code);provenance.append(p);}show(0);
 </script></body></html>

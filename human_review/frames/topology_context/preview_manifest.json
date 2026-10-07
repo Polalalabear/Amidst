@@ -1,0 +1,15 @@
+{
+  "schema_version": "phase1-topology-static-preview-v1",
+  "result_type": "DIAGNOSTIC",
+  "gt_used": false,
+  "physical_authority_changed": false,
+  "raw_graph_changed": false,
+  "topology_data_sha256": "6ee76cc5b5d3bb70adcd20fe8d17ed53c05e4ea3e6998266f45d7ce95c35ac6d",
+  "original_model_sha256": "fd18fdbd3d24dcea0ea4d0473d22f84bc8de8239938caa7e28893b99158caeb5",
+  "renderer_sha256": "0d1aedb2c2b71b0f7ae3f2d1b38ee836b3f5f14ae06d2e06a652eba724588043",
+  "artifact": {
+    "path": "topology_preview.png",
+    "bytes": 511640,
+    "sha256": "e092393cfbad9206998c824f70d2f52bb13152a99f28f9bea459f20405f4cea1"
+  }
+}

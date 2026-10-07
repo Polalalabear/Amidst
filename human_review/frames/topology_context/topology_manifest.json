@@ -1,0 +1,321 @@
+{
+  "schema_version": "phase1-human-review-topology-manifest-v1",
+  "result_type": "DIAGNOSTIC",
+  "gt_used": false,
+  "evaluation_files_read": false,
+  "simulation_recipe_read": false,
+  "source_opened_by_builder": false,
+  "physical_authority_changed": false,
+  "formal_execution_enabled": false,
+  "raw_graph_changed": false,
+  "new_route_generated": false,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "graph_id": "pilot_configured_graph:9dd0f56a575f52ad5b7b7dc5",
+  "node_count": 2,
+  "edge_count": 3,
+  "interior_vertex_count": 4,
+  "conversion": {
+    "authority": "PENDING_HR02_SEMANTIC_BINDING",
+    "offset_bu": 55.049998092651364,
+    "offset_m": 1.3597349528884888,
+    "floor_z_bu": 20.07884979248047,
+    "xy_preserved": true,
+    "raw_graph_changed": false
+  },
+  "inputs": [
+    {
+      "path": "configs/architectural_scale_school_v3.json",
+      "sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf"
+    },
+    {
+      "path": "configs/benchmarks/protocol_v1.json",
+      "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7"
+    },
+    {
+      "path": "configs/physical_authority_policy_school_v3.json",
+      "sha256": "2427b3670ac8c3748c75deb172fd1f3bfb7da853fb49a7ad2cd5aac2ef8af7ea"
+    },
+    {
+      "path": "configs/physical_collision_numerics_v1.json",
+      "sha256": "cca85ae64f56538f4e2b5352c4962c82d468a3d00622b6c99f35e8a329ac795b"
+    },
+    {
+      "path": "configs/physical_policy_runtime_school_v3.json",
+      "sha256": "704b0f2fb115b691ff61249dc8d4521e39a06467aec0bcca913119fce0491f08"
+    },
+    {
+      "path": "data/finalization/local_run/dataset/inference/office/context.json",
+      "sha256": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70"
+    },
+    {
+      "path": "data/finalization/local_run/dataset/inference/office/observations.json",
+      "sha256": "3a8e1244c6374b22bc9866b85b3c917ba7071c6a4821eb8bb65b3efb9c262726"
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/candidates.json",
+      "sha256": "0212756864986ee5044313058144c7e3fcb56c72e68ebd30b7062e508b9c9b02"
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/projected_frames.json",
+      "sha256": "0ebdb3762fe181c44ea25456b4525204aaa19dbe957a923c360f2bffdf5d6e48"
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/primary.json",
+      "sha256": "eb770e5492ec47e6b48b0424088e1d1c4f17189af22a18897e0ecc83be43d829"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_authority_map.json",
+      "sha256": "6e1f8d512c9aaf994ce35890f0d688190e33523edc5eeda7a954e07aeb2ff7fe"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz",
+      "sha256": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json",
+      "sha256": "19a472c7fae5bf3e3dc63bc314c3e751467fc8abac636e237c300719ac557c71"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/obstacle_collider_authority.json",
+      "sha256": "cfcb6b7fd87fddda742eb05a9d69c31128803ba1dfca162e5283297eeb3c543d"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/source_evidence.json.gz",
+      "sha256": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c"
+    },
+    {
+      "path": "data/scene_audit/school_v3_semantic_audit.json",
+      "sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+    },
+    {
+      "path": "human_review/apply_decisions.py",
+      "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d"
+    },
+    {
+      "path": "human_review/certificate_application.py",
+      "sha256": "13c024966fed788b8e617d521caf41283de454938ecc4fc340c6d6cd0fac2c03"
+    },
+    {
+      "path": "human_review/frames/visual_manifest.json",
+      "sha256": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c"
+    },
+    {
+      "path": "human_review/geometry_evidence.json",
+      "sha256": "5dedd204ff448e077e9ae58090a4742bf456e353b6c511c7f1ecb3e7d62b358b"
+    },
+    {
+      "path": "human_review/settings_evidence.json",
+      "sha256": "8d10d6e3bf3a3f45c44db832dd55c5bf2a2940c329b95d202fa315f7b3311809"
+    },
+    {
+      "path": "scripts/phase1_projection_policy.py",
+      "sha256": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6"
+    },
+    {
+      "path": "src/amidst/benchmark/baselines.py",
+      "sha256": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1"
+    },
+    {
+      "path": "src/amidst/datasets/pilot.py",
+      "sha256": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792"
+    },
+    {
+      "path": "src/amidst/datasets/pilot_topology.py",
+      "sha256": "980e3670edba58769b75fdea4a115f0a1b135d984787998fb6429eaf97e4caa3"
+    },
+    {
+      "path": "src/amidst/domain/metric_config.py",
+      "sha256": "50b349d6300494d7cd0a89818270cee713a23de441855d8d536ebaabdc4a7532"
+    },
+    {
+      "path": "src/amidst/domain/reconstruction.py",
+      "sha256": "9641a3072ed91d4c8ac4f7b35a5560089e052e9397f1bec81401428f62af963e"
+    },
+    {
+      "path": "src/amidst/domain/search.py",
+      "sha256": "c6719aed6832fb6c0ce7217dd254e4cca55b4f6fdf4c8c47442189b534158597"
+    },
+    {
+      "path": "src/amidst/local_semantic_review.py",
+      "sha256": "edff4f0f06b0d8594f61f7851d8d73cb84f6fccd51ecbf4e151a671324a9e6e4"
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/pipeline_config.json",
+      "sha256": "492591e47c48642e157621c9c05adf111f3c6909d671d84e248c4ae0807c80e1"
+    },
+    {
+      "path": "human_review/frames/motion_context/motion_manifest.json",
+      "sha256": "e77628c145fceb42ae086a76f4de60741147ea525eb12d46e7f23d7ba83d7b69"
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/digests.json",
+      "sha256": "e5b8135552d0324c97ac6770c21cf4e84782c2735736faaa8101ace7e4d58df9"
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/topology_evidence.json",
+      "sha256": "1bc6f6c108d1fc3775f3c0836132138bf852bcabd1bb9489deef6b4f298dbcf9"
+    }
+  ],
+  "builder_sha256": "04934d4d31ad8ee28bf8ae979e51b67ddf8935192635b0ac3de88b39b0c92aad",
+  "template_sha256": "787f1d5fdf4612702936119dfcdb3c75b12ce5fda13a36ee2c465f90b4ae798c",
+  "view": {
+    "path": "view.html",
+    "sha256": "dca6282c500dbffa05ca9e74aa0208e83bc45ec86305a5473366fdbecb7154e4"
+  },
+  "data": {
+    "path": "topology_data.json",
+    "sha256": "6ee76cc5b5d3bb70adcd20fe8d17ed53c05e4ea3e6998266f45d7ce95c35ac6d"
+  },
+  "preserved_original_files": {
+    "human_review/decisions.json": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
+    "human_review/review_template.json": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
+    "human_review/frames/visual_manifest.json": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c",
+    "human_review/frames/player.html": "a124414617b2a81cf34a3d7509453d9cb72307f6e7957ce7a7a6b8758213092a",
+    "human_review/frames/player_template.html": "15e196615bd1ed1bda3994dc62eda8f2ff7474d066fc6386e20b58f64d6476c7",
+    "human_review/build_frame_player.py": "22af24ecdcda9ef8251c83ac1c4f2cf87e199c8d7d11e48c6b9ccf79237eb21b",
+    "human_review/build_spatial_guide.py": "a00a74511fab65b7739f2cb515b4c0b17efefd2926aab220037722e80f0bdb60",
+    "human_review/frames/spatial_context/guide.html": "5c7e308da32f7d457eb86aca80a4e4aaae13febbbf870afd0a27b63b2eb3ff6c",
+    "human_review/frames/spatial_context/guide_template.html": "76d74e1ca2de5f496a87bad0c91e6befdd7758812075744d8c414a251557bd67",
+    "human_review/frames/spatial_context/spatial_context_manifest.json": "04da3eb11f051cc7470659874424ad25f980e3712925a1c9655dc150f22a1fe4",
+    "human_review/frames/motion_context/motion_manifest.json": "e77628c145fceb42ae086a76f4de60741147ea525eb12d46e7f23d7ba83d7b69",
+    "human_review/frames/motion_context/gif_manifest.json": "17f949dad38209371547ec7245d9997488b58171e330d221f36c5cf153740f02",
+    "human_review/frames/motion_context/player.html": "4e9d4e4a5c7282d52dc5e079a3eaf56b7e2fbc0f5302e46b7cdb05001c4c46e6",
+    "human_review/frames/camera_cam_1f_auditorium_front_frame20.png": "eb688ad8006900e084be9213625bed98d8ea32a3924a60978b77e6f5375fcfa6",
+    "human_review/frames/camera_cam_1f_auditorium_rear_frame46.png": "81e7034b520e1ef6f4623d0719a68ea2ee115230011ae98f61bcd47657ad0f9f",
+    "human_review/frames/motion_context/motion_000.png": "902f9ef07c4c04f44110a7b6c7224ecae680670fe7601861b20b8920bf776894",
+    "human_review/frames/motion_context/motion_001.png": "13fb88a78344e194bc6614b7eeee7990d31c842960d4ed3f80a05fa3ef2a7508",
+    "human_review/frames/motion_context/motion_002.png": "4d74041cc3400fb3b96ff9bdbde7b1cb655e723e0bae75d25d202356a4538fe9",
+    "human_review/frames/motion_context/motion_003.png": "172e782182cdd98565bd7ed41637d0fd0e1fccf4c79b4040b07f0bd4d675faef",
+    "human_review/frames/motion_context/motion_004.png": "a77197284b7561b7aee63baecc9ed5e0c5127591b42e88a3286b7e16683abf70",
+    "human_review/frames/motion_context/motion_005.png": "a4e0ce94f6b15ee475d8bf522debd05796dc5d9f7f4ed4eb5942f12698b981bd",
+    "human_review/frames/motion_context/motion_006.png": "29b420fc2a5fe5eaa63ef4366f826e53916eb472f4d41743f88055d216ce5df4",
+    "human_review/frames/motion_context/motion_007.png": "2c48649541a4aec98cfab19f2560f078c0257414567a6c63cb89b7d1aefb82ca",
+    "human_review/frames/motion_context/motion_008.png": "10d87d4d7e3a1820331237967f63023bf5a1a6a1c073abf6728ee6229b78cba8",
+    "human_review/frames/motion_context/motion_009.png": "ea6519fade86c586ca2e0d01f6d2a58a4848243604a0202be75ee2401197cd4f",
+    "human_review/frames/motion_context/motion_010.png": "3d0b8c38253ce360c7990ed13b0594a610da2581971d26c77ce80c0415df64e9",
+    "human_review/frames/motion_context/motion_011.png": "3a123384cc359d489196f9cf7ed1c724ca104f39b71c13b150ef8635274ab485",
+    "human_review/frames/motion_context/motion_012.png": "245f6a5e75d9a58817295ff5e7b9d44a3fa391ff722a86c257a1948228582c73",
+    "human_review/frames/motion_context/motion_013.png": "6676459ca556911a227fbf9b034215630b7870a717e517a9bf0c46de1f57959d",
+    "human_review/frames/motion_context/motion_014.png": "0bfea383025d1933116710b3b97aaa2a8126d9bfb8fa47577a977a44a7fb0731",
+    "human_review/frames/motion_context/motion_015.png": "e55ca2777e6e06e1d04c064f120dabb0a703ed8ec6308d922024d87e199a9361",
+    "human_review/frames/motion_context/motion_016.png": "4d94df96c3e05c5405a804d00e0fbdc8b5866eaf84ea52e5f75f8b86a08dfee5",
+    "human_review/frames/motion_context/motion_017.png": "373e2c268278f0eefd959916701336bed25934dac0f49015ee62666cb453f354",
+    "human_review/frames/motion_context/motion_018.png": "6a0339b0d09701de1c1eaad1ddcd8aa13baa84d1a3758ce0e5d8e95da2d04562",
+    "human_review/frames/motion_context/motion_019.png": "1768807437447b927d91d57e251e6ea92a16ef8c4383498918559558aac6ba49",
+    "human_review/frames/motion_context/motion_020.png": "c567660c90c98e079db40cf96a6d865ba6786dfef1fb9767c421113beea53100",
+    "human_review/frames/motion_context/motion_021.png": "6dd97054772b6365d0b28c3e803d6ba125406d10e77fc04a49a85b20752de54c",
+    "human_review/frames/motion_context/motion_022.png": "cb45a60f57a06331eadc7d87ac2d41af721a542d17ed442902f5328485a443b3",
+    "human_review/frames/motion_context/motion_023.png": "694d283683cdff21e04afc1778105f2659dce6544c0aeab2de038a797ad957d1",
+    "human_review/frames/motion_context/motion_024.png": "795e8c6ab43708ac29c603416cb61d63578a069b57251d718efd008f721743b3",
+    "human_review/frames/motion_context/motion_025.png": "fd18fdbd3d24dcea0ea4d0473d22f84bc8de8239938caa7e28893b99158caeb5",
+    "human_review/frames/motion_context/motion_026.png": "1250d9a6e6eb0011361f6af2c9872f7494d4f8206c0b2646638e6a975d300823",
+    "human_review/frames/motion_context/motion_027.png": "ec3ca644c1aa63d3119ee4f8278a071fae9930917e6bfb6a5fb3a134687d4bc9",
+    "human_review/frames/motion_context/motion_028.png": "e537b8068ead8883dcdc4b96b9f730fd511b97bbcdeb893b01017145aaf1a5e4",
+    "human_review/frames/motion_context/motion_029.png": "2239dc285e77a00ebe9c1b84925dd13ddf43769ca1b6ca7cb16e2d17a2280605",
+    "human_review/frames/motion_context/motion_030.png": "a0245aa5b00ee645c9f6ce7a70c4d185650fba26df5d71899d3fc7a925c41510",
+    "human_review/frames/motion_context/motion_031.png": "3fa4984455fc566e28db4896313ad4f33f46e933af64128fe2ba3fc11773e3e0",
+    "human_review/frames/motion_context/motion_032.png": "3f38d170784905e2dd27bbd6d8000b8cefe2ee84f1d80964db4b483f71bf80ee",
+    "human_review/frames/motion_context/motion_033.png": "ef2a51d6d519c983adc07e19088365eee57de8c3dbc0224ab56baea715196478",
+    "human_review/frames/motion_context/motion_034.png": "5aa8f9e530d48a1a539045d3576eb638af00d6dc8d5483ed2226b1ce7d26e1ff",
+    "human_review/frames/motion_context/motion_035.png": "900ba83ce29d603e5c023170582abd9f0320209d2a7891b1424211eced136a3d",
+    "human_review/frames/motion_context/motion_036.png": "85a0ac75586bc202295901506572def0596b950e732f785a6eab5d53c5ec7057",
+    "human_review/frames/motion_context/motion_037.png": "ccf34d24b9eb85a8aeef93ad366465e116f108c9668109d643c7ef42ccbe1670",
+    "human_review/frames/motion_context/motion_038.png": "b5017dd94a14a79b145492bc5780c98c0538052834a96eeea0bee2d8f42f97aa",
+    "human_review/frames/motion_context/motion_039.png": "16ded692f0e7caadc5934e165e37d603fa74a6c006ef6dd8549f90c059cbc38f",
+    "human_review/frames/motion_context/motion_040.png": "b74139707aa38d540039d433bad75ca40e6708c89a400e3baab9617077e41eda",
+    "human_review/frames/motion_context/motion_041.png": "ab2295794faa6c2a80a7dca26580552fff47afdb34b4e0d943bfa1bdd2f92a4b",
+    "human_review/frames/motion_context/motion_042.png": "2ebffb54ddc98625ef3e9fb4c9c403aabe94ef058616eb5abf55f603a3a70d27",
+    "human_review/frames/motion_context/motion_043.png": "24e1c31025d455b309f1c1c069d4e8c6f43f6008862240d68d123bcb66b47dbb",
+    "human_review/frames/motion_context/motion_044.png": "7bed1fd8f9609b745f3830b7238090664c12d1d0ccddd85b717d7334395427d1",
+    "human_review/frames/motion_context/motion_045.png": "51a7a5499399831f44ffcb240be66486a5d7c4f1363a1b2af8a62e1d30d6bb60",
+    "human_review/frames/motion_context/motion_046.png": "5212abb1c2323f9e791ee5f552c729b350869e9d1857213dccfff610fbb20b21",
+    "human_review/frames/motion_context/motion_047.png": "d3cbd85d3815ac675aecc09ef7f9adf7a03a6b7a9ea8a9915de74a75b7801d4d",
+    "human_review/frames/motion_context/motion_048.png": "916bd15b2c8bd8428bd9c3cbf555665a9cc6d83b51fbfea689c63129707d8f2e",
+    "human_review/frames/motion_context/motion_049.png": "7e88ad970b39bef383114f5948b7718bc629af5e490ea73486ef34f1d19c9b2c",
+    "human_review/frames/office_oblique.png": "498e5805b8a82e91cc754a77208af3149a163be509d3a6bf0e828807e5dfc2a9",
+    "human_review/frames/office_scope_closeup.png": "d32fbb68c54bcf05b0db2359330e1dc8b41da3d988eb511ca8ab54062cbdac67",
+    "human_review/frames/office_scope_top_closeup.png": "3c01326d30b87aca75736520f148deb584964931df998fbd802653759ae00f2d",
+    "human_review/frames/office_side.png": "81ad25e0ea3e93e0a37c51d14fdcd321124373af254de4532cbd90ce5a38762a",
+    "human_review/frames/office_top.png": "2b9b5c603b8305ba5ba7f5c519c84438cbd26a16e91a82ea75dea5e32c6acd9d",
+    "human_review/frames/sequence_000.png": "039a9fcdcc96c89804475543404b398774dcf8efaea2c95b17be8d55921432d0",
+    "human_review/frames/sequence_001.png": "4dfe4b16c4246b35bc3d03f4663b39521dfc237dd937c03abedc6ed1909b5c3f",
+    "human_review/frames/sequence_002.png": "b1e53031b2ade04567f90af4e736de7b90fdb6da4962855809d27c3f00a76784",
+    "human_review/frames/sequence_003.png": "f54039f8cf5b72d4edec2062c421db10b33be673b4f83bf500e83f9d9cf7fa0b",
+    "human_review/frames/sequence_004.png": "724d51d6e89d46ff0a29755b753b195962ebc83a734acdbf429bb2ec9d68b5c5",
+    "human_review/frames/sequence_005.png": "3ff4288b1b0fe113d4e49d23a5be22f879c8fc3559e311cd3a7a9534d58d8d92",
+    "human_review/frames/sequence_006.png": "3672a739043b0263e49c142d336180375a0c43ee88570476b6ae4db53b8c9a4d",
+    "human_review/frames/sequence_007.png": "99405a2abe63e79a1725751862bf6d0712c78c056f6258b135f41868d0c8a169",
+    "human_review/frames/sequence_008.png": "84ec529fee6b8f85247834f436726698a8c6c668d572ba747e491cf3874834d6",
+    "human_review/frames/sequence_009.png": "bb025fe7b5d95fe16c004b87ec68c6f43ba47a8fe3db0cf0284e3ee07847d834",
+    "human_review/frames/sequence_010.png": "7c962a669c2d7cfa6edcda5f95c3e250e03f82741a79fa28c8e69574279a3246",
+    "human_review/frames/sequence_011.png": "44358f97eec028c54d0a0b551d28d5c7cad0f36f617eb7398a7297e5e0a3fb9f",
+    "human_review/frames/sequence_012.png": "702038a041b750e4cfd9806b4d7eca4e11a122ed0f5a4b1592dc14e168cc34f1",
+    "human_review/frames/sequence_013.png": "9b17825c2a9bf85230ebfb15b18f38aa8e98688e0e4f246b899f0716c2f571cf",
+    "human_review/frames/sequence_014.png": "18d9165ae7861faa53b030a8efe00baee329e3b22b72c6a6d921aba882b0d425",
+    "human_review/frames/sequence_015.png": "709c9cc6dd3e22e2080d52fc3ec08d6bb9e7230cd10f5c9d41885693f718b590",
+    "human_review/frames/sequence_016.png": "2c4c7eb1be37b9f7525f2013e04dd65566983af6ff42efb237c5c74636edce54",
+    "human_review/frames/sequence_017.png": "366a6f153f9170fbf2aac1ac44b0967d9e7450c81ac5e0f3ea817fa2f7ce1872",
+    "human_review/frames/sequence_018.png": "e1b15b0b20bb1e0e6c6e314dbba291256648bd0d113152a79a62d7b00b21a865",
+    "human_review/frames/sequence_019.png": "a502c0ed18e090a1b7e73ff7d79c1fbafea669529340b0e6e521346f1d733618",
+    "human_review/frames/sequence_020.png": "93079ffcedfdf45bf9c364b426cd349d26a71f3ba0749c778a37c3593984d6b4",
+    "human_review/frames/sequence_021.png": "accda5b483d47bdd4683d58b71b6b6a1ad331c38d6df67ffd35ebc4aaf2b741e",
+    "human_review/frames/sequence_022.png": "8be837068f9ee22fe1c0384db2a99f9f154d49621c15bbe3664395d0c44a0039",
+    "human_review/frames/sequence_023.png": "1620aca3d9cf0d903858921939a89c504eb6409ec9e1186d1595b6618e369272",
+    "human_review/frames/sequence_024.png": "c1ebe8ff0f89f717d42245cbaab1071cb782940e8d0be338b0eb3dc00d270126",
+    "human_review/frames/sequence_025.png": "0162e992ed29b7a60ff42fbb17d933e4dd1fc80e90cfb329e8a9708238ceb0d6",
+    "human_review/frames/sequence_026.png": "8dd5a9f6efd931d668c6b1bfd3e00b78a799bd46e527476db8ecca8276dbcfe7",
+    "human_review/frames/sequence_027.png": "a39e1e3247d3f9f3e4192c57ebfd0136e3be94dddeedd1d167149501602fcf65",
+    "human_review/frames/sequence_028.png": "405d22bfbad122cc9b5cfbdb32ca725325ea80115beb51a8bf0a4d9646e41d50",
+    "human_review/frames/sequence_029.png": "e917baa0a0b3c48fbb0ed01b39d89416cb288de9436475795571e137b1d5f39b",
+    "human_review/frames/sequence_030.png": "a95e081b24ebf4573acef59600ff79150c374d3b73f4ba8f8a57dc95078c5db7",
+    "human_review/frames/sequence_031.png": "1b426663867c95de2285582aa85ab3d2088f7c31ddfe110e1561d546498bd168",
+    "human_review/frames/sequence_032.png": "6cd6ab30208ac4c632a16bac9a8cfcff598a1e10c9e0aca0ee78636dfab327ba",
+    "human_review/frames/sequence_033.png": "75413f5d8e814c701bd50b72de6e3217443e8910dad02a446b223a52ffef0d5a",
+    "human_review/frames/sequence_034.png": "f4220b4cb87863ceb3e62a8b2be582d0f8aa1a391f72497616b4bf1f9e89498d",
+    "human_review/frames/sequence_035.png": "f43d7b983916f813a9b1babd340b22caa5149c68f4f01f52f256d6906c7a4f79",
+    "human_review/frames/sequence_036.png": "b34adacfb309a1a9d939b5e8f74a885694f69c60ed473c9b59d31d2072356d0d",
+    "human_review/frames/sequence_037.png": "5d707ad29e13dfa802c14827dd9d0ece8694d1ea89e931f5188f348455606f35",
+    "human_review/frames/sequence_038.png": "9f821f47d17d0c3366efb0d6d1c2b7f5f6a51f6bc00fbfa7b5d1bc225419caea",
+    "human_review/frames/sequence_039.png": "1bf10561118488dc70683d75de7d6bb142cbb43cdf2f12c91068ea6d543861c9",
+    "human_review/frames/sequence_040.png": "dfbeab6abe7a9a1f50ae6baac8428f497159c84c10afddabef6f435e2dafe00a",
+    "human_review/frames/sequence_041.png": "f3efabe89a4a5ec60b7a15669f824240a913418640755c6370b7fdeec30e114f",
+    "human_review/frames/sequence_042.png": "4d431d465f3952a7c130c8ac3581d1e9da39c74b3592c1ee07108ce24837d23d",
+    "human_review/frames/sequence_043.png": "413f0f2b711c3406ff17b702a338428217aa5158d4774a285faa594ed628ef10",
+    "human_review/frames/sequence_044.png": "f8c59a2080f24f35c1fc6509394b8b3c6244ad53cb2582f77d151f063fdd6ba1",
+    "human_review/frames/sequence_045.png": "988082406638f90b0de447c4442a08d4f88f8d9729f595735bda37ac62a33c46",
+    "human_review/frames/sequence_046.png": "226d903ba9d42d4a907e90edc23e65c67891cbd7db07446defe6ee1c1595a19f",
+    "human_review/frames/sequence_047.png": "d463a7bb9fc57a20daa0498c1a34a58cfdcec7f3f5f41cff7fa46f9d7265adaa",
+    "human_review/frames/sequence_048.png": "90162bdb4e0917effc9a4f3878286f7e36ea81aa3adb0b151e3143c7b50fee8b",
+    "human_review/frames/sequence_049.png": "08dd32129f5581fe03b7a04e6b69da5d3c663f9e80eac2e728ba4b6ce25e1c62",
+    "human_review/frames/spatial_context/approach_000.png": "ba1a76bf8f9e093083708aa6caf072125c5a2b15859f028d5365a0931073e0da",
+    "human_review/frames/spatial_context/approach_001.png": "bc3e1c412e51d93a253cef72964c2f6fb6c3a2a8ddfce754d8068a2b0bc6e24c",
+    "human_review/frames/spatial_context/approach_002.png": "28fa8e7c7e7b13f046c4e5bf8faa3bb0405473ca7448a83f0cb1592377965526",
+    "human_review/frames/spatial_context/approach_003.png": "ed7f2df033f541ea51c6217d3a934cb5e3a7e0dd718f57e45067957523cfebd4",
+    "human_review/frames/spatial_context/approach_004.png": "cb9e19d1a8ce6b4bf7fb61e49b451b9e4f28207b3a4d35341e6df2ff08858ebe",
+    "human_review/frames/spatial_context/approach_005.png": "5f58b66bcd66b55acbc500ac4d7ac44b1ba0c56c86bbbb287fb753b0c864e1d2",
+    "human_review/frames/spatial_context/approach_006.png": "ffee406b348455c0398498266719a5f592d38d2a27682bdae97146bf8bdb841a",
+    "human_review/frames/spatial_context/approach_007.png": "f36e466467247e1cc33810ad15705cf5c17e1cf957e29690a0e3522e51608bfa",
+    "human_review/frames/spatial_context/approach_008.png": "db52162fa344546fdac782e36bd3adad28366e4c81f8cb88b239a21d8f9cb98b",
+    "human_review/frames/spatial_context/approach_009.png": "d86e5b9c70b5e3e249745109d387a1210b24014d1ddd21b6f8f946e417cfb6e7",
+    "human_review/frames/spatial_context/approach_010.png": "41c106c3f2c49acf7a75464b94ccc5873e6806ad0f2a77af4bb7654420228d53",
+    "human_review/frames/spatial_context/approach_011.png": "42fba2382d23fb7713f242877c975f7053517fc48208c460fbeb443c4bfca913",
+    "human_review/frames/spatial_context/approach_012.png": "aa828c252b1d5ad5d02e7babb178e1752b0f08f19e85c84bbcd96090c9b47ba0",
+    "human_review/frames/spatial_context/approach_013.png": "8e634f716419ecd461ba705b9005c0c7f581bf1881de3504a2cbfdaba12895f5",
+    "human_review/frames/spatial_context/approach_014.png": "353b3240f5d721f95dbf87e1f69fdbbb3968400a59c69eec9e3c275c0b23fb55",
+    "human_review/frames/spatial_context/approach_015.png": "6e3e7062e947a6b7b3fb0519c17684877e70d9f20b8f7dfed06407d1f8c12292",
+    "human_review/frames/spatial_context/approach_016.png": "5321aca84acea28795c3346210a7042bbe40b74104cec3f711feb97a2c751e63",
+    "human_review/frames/spatial_context/approach_017.png": "38ce8ff229e90cf514b11ea8ad09df727521178a164f2e56af689dd9b5f0411d",
+    "human_review/frames/spatial_context/approach_018.png": "e52145104da2e728efa14b2ef0d59677e83eca6760ebdf794208fc2805dab2b1",
+    "human_review/frames/spatial_context/approach_019.png": "ae4623d1e1da5b0aaf7b0610eab8affb349e7f228bc430be0397edc724ea0a65",
+    "human_review/frames/spatial_context/approach_020.png": "1fa8b227f88fac47ccb8df38f61701351f5be3621e7b225b5a97fdd6f9c09647",
+    "human_review/frames/spatial_context/approach_021.png": "169f0791c85e81ee131dd8e49304d95daa50755840638fc64113fd3855e93c7b",
+    "human_review/frames/spatial_context/approach_022.png": "becb61e8a033c4cc0442e4eccf23415bec76649400383421334b936bd4087f33",
+    "human_review/frames/spatial_context/approach_023.png": "078ed3683a0958d65d5339c7eab8b5e3498ad0841654a5c5c7e633f11b5c54b1",
+    "human_review/frames/spatial_context/approach_024.png": "1c50d031eb06bde8f8d2fd95da6b19134448e2b24d3732d1ce3461401754cb9f",
+    "human_review/frames/spatial_context/floor_1f_overview.png": "72bb398c23334dad28d27769e2ce8a9860290689f97d59d1e0fe1309447ee602",
+    "human_review/frames/spatial_context/office_context.png": "50e2842767d90bba1f0eaab2f62c0a941b3a67813e6f3264a0c6dfcb3636370f",
+    "human_review/frames/spatial_context/school_overview.png": "079b7de9b1a98a9c9f859c26ce766bf09a815e6710c6eacc59b52dc383d0b792",
+    "human_review/frames/motion_context/motion_preview.gif": "c066c0a55e248bdd0e74f1ca6b3ef2be8e47af9b4764cdd1994da337b421056b"
+  }
+}

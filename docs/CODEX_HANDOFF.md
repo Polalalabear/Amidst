@@ -24,6 +24,9 @@ school 定位、1F/camera 座標、5 秒鏡頭接近、原有 10 秒局部移動
 固定鏡頭下，人物在 actual bounded source model 內移動，含 body /clearance 與 GAP。
 50 frames 的位置 /time /camera /projection 全部沿用原預覽，joint pose 只供顯示；
 原 85 張圖、原 guide/player 與四項問題均保留，不是 school approval 或 formal run。
+另增 [模型／拓樸對照](../human_review/frames/topology_context/view.html)：N1／N2、E1–E3
+在模型與空白圖例一致；只有2個registered nodes，4個折點不加入Graph。raw graph全3邊保留，
+floor定位仍pending HR-02，configured parallel routes不證明Case2 branching。
 只提供 APPROVE/REJECT/FIX_GEOMETRY/KEEP_REVIEW；不要求人工計算 clearance、certificate、
 route uniqueness/branch count 或 feasible inventory，這些由 agent 在語意決策後重跑。
 不審 1,422 WALL patches、無關 portal conflicts 或 Stair A/B。
@@ -52,6 +55,8 @@ Raw local/fresh data 與 demos 持久保存在 ignored
 `data/pilot/phase1_finalization_human_review_20261007/human_review/`。
 新增模型動作的完整副本另存
 `data/pilot/phase1_finalization_human_review_20261007/body_motion/human_review/`；上一版保留。
+拓樸補充的完整副本另存
+`data/pilot/phase1_finalization_human_review_20261007/topology/human_review/`。
 [Artifact inventory](PHASE1_ARTIFACT_CLEANUP.md) 沒有刪除或移動來源資產。
 既有任意 endpoint snapping/connectors、visibility arbitration 與 missing-frame/origin
 attestation 仍暫緩；未由本輪診斷結果升格 school topology。
@@ -81,6 +86,9 @@ Its display context preserves the four questions, original image hashes and brow
 The separate [ten-second body-motion player](../human_review/frames/motion_context/player.html)
 adds a moving illustrated body in actual local source geometry with a fixed camera.
 It preserves all 85 older images and every existing trajectory/evidence field; joints are display-only.
+The [model/topology locator](../human_review/frames/topology_context/view.html) uses matching
+N1/N2 and E1–E3 labels. Four polyline corners are not registered nodes. All three raw graph
+edges remain; floor mapping is pending HR-02 and configured routes do not prove Case2 branches.
 The application pipeline validates explicit decisions and hashes, regenerates the bounded
 certificate and locks inputs. No school decision has been applied. Formal adapters and an
 independent case inventory still need automatic completion; current parallel routes do not

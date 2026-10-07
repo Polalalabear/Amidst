@@ -2,6 +2,27 @@
 
 狀態：**HUMAN_REVIEW_PENDING**；4 項決策全部未選擇。推薦值不等於核准。
 
+新增：[模型與拓樸對照](frames/topology_context/view.html)；模型與旁邊空白區使用相同
+N1／N2、E1–E3 標號，保留 10 秒逐格播放。實心點是 2 個 graph nodes，空心點是
+4 個 polyline vertices，三條 directed edges 完整保留。N1 是 FRONT t=4s GAP 前端點，
+N2 是 REAR t=9s recovery；E1 direct、E2 left、E3 right。
+模型可切換 raw landmark 高度與 pending HR-02 floor footprint；顯示換算不改 raw graph。
+E2 的 floor-review clearance 自動拒絕與 graph pruning 分開記錄。
+[靜態對照圖](frames/topology_context/topology_preview.png) 與
+[獨立 manifest](frames/topology_context/topology_manifest.json) 保存精確座標及來源。
+在具備原 29 frozen inputs、既有 diagnostics 與 135 PNG／GIF 的 fresh checkout 重建：
+
+```sh
+uv run python human_review/build_topology_view.py
+uv run python human_review/render_topology_preview.py
+uv run python human_review/build_motion_player.py \
+  --gif-provenance human_review/frames/motion_context/gif_manifest.json \
+  --topology-view human_review/frames/topology_context/view.html
+uv run python human_review/build_topology_view.py
+```
+
+原有預覽與四項決策保留；這是既有 CONFIGURED / DIAGNOSTIC 圖，不證明 formal branching。
+
 2026-10-07 另增：[10 秒模型人物行走](frames/motion_context/player.html)，
 可播放、暫停、逐格查看；另有 [GIF 動作預覽](frames/motion_context/motion_preview.gif)。
 鏡頭固定，簡化人物在實際 evaluated office 來源模型中移動，包含 body / clearance、

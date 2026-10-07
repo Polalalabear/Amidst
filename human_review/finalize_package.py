@@ -47,6 +47,21 @@ def main() -> None:
             "duration_seconds": motion["duration_seconds"],
             "player": "frames/motion_context/player.html",
         }
+    topology_path = HERE / "frames/topology_context/topology_manifest.json"
+    topology_summary = {}
+    if topology_path.is_file():
+        topology = json.loads(topology_path.read_text())
+        topology_summary = {
+            "manifest": str(topology_path.relative_to(HERE)),
+            "manifest_sha256": hashlib.sha256(topology_path.read_bytes()).hexdigest(),
+            "result_type": topology["result_type"],
+            "nodes": topology["node_count"],
+            "edges": topology["edge_count"],
+            "polyline_vertices": topology["interior_vertex_count"],
+            "view": "frames/topology_context/view.html",
+            "static_preview": "frames/topology_context/topology_preview.png",
+            "raw_graph_changed": topology["raw_graph_changed"],
+        }
     write_json(
         HERE / "gate.json",
         {
@@ -101,6 +116,7 @@ def main() -> None:
             "formal_cases_run": False,
             "spatial_context_supplement": spatial_summary,
             "body_motion_supplement": motion_summary,
+            "topology_supplement": topology_summary,
             "artifacts": artifacts,
         },
     )

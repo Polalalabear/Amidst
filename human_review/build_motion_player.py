@@ -123,6 +123,7 @@ def build_player(
     output_path: Path,
     *,
     gif_provenance: Path | None = None,
+    topology_view: Path | None = None,
 ) -> dict[str, Any]:
     """Create the new player without altering the old guide or original animations."""
     manifest = validate_manifest(json.loads(manifest_path.read_text()), manifest_path.parent)
@@ -191,6 +192,25 @@ def build_player(
             "encoded_duration_seconds": receipt["encoded_duration_seconds"],
             "result_type": "DIAGNOSTIC",
         }
+    if topology_view is not None:
+        expected = HERE / "frames/topology_context/view.html"
+        if topology_view.resolve() != expected.resolve() or not topology_view.is_file():
+            raise ValueError("topology link requires the separate local topology review page")
+        topology_manifest = topology_view.parent / "topology_manifest.json"
+        receipt = json.loads(topology_manifest.read_text())
+        if (
+            receipt.get("schema_version") != "phase1-human-review-topology-manifest-v1"
+            or receipt.get("result_type") != "DIAGNOSTIC"
+            or receipt.get("gt_used") is not False
+            or receipt.get("physical_authority_changed") is not False
+            or receipt.get("formal_execution_enabled") is not False
+            or receipt.get("raw_graph_changed") is not False
+            or receipt.get("source_sha256") != data["source_sha256"]
+            or receipt.get("review_payload_sha256") != data["review_payload_sha256"]
+            or receipt.get("view", {}).get("sha256") != digest(topology_view)
+        ):
+            raise ValueError("topology page receipt differs from the frozen review evidence")
+        data["topology_view"] = relative_path(topology_view, output_path)
     encoded = json.dumps(data, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
     encoded = encoded.replace("</", "<\\/").replace("\u2028", "\\u2028")
     encoded = encoded.replace("\u2029", "\\u2029")
@@ -215,10 +235,16 @@ def main() -> None:
     parser.add_argument("--manifest", type=Path, default=MOTION / "motion_manifest.json")
     parser.add_argument("--output", type=Path, default=MOTION / "player.html")
     parser.add_argument("--gif-provenance", type=Path)
+    parser.add_argument("--topology-view", type=Path)
     args = parser.parse_args()
     print(
         json.dumps(
-            build_player(args.manifest, args.output, gif_provenance=args.gif_provenance),
+            build_player(
+                args.manifest,
+                args.output,
+                gif_provenance=args.gif_provenance,
+                topology_view=args.topology_view,
+            ),
             ensure_ascii=False,
         )
     )

@@ -33,11 +33,22 @@
     "duration_seconds": 10,
     "player": "frames/motion_context/player.html"
   },
+  "topology_supplement": {
+    "manifest": "frames/topology_context/topology_manifest.json",
+    "manifest_sha256": "2f93a20f657d50b6b8a363f6125458cd87543c7abdd3b2ec00525dc0aaf204aa",
+    "result_type": "DIAGNOSTIC",
+    "nodes": 2,
+    "edges": 3,
+    "polyline_vertices": 4,
+    "view": "frames/topology_context/view.html",
+    "static_preview": "frames/topology_context/topology_preview.png",
+    "raw_graph_changed": false
+  },
   "artifacts": [
     {
       "path": ".gitignore",
-      "bytes": 187,
-      "sha256": "0a44f7e77f4dbd772586dad4c854b8c81a770723b454ce312dfd4bf7416c7d73"
+      "bytes": 217,
+      "sha256": "c669cd0294cd1cba03acdc1c18bc7df04050a6de88f43a34c4a1b2117632ab02"
     },
     {
       "path": "DECISION_APPLICATION.md",
@@ -46,8 +57,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 24523,
-      "sha256": "5c770ab52fc2d05988062b3b6c8c071b1f918d1303f44ec00e7d2ecc2a667ffd"
+      "bytes": 25800,
+      "sha256": "e5ebd47823b7595374070cb59d9b465f24f12e1cbd5497d5f8b9f7edf649b82f"
     },
     {
       "path": "apply_decisions.py",
@@ -71,8 +82,8 @@
     },
     {
       "path": "build_motion_player.py",
-      "bytes": 9863,
-      "sha256": "5d890246bd29c98333c16629eaf105b8213e06a7063852faa30d31aeee640ed1"
+      "bytes": 11305,
+      "sha256": "2449c86778c4acbcc41ddbe6e29c9ca2499377782b3f511f2289bf9653beb5b2"
     },
     {
       "path": "build_review.py",
@@ -83,6 +94,11 @@
       "path": "build_spatial_guide.py",
       "bytes": 9988,
       "sha256": "a00a74511fab65b7739f2cb515b4c0b17efefd2926aab220037722e80f0bdb60"
+    },
+    {
+      "path": "build_topology_view.py",
+      "bytes": 19052,
+      "sha256": "04934d4d31ad8ee28bf8ae979e51b67ddf8935192635b0ac3de88b39b0c92aad"
     },
     {
       "path": "candidate_regions_xy.png",
@@ -106,8 +122,8 @@
     },
     {
       "path": "finalize_package.py",
-      "bytes": 4965,
-      "sha256": "a90b0ebaf1e2c4f671553c2e30e6503879376904811dcefdbd3431414aa82aaf"
+      "bytes": 5806,
+      "sha256": "c6ba0620670a06242734bade05fc225f3e1ff24e6e39c60fd6d59440e0a646f1"
     },
     {
       "path": "formal_settings.md",
@@ -391,13 +407,13 @@
     },
     {
       "path": "frames/motion_context/player.html",
-      "bytes": 55932,
-      "sha256": "817badde6fcdac6fb9cef1fd2e3c17ffa44c7c7b23697a4c0c8a49d6b78f6f9e"
+      "bytes": 56165,
+      "sha256": "4e9d4e4a5c7282d52dc5e079a3eaf56b7e2fbc0f5302e46b7cdb05001c4c46e6"
     },
     {
       "path": "frames/motion_context/player_template.html",
-      "bytes": 7053,
-      "sha256": "fdcdd1561a8fca37750eed72b3c71d641369e684ab5dc1bfb57e95d5446d9192"
+      "bytes": 7238,
+      "sha256": "f4ab698e5c152367e34219a6efa1179e0130a6312f5f52abe6daa79ea0c4a73c"
     },
     {
       "path": "frames/office_oblique.png",
@@ -840,6 +856,36 @@
       "sha256": "04da3eb11f051cc7470659874424ad25f980e3712925a1c9655dc150f22a1fe4"
     },
     {
+      "path": "frames/topology_context/preview_manifest.json",
+      "bytes": 617,
+      "sha256": "92e3abc290ca0698328ed954cee9feb9fcd9425df9a5d5d0d23a32e517aafd88"
+    },
+    {
+      "path": "frames/topology_context/template.html",
+      "bytes": 11230,
+      "sha256": "787f1d5fdf4612702936119dfcdb3c75b12ce5fda13a36ee2c465f90b4ae798c"
+    },
+    {
+      "path": "frames/topology_context/topology_data.json",
+      "bytes": 23058,
+      "sha256": "6ee76cc5b5d3bb70adcd20fe8d17ed53c05e4ea3e6998266f45d7ce95c35ac6d"
+    },
+    {
+      "path": "frames/topology_context/topology_manifest.json",
+      "bytes": 24946,
+      "sha256": "2f93a20f657d50b6b8a363f6125458cd87543c7abdd3b2ec00525dc0aaf204aa"
+    },
+    {
+      "path": "frames/topology_context/topology_preview.png",
+      "bytes": 511640,
+      "sha256": "e092393cfbad9206998c824f70d2f52bb13152a99f28f9bea459f20405f4cea1"
+    },
+    {
+      "path": "frames/topology_context/view.html",
+      "bytes": 34270,
+      "sha256": "dca6282c500dbffa05ca9e74aa0208e83bc45ec86305a5473366fdbecb7154e4"
+    },
+    {
       "path": "frames/visual_manifest.json",
       "bytes": 78104,
       "sha256": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c"
@@ -915,6 +961,11 @@
       "sha256": "6fa453f90ad5020e7412aaf81bd7dc76ef052fc4080ab41fc40726de15993e91"
     },
     {
+      "path": "render_topology_preview.py",
+      "bytes": 6950,
+      "sha256": "0d1aedb2c2b71b0f7ae3f2d1b38ee836b3f5f14ae06d2e06a652eba724588043"
+    },
+    {
       "path": "resume_plan.json",
       "bytes": 3582,
       "sha256": "b1ddd5d10ceced801fd4553e5eeb597878872968aaa05edb18e5ff95ba43f814"
@@ -936,8 +987,8 @@
     },
     {
       "path": "write_review_docs.py",
-      "bytes": 14076,
-      "sha256": "04260b38543a2c47faed94293d28e8733ab0be7da72ee64edf2e3fe2f2be1ef9"
+      "bytes": 15586,
+      "sha256": "9404f2ef335854277d91f86583203af8911ecf142ae8070cd17c8c21adce6bce"
     }
   ]
 }
