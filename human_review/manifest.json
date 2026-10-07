@@ -47,8 +47,8 @@
   "artifacts": [
     {
       "path": ".gitignore",
-      "bytes": 217,
-      "sha256": "c669cd0294cd1cba03acdc1c18bc7df04050a6de88f43a34c4a1b2117632ab02"
+      "bytes": 248,
+      "sha256": "7117c1b3fc7c49a89e2403d8b7d90e91d9a6a59f5ac95cdc1282a533c9eccb46"
     },
     {
       "path": "DECISION_APPLICATION.md",
@@ -57,8 +57,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 25800,
-      "sha256": "e5ebd47823b7595374070cb59d9b465f24f12e1cbd5497d5f8b9f7edf649b82f"
+      "bytes": 26511,
+      "sha256": "64108f5de086f6c95da09a1f506d72e845916232726b591327b8ef92d81a5060"
     },
     {
       "path": "apply_decisions.py",
@@ -111,9 +111,14 @@
       "sha256": "13c024966fed788b8e617d521caf41283de454938ecc4fc340c6d6cd0fac2c03"
     },
     {
+      "path": "dashboard_integration_manifest.json",
+      "bytes": 3519,
+      "sha256": "d51a948f6e54db032e119c075d540def3d1b9fe5b059f0e861eebf8770edba75"
+    },
+    {
       "path": "dashboard_template.html",
-      "bytes": 23399,
-      "sha256": "8abd3a722eea887d9968816a55b21f3533711078e61d35af010376743890890e"
+      "bytes": 31708,
+      "sha256": "762f2ab9f286c5e99ee212bcfad42f28a6798a14c6579a4250b5c9e190d5193e"
     },
     {
       "path": "decisions.json",
@@ -139,6 +144,11 @@
       "path": "frames/camera_cam_1f_auditorium_rear_frame46.png",
       "bytes": 422549,
       "sha256": "81e7034b520e1ef6f4623d0719a68ea2ee115230011ae98f61bcd47657ad0f9f"
+    },
+    {
+      "path": "frames/dashboard_context/integrated_review.jpg",
+      "bytes": 69496,
+      "sha256": "d3e917ca91ffab42d9895056920867c3961f101c8030288e2e6f2cd6a4d43182"
     },
     {
       "path": "frames/motion_context/gif_manifest.json",
@@ -932,8 +942,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 47885,
-      "sha256": "a5796e80f8914993f037cf0ed86c7b00eb36534527a754f9fa1b9bda79224e09"
+      "bytes": 56194,
+      "sha256": "6ec7857ad52fb7fc1f30989de39d5bdf04b3e18f9b5a8a0882058dd102320b37"
     },
     {
       "path": "inspect_review_settings.py",
@@ -987,8 +997,8 @@
     },
     {
       "path": "write_review_docs.py",
-      "bytes": 15586,
-      "sha256": "9404f2ef335854277d91f86583203af8911ecf142ae8070cd17c8c21adce6bce"
+      "bytes": 16385,
+      "sha256": "8847be25106f3af80aea766e3295d0888162cf1b4654a564a508d00e509c7243"
     }
   ]
 }

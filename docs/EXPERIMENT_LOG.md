@@ -306,3 +306,20 @@ human approval、formal Case 執行、push/merge/tag。
 靜態 PNG 511,640 bytes，SHA256
 `e092393cfbad9206998c824f70d2f52bb13152a99f28f9bea459f20405f4cea1`；未採用的本輪 QA
 版本另存 private temporary archive，沒有刪除既有 artifacts。
+
+## 2026-10-07 — Integrate displays into the original human gate
+
+Base `753ec2889320f82b6e2bdaca987765bfc154062b`；status仍 **HUMAN_REVIEW_PENDING**。
+原 [dashboard](../human_review/index.html#visual-review-workspace) 新增共同 visual tabs：
+定位→行走→模型／拓樸→HR01/02問題近看；兩項 dialog內同樣inline查看，原images與sequence
+保留。播放器切換與modal close/cancel停止舊實例，避免同時播放。全部display-only metadata
+與原payload、profiles、decision handlers及draft key分離。GT/evaluation/recipe未讀。
+新增3個Node VM behavior tests覆蓋實際guards、activeiframe lifecycle及legacy evidence；
+合併69tests通過，Ruff/mypy93corefiles及3tools/diffcheck通過。Native browser播放與兩項
+dialog、inline拓樸及close後零iframe通過。136PNG/GIF、29inputs和四項pending decisions
+原hash保留；source模型、推論、protocol、physical authority沒有變動。
+本機完整副本：`data/pilot/phase1_finalization_human_review_20261007/dashboard/human_review/`。
+前次三份副本保留；未執行formal Cases、push、merge或freeze tag。
+
+整合版191個artifact hashes全部一致；package manifest SHA256：
+`fa31c7577665a9f7f799f0f10a55f9e55a2f57ccaf9a45bf3ea8b909dd320ee4`。原review副本及使用者決策未覆寫。

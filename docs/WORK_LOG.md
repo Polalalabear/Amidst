@@ -4,6 +4,19 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Integrated human-review media workspace
+
+在 `753ec2889320f82b6e2bdaca987765bfc154062b` 上，將空間導覽、10秒行走與模型／拓樸
+整合到 [原 dashboard](../human_review/index.html#visual-review-workspace) 的同頁 tabs。
+HR-01／HR-02 Evidence 亦可切換播放器、查看既有檢驗重點及全部原近看圖；舊 sequence
+保留於 lazy展開區域。一次最多一個 active iframe，切換／modal close會卸載舊播放器。
+四項 questions/profiles、e105 payload、storage key、restore/import/export/save guards不變；
+合成 Node VM tests 驗證草稿相容性，不讀使用者 browser storage或選擇人工決策。
+原136PNG（含拓樸靜態圖）/GIF、來源 metadata和29frozen inputs逐檔hash一致。
+Native browser實測行走播放、拓樸切換、HR01/02dialog與close cleanup，另存實際UI JPEG。
+69相關tests、repo Ruff、mypy93sourcefiles與3review tools、diffcheck通過。
+無 source/Graph/authority/config changes、formal Cases、push/merge/tag。
+
 ### 2026-10-07 — Model/topology location supplement
 
 在 `346124510727e06ed68745197b1eeb32358617f7` 上新增

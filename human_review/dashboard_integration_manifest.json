@@ -1,0 +1,111 @@
+{
+  "schema_version": "phase1-human-review-dashboard-integration-v1",
+  "base_sha": "753ec2889320f82b6e2bdaca987765bfc154062b",
+  "status": "HUMAN_REVIEW_PENDING",
+  "result_type": "DIAGNOSTIC_UI_INTEGRATION",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "questions": 4,
+  "decisions_applied": false,
+  "formal_cases_run": false,
+  "gt_used": false,
+  "source_geometry_modified": false,
+  "raw_graph_changed": false,
+  "physical_authority_changed": false,
+  "frozen_inputs_verified": 29,
+  "prior_media_verified": {
+    "png": 136,
+    "gif": 1
+  },
+  "prior_artifacts_verified": 183,
+  "allowed_display_changes": [
+    "README.md",
+    "dashboard_template.html",
+    "finalize_package.py",
+    "index.html",
+    "manifest.json",
+    "write_review_docs.py",
+    ".gitignore"
+  ],
+  "prior_artifact_hash_set_sha256": "218edf5dd97a5f50965da39f561b345f9ad5efba71c202291d6cfe8151c66483",
+  "native_browser_qa": [
+    "inline motion playback",
+    "shared topology tab",
+    "HR-01 media and unchanged decision form",
+    "HR-02 focus and unchanged decision form",
+    "close leaves zero loaded iframes",
+    "shared topology resumed with one iframe"
+  ],
+  "validation": {
+    "related_tests_passed": 69,
+    "ruff": "PASS",
+    "mypy_core_files": 93,
+    "mypy_review_tools": 3,
+    "diff_check": "PASS"
+  },
+  "screenshot": {
+    "path": "frames/dashboard_context/integrated_review.jpg",
+    "width": 824,
+    "height": 720,
+    "type": "NATIVE_BROWSER_SCREENSHOT",
+    "selected_tab": "topology",
+    "frame_index": 25
+  },
+  "artifacts": [
+    {
+      "path": "dashboard_template.html",
+      "bytes": 31708,
+      "sha256": "762f2ab9f286c5e99ee212bcfad42f28a6798a14c6579a4250b5c9e190d5193e"
+    },
+    {
+      "path": "index.html",
+      "bytes": 56194,
+      "sha256": "6ec7857ad52fb7fc1f30989de39d5bdf04b3e18f9b5a8a0882058dd102320b37"
+    },
+    {
+      "path": "build_dashboard.py",
+      "bytes": 2993,
+      "sha256": "e1ad10d097a012fe2f76f28072f389d2c84382d8eed2e71add36833a3f382adf"
+    },
+    {
+      "path": "review_template.json",
+      "bytes": 32164,
+      "sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2"
+    },
+    {
+      "path": "decisions.json",
+      "bytes": 32164,
+      "sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2"
+    },
+    {
+      "path": "frames/visual_manifest.json",
+      "bytes": 78104,
+      "sha256": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c"
+    },
+    {
+      "path": "frames/spatial_context/spatial_context_manifest.json",
+      "bytes": 31786,
+      "sha256": "04da3eb11f051cc7470659874424ad25f980e3712925a1c9655dc150f22a1fe4"
+    },
+    {
+      "path": "frames/motion_context/motion_manifest.json",
+      "bytes": 89920,
+      "sha256": "e77628c145fceb42ae086a76f4de60741147ea525eb12d46e7f23d7ba83d7b69"
+    },
+    {
+      "path": "frames/topology_context/topology_manifest.json",
+      "bytes": 24946,
+      "sha256": "2f93a20f657d50b6b8a363f6125458cd87543c7abdd3b2ec00525dc0aaf204aa"
+    },
+    {
+      "path": "frames/topology_context/topology_data.json",
+      "bytes": 23058,
+      "sha256": "6ee76cc5b5d3bb70adcd20fe8d17ed53c05e4ea3e6998266f45d7ce95c35ac6d"
+    },
+    {
+      "path": "frames/dashboard_context/integrated_review.jpg",
+      "bytes": 69496,
+      "sha256": "d3e917ca91ffab42d9895056920867c3961f101c8030288e2e6f2cd6a4d43182"
+    }
+  ]
+}

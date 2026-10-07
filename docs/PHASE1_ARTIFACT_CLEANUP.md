@@ -59,6 +59,8 @@ storage error; no source, render, evidence or DELETE_CANDIDATE item was deleted.
 | human_review/frames/motion_context/motion_preview.gif | REGENERABLE | 8505740 | independent 10-second palette preview; original PNGs retained | gif_manifest.json; full-resolution player.html | uv run python human_review/make_motion_gif.py |
 | human_review/frames/topology_context/topology_preview.png | REGENERABLE | 511640 | model/node/edge comparison from existing motion_025 image; original135PNG/GIF retained | topology_manifest.json and preview_manifest.json | uv run python human_review/render_topology_preview.py in fresh review checkout |
 | human_review/frames/topology_context/ template/view/data/manifests | KEEP | small metadata | exact raw graph, display coordinates and hashes | source-bound topology_data.json | uv run python human_review/build_topology_view.py |
+| human_review/frames/dashboard_context/integrated_review.jpg | REGENERABLE | 69496 | actual native browser proof of the integrated review workspace | dashboard_integration_manifest.json; original displays retained | capture index.html#visual-review-workspace with topology tab selected; 824x720 viewport |
+| human_review/dashboard_template.html and dashboard_integration_manifest.json | KEEP | small source/metadata | inline media navigation with immutable decision payload | original review_template.json and media manifests | uv run python human_review/build_dashboard.py |
 
 Detailed machine-readable inventory: [CSV](../data/finalization/checkpoint/artifact_inventory.csv).
 The two later human-review supplements above have their own hash-bound manifests;

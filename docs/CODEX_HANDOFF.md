@@ -15,6 +15,9 @@
 最小審查已產生 [dashboard](../human_review/index.html) 和
 [decisions.json](../human_review/decisions.json)，共 **4** 個 pending：HR-01 office bounded
 source semantics、HR-02 marker/floor binding、HR-03 Coverage epsilon、HR-04 speed/timing。
+審查統一入口為原 dashboard 的 [共同視覺工作區](../human_review/index.html#visual-review-workspace)：
+定位、行走、模型／拓樸及問題近看同頁切換。HR01/02dialog內同樣可看；原圖／舊預覽保留。
+只有active player載入，四項決策、profiles及draft/import/export identity保持原樣。
 附 10 秒 GT-free 連續 frames 與 exact scope closeups；先審 HR-01→02→03→04。
 HR-01/02 另附 [完整空間導覽](../human_review/frames/spatial_context/guide.html)：
 school 定位、1F/camera 座標、5 秒鏡頭接近、原有 10 秒局部移動、問題近看。
@@ -57,6 +60,8 @@ Raw local/fresh data 與 demos 持久保存在 ignored
 `data/pilot/phase1_finalization_human_review_20261007/body_motion/human_review/`；上一版保留。
 拓樸補充的完整副本另存
 `data/pilot/phase1_finalization_human_review_20261007/topology/human_review/`。
+整合介面的完整副本另存
+`data/pilot/phase1_finalization_human_review_20261007/dashboard/human_review/`。
 [Artifact inventory](PHASE1_ARTIFACT_CLEANUP.md) 沒有刪除或移動來源資產。
 既有任意 endpoint snapping/connectors、visibility arbitration 與 missing-frame/origin
 attestation 仍暫緩；未由本輪診斷結果升格 school topology。
@@ -80,6 +85,9 @@ floor support and approved components remain PARTIAL_APPROVED with zero complete
 certificates. Formal Cases1–3 and A/B/C are NOT_RUN; diagnostics do not authorize them.
 The new offline dashboard contains four pending decisions (geometry, marker/floor binding,
 Coverage epsilon, speed/timing), a GT-free 10-second sequence and bounded scope closeups.
+The [shared visual workspace](../human_review/index.html#visual-review-workspace) now embeds
+location, body motion, topology and issue views in the original dashboard and HR01/02 dialogs.
+It loads one player at a time and retains old evidence and the decision/draft identity.
 The [spatial guide](../human_review/frames/spatial_context/guide.html) adds school/floor/camera
 location, a five-second camera approach and the unchanged local movement/issue views.
 Its display context preserves the four questions, original image hashes and browser drafts.
