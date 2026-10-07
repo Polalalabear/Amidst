@@ -23,6 +23,9 @@ HR-01/02 另附 [完整空間導覽](../human_review/frames/spatial_context/guid
 school 定位、1F/camera 座標、5 秒鏡頭接近、原有 10 秒局部移動、問題近看。
 新增 display context 不改四項問題、原 57 張 evidence 或使用者 browser draft；
 鏡頭移動不是新增人物路徑，HR-02 的 1.3597 m 是 landmark→floor offset。
+審查辨識補充在同一導覽提供完整一樓測試空間、FRONT／REAR 原座標定位與 public visibility
+時間對照，以及 HR-02 source 側視人物／腳底／landmark 量尺。1.3597 m 不是樓高；camera
+方向／frustum 是 calibration 的顯示參考，不證明完整 source occlusion。舊圖／動畫保留。
 另有 [新增 10 秒模型人物動作](../human_review/frames/motion_context/player.html)：
 固定鏡頭下，人物在 actual bounded source model 內移動，含 body /clearance 與 GAP。
 50 frames 的位置 /time /camera /projection 全部沿用原預覽，joint pose 只供顯示；
@@ -62,6 +65,8 @@ Raw local/fresh data 與 demos 持久保存在 ignored
 `data/pilot/phase1_finalization_human_review_20261007/topology/human_review/`。
 整合介面的完整副本另存
 `data/pilot/phase1_finalization_human_review_20261007/dashboard/human_review/`。
+辨識補充完整副本另存
+`data/pilot/phase1_finalization_human_review_20261007/clarity/human_review/`。
 [Artifact inventory](PHASE1_ARTIFACT_CLEANUP.md) 沒有刪除或移動來源資產。
 既有任意 endpoint snapping/connectors、visibility arbitration 與 missing-frame/origin
 attestation 仍暫緩；未由本輪診斷結果升格 school topology。
@@ -91,6 +96,11 @@ It loads one player at a time and retains old evidence and the decision/draft id
 The [spatial guide](../human_review/frames/spatial_context/guide.html) adds school/floor/camera
 location, a five-second camera approach and the unchanged local movement/issue views.
 Its display context preserves the four questions, original image hashes and browser drafts.
+The clarity supplement fits the complete first-floor test context and both native camera
+locations, pairs them with public visibility times, and adds an HR-02 source-side body,
+footpoint and landmark ruler. The 1.3597 m value is a pending marker-to-foot offset, not
+floor-to-ceiling height. Calibration frusta are display references, not occlusion proof;
+all earlier views remain available.
 The separate [ten-second body-motion player](../human_review/frames/motion_context/player.html)
 adds a moving illustrated body in actual local source geometry with a fixed camera.
 It preserves all 85 older images and every existing trajectory/evidence field; joints are display-only.

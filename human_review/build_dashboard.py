@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import copy
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 from typing import Any
@@ -36,10 +37,39 @@ def payload_hash(document: dict[str, Any]) -> str:
     return hashlib.sha256(encoded).hexdigest()
 
 
+def clarity_display_data(path: Path, output: Path) -> dict[str, Any]:
+    """Load a separately validated display supplement without modifying decisions."""
+    spec = importlib.util.spec_from_file_location(
+        "phase1_spatial_review_clarity", ROOT / "human_review/build_spatial_guide.py"
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError("review clarity validator is unavailable")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    data = module.read_clarity_manifest(path, output)
+    return {
+        key: data[key]
+        for key in (
+            "schema_version",
+            "result_type",
+            "source_sha256",
+            "gt_used",
+            "physical_authority_changed",
+            "formal_execution_enabled",
+            "floor",
+            "office",
+            "hr02",
+            "manifest_sha256",
+            "shape_legend",
+        )
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--decisions", type=Path, default=ROOT / "human_review/decisions.json")
     parser.add_argument("--output", type=Path, default=ROOT / "human_review/index.html")
+    parser.add_argument("--clarity-manifest", type=Path)
     args = parser.parse_args()
     document = json.loads(args.decisions.read_text())
     ids = [item["id"] for item in document["items"]]
@@ -60,10 +90,16 @@ def main() -> None:
     encoded = encoded.replace("</", "<\\/").replace("\u2028", "\\u2028")
     encoded = encoded.replace("\u2029", "\\u2029")
     template = (ROOT / "human_review/dashboard_template.html").read_text()
+    clarity = (
+        clarity_display_data(args.clarity_manifest, args.output) if args.clarity_manifest else {}
+    )
+    encoded_clarity = json.dumps(clarity, ensure_ascii=False, allow_nan=False)
+    encoded_clarity = encoded_clarity.replace("</", "<\\/").replace("\u2028", "\\u2028")
+    encoded_clarity = encoded_clarity.replace("\u2029", "\\u2029")
     args.output.write_text(
-        template.replace("__DECISIONS_JSON__", encoded).replace(
-            "__REVIEW_PAYLOAD_HASH__", payload_hash(document)
-        )
+        template.replace("__DECISIONS_JSON__", encoded)
+        .replace("__REVIEW_PAYLOAD_HASH__", payload_hash(document))
+        .replace("__REVIEW_CLARITY_DATA__", encoded_clarity)
     )
     print(
         json.dumps(

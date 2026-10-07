@@ -62,6 +62,18 @@ def main() -> None:
             "static_preview": "frames/topology_context/topology_preview.png",
             "raw_graph_changed": topology["raw_graph_changed"],
         }
+    clarity_path = HERE / "frames/review_clarity/manifest.json"
+    clarity_summary = {}
+    if clarity_path.is_file():
+        clarity_summary = {
+            "manifest": str(clarity_path.relative_to(HERE)),
+            "manifest_sha256": hashlib.sha256(clarity_path.read_bytes()).hexdigest(),
+            "result_type": "DIAGNOSTIC",
+            "guide": "frames/spatial_context/guide.html",
+            "scope": "COMPLETE_TEST_SPACE_CAMERA_LOCATION_AND_PENDING_HR02_BODY_HEIGHT",
+            "original_media_preserved": True,
+            "human_decisions_applied": False,
+        }
     write_json(
         HERE / "gate.json",
         {
@@ -117,6 +129,7 @@ def main() -> None:
             "spatial_context_supplement": spatial_summary,
             "body_motion_supplement": motion_summary,
             "topology_supplement": topology_summary,
+            "review_clarity_supplement": clarity_summary,
             "artifacts": artifacts,
         },
     )

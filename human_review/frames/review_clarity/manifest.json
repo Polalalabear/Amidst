@@ -1,0 +1,5466 @@
+{
+  "schema_version": "phase1-human-review-clarity-v1",
+  "result_type": "DIAGNOSTIC",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_sha256_after": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_preserved": true,
+  "source_saved": false,
+  "source_modified": false,
+  "gt_used": false,
+  "evaluation_files_read": false,
+  "simulation_recipe_read": false,
+  "physical_authority_changed": false,
+  "formal_execution_enabled": false,
+  "floor": {
+    "path": "floor_complete.png",
+    "sha256": "6a0ff12005df23ab828d6395cd542675e3e971c9fce320ee241cb4c2dde843d7",
+    "bytes": 633713,
+    "width": 1280,
+    "height": 800,
+    "review_camera": {
+      "position_bu": [
+        1218.3880615234375,
+        1547.6221923828125,
+        3500.0
+      ],
+      "target_bu": [
+        1218.3880996704102,
+        1547.6222222222223,
+        20.0
+      ],
+      "right": [
+        1.0,
+        -0.0,
+        0.0
+      ],
+      "up": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "forward": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "ortho_scale_bu": 5052.444444444444,
+      "width": 1280,
+      "height": 800,
+      "fit_points_bu": [
+        [
+          171.5335235595703,
+          175.0,
+          -2.0
+        ],
+        [
+          171.5335235595703,
+          175.0,
+          145.0
+        ],
+        [
+          171.5335235595703,
+          2415.0,
+          -2.0
+        ],
+        [
+          171.5335235595703,
+          2415.0,
+          145.0
+        ],
+        [
+          2170.0,
+          175.0,
+          -2.0
+        ],
+        [
+          2170.0,
+          175.0,
+          145.0
+        ],
+        [
+          2170.0,
+          2415.0,
+          -2.0
+        ],
+        [
+          2170.0,
+          2415.0,
+          145.0
+        ],
+        [
+          2065.24267578125,
+          2269.5078125,
+          163.21405029296875
+        ],
+        [
+          2265.24267578125,
+          2269.5078125,
+          163.21405029296875
+        ],
+        [
+          2064.8048095703125,
+          1535.67431640625,
+          163.23199462890625
+        ],
+        [
+          2264.8048095703125,
+          1535.67431640625,
+          163.23199462890625
+        ],
+        [
+          2025.24267578125,
+          2314.5078125,
+          153.21405029296875
+        ],
+        [
+          2024.8048095703125,
+          1580.67431640625,
+          153.23199462890625
+        ]
+      ],
+      "fit_margin": {
+        "x": [
+          0.06,
+          0.94
+        ],
+        "y": [
+          0.22,
+          0.94
+        ]
+      }
+    },
+    "source_camera_markers": [
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "source_position_bu": [
+          2025.24267578125,
+          2314.5078125,
+          153.21405029296875
+        ],
+        "uncropped_pixel": [
+          844.4107397134501,
+          205.71511383378783
+        ],
+        "screen_anchor_pixel": [
+          844.4107397134501,
+          205.71511383378783
+        ],
+        "is_offscreen": false,
+        "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "source_position_bu": [
+          2024.8048095703125,
+          1580.67431640625,
+          153.23199462890625
+        ],
+        "uncropped_pixel": [
+          844.2998094981527,
+          391.626485117215
+        ],
+        "screen_anchor_pixel": [
+          844.2998094981527,
+          391.626485117215
+        ],
+        "is_offscreen": false,
+        "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+      }
+    ],
+    "fit_points_bu": [
+      [
+        171.5335235595703,
+        175.0,
+        -2.0
+      ],
+      [
+        171.5335235595703,
+        175.0,
+        145.0
+      ],
+      [
+        171.5335235595703,
+        2415.0,
+        -2.0
+      ],
+      [
+        171.5335235595703,
+        2415.0,
+        145.0
+      ],
+      [
+        2170.0,
+        175.0,
+        -2.0
+      ],
+      [
+        2170.0,
+        175.0,
+        145.0
+      ],
+      [
+        2170.0,
+        2415.0,
+        -2.0
+      ],
+      [
+        2170.0,
+        2415.0,
+        145.0
+      ],
+      [
+        2065.24267578125,
+        2269.5078125,
+        163.21405029296875
+      ],
+      [
+        2265.24267578125,
+        2269.5078125,
+        163.21405029296875
+      ],
+      [
+        2064.8048095703125,
+        1535.67431640625,
+        163.23199462890625
+      ],
+      [
+        2264.8048095703125,
+        1535.67431640625,
+        163.23199462890625
+      ],
+      [
+        2025.24267578125,
+        2314.5078125,
+        153.21405029296875
+      ],
+      [
+        2024.8048095703125,
+        1580.67431640625,
+        153.23199462890625
+      ]
+    ],
+    "fit_margin": {
+      "x": [
+        0.06,
+        0.94
+      ],
+      "y": [
+        0.22,
+        0.94
+      ]
+    },
+    "projected_fit_pixels": [
+      [
+        374.7870276798085,
+        747.7438348049349
+      ],
+      [
+        374.7870276798085,
+        747.7438348049349
+      ],
+      [
+        374.7870276798085,
+        180.25615007587086
+      ],
+      [
+        374.7870276798085,
+        180.25615007587086
+      ],
+      [
+        881.0839534493755,
+        747.7438348049349
+      ],
+      [
+        881.0839534493755,
+        747.7438348049349
+      ],
+      [
+        881.0839534493755,
+        180.25615007587086
+      ],
+      [
+        881.0839534493755,
+        180.25615007587086
+      ],
+      [
+        854.5444483693262,
+        217.11553607164848
+      ],
+      [
+        905.212991648707,
+        217.11553607164848
+      ],
+      [
+        854.4335181540288,
+        403.02690735507565
+      ],
+      [
+        905.1020614334095,
+        403.02690735507565
+      ],
+      [
+        844.4107397134501,
+        205.71511383378783
+      ],
+      [
+        844.2998094981527,
+        391.626485117215
+      ]
+    ]
+  },
+  "office": {
+    "path": "office_context.png",
+    "sha256": "bb4345a8583de6233f1e044471ff3d7be62bee6e91f0de1d40ca73626e3d05ad",
+    "bytes": 813302,
+    "width": 1280,
+    "height": 800,
+    "review_camera": {
+      "position_bu": [
+        1810.0,
+        1550.0,
+        650.0
+      ],
+      "target_bu": [
+        1320.0,
+        2010.0,
+        60
+      ],
+      "ortho_scale_bu": 780,
+      "width": 1280,
+      "height": 800,
+      "right": [
+        0.6844359040260315,
+        0.7290730476379395,
+        -0.0
+      ],
+      "up": [
+        -0.4809859097003937,
+        0.4515377879142761,
+        0.7515092492103577
+      ],
+      "forward": [
+        -0.5479051470756531,
+        0.5143599510192871,
+        -0.6597225069999695
+      ]
+    },
+    "source_camera_markers": [
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "source_position_bu": [
+          2025.24267578125,
+          2314.5078125,
+          153.21405029296875
+        ],
+        "uncropped_pixel": [
+          1796.4338152791156,
+          616.0636123899812
+        ],
+        "screen_anchor_pixel": [
+          1235,
+          616.0636123899812
+        ],
+        "is_offscreen": true,
+        "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "source_position_bu": [
+          2024.8048095703125,
+          1580.67431640625,
+          153.23199462890625
+        ],
+        "uncropped_pixel": [
+          917.9633909725727,
+          1159.455547916297
+        ],
+        "screen_anchor_pixel": [
+          917.9633909725727,
+          755
+        ],
+        "is_offscreen": true,
+        "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+      }
+    ]
+  },
+  "hr02": {
+    "path": "hr02_body_side.png",
+    "sha256": "96ae47a626c5c2234fcde6324f9560e76f982db6230de32da1768e9f4b836203",
+    "bytes": 627520,
+    "width": 1280,
+    "height": 800,
+    "review_camera": {
+      "position_bu": [
+        1649.998779296875,
+        2015.9993896484375,
+        63.49427795410156
+      ],
+      "target_bu": [
+        1399.998779296875,
+        2015.9993896484375,
+        63.494279392120596
+      ],
+      "right": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "up": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "forward": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "ortho_scale_bu": 180,
+      "width": 1280,
+      "height": 800,
+      "fit_points_bu": [
+        [
+          1399.998779296875,
+          2003.9993896484375,
+          20.07884979248047
+        ],
+        [
+          1399.998779296875,
+          2003.9993896484375,
+          75.12884788513183
+        ],
+        [
+          1399.998779296875,
+          2003.9993896484375,
+          90.92905222163027
+        ],
+        [
+          1399.998779296875,
+          2027.9993896484375,
+          20.07884979248047
+        ],
+        [
+          1399.998779296875,
+          2027.9993896484375,
+          75.12884788513183
+        ]
+      ],
+      "fit_margin": {
+        "x": [
+          0.06,
+          0.94
+        ],
+        "y": [
+          0.22,
+          0.94
+        ]
+      }
+    },
+    "source_camera_markers": [
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "source_position_bu": [
+          2025.24267578125,
+          2314.5078125,
+          153.21405029296875
+        ],
+        "uncropped_pixel": [
+          2762.7265625,
+          -238.00726996527777
+        ],
+        "screen_anchor_pixel": [
+          1235,
+          150
+        ],
+        "is_offscreen": true,
+        "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "source_position_bu": [
+          2024.8048095703125,
+          1580.67431640625,
+          153.23199462890625
+        ],
+        "uncropped_pixel": [
+          -2455.6449652777783,
+          -238.1348741319444
+        ],
+        "screen_anchor_pixel": [
+          45,
+          150
+        ],
+        "is_offscreen": true,
+        "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+      }
+    ],
+    "body_frame_id": 20,
+    "footpoint_bu": [
+      1399.998779296875,
+      2003.9993896484375,
+      20.07884979248047
+    ],
+    "landmark_position_bu": [
+      1399.998779296875,
+      2003.9993896484375,
+      75.12884788513183
+    ],
+    "public_projected_landmark_bu": [
+      1399.998779296875,
+      2003.9993896484375,
+      75.12884521484375
+    ],
+    "floor_z_bu": 20.07884979248047,
+    "landmark_z_bu": 75.12884788513183,
+    "offset_bu": 55.049998092651364,
+    "offset_m": 1.3597349528884888,
+    "body_policy": {
+      "radius": 0.3,
+      "height": 1.7,
+      "clearance": 0.05
+    },
+    "joint_pose_authority": "DISPLAY_ONLY",
+    "binding_authority": "PENDING_HR02_NOT_APPROVED"
+  },
+  "approach_frames": [
+    {
+      "path": "approach_000.png",
+      "sha256": "17e21aa9cd7cc6c88da8603fdeaf0b6492f52c42398ddbcfab71b273d5a82d11",
+      "bytes": 370669,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1218.3880615234375,
+          1547.6221923828125,
+          3500.0
+        ],
+        "target_bu": [
+          1218.3880996704102,
+          1547.6222222222223,
+          20.0
+        ],
+        "ortho_scale_bu": 5052.444444444444,
+        "width": 960,
+        "height": 600,
+        "right": [
+          1.0,
+          -0.0,
+          0.0
+        ],
+        "up": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "forward": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            633.3080547850875,
+            154.28633537534085
+          ],
+          "screen_anchor_pixel": [
+            633.3080547850875,
+            154.28633537534085
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            633.2248571236146,
+            293.71986383791125
+          ],
+          "screen_anchor_pixel": [
+            633.2248571236146,
+            293.71986383791125
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 0,
+      "timestamp": 0.0,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_001.png",
+      "sha256": "0dafb28433f36d20beb8dc53841a554e549eab524e489d2cc5252fb27a59c9ec",
+      "bytes": 370369,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1221.3837890625,
+          1547.63427734375,
+          3485.568603515625
+        ],
+        "target_bu": [
+          1218.9026275221947,
+          1549.9635448816873,
+          20.202546296296294
+        ],
+        "ortho_scale_bu": 5030.810249485596,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9999997615814209,
+          3.644002845248906e-06,
+          -0.0007159945089370012
+        ],
+        "up": [
+          -3.162738039463875e-06,
+          0.9999997615814209,
+          0.0006721626850776374
+        ],
+        "forward": [
+          -0.0007159967790357769,
+          0.0006721602403558791,
+          -0.9999995231628418
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            633.8514675065861,
+            154.0899671989024
+          ],
+          "screen_anchor_pixel": [
+            633.8514675065861,
+            154.0899671989024
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            633.767399353918,
+            294.123071300247
+          ],
+          "screen_anchor_pixel": [
+            633.767399353918,
+            294.123071300247
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 1,
+      "timestamp": 0.2,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_002.png",
+      "sha256": "5bcdfd4c829d191cc9382d2d5a51764feaee15369dd0883d4f32412c77d558e4",
+      "bytes": 374446,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1230.028564453125,
+          1547.6690673828125,
+          3443.923583984375
+        ],
+        "target_bu": [
+          1220.3874078944878,
+          1556.719933127572,
+          20.787037037037038
+        ],
+        "ortho_scale_bu": 4968.3801440329225,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9999960064888,
+          5.652593608829193e-05,
+          -0.0028163217939436436
+        ],
+        "up": [
+          -4.907909169560298e-05,
+          0.9999964833259583,
+          0.0026441735681146383
+        ],
+        "forward": [
+          -0.0028164612594991922,
+          0.002644025022163987,
+          -0.9999925494194031
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            635.4512894225599,
+            153.51926397980301
+          ],
+          "screen_anchor_pixel": [
+            635.4512894225599,
+            153.51926397980301
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            635.3586596747728,
+            295.3114763749259
+          ],
+          "screen_anchor_pixel": [
+            635.3586596747728,
+            295.3114763749259
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 2,
+      "timestamp": 0.4,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_003.png",
+      "sha256": "84bd467cec158e1b1189f41f599eb158b8d7371e99f376b2c6be9d4aec3cd486",
+      "bytes": 375173,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1243.8089599609375,
+          1547.724365234375,
+          3377.5390625
+        ],
+        "target_bu": [
+          1222.7542360126972,
+          1567.490017361111,
+          21.71875
+        ],
+        "ortho_scale_bu": 4868.862847222222,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9999802708625793,
+          0.00028161340742371976,
+          -0.0062722982838749886
+        ],
+        "up": [
+          -0.0002446607977617532,
+          0.9999825954437256,
+          0.005891385953873396
+        ],
+        "forward": [
+          -0.006273848470300436,
+          0.00588973518460989,
+          -0.9999629855155945
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            638.1034137045979,
+            152.59805665562624
+          ],
+          "screen_anchor_pixel": [
+            638.1034137045979,
+            152.59805665562624
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            637.976311669452,
+            297.28639823738007
+          ],
+          "screen_anchor_pixel": [
+            637.976311669452,
+            297.28639823738007
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 3,
+      "timestamp": 0.6,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_004.png",
+      "sha256": "176a7a9548e3c4058304d0f2e7b531c92d83aaf6d753dfb147c29157410473fb",
+      "bytes": 379348,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1262.211181640625,
+          1547.79833984375,
+          3288.888916015625
+        ],
+        "target_bu": [
+          1225.9149071022316,
+          1581.8724279835392,
+          22.962962962962962
+        ],
+        "ortho_scale_bu": 4735.9670781893,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9999379515647888,
+          0.0008882939000613987,
+          -0.011103673838078976
+        ],
+        "up": [
+          -0.0007723572780378163,
+          0.9999451637268066,
+          0.010441216640174389
+        ],
+        "forward": [
+          -0.011112339794635773,
+          0.010431992821395397,
+          -0.9998838305473328
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            641.8557312481197,
+            151.34940539004066
+          ],
+          "screen_anchor_pixel": [
+            641.8557312481197,
+            151.34940539004066
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            641.6348044201432,
+            300.09220892430034
+          ],
+          "screen_anchor_pixel": [
+            641.6348044201432,
+            300.09220892430034
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 4,
+      "timestamp": 0.8,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_005.png",
+      "sha256": "8ff145f56b8752425a4e1fc9bd5675cdc9b4582f8459bb152a555f957671eb2a",
+      "bytes": 386835,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1284.721923828125,
+          1547.8887939453125,
+          3180.447021484375
+        ],
+        "target_bu": [
+          1229.7812163884994,
+          1599.4657953960907,
+          24.484953703703706
+        ],
+        "ortho_scale_bu": 4573.401556069959,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9998466968536377,
+          0.0021935417316854,
+          -0.01737002097070217
+        ],
+        "up": [
+          -0.001909124432131648,
+          0.9998641014099121,
+          0.01637372188270092
+        ],
+        "forward": [
+          -0.017403576523065567,
+          0.016338052228093147,
+          -0.9997150301933289
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            646.8091139361928,
+            149.80267970773366
+          ],
+          "screen_anchor_pixel": [
+            646.8091139361928,
+            150
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            646.3792603699114,
+            303.82006155970777
+          ],
+          "screen_anchor_pixel": [
+            646.3792603699114,
+            303.82006155970777
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 5,
+      "timestamp": 1.0,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_006.png",
+      "sha256": "7cbbc6ef32b416c8698306fad41ace244b4cbf9e40a15d2d60fb4b5fe34cf787",
+      "bytes": 387242,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1310.8275146484375,
+          1547.9937744140625,
+          3054.6875
+        ],
+        "target_bu": [
+          1234.2649590969086,
+          1619.86875,
+          26.25
+        ],
+        "ortho_scale_bu": 4384.875,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.999672532081604,
+          0.0046596890315413475,
+          -0.025162318721413612
+        ],
+        "up": [
+          -0.004060062114149332,
+          0.999707818031311,
+          0.02382906898856163
+        ],
+        "forward": [
+          -0.025266002863645554,
+          0.02371910586953163,
+          -0.9993993639945984
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            653.1247300441446,
+            148.0047682656279
+          ],
+          "screen_anchor_pixel": [
+            653.1247300441446,
+            150
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            652.2801664412775,
+            308.6187430550221
+          ],
+          "screen_anchor_pixel": [
+            652.2801664412775,
+            308.6187430550221
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 6,
+      "timestamp": 1.2,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_007.png",
+      "sha256": "eaa2833d068bd56653175d853ce57e41722e51449c80e3fbf5d528b3c11a7202",
+      "bytes": 395046,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1340.0142822265625,
+          1548.111083984375,
+          2914.084228515625
+        ],
+        "target_bu": [
+          1239.2779304528676,
+          1642.679922196502,
+          28.22337962962963
+        ],
+        "ortho_scale_bu": 4174.096129115226,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9993614554405212,
+          0.008951768279075623,
+          -0.03459124267101288
+        ],
+        "up": [
+          -0.007809276692569256,
+          0.9994240403175354,
+          0.03302345052361488
+        ],
+        "forward": [
+          -0.03486694023013115,
+          0.03273222967982292,
+          -0.9988557696342468
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            661.037336544617,
+            146.03768852391804
+          ],
+          "screen_anchor_pixel": [
+            661.037336544617,
+            150
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            659.4257248458506,
+            314.7138595516202
+          ],
+          "screen_anchor_pixel": [
+            659.4257248458506,
+            314.7138595516202
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 7,
+      "timestamp": 1.4,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_008.png",
+      "sha256": "2023144e7dc24331c7c7013cb0ab02eb42eb1c3569bdfb490a358670941a307b",
+      "bytes": 399129,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1371.7689208984375,
+          1548.2386474609375,
+          2761.111083984375
+        ],
+        "target_bu": [
+          1244.7319256817852,
+          1667.4979423868313,
+          30.370370370370367
+        ],
+        "ortho_scale_bu": 3944.77366255144,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9988237023353577,
+          0.016018379479646683,
+          -0.04576680064201355
+        ],
+        "up": [
+          -0.01399115938693285,
+          0.9989213347434998,
+          0.044276636093854904
+        ],
+        "forward": [
+          -0.046426672488451004,
+          0.043584223836660385,
+          -0.9979704022407532
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            670.8756371800532,
+            144.04742269140777
+          ],
+          "screen_anchor_pixel": [
+            670.8756371800532,
+            150
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            667.9083500836085,
+            322.4388018273291
+          ],
+          "screen_anchor_pixel": [
+            667.9083500836085,
+            322.4388018273291
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 8,
+      "timestamp": 1.6,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_009.png",
+      "sha256": "addc71edafaa4079efd2100892772c072cd25abeaa5e04f66322988adaf97ce6",
+      "bytes": 401759,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1405.5777587890625,
+          1548.37451171875,
+          2598.2421875
+        ],
+        "target_bu": [
+          1250.5387400090694,
+          1693.9214409722222,
+          32.65625
+        ],
+        "ortho_scale_bu": 3700.6163194444443,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9979015588760376,
+          0.02719772793352604,
+          -0.05876052379608154
+        ],
+        "up": [
+          -0.02378266118466854,
+          0.9980300068855286,
+          0.05805589631199837
+        ],
+        "forward": [
+          -0.06022375449538231,
+          0.056536585092544556,
+          -0.9965825080871582
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            683.0899257460928,
+            142.2908903314139
+          ],
+          "screen_anchor_pixel": [
+            683.0899257460928,
+            150
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            677.7987148624621,
+            332.28122635093945
+          ],
+          "screen_anchor_pixel": [
+            677.7987148624621,
+            332.28122635093945
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 9,
+      "timestamp": 1.8,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_010.png",
+      "sha256": "445c3b6c2b626f08031dcee04db5aa9c6dc2fb866de70add324cce267f66d89d",
+      "bytes": 422645,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1440.92724609375,
+          1548.5166015625,
+          2427.951416015625
+        ],
+        "target_bu": [
+          1256.6101686601287,
+          1721.5490483539095,
+          35.0462962962963
+        ],
+        "ortho_scale_bu": 3445.332818930041,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9963064193725586,
+          0.044339749962091446,
+          -0.07353577017784119
+        ],
+        "up": [
+          -0.038806360214948654,
+          0.9964250326156616,
+          0.07504121214151382
+        ],
+        "forward": [
+          -0.07660019397735596,
+          0.07191038876771927,
+          -0.9944653511047363
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            698.2836464602527,
+            141.2102698636377
+          ],
+          "screen_anchor_pixel": [
+            698.2836464602527,
+            150
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            689.0954079434687,
+            344.9479331150508
+          ],
+          "screen_anchor_pixel": [
+            689.0954079434687,
+            344.9479331150508
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 10,
+      "timestamp": 2.0,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_011.png",
+      "sha256": "a90012e257f95093f3fa646ee16680d5e9d2d6b0a2367dad4fbb35a0d099632f",
+      "bytes": 445571,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1477.303955078125,
+          1548.662841796875,
+          2252.712646484375
+        ],
+        "target_bu": [
+          1262.858006860371,
+          1749.9793949331274,
+          37.50578703703704
+        ],
+        "ortho_scale_bu": 3182.631880144033,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9935013651847839,
+          0.06990441679954529,
+          -0.08982428163290024
+        ],
+        "up": [
+          -0.06120406836271286,
+          0.9934774041175842,
+          0.0962115153670311
+        ],
+        "forward": [
+          -0.09596400707960129,
+          0.09008865803480148,
+          -0.9912996292114258
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            717.2375455494598,
+            141.54468190219384
+          ],
+          "screen_anchor_pixel": [
+            717.2375455494598,
+            150
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            701.6323974975701,
+            361.4437335740061
+          ],
+          "screen_anchor_pixel": [
+            701.6323974975701,
+            361.4437335740061
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 11,
+      "timestamp": 2.2,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_012.png",
+      "sha256": "d1894ea8ad81b9fa0754aec80e1ea2556ff76877b33266b25f2e519d83cd975a",
+      "bytes": 462465,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1514.194091796875,
+          1548.8111572265625,
+          2075.0
+        ],
+        "target_bu": [
+          1269.194049835205,
+          1778.8111111111111,
+          40.0
+        ],
+        "ortho_scale_bu": 2916.222222222222,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9885011315345764,
+          0.10692396759986877,
+          -0.10692396759986877
+        ],
+        "up": [
+          -0.0935719907283783,
+          0.9879940748214722,
+          0.122930608689785
+        ],
+        "forward": [
+          -0.11878447234630585,
+          0.1115119531750679,
+          -0.9866384267807007
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            740.8948194892228,
+            144.47683691941322
+          ],
+          "screen_anchor_pixel": [
+            740.8948194892228,
+            150
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            714.921773693182,
+            383.13518198532194
+          ],
+          "screen_anchor_pixel": [
+            714.921773693182,
+            383.13518198532194
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 12,
+      "timestamp": 2.4,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_013.png",
+      "sha256": "e2752003f7e4bf50d14f25bef5db22d3a54077d2afb79598fbbae23028dab29d",
+      "bytes": 487361,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1551.084228515625,
+          1548.9593505859375,
+          1897.287353515625
+        ],
+        "target_bu": [
+          1275.5300928100392,
+          1807.6428272890946,
+          42.494212962962955
+        ],
+        "ortho_scale_bu": 2649.8125643004123,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9796018600463867,
+          0.158583864569664,
+          -0.12341553717851639
+        ],
+        "up": [
+          -0.13852472603321075,
+          0.9778422117233276,
+          0.15695694088935852
+        ],
+        "forward": [
+          -0.145571768283844,
+          0.13665920495986938,
+          -0.9798638224601746
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            770.2433362635978,
+            151.766050839105
+          ],
+          "screen_anchor_pixel": [
+            770.2433362635978,
+            151.766050839105
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            727.9259699715659,
+            411.7125506289744
+          ],
+          "screen_anchor_pixel": [
+            727.9259699715659,
+            411.7125506289744
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 13,
+      "timestamp": 2.6,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_014.png",
+      "sha256": "b5d6713bd0922ef8a9f54fd91daa9c78fc3a29e72abc3a0f3bd727ed208ea937",
+      "bytes": 513736,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1587.4608154296875,
+          1549.1055908203125,
+          1722.048583984375
+        ],
+        "target_bu": [
+          1281.7779310102815,
+          1836.073173868313,
+          44.9537037037037
+        ],
+        "ortho_scale_bu": 2387.111625514403,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9642155766487122,
+          0.2270401567220688,
+          -0.13689805567264557
+        ],
+        "up": [
+          -0.19753602147102356,
+          0.959633469581604,
+          0.20020756125450134
+        ],
+        "forward": [
+          -0.17682711780071259,
+          0.16600096225738525,
+          -0.9701421856880188
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            806.0161683442619,
+            165.7046664448606
+          ],
+          "screen_anchor_pixel": [
+            806.0161683442619,
+            165.7046664448606
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            738.8417006001421,
+            448.8737675063046
+          ],
+          "screen_anchor_pixel": [
+            738.8417006001421,
+            448.8737675063046
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 14,
+      "timestamp": 2.8,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_015.png",
+      "sha256": "5741bdef618683c84d844c9f2eb9e4b6cfe7068d6fe32eeaf51dc9a9a89e5c58",
+      "bytes": 519406,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1622.810302734375,
+          1549.2476806640625,
+          1551.7578125
+        ],
+        "target_bu": [
+          1287.8493596613407,
+          1863.70078125,
+          47.34375
+        ],
+        "ortho_scale_bu": 2131.828125,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.939331591129303,
+          0.3112831711769104,
+          -0.14407964050769806
+        ],
+        "up": [
+          -0.26890745759010315,
+          0.9290534853935242,
+          0.2540638744831085
+        ],
+        "forward": [
+          -0.21294349431991577,
+          0.199906125664711,
+          -0.9563956260681152
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            848.2390931145983,
+            188.57739815035933
+          ],
+          "screen_anchor_pixel": [
+            848.2390931145983,
+            188.57739815035933
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            745.1866256143517,
+            495.5356958496442
+          ],
+          "screen_anchor_pixel": [
+            745.1866256143517,
+            495.5356958496442
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 15,
+      "timestamp": 3.0,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_016.png",
+      "sha256": "4c68d08f24f97b1c549a8cd78d8f3feb56c8573cf628366e2d6a9d9f7e99c2c9",
+      "bytes": 512820,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1656.619140625,
+          1549.383544921875,
+          1388.888916015625
+        ],
+        "target_bu": [
+          1293.656173988625,
+          1890.124279835391,
+          49.629629629629626
+        ],
+        "ortho_scale_bu": 1887.6707818930045,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.9032564759254456,
+          0.4050106704235077,
+          -0.14175373315811157
+        ],
+        "up": [
+          -0.3458244502544403,
+          0.8826625943183899,
+          0.31829577684402466
+        ],
+        "forward": [
+          -0.2540339231491089,
+          0.238480806350708,
+          -0.9373332858085632
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            896.0081069609611,
+            221.39776078535846
+          ],
+          "screen_anchor_pixel": [
+            896.0081069609611,
+            221.39776078535846
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            744.6553868129615,
+            550.7281913532975
+          ],
+          "screen_anchor_pixel": [
+            744.6553868129615,
+            550.7281913532975
+          ],
+          "is_offscreen": false,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 16,
+      "timestamp": 3.2,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_017.png",
+      "sha256": "374a27c9e18eeda4debf16d06c42fe3455f789286fcb7768ea8934468f536103",
+      "bytes": 509858,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1688.373779296875,
+          1549.5111083984375,
+          1235.915771484375
+        ],
+        "target_bu": [
+          1299.1101692175423,
+          1914.9423000257202,
+          51.776620370370374
+        ],
+        "ortho_scale_bu": 1658.3483153292182,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.8580759167671204,
+          0.49714553356170654,
+          -0.1286548525094986
+        ],
+        "up": [
+          -0.4170123040676117,
+          0.8207922577857971,
+          0.3903854787349701
+        ],
+        "forward": [
+          -0.299677312374115,
+          0.2813297212123871,
+          -0.9116178750991821
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            948.1295602423347,
+            262.5146826894174
+          ],
+          "screen_anchor_pixel": [
+            915,
+            262.5146826894174
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            736.7191648778634,
+            611.0843021698267
+          ],
+          "screen_anchor_pixel": [
+            736.7191648778634,
+            555
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 17,
+      "timestamp": 3.4,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_018.png",
+      "sha256": "22f401d8ed582747620444f620bf992d64cda98bbd70db4895e77c8b7be2a723",
+      "bytes": 510713,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1717.5606689453125,
+          1549.62841796875,
+          1095.3125
+        ],
+        "target_bu": [
+          1304.1231405735016,
+          1937.7534722222222,
+          53.75
+        ],
+        "ortho_scale_bu": 1447.5694444444443,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.8101158142089844,
+          0.5764685869216919,
+          -0.10675344616174698
+        ],
+        "up": [
+          -0.4713563024997711,
+          0.748715341091156,
+          0.46609926223754883
+        ],
+        "forward": [
+          -0.3486195504665375,
+          0.32727548480033875,
+          -0.878268301486969
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            1004.4162149772783,
+            307.6015809648339
+          ],
+          "screen_anchor_pixel": [
+            915,
+            307.6015809648339
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            723.6331035411138,
+            671.8320763347452
+          ],
+          "screen_anchor_pixel": [
+            723.6331035411138,
+            555
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 18,
+      "timestamp": 3.6,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_019.png",
+      "sha256": "7c6eda45a5ce208701a6f7939858ff7c76fdd651dffe05a6e7390f12730cb08b",
+      "bytes": 503386,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1743.666259765625,
+          1549.7333984375,
+          969.552978515625
+        ],
+        "target_bu": [
+          1308.6068832819108,
+          1958.1564268261316,
+          55.5150462962963
+        ],
+        "ortho_scale_bu": 1259.0428883744858,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.7667994499206543,
+          0.6368288993835449,
+          -0.08042079210281372
+        ],
+        "up": [
+          -0.5031597018241882,
+          0.6741331219673157,
+          0.5407169461250305
+        ],
+        "forward": [
+          -0.39855852723121643,
+          0.37415698170661926,
+          -0.8373515605926514
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            1066.040373079801,
+            351.48782274447933
+          ],
+          "screen_anchor_pixel": [
+            915,
+            351.48782274447933
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            709.4544001884639,
+            728.5143663347304
+          ],
+          "screen_anchor_pixel": [
+            709.4544001884639,
+            555
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 19,
+      "timestamp": 3.8,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_020.png",
+      "sha256": "f1d02e92b4d44f8531d7d4dd01f4a183ffd0dc30fbbf737f142072a5d4f4beb8",
+      "bytes": 506583,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1766.1768798828125,
+          1549.8238525390625,
+          861.111083984375
+        ],
+        "target_bu": [
+          1312.4731925681785,
+          1975.749794238683,
+          57.037037037037045
+        ],
+        "ortho_scale_bu": 1096.4773662551436,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.7328535914421082,
+          0.6782195568084717,
+          -0.05425756424665451
+        ],
+        "up": [
+          -0.5136222243309021,
+          0.603767991065979,
+          0.6096363067626953
+        ],
+        "forward": [
+          -0.44622623920440674,
+          0.4189062714576721,
+          -0.7908221483230591
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            1133.9251231746855,
+            390.118399933801
+          ],
+          "screen_anchor_pixel": [
+            915,
+            390.118399933801
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            697.8913071656145,
+            777.8292437010172
+          ],
+          "screen_anchor_pixel": [
+            697.8913071656145,
+            555
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 20,
+      "timestamp": 4.0,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_021.png",
+      "sha256": "c45b7f3da8d14bc00c29892b6552e540cc06fdb03b8b35db175d14f7a2f07a62",
+      "bytes": 501046,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1784.5792236328125,
+          1549.8978271484375,
+          772.4609375
+        ],
+        "target_bu": [
+          1315.633863657713,
+          1990.1322048611112,
+          58.28125
+        ],
+        "ortho_scale_bu": 963.5815972222222,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.7092673778533936,
+          0.7042301297187805,
+          -0.03161849454045296
+        ],
+        "up": [
+          -0.5088051557540894,
+          0.542457640171051,
+          0.6684736609458923
+        ],
+        "forward": [
+          -0.4879109859466553,
+          0.458038866519928,
+          -0.7430634498596191
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            1206.027095154489,
+            421.18040711871674
+          ],
+          "screen_anchor_pixel": [
+            915,
+            421.18040711871674
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            690.8503425268193,
+            817.5404576449818
+          ],
+          "screen_anchor_pixel": [
+            690.8503425268193,
+            555
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 21,
+      "timestamp": 4.2,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_022.png",
+      "sha256": "7e4b1e0d2babf6d255e3baad9c1d296802b14ee60c81e449745ba7a070f4c634",
+      "bytes": 494243,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1798.3594970703125,
+          1549.9532470703125,
+          706.076416015625
+        ],
+        "target_bu": [
+          1318.0006917759224,
+          2000.9022890946503,
+          59.21296296296296
+        ],
+        "ortho_scale_bu": 864.0643004115227,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.6946286559104919,
+          0.7192236185073853,
+          -0.01443542167544365
+        ],
+        "up": [
+          -0.49682295322418213,
+          0.4941524267196655,
+          0.7134285569190979
+        ],
+        "forward": [
+          -0.5202479958534241,
+          0.4883960783481598,
+          -0.7005792260169983
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            1274.9031307322464,
+            443.70272402163107
+          ],
+          "screen_anchor_pixel": [
+            915,
+            443.70272402163107
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            688.1748006567137,
+            846.3341582734523
+          ],
+          "screen_anchor_pixel": [
+            688.1748006567137,
+            555
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 22,
+      "timestamp": 4.4,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_023.png",
+      "sha256": "0cc7e3f77493ed9ef6deb212ea4026c73fdd116c1b7c93806f40838ccf206a05",
+      "bytes": 494052,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1807.0042724609375,
+          1549.9879150390625,
+          664.431396484375
+        ],
+        "target_bu": [
+          1319.4854721482154,
+          2007.658677340535,
+          59.7974537037037
+        ],
+        "ortho_scale_bu": 801.6341949588474,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.6868658661842346,
+          0.7267748117446899,
+          -0.0036988684441894293
+        ],
+        "up": [
+          -0.4855632781982422,
+          0.4626747667789459,
+          0.7417279481887817
+        ],
+        "forward": [
+          -0.5407806038856506,
+          0.5076715350151062,
+          -0.670690655708313
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            1327.1797172032914,
+            457.39290570378455
+          ],
+          "screen_anchor_pixel": [
+            915,
+            457.39290570378455
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            688.1261126828041,
+            863.723261040666
+          ],
+          "screen_anchor_pixel": [
+            688.1261126828041,
+            555
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 23,
+      "timestamp": 4.6,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    },
+    {
+      "path": "approach_024.png",
+      "sha256": "f7b691b8fe72db4879596154c3c168e7301b7f02e2aef848429c0194ba83855e",
+      "bytes": 483112,
+      "width": 960,
+      "height": 600,
+      "review_camera": {
+        "position_bu": [
+          1810.0,
+          1550.0,
+          650.0
+        ],
+        "target_bu": [
+          1320.0,
+          2010.0,
+          60.0
+        ],
+        "ortho_scale_bu": 780.0,
+        "width": 960,
+        "height": 600,
+        "right": [
+          0.6844359040260315,
+          0.7290730476379395,
+          -0.0
+        ],
+        "up": [
+          -0.4809859097003937,
+          0.4515377879142761,
+          0.7515092492103577
+        ],
+        "forward": [
+          -0.5479051470756531,
+          0.5143599510192871,
+          -0.6597225069999695
+        ]
+      },
+      "source_camera_markers": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "source_position_bu": [
+            2025.24267578125,
+            2314.5078125,
+            153.21405029296875
+          ],
+          "uncropped_pixel": [
+            1347.3253614593368,
+            462.04770929248593
+          ],
+          "screen_anchor_pixel": [
+            915,
+            462.04770929248593
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "source_position_bu": [
+            2024.8048095703125,
+            1580.67431640625,
+            153.23199462890625
+          ],
+          "uncropped_pixel": [
+            688.4725432294296,
+            869.5916609372227
+          ],
+          "screen_anchor_pixel": [
+            688.4725432294296,
+            555
+          ],
+          "is_offscreen": true,
+          "indicator_purpose": "DISPLAY_ONLY_SOURCE_LOCATION_NOT_CAMERA_RELOCATION"
+        }
+      ],
+      "frame_id": 24,
+      "timestamp": 4.8,
+      "person_movement_changed": false,
+      "display_only_camera_approach": true
+    }
+  ],
+  "approach_fps": 5,
+  "approach_duration_seconds": 5,
+  "display_only_camera_approach": true,
+  "person_movement_changed": false,
+  "new_route_generated": false,
+  "joint_pose_authority": "DISPLAY_ONLY",
+  "floor_display_bounds_bu": {
+    "minimum": [
+      171.5335235595703,
+      175.0,
+      -2.0
+    ],
+    "maximum": [
+      2170.0,
+      2415.0,
+      145.0
+    ]
+  },
+  "source_bounds_bu": {
+    "minimum": [
+      171.5335235595703,
+      175.0,
+      -2.0
+    ],
+    "maximum": [
+      2170.0,
+      2415.0,
+      145.0
+    ]
+  },
+  "tested_scope_bounds_bu": [
+    [
+      1385.8284912348652,
+      1925.8293956451953,
+      18.014072464545244
+    ],
+    [
+      1426.1699647814155,
+      2110.9705868330975,
+      90.96953805158978
+    ]
+  ],
+  "whole_1f_authority": "ANNOTATION_CONTEXT_ONLY_NOT_CERTIFIED",
+  "tested_scope_authority": "PENDING_HR01_NOT_CERTIFIED",
+  "camera_calibrations": [
+    {
+      "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+      "camera_to_world": [
+        [
+          -0.8181571960449219,
+          -0.22697052359580994,
+          0.5283022522926331,
+          2025.24267578125
+        ],
+        [
+          0.574994683265686,
+          -0.32295548915863037,
+          0.7517186999320984,
+          2314.5078125
+        ],
+        [
+          1.2119321013415174e-07,
+          0.9187950491905212,
+          0.3947351574897766,
+          153.21405029296875
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "clip_end": 1000.0,
+      "clip_start": 0.10000000149011612,
+      "convention": "BLENDER_NEG_Z_UP_Y",
+      "cx": 480.0,
+      "cy": 270.0,
+      "floor_id": "1F",
+      "fx": 640.0000190734863,
+      "fy": 640.0000190734863,
+      "height": 540,
+      "meters_per_unit": 1.0,
+      "pixel_origin": "TOP_LEFT_CONTINUOUS",
+      "width": 960,
+      "zone_id": "AUDITORIUM_FRONT"
+    },
+    {
+      "camera_id": "CAM_1F_AUDITORIUM_REAR",
+      "camera_to_world": [
+        [
+          0.8221364617347717,
+          -0.2256315052509308,
+          0.5226683020591736,
+          2024.8048095703125
+        ],
+        [
+          0.5692904591560364,
+          0.32584381103515625,
+          -0.7548074126243591,
+          1580.67431640625
+        ],
+        [
+          1.0944755501895997e-07,
+          0.9181047677993774,
+          0.39633795619010925,
+          153.23199462890625
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "clip_end": 1000.0,
+      "clip_start": 0.10000000149011612,
+      "convention": "BLENDER_NEG_Z_UP_Y",
+      "cx": 480.0,
+      "cy": 270.0,
+      "floor_id": "1F",
+      "fx": 640.0621032714844,
+      "fy": 640.0621032714844,
+      "height": 540,
+      "meters_per_unit": 1.0,
+      "pixel_origin": "TOP_LEFT_CONTINUOUS",
+      "width": 960,
+      "zone_id": "AUDITORIUM_REAR"
+    }
+  ],
+  "calibrated_camera_geometry": [
+    {
+      "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+      "position_bu": [
+        2025.24267578125,
+        2314.5078125,
+        153.21405029296875
+      ],
+      "optical_axis_world": [
+        -0.5283022522926331,
+        -0.7517186999320984,
+        -0.3947351574897766
+      ],
+      "image_corner_unit_rays_world": [
+        [
+          -0.007911605818972217,
+          -0.9999541445781762,
+          -0.0053958534350801385
+        ],
+        [
+          -0.9381486925532019,
+          -0.3461905788904661,
+          -0.0053957157265659104
+        ],
+        [
+          -0.7929880511635253,
+          -0.139642056596852,
+          -0.5930177457220616
+        ],
+        [
+          0.1372490355646934,
+          -0.7934056326679829,
+          -0.5930178785561859
+        ]
+      ],
+      "corner_pixel_basis": "TOP_LEFT_CONTINUOUS_PUBLIC_INTRINSICS_BLENDER_NEG_Z_UP_Y",
+      "authority": "CALIBRATION_GEOMETRY_ONLY_NOT_FOV_OCCLUSION_CERTIFICATION"
+    },
+    {
+      "camera_id": "CAM_1F_AUDITORIUM_REAR",
+      "position_bu": [
+        2024.8048095703125,
+        1580.67431640625,
+        153.23199462890625
+      ],
+      "optical_axis_world": [
+        -0.5226683020591736,
+        0.7548074126243591,
+        -0.39633795619010925
+      ],
+      "image_corner_unit_rays_world": [
+        [
+          -0.9356984566210756,
+          0.3527340856309608,
+          -0.006860255900995736
+        ],
+        [
+          -0.0009891001389375471,
+          0.9999759798476943,
+          -0.006860131817887554
+        ],
+        [
+          0.14330712383083385,
+          0.7915918117509262,
+          -0.59400797286587
+        ],
+        [
+          -0.7914022399221834,
+          0.14434993536350474,
+          -0.5940080730147553
+        ]
+      ],
+      "corner_pixel_basis": "TOP_LEFT_CONTINUOUS_PUBLIC_INTRINSICS_BLENDER_NEG_Z_UP_Y",
+      "authority": "CALIBRATION_GEOMETRY_ONLY_NOT_FOV_OCCLUSION_CERTIFICATION"
+    }
+  ],
+  "calibration_context_sha256": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70",
+  "visibility_timeline": [
+    {
+      "frame_id": 0,
+      "timestamp": 0.0,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            774.9788404715257,
+            79.6755717151978
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 1,
+      "timestamp": 0.2,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            777.9261488498576,
+            79.99350816252701
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 2,
+      "timestamp": 0.4,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            780.8959888315062,
+            80.31392871541749
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 3,
+      "timestamp": 0.6,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            783.8881907996613,
+            80.63671372936253
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 4,
+      "timestamp": 0.8,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            786.9031330882649,
+            80.96195186469816
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 5,
+      "timestamp": 1.0,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            789.9410759210771,
+            81.2896711931692
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 6,
+      "timestamp": 1.2,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            793.0022226886827,
+            81.61993682019911
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 7,
+      "timestamp": 1.4,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            796.0871489540982,
+            81.95273029202937
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 8,
+      "timestamp": 1.6,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            799.1956329838827,
+            82.28810296760162
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 9,
+      "timestamp": 1.8,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            802.3282607307326,
+            82.62603682882335
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 10,
+      "timestamp": 2.0,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            805.4852514760375,
+            82.96659886128157
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 11,
+      "timestamp": 2.2,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            808.6668905423031,
+            83.30981984429121
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 12,
+      "timestamp": 2.4,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            811.8734677248267,
+            83.65579468026993
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 13,
+      "timestamp": 2.6,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            815.1052104728042,
+            84.00440133699917
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 14,
+      "timestamp": 2.8,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            818.3627468005568,
+            84.35581572788959
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 15,
+      "timestamp": 3.0,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            821.6458549189359,
+            84.71002764275462
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 16,
+      "timestamp": 3.2,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            824.955174669623,
+            85.0670226256363
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 17,
+      "timestamp": 3.4,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            828.2909517500372,
+            85.42687170986946
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 18,
+      "timestamp": 3.6,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            831.65350471492,
+            85.78960925975048
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 19,
+      "timestamp": 3.8,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            835.0431572536226,
+            86.1553356291887
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 20,
+      "timestamp": 4.0,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "OBSERVED",
+          "uv": [
+            838.4602382939759,
+            86.52395569480393
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 21,
+      "timestamp": 4.2,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 22,
+      "timestamp": 4.4,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 23,
+      "timestamp": 4.6,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 24,
+      "timestamp": 4.8,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 25,
+      "timestamp": 5.0,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 26,
+      "timestamp": 5.2,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 27,
+      "timestamp": 5.4,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 28,
+      "timestamp": 5.6,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 29,
+      "timestamp": 5.8,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 30,
+      "timestamp": 6.0,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 31,
+      "timestamp": 6.2,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 32,
+      "timestamp": 6.4,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 33,
+      "timestamp": 6.6,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 34,
+      "timestamp": 6.8,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 35,
+      "timestamp": 7.0,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 36,
+      "timestamp": 7.2,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 37,
+      "timestamp": 7.4,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 38,
+      "timestamp": 7.6,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 39,
+      "timestamp": 7.8,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 40,
+      "timestamp": 8.0,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 41,
+      "timestamp": 8.2,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 42,
+      "timestamp": 8.4,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 43,
+      "timestamp": 8.6,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 44,
+      "timestamp": 8.8,
+      "state": "INFERRED_GAP",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0.002"
+        }
+      ]
+    },
+    {
+      "frame_id": 45,
+      "timestamp": 9.0,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "OBSERVED",
+          "uv": [
+            282.8554840102888,
+            67.5277606992183
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        }
+      ]
+    },
+    {
+      "frame_id": 46,
+      "timestamp": 9.2,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "OBSERVED",
+          "uv": [
+            285.075031753748,
+            67.286656808141
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        }
+      ]
+    },
+    {
+      "frame_id": 47,
+      "timestamp": 9.4,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "OBSERVED",
+          "uv": [
+            287.28016666127075,
+            67.04720799810559
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        }
+      ]
+    },
+    {
+      "frame_id": 48,
+      "timestamp": 9.6,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "OBSERVED",
+          "uv": [
+            289.47123773621433,
+            66.80924090055154
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        }
+      ]
+    },
+    {
+      "frame_id": 49,
+      "timestamp": 9.8,
+      "state": "OBSERVED",
+      "camera_evidence": [
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+          "visibility": "GAP",
+          "uv": null,
+          "gap_reason": "OCCLUDED",
+          "occluder_id": "group_0"
+        },
+        {
+          "camera_id": "CAM_1F_AUDITORIUM_REAR",
+          "visibility": "OBSERVED",
+          "uv": [
+            291.64786966616566,
+            66.57285070760534
+          ],
+          "gap_reason": null,
+          "occluder_id": null
+        }
+      ]
+    }
+  ],
+  "source_frame": {
+    "name": "Scene",
+    "frame": 220,
+    "subframe": 0.0
+  },
+  "blender_version": "5.2.1 LTS",
+  "render_policy": {
+    "engine": "BLENDER_WORKBENCH",
+    "workbench_shadows_display_only": true,
+    "workbench_cavity": false,
+    "display_shadows_are_physical_or_visibility_evidence": false,
+    "source_snapshot": "FROZEN_EVALUATED_VIEWPORT_MESH",
+    "source_objects": [
+      "Accoudoir",
+      "Accoudoir.001",
+      "Accoudoir.002",
+      "Accoudoir.003",
+      "Accoudoir.004",
+      "Accoudoir.005",
+      "Accoudoir.006",
+      "Accoudoir.007",
+      "Accoudoir.008",
+      "Accoudoir.009",
+      "Accoudoir.010",
+      "Accoudoir.011",
+      "Accoudoir.012",
+      "Accoudoir.013",
+      "Accoudoir.014",
+      "Accoudoir.015",
+      "Assise",
+      "Assise.001",
+      "Assise.002",
+      "Assise.003",
+      "Assise.004",
+      "Assise.005",
+      "Assise.006",
+      "Assise.007",
+      "Assise.008",
+      "Assise.009",
+      "Assise.010",
+      "Assise.011",
+      "Assise.012",
+      "Assise.013",
+      "Assise.014",
+      "Assise.015",
+      "Back",
+      "Bolt_Head.001",
+      "Bolt_Head.002",
+      "Bolt_Head.003",
+      "Bolt_Head.004",
+      "Bolt_Head.005",
+      "Bolt_Head.006",
+      "Bolt_Head.007",
+      "Bolt_Head.008",
+      "Bolt_Head.009",
+      "Bolt_Head.010",
+      "Bolt_Head.011",
+      "Bolt_Head.012",
+      "Box_1",
+      "Box_2",
+      "Box_3",
+      "Box_4",
+      "Cable Opening",
+      "Chair",
+      "Chair Leg",
+      "Chair Leg.001",
+      "Chair Leg.002",
+      "Chair Leg.003",
+      "Chair Leg.004",
+      "Chair Leg.005",
+      "Chair Leg.006",
+      "Chair Leg.007",
+      "Chair Leg.008",
+      "Chair Leg.009",
+      "Chair Leg.010",
+      "Chair Leg.011",
+      "Chair Leg.012",
+      "Chair Leg.013",
+      "Chair Leg.014",
+      "Chair Leg.015",
+      "Chair.001",
+      "Chair.002",
+      "Chair.003",
+      "Component_1.060",
+      "Component_1.061",
+      "Component_1.062",
+      "Component_1.063",
+      "Component_1.064",
+      "Component_1.065",
+      "Component_1.066",
+      "Component_1.067",
+      "Component_1.068",
+      "Component_1.069",
+      "Component_1.070",
+      "Component_1.071",
+      "Component_1.072",
+      "Component_1.073",
+      "Component_1.074",
+      "Component_1.075",
+      "Component_1.076",
+      "Component_1.077",
+      "Component_1.078",
+      "Component_1.079",
+      "Component_1.080",
+      "Component_1.081",
+      "Component_1.082",
+      "Component_1.083",
+      "Component_1.084",
+      "Component_1.085",
+      "Component_1.086",
+      "Component_1.087",
+      "Component_1.088",
+      "Component_1.089",
+      "Component_1.090",
+      "Component_1.091",
+      "Component_1.092",
+      "Component_1.093",
+      "Component_1.094",
+      "Component_1.095",
+      "Component_1.096",
+      "Component_1.097",
+      "Component_1.098",
+      "Component_1.099",
+      "Component_1.100",
+      "Component_1.101",
+      "Component_1.102",
+      "Component_1.103",
+      "Component_1.104",
+      "Component_1.105",
+      "Component_1.106",
+      "Component_1.107",
+      "Component_1.108",
+      "Component_1.109",
+      "Component_1.110",
+      "Component_1.111",
+      "Component_1.112",
+      "Component_1.113",
+      "Component_1.114",
+      "Component_1.115",
+      "Component_1.116",
+      "Component_1.117",
+      "Component_1.118",
+      "Component_1.119",
+      "Component_1.120",
+      "Component_1.121",
+      "Component_1.122",
+      "Component_1.123",
+      "Component_1.124",
+      "Component_1.125",
+      "Component_1.126",
+      "Component_1.127",
+      "Component_1.128",
+      "Component_1.129",
+      "Component_1.130",
+      "Component_1.131",
+      "Component_1.132",
+      "Component_1.133",
+      "Component_1.134",
+      "Component_1.135",
+      "Component_1.136",
+      "Component_1.137",
+      "Component_1.138",
+      "Component_1.139",
+      "Component_1.140",
+      "Component_1.141",
+      "Component_1.142",
+      "Component_1.143",
+      "Component_1.144",
+      "Component_1.145",
+      "Component_1.146",
+      "Component_1.147",
+      "Component_1.148",
+      "Component_1.149",
+      "Component_1.150",
+      "Component_1.151",
+      "Component_1.152",
+      "Component_1.153",
+      "Component_1.154",
+      "Component_1.155",
+      "Component_1.156",
+      "Component_1.157",
+      "Component_1.158",
+      "Component_1.159",
+      "Component_1.160",
+      "Component_1.161",
+      "Component_1.162",
+      "Component_1.163",
+      "Component_1.164",
+      "Component_1.165",
+      "Component_1.166",
+      "Component_1.167",
+      "Component_1.168",
+      "Component_1.169",
+      "Component_1.170",
+      "Component_1.171",
+      "Component_1.172",
+      "Component_1.173",
+      "Component_1.174",
+      "Component_1.175",
+      "Component_1.176",
+      "Component_1.177",
+      "Component_1.178",
+      "Component_1.179",
+      "Component_1.180",
+      "Component_1.181",
+      "Component_1.182",
+      "Component_1.183",
+      "Component_1.184",
+      "Component_1.185",
+      "Component_1.186",
+      "Component_1.187",
+      "Component_1.188",
+      "Component_1.189",
+      "Component_1.190",
+      "Component_1.191",
+      "Component_1.192",
+      "Component_1.193",
+      "Component_1.194",
+      "Component_1.195",
+      "Component_1.196",
+      "Component_1.197",
+      "Component_1.198",
+      "Component_1.199",
+      "Component_1.200",
+      "Component_1.201",
+      "Component_1.202",
+      "Component_1.203",
+      "Component_1.204",
+      "Component_1.205",
+      "Component_1.206",
+      "Component_1.207",
+      "Component_1.208",
+      "Component_1.209",
+      "Component_1.210",
+      "Component_1.211",
+      "Component_1.212",
+      "Component_1.213",
+      "Component_1.214",
+      "Component_1.215",
+      "Component_1.216",
+      "Component_1.217",
+      "Component_1.218",
+      "Component_1.219",
+      "Component_1.220",
+      "Component_1.221",
+      "Component_1.222",
+      "Component_1.223",
+      "Component_1.224",
+      "Component_1.225",
+      "Component_1.226",
+      "Component_1.227",
+      "Component_1.228",
+      "Component_1.229",
+      "Component_1.230",
+      "Component_1.231",
+      "Component_1.232",
+      "Component_1.233",
+      "Component_1.234",
+      "Component_1.235",
+      "Component_1.236",
+      "Component_1.237",
+      "Component_1.238",
+      "Component_1.239",
+      "Component_1.240",
+      "Component_1.241",
+      "Component_1.242",
+      "Component_1.243",
+      "Component_1.244",
+      "Component_1.245",
+      "Component_1.246",
+      "Component_1.247",
+      "Component_1.248",
+      "Component_1.249",
+      "Component_1.250",
+      "Component_1.251",
+      "Component_1.252",
+      "Component_1.253",
+      "Component_1.254",
+      "Component_1.255",
+      "Component_1.256",
+      "Component_1.257",
+      "Component_1.258",
+      "Component_1.259",
+      "Component_1.260",
+      "Component_1.261",
+      "Component_1.262",
+      "Component_1.263",
+      "Component_1.264",
+      "Component_1.265",
+      "Component_1.266",
+      "Component_1.267",
+      "Component_1.268",
+      "Component_1.269",
+      "Component_1.270",
+      "Component_1.271",
+      "Component_1.272",
+      "Component_1.273",
+      "Component_1.274",
+      "Component_1.275",
+      "Component_1.276",
+      "Component_1.277",
+      "Component_1.278",
+      "Component_1.279",
+      "Component_1.280",
+      "Component_1.281",
+      "Cube.001",
+      "Cube.002",
+      "Cube.003",
+      "Cube.004",
+      "Cube.005",
+      "Cube.006",
+      "Cube.007",
+      "Cube.008",
+      "Cube.009",
+      "Cube.010",
+      "Cube.011",
+      "Cube.012",
+      "Cube.013",
+      "Cube.014",
+      "Cube.015",
+      "Cube.016",
+      "Cube.017",
+      "Cube.018",
+      "Cube.019",
+      "Cube.020",
+      "Cube.021",
+      "Cube.022",
+      "Cube.023",
+      "Cube.024",
+      "Cube.030",
+      "Cube.031",
+      "Cube.032",
+      "Cube.033",
+      "Door.l",
+      "Dossier",
+      "Dossier.001",
+      "Dossier.002",
+      "Dossier.003",
+      "Dossier.004",
+      "Dossier.005",
+      "Dossier.006",
+      "Dossier.007",
+      "Dossier.008",
+      "Dossier.009",
+      "Dossier.010",
+      "Dossier.011",
+      "Dossier.012",
+      "Dossier.013",
+      "Dossier.014",
+      "Dossier.015",
+      "Fire Extinguisher",
+      "Fire Extinguisher.001",
+      "Fond Dossier",
+      "Fond Dossier.001",
+      "Fond Dossier.002",
+      "Fond Dossier.003",
+      "Fond Dossier.004",
+      "Fond Dossier.005",
+      "Fond Dossier.006",
+      "Fond Dossier.007",
+      "Fond Dossier.008",
+      "Fond Dossier.009",
+      "Fond Dossier.010",
+      "Fond Dossier.011",
+      "Fond Dossier.012",
+      "Fond Dossier.013",
+      "Fond Dossier.014",
+      "Fond Dossier.015",
+      "Frame - Dark Wood",
+      "Glass_Poster",
+      "LAS Lead Middle chair.008",
+      "LAS Lead Middle chair.009",
+      "LAS Lead Middle chair.010",
+      "LAS Lead Middle chair.011",
+      "LAS Lead Middle chair.012",
+      "LAS Lead Middle chair.013",
+      "LAS Lead Middle chair.014",
+      "LAS Lead Middle chair.015",
+      "LAS cathedra.002",
+      "LAS cathedra.003",
+      "Main Board",
+      "Mic holders",
+      "Myanmar-student low poly Character",
+      "Pied",
+      "Pied.001",
+      "Pied.002",
+      "Pied.003",
+      "Pied.004",
+      "Pied.005",
+      "Pied.006",
+      "Pied.007",
+      "Pied.008",
+      "Pied.009",
+      "Pied.010",
+      "Pied.011",
+      "Pied.012",
+      "Pied.013",
+      "Pied.014",
+      "Pied.015",
+      "Plane",
+      "Plane.001",
+      "Plane.002",
+      "Plane.003",
+      "Plane.004",
+      "Plane.005",
+      "Plane.006",
+      "Plane.007",
+      "Plane.008",
+      "Plane.009",
+      "Plane.010",
+      "Plane.011",
+      "Plane.012",
+      "Plane.013",
+      "Plane.014",
+      "Plane.015",
+      "Plane.016",
+      "Plane.017",
+      "Plane.018",
+      "Plane.019",
+      "Plane.020",
+      "Plane.021",
+      "Plane.022",
+      "Plane.023",
+      "Plane.024",
+      "Plane.025",
+      "Plane.026",
+      "Plane.027",
+      "Plane.028",
+      "Plane.029",
+      "Plane.030",
+      "Plane.031",
+      "Plane.032",
+      "Plane.033",
+      "Plane.034",
+      "Plane.035",
+      "Plane.036",
+      "Plane.037",
+      "Plane.038",
+      "Plane.039",
+      "Plane.040",
+      "Plane.041",
+      "Plane.042",
+      "Plane.043",
+      "Plane.044",
+      "Plane.045",
+      "Plane.046",
+      "Plane.047",
+      "Plane.048",
+      "Plane.049",
+      "Plane.050",
+      "Plane.051",
+      "Plane.052",
+      "Plane.053",
+      "Plane.054",
+      "Plane.055",
+      "Plane.056",
+      "Plane.057",
+      "Plane.058",
+      "Plane.059",
+      "Plane.060",
+      "Plane.061",
+      "Plane.062",
+      "Plane.063",
+      "Plane.064",
+      "Plane.065",
+      "Plane.066",
+      "Plane.067",
+      "Plane.068",
+      "Plane.069",
+      "Plane.070",
+      "Plane.071",
+      "Plane.072",
+      "Plane.073",
+      "Plane.074",
+      "Plane.075",
+      "Plane.076",
+      "Plane.077",
+      "Plane.078",
+      "Plane.079",
+      "Plane.080",
+      "Plane.081",
+      "Plane.082",
+      "Plane.083",
+      "Plane.084",
+      "Plane.085",
+      "Plane.086",
+      "Plane.087",
+      "Plane.088",
+      "Plane.089",
+      "Plane.090",
+      "Plane.091",
+      "Plane.092",
+      "Plane.093",
+      "Plane.094",
+      "Plane.095",
+      "Plane.106",
+      "Plane.108",
+      "Plane.109",
+      "Plane.111",
+      "Rust Cabinet-Freepoly.org",
+      "Rust Cabinet-Freepoly.org.001",
+      "Table",
+      "Tool_cart",
+      "Typical Cows Poster",
+      "WTZclock.001",
+      "Wall Lamp",
+      "XRL port",
+      "base opening",
+      "cardboard_box_01",
+      "chair",
+      "chair.001",
+      "chair.002",
+      "chair.003",
+      "conference mic L",
+      "conference mic R",
+      "door.r",
+      "green.038",
+      "group_0",
+      "group_0.001",
+      "group_0.002",
+      "group_0.003",
+      "group_0.004",
+      "group_0.005",
+      "group_0.006",
+      "group_0.007",
+      "group_0.008",
+      "group_0.009",
+      "group_0.010",
+      "group_0.011",
+      "group_0.012",
+      "group_0.013",
+      "group_0.014",
+      "group_0.015",
+      "group_0.016",
+      "group_0.017",
+      "group_0.018",
+      "group_0.019",
+      "group_0.020",
+      "group_0.021",
+      "group_0.022",
+      "group_0.023",
+      "group_0.024",
+      "group_0.025",
+      "group_0.026",
+      "group_0.027",
+      "group_0.028",
+      "group_0.029",
+      "group_0.030",
+      "group_0.031",
+      "group_0.032",
+      "group_0.033",
+      "group_0.034",
+      "group_0.035",
+      "group_0.036",
+      "group_0.037",
+      "group_0.038",
+      "group_0.039",
+      "group_0.040",
+      "group_0.041",
+      "group_0.042",
+      "group_0.043",
+      "group_0.044",
+      "group_0.045",
+      "group_0.046",
+      "group_0.047",
+      "group_0.048",
+      "group_0.049",
+      "group_0.050",
+      "group_0.051",
+      "group_0.052",
+      "group_0.053",
+      "group_0.054",
+      "group_0.055",
+      "group_0.056",
+      "group_0.057",
+      "group_0.058",
+      "group_0.059",
+      "group_0.060",
+      "group_0.061",
+      "group_0.062",
+      "group_0.063",
+      "group_0.064",
+      "group_0.065",
+      "group_0.066",
+      "group_0.067",
+      "group_0.068",
+      "group_0.069",
+      "group_0.070",
+      "group_0.071",
+      "group_0.072",
+      "group_0.073",
+      "group_0.074",
+      "group_0.075",
+      "group_0.076",
+      "group_0.077",
+      "group_0.078",
+      "group_0.079",
+      "group_0.080",
+      "group_0.081",
+      "group_0.082",
+      "group_0.083",
+      "group_0.084",
+      "group_0.085",
+      "group_0.086",
+      "group_0.087",
+      "group_0.088",
+      "group_0.089",
+      "group_0.090",
+      "group_0.091",
+      "group_0.092",
+      "group_0.093",
+      "group_0.094",
+      "group_0.095",
+      "group_0.096",
+      "group_0.097",
+      "group_0.098",
+      "group_0.099",
+      "group_0.100",
+      "group_0.101",
+      "group_0.102",
+      "group_0.103",
+      "group_0.104",
+      "group_0.105",
+      "group_0.106",
+      "group_0.107",
+      "group_0.108",
+      "group_0.109",
+      "group_0.110",
+      "group_0.111",
+      "group_0.112",
+      "group_0.113",
+      "group_0.114",
+      "group_0.115",
+      "group_0.116",
+      "group_0.117",
+      "group_0.118",
+      "group_0.124",
+      "group_0.125",
+      "group_0.126",
+      "group_0.253",
+      "group_0.262",
+      "group_0.263",
+      "group_0.264",
+      "group_0.265",
+      "group_0.266",
+      "group_0.267",
+      "group_0.268",
+      "group_0.270",
+      "group_0.271",
+      "group_0.274",
+      "group_0.275",
+      "group_0.276",
+      "group_0.277",
+      "group_0.278",
+      "group_0.279",
+      "group_0.280",
+      "group_0.281",
+      "group_0.282",
+      "group_0.283",
+      "group_0.284",
+      "group_0.285",
+      "group_0.289",
+      "group_33.004",
+      "group_33.005",
+      "group_33.006",
+      "group_33.007",
+      "group_33.008",
+      "group_33.009",
+      "group_33.010",
+      "group_33.011",
+      "group_33.012",
+      "group_33.013",
+      "group_33.014",
+      "group_33.015",
+      "group_33.016",
+      "group_33.017",
+      "group_33.018",
+      "group_33.019",
+      "group_33.020",
+      "group_33.021",
+      "group_34.004",
+      "group_34.005",
+      "group_34.006",
+      "group_34.007",
+      "group_34.008",
+      "group_34.009",
+      "group_34.010",
+      "group_34.011",
+      "group_34.012",
+      "group_34.013",
+      "group_34.014",
+      "group_34.015",
+      "group_34.016",
+      "group_34.017",
+      "group_34.018",
+      "group_34.019",
+      "group_34.020",
+      "group_34.021",
+      "group_35.003",
+      "group_35.004",
+      "group_35.005",
+      "group_35.006",
+      "group_35.007",
+      "group_35.008",
+      "group_35.009",
+      "group_35.010",
+      "group_35.011",
+      "group_35.012",
+      "group_35.013",
+      "group_35.014",
+      "group_35.015",
+      "group_35.016",
+      "group_36.003",
+      "group_36.004",
+      "group_36.005",
+      "group_36.006",
+      "group_36.007",
+      "group_36.008",
+      "group_36.009",
+      "group_36.010",
+      "group_36.011",
+      "group_36.012",
+      "group_36.013",
+      "group_36.014",
+      "group_36.015",
+      "group_36.016",
+      "holder 1",
+      "inner boards",
+      "instance_0",
+      "instance_0.001",
+      "instance_0.002",
+      "instance_0.003",
+      "instance_0.004",
+      "instance_0.005",
+      "instance_0.006",
+      "instance_0.007",
+      "instance_0.008",
+      "instance_0.009",
+      "instance_0.010",
+      "instance_0.011",
+      "instance_0.012",
+      "instance_0.013",
+      "instance_0.014",
+      "instance_1",
+      "instance_1.001",
+      "instance_1.002",
+      "instance_1.003",
+      "instance_1.004",
+      "instance_1.005",
+      "instance_1.006",
+      "instance_1.007",
+      "instance_1.008",
+      "instance_1.009",
+      "instance_1.010",
+      "instance_1.011",
+      "instance_1.012",
+      "instance_1.013",
+      "instance_1.014",
+      "instance_10",
+      "instance_10.001",
+      "instance_10.002",
+      "instance_10.003",
+      "instance_10.004",
+      "instance_10.005",
+      "instance_10.006",
+      "instance_10.007",
+      "instance_10.008",
+      "instance_10.009",
+      "instance_10.010",
+      "instance_10.011",
+      "instance_10.012",
+      "instance_10.013",
+      "instance_10.014",
+      "instance_100",
+      "instance_100.001",
+      "instance_100.002",
+      "instance_101",
+      "instance_101.001",
+      "instance_101.002",
+      "instance_102",
+      "instance_102.001",
+      "instance_102.002",
+      "instance_103",
+      "instance_103.001",
+      "instance_103.002",
+      "instance_104",
+      "instance_104.001",
+      "instance_104.002",
+      "instance_105",
+      "instance_105.001",
+      "instance_105.002",
+      "instance_106",
+      "instance_106.001",
+      "instance_106.002",
+      "instance_107",
+      "instance_107.001",
+      "instance_107.002",
+      "instance_108",
+      "instance_108.001",
+      "instance_108.002",
+      "instance_109",
+      "instance_109.001",
+      "instance_109.002",
+      "instance_11",
+      "instance_11.001",
+      "instance_11.002",
+      "instance_11.003",
+      "instance_11.004",
+      "instance_11.005",
+      "instance_11.006",
+      "instance_11.007",
+      "instance_11.008",
+      "instance_11.009",
+      "instance_11.010",
+      "instance_11.011",
+      "instance_11.012",
+      "instance_11.013",
+      "instance_11.014",
+      "instance_110",
+      "instance_110.001",
+      "instance_110.002",
+      "instance_111",
+      "instance_111.001",
+      "instance_111.002",
+      "instance_111.003",
+      "instance_111.004",
+      "instance_111.005",
+      "instance_111.006",
+      "instance_111.007",
+      "instance_111.008",
+      "instance_111.009",
+      "instance_111.010",
+      "instance_111.011",
+      "instance_111.012",
+      "instance_111.013",
+      "instance_111.014",
+      "instance_112",
+      "instance_112.001",
+      "instance_112.002",
+      "instance_112.003",
+      "instance_112.004",
+      "instance_112.005",
+      "instance_112.006",
+      "instance_112.007",
+      "instance_112.008",
+      "instance_112.009",
+      "instance_112.010",
+      "instance_112.011",
+      "instance_112.012",
+      "instance_112.013",
+      "instance_112.014",
+      "instance_113",
+      "instance_113.001",
+      "instance_113.002",
+      "instance_113.003",
+      "instance_113.004",
+      "instance_113.005",
+      "instance_113.006",
+      "instance_113.007",
+      "instance_113.008",
+      "instance_113.009",
+      "instance_113.010",
+      "instance_113.011",
+      "instance_113.012",
+      "instance_113.013",
+      "instance_113.014",
+      "instance_114",
+      "instance_114.001",
+      "instance_114.002",
+      "instance_115",
+      "instance_115.001",
+      "instance_115.002",
+      "instance_116",
+      "instance_116.001",
+      "instance_116.002",
+      "instance_117",
+      "instance_12",
+      "instance_12.001",
+      "instance_12.002",
+      "instance_12.003",
+      "instance_12.004",
+      "instance_12.005",
+      "instance_12.006",
+      "instance_12.007",
+      "instance_12.008",
+      "instance_12.009",
+      "instance_12.010",
+      "instance_12.011",
+      "instance_12.012",
+      "instance_12.013",
+      "instance_12.014",
+      "instance_122",
+      "instance_122.001",
+      "instance_123",
+      "instance_123.001",
+      "instance_124",
+      "instance_124.001",
+      "instance_125",
+      "instance_125.001",
+      "instance_126",
+      "instance_127",
+      "instance_128",
+      "instance_129",
+      "instance_13",
+      "instance_13.001",
+      "instance_13.002",
+      "instance_13.003",
+      "instance_13.004",
+      "instance_13.005",
+      "instance_13.006",
+      "instance_13.007",
+      "instance_13.008",
+      "instance_13.009",
+      "instance_13.010",
+      "instance_13.011",
+      "instance_13.012",
+      "instance_13.013",
+      "instance_13.014",
+      "instance_130",
+      "instance_131",
+      "instance_132",
+      "instance_132.001",
+      "instance_132.002",
+      "instance_14",
+      "instance_14.001",
+      "instance_14.002",
+      "instance_14.003",
+      "instance_14.004",
+      "instance_14.005",
+      "instance_14.006",
+      "instance_14.007",
+      "instance_14.008",
+      "instance_14.009",
+      "instance_14.010",
+      "instance_14.011",
+      "instance_14.012",
+      "instance_14.013",
+      "instance_14.014",
+      "instance_15",
+      "instance_15.001",
+      "instance_15.002",
+      "instance_15.003",
+      "instance_15.004",
+      "instance_15.005",
+      "instance_15.006",
+      "instance_15.007",
+      "instance_15.008",
+      "instance_15.009",
+      "instance_15.010",
+      "instance_15.011",
+      "instance_15.012",
+      "instance_15.013",
+      "instance_15.014",
+      "instance_16",
+      "instance_16.001",
+      "instance_16.002",
+      "instance_16.003",
+      "instance_16.004",
+      "instance_16.005",
+      "instance_16.006",
+      "instance_16.007",
+      "instance_16.008",
+      "instance_16.009",
+      "instance_16.010",
+      "instance_16.011",
+      "instance_16.012",
+      "instance_16.013",
+      "instance_16.014",
+      "instance_17",
+      "instance_17.001",
+      "instance_17.002",
+      "instance_17.003",
+      "instance_17.004",
+      "instance_17.005",
+      "instance_17.006",
+      "instance_17.007",
+      "instance_17.008",
+      "instance_17.009",
+      "instance_17.010",
+      "instance_17.011",
+      "instance_17.012",
+      "instance_17.013",
+      "instance_17.014",
+      "instance_18",
+      "instance_18.001",
+      "instance_18.002",
+      "instance_18.003",
+      "instance_18.004",
+      "instance_18.005",
+      "instance_18.006",
+      "instance_18.007",
+      "instance_18.008",
+      "instance_18.009",
+      "instance_18.010",
+      "instance_18.011",
+      "instance_18.012",
+      "instance_18.013",
+      "instance_18.014",
+      "instance_19",
+      "instance_19.001",
+      "instance_19.002",
+      "instance_19.003",
+      "instance_19.004",
+      "instance_19.005",
+      "instance_19.006",
+      "instance_19.007",
+      "instance_19.008",
+      "instance_19.009",
+      "instance_19.010",
+      "instance_19.011",
+      "instance_19.012",
+      "instance_19.013",
+      "instance_19.014",
+      "instance_194",
+      "instance_195",
+      "instance_2",
+      "instance_2.001",
+      "instance_2.002",
+      "instance_2.003",
+      "instance_2.004",
+      "instance_2.005",
+      "instance_2.006",
+      "instance_2.007",
+      "instance_2.008",
+      "instance_2.009",
+      "instance_2.010",
+      "instance_2.011",
+      "instance_2.012",
+      "instance_2.013",
+      "instance_2.014",
+      "instance_20",
+      "instance_20.001",
+      "instance_20.002",
+      "instance_20.003",
+      "instance_20.004",
+      "instance_20.005",
+      "instance_20.006",
+      "instance_20.007",
+      "instance_20.008",
+      "instance_20.009",
+      "instance_20.010",
+      "instance_20.011",
+      "instance_20.012",
+      "instance_20.013",
+      "instance_20.014",
+      "instance_21",
+      "instance_21.001",
+      "instance_21.002",
+      "instance_21.003",
+      "instance_21.004",
+      "instance_21.005",
+      "instance_21.006",
+      "instance_21.007",
+      "instance_21.008",
+      "instance_21.009",
+      "instance_21.010",
+      "instance_21.011",
+      "instance_21.012",
+      "instance_21.013",
+      "instance_21.014",
+      "instance_22",
+      "instance_22.001",
+      "instance_22.002",
+      "instance_22.003",
+      "instance_22.004",
+      "instance_22.005",
+      "instance_22.006",
+      "instance_22.007",
+      "instance_22.008",
+      "instance_22.009",
+      "instance_22.010",
+      "instance_22.011",
+      "instance_22.012",
+      "instance_22.013",
+      "instance_22.014",
+      "instance_23",
+      "instance_23.001",
+      "instance_23.002",
+      "instance_23.003",
+      "instance_23.004",
+      "instance_23.005",
+      "instance_23.006",
+      "instance_23.007",
+      "instance_23.008",
+      "instance_23.009",
+      "instance_23.010",
+      "instance_23.011",
+      "instance_23.012",
+      "instance_23.013",
+      "instance_23.014",
+      "instance_24",
+      "instance_24.001",
+      "instance_24.002",
+      "instance_24.003",
+      "instance_24.004",
+      "instance_24.005",
+      "instance_24.006",
+      "instance_24.007",
+      "instance_24.008",
+      "instance_24.009",
+      "instance_24.010",
+      "instance_24.011",
+      "instance_24.012",
+      "instance_24.013",
+      "instance_24.014",
+      "instance_25",
+      "instance_25.001",
+      "instance_25.002",
+      "instance_25.003",
+      "instance_25.004",
+      "instance_25.005",
+      "instance_25.006",
+      "instance_25.007",
+      "instance_25.008",
+      "instance_25.009",
+      "instance_25.010",
+      "instance_25.011",
+      "instance_25.012",
+      "instance_25.013",
+      "instance_25.014",
+      "instance_26",
+      "instance_26.001",
+      "instance_26.002",
+      "instance_26.003",
+      "instance_26.004",
+      "instance_26.005",
+      "instance_26.006",
+      "instance_26.007",
+      "instance_26.008",
+      "instance_26.009",
+      "instance_26.010",
+      "instance_26.011",
+      "instance_26.012",
+      "instance_26.013",
+      "instance_26.014",
+      "instance_27",
+      "instance_27.001",
+      "instance_27.002",
+      "instance_27.003",
+      "instance_27.004",
+      "instance_27.005",
+      "instance_27.006",
+      "instance_27.007",
+      "instance_27.008",
+      "instance_27.009",
+      "instance_27.010",
+      "instance_27.011",
+      "instance_27.012",
+      "instance_27.013",
+      "instance_27.014",
+      "instance_28",
+      "instance_28.001",
+      "instance_28.002",
+      "instance_28.003",
+      "instance_28.004",
+      "instance_28.005",
+      "instance_28.006",
+      "instance_28.007",
+      "instance_28.008",
+      "instance_28.009",
+      "instance_28.010",
+      "instance_28.011",
+      "instance_28.012",
+      "instance_28.013",
+      "instance_28.014",
+      "instance_29",
+      "instance_29.001",
+      "instance_29.002",
+      "instance_29.003",
+      "instance_29.004",
+      "instance_29.005",
+      "instance_29.006",
+      "instance_29.007",
+      "instance_29.008",
+      "instance_29.009",
+      "instance_29.010",
+      "instance_29.011",
+      "instance_29.012",
+      "instance_29.013",
+      "instance_29.014",
+      "instance_3",
+      "instance_3.001",
+      "instance_3.002",
+      "instance_3.003",
+      "instance_3.004",
+      "instance_3.005",
+      "instance_3.006",
+      "instance_3.007",
+      "instance_3.008",
+      "instance_3.009",
+      "instance_3.010",
+      "instance_3.011",
+      "instance_3.012",
+      "instance_3.013",
+      "instance_3.014",
+      "instance_4",
+      "instance_4.001",
+      "instance_4.002",
+      "instance_4.003",
+      "instance_4.004",
+      "instance_4.005",
+      "instance_4.006",
+      "instance_4.007",
+      "instance_4.008",
+      "instance_4.009",
+      "instance_4.010",
+      "instance_4.011",
+      "instance_4.012",
+      "instance_4.013",
+      "instance_4.014",
+      "instance_5",
+      "instance_5.001",
+      "instance_5.002",
+      "instance_5.003",
+      "instance_5.004",
+      "instance_5.005",
+      "instance_5.006",
+      "instance_5.007",
+      "instance_5.008",
+      "instance_5.009",
+      "instance_5.010",
+      "instance_5.011",
+      "instance_5.012",
+      "instance_5.013",
+      "instance_5.014",
+      "instance_6",
+      "instance_6.001",
+      "instance_6.002",
+      "instance_6.003",
+      "instance_6.004",
+      "instance_6.005",
+      "instance_6.006",
+      "instance_6.007",
+      "instance_6.008",
+      "instance_6.009",
+      "instance_6.010",
+      "instance_6.011",
+      "instance_6.012",
+      "instance_6.013",
+      "instance_6.014",
+      "instance_64",
+      "instance_64.001",
+      "instance_64.002",
+      "instance_68",
+      "instance_68.001",
+      "instance_68.002",
+      "instance_7",
+      "instance_7.001",
+      "instance_7.002",
+      "instance_7.003",
+      "instance_7.004",
+      "instance_7.005",
+      "instance_7.006",
+      "instance_7.007",
+      "instance_7.008",
+      "instance_7.009",
+      "instance_7.010",
+      "instance_7.011",
+      "instance_7.012",
+      "instance_7.013",
+      "instance_7.014",
+      "instance_71",
+      "instance_71.001",
+      "instance_71.002",
+      "instance_72",
+      "instance_72.001",
+      "instance_72.002",
+      "instance_73",
+      "instance_73.001",
+      "instance_73.002",
+      "instance_74",
+      "instance_74.001",
+      "instance_74.002",
+      "instance_75",
+      "instance_75.001",
+      "instance_75.002",
+      "instance_76",
+      "instance_76.001",
+      "instance_76.002",
+      "instance_77",
+      "instance_77.001",
+      "instance_77.002",
+      "instance_78",
+      "instance_78.001",
+      "instance_78.002",
+      "instance_79",
+      "instance_79.001",
+      "instance_79.002",
+      "instance_8",
+      "instance_8.001",
+      "instance_8.002",
+      "instance_8.003",
+      "instance_8.004",
+      "instance_8.005",
+      "instance_8.006",
+      "instance_8.007",
+      "instance_8.008",
+      "instance_8.009",
+      "instance_8.010",
+      "instance_8.011",
+      "instance_8.012",
+      "instance_8.013",
+      "instance_8.014",
+      "instance_80",
+      "instance_80.001",
+      "instance_80.002",
+      "instance_81",
+      "instance_81.001",
+      "instance_81.002",
+      "instance_82",
+      "instance_82.001",
+      "instance_82.002",
+      "instance_83",
+      "instance_83.001",
+      "instance_83.002",
+      "instance_84",
+      "instance_84.001",
+      "instance_84.002",
+      "instance_85",
+      "instance_85.001",
+      "instance_85.002",
+      "instance_86",
+      "instance_86.001",
+      "instance_86.002",
+      "instance_87",
+      "instance_87.001",
+      "instance_87.002",
+      "instance_88",
+      "instance_88.001",
+      "instance_88.002",
+      "instance_89",
+      "instance_89.001",
+      "instance_89.002",
+      "instance_9",
+      "instance_9.001",
+      "instance_9.002",
+      "instance_9.003",
+      "instance_9.004",
+      "instance_9.005",
+      "instance_9.006",
+      "instance_9.007",
+      "instance_9.008",
+      "instance_9.009",
+      "instance_9.010",
+      "instance_9.011",
+      "instance_9.012",
+      "instance_9.013",
+      "instance_9.014",
+      "instance_90",
+      "instance_90.001",
+      "instance_90.002",
+      "instance_91",
+      "instance_91.001",
+      "instance_91.002",
+      "instance_92",
+      "instance_92.001",
+      "instance_92.002",
+      "instance_93",
+      "instance_93.001",
+      "instance_93.002",
+      "instance_94",
+      "instance_94.001",
+      "instance_94.002",
+      "instance_95",
+      "instance_95.001",
+      "instance_95.002",
+      "instance_96",
+      "instance_96.001",
+      "instance_96.002",
+      "instance_97",
+      "instance_97.001",
+      "instance_97.002",
+      "instance_98",
+      "instance_98.001",
+      "instance_98.002",
+      "instance_99",
+      "instance_99.001",
+      "instance_99.002",
+      "light",
+      "speakon 2",
+      "table",
+      "televic.008",
+      "televic.009",
+      "televic.010",
+      "televic.011",
+      "televic.012",
+      "televic.013",
+      "televic.014",
+      "televic.015",
+      "trash can01",
+      "trash can02",
+      "wheels"
+    ],
+    "source_triangle_count": 2881755,
+    "source_cutaway_z_bu": 145,
+    "hr02_cutaway_z_bu": 110,
+    "cutaway_purpose": "DISPLAY_ONLY",
+    "native_camera_positions_changed": false,
+    "camera_wire_display_length_bu": 120,
+    "camera_optical_axis_display_length_bu": 180,
+    "visibility_or_collision_proof": false,
+    "original_source_objects_removed_in_memory_only": true
+  },
+  "shape_legend": {
+    "grey": "Evaluated source geometry; display cutaway only, not collider approval",
+    "green": "Existing approved source floor support only",
+    "purple": "Pending HR01 body guard and zero-area faces1975/2398",
+    "amber": "Office annotation/candidate context NOT_CERTIFIED; illustrative body",
+    "blue_teal": "Source camera locations/calibrated directions; no visibility proof",
+    "cyan_marker": "Public landmark plane; pending HR02 body-floor semantics",
+    "yellow_foot": "Proposed foot contact on approved source support"
+  },
+  "preserved_existing_hashes": {
+    "configs/architectural_scale_school_v3.json": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf",
+    "configs/benchmarks/protocol_v1.json": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+    "configs/physical_authority_policy_school_v3.json": "2427b3670ac8c3748c75deb172fd1f3bfb7da853fb49a7ad2cd5aac2ef8af7ea",
+    "configs/physical_collision_numerics_v1.json": "cca85ae64f56538f4e2b5352c4962c82d468a3d00622b6c99f35e8a329ac795b",
+    "configs/physical_policy_runtime_school_v3.json": "704b0f2fb115b691ff61249dc8d4521e39a06467aec0bcca913119fce0491f08",
+    "data/finalization/local_run/dataset/inference/office/context.json": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70",
+    "data/finalization/local_run/dataset/inference/office/observations.json": "3a8e1244c6374b22bc9866b85b3c917ba7071c6a4821eb8bb65b3efb9c262726",
+    "data/finalization/local_run/diagnostics/office/policy_graph_primary/candidates.json": "0212756864986ee5044313058144c7e3fcb56c72e68ebd30b7062e508b9c9b02",
+    "data/finalization/local_run/diagnostics/office/policy_graph_primary/projected_frames.json": "0ebdb3762fe181c44ea25456b4525204aaa19dbe957a923c360f2bffdf5d6e48",
+    "data/finalization/local_run/diagnostics/office/primary.json": "eb770e5492ec47e6b48b0424088e1d1c4f17189af22a18897e0ecc83be43d829",
+    "data/scene_audit/phase1_physical_policy_approval_20261006/floor_authority_map.json": "6e1f8d512c9aaf994ce35890f0d688190e33523edc5eeda7a954e07aeb2ff7fe",
+    "data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0",
+    "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json": "19a472c7fae5bf3e3dc63bc314c3e751467fc8abac636e237c300719ac557c71",
+    "data/scene_audit/phase1_physical_policy_approval_20261006/obstacle_collider_authority.json": "cfcb6b7fd87fddda742eb05a9d69c31128803ba1dfca162e5283297eeb3c543d",
+    "data/scene_audit/phase1_physical_policy_approval_20261006/source_evidence.json.gz": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c",
+    "data/scene_audit/school_v3_semantic_audit.json": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17",
+    "human_review/apply_decisions.py": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d",
+    "human_review/certificate_application.py": "13c024966fed788b8e617d521caf41283de454938ecc4fc340c6d6cd0fac2c03",
+    "human_review/frames/visual_manifest.json": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c",
+    "human_review/geometry_evidence.json": "5dedd204ff448e077e9ae58090a4742bf456e353b6c511c7f1ecb3e7d62b358b",
+    "human_review/settings_evidence.json": "8d10d6e3bf3a3f45c44db832dd55c5bf2a2940c329b95d202fa315f7b3311809",
+    "scripts/phase1_projection_policy.py": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6",
+    "src/amidst/benchmark/baselines.py": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1",
+    "src/amidst/datasets/pilot.py": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792",
+    "src/amidst/datasets/pilot_topology.py": "980e3670edba58769b75fdea4a115f0a1b135d984787998fb6429eaf97e4caa3",
+    "src/amidst/domain/metric_config.py": "50b349d6300494d7cd0a89818270cee713a23de441855d8d536ebaabdc4a7532",
+    "src/amidst/domain/reconstruction.py": "9641a3072ed91d4c8ac4f7b35a5560089e052e9397f1bec81401428f62af963e",
+    "src/amidst/domain/search.py": "c6719aed6832fb6c0ce7217dd254e4cca55b4f6fdf4c8c47442189b534158597",
+    "src/amidst/local_semantic_review.py": "edff4f0f06b0d8594f61f7851d8d73cb84f6fccd51ecbf4e151a671324a9e6e4",
+    "human_review/frames/office_side.png": "81ad25e0ea3e93e0a37c51d14fdcd321124373af254de4532cbd90ce5a38762a",
+    "human_review/frames/sequence_049.png": "08dd32129f5581fe03b7a04e6b69da5d3c663f9e80eac2e728ba4b6ce25e1c62",
+    "human_review/frames/sequence_048.png": "90162bdb4e0917effc9a4f3878286f7e36ea81aa3adb0b151e3143c7b50fee8b",
+    "human_review/frames/office_scope_top_closeup.png": "3c01326d30b87aca75736520f148deb584964931df998fbd802653759ae00f2d",
+    "human_review/frames/office_oblique.png": "498e5805b8a82e91cc754a77208af3149a163be509d3a6bf0e828807e5dfc2a9",
+    "human_review/frames/camera_cam_1f_auditorium_rear_frame46.png": "81e7034b520e1ef6f4623d0719a68ea2ee115230011ae98f61bcd47657ad0f9f",
+    "human_review/frames/sequence_029.png": "e917baa0a0b3c48fbb0ed01b39d89416cb288de9436475795571e137b1d5f39b",
+    "human_review/frames/sequence_001.png": "4dfe4b16c4246b35bc3d03f4663b39521dfc237dd937c03abedc6ed1909b5c3f",
+    "human_review/frames/sequence_015.png": "709c9cc6dd3e22e2080d52fc3ec08d6bb9e7230cd10f5c9d41885693f718b590",
+    "human_review/frames/sequence_014.png": "18d9165ae7861faa53b030a8efe00baee329e3b22b72c6a6d921aba882b0d425",
+    "human_review/frames/sequence_000.png": "039a9fcdcc96c89804475543404b398774dcf8efaea2c95b17be8d55921432d0",
+    "human_review/frames/sequence_028.png": "405d22bfbad122cc9b5cfbdb32ca725325ea80115beb51a8bf0a4d9646e41d50",
+    "human_review/frames/sequence_016.png": "2c4c7eb1be37b9f7525f2013e04dd65566983af6ff42efb237c5c74636edce54",
+    "human_review/frames/sequence_002.png": "b1e53031b2ade04567f90af4e736de7b90fdb6da4962855809d27c3f00a76784",
+    "human_review/frames/sequence_003.png": "f54039f8cf5b72d4edec2062c421db10b33be673b4f83bf500e83f9d9cf7fa0b",
+    "human_review/frames/sequence_017.png": "366a6f153f9170fbf2aac1ac44b0967d9e7450c81ac5e0f3ea817fa2f7ce1872",
+    "human_review/frames/sequence_013.png": "9b17825c2a9bf85230ebfb15b18f38aa8e98688e0e4f246b899f0716c2f571cf",
+    "human_review/frames/sequence_007.png": "99405a2abe63e79a1725751862bf6d0712c78c056f6258b135f41868d0c8a169",
+    "human_review/frames/sequence_006.png": "3672a739043b0263e49c142d336180375a0c43ee88570476b6ae4db53b8c9a4d",
+    "human_review/frames/sequence_012.png": "702038a041b750e4cfd9806b4d7eca4e11a122ed0f5a4b1592dc14e168cc34f1",
+    "human_review/frames/sequence_004.png": "724d51d6e89d46ff0a29755b753b195962ebc83a734acdbf429bb2ec9d68b5c5",
+    "human_review/frames/sequence_010.png": "7c962a669c2d7cfa6edcda5f95c3e250e03f82741a79fa28c8e69574279a3246",
+    "human_review/frames/sequence_038.png": "9f821f47d17d0c3366efb0d6d1c2b7f5f6a51f6bc00fbfa7b5d1bc225419caea",
+    "human_review/frames/sequence_039.png": "1bf10561118488dc70683d75de7d6bb142cbb43cdf2f12c91068ea6d543861c9",
+    "human_review/frames/sequence_011.png": "44358f97eec028c54d0a0b551d28d5c7cad0f36f617eb7398a7297e5e0a3fb9f",
+    "human_review/frames/sequence_005.png": "3ff4288b1b0fe113d4e49d23a5be22f879c8fc3559e311cd3a7a9534d58d8d92",
+    "human_review/frames/sequence_008.png": "84ec529fee6b8f85247834f436726698a8c6c668d572ba747e491cf3874834d6",
+    "human_review/frames/sequence_020.png": "93079ffcedfdf45bf9c364b426cd349d26a71f3ba0749c778a37c3593984d6b4",
+    "human_review/frames/sequence_034.png": "f4220b4cb87863ceb3e62a8b2be582d0f8aa1a391f72497616b4bf1f9e89498d",
+    "human_review/frames/camera_cam_1f_auditorium_front_frame20.png": "eb688ad8006900e084be9213625bed98d8ea32a3924a60978b77e6f5375fcfa6",
+    "human_review/frames/sequence_035.png": "f43d7b983916f813a9b1babd340b22caa5149c68f4f01f52f256d6906c7a4f79",
+    "human_review/frames/sequence_021.png": "accda5b483d47bdd4683d58b71b6b6a1ad331c38d6df67ffd35ebc4aaf2b741e",
+    "human_review/frames/sequence_009.png": "bb025fe7b5d95fe16c004b87ec68c6f43ba47a8fe3db0cf0284e3ee07847d834",
+    "human_review/frames/sequence_037.png": "5d707ad29e13dfa802c14827dd9d0ece8694d1ea89e931f5188f348455606f35",
+    "human_review/frames/sequence_023.png": "1620aca3d9cf0d903858921939a89c504eb6409ec9e1186d1595b6618e369272",
+    "human_review/frames/sequence_022.png": "8be837068f9ee22fe1c0384db2a99f9f154d49621c15bbe3664395d0c44a0039",
+    "human_review/frames/sequence_036.png": "b34adacfb309a1a9d939b5e8f74a885694f69c60ed473c9b59d31d2072356d0d",
+    "human_review/frames/office_top.png": "2b9b5c603b8305ba5ba7f5c519c84438cbd26a16e91a82ea75dea5e32c6acd9d",
+    "human_review/frames/sequence_032.png": "6cd6ab30208ac4c632a16bac9a8cfcff598a1e10c9e0aca0ee78636dfab327ba",
+    "human_review/frames/sequence_026.png": "8dd5a9f6efd931d668c6b1bfd3e00b78a799bd46e527476db8ecca8276dbcfe7",
+    "human_review/frames/sequence_027.png": "a39e1e3247d3f9f3e4192c57ebfd0136e3be94dddeedd1d167149501602fcf65",
+    "human_review/frames/sequence_033.png": "75413f5d8e814c701bd50b72de6e3217443e8910dad02a446b223a52ffef0d5a",
+    "human_review/frames/sequence_025.png": "0162e992ed29b7a60ff42fbb17d933e4dd1fc80e90cfb329e8a9708238ceb0d6",
+    "human_review/frames/sequence_031.png": "1b426663867c95de2285582aa85ab3d2088f7c31ddfe110e1561d546498bd168",
+    "human_review/frames/sequence_019.png": "a502c0ed18e090a1b7e73ff7d79c1fbafea669529340b0e6e521346f1d733618",
+    "human_review/frames/sequence_018.png": "e1b15b0b20bb1e0e6c6e314dbba291256648bd0d113152a79a62d7b00b21a865",
+    "human_review/frames/sequence_030.png": "a95e081b24ebf4573acef59600ff79150c374d3b73f4ba8f8a57dc95078c5db7",
+    "human_review/frames/sequence_024.png": "c1ebe8ff0f89f717d42245cbaab1071cb782940e8d0be338b0eb3dc00d270126",
+    "human_review/frames/sequence_043.png": "413f0f2b711c3406ff17b702a338428217aa5158d4774a285faa594ed628ef10",
+    "human_review/frames/sequence_042.png": "4d431d465f3952a7c130c8ac3581d1e9da39c74b3592c1ee07108ce24837d23d",
+    "human_review/frames/office_scope_closeup.png": "d32fbb68c54bcf05b0db2359330e1dc8b41da3d988eb511ca8ab54062cbdac67",
+    "human_review/frames/sequence_040.png": "dfbeab6abe7a9a1f50ae6baac8428f497159c84c10afddabef6f435e2dafe00a",
+    "human_review/frames/sequence_041.png": "f3efabe89a4a5ec60b7a15669f824240a913418640755c6370b7fdeec30e114f",
+    "human_review/frames/sequence_045.png": "988082406638f90b0de447c4442a08d4f88f8d9729f595735bda37ac62a33c46",
+    "human_review/frames/sequence_044.png": "f8c59a2080f24f35c1fc6509394b8b3c6244ad53cb2582f77d151f063fdd6ba1",
+    "human_review/frames/sequence_046.png": "226d903ba9d42d4a907e90edc23e65c67891cbd7db07446defe6ee1c1595a19f",
+    "human_review/frames/sequence_047.png": "d463a7bb9fc57a20daa0498c1a34a58cfdcec7f3f5f41cff7fa46f9d7265adaa",
+    "human_review/frames/topology_context/topology_preview.png": "e092393cfbad9206998c824f70d2f52bb13152a99f28f9bea459f20405f4cea1",
+    "human_review/frames/motion_context/motion_048.png": "916bd15b2c8bd8428bd9c3cbf555665a9cc6d83b51fbfea689c63129707d8f2e",
+    "human_review/frames/motion_context/motion_049.png": "7e88ad970b39bef383114f5948b7718bc629af5e490ea73486ef34f1d19c9b2c",
+    "human_review/frames/motion_context/motion_028.png": "e537b8068ead8883dcdc4b96b9f730fd511b97bbcdeb893b01017145aaf1a5e4",
+    "human_review/frames/motion_context/motion_014.png": "0bfea383025d1933116710b3b97aaa2a8126d9bfb8fa47577a977a44a7fb0731",
+    "human_review/frames/motion_context/motion_000.png": "902f9ef07c4c04f44110a7b6c7224ecae680670fe7601861b20b8920bf776894",
+    "human_review/frames/motion_context/motion_001.png": "13fb88a78344e194bc6614b7eeee7990d31c842960d4ed3f80a05fa3ef2a7508",
+    "human_review/frames/motion_context/motion_015.png": "e55ca2777e6e06e1d04c064f120dabb0a703ed8ec6308d922024d87e199a9361",
+    "human_review/frames/motion_context/motion_029.png": "2239dc285e77a00ebe9c1b84925dd13ddf43769ca1b6ca7cb16e2d17a2280605",
+    "human_review/frames/motion_context/motion_003.png": "172e782182cdd98565bd7ed41637d0fd0e1fccf4c79b4040b07f0bd4d675faef",
+    "human_review/frames/motion_context/motion_017.png": "373e2c268278f0eefd959916701336bed25934dac0f49015ee62666cb453f354",
+    "human_review/frames/motion_context/motion_016.png": "4d94df96c3e05c5405a804d00e0fbdc8b5866eaf84ea52e5f75f8b86a08dfee5",
+    "human_review/frames/motion_context/motion_002.png": "4d74041cc3400fb3b96ff9bdbde7b1cb655e723e0bae75d25d202356a4538fe9",
+    "human_review/frames/motion_context/motion_006.png": "29b420fc2a5fe5eaa63ef4366f826e53916eb472f4d41743f88055d216ce5df4",
+    "human_review/frames/motion_context/motion_012.png": "245f6a5e75d9a58817295ff5e7b9d44a3fa391ff722a86c257a1948228582c73",
+    "human_review/frames/motion_context/motion_013.png": "6676459ca556911a227fbf9b034215630b7870a717e517a9bf0c46de1f57959d",
+    "human_review/frames/motion_context/motion_007.png": "2c48649541a4aec98cfab19f2560f078c0257414567a6c63cb89b7d1aefb82ca",
+    "human_review/frames/motion_context/motion_011.png": "3a123384cc359d489196f9cf7ed1c724ca104f39b71c13b150ef8635274ab485",
+    "human_review/frames/motion_context/motion_005.png": "a4e0ce94f6b15ee475d8bf522debd05796dc5d9f7f4ed4eb5942f12698b981bd",
+    "human_review/frames/motion_context/motion_039.png": "16ded692f0e7caadc5934e165e37d603fa74a6c006ef6dd8549f90c059cbc38f",
+    "human_review/frames/motion_context/motion_038.png": "b5017dd94a14a79b145492bc5780c98c0538052834a96eeea0bee2d8f42f97aa",
+    "human_review/frames/motion_context/motion_004.png": "a77197284b7561b7aee63baecc9ed5e0c5127591b42e88a3286b7e16683abf70",
+    "human_review/frames/motion_context/motion_010.png": "3d0b8c38253ce360c7990ed13b0594a610da2581971d26c77ce80c0415df64e9",
+    "human_review/frames/motion_context/motion_009.png": "ea6519fade86c586ca2e0d01f6d2a58a4848243604a0202be75ee2401197cd4f",
+    "human_review/frames/motion_context/motion_035.png": "900ba83ce29d603e5c023170582abd9f0320209d2a7891b1424211eced136a3d",
+    "human_review/frames/motion_context/motion_021.png": "6dd97054772b6365d0b28c3e803d6ba125406d10e77fc04a49a85b20752de54c",
+    "human_review/frames/motion_context/motion_020.png": "c567660c90c98e079db40cf96a6d865ba6786dfef1fb9767c421113beea53100",
+    "human_review/frames/motion_context/motion_034.png": "5aa8f9e530d48a1a539045d3576eb638af00d6dc8d5483ed2226b1ce7d26e1ff",
+    "human_review/frames/motion_context/motion_008.png": "10d87d4d7e3a1820331237967f63023bf5a1a6a1c073abf6728ee6229b78cba8",
+    "human_review/frames/motion_context/motion_022.png": "cb45a60f57a06331eadc7d87ac2d41af721a542d17ed442902f5328485a443b3",
+    "human_review/frames/motion_context/motion_036.png": "85a0ac75586bc202295901506572def0596b950e732f785a6eab5d53c5ec7057",
+    "human_review/frames/motion_context/motion_037.png": "ccf34d24b9eb85a8aeef93ad366465e116f108c9668109d643c7ef42ccbe1670",
+    "human_review/frames/motion_context/motion_023.png": "694d283683cdff21e04afc1778105f2659dce6544c0aeab2de038a797ad957d1",
+    "human_review/frames/motion_context/motion_027.png": "ec3ca644c1aa63d3119ee4f8278a071fae9930917e6bfb6a5fb3a134687d4bc9",
+    "human_review/frames/motion_context/motion_033.png": "ef2a51d6d519c983adc07e19088365eee57de8c3dbc0224ab56baea715196478",
+    "human_review/frames/motion_context/motion_032.png": "3f38d170784905e2dd27bbd6d8000b8cefe2ee84f1d80964db4b483f71bf80ee",
+    "human_review/frames/motion_context/motion_026.png": "1250d9a6e6eb0011361f6af2c9872f7494d4f8206c0b2646638e6a975d300823",
+    "human_review/frames/motion_context/motion_030.png": "a0245aa5b00ee645c9f6ce7a70c4d185650fba26df5d71899d3fc7a925c41510",
+    "human_review/frames/motion_context/motion_024.png": "795e8c6ab43708ac29c603416cb61d63578a069b57251d718efd008f721743b3",
+    "human_review/frames/motion_context/motion_018.png": "6a0339b0d09701de1c1eaad1ddcd8aa13baa84d1a3758ce0e5d8e95da2d04562",
+    "human_review/frames/motion_context/motion_preview.gif": "c066c0a55e248bdd0e74f1ca6b3ef2be8e47af9b4764cdd1994da337b421056b",
+    "human_review/frames/motion_context/motion_019.png": "1768807437447b927d91d57e251e6ea92a16ef8c4383498918559558aac6ba49",
+    "human_review/frames/motion_context/motion_025.png": "fd18fdbd3d24dcea0ea4d0473d22f84bc8de8239938caa7e28893b99158caeb5",
+    "human_review/frames/motion_context/motion_031.png": "3fa4984455fc566e28db4896313ad4f33f46e933af64128fe2ba3fc11773e3e0",
+    "human_review/frames/motion_context/motion_042.png": "2ebffb54ddc98625ef3e9fb4c9c403aabe94ef058616eb5abf55f603a3a70d27",
+    "human_review/frames/motion_context/motion_043.png": "24e1c31025d455b309f1c1c069d4e8c6f43f6008862240d68d123bcb66b47dbb",
+    "human_review/frames/motion_context/motion_041.png": "ab2295794faa6c2a80a7dca26580552fff47afdb34b4e0d943bfa1bdd2f92a4b",
+    "human_review/frames/motion_context/motion_040.png": "b74139707aa38d540039d433bad75ca40e6708c89a400e3baab9617077e41eda",
+    "human_review/frames/motion_context/motion_044.png": "7bed1fd8f9609b745f3830b7238090664c12d1d0ccddd85b717d7334395427d1",
+    "human_review/frames/motion_context/motion_045.png": "51a7a5499399831f44ffcb240be66486a5d7c4f1363a1b2af8a62e1d30d6bb60",
+    "human_review/frames/motion_context/motion_047.png": "d3cbd85d3815ac675aecc09ef7f9adf7a03a6b7a9ea8a9915de74a75b7801d4d",
+    "human_review/frames/motion_context/motion_046.png": "5212abb1c2323f9e791ee5f552c729b350869e9d1857213dccfff610fbb20b21",
+    "human_review/frames/spatial_context/office_context.png": "50e2842767d90bba1f0eaab2f62c0a941b3a67813e6f3264a0c6dfcb3636370f",
+    "human_review/frames/spatial_context/approach_010.png": "41c106c3f2c49acf7a75464b94ccc5873e6806ad0f2a77af4bb7654420228d53",
+    "human_review/frames/spatial_context/approach_004.png": "cb9e19d1a8ce6b4bf7fb61e49b451b9e4f28207b3a4d35341e6df2ff08858ebe",
+    "human_review/frames/spatial_context/approach_005.png": "5f58b66bcd66b55acbc500ac4d7ac44b1ba0c56c86bbbb287fb753b0c864e1d2",
+    "human_review/frames/spatial_context/approach_011.png": "42fba2382d23fb7713f242877c975f7053517fc48208c460fbeb443c4bfca913",
+    "human_review/frames/spatial_context/approach_007.png": "f36e466467247e1cc33810ad15705cf5c17e1cf957e29690a0e3522e51608bfa",
+    "human_review/frames/spatial_context/approach_013.png": "8e634f716419ecd461ba705b9005c0c7f581bf1881de3504a2cbfdaba12895f5",
+    "human_review/frames/spatial_context/approach_012.png": "aa828c252b1d5ad5d02e7babb178e1752b0f08f19e85c84bbcd96090c9b47ba0",
+    "human_review/frames/spatial_context/approach_006.png": "ffee406b348455c0398498266719a5f592d38d2a27682bdae97146bf8bdb841a",
+    "human_review/frames/spatial_context/approach_002.png": "28fa8e7c7e7b13f046c4e5bf8faa3bb0405473ca7448a83f0cb1592377965526",
+    "human_review/frames/spatial_context/approach_016.png": "5321aca84acea28795c3346210a7042bbe40b74104cec3f711feb97a2c751e63",
+    "human_review/frames/spatial_context/approach_017.png": "38ce8ff229e90cf514b11ea8ad09df727521178a164f2e56af689dd9b5f0411d",
+    "human_review/frames/spatial_context/approach_003.png": "ed7f2df033f541ea51c6217d3a934cb5e3a7e0dd718f57e45067957523cfebd4",
+    "human_review/frames/spatial_context/approach_015.png": "6e3e7062e947a6b7b3fb0519c17684877e70d9f20b8f7dfed06407d1f8c12292",
+    "human_review/frames/spatial_context/approach_001.png": "bc3e1c412e51d93a253cef72964c2f6fb6c3a2a8ddfce754d8068a2b0bc6e24c",
+    "human_review/frames/spatial_context/approach_000.png": "ba1a76bf8f9e093083708aa6caf072125c5a2b15859f028d5365a0931073e0da",
+    "human_review/frames/spatial_context/approach_014.png": "353b3240f5d721f95dbf87e1f69fdbbb3968400a59c69eec9e3c275c0b23fb55",
+    "human_review/frames/spatial_context/approach_019.png": "ae4623d1e1da5b0aaf7b0610eab8affb349e7f228bc430be0397edc724ea0a65",
+    "human_review/frames/spatial_context/approach_024.png": "1c50d031eb06bde8f8d2fd95da6b19134448e2b24d3732d1ce3461401754cb9f",
+    "human_review/frames/spatial_context/approach_018.png": "e52145104da2e728efa14b2ef0d59677e83eca6760ebdf794208fc2805dab2b1",
+    "human_review/frames/spatial_context/approach_023.png": "078ed3683a0958d65d5339c7eab8b5e3498ad0841654a5c5c7e633f11b5c54b1",
+    "human_review/frames/spatial_context/school_overview.png": "079b7de9b1a98a9c9f859c26ce766bf09a815e6710c6eacc59b52dc383d0b792",
+    "human_review/frames/spatial_context/approach_022.png": "becb61e8a033c4cc0442e4eccf23415bec76649400383421334b936bd4087f33",
+    "human_review/frames/spatial_context/approach_020.png": "1fa8b227f88fac47ccb8df38f61701351f5be3621e7b225b5a97fdd6f9c09647",
+    "human_review/frames/spatial_context/approach_008.png": "db52162fa344546fdac782e36bd3adad28366e4c81f8cb88b239a21d8f9cb98b",
+    "human_review/frames/spatial_context/approach_009.png": "d86e5b9c70b5e3e249745109d387a1210b24014d1ddd21b6f8f946e417cfb6e7",
+    "human_review/frames/spatial_context/approach_021.png": "169f0791c85e81ee131dd8e49304d95daa50755840638fc64113fd3855e93c7b",
+    "human_review/frames/spatial_context/floor_1f_overview.png": "72bb398c23334dad28d27769e2ce8a9860290689f97d59d1e0fe1309447ee602",
+    "human_review/review_template.json": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
+    "human_review/decisions.json": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
+    "human_review/render_review_evidence.py": "a2ee50559d0c48312710660182cadb1ff618e7a5acf444045bfba7b7400abb9a",
+    "human_review/render_spatial_context.py": "6fa453f90ad5020e7412aaf81bd7dc76ef052fc4080ab41fc40726de15993e91",
+    "human_review/render_motion_context.py": "94664643b90772011e182b38e8ce403bdbd654d1b5a06493d24ad92af82b140f",
+    "human_review/frames/motion_context/motion_manifest.json": "e77628c145fceb42ae086a76f4de60741147ea525eb12d46e7f23d7ba83d7b69"
+  },
+  "inputs": [
+    {
+      "path": "data/finalization/local_run/dataset/inference/office/context.json",
+      "sha256": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70"
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/candidates.json",
+      "sha256": "0212756864986ee5044313058144c7e3fcb56c72e68ebd30b7062e508b9c9b02"
+    },
+    {
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz",
+      "sha256": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0"
+    },
+    {
+      "path": "data/scene_audit/school_v3_semantic_audit.json",
+      "sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+    },
+    {
+      "path": "human_review/frames/motion_context/motion_manifest.json",
+      "sha256": "e77628c145fceb42ae086a76f4de60741147ea525eb12d46e7f23d7ba83d7b69"
+    },
+    {
+      "path": "human_review/frames/visual_manifest.json",
+      "sha256": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c"
+    },
+    {
+      "path": "human_review/geometry_evidence.json",
+      "sha256": "5dedd204ff448e077e9ae58090a4742bf456e353b6c511c7f1ecb3e7d62b358b"
+    },
+    {
+      "path": "human_review/review_template.json",
+      "sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2"
+    }
+  ],
+  "renderer_sha256": "2d2832a86442d13955ef58f45af6b52fa9b2aaa3f3ff641ef64c10dc4d179b6f",
+  "limitations": [
+    "Complete 1F framing does not establish whole-floor physical authority.",
+    "Calibration wires and location pointers do not certify FOV or occlusion.",
+    "Public visibility timeline is reused; no GT pair or route selection is performed.",
+    "Illustrated HR02 person is not motion capture; marker/floor binding remains pending."
+  ]
+}

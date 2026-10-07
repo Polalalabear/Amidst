@@ -323,3 +323,30 @@ dialog、inline拓樸及close後零iframe通過。136PNG/GIF、29inputs和四項
 
 整合版191個artifact hashes全部一致；package manifest SHA256：
 `fa31c7577665a9f7f799f0f10a55f9e55a2f57ccaf9a45bf3ea8b909dd320ee4`。原review副本及使用者決策未覆寫。
+
+## 2026-10-07 — Review framing, native camera location and HR02 body-height clarity
+
+**DIAGNOSTIC / HUMAN_REVIEW_PENDING**；base `92366d882a23c356f56ea87830463d6417576875`。
+新增完整一樓fit、25格office approach source-camera定位（含離屏箭頭與native XY圖）、
+public visibility時段，以及HR02人物／精確腳底callout／1.70m身高尺。1.359735m為
+landmark→候選脚底的垂直差，並非樓高；binding仍pending。所有舊圖及動畫保留。
+FRONT public evidence為0–4.0s、REAR為9.0–9.8s；兩者均無資料的frames21–44為
+4.2–8.8s。Camera geometry guides未轉成完整FOV／occlusion認證；5s viewer approach
+與10s public trajectory時軸分開。Context iframe使用固定manifest hash以避開舊browser cache。
+
+28PNG共13,281,548bytes；renderer SHA256
+`2d2832a86442d13955ef58f45af6b52fa9b2aaa3f3ff641ef64c10dc4d179b6f`，新增manifest SHA256
+`107d128a637978ee5b00a188e721b3d4fefc9a2b5ab129cab331e6177006c2a4`。
+181原artifacts含138PNG／1GIF／1JPEG、29frozen inputs、decisions/template bytes及source
+hash全數核對不變；四項decisions仍null、e105 payload保留。Native UI QA通過完整地圖、
+frame24離屏camera定位及HR02人物/腳底/雙尺；實際JPEG與integration receipt保留。
+74相關tests、Ruff、mypy93core＋4reviewtools、diffcheck通過。早先flat-lighting試作另存
+`/private/tmp/amidst-review-clarity-qa-v1/`，不屬canonical evidence；沒有刪除舊artifacts。
+原1580-test全套屬2026-10-06 evidence，本輪未重跑。無GT／recipe／evaluation、source
+修改、human approval、formal Cases、push、merge或freeze tag。
+
+本輪完整獨立APFS副本保存於canonical checkout的ignored
+`data/pilot/phase1_finalization_human_review_20261007/clarity/human_review/`；前四份副本保留。
+223個manifest artifacts共107,121,780bytes，source／副本每項hash與完整file inventory一致。
+Package manifest SHA256：`e09e86998bed4248bcc9950084233a1ea141f1bf785f52176177e3c13a416bc5`；
+copy_verification.json另記錄核對結果，四項決策仍pending。

@@ -2,12 +2,54 @@
 
 狀態：**HUMAN_REVIEW_PENDING**；4 項決策全部未選擇。推薦值不等於核准。
 
+新增審查辨識補充：空間導覽第 2 步提供完整測試空間與相機定位，第 3 步保持 FRONT／REAR
+位置對照，第 5 步與 HR-02 問題區加入實際 source 空間中的示意人物及腳底／landmark 高度。
+[獨立補充來源](frames/review_clarity/manifest.json)；舊圖、舊動畫及四項決策全部保留。
+**HR-02 的 1.3597 m 是 projected landmark 到候選腳底的垂直偏移，不是地板到天花板。**
+目前 landmark Z=75.12885 BU，approved support Z=20.07885 BU；相減 55.05 BU，
+以已核准 0.0247 m/BU 換算。人物高 1.70 m、半徑 0.30 m、clearance 0.05 m；
+人物落點／語意仍待 HR-02，姿勢沿用 display-only 示意，沒有使用 GT。
+
+Source issue 圖例（原近看圖）：
+
+| 外觀 | 意義 |
+| --- | --- |
+| 藍色大立體方框 | HR-01 待審 body guard：限定人體占用的審查範圍，並非實體牆 |
+| 白色小長方框 | 候選腳底可落點的限定 domain，並非模型物件 |
+| 橘色圓柱 | 人體尺寸包絡，半徑 0.30 m／高 1.70 m；位置為候選示意 |
+| 淡黃色外圓柱 | clearance 包絡，半徑 0.35 m／高 1.75 m |
+| 紫色線／點 | group_0 faces 1975／2398 的同一零面積 floor seam；顯示抬高 1.4 BU |
+| 藍色點 | public projected landmark；尚未核准為人物腳底 |
+| 黃橘／紅色折線 | 既有 direct／right 候選及自動 floor-clearance 拒絕的 left 路徑 |
+| 綠色面／灰色線框 | approved source floor support／來源模型定位 context |
+
+較遠的一樓圖橘框是 AREA_1F_OFFICE annotation context；紫色小框是同一待審 body guard。
+不同圖的圖例以該圖標示為準。相機位置導線不是 FOV：逐時可見性由既有 public evidence 顯示，
+FRONT 可見至 t=4.0 s，REAR 在 t=9.0 s 恢復；採樣 t=4.2–8.8 s 兩者均無可用觀測。
+這是既有 evidence 的 GAP，不能僅由位置圖推斷整個模型的遮蔽情況。
+
+在已物化原 29 frozen inputs 與舊審查媒體的 fresh checkout，重建辨識補充：
+
+```sh
+/Applications/Blender.app/Contents/MacOS/Blender \
+  --background --threads 2 --factory-startup --disable-autoexec /absolute/path/to/school_v3.blend \
+  --python-exit-code 2 --python "$PWD/human_review/render_review_clarity.py" -- --frames 25
+uv run python human_review/build_spatial_guide.py \
+  --clarity-manifest human_review/frames/review_clarity/manifest.json
+uv run python human_review/build_dashboard.py \
+  --clarity-manifest human_review/frames/review_clarity/manifest.json
+uv run python human_review/finalize_package.py
+```
+
+Renderer 拒絕覆寫 PNG／manifest；可用 `--output /fresh/path` 另存診斷 render。
+上列 HTML builder 固定讀 canonical supplement，以 hash 驗證後才嵌入。
+
 審查入口統一為 [原有 dashboard](index.html)。在「共同視覺審查工作區」同頁切換空間定位、
 10 秒行走動畫與模型＋拓樸；再依 **HR-01 → HR-02 → HR-03 → HR-04** 開啟決策。
 HR-01／HR-02 的 Evidence 也整合相同播放器與各自檢驗重點，先看動作和拓樸，再看
 接縫／marker-floor 近圖。原有連續預覽保留於可展開區域，完整獨立頁仍可另開。
 切換或關閉觀看區會卸載舊播放器；四項問題、profiles、研究設定與草稿識別都保持不變。
-在 repo root 重建介面：`uv run python human_review/build_dashboard.py`；
+在 repo root 重建補充介面請使用上列 `--clarity-manifest`；不帶此選項只嵌入原證據。
 更新 package hashes：`uv run python human_review/finalize_package.py`。
 
 新增：[模型與拓樸對照](frames/topology_context/view.html)；模型與旁邊空白區使用相同

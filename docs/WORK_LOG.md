@@ -4,6 +4,22 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Complete framing, source cameras and HR02 body-height clarity
+
+在 `92366d882a23c356f56ea87830463d6417576875` 上補強原人工審查介面：完整一樓與
+FRONT／REAR source camera 定位、25格接近 office 導覽、public observation 時段表，
+以及 HR02 人物、精確投影的候選腳底標記與獨立1.70m身高尺。1.359735m是 landmark
+到候選腳底的垂直差，不是樓高；人物 placement／binding仍待HR02決策。攝像頭視野線與
+超出畫面的定位箭頭只供空間辨識，未認證完整場景可視性或遮擋。舊裁切圖、所有舊動畫
+與近看圖保留；context iframe採已驗證manifest hash版本避免瀏覽器讀到舊guide。
+
+新增28PNG共13,281,548bytes；181個原artifacts（含138PNG、1GIF、1JPEG）、29frozen
+inputs、四項pending decisions及e105 payload全數hash一致，source SHA256亦不變。
+Native browser已核對完整地圖、最後一格camera離屏箭頭／XY定位、HR02人物與腳底標記；
+另保存實際UI JPEG及 clarity_integration_manifest.json。74相關tests、repo Ruff、
+mypy93corefiles與4reviewtools、diffcheck通過。未採用的flat-lighting試作另存temporary
+archive。無GT／recipe／evaluation reads、source修改、authority升級、formal Cases或發布。
+
 ### 2026-10-07 — Integrated human-review media workspace
 
 在 `753ec2889320f82b6e2bdaca987765bfc154062b` 上，將空間導覽、10秒行走與模型／拓樸
@@ -882,6 +898,24 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-07 — Complete framing, source cameras and HR02 body-height clarity
+
+Starting from `92366d882a23c356f56ea87830463d6417576875`, the existing review UI now
+fits the complete first-floor context, locates both native source cameras through a
+25-frame office approach, and distinguishes public observation availability from
+display camera guides. HR02 adds an illustrative person, an exactly projected foot
+callout and a separate 1.70m body-height ruler. Its 1.359735m offset is landmark-to-
+prospective-footpoint, not floor-to-ceiling; placement and binding remain pending.
+All older displays are retained, with a manifest-versioned iframe preventing stale
+browser content. Native UI checks cover the map, camera edge indicators and HR02 body.
+
+The 28 new PNGs total 13,281,548 bytes. All 181 preserved artifacts, 29 frozen inputs,
+four pending decisions, the payload and original source hash remain unchanged.
+74 related tests, repository Ruff, mypy for 93 core files and four review tools, and
+diff checks pass. A native UI JPEG and integration receipt record the verification;
+an unadopted lighting trial remains separately archived. No GT access, source edits,
+authority promotion, formal execution, push, merge or tag occurred.
 
 ### 2026-10-06 — Finalization blocked checkpoint
 

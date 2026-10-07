@@ -126,7 +126,148 @@ def relative_path(path: Path, output: Path) -> str:
     return Path(os.path.relpath(path, output.parent)).as_posix()
 
 
-def build_guide(manifest_path: Path, output_path: Path) -> dict[str, Any]:
+def validate_clarity_manifest(manifest: dict[str, Any], base: Path) -> dict[str, Any]:
+    """Reject authority/truth changes before opening the supplemental image bytes."""
+    if manifest.get("schema_version") != "phase1-human-review-clarity-v1":
+        raise ValueError("unsupported review-clarity manifest")
+    if manifest.get("result_type") != "DIAGNOSTIC":
+        raise ValueError("review clarification must remain diagnostic")
+    for key in (
+        "gt_used",
+        "evaluation_files_read",
+        "simulation_recipe_read",
+        "source_saved",
+        "source_modified",
+        "physical_authority_changed",
+        "formal_execution_enabled",
+        "person_movement_changed",
+        "new_route_generated",
+    ):
+        if manifest.get(key) is not False:
+            raise ValueError("review clarification violates the evidence contract: " + key)
+    if (
+        manifest.get("source_preserved") is not True
+        or manifest.get("source_sha256") != SOURCE_SHA256
+    ):
+        raise ValueError("review clarification requires the preserved school_v3 source")
+    if manifest.get("display_only_camera_approach") is not True:
+        raise ValueError("clarity approach changes only the review viewpoint")
+    approach = manifest.get("approach_frames", [])
+    if len(approach) != 25 or manifest.get("approach_fps") != 5:
+        raise ValueError("clarity guide requires the source-camera locator approach at 5 Hz")
+    if manifest["hr02"].get("joint_pose_authority") != "DISPLAY_ONLY":
+        raise ValueError("HR-02 body silhouette is display-only, not measured joints")
+    records = [manifest[key] for key in ("floor", "office", "hr02")] + approach
+    paths = [(safe_asset(base, row["path"]), row["sha256"]) for row in records]
+    for path, expected in paths:
+        if digest(path) != expected:
+            raise ValueError("review-clarity image hash mismatch: " + path.name)
+    return manifest
+
+
+def project_clarity_point(point: list[float], camera: dict[str, Any]) -> list[float]:
+    """Project a native point using the actual orthographic render basis."""
+    delta = [a - b for a, b in zip(point, camera["position_bu"], strict=True)]
+    gain = camera["width"] / camera["ortho_scale_bu"]
+    horizontal = sum(a * b for a, b in zip(delta, camera["right"], strict=True))
+    vertical = sum(a * b for a, b in zip(delta, camera["up"], strict=True))
+    return [camera["width"] / 2 + horizontal * gain, camera["height"] / 2 - vertical * gain]
+
+
+def read_clarity_manifest(manifest_path: Path, output_path: Path) -> dict[str, Any]:
+    """Return a separately hashed, display-only supplement; never alter questions."""
+    expected = HERE / "frames/review_clarity/manifest.json"
+    if manifest_path.resolve() != expected.resolve():
+        raise ValueError("clarity guide reads only the explicit local supplement manifest")
+    manifest = validate_clarity_manifest(
+        json.loads(manifest_path.read_text()), manifest_path.parent
+    )
+    template = json.loads((HERE / "review_template.json").read_text())
+    frozen_inputs = {row["path"]: row["sha256"] for row in template["metadata"]["input_hashes"]}
+    context_relative = "data/finalization/local_run/dataset/inference/office/context.json"
+    context_path = ROOT / context_relative
+    expected_context = "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70"
+    if (
+        frozen_inputs.get(context_relative) != expected_context
+        or digest(context_path) != expected_context
+    ):
+        raise ValueError("public camera context changed from the immutable review input")
+    context = json.loads(context_path.read_text())
+    if manifest["camera_calibrations"] != context["cameras"]:
+        raise ValueError("source-camera calibration changed in the display supplement")
+    visual_path = HERE / "frames/visual_manifest.json"
+    if digest(visual_path) != frozen_inputs["human_review/frames/visual_manifest.json"]:
+        raise ValueError("original body/landmark evidence differs from its frozen review input")
+    visuals = json.loads(visual_path.read_text())
+    hr02 = manifest["hr02"]
+    if hr02["body_frame_id"] != 20:
+        raise ValueError("HR-02 source silhouette uses the frozen public frame 20")
+    frozen = visuals["frames"][hr02["body_frame_id"]]
+    if frozen["body_base_bu"] != hr02["footpoint_bu"]:
+        raise ValueError("HR-02 silhouette must reuse its frozen public/inferred footpoint")
+    motion = json.loads((HERE / "frames/motion_context/motion_manifest.json").read_text())
+    if motion.get("gt_used") is not False or motion["joint_pose_authority"] != "DISPLAY_ONLY":
+        raise ValueError("HR-02 body view must retain the existing display-only motion model")
+    motion_frame = motion["frames"][hr02["body_frame_id"]]
+    if motion_frame["body_base_bu"] != hr02["footpoint_bu"]:
+        raise ValueError("HR-02 placement differs from the existing motion silhouette")
+    if hr02["body_policy"] != motion["approved_body_dimensions_m"]:
+        raise ValueError("HR-02 silhouette cannot change the approved body/clearance dimensions")
+    binding = semantic_binding(visuals)
+    if not math.isclose(hr02["offset_bu"], binding["offset_bu"], abs_tol=1e-9):
+        raise ValueError("HR-02 offset differs from the existing pending coordinate conversion")
+    if not math.isclose(hr02["offset_m"], binding["offset_m"], abs_tol=1e-10):
+        raise ValueError("HR-02 meter conversion differs from the approved architectural scale")
+    result = {
+        key: value
+        for key, value in manifest.items()
+        if key not in {"floor", "office", "hr02", "approach_frames"}
+    }
+    for key in ("floor", "office", "hr02"):
+        result[key] = {
+            **manifest[key],
+            "path": relative_path(manifest_path.parent / manifest[key]["path"], output_path),
+        }
+    foot = hr02["footpoint_bu"]
+    body_top = [foot[0], foot[1], foot[2] + hr02["body_policy"]["height"] / SCALE]
+    result["hr02"]["display_projection"] = {
+        "foot_pixel": project_clarity_point(foot, hr02["review_camera"]),
+        "landmark_pixel": project_clarity_point(
+            hr02["landmark_position_bu"], hr02["review_camera"]
+        ),
+        "body_top_pixel": project_clarity_point(body_top, hr02["review_camera"]),
+        "body_top_bu": body_top,
+        "projection_basis": "ACTUAL_RENDER_ORTHOGRAPHIC_RIGHT_UP",
+        "source_coordinates_changed": False,
+        "gt_used": False,
+        "binding_authority": hr02["binding_authority"],
+    }
+    result["approach_frames"] = [
+        {**row, "path": relative_path(manifest_path.parent / row["path"], output_path)}
+        for row in manifest["approach_frames"]
+    ]
+    result["manifest_sha256"] = digest(manifest_path)
+    return result
+
+
+def observation_timeline(visuals: dict[str, Any]) -> list[dict[str, Any]]:
+    if visuals.get("gt_used") is not False:
+        raise ValueError("camera availability cannot consume GT")
+    cameras = visuals["frames"][0]["camera_evidence"]
+    result = []
+    for camera in cameras:
+        observed = []
+        for frame in visuals["frames"]:
+            row = next(c for c in frame["camera_evidence"] if c["camera_id"] == camera["camera_id"])
+            if row["visibility"] == "OBSERVED":
+                observed.append({"frame_id": frame["frame_id"], "timestamp": frame["timestamp"]})
+        result.append({"camera_id": camera["camera_id"], "observed_frames": observed})
+    return result
+
+
+def build_guide(
+    manifest_path: Path, output_path: Path, *, clarity_manifest: Path | None = None
+) -> dict[str, Any]:
     """Render the offline guide while leaving all existing review evidence untouched."""
     manifest = validate_manifest(json.loads(manifest_path.read_text()), manifest_path.parent)
     original_paths = [
@@ -134,7 +275,8 @@ def build_guide(manifest_path: Path, output_path: Path) -> dict[str, Any]:
         HERE / "review_template.json",
         HERE / "frames/visual_manifest.json",
         HERE / "frames/player.html",
-        *sorted((HERE / "frames").glob("*.png")),
+        *sorted((HERE / "frames").rglob("*.png")),
+        *sorted((HERE / "frames").rglob("*.gif")),
     ]
     protected = {path: digest(path) for path in original_paths}
     visuals = json.loads((HERE / "frames/visual_manifest.json").read_text())
@@ -192,6 +334,10 @@ def build_guide(manifest_path: Path, output_path: Path) -> dict[str, Any]:
         },
         "movement": movement_span(visuals),
         "binding": semantic_binding(visuals),
+        "observation_timeline": observation_timeline(visuals),
+        "existing_motion_player": relative_path(
+            HERE / "frames/motion_context/player.html", output_path
+        ),
         "existing_route_player": relative_path(HERE / "frames/player.html", output_path),
         "issue_closeup": relative_path(HERE / "frames/office_scope_closeup.png", output_path),
         "issue_top_closeup": relative_path(
@@ -199,6 +345,8 @@ def build_guide(manifest_path: Path, output_path: Path) -> dict[str, Any]:
         ),
         "source_sha256_unchanged": True,
     }
+    if clarity_manifest is not None:
+        data["clarity"] = read_clarity_manifest(clarity_manifest, output_path)
     template_path = SPATIAL / "guide_template.html"
     encoded = json.dumps(data, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
     encoded = encoded.replace("</", "<\\/").replace("\u2028", "\\u2028")
@@ -221,8 +369,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, default=SPATIAL / "spatial_context_manifest.json")
     parser.add_argument("--output", type=Path, default=SPATIAL / "guide.html")
+    parser.add_argument("--clarity-manifest", type=Path)
     args = parser.parse_args()
-    print(json.dumps(build_guide(args.manifest, args.output), ensure_ascii=False))
+    print(
+        json.dumps(
+            build_guide(args.manifest, args.output, clarity_manifest=args.clarity_manifest),
+            ensure_ascii=False,
+        )
+    )
 
 
 if __name__ == "__main__":

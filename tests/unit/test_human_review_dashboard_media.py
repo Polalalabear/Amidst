@@ -2,14 +2,17 @@
 
 from __future__ import annotations
 
+import hashlib
 import importlib.util
 import json
 import re
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any
+from urllib.parse import parse_qsl, urlsplit
 
 import pytest
 
@@ -25,6 +28,33 @@ def dashboard(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[str, dic
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+    clarity_path = REVIEW / "frames/review_clarity/manifest.json"
+    if clarity_path.is_file():
+        clarity = json.loads(clarity_path.read_text())
+        rows = [clarity[key] for key in ("floor", "office", "hr02")]
+        rows += clarity["approach_frames"]
+        if all((clarity_path.parent / row["path"]).is_file() for row in rows):
+            # Exercise the production companion with its real relative links.
+            # The temporary HTML sits beside index.html and is removed at once.
+            with tempfile.NamedTemporaryFile(suffix=".html", dir=REVIEW) as temporary:
+                output = Path(temporary.name)
+                monkeypatch.setattr(
+                    sys,
+                    "argv",
+                    [
+                        "build_dashboard",
+                        "--output",
+                        str(output),
+                        "--clarity-manifest",
+                        str(clarity_path),
+                    ],
+                )
+                module.main()
+                return (
+                    output.read_text(),
+                    json.loads((REVIEW / "decisions.json").read_text()),
+                    module,
+                )
     output = tmp_path / "index.html"
     monkeypatch.setattr(sys, "argv", ["build_dashboard", "--output", str(output)])
     module.main()
@@ -88,6 +118,8 @@ class Element {
 class Document {
   constructor(){this.ids=new Map();this.body=new Element('body',this);}
   createElement(tag){return new Element(tag,this);}
+  createElementNS(namespace,tag){const element=this.createElement(tag);
+    element.namespaceURI=namespace;return element;}
   getElementById(id){return this.ids.get(id)||null;}
   querySelectorAll(selector){return this.body.querySelectorAll(selector);}
   querySelector(selector){return this.body.querySelector(selector);}
@@ -95,7 +127,9 @@ class Document {
 const document=new Document();
 for(const match of input.html.matchAll(/<([\w-]+)\b[^>]*\bid="([^"]+)"[^>]*>/g)){
   const element=document.createElement(match[1]);element.id=match[2];document.body.append(element);}
-document.getElementById('review-data').textContent=JSON.stringify(input.embedded);
+for(const match of input.html.matchAll(
+    /<script type="application\/json" id="([^"]+)">([\s\S]*?)<\/script>/g)){
+  document.getElementById(match[1]).textContent=match[2];}
 const stored=new Map(),downloads=[];
 const context={document,structuredClone,console,Blob,Date,setTimeout:fn=>fn(),
   localStorage:{getItem:key=>stored.get(key)??null,setItem:(key,value)=>stored.set(key,value)},
@@ -212,9 +246,11 @@ def test_media_tabs_load_one_active_player_and_pause_for_modal_without_saving_de
           const sample=()=>counts.push(frames().length);
           sample();const first=frames()[0];sharedMediaWorkspace.select('motion');
           const repeatedSelectionKeptPlayer=first===frames()[0];sample();
-          const paths=[];
+          const paths=[],linkPaths=[];
           for(const id of ['context','motion','topology']){
-            sharedMediaWorkspace.select(id);sample();paths.push(frames()[0].src);}
+            sharedMediaWorkspace.select(id);sample();paths.push(frames()[0].src);
+            linkPaths.push(sharedMediaWorkspace.host.querySelector('.media-links')
+              .querySelector('a').href);}
           const detachedPrevious=first.parentElement===null;
           const previous=frames()[0],selectedBefore=sharedMediaWorkspace.selectedView;
           const unknownRejected=sharedMediaWorkspace.select('unknown')===false&&
@@ -228,16 +264,29 @@ def test_media_tabs_load_one_active_player_and_pause_for_modal_without_saving_de
           const modalCount=document.getElementById('item-visual-workspace')
             .querySelectorAll('iframe').length;
           closeItem();sample();
-          return {counts,paths,repeatedSelectionKeptPlayer,detachedPrevious,unknownRejected,
+          return {counts,paths,linkPaths,clarityHash:reviewClarity.manifest_sha256||null,
+            repeatedSelectionKeptPlayer,detachedPrevious,unknownRejected,
             keyboardSelection,sharedStopped,modalCount,finalFrames:frames().length,
             documentUnchanged:before===canonical(documentState),draftWrites:stored.size};
         })()""",
     )
-    assert result["paths"] == [
-        "frames/spatial_context/guide.html",
+    context_url = urlsplit(result["paths"][0])
+    assert context_url.path == "frames/spatial_context/guide.html"
+    assert context_url.scheme == context_url.netloc == context_url.fragment == ""
+    if result["clarityHash"] is not None:
+        assert re.fullmatch(r"[a-f0-9]{64}", result["clarityHash"])
+        manifest_path = REVIEW / "frames/review_clarity/manifest.json"
+        assert result["clarityHash"] == hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+        assert parse_qsl(context_url.query, keep_blank_values=True) == [
+            ("review", result["clarityHash"])
+        ]
+    else:
+        assert context_url.query == ""
+    assert result["paths"][1:] == [
         "frames/motion_context/player.html",
         "frames/topology_context/view.html",
     ]
+    assert result["linkPaths"] == result["paths"]
     assert result["counts"] == [1, 1, 1, 1, 1, 0, 1, 1, 0]
     assert result["modalCount"] == 1 and result["finalFrames"] == 0
     assert result["keyboardSelection"] == "topology"
@@ -252,6 +301,36 @@ def test_media_tabs_load_one_active_player_and_pause_for_modal_without_saving_de
         )
     )
     assert result["draftWrites"] == 0
+    without_clarity = re.sub(
+        r'(<script type="application/json" id="review-clarity-data">).*?(</script>)',
+        r"\1{}\2",
+        html,
+        flags=re.S,
+    )
+    fallback = browser_model(
+        without_clarity,
+        document,
+        r"""(()=>{
+          sharedMediaWorkspace.select('context');
+          return {path:document.querySelector('iframe').src,
+            link:sharedMediaWorkspace.host.querySelector('.media-links').querySelector('a').href,
+            playerCount:document.querySelectorAll('iframe').length,draftWrites:stored.size,
+            questionIdentity:canonical(reviewIdentity(documentState))===
+              canonical(reviewIdentity(embedded)),storageKey};
+        })()""",
+    )
+    assert fallback["path"] == fallback["link"] == "frames/spatial_context/guide.html"
+    assert fallback["playerCount"] == 1
+    assert fallback["draftWrites"] == 0
+    assert fallback["questionIdentity"] is True
+    assert fallback["storageKey"] == ".".join(
+        [
+            "amidst.phase1.review",
+            document["metadata"]["checkpoint_sha"],
+            document["metadata"]["source_sha256"],
+            document["review_payload_sha256"],
+        ]
+    )
 
 
 def test_hr01_hr02_keep_original_images_and_lazy_sequence_as_exclusive_evidence(
@@ -265,7 +344,14 @@ def test_hr01_hr02_keep_original_images_and_lazy_sequence_as_exclusive_evidence(
           const before=canonical(documentState),results=[];
           for(const id of ['HR-01','HR-02']){
             openItem(id);const body=document.getElementById('item-content');
-            const images=body.querySelectorAll('img').map(image=>image.src);
+            const original=body.querySelector('[data-role="original-evidence-images"]');
+            const originalNodes=original.querySelectorAll('img');
+            const images=originalNodes.map(image=>image.src);
+            const extraImages=body.querySelectorAll('img')
+              .filter(image=>!originalNodes.includes(image)).map(image=>image.src);
+            const callout=body.querySelector('[data-role="hr02-foot-callout"]');
+            const footPixel=callout?[
+              Number(callout.getAttribute('cx')),Number(callout.getAttribute('cy'))]:null;
             const imageLinks=body.querySelectorAll('a').map(link=>link.href);
             const legacy=body.querySelector('[data-role="legacy-sequence"]');
             const initiallyClosed=!legacy.open&&legacy.querySelectorAll('iframe').length===0;
@@ -278,11 +364,13 @@ def test_hr01_hr02_keep_original_images_and_lazy_sequence_as_exclusive_evidence(
             const legacyStopped=!legacy.open&&legacy.querySelectorAll('iframe').length===0;
             const exclusiveNew=document.querySelectorAll('iframe').length===1;
             closeItem();
-            results.push({id,images,imageLinks,initiallyClosed,sequenceLink,exclusiveLegacy,
+            results.push({id,images,extraImages,footPixel,imageLinks,
+              initiallyClosed,sequenceLink,exclusiveLegacy,
               legacySource,legacyStopped,exclusiveNew,closedFrames:
                 document.querySelectorAll('iframe').length});
           }
-          return {results,documentUnchanged:before===canonical(documentState),
+          return {results,clarityData:reviewClarity,
+            documentUnchanged:before===canonical(documentState),
             draftWrites:stored.size};
         })()""",
     )
@@ -294,6 +382,17 @@ def test_hr01_hr02_keep_original_images_and_lazy_sequence_as_exclusive_evidence(
         ]
         expected_sequence = evidence["sequence"].removeprefix("human_review/")
         assert row["images"] == expected_images
+        expected_extra = (
+            [result["clarityData"]["hr02"]["path"]]
+            if row["id"] == "HR-02" and result["clarityData"].get("hr02")
+            else []
+        )
+        assert row["extraImages"] == expected_extra
+        if expected_extra:
+            expected_pixel = result["clarityData"]["hr02"]["display_projection"]["foot_pixel"]
+            assert row["footPixel"] == pytest.approx(expected_pixel)
+        else:
+            assert row["footPixel"] is None
         assert set(expected_images).issubset(row["imageLinks"])
         assert row["sequenceLink"] == row["legacySource"] == expected_sequence
         assert all(
@@ -303,3 +402,8 @@ def test_hr01_hr02_keep_original_images_and_lazy_sequence_as_exclusive_evidence(
         assert row["closedFrames"] == 0
     assert result["documentUnchanged"] is True
     assert result["draftWrites"] == 0
+    if result["clarityData"]:
+        assert result["clarityData"]["result_type"] == "DIAGNOSTIC"
+        assert result["clarityData"]["gt_used"] is False
+        assert result["clarityData"]["physical_authority_changed"] is False
+        assert result["clarityData"]["formal_execution_enabled"] is False
