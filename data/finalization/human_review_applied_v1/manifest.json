@@ -1,0 +1,25 @@
+{
+  "schema_version": "phase1-human-review-application-v1",
+  "artifacts": [
+    {
+      "path": "approved_input_lock.json",
+      "sha256": "85f581f4bf66375e1b3a16374f221ae6348ee1e8b64624e495533af860db4781"
+    },
+    {
+      "path": "certificate_result.json",
+      "sha256": "7c5bfd112b50a082d70284c89242c54311f722ce507b9ca1ce22a871dfb04c81"
+    },
+    {
+      "path": "human_decisions.json",
+      "sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9"
+    },
+    {
+      "path": "resume_plan.json",
+      "sha256": "2e9dce597d31ff062015807ad3abe759562c9c09074297175841abffb250c700"
+    },
+    {
+      "path": "review_receipt.json",
+      "sha256": "efedd2b4a8ddd881065cb3a0b1c58e9624c50be1f41235efa6f9af72cda9dbb8"
+    }
+  ]
+}

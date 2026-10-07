@@ -1,0 +1,208 @@
+{
+  "certificate": {
+    "schema_version": "reviewed-local-physical-scope-v1",
+    "physical_certificate": {
+      "schema_version": "local-physical-scope-v1",
+      "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+      "authority": "APPROVED",
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+      "policy_content_sha256": "01fe8e7a0177deeb5dc44720590ae805820982da4d7aa0c1e0efacfad68a46d0",
+      "support_union_sha256": "add517983b61c93aa6730bb7985849299536ef1433b6aabfc4dabe25ba22b223",
+      "domain_content_sha256": "7a55efc73f74eee0433b77b6c84297a4316779212329bfd9eda14d4efd6ab256",
+      "approval_id": "HUMAN_PHASE1_PHYSICAL_POLICY_RUNTIME_2026_10_06",
+      "region_id": "BODY:WALK_1F_OFFICE",
+      "floor_id": "1F",
+      "footpoint_bounds_bu": [
+        [
+          1399.9985317206952,
+          1939.9994361310253,
+          20.038363962520954
+        ],
+        [
+          1411.9999242955855,
+          2096.8005463472678,
+          20.119335622439984
+        ]
+      ],
+      "support_surface_ids": [
+        "SUPPORT-838a0b2380cbbbb40383",
+        "SUPPORT-afbdd3cfe74da26d7316"
+      ],
+      "source_triangles_screened": 3270,
+      "exact_distance_queries": 0,
+      "legal_support_triangles": 10,
+      "minimum_other_geometry_gap_m": null,
+      "coverage": "COMPLETE_RESTRICTED_FOOTPOINT_DOMAIN",
+      "outside_domain": "REFUSE_VALIDATION",
+      "source_geometry_reclassified": false,
+      "approved_for_collision": true,
+      "approved_for_topology": true,
+      "physical_ready_for_case1_3": true,
+      "formal_case1_3_started": false
+    },
+    "semantic_review": {
+      "schema_version": "bounded-source-surface-review-v1",
+      "decision_id": "HR-01",
+      "decision": "APPROVE",
+      "decision_option": "LOCAL_SOURCE_SURFACE_ONLY",
+      "human_approval_id": "HUMAN_REVIEW_8df8cda06dd9fd08",
+      "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+      "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+      "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+      "source_object_id": "group_0",
+      "source_component_id": "component-00000000",
+      "region_id": "BODY:WALK_1F_OFFICE",
+      "body_envelope_bounds_bu": [
+        [
+          1385.8284912348652,
+          1925.8293956451953,
+          18.014072464545244
+        ],
+        [
+          1426.1699647814155,
+          2110.9705868330975,
+          90.96953805158978
+        ]
+      ],
+      "zero_area_source_face_indices": [
+        1975,
+        2398
+      ],
+      "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+      "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+      "whole_component_approved": false,
+      "source_geometry_modified": false
+    },
+    "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+    "exact_zero_area_source_triangles_excluded": 2,
+    "original_strict_result_reason": "DEGENERATE_SOURCE_BODY_CONTEXT_TRIANGLE",
+    "bounded_source_semantics_applied": true,
+    "original_source_geometry_modified": false,
+    "whole_component_authority_upgraded": false
+  },
+  "result": {
+    "status": "APPROVED_RESTRICTED_HUMAN_REVIEWED_SCOPE",
+    "certificate": {
+      "schema_version": "reviewed-local-physical-scope-v1",
+      "physical_certificate": {
+        "schema_version": "local-physical-scope-v1",
+        "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+        "authority": "APPROVED",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+        "policy_content_sha256": "01fe8e7a0177deeb5dc44720590ae805820982da4d7aa0c1e0efacfad68a46d0",
+        "support_union_sha256": "add517983b61c93aa6730bb7985849299536ef1433b6aabfc4dabe25ba22b223",
+        "domain_content_sha256": "7a55efc73f74eee0433b77b6c84297a4316779212329bfd9eda14d4efd6ab256",
+        "approval_id": "HUMAN_PHASE1_PHYSICAL_POLICY_RUNTIME_2026_10_06",
+        "region_id": "BODY:WALK_1F_OFFICE",
+        "floor_id": "1F",
+        "footpoint_bounds_bu": [
+          [
+            1399.9985317206952,
+            1939.9994361310253,
+            20.038363962520954
+          ],
+          [
+            1411.9999242955855,
+            2096.8005463472678,
+            20.119335622439984
+          ]
+        ],
+        "support_surface_ids": [
+          "SUPPORT-838a0b2380cbbbb40383",
+          "SUPPORT-afbdd3cfe74da26d7316"
+        ],
+        "source_triangles_screened": 3270,
+        "exact_distance_queries": 0,
+        "legal_support_triangles": 10,
+        "minimum_other_geometry_gap_m": null,
+        "coverage": "COMPLETE_RESTRICTED_FOOTPOINT_DOMAIN",
+        "outside_domain": "REFUSE_VALIDATION",
+        "source_geometry_reclassified": false,
+        "approved_for_collision": true,
+        "approved_for_topology": true,
+        "physical_ready_for_case1_3": true,
+        "formal_case1_3_started": false
+      },
+      "semantic_review": {
+        "schema_version": "bounded-source-surface-review-v1",
+        "decision_id": "HR-01",
+        "decision": "APPROVE",
+        "decision_option": "LOCAL_SOURCE_SURFACE_ONLY",
+        "human_approval_id": "HUMAN_REVIEW_8df8cda06dd9fd08",
+        "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+        "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+        "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+        "source_object_id": "group_0",
+        "source_component_id": "component-00000000",
+        "region_id": "BODY:WALK_1F_OFFICE",
+        "body_envelope_bounds_bu": [
+          [
+            1385.8284912348652,
+            1925.8293956451953,
+            18.014072464545244
+          ],
+          [
+            1426.1699647814155,
+            2110.9705868330975,
+            90.96953805158978
+          ]
+        ],
+        "zero_area_source_face_indices": [
+          1975,
+          2398
+        ],
+        "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+        "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+        "whole_component_approved": false,
+        "source_geometry_modified": false
+      },
+      "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+      "exact_zero_area_source_triangles_excluded": 2,
+      "original_strict_result_reason": "DEGENERATE_SOURCE_BODY_CONTEXT_TRIANGLE",
+      "bounded_source_semantics_applied": true,
+      "original_source_geometry_modified": false,
+      "whole_component_authority_upgraded": false
+    }
+  },
+  "declaration": {
+    "schema_version": "bounded-source-surface-review-v1",
+    "decision_id": "HR-01",
+    "decision": "APPROVE",
+    "decision_option": "LOCAL_SOURCE_SURFACE_ONLY",
+    "human_approval_id": "HUMAN_REVIEW_8df8cda06dd9fd08",
+    "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+    "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+    "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+    "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+    "source_object_id": "group_0",
+    "source_component_id": "component-00000000",
+    "region_id": "BODY:WALK_1F_OFFICE",
+    "body_envelope_bounds_bu": [
+      [
+        1385.8284912348652,
+        1925.8293956451953,
+        18.014072464545244
+      ],
+      [
+        1426.1699647814155,
+        2110.9705868330975,
+        90.96953805158978
+      ]
+    ],
+    "zero_area_source_face_indices": [
+      1975,
+      2398
+    ],
+    "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+    "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+    "whole_component_approved": false,
+    "source_geometry_modified": false
+  }
+}

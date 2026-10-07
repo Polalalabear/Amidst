@@ -4,6 +4,12 @@
 
 ## 繁體中文
 
+2026-10-07 post-approval milestone：四項決策已套用到新的
+`data/finalization/human_review_applied_v1/`；原 numerical proof 重算後 bounded certificate
+**PASS**，只有 `BODY:WALK_1F_OFFICE` 原 guard，whole component/building 不升格。
+正式 Case inventory/adapters 仍待驗證；`formal_execution_enabled=false` 保留。
+53 focused tests/Ruff/strict mypy 是本輪結果，與 approval checkpoint 177 tests 分開。
+
 此索引記錄 source geometry／physical-policy 驗證，與正式 Cases 1–3 research benchmark
 分開。執行 gates 與 Git checkpoint 的完整紀錄見 [WORK_LOG](WORK_LOG.md)；
 長期契約見 [GEOMETRY_PROVIDER](GEOMETRY_PROVIDER.md)，決策見

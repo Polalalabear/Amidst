@@ -1,0 +1,805 @@
+{
+  "metadata": {
+    "schema_version": "phase1-human-review-decisions-v1",
+    "checkpoint_sha": "85f5e6b055e75d286c1519e6c5ba2f2efc416347",
+    "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "reviewer": "USER_EXPLICIT_APPROVAL_VIA_CODEX_CHAT",
+    "submitted_at": "2026-10-07T14:29:31Z",
+    "automatic_settings": {
+      "aggregation_max_visible_sample_gap_s": null,
+      "baseline_protocol": "EXISTING_A_B_C_FACTOR_MASKS_AND_SUPPORTED_ABLATIONS",
+      "case4": "DEFERRED",
+      "coverage_comparison": "STRICTLY_LESS_THAN",
+      "cross_case_aggregation": "NONE",
+      "distance_metric": "ADE",
+      "interpolation_policy": "PIECEWISE_LINEAR",
+      "k_values": [
+        1,
+        2,
+        3
+      ],
+      "metres_per_blender_unit": 0.0247,
+      "phase2": "FROZEN",
+      "physical_policy": {
+        "approval_id": "HUMAN_PHASE1_PHYSICAL_POLICY_2026_10_06",
+        "authority": "APPROVED",
+        "body_clearance_m": 0.05,
+        "body_height_m": 1.7,
+        "body_model": "UPRIGHT_CYLINDER",
+        "body_radius_m": 0.3,
+        "clearance_comparison": "MINIMUM_INCLUSIVE",
+        "collision_comparison": "CONTACT_INCLUSIVE",
+        "collision_tolerance_m": 0.001,
+        "config_version": "physical-authority-policy-v2-approved",
+        "evidence_ids": [
+          "USER_EXPLICIT_PHYSICAL_POLICY_APPROVAL_2026_10_06"
+        ],
+        "policy_id": "school-v3-pedestrian-physical-policy",
+        "portal_horizontal_clearance_m": 0.05,
+        "portal_vertical_clearance_m": 0.1,
+        "trajectory_reference": "FLOOR_CONTACT_POINT",
+        "units": "metres"
+      },
+      "pixel_sigma_px": null,
+      "projection_policy": "EXACT_TIME_MULTIVIEW_THEN_SINGLE_VIEW_FIXED_PLANE",
+      "sampling_extent": "SOURCE_ENDPOINTS_INCLUSIVE_NO_REJECTION",
+      "sampling_hz": 5,
+      "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+      "top_k_policy": "FIRST_HYPOTHESIS_PER_DISTINCT_CANDIDATE_IN_INPUT_ORDER",
+      "unavailable_uncertainty": "RETAIN_AND_MARK_LOW_CONFIDENCE"
+    },
+    "case_blocker_map": {
+      "1": {
+        "blocker_count": 4,
+        "blocker_ids": [
+          "HR-01",
+          "HR-02",
+          "HR-03",
+          "HR-04"
+        ],
+        "immediately_run_after_approve": false,
+        "automatic_exit_checks": [
+          "bounded certificate PASS",
+          "合法 visibility→GAP→visibility",
+          "school route inventory 的唯一主要可行 route proof"
+        ]
+      },
+      "2": {
+        "blocker_count": 4,
+        "blocker_ids": [
+          "HR-01",
+          "HR-02",
+          "HR-03",
+          "HR-04"
+        ],
+        "immediately_run_after_approve": false,
+        "automatic_exit_checks": [
+          "bounded certificate PASS",
+          "至少兩條真正可行且有 route diversity 的 school routes；目前 direct/right 平行 offset 不足以證明 branching"
+        ]
+      },
+      "3": {
+        "blocker_count": 4,
+        "blocker_ids": [
+          "HR-01",
+          "HR-02",
+          "HR-03",
+          "HR-04"
+        ],
+        "immediately_run_after_approve": false,
+        "automatic_exit_checks": [
+          "bounded certificate PASS",
+          "現有 protocol 長 GAP stress instance 的 speed/time feasibility、候選增長與 termination proof"
+        ]
+      }
+    },
+    "input_hashes": [
+      {
+        "path": "configs/architectural_scale_school_v3.json",
+        "sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf"
+      },
+      {
+        "path": "configs/benchmarks/protocol_v1.json",
+        "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7"
+      },
+      {
+        "path": "configs/physical_authority_policy_school_v3.json",
+        "sha256": "2427b3670ac8c3748c75deb172fd1f3bfb7da853fb49a7ad2cd5aac2ef8af7ea"
+      },
+      {
+        "path": "configs/physical_collision_numerics_v1.json",
+        "sha256": "cca85ae64f56538f4e2b5352c4962c82d468a3d00622b6c99f35e8a329ac795b"
+      },
+      {
+        "path": "configs/physical_policy_runtime_school_v3.json",
+        "sha256": "704b0f2fb115b691ff61249dc8d4521e39a06467aec0bcca913119fce0491f08"
+      },
+      {
+        "path": "data/finalization/local_run/dataset/inference/office/context.json",
+        "sha256": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70"
+      },
+      {
+        "path": "data/finalization/local_run/dataset/inference/office/observations.json",
+        "sha256": "3a8e1244c6374b22bc9866b85b3c917ba7071c6a4821eb8bb65b3efb9c262726"
+      },
+      {
+        "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/candidates.json",
+        "sha256": "0212756864986ee5044313058144c7e3fcb56c72e68ebd30b7062e508b9c9b02"
+      },
+      {
+        "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/projected_frames.json",
+        "sha256": "0ebdb3762fe181c44ea25456b4525204aaa19dbe957a923c360f2bffdf5d6e48"
+      },
+      {
+        "path": "data/finalization/local_run/diagnostics/office/primary.json",
+        "sha256": "eb770e5492ec47e6b48b0424088e1d1c4f17189af22a18897e0ecc83be43d829"
+      },
+      {
+        "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_authority_map.json",
+        "sha256": "6e1f8d512c9aaf994ce35890f0d688190e33523edc5eeda7a954e07aeb2ff7fe"
+      },
+      {
+        "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz",
+        "sha256": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0"
+      },
+      {
+        "path": "data/scene_audit/phase1_physical_policy_approval_20261006/local_physical_scopes.json",
+        "sha256": "19a472c7fae5bf3e3dc63bc314c3e751467fc8abac636e237c300719ac557c71"
+      },
+      {
+        "path": "data/scene_audit/phase1_physical_policy_approval_20261006/obstacle_collider_authority.json",
+        "sha256": "cfcb6b7fd87fddda742eb05a9d69c31128803ba1dfca162e5283297eeb3c543d"
+      },
+      {
+        "path": "data/scene_audit/phase1_physical_policy_approval_20261006/source_evidence.json.gz",
+        "sha256": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c"
+      },
+      {
+        "path": "data/scene_audit/school_v3_semantic_audit.json",
+        "sha256": "9dcb96ee41613e9e40c592d235b09fa55628eef3c4ec2e240040c58f15220d17"
+      },
+      {
+        "path": "human_review/apply_decisions.py",
+        "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d"
+      },
+      {
+        "path": "human_review/certificate_application.py",
+        "sha256": "13c024966fed788b8e617d521caf41283de454938ecc4fc340c6d6cd0fac2c03"
+      },
+      {
+        "path": "human_review/frames/visual_manifest.json",
+        "sha256": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c"
+      },
+      {
+        "path": "human_review/geometry_evidence.json",
+        "sha256": "5dedd204ff448e077e9ae58090a4742bf456e353b6c511c7f1ecb3e7d62b358b"
+      },
+      {
+        "path": "human_review/settings_evidence.json",
+        "sha256": "8d10d6e3bf3a3f45c44db832dd55c5bf2a2940c329b95d202fa315f7b3311809"
+      },
+      {
+        "path": "scripts/phase1_projection_policy.py",
+        "sha256": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6"
+      },
+      {
+        "path": "src/amidst/benchmark/baselines.py",
+        "sha256": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1"
+      },
+      {
+        "path": "src/amidst/datasets/pilot.py",
+        "sha256": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792"
+      },
+      {
+        "path": "src/amidst/datasets/pilot_topology.py",
+        "sha256": "980e3670edba58769b75fdea4a115f0a1b135d984787998fb6429eaf97e4caa3"
+      },
+      {
+        "path": "src/amidst/domain/metric_config.py",
+        "sha256": "50b349d6300494d7cd0a89818270cee713a23de441855d8d536ebaabdc4a7532"
+      },
+      {
+        "path": "src/amidst/domain/reconstruction.py",
+        "sha256": "9641a3072ed91d4c8ac4f7b35a5560089e052e9397f1bec81401428f62af963e"
+      },
+      {
+        "path": "src/amidst/domain/search.py",
+        "sha256": "c6719aed6832fb6c0ce7217dd254e4cca55b4f6fdf4c8c47442189b534158597"
+      },
+      {
+        "path": "src/amidst/local_semantic_review.py",
+        "sha256": "edff4f0f06b0d8594f61f7851d8d73cb84f6fccd51ecbf4e151a671324a9e6e4"
+      }
+    ],
+    "scope_limitations": [
+      "所有 decisions 都仍未決定；推薦值不等於 authority。",
+      "geometry / binding 只限 bounded 1F office，不核准 corridor、auditorium、stair、73 HC / 1422 HUMAN_REVIEW WALL 或8個 portal conflicts。",
+      "全部 APPROVE 後先自動 certificate / case-inventory / source-bound formal adapter checks；不把原 diagnostic streams relabel FORMAL。",
+      "目前 configured direct/right 平行 routes 未證明正式 Case2 branching；Case1 uniqueness 與 Case3 long-gap instance 也尚未完成。",
+      "只在新的 geometry contradiction、超出已核准 body guard 或必要新 landmark semantics 時重開人工 gate；其餘由 agent 完成自動工作。"
+    ],
+    "formal_execution_enabled": false,
+    "gt_used_for_review": false
+  },
+  "items": [
+    {
+      "id": "HR-01",
+      "title": "一樓 office 行走帶：地板接縫與房間內部的物理語意",
+      "category": "GEOMETRY",
+      "blocks": [
+        1,
+        2,
+        3
+      ],
+      "location": {
+        "floor": "1F",
+        "area": "AREA_1F_OFFICE / WALK_1F_OFFICE",
+        "portal": "無；本次候選在 office 內，不核准任何門洞或跨區路徑",
+        "nearby_object": "group_0；office obstacle 僅供位置辨認",
+        "outliner_search": [
+          "group_0",
+          "AREA_1F_OFFICE",
+          "WALK_1F_OFFICE"
+        ]
+      },
+      "why_it_blocks": [
+        "Case 1–3 的 local scope certificate 目前被 group_0 的零面積接縫與未知 enclosure ownership 阻塞。",
+        "不處理時可以保留診斷候選，但不能宣稱 floor/body collision 或局部物理有效性已正式認證。",
+        "只核准下列 body guard 範圍內的 source-surface 語意；不核准整個 group_0、其他房間、WALL 或 portal。"
+      ],
+      "evidence": {
+        "images": [
+          {
+            "path": "frames/office_scope_closeup.png",
+            "caption": "HR-01 範圍近看：紫色 1975/2398 接縫、blue body guard、人物 cylinder / clearance；畫面只有候選 hypothesis。"
+          },
+          {
+            "path": "frames/office_scope_top_closeup.png",
+            "caption": "HR-01 俯視近看：exact body guard 與 footpoint domain；左路徑 AUTO_REJECT，direct/right 仍 NOT_CERTIFIED。"
+          },
+          {
+            "path": "frames/office_top.png",
+            "caption": "Blender evaluated source 俯視；紅線是接縫，紅色左路徑已自動淘汰。"
+          },
+          {
+            "path": "frames/office_side.png",
+            "caption": "側視：approved source floor、landmark projected dots 與待核准 offset；cylinder / clearance 請看連續 frames。"
+          },
+          {
+            "path": "frames/office_oblique.png",
+            "caption": "局部 source geometry、WALKABLE、PORTAL context 與候選行走帶。"
+          }
+        ],
+        "sequence": "frames/player.html",
+        "objects": [
+          "group_0 / component-00000000",
+          "WALK_1F_OFFICE",
+          "AREA_1F_OFFICE"
+        ],
+        "faces": [
+          {
+            "object": "group_0",
+            "evaluated_source_face": 1975,
+            "evaluated_triangle": 1975,
+            "mesh_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+            "machine_status": "EXACT_ZERO_AREA_DEGENERATE"
+          },
+          {
+            "object": "group_0",
+            "evaluated_source_face": 2398,
+            "evaluated_triangle": 2398,
+            "mesh_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+            "machine_status": "EXACT_ZERO_AREA_DEGENERATE"
+          }
+        ],
+        "bounds": {
+          "footpoint_bu": [
+            [
+              1399.9985317206952,
+              1939.9994361310253,
+              20.07884979248047
+            ],
+            [
+              1411.9999242955855,
+              2096.8005463472678,
+              20.07884979248047
+            ]
+          ],
+          "footpoint_m": [
+            [
+              34.57996373350117,
+              47.91798607243632,
+              0.49594758987426757
+            ],
+            [
+              34.87639813010096,
+              51.79097349477751,
+              0.49594758987426757
+            ]
+          ],
+          "body_guard_bu": [
+            [
+              1385.8284912348652,
+              1925.8293956451953,
+              18.014072464545244
+            ],
+            [
+              1426.1699647814155,
+              2110.9705868330975,
+              90.96953805158978
+            ]
+          ],
+          "body_guard_m": [
+            [
+              34.22996373350117,
+              47.56798607243633,
+              0.4449475898742675
+            ],
+            [
+              35.22639813010096,
+              52.140973494777505,
+              2.2469475898742677
+            ]
+          ],
+          "seam_bounds_bu": [
+            [
+              1396.8341979980469,
+              1713.4693145751953,
+              20.07884979248047
+            ],
+            [
+              1396.8341979980469,
+              2123.0493927001953,
+              20.07884979248047
+            ]
+          ],
+          "seam_bounds_m": [
+            [
+              34.50180469055176,
+              42.32269207000732,
+              0.49594758987426757
+            ],
+            [
+              34.50180469055176,
+              52.439319999694824,
+              0.49594758987426757
+            ]
+          ]
+        },
+        "centroid": {
+          "bu": [
+            1396.8341979980469,
+            1982.585688273112,
+            20.07884979248047
+          ],
+          "m": [
+            34.50180469055176,
+            48.969866500345866,
+            0.49594758987426757
+          ]
+        },
+        "measurements": [
+          "radius 0.30 m = 12.145749 BU；height 1.70 m = 68.825911 BU；clearance 0.05 m = 2.024291 BU（既有 APPROVED）。",
+          "左側 route 最小 support clearance 7.674678 BU / 0.189565 m < 14.170040 BU / 0.35 m：AUTO_REJECT，不需人工決策。",
+          "direct / right support clearance >= 19.674678 BU / 0.485965 m；完整 body/source certificate 仍 NOT_CERTIFIED。",
+          "body guard 相交 source triangles 共 12：10 個已核准支撐三角形，2 個 exact-zero-area seams。"
+        ],
+        "current_authority": [
+          "Architectural scale / body policy / WALK_1F_OFFICE source support：APPROVED。",
+          "source seams / component interior：HUMAN_REVIEW；local certificate：REVIEW / DEGENERATE_SOURCE_BODY_CONTEXT_TRIANGLE。",
+          "OBSTACLE_1F_OFFICE_01 / 02 的語意已核准，但 approved solid components = 0；不把它們當 hard collider。"
+        ],
+        "relevant_frames": "Front frame 20 / t=4.0 s → 全視角 GAP → Rear frame 45 / t=9.0 s；10 秒 preview 只顯示 public observations / inferred candidates。"
+      },
+      "machine_conclusion": {
+        "known": [
+          "兩個 source faces 1975 / 2398 精確為零面積；floor 高度、body guard 與 support clearance 可自動計算。",
+          "source atlas / mesh hashes 已固定；沒有缺省擴充整棟 authority。"
+        ],
+        "unknown": [
+          "請確認這條接縫不代表實際佔用體積，且這個 bounded room interior 是由 source boundary surfaces 表示的自由空間。",
+          "數值上的零面積不能自行代替 physical semantics；APPROVE 不會自動產生 PASS。"
+        ]
+      },
+      "recommended_decision": "APPROVE",
+      "recommended_option": "LOCAL_SOURCE_SURFACE_ONLY",
+      "recommendation_reason": "若畫面與 source scene 一致，採最小範圍 surface 語意即可；所有非零面積 source surfaces 仍照原 collision / support 檢查。",
+      "approve_options": [
+        {
+          "id": "LOCAL_SOURCE_SURFACE_ONLY",
+          "label": "局部 boundary surfaces；零面積接縫不佔體積（建議）",
+          "why": "只聲明 body guard 內 group_0/component-00000000 的 interior 不作實心 collider，與指定兩個接縫沒有 solid ownership。",
+          "payload": {
+            "source_object_id": "group_0",
+            "source_component_id": "component-00000000",
+            "region_id": "BODY:WALK_1F_OFFICE",
+            "zero_area_source_face_indices": [
+              1975,
+              2398
+            ],
+            "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+            "body_envelope_bounds_bu": [
+              [
+                1385.8284912348652,
+                1925.8293956451953,
+                18.014072464545244
+              ],
+              [
+                1426.1699647814155,
+                2110.9705868330975,
+                90.96953805158978
+              ]
+            ],
+            "source_geometry_modified": false,
+            "whole_component_approved": false
+          }
+        },
+        {
+          "id": "EXACT_DERIVED_SURFACE_REPAIR",
+          "label": "相同局部語意；另允許精確接縫的 derived repair",
+          "why": "只允許在衍生 surface context 中排除這兩個 exact-zero-area faces；原 .blend 與非零面積 geometry 保持原樣。",
+          "payload": {
+            "source_object_id": "group_0",
+            "source_component_id": "component-00000000",
+            "region_id": "BODY:WALK_1F_OFFICE",
+            "zero_area_source_face_indices": [
+              1975,
+              2398
+            ],
+            "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+            "body_envelope_bounds_bu": [
+              [
+                1385.8284912348652,
+                1925.8293956451953,
+                18.014072464545244
+              ],
+              [
+                1426.1699647814155,
+                2110.9705868330975,
+                90.96953805158978
+              ]
+            ],
+            "source_geometry_modified": false,
+            "whole_component_approved": false,
+            "derived_exact_surface_repair_allowed": true
+          }
+        }
+      ],
+      "decision": "APPROVE",
+      "selected_option": "LOCAL_SOURCE_SURFACE_ONLY"
+    },
+    {
+      "approve_options": [
+        {
+          "id": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET",
+          "label": "保留固定 marker；精確扣 Z offset 到地板（建議）",
+          "payload": {
+            "conversion": "SUBTRACT_SOURCE_BOUND_Z_OFFSET_KEEP_XY",
+            "fresh_observations_required": true,
+            "inference_reference": "FLOOR_CONTACT_POINT",
+            "landmark_reference": "RIGID_UPRIGHT_SOURCE_BOUND_MARKER",
+            "offset": "PER_CONTEXT_PLANE_MINUS_APPROVED_SOURCE_SUPPORT",
+            "scope": "GEOMETRY_DECISION_APPROVED_LOCAL_DOMAIN_WITHIN_WALK_1F_OFFICE",
+            "single_view_fallback": "ALLOWED_WITH_METHOD_CONFIDENCE_PROVENANCE"
+          },
+          "why": "保留 XY 與 calibration；inference 的位置語意統一為 FLOOR_CONTACT_POINT；single-view fallback 保留 method / confidence / uncertainty。"
+        },
+        {
+          "id": "FLOOR_CONTACT_MARKER",
+          "label": "改用可見足點 marker；offset=0，重新 export",
+          "payload": {
+            "fresh_observations_required": true,
+            "inference_reference": "FLOOR_CONTACT_POINT",
+            "landmark_reference": "VISIBLE_FLOOR_CONTACT_POINT",
+            "offset_bu": 0.0,
+            "offset_m": 0.0,
+            "scope": "GEOMETRY_DECISION_APPROVED_LOCAL_DOMAIN_WITHIN_WALK_1F_OFFICE",
+            "single_view_fallback": "ALLOWED_WITH_METHOD_CONFIDENCE_PROVENANCE"
+          },
+          "why": "足點不可見就保留 GAP；不得從其他 marker 或 GT 偽造觀测。"
+        }
+      ],
+      "approved_binding_candidate_area": "AREA_1F_OFFICE",
+      "approved_binding_candidate_cameras": [
+        "CAM_1F_AUDITORIUM_FRONT",
+        "CAM_1F_AUDITORIUM_REAR"
+      ],
+      "approved_binding_candidate_floor": "1F",
+      "approved_binding_candidate_site": "office",
+      "approved_binding_candidate_walkable": "WALK_1F_OFFICE",
+      "blocks": [
+        1,
+        2,
+        3
+      ],
+      "category": "PROJECTION_BINDING",
+      "decision": "APPROVE",
+      "id": "HR-02",
+      "other_streams_role": "HISTORICAL_LIMITATION_EVIDENCE_NOT_BINDING_APPROVAL",
+      "recommended_option": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET",
+      "title": "可見 landmark 如何對應核准地板上的人物落點",
+      "recommended_decision": "APPROVE",
+      "selected_option": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET",
+      "location": {
+        "floor": "1F",
+        "area": "AREA_1F_OFFICE / WALK_1F_OFFICE",
+        "portal": "無；本次候選在 office 內，不核准任何門洞或跨區路徑",
+        "nearby_object": "group_0；office obstacle 僅供位置辨認",
+        "outliner_search": [
+          "group_0",
+          "AREA_1F_OFFICE",
+          "WALK_1F_OFFICE",
+          "CAM_1F_AUDITORIUM_FRONT",
+          "CAM_1F_AUDITORIUM_REAR"
+        ]
+      },
+      "why_it_blocks": [
+        "Case 1–3 需要 camera → 可見 landmark → approved floor contact 的正式綁定。",
+        "目前 projected marker 位於地板上方約 1.36 m；直接當人物落點會破壞 support、collision 與 metric reference。",
+        "Office 合法同步雙視角為 0/50；若不允許有 provenance 的 single-view fallback，GAP endpoints 無法正式提供。"
+      ],
+      "evidence": {
+        "images": [
+          {
+            "path": "frames/camera_cam_1f_auditorium_front_frame20.png",
+            "caption": "CAM_1F_AUDITORIUM_FRONT：frame 20 / t=4.0 s；bounded source snapshot，不是整場景 occlusion proof。"
+          },
+          {
+            "path": "frames/camera_cam_1f_auditorium_rear_frame46.png",
+            "caption": "CAM_1F_AUDITORIUM_REAR：frame 46 / t=9.2 s；bounded source snapshot，不是整場景 occlusion proof。"
+          },
+          {
+            "path": "frames/office_side.png",
+            "caption": "Landmark 與 approved floor 高度差；cylinder placement 是待核准的 hypothesis。"
+          }
+        ],
+        "sequence": "frames/player.html",
+        "objects": [
+          "group_0",
+          "AREA_1F_OFFICE",
+          "WALK_1F_OFFICE",
+          "CAM_1F_AUDITORIUM_FRONT",
+          "CAM_1F_AUDITORIUM_REAR"
+        ],
+        "faces": "group_0 的 approved source floor binding：完整 source faces / hashes 在 floor_support_details 與 geometry_evidence.json；camera 不是 mesh face。",
+        "bounds": {
+          "approved_local_footpoint_bu": [
+            [
+              1399.9985317206952,
+              1939.9994361310253,
+              20.07884979248047
+            ],
+            [
+              1411.9999242955855,
+              2096.8005463472678,
+              20.07884979248047
+            ]
+          ],
+          "approved_local_footpoint_m": [
+            [
+              34.57996373350117,
+              47.91798607243632,
+              0.49594758987426757
+            ],
+            [
+              34.87639813010096,
+              51.79097349477751,
+              0.49594758987426757
+            ]
+          ]
+        },
+        "centroid": "N/A（camera / plane binding）；floor plane normal = (0,0,1)。",
+        "measurements": [
+          "landmark Z=75.12884788513183 BU / 1.8556825427627563 m。",
+          "floor Z=20.07884979248047 BU / 0.49594758987426757 m。",
+          "精確 offset=55.049998092651364 BU / 1.3597349528884888 m；由已核准 support 與 inference plane 相減，不由 GT 求值。",
+          "Camera calibration / pose / pixel UV 保存在 settings_evidence.json；以 source hash + observations hash 綁定。"
+        ],
+        "current_authority": "floor / scale APPROVED；camera intrinsics/pose SOURCE_BOUND；camera-landmark-floor semantics HUMAN_REVIEW；legacy context DIAGNOSTIC。",
+        "relevant_frames": [
+          {
+            "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+            "frame_id": 20,
+            "timestamp": 4.0,
+            "public_uv": [
+              838.4602382939759,
+              86.52395569480393
+            ]
+          },
+          {
+            "camera_id": "CAM_1F_AUDITORIUM_REAR",
+            "frame_id": 46,
+            "timestamp": 9.2,
+            "public_uv": [
+              285.075031753748,
+              67.286656808141
+            ]
+          }
+        ]
+      },
+      "machine_conclusion": {
+        "known": [
+          "固定 calibration、offset、timestamp 與單視角 availability 都已算出。",
+          "不用 GT 選 pair 或 hypothesis；multiview unavailable 不等於 inference failure。"
+        ],
+        "unknown": [
+          "請核准所觀測 marker 的正式語意，以及這兩個 camera 對 bounded office floor 的綁定與 fallback。",
+          "新 dataset 的 FOV / occlusion / scope containment 仍須自動驗證。"
+        ]
+      },
+      "recommendation_reason": "保留 source-bound marker 與現有 observation producer，只新增精確 landmark→footpoint adapter；新 formal observations 必須 fresh export。"
+    },
+    {
+      "approve_options": [
+        {
+          "id": "ADE_EPSILON_0_50_M",
+          "label": "全體 ADE < 0.50 m（建議）",
+          "payload": {
+            "comparison": "STRICTLY_LESS_THAN",
+            "distance_metric": "ADE",
+            "epsilon_m": 0.5
+          }
+        },
+        {
+          "id": "ADE_EPSILON_1_00_M",
+          "label": "全體 ADE < 1.00 m",
+          "payload": {
+            "comparison": "STRICTLY_LESS_THAN",
+            "distance_metric": "ADE",
+            "epsilon_m": 1.0
+          }
+        }
+      ],
+      "blocks": [
+        1,
+        2,
+        3
+      ],
+      "category": "FORMAL_SETTING",
+      "decision": "APPROVE",
+      "id": "HR-03",
+      "recommended_option": "ADE_EPSILON_0_50_M",
+      "scale_basis": "EXISTING_PROTOCOL_INITIAL_TARGETS_NOT_APPROVED_COVERAGE",
+      "title": "Coverage 的正式 ADE 容差",
+      "recommended_decision": "APPROVE",
+      "selected_option": "ADE_EPSILON_0_50_M",
+      "location": {
+        "floor": "N/A；Case 1–3 共用研究設定",
+        "area": "N/A；Case 1–3 共用研究設定",
+        "portal": "N/A；Case 1–3 共用研究設定",
+        "nearby_object": "N/A；Case 1–3 共用研究設定",
+        "outliner_search": "N/A；Case 1–3 共用研究設定"
+      },
+      "why_it_blocks": "Case 1–3 的 Coverage@K 必須預先固定 epsilon；目前 formal epsilon=null，未決定只能報 N/A。",
+      "evidence": {
+        "images": [],
+        "objects": "N/A",
+        "faces": "N/A",
+        "bounds": "N/A",
+        "centroid": "N/A",
+        "measurements": "兩個研究選項：ADE < 0.50 m（20.242915 BU）或 < 1.00 m（40.485830 BU）；不是實測結果。",
+        "current_authority": "UNRESOLVED_RESEARCH_SETTING；protocol Case1 initial target 0.50 m / Case3 FDE initial target 1.00 m 只提供尺度依據，沒有 Coverage approval。",
+        "relevant_frames": "N/A；不需要視覺或 GT 來決定研究容差。"
+      },
+      "machine_conclusion": {
+        "known": [
+          "現有唯一支援 D=ADE、3D Euclidean arithmetic mean、strictly < epsilon；K=1/2/3。"
+        ],
+        "unknown": [
+          "研究者接受的正式 Coverage 容差；不能從 accuracy 結果反推。"
+        ]
+      },
+      "recommendation_reason": "0.50 m 與既有 Case1 target 尺度一致；所有 Case / method / K 共用，執行後不可改。"
+    },
+    {
+      "approve_options": [
+        {
+          "id": "EXISTING_SPEED_WITH_SUPPORTED_DWELL",
+          "label": "0.7904 m/s；均速 + 已支援 departure dwell（建議）",
+          "payload": {
+            "direct_path_slack_tolerance_s": 1.0,
+            "dwell_location": "DEPARTURE_WAYPOINT_ONLY",
+            "include_dwell_hypotheses": true,
+            "max_speed_bu_s": 32.0,
+            "max_speed_m_s": 0.7904,
+            "timing_primary": "UNIFORM_CONTINUOUS_FIRST"
+          }
+        },
+        {
+          "id": "EXISTING_SPEED_UNIFORM_ONLY",
+          "label": "0.7904 m/s；只保留均速 timing",
+          "payload": {
+            "direct_path_slack_tolerance_s": 1.0,
+            "dwell_location": null,
+            "include_dwell_hypotheses": false,
+            "max_speed_bu_s": 32.0,
+            "max_speed_m_s": 0.7904,
+            "timing_primary": "UNIFORM_CONTINUOUS_FIRST"
+          }
+        }
+      ],
+      "blocks": [
+        1,
+        2,
+        3
+      ],
+      "category": "FORMAL_SETTING",
+      "decision": "APPROVE",
+      "id": "HR-04",
+      "recommended_option": "EXISTING_SPEED_WITH_SUPPORTED_DWELL",
+      "speed_authority": "PROPOSED_FORMAL_RESEARCH_CEILING_NOT_MEASURED_PERSON_SPEED",
+      "title": "固定現有速度上限與長 GAP 的 timing 假設",
+      "recommended_decision": "APPROVE",
+      "selected_option": "EXISTING_SPEED_WITH_SUPPORTED_DWELL",
+      "location": {
+        "floor": "1F",
+        "area": "AREA_1F_OFFICE / WALK_1F_OFFICE",
+        "portal": "無；本次候選在 office 內，不核准任何門洞或跨區路徑",
+        "nearby_object": "N/A；運動模型 research setting",
+        "outliner_search": [
+          "group_0",
+          "AREA_1F_OFFICE",
+          "WALK_1F_OFFICE"
+        ]
+      },
+      "why_it_blocks": "Case1/2 travel-time pruning、Case3 長 GAP / detour / slack 需要正式 speed ceiling 與已支援的 timing hypothesis policy。32 BU/s 目前只是 diagnostic setting。",
+      "evidence": {
+        "images": [
+          {
+            "path": "frames/sequence_030.png",
+            "caption": "t=6.0 s 的 GAP；人物與路徑均是 public candidate hypothesis，不是 GT。"
+          }
+        ],
+        "sequence": "frames/player.html",
+        "objects": "WALK_1F_OFFICE",
+        "faces": "N/A；timing contract",
+        "bounds": {
+          "candidate_footpoint_bu": [
+            [
+              1399.9985317206952,
+              1939.9994361310253,
+              20.07884979248047
+            ],
+            [
+              1411.9999242955855,
+              2096.8005463472678,
+              20.07884979248047
+            ]
+          ],
+          "candidate_footpoint_m": [
+            [
+              34.57996373350117,
+              47.91798607243632,
+              0.49594758987426757
+            ],
+            [
+              34.87639813010096,
+              51.79097349477751,
+              0.49594758987426757
+            ]
+          ]
+        },
+        "centroid": "N/A",
+        "measurements": [
+          "最大速度 32 BU/s = 0.7904 m/s；direct slack 1.0 s。",
+          "departure waypoint dwell 是現有唯一 waiting alternative；uniform continuous timing 仍第一順位。",
+          "preview 的 GAP endpoint duration=5.0 s；它不是正式 Case3 長 GAP。"
+        ],
+        "current_authority": "Speed ceiling：PROPOSED；dwell/uniform：EXISTING_SUPPORTED_CONTRACT；沒有 measured-person speed authority。",
+        "relevant_frames": "Office t=4.0→9.0 s GAP endpoint evidence；正式 Case3 必須另由 protocol stress inventory 固定並 fresh export。"
+      },
+      "machine_conclusion": {
+        "known": [
+          "現有速度上限、scale 換算、slack 與 timing supported variants 已確認。",
+          "5 Hz 可由公開 timestamps 推導，直接沿用，不需人工算。"
+        ],
+        "unknown": [
+          "是否正式採用這個 research speed ceiling，以及是否保留 existing departure dwell alternative。",
+          "正式 Case3 stress instance 必須通過凍結前自動 timing feasibility / termination proof。"
+        ]
+      },
+      "recommendation_reason": "沿用現有 32 BU/s ceiling、1 s slack 與 supported dwell；不新增速度或 waiting model。"
+    }
+  ],
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463"
+}

@@ -4,6 +4,21 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Applied approved bounded authority and historical hydration
+
+接管既有 clean worktree `phase1/finalization-sprint / 62ea9b1`，未切換 canonical checkout。
+本輪 readonly application verification 核對原 source、29 locked inputs、57 original frames、
+immutable decisions 與 checkpoint ancestry PASS；fresh-output application 產生
+`data/finalization/human_review_applied_v1/`，bounded reviewed physical certificate **PASS**。
+Decision content SHA256 `8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a`。
+仍只授權原 office rectangle/body guard，overall **PARTIAL_APPROVED**；formal readiness 未開啟。
+新增 hash-first historical hydration CLI，只複製缺少的原 review files / inputs，拒絕任何
+hash drift、overwrite、root escape 或 GT input；新 formal output 不替代 historical evidence。
+本輪 53 approval/certificate/receipt/hydration tests PASS，新增工具 Ruff、strict mypy PASS，
+diff check PASS。uv 在 sandbox 的 macOS system-configuration 初始化 panic，使用核准的
+unsandboxed locked uv runtime 執行相同入口；source/config/protocol 與舊成果未修改。
+此 milestone 不是 formal Cases、fresh benchmark 或 Phase1 freeze 證據。
+
 ### 2026-10-07 — Post-approval implementation handoff checkpoint
 
 使用者要求保存 checkpoint／commit 並交給新對話，可大規模實作剩餘原 Phase 1 收尾。

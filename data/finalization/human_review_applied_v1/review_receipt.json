@@ -1,0 +1,10 @@
+{
+  "schema_version": "phase1-human-review-receipt-v1",
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "reviewer": "USER_EXPLICIT_APPROVAL_VIA_CODEX_CHAT",
+  "submitted_at": "2026-10-07T14:29:31Z",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "certificate_status": "PASS",
+  "formal_execution_enabled": false
+}

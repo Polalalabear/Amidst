@@ -1,0 +1,147 @@
+{
+  "schema_version": "phase1-reviewed-input-lock-v1",
+  "status": "HUMAN_APPROVED_INPUTS_AUTOMATIC_CASE_READINESS_PENDING",
+  "protocol_base": "configs/benchmarks/protocol_v1.json",
+  "protocol_extension": "phase1-human-approved-local-office-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "automatic_settings": {
+    "aggregation_max_visible_sample_gap_s": null,
+    "baseline_protocol": "EXISTING_A_B_C_FACTOR_MASKS_AND_SUPPORTED_ABLATIONS",
+    "case4": "DEFERRED",
+    "coverage_comparison": "STRICTLY_LESS_THAN",
+    "cross_case_aggregation": "NONE",
+    "distance_metric": "ADE",
+    "interpolation_policy": "PIECEWISE_LINEAR",
+    "k_values": [
+      1,
+      2,
+      3
+    ],
+    "metres_per_blender_unit": 0.0247,
+    "phase2": "FROZEN",
+    "physical_policy": {
+      "approval_id": "HUMAN_PHASE1_PHYSICAL_POLICY_2026_10_06",
+      "authority": "APPROVED",
+      "body_clearance_m": 0.05,
+      "body_height_m": 1.7,
+      "body_model": "UPRIGHT_CYLINDER",
+      "body_radius_m": 0.3,
+      "clearance_comparison": "MINIMUM_INCLUSIVE",
+      "collision_comparison": "CONTACT_INCLUSIVE",
+      "collision_tolerance_m": 0.001,
+      "config_version": "physical-authority-policy-v2-approved",
+      "evidence_ids": [
+        "USER_EXPLICIT_PHYSICAL_POLICY_APPROVAL_2026_10_06"
+      ],
+      "policy_id": "school-v3-pedestrian-physical-policy",
+      "portal_horizontal_clearance_m": 0.05,
+      "portal_vertical_clearance_m": 0.1,
+      "trajectory_reference": "FLOOR_CONTACT_POINT",
+      "units": "metres"
+    },
+    "pixel_sigma_px": null,
+    "projection_policy": "EXACT_TIME_MULTIVIEW_THEN_SINGLE_VIEW_FIXED_PLANE",
+    "sampling_extent": "SOURCE_ENDPOINTS_INCLUSIVE_NO_REJECTION",
+    "sampling_hz": 5,
+    "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+    "top_k_policy": "FIRST_HYPOTHESIS_PER_DISTINCT_CANDIDATE_IN_INPUT_ORDER",
+    "unavailable_uncertainty": "RETAIN_AND_MARK_LOW_CONFIDENCE"
+  },
+  "geometry_semantics": {
+    "source_object_id": "group_0",
+    "source_component_id": "component-00000000",
+    "region_id": "BODY:WALK_1F_OFFICE",
+    "zero_area_source_face_indices": [
+      1975,
+      2398
+    ],
+    "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+    "body_envelope_bounds_bu": [
+      [
+        1385.8284912348652,
+        1925.8293956451953,
+        18.014072464545244
+      ],
+      [
+        1426.1699647814155,
+        2110.9705868330975,
+        90.96953805158978
+      ]
+    ],
+    "source_geometry_modified": false,
+    "whole_component_approved": false
+  },
+  "projection_binding": {
+    "conversion": "SUBTRACT_SOURCE_BOUND_Z_OFFSET_KEEP_XY",
+    "fresh_observations_required": true,
+    "inference_reference": "FLOOR_CONTACT_POINT",
+    "landmark_reference": "RIGID_UPRIGHT_SOURCE_BOUND_MARKER",
+    "offset": "PER_CONTEXT_PLANE_MINUS_APPROVED_SOURCE_SUPPORT",
+    "scope": "GEOMETRY_DECISION_APPROVED_LOCAL_DOMAIN_WITHIN_WALK_1F_OFFICE",
+    "single_view_fallback": "ALLOWED_WITH_METHOD_CONFIDENCE_PROVENANCE"
+  },
+  "coverage": {
+    "comparison": "STRICTLY_LESS_THAN",
+    "distance_metric": "ADE",
+    "epsilon_m": 0.5
+  },
+  "timing": {
+    "direct_path_slack_tolerance_s": 1.0,
+    "dwell_location": "DEPARTURE_WAYPOINT_ONLY",
+    "include_dwell_hypotheses": true,
+    "max_speed_bu_s": 32.0,
+    "max_speed_m_s": 0.7904,
+    "timing_primary": "UNIFORM_CONTINUOUS_FIRST"
+  },
+  "physical_certificate_status": "PASS",
+  "physical_authority": "BOUNDED_OFFICE_ONLY_IF_CERTIFICATE_PASS",
+  "legacy_diagnostic_artifacts_promoted": false,
+  "formal_execution_enabled": false,
+  "further_required_automatic_proofs": {
+    "1": {
+      "blocker_count": 4,
+      "blocker_ids": [
+        "HR-01",
+        "HR-02",
+        "HR-03",
+        "HR-04"
+      ],
+      "immediately_run_after_approve": false,
+      "automatic_exit_checks": [
+        "bounded certificate PASS",
+        "合法 visibility→GAP→visibility",
+        "school route inventory 的唯一主要可行 route proof"
+      ]
+    },
+    "2": {
+      "blocker_count": 4,
+      "blocker_ids": [
+        "HR-01",
+        "HR-02",
+        "HR-03",
+        "HR-04"
+      ],
+      "immediately_run_after_approve": false,
+      "automatic_exit_checks": [
+        "bounded certificate PASS",
+        "至少兩條真正可行且有 route diversity 的 school routes；目前 direct/right 平行 offset 不足以證明 branching"
+      ]
+    },
+    "3": {
+      "blocker_count": 4,
+      "blocker_ids": [
+        "HR-01",
+        "HR-02",
+        "HR-03",
+        "HR-04"
+      ],
+      "immediately_run_after_approve": false,
+      "automatic_exit_checks": [
+        "bounded certificate PASS",
+        "現有 protocol 長 GAP stress instance 的 speed/time feasibility、候選增長與 termination proof"
+      ]
+    }
+  }
+}
