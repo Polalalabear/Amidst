@@ -1,0 +1,92 @@
+{
+  "schema_version": "phase1-human-approval-integration-v1",
+  "status": "EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION",
+  "approval_record": {
+    "path": "approval_record.json",
+    "sha256": "c33e8d89bfcfd95c9b541902e3ab06365eea5761dc3ba45bece42eca1a7aa109"
+  },
+  "approval_validation": {
+    "path": "approval_validation.json",
+    "sha256": "79185f63f1db53aa31a06faebfd6e8d8ac64435bae56d09c382931358964fb0f"
+  },
+  "decisions": {
+    "path": "decisions.json",
+    "sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9"
+  },
+  "immutable_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "review_template_sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
+  "approved_profiles": [
+    {
+      "id": "HR-01",
+      "decision": "APPROVE",
+      "selected_option": "LOCAL_SOURCE_SURFACE_ONLY"
+    },
+    {
+      "id": "HR-02",
+      "decision": "APPROVE",
+      "selected_option": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET"
+    },
+    {
+      "id": "HR-03",
+      "decision": "APPROVE",
+      "selected_option": "ADE_EPSILON_0_50_M"
+    },
+    {
+      "id": "HR-04",
+      "decision": "APPROVE",
+      "selected_option": "EXISTING_SPEED_WITH_SUPPORTED_DWELL"
+    }
+  ],
+  "pending_human_decisions": 0,
+  "case_human_blocker_counts": {
+    "1": 0,
+    "2": 0,
+    "3": 0
+  },
+  "dashboard_sha256": "eb0b593a5eda1de3ca162542952a4fb1b199a747ecd1124b45ccca069af5f3e3",
+  "previous_review_package": {
+    "path": "/Users/polalabear/Developer/amidst/data/pilot/phase1_finalization_human_review_20261007/hr02_camera_audit/human_review",
+    "manifest_sha256": "b58ab23c76ad19e9997a337f4547d59c296e869c4e0da1369034a96277facdeb",
+    "artifacts": 267,
+    "raw_bytes": 130717159,
+    "raw_media_preserved_files": 188,
+    "raw_media_sha256_check": "PASS"
+  },
+  "native_ui_verification": {
+    "browser": "Codex In-app Browser",
+    "url": "http://127.0.0.1:8769/index.html",
+    "status_banner": "4/4 HUMAN_APPROVED / AUTOMATIC_CERTIFICATION_PENDING",
+    "all_four_decision_rows": "APPROVE",
+    "all_case_human_blocker_counts": 0,
+    "hr02_primary_recommendation": "APPROVE / SOURCE_BOUND_RIGID_LANDMARK_OFFSET / HUMAN_APPROVED",
+    "active_visual_iframes": 1,
+    "old_local_draft_read_or_mutated": false,
+    "draft_protection_test": "PASS: completed submitted embedded source supersedes prior cache without reading/writing/removing it",
+    "screenshot": {
+      "path": "frames/dashboard_context/approvals_recorded.jpg",
+      "bytes": 84378,
+      "sha256": "28fbc655beb1760b6922b5acbe8f2af38266bb05ba12446b2ea8f90de2cfb4a2"
+    }
+  },
+  "checks": {
+    "review_tests": {
+      "passed": 177,
+      "skipped": 0
+    },
+    "ruff": "PASS",
+    "strict_mypy_review_tools": {
+      "checked": 4,
+      "result": "PASS"
+    },
+    "diff_check": "PASS"
+  },
+  "human_decisions_recorded": true,
+  "human_decisions_applied": false,
+  "physical_certificate_status": "NOT_RUN",
+  "formal_execution_enabled": false,
+  "formal_cases_run": false,
+  "source_geometry_modified": false,
+  "gt_used_for_review": false,
+  "legacy_diagnostics_promoted": false,
+  "scope": "Only record and display existing four explicit human approval profiles; preserve all historical evidence. No authority application, fresh simulation, formal benchmark, freeze, source edit, push, or merge."
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "phase1-human-approval-read-only-validation-v1",
+  "status": "EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION",
+  "mode": "READ_ONLY_NO_AUTHORITY_APPLICATION",
+  "validator_sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "decisions_file_sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9",
+  "review_template_sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "checkpoint_ancestry_verified": true,
+  "locked_inputs_verified": 29,
+  "original_review_frames_verified": 57,
+  "source_and_locked_input_hash_verification": "PASS",
+  "pending": [],
+  "blocking": [],
+  "human_decisions_recorded": true,
+  "human_decisions_applied": false,
+  "physical_certificate_status": "NOT_RUN",
+  "formal_execution_enabled": false,
+  "source_geometry_modified": false,
+  "gt_used": false
+}

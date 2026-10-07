@@ -2,6 +2,16 @@
 
 Status: **inventory only** after completed diagnostic verification. Formal validation remains blocked. No artifact was deleted.
 
+2026-10-07 approval-recording update: all four human profiles are APPROVED, with zero
+pending human blockers. Decisions are recorded but not applied; physical certificate and
+formal Cases remain NOT_RUN. KEEP the explicit approval receipt, read-only validation,
+approval summary and integration receipt. Earlier blocked/pending reports and the complete
+`hr02_camera_audit` durable package are ARCHIVE/preserved evidence, not deleted or relabelled
+as formal results. The new `approvals_recorded/human_review/` durable package is saved and
+verified: 272 manifest artifacts / 130829356 bytes and 273 complete copy files; manifest
+SHA256 `923eb5f94cbe7bd1e0b45d5185b8189c07f62345c4c067d0fefc148e71e34187`.
+Its per-file hashes and copy verification PASS preserve all 188 prior raw media hashes.
+
 保留 source/config/tests/docs、experiment log、reports、manifests/hashes。Raw dataset、RRD、Blender 和大型物理證據只在本機保存。ARCHIVE 是分類，沒有移動或刪除 inherited provenance。
 
 DELETE_CANDIDATE: none selected; no automatic deletion is authorized.
@@ -70,12 +80,17 @@ storage error; no source, render, evidence or DELETE_CANDIDATE item was deleted.
 | human_review/frames/dashboard_context/topology_motion_review.jpg | REGENERABLE | 60323 | native browser frame25 showing current person position in both model and graph | topology_motion_integration_manifest.json | capture index.html#visual-review-workspace with model/topology tab at frame25 |
 | human_review/topology_playback_integration_manifest.json | KEEP | small metadata | fixed playback layout and native zero-shift measurements; pending review unchanged | existing topology_manifest.json | run playback regressions and native layout sampling; preserve historical receipt |
 | human_review/frames/dashboard_context/topology_playback_stable.jpg | REGENERABLE | 58511 | actual native browser screenshot of stable model/topology review | topology_playback_integration_manifest.json | capture index.html with model/topology selected at frame25 |
-| human_review/inspect_hr02_camera_binding.py, render_hr02_camera_audit.py, build_hr02_camera_review.py, HR02_CAMERA_AUDIT.md | KEEP | 85522 | reproducible GT-free source-instance evidence and review workflow | frames/hr02_camera_audit manifests | commands in human_review/HR02_CAMERA_AUDIT.md |
+| human_review/inspect_hr02_camera_binding.py, render_hr02_camera_audit.py, build_hr02_camera_review.py, HR02_CAMERA_AUDIT.md | KEEP | 85759 | reproducible GT-free source-instance evidence and review workflow; remeasured after approval note | frames/hr02_camera_audit manifests | commands in human_review/HR02_CAMERA_AUDIT.md |
 | human_review/frames/hr02_camera_audit/*.json, template.html, view.html | KEEP | 683797 | immutable public query, exact fresh-process match, render/UI receipts | original input hashes and review payload | frozen Blender query/render to fresh paths, then build_hr02_camera_review.py |
 | human_review/frames/hr02_camera_audit/*.png | REGENERABLE | 10855553 | 8 new 1920x1080 diagnostic views with live-instance source geometry; static bases contain no baked person | renderer_manifest.json and render_verification.json | Blender with unchanged source + render_hr02_camera_audit.py --output /fresh/path |
 | human_review/history/hr02_initial_camera_render/ | ARCHIVE | 10910996 PNG bytes plus receipts/view | retain all 8 initial images; initial static actor/rays and unsafe evaluated-reference producer are not canonical playback | frames/hr02_camera_audit; exact initial producer in history/hr02_initial_camera_renderer.py | initial producer archived for provenance; use corrected producer for canonical reproduction |
 | human_review/history/hr02_initial_ray_audit/ | ARCHIVE | small JSON; per-file sizes in manifest | noncanonical initial trial explicitly records producer drift; no deletion | immutable canonical audit and final_repeat_verification.json | current frozen inspect_hr02_camera_binding.py to fresh output |
 | human_review/frames/dashboard_context/hr02_camera_review.jpg | REGENERABLE | 114494 | native browser proof at frame45 with existing motion and new source rays | hr02_camera_integration_manifest.json and native_ui_verification.json | capture shared HR02 camera-audit tab at frame45 |
+| human_review/approval_record.json, approval_validation.json, APPROVALS.md | KEEP | final per-file sizes in package manifest | explicit human choices and immutable/source verification; recorded, not applied | decisions.json plus unchanged review_template.json | preserve approval_record; run apply_decisions.py in default read-only validation mode; regenerate documentation without --apply |
+| human_review/approval_integration_manifest.json | KEEP | 3354 | approved interface state, preserved prior evidence and native verification | approval_record.json, approval_validation.json and media manifests | verify immutable inputs and capture approved dashboard; preserve receipt |
+| human_review/finalize_package.py, write_review_docs.py, README.md, gate.json, manifest.json | KEEP | final per-file sizes in package manifest | validated current decision state; pending behavior retained; certificate/formal stages not falsely promoted | original selected profiles and immutable question payload | uv run python human_review/write_review_docs.py; uv run python human_review/finalize_package.py |
+| human_review/frames/dashboard_context/approvals_recorded.jpg | REGENERABLE | 84378 | native browser proof of four recorded approvals, zero Case 1–3 human blockers and one active iframe | approval_integration_manifest.json | capture approved dashboard; preserve resulting exact file size/hash |
+| data/pilot/phase1_finalization_human_review_20261007/hr02_camera_audit/human_review/ | ARCHIVE | 130717159 manifest artifact bytes; original manifest retained | complete preapproval review package preserved independently | approvals_recorded/human_review/ verified durable package | preserve old copy; rebuild corrected diagnostics only in a fresh output path |
 | /private/tmp/amidst-review-clarity-qa-v1 | ARCHIVE | local diagnostic trial | unadopted flat-lighting map and its exact producer retained; no source/evidence deletion | final clarity renderer and manifest | initial producer only; intentionally stopped after first map, not canonical evidence |
 
 Detailed machine-readable inventory: [CSV](../data/finalization/checkpoint/artifact_inventory.csv).

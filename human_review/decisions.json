@@ -3,8 +3,8 @@
     "schema_version": "phase1-human-review-decisions-v1",
     "checkpoint_sha": "85f5e6b055e75d286c1519e6c5ba2f2efc416347",
     "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
-    "reviewer": "",
-    "submitted_at": null,
+    "reviewer": "USER_EXPLICIT_APPROVAL_VIA_CODEX_CHAT",
+    "submitted_at": "2026-10-07T14:29:31Z",
     "automatic_settings": {
       "aggregation_max_visible_sample_gap_s": null,
       "baseline_protocol": "EXISTING_A_B_C_FACTOR_MASKS_AND_SUPPORTED_ABLATIONS",
@@ -465,8 +465,8 @@
           }
         }
       ],
-      "decision": null,
-      "selected_option": null
+      "decision": "APPROVE",
+      "selected_option": "LOCAL_SOURCE_SURFACE_ONLY"
     },
     {
       "approve_options": [
@@ -513,13 +513,13 @@
         3
       ],
       "category": "PROJECTION_BINDING",
-      "decision": null,
+      "decision": "APPROVE",
       "id": "HR-02",
       "other_streams_role": "HISTORICAL_LIMITATION_EVIDENCE_NOT_BINDING_APPROVAL",
       "recommended_option": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET",
       "title": "可見 landmark 如何對應核准地板上的人物落點",
       "recommended_decision": "APPROVE",
-      "selected_option": null,
+      "selected_option": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET",
       "location": {
         "floor": "1F",
         "area": "AREA_1F_OFFICE / WALK_1F_OFFICE",
@@ -656,13 +656,13 @@
         3
       ],
       "category": "FORMAL_SETTING",
-      "decision": null,
+      "decision": "APPROVE",
       "id": "HR-03",
       "recommended_option": "ADE_EPSILON_0_50_M",
       "scale_basis": "EXISTING_PROTOCOL_INITIAL_TARGETS_NOT_APPROVED_COVERAGE",
       "title": "Coverage 的正式 ADE 容差",
       "recommended_decision": "APPROVE",
-      "selected_option": null,
+      "selected_option": "ADE_EPSILON_0_50_M",
       "location": {
         "floor": "N/A；Case 1–3 共用研究設定",
         "area": "N/A；Case 1–3 共用研究設定",
@@ -724,13 +724,13 @@
         3
       ],
       "category": "FORMAL_SETTING",
-      "decision": null,
+      "decision": "APPROVE",
       "id": "HR-04",
       "recommended_option": "EXISTING_SPEED_WITH_SUPPORTED_DWELL",
       "speed_authority": "PROPOSED_FORMAL_RESEARCH_CEILING_NOT_MEASURED_PERSON_SPEED",
       "title": "固定現有速度上限與長 GAP 的 timing 假設",
       "recommended_decision": "APPROVE",
-      "selected_option": null,
+      "selected_option": "EXISTING_SPEED_WITH_SUPPORTED_DWELL",
       "location": {
         "floor": "1F",
         "area": "AREA_1F_OFFICE / WALK_1F_OFFICE",

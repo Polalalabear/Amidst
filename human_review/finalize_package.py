@@ -1,4 +1,4 @@
-"""Record the minimal pending review and package hashes; preserve all decisions."""
+"""Record validated human decisions and package hashes without applying authority."""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ import json
 import shutil
 from pathlib import Path
 
+from apply_decisions import validate_decisions
 from assemble_review import write_json
 from build_dashboard import hr02_camera_view_hash
 
@@ -19,8 +20,30 @@ def main() -> None:
     parser.add_argument("--durable-copy", type=Path)
     args = parser.parse_args()
     document = json.loads((HERE / "decisions.json").read_text())
-    if any(item["decision"] is not None for item in document["items"]):
-        raise ValueError("package finalization cannot rewrite completed human decisions")
+    template = json.loads((HERE / "review_template.json").read_text())
+    state = validate_decisions(document, template)
+    unresolved = set(state["pending"]) | {row["id"] for row in state["blocking"]}
+    state_summary = {
+        "status": state["status"],
+        "human_decision_count": len(document["items"]),
+        "pending": state["pending"],
+        "blocking": state["blocking"],
+        "unresolved_human_decision_count": len(unresolved),
+        "human_decisions_recorded": any(item["decision"] is not None for item in document["items"]),
+        "human_decisions_applied": False,
+        "formal_execution_enabled": False,
+        "physical_certificate_status": "NOT_RUN",
+        "case_pending_human_blocker_ids": {
+            number: [item_id for item_id in row["blocker_ids"] if item_id in unresolved]
+            for number, row in document["metadata"]["case_blocker_map"].items()
+        },
+    }
+    approval_path = HERE / "approval_record.json"
+    if approval_path.is_file():
+        state_summary["approval_record"] = {
+            "path": approval_path.name,
+            "sha256": hashlib.sha256(approval_path.read_bytes()).hexdigest(),
+        }
     spatial_path = HERE / "frames/spatial_context/spatial_context_manifest.json"
     spatial_summary = {}
     if spatial_path.is_file():
@@ -104,17 +127,14 @@ def main() -> None:
         HERE / "gate.json",
         {
             "schema_version": "phase1-minimal-human-review-gate-v1",
-            "status": "HUMAN_REVIEW_PENDING",
+            **state_summary,
             "checkpoint_sha": document["metadata"]["checkpoint_sha"],
             "source_sha256": document["metadata"]["source_sha256"],
             "review_payload_sha256": document["review_payload_sha256"],
-            "human_decision_count": 4,
             "geometry_decisions": ["HR-01"],
             "projection_binding_decisions": ["HR-02"],
             "formal_setting_decisions": ["HR-03", "HR-04"],
             "case_blocker_map": document["metadata"]["case_blocker_map"],
-            "formal_execution_enabled": False,
-            "human_decisions_applied": False,
             "source_geometry_modified": False,
         },
     )
@@ -141,8 +161,8 @@ def main() -> None:
             "checkpoint_sha": document["metadata"]["checkpoint_sha"],
             "source_sha256": document["metadata"]["source_sha256"],
             "review_payload_sha256": document["review_payload_sha256"],
-            "status": "HUMAN_REVIEW_PENDING",
-            "human_decision_count": 4,
+            **state_summary,
+            "case_blocker_map": document["metadata"]["case_blocker_map"],
             "frames": {
                 "duration_seconds": 10,
                 "sampling_hz": 5,
@@ -170,7 +190,9 @@ def main() -> None:
     print(
         json.dumps(
             {
-                "human_decisions": 4,
+                "human_decisions": len(document["items"]),
+                "status": state["status"],
+                "unresolved_human_decisions": len(unresolved),
                 "package": str(HERE),
                 "durable_copy": str(args.durable_copy) if args.durable_copy else None,
                 "artifact_count": len(artifacts),

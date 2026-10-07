@@ -3,8 +3,69 @@
   "checkpoint_sha": "85f5e6b055e75d286c1519e6c5ba2f2efc416347",
   "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
   "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
-  "status": "HUMAN_REVIEW_PENDING",
+  "status": "EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION",
   "human_decision_count": 4,
+  "pending": [],
+  "blocking": [],
+  "unresolved_human_decision_count": 0,
+  "human_decisions_recorded": true,
+  "human_decisions_applied": false,
+  "formal_execution_enabled": false,
+  "physical_certificate_status": "NOT_RUN",
+  "case_pending_human_blocker_ids": {
+    "1": [],
+    "2": [],
+    "3": []
+  },
+  "approval_record": {
+    "path": "approval_record.json",
+    "sha256": "c33e8d89bfcfd95c9b541902e3ab06365eea5761dc3ba45bece42eca1a7aa109"
+  },
+  "case_blocker_map": {
+    "1": {
+      "blocker_count": 4,
+      "blocker_ids": [
+        "HR-01",
+        "HR-02",
+        "HR-03",
+        "HR-04"
+      ],
+      "immediately_run_after_approve": false,
+      "automatic_exit_checks": [
+        "bounded certificate PASS",
+        "合法 visibility→GAP→visibility",
+        "school route inventory 的唯一主要可行 route proof"
+      ]
+    },
+    "2": {
+      "blocker_count": 4,
+      "blocker_ids": [
+        "HR-01",
+        "HR-02",
+        "HR-03",
+        "HR-04"
+      ],
+      "immediately_run_after_approve": false,
+      "automatic_exit_checks": [
+        "bounded certificate PASS",
+        "至少兩條真正可行且有 route diversity 的 school routes；目前 direct/right 平行 offset 不足以證明 branching"
+      ]
+    },
+    "3": {
+      "blocker_count": 4,
+      "blocker_ids": [
+        "HR-01",
+        "HR-02",
+        "HR-03",
+        "HR-04"
+      ],
+      "immediately_run_after_approve": false,
+      "automatic_exit_checks": [
+        "bounded certificate PASS",
+        "現有 protocol 長 GAP stress instance 的 speed/time feasibility、候選增長與 termination proof"
+      ]
+    }
+  },
   "frames": {
     "duration_seconds": 10,
     "sampling_hz": 5,
@@ -101,24 +162,44 @@
       "sha256": "52f322c5d84c11f8e4ebb8062d32dafdd93484fbdd385b291a794bb657d390ba"
     },
     {
+      "path": "APPROVALS.md",
+      "bytes": 1971,
+      "sha256": "bf4a7363f1648b3f94c6ba2a5b83209bdf4ef568bb003bd14e3df3d208df2347"
+    },
+    {
       "path": "DECISION_APPLICATION.md",
-      "bytes": 3816,
-      "sha256": "9f3c29c00d4bacb444a295118b31a3f799930562774c6c0a487e31f757183729"
+      "bytes": 4000,
+      "sha256": "0267be1edc0b6a3a19c053947b12312fbfd8c78290d9c4680494707a9984ac46"
     },
     {
       "path": "HR02_CAMERA_AUDIT.md",
-      "bytes": 8245,
-      "sha256": "dfaf2b6edb09b299cab4d614be972fedec6d8d28b56b237169939627fb0e88b8"
+      "bytes": 8482,
+      "sha256": "09d3071a2392d449ab662e70d5b4984872381c42c243c72b2f3bef6145ff095d"
     },
     {
       "path": "README.md",
-      "bytes": 31201,
-      "sha256": "e322cc4831257e687b07d5dc59379292f118767dc175001b049497557ef08d5e"
+      "bytes": 33124,
+      "sha256": "80b477c6e88771b40a0b0c48a9c868216b57ee371a2250e7a0ca7d32da29f90b"
     },
     {
       "path": "apply_decisions.py",
       "bytes": 10701,
       "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d"
+    },
+    {
+      "path": "approval_integration_manifest.json",
+      "bytes": 3354,
+      "sha256": "fdb695a14d3402311884ed13f901fcd99f83cd6678d0bf68d7dad62d35fe464b"
+    },
+    {
+      "path": "approval_record.json",
+      "bytes": 3166,
+      "sha256": "c33e8d89bfcfd95c9b541902e3ab06365eea5761dc3ba45bece42eca1a7aa109"
+    },
+    {
+      "path": "approval_validation.json",
+      "bytes": 1160,
+      "sha256": "79185f63f1db53aa31a06faebfd6e8d8ac64435bae56d09c382931358964fb0f"
     },
     {
       "path": "assemble_review.py",
@@ -182,18 +263,18 @@
     },
     {
       "path": "dashboard_template.html",
-      "bytes": 41758,
-      "sha256": "57bfc50dde8ee377e199d80d613596135812c133b4c5ed53aeeada59e140d109"
+      "bytes": 44852,
+      "sha256": "a5a5c2371b358f711166734c1ed904e10e72d4bf8b6b460ce72258399cb22208"
     },
     {
       "path": "decisions.json",
-      "bytes": 32164,
-      "sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2"
+      "bytes": 32343,
+      "sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9"
     },
     {
       "path": "finalize_package.py",
-      "bytes": 7808,
-      "sha256": "b3c95ea0830b26a5bc1365a4add7e1ba60b08300f4d0bf1884ef0894e548181a"
+      "bytes": 8865,
+      "sha256": "08eafa31c520f5d6be2f1556ca4f91512bfabd083797cc66daf17af7bf23e786"
     },
     {
       "path": "formal_settings.md",
@@ -209,6 +290,11 @@
       "path": "frames/camera_cam_1f_auditorium_rear_frame46.png",
       "bytes": 422549,
       "sha256": "81e7034b520e1ef6f4623d0719a68ea2ee115230011ae98f61bcd47657ad0f9f"
+    },
+    {
+      "path": "frames/dashboard_context/approvals_recorded.jpg",
+      "bytes": 84378,
+      "sha256": "28fbc655beb1760b6922b5acbe8f2af38266bb05ba12446b2ea8f90de2cfb4a2"
     },
     {
       "path": "frames/dashboard_context/clarity_review.jpg",
@@ -1222,8 +1308,8 @@
     },
     {
       "path": "gate.json",
-      "bytes": 1832,
-      "sha256": "84f32e4989294004fe9bd191dd42498d6cb4b51e8ba1283afdd54fbbf7c5341f"
+      "bytes": 2245,
+      "sha256": "88fed945e897ea2f84bc057a75b15483ee02e313801d045b79d94cb0c9490e06"
     },
     {
       "path": "geometry_evidence.json",
@@ -1347,8 +1433,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 73970,
-      "sha256": "720824aa36e65e506eccd88ba307cf0019a116ba5ece6e7d4f07b5785f6b3f37"
+      "bytes": 77243,
+      "sha256": "eb0b593a5eda1de3ca162542952a4fb1b199a747ecd1124b45ccca069af5f3e3"
     },
     {
       "path": "inspect_hr02_camera_binding.py",
@@ -1427,8 +1513,8 @@
     },
     {
       "path": "write_review_docs.py",
-      "bytes": 21824,
-      "sha256": "e83271d4e4047567636f282649e011571884b6a3841773a8542a9f6df3dcf0d9"
+      "bytes": 29632,
+      "sha256": "ef30fefc429dc9ede3ff097741ad209c396b3f3ff91925241fb731dfa0f9c403"
     }
   ]
 }

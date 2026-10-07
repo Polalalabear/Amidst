@@ -4,6 +4,17 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Four explicit human approvals recorded
+
+使用者確認房間／鏡頭「綁對」，接受 rigid landmark→floor 建議並明示其餘全部 APPROVE。
+記錄原四項 recommended profiles：bounded source-surface、rigid offset、ADE<0.50m、
+0.7904m/s與既有departure dwell；只改decision/selected_option與chat-origin reviewer/time。
+Immutable e105 payload及原review template保持不變。唯讀驗證source、checkpoint ancestry、
+29inputs及57frames通過；status為EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION。
+Dashboard显示4/4approved、0human blockers，completedsource優先且不讀／改／刪舊cache。
+177相關tests、repoRuff、4reviewtools strictmypy與diff gate通過；沒有apply authority、
+certificate regeneration、formal Cases、render、source修改或發布。
+
 ### 2026-10-07 — HR02 source-camera and landmark/foot evidence
 
 在 `7140062019a00256df0543d7dc3e513c53090d9d` 上補齊 HR02 的自動證據。唯讀 source
@@ -935,6 +946,18 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-07 — Four explicit human approvals recorded
+
+The user confirmed the room/cameras, accepted the rigid marker recommendation and approved
+the remaining items. Recorded the four existing profiles: bounded source surface, rigid
+offset, ADE<0.50m and0.7904m/s with supported departure dwell. Only editable decision and
+reviewer/time fields changed; immutable e105 payload and original template remain.
+Read-only source/ancestry/29inputs/57frames validation passes. The dashboard shows4/4
+approvals and0human blockers; completed source decisions supersede stale cache without
+reading, deleting or writing that cache.177related tests, repoRuff, four strict review-tool
+typing checks and diff gate pass. No authority application, certificate regeneration,
+formal Cases, render, source changes or publication occurred.
 
 ### 2026-10-07 — HR02 source-camera and landmark/foot evidence
 

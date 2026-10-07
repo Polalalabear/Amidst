@@ -1,13 +1,15 @@
 # 決策套用與續作入口
 
-這輪只準備，沒有套用任何 school APPROVE，沒有 formal Case 執行。
+2026-10-07：四項人工 APPROVE 已記錄，見 [approval summary](APPROVALS.md)；
+唯讀 source／input／decision 驗證通過。尚未使用 `--apply`，未重新產生 physical certificate，
+沒有 formal Case 執行。Human approval 與 numerical certification 分開記錄。
 
 Dashboard 可匯出部分草稿；只有四項都完成、審查者非空、submitted_at 有 timezone，
 application 才視為完成。JSON 只有四種 choices；APPROVE 必須選原 package 的 profile ID。
 REJECT / FIX_GEOMETRY / KEEP_REVIEW 都保持 blocker，不會換成建議值或偷偷跳過。
 
-下一輪只需將 dashboard 匯出的 `decisions.json` 放回本 package，或提供它的路徑，
-並指示續作。唯讀驗證指令：
+本 package 的 `decisions.json` 已填妥並驗證，不需要再次匯出或補交人工資料。
+唯讀驗證指令：
 
 ```sh
 cd /private/tmp/amidst-phase1-finalization

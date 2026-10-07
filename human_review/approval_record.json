@@ -1,0 +1,64 @@
+{
+  "schema_version": "phase1-human-chat-approval-record-v1",
+  "approval_source": "DIRECT_HUMAN_MESSAGES_IN_CURRENT_CODEX_CHAT",
+  "reviewer": "USER_EXPLICIT_APPROVAL_VIA_CODEX_CHAT",
+  "recorded_at": "2026-10-07T14:29:31Z",
+  "timestamp_meaning": "TIME_OF_RECORDING_NOT_AN_INVENTED_MESSAGE_TIMESTAMP",
+  "pre_approval_git_sha": "a8aaf71c57781a65761b2420a79adab38e030c59",
+  "pre_approval_decisions_sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
+  "review_template_sha256": "4cd39e6dac772aa14d1b40e3c3a5fae2b00cdc31caeac7a5faffabc6112809c2",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "decisions_file_sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9",
+  "human_statements": [
+    "綁對。追蹤點建議用哪個",
+    "好，其他全部 approved"
+  ],
+  "accepted_hr02_recommendation": "Retain source-bound rigid upright marker; convert to floor contact using source-bound per-context offset while keeping XY.",
+  "approved_items": [
+    {
+      "id": "HR-01",
+      "decision": "APPROVE",
+      "selected_option": "LOCAL_SOURCE_SURFACE_ONLY"
+    },
+    {
+      "id": "HR-02",
+      "decision": "APPROVE",
+      "selected_option": "SOURCE_BOUND_RIGID_LANDMARK_OFFSET"
+    },
+    {
+      "id": "HR-03",
+      "decision": "APPROVE",
+      "selected_option": "ADE_EPSILON_0_50_M"
+    },
+    {
+      "id": "HR-04",
+      "decision": "APPROVE",
+      "selected_option": "EXISTING_SPEED_WITH_SUPPORTED_DWELL"
+    }
+  ],
+  "room_and_selected_camera_binding_confirmed": true,
+  "approval_scope": "EXISTING_FOUR_MINIMAL_REVIEW_PROFILE_PAYLOADS_ONLY",
+  "scope_limitations": [
+    "所有 decisions 都仍未決定；推薦值不等於 authority。",
+    "geometry / binding 只限 bounded 1F office，不核准 corridor、auditorium、stair、73 HC / 1422 HUMAN_REVIEW WALL 或8個 portal conflicts。",
+    "全部 APPROVE 後先自動 certificate / case-inventory / source-bound formal adapter checks；不把原 diagnostic streams relabel FORMAL。",
+    "目前 configured direct/right 平行 routes 未證明正式 Case2 branching；Case1 uniqueness 與 Case3 long-gap instance 也尚未完成。",
+    "只在新的 geometry contradiction、超出已核准 body guard 或必要新 landmark semantics 時重開人工 gate；其餘由 agent 完成自動工作。"
+  ],
+  "immutable_payload_preserved": true,
+  "human_decisions_recorded": true,
+  "human_decisions_applied": false,
+  "physical_certificate_status": "NOT_RUN",
+  "formal_execution_enabled": false,
+  "legacy_diagnostic_artifacts_promoted": false,
+  "source_geometry_modified": false,
+  "gt_used": false,
+  "validation": {
+    "status": "EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION",
+    "pending": [],
+    "blocking": [],
+    "formal_execution_enabled": false
+  },
+  "scope_limitations_context": "VERBATIM_PRE_APPROVAL_TEMPLATE_TEXT; the first pending-state sentence is historical, superseded by the four explicit APPROVE decisions above; bounded scope restrictions remain applicable."
+}

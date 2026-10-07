@@ -1,5 +1,8 @@
 # HR02 相機／人物落點核對
 
+2026-10-07 更新：房間／鏡頭綁定與 `SOURCE_BOUND_RIGID_LANDMARK_OFFSET` 已由使用者明示核准，
+見 [已記錄批准](APPROVALS.md)。下文與圖像保留核准前的診斷狀態；physical certificate 尚未重算。
+
 狀態：**DIAGNOSTIC / NOT_CERTIFIED / KEEP_REVIEW 建議**。這份補充沒有填寫決策；原 HR-01–04 的 decision 均為 null。
 
 先開 [相機核對頁](frames/hr02_camera_audit/view.html)，連續回放核對位置與射線，再看 frame 20／25／45 的兩台 source-camera 代表 still。still 的時間與連續回放分開標示。

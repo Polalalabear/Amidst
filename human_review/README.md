@@ -1,6 +1,26 @@
 # Phase 1 最小人工審查
 
-狀態：**HUMAN_REVIEW_PENDING**；4 項決策全部未選擇。推薦值不等於核准。
+狀態：**EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION**；4 項人類核准已記錄，人工未決項目 0；尚未 apply、產生 certificate 或執行 formal Case。
+
+## 已記錄的人類核准
+
+[decisions.json](decisions.json) 保存四項 APPROVE 與完整 selected profile；
+[approval_record.json](approval_record.json) 保存明確授權及範圍，未將口頭核准當成已執行物理認證。
+
+| ID | Decision | Selected profile |
+|---|---|---|
+| HR-01 | APPROVE | `LOCAL_SOURCE_SURFACE_ONLY` |
+| HR-02 | APPROVE | `SOURCE_BOUND_RIGID_LANDMARK_OFFSET` |
+| HR-03 | APPROVE | `ADE_EPSILON_0_50_M` |
+| HR-04 | APPROVE | `EXISTING_SPEED_WITH_SUPPORTED_DWELL` |
+
+HR-01 的局部 source-surface 語意、HR-02 的目標房間／兩台 source cameras 與
+landmark→floor 語意已依 selected profile 核准；尚未將 profile apply 到 inference。
+physical certificate **NOT_RUN**，fresh observations 與自動 scope／visibility 檢查仍必須完成。
+**human_decisions_recorded=true；human_decisions_applied=false；formal_execution_enabled=false。**
+
+下列舊影像保留產生時的待審標籤；固定 questions、machine conclusion 與
+historical evidence 不因核准而改寫，也不再要求第二輪人工資料整理。
 
 ## HR02 相機／落點核對補充
 
@@ -9,12 +29,12 @@
 `AREA_1F_AUDITORIUM` AABB、OFFICE AABB 之外；物件名稱／外框不能核准 room ownership。
 50 timestamps × 2 cameras：原 public 記錄 26 OBSERVED／74 GAP；回推 landmark 射線
 26 CLEAR／74 OCCLUDED，候選腳底 10 CLEAR／90 OCCLUDED；16 筆 landmark 通視但腳底被擋。
-**1.35973495 m 是待核准 landmark→floor 偏移，不是地板到天花板高度。**
-人工只確認目標房間／鏡頭是否正確，以及追蹤點是固定身體 landmark 還是腳底。
-fallback 沿用既有 protocol，不新增研究設定問題；原四項 decision 全部保持 null。
+**1.35973495 m 是歷史 landmark→floor 偏移；HR-02 selected profile 已核准，不是地板到天花板高度；自動驗證仍待執行。**
+人類已確認目標房間／鏡頭綁定，以及 selected profile 的追蹤點語意。
+fallback 沿用既有 protocol；四項 APPROVE 已記錄，不新增研究設定問題。
 人物是 public projection／GAP candidate，不是原始3D軌跡；沒有使用 GT。wide／side
 是 display-only cutaway，射線使用完整 allowed source mesh；20／25／45 是獨立代表
-camera still，不代表當前連續影格或 CV pixel certification。矛盾未釐清時維持 KEEP_REVIEW。
+camera still，不代表當前連續影格或 CV pixel certification；新的實際 geometry contradiction 才重開人工 gate。
 
 新增審查辨識補充：空間導覽第 2 步提供完整測試空間與相機定位，第 3 步保持 FRONT／REAR
 位置對照，第 5 步與 HR-02 問題區加入實際 source 空間中的示意人物及腳底／landmark 高度。
@@ -22,7 +42,7 @@ camera still，不代表當前連續影格或 CV pixel certification。矛盾未
 **HR-02 的 1.3597 m 是 projected landmark 到候選腳底的垂直偏移，不是地板到天花板。**
 目前 landmark Z=75.12885 BU，approved support Z=20.07885 BU；相減 55.05 BU，
 以已核准 0.0247 m/BU 換算。人物高 1.70 m、半徑 0.30 m、clearance 0.05 m；
-人物落點／語意仍待 HR-02，姿勢沿用 display-only 示意，沒有使用 GT。
+HR-02 語意已核准；落點／物理認證待自動檢查，姿勢仍為 display-only，未使用 GT。
 
 Source issue 圖例（原近看圖）：
 
@@ -134,9 +154,9 @@ uv run python human_review/build_motion_player.py \
 目前 renderer 含改進構圖與預讀 hash 檢查，但因本機空間不足未成功重繪；
 保存圖片的 producer 與未 render 的改進版在獨立 manifest 中分別記錄。
 
-先開 [dashboard](index.html)，依 **HR-01 → HR-02 → HR-03 → HR-04** 審查。
-每項只有 APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW；APPROVE 選一個完整 profile。
-填審查者並匯出 `decisions.json`；下一輪提供這份檔案即可，無需另整理人工證據。
+[dashboard](index.html) 顯示已記錄四項核准，不需要重填人工決策。
+既有四選項及完整 profiles 保留供 provenance 查核，selected profiles 已固定。
+審查者及 signed-off time 已記錄；下一輪直接驗證決策並續做自動認證。
 直接編輯 JSON 時，只改 metadata 的 reviewer / submitted_at 與 item 的
 decision / selected_option。其他內容改動會被拒絕。
 
@@ -147,16 +167,16 @@ WALKABLE、PORTAL context、semantic OBSTACLE、body cylinder / clearance 都有
 Office 的 solid obstacle components 尚無 APPROVED，不能把紅色 footprint 當正式 collider。
 Camera still 是 bounded evaluated source snapshot，不證明完整 scene occlusion。
 
-只請核准 **1F office 的精確 body guard**；不審整棟、1,422 WALL patches、73 HC WALL、
+核准只涵蓋 **1F office 的精確 body guard**；不擴大到整棟、1,422 WALL patches、73 HC WALL、
 8 portal conflicts 或 Stair A/B。左路徑違反已核准 clearance，自動排除。
 既有圖片中的 face7356 東側牆只作位置 context，位於本次 body guard 之外，沒有另一項決策。
 
 | ID | Human-readable location/problem | Blocks | Recommended | Decision |
 |---|---|---|---|---|
-| HR-01 | 一樓 office 行走帶：地板接縫與房間內部的物理語意 | Case 1/2/3 | APPROVE / LOCAL_SOURCE_SURFACE_ONLY | 未決定 |
-| HR-02 | 可見 landmark 如何對應核准地板上的人物落點 | Case 1/2/3 | APPROVE / SOURCE_BOUND_RIGID_LANDMARK_OFFSET | 未決定 |
-| HR-03 | Coverage 的正式 ADE 容差 | Case 1/2/3 | APPROVE / ADE_EPSILON_0_50_M | 未決定 |
-| HR-04 | 固定現有速度上限與長 GAP 的 timing 假設 | Case 1/2/3 | APPROVE / EXISTING_SPEED_WITH_SUPPORTED_DWELL | 未決定 |
+| HR-01 | 一樓 office 行走帶：地板接縫與房間內部的物理語意 | Case 1/2/3 | APPROVE / LOCAL_SOURCE_SURFACE_ONLY | APPROVE / LOCAL_SOURCE_SURFACE_ONLY |
+| HR-02 | 可見 landmark 如何對應核准地板上的人物落點 | Case 1/2/3 | APPROVE / SOURCE_BOUND_RIGID_LANDMARK_OFFSET | APPROVE / SOURCE_BOUND_RIGID_LANDMARK_OFFSET |
+| HR-03 | Coverage 的正式 ADE 容差 | Case 1/2/3 | APPROVE / ADE_EPSILON_0_50_M | APPROVE / ADE_EPSILON_0_50_M |
+| HR-04 | 固定現有速度上限與長 GAP 的 timing 假設 | Case 1/2/3 | APPROVE / EXISTING_SPEED_WITH_SUPPORTED_DWELL | APPROVE / EXISTING_SPEED_WITH_SUPPORTED_DWELL |
 
 ## Formal setting review
 
@@ -167,9 +187,9 @@ Camera still 是 bounded evaluated source snapshot，不證明完整 scene occlu
 |---|---|---|---|---|
 | Scale / body / clearance / contact | APPROVED；自動沿用 | approved scale + physical policy | 0.0247 m/BU；r0.30 / h1.70 / clearance0.05 m；contact0.001 m | 不重審已核准參數 |
 | K / sampling / alignment | 自動採用 | user K + public 0.2 s grid + MetricConfig | K1/2/3；5 Hz；完整 timestamp extent；piecewise linear | 既有支援且可自動推導 |
-| Projection / reference | HR-02 | source calibration + approved floor + public endpoint pixels | exact-time multiview → single-view fixed plane；exact marker→floor offset | HR-02 確認房間／marker 語意；fallback 沿用 protocol |
-| Coverage | HR-03 | protocol initial targets；現有 D=ADE | ADE < 0.50 m；另可選 <1.00 m | 研究者決定 error tolerance，跑前鎖定 |
-| Speed / timing | HR-04 | existing 32 BU/s + ReconstructionPolicy | 0.7904 m/s；slack1 s；uniform + supported departure dwell | 明確核准既有運動模型 |
+| Projection / reference | HUMAN_APPROVED；自動驗證待執行 | source calibration + approved floor + public pixels + HR-02 | exact-time multiview → single-view fixed plane；SOURCE_BOUND_RIGID_LANDMARK_OFFSET | 房間／camera／marker 語意已核准；fresh observations 必須重建 |
+| Coverage | HUMAN_APPROVED；formal config 待鎖定 | HR-03 explicit profile | D=ADE；ADE < 0.50 m | 人類已選既有容差，不以 accuracy 調 threshold |
+| Speed / timing | HUMAN_APPROVED；formal config 待鎖定 | HR-04 explicit profile | 0.7904 m/s；均速 + 已支援 departure dwell（建議） | 人類已核准既有運動模型 |
 | Solver precision / uncertainty | 自動沿用 | existing numeric contracts / sidecar | 不改 solver；sigma 未聲明則 uncertainty UNAVAILABLE / LOW_CONFIDENCE | 不能捏造 probability 或放寬 tolerance |
 | Case / baseline definitions | 沿用 protocol；實例待自動 proof | PHASE1_BENCHMARK_PROTOCOL + A/B/C masks | unique / branching / long-GAP；既有 baselines / ablations；Case4 DEFERRED | 不新增 benchmark 或調 threshold |
 
@@ -177,26 +197,29 @@ Camera still 是 bounded evaluated source snapshot，不證明完整 scene occlu
 
 ### Case 1
 
-- Human blocker 數：4。
-- IDs：HR-01 / HR-02 / HR-03 / HR-04（共用項目只列一次）。
-- 全部 APPROVE 後可立即 formal run：**否；先完成下列自動認證**。
+- 目前 Human blocker 數：0。
+- 目前 IDs：無。
+- 原 checkpoint 共用審查項目：HR-01 / HR-02 / HR-03 / HR-04。
+- 可立即 formal run：**否；先完成下列自動認證**。
 - bounded certificate PASS
 - 合法 visibility→GAP→visibility
 - school route inventory 的唯一主要可行 route proof
 
 ### Case 2
 
-- Human blocker 數：4。
-- IDs：HR-01 / HR-02 / HR-03 / HR-04（共用項目只列一次）。
-- 全部 APPROVE 後可立即 formal run：**否；先完成下列自動認證**。
+- 目前 Human blocker 數：0。
+- 目前 IDs：無。
+- 原 checkpoint 共用審查項目：HR-01 / HR-02 / HR-03 / HR-04。
+- 可立即 formal run：**否；先完成下列自動認證**。
 - bounded certificate PASS
 - 至少兩條真正可行且有 route diversity 的 school routes；目前 direct/right 平行 offset 不足以證明 branching
 
 ### Case 3
 
-- Human blocker 數：4。
-- IDs：HR-01 / HR-02 / HR-03 / HR-04（共用項目只列一次）。
-- 全部 APPROVE 後可立即 formal run：**否；先完成下列自動認證**。
+- 目前 Human blocker 數：0。
+- 目前 IDs：無。
+- 原 checkpoint 共用審查項目：HR-01 / HR-02 / HR-03 / HR-04。
+- 可立即 formal run：**否；先完成下列自動認證**。
 - bounded certificate PASS
 - 現有 protocol 長 GAP stress instance 的 speed/time feasibility、候選增長與 termination proof
 
@@ -209,7 +232,7 @@ Camera still 是 bounded evaluated source snapshot，不證明完整 scene occlu
 之後依 [resume_plan.json](resume_plan.json) 的十個階段續作，只有真正新的 geometry
 矛盾或必要 case scope / binding 超出本次核准範圍才重開人工 gate。
 
-## 固定格式的四項問題
+## 固定格式的四項問題（核准前凍結證據）
 
 ### HR-01 — 一樓 office 行走帶：地板接縫與房間內部的物理語意
 
@@ -391,19 +414,19 @@ relevant_frames:
 
 - Front frame 20 / t=4.0 s → 全視角 GAP → Rear frame 45 / t=9.0 s；10 秒 preview 只顯示 public observations / inferred candidates。
 
-Current machine conclusion:
+Current machine conclusion:（核准前歷史結論，不是目前人工未決事項）
 
 已確定：
 
 - 兩個 source faces 1975 / 2398 精確為零面積；floor 高度、body guard 與 support clearance 可自動計算。
 - source atlas / mesh hashes 已固定；沒有缺省擴充整棟 authority。
 
-尚不能確定：
+核准前尚不能確定：
 
 - 請確認這條接縫不代表實際佔用體積，且這個 bounded room interior 是由 source boundary surfaces 表示的自由空間。
 - 數值上的零面積不能自行代替 physical semantics；APPROVE 不會自動產生 PASS。
 
-Recommended decision:
+Recommended decision:（核准前建議）
 
 **APPROVE / LOCAL_SOURCE_SURFACE_ONLY**。
 
@@ -414,7 +437,7 @@ APPROVE 具體選項：
 - `LOCAL_SOURCE_SURFACE_ONLY` — 局部 boundary surfaces；零面積接縫不佔體積（建議）。只聲明 body guard 內 group_0/component-00000000 的 interior 不作實心 collider，與指定兩個接縫沒有 solid ownership。
 - `EXACT_DERIVED_SURFACE_REPAIR` — 相同局部語意；另允許精確接縫的 derived repair。只允許在衍生 surface context 中排除這兩個 exact-zero-area faces；原 .blend 與非零面積 geometry 保持原樣。
 
-Human choices：**APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW**。
+已記錄人類決策：**APPROVE / LOCAL_SOURCE_SURFACE_ONLY**。
 
 ### HR-02 — 可見 landmark 如何對應核准地板上的人物落點
 
@@ -531,19 +554,19 @@ relevant_frames:
 ]
 ```
 
-Current machine conclusion:
+Current machine conclusion:（核准前歷史結論，不是目前人工未決事項）
 
 已確定：
 
 - 固定 calibration、offset、timestamp 與單視角 availability 都已算出。
 - 不用 GT 選 pair 或 hypothesis；multiview unavailable 不等於 inference failure。
 
-尚不能確定：
+核准前尚不能確定：
 
 - 請核准所觀測 marker 的正式語意，以及這兩個 camera 對 bounded office floor 的綁定與 fallback。
 - 新 dataset 的 FOV / occlusion / scope containment 仍須自動驗證。
 
-Recommended decision:
+Recommended decision:（核准前建議）
 
 **APPROVE / SOURCE_BOUND_RIGID_LANDMARK_OFFSET**。
 
@@ -554,7 +577,7 @@ APPROVE 具體選項：
 - `SOURCE_BOUND_RIGID_LANDMARK_OFFSET` — 保留固定 marker；精確扣 Z offset 到地板（建議）。保留 XY 與 calibration；inference 的位置語意統一為 FLOOR_CONTACT_POINT；single-view fallback 保留 method / confidence / uncertainty。
 - `FLOOR_CONTACT_MARKER` — 改用可見足點 marker；offset=0，重新 export。足點不可見就保留 GAP；不得從其他 marker 或 GT 偽造觀测。
 
-Human choices：**APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW**。
+已記錄人類決策：**APPROVE / SOURCE_BOUND_RIGID_LANDMARK_OFFSET**。
 
 ### HR-03 — Coverage 的正式 ADE 容差
 
@@ -600,17 +623,17 @@ relevant_frames:
 
 - N/A；不需要視覺或 GT 來決定研究容差。
 
-Current machine conclusion:
+Current machine conclusion:（核准前歷史結論，不是目前人工未決事項）
 
 已確定：
 
 - 現有唯一支援 D=ADE、3D Euclidean arithmetic mean、strictly < epsilon；K=1/2/3。
 
-尚不能確定：
+核准前尚不能確定：
 
 - 研究者接受的正式 Coverage 容差；不能從 accuracy 結果反推。
 
-Recommended decision:
+Recommended decision:（核准前建議）
 
 **APPROVE / ADE_EPSILON_0_50_M**。
 
@@ -621,7 +644,7 @@ APPROVE 具體選項：
 - `ADE_EPSILON_0_50_M` — 全體 ADE < 0.50 m（建議）。
 - `ADE_EPSILON_1_00_M` — 全體 ADE < 1.00 m。
 
-Human choices：**APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW**。
+已記錄人類決策：**APPROVE / ADE_EPSILON_0_50_M**。
 
 ### HR-04 — 固定現有速度上限與長 GAP 的 timing 假設
 
@@ -702,19 +725,19 @@ relevant_frames:
 
 - Office t=4.0→9.0 s GAP endpoint evidence；正式 Case3 必須另由 protocol stress inventory 固定並 fresh export。
 
-Current machine conclusion:
+Current machine conclusion:（核准前歷史結論，不是目前人工未決事項）
 
 已確定：
 
 - 現有速度上限、scale 換算、slack 與 timing supported variants 已確認。
 - 5 Hz 可由公開 timestamps 推導，直接沿用，不需人工算。
 
-尚不能確定：
+核准前尚不能確定：
 
 - 是否正式採用這個 research speed ceiling，以及是否保留 existing departure dwell alternative。
 - 正式 Case3 stress instance 必須通過凍結前自動 timing feasibility / termination proof。
 
-Recommended decision:
+Recommended decision:（核准前建議）
 
 **APPROVE / EXISTING_SPEED_WITH_SUPPORTED_DWELL**。
 
@@ -725,7 +748,7 @@ APPROVE 具體選項：
 - `EXISTING_SPEED_WITH_SUPPORTED_DWELL` — 0.7904 m/s；均速 + 已支援 departure dwell（建議）。
 - `EXISTING_SPEED_UNIFORM_ONLY` — 0.7904 m/s；只保留均速 timing。
 
-Human choices：**APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW**。
+已記錄人類決策：**APPROVE / EXISTING_SPEED_WITH_SUPPORTED_DWELL**。
 
 ## Provenance / reproduction
 
@@ -734,13 +757,13 @@ Human choices：**APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW**。
 - Immutable question payload SHA-256：`e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463`。
 - [manifest.json](manifest.json)：本 package hashes；[frames/visual_manifest.json](frames/visual_manifest.json)：source/frames hashes。
 - [geometry_evidence.json](geometry_evidence.json)、[settings_evidence.json](settings_evidence.json)：source-bound measurements / calibration / decisions basis。
-- 本輪沒有 formal Cases、GT-assisted decision、核准、main merge 或 freeze tag。
+- 本輪記錄人類核准；未 apply／產生 certificate／執行 formal Cases，未使用 GT，未 merge 或 freeze。
 - [history/blocked_checkpoint](history/blocked_checkpoint/) 保存舊 generic gate；舊 build_review.py 不再是本 dashboard 的 builder。
 
-重建 pending 審查文字 / dashboard：
+重建目前審查狀態文字 / dashboard：
 
 ```sh
-uv run python human_review/assemble_review.py
+# 已填決策時不要重新 assemble；保留 immutable questions/profile。
 uv run python human_review/write_review_docs.py
 uv run python human_review/build_dashboard.py --decisions human_review/decisions.json
 ```

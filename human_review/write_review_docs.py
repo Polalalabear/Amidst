@@ -1,10 +1,12 @@
-"""Render the four fixed pending questions and honest automatic continuation gates."""
+"""Render validated human-review state and honest automatic continuation gates."""
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
 from typing import Any
+
+from apply_decisions import validate_decisions
 
 HERE = Path(__file__).resolve().parent
 
@@ -27,10 +29,30 @@ def append_bullets(parts: list[str], value: Any) -> None:
 
 def main() -> None:
     document = json.loads((HERE / "decisions.json").read_text())
+    template = json.loads((HERE / "review_template.json").read_text())
+    state = validate_decisions(document, template)
+    ready = state["status"] == "EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION"
+    unresolved = set(state["pending"]) | {row["id"] for row in state["blocking"]}
+    approved = [item for item in document["items"] if item["decision"] == "APPROVE"]
+    selected = {
+        item["id"]: next(
+            profile
+            for profile in item["approve_options"]
+            if profile["id"] == item["selected_option"]
+        )
+        for item in approved
+    }
+    current_status = (
+        f"狀態：**{state['status']}**；{len(approved)} 項人類核准已記錄，"
+        "人工未決項目 0；尚未 apply、產生 certificate 或執行 formal Case。"
+        if ready
+        else f"狀態：**{state['status']}**；人工未決／阻擋項目 {len(unresolved)}。"
+        "推薦值不等於核准。"
+    )
     parts = [
         "# Phase 1 最小人工審查",
         "",
-        "狀態：**HUMAN_REVIEW_PENDING**；4 項決策全部未選擇。推薦值不等於核准。",
+        current_status,
         "",
         "## HR02 相機／落點核對補充",
         "",
@@ -190,9 +212,12 @@ def main() -> None:
         "|---|---|---|---|---|",
     ]
     for item in document["items"]:
+        decision = item["decision"] or "未決定"
+        if item["selected_option"] is not None:
+            decision += " / " + item["selected_option"]
         parts.append(
             f"| {item['id']} | {item['title']} | Case 1/2/3 | "
-            f"APPROVE / {item['recommended_option']} | 未決定 |"
+            f"APPROVE / {item['recommended_option']} | {decision} |"
         )
     parts.extend(
         [
@@ -245,13 +270,15 @@ def main() -> None:
         ]
     )
     for number, row in document["metadata"]["case_blocker_map"].items():
+        ids = [item_id for item_id in row["blocker_ids"] if item_id in unresolved]
         parts.extend(
             [
                 f"### Case {number}",
                 "",
-                "- Human blocker 數：4。",
-                "- IDs：HR-01 / HR-02 / HR-03 / HR-04（共用項目只列一次）。",
-                "- 全部 APPROVE 後可立即 formal run：**否；先完成下列自動認證**。",
+                f"- 目前 Human blocker 數：{len(ids)}。",
+                "- 目前 IDs：" + (" / ".join(ids) if ids else "無") + "。",
+                "- 原 checkpoint 共用審查項目：" + " / ".join(row["blocker_ids"]) + "。",
+                "- 可立即 formal run：**否；先完成下列自動認證**。",
             ]
         )
         append_bullets(parts, row["automatic_exit_checks"])
@@ -266,7 +293,7 @@ def main() -> None:
             "之後依 [resume_plan.json](resume_plan.json) 的十個階段續作，只有真正新的 geometry",
             "矛盾或必要 case scope / binding 超出本次核准範圍才重開人工 gate。",
             "",
-            "## 固定格式的四項問題",
+            "## 固定格式的四項問題" + ("（核准前凍結證據）" if ready else ""),
             "",
         ]
     )
@@ -307,13 +334,21 @@ def main() -> None:
                 )
             else:
                 append_bullets(parts, value)
-        parts.extend(["Current machine conclusion:", "", "已確定：", ""])
+        parts.extend(
+            [
+                "Current machine conclusion:"
+                + ("（核准前歷史結論，不是目前人工未決事項）" if ready else ""),
+                "",
+                "已確定：",
+                "",
+            ]
+        )
         append_bullets(parts, item["machine_conclusion"]["known"])
-        parts.extend(["尚不能確定：", ""])
+        parts.extend(["核准前尚不能確定：" if ready else "尚不能確定：", ""])
         append_bullets(parts, item["machine_conclusion"]["unknown"])
         parts.extend(
             [
-                "Recommended decision:",
+                "Recommended decision:" + ("（核准前建議）" if ready else ""),
                 "",
                 f"**APPROVE / {item['recommended_option']}**。",
                 "",
@@ -325,7 +360,18 @@ def main() -> None:
         )
         for option in item["approve_options"]:
             parts.append(f"- `{option['id']}` — {option['label']}。{option.get('why', '')}")
-        parts.extend(["", "Human choices：**APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW**。", ""])
+        if ready:
+            parts.extend(
+                [
+                    "",
+                    f"已記錄人類決策：**{item['decision']} / {item['selected_option']}**。",
+                    "",
+                ]
+            )
+        else:
+            parts.extend(
+                ["", "Human choices：**APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW**。", ""]
+            )
     parts.extend(
         [
             "## Provenance / reproduction",
@@ -348,16 +394,21 @@ def main() -> None:
                 "json](settings_evidence.json)：source-bound measurements / calibration "
                 "/ decisions basis。"
             ),
-            "- 本輪沒有 formal Cases、GT-assisted decision、核准、main merge 或 freeze tag。",
+            "- 本輪記錄人類核准；未 apply／產生 certificate／執行 formal Cases，"
+            "未使用 GT，未 merge 或 freeze。"
+            if ready
+            else "- 本輪沒有 formal Cases、GT-assisted decision、核准、main merge 或 freeze tag。",
             (
                 "- [history/blocked_checkpoint](history/blocked_checkpoint/) 保存舊 generi"
                 "c gate；舊 build_review.py 不再是本 dashboard 的 builder。"
             ),
             "",
-            "重建 pending 審查文字 / dashboard：",
+            "重建目前審查狀態文字 / dashboard：",
             "",
             "```sh",
-            "uv run python human_review/assemble_review.py",
+            "# 已填決策時不要重新 assemble；保留 immutable questions/profile。"
+            if ready
+            else "uv run python human_review/assemble_review.py",
             "uv run python human_review/write_review_docs.py",
             "uv run python human_review/build_dashboard.py --decisions human_review/decisions.json",
             "```",
@@ -365,6 +416,106 @@ def main() -> None:
             "assemble_review 會拒絕覆寫任何已填決策。",
         ]
     )
+    if ready:
+        summary = [
+            "## 已記錄的人類核准",
+            "",
+            "[decisions.json](decisions.json) 保存四項 APPROVE 與完整 selected profile；",
+            "[approval_record.json](approval_record.json) 保存明確授權及範圍，"
+            "未將口頭核准當成已執行物理認證。",
+            "",
+            "| ID | Decision | Selected profile |",
+            "|---|---|---|",
+        ]
+        summary.extend(
+            f"| {item['id']} | APPROVE | `{item['selected_option']}` |" for item in approved
+        )
+        summary.extend(
+            [
+                "",
+                "HR-01 的局部 source-surface 語意、HR-02 的目標房間／兩台 source cameras 與",
+                "landmark→floor 語意已依 selected profile 核准；"
+                "尚未將 profile apply 到 inference。",
+                "physical certificate **NOT_RUN**，fresh observations 與自動 scope／visibility "
+                "檢查仍必須完成。",
+                "**human_decisions_recorded=true；human_decisions_applied=false；formal_execution_enabled=false。**",
+                "",
+                "下列舊影像保留產生時的待審標籤；固定 questions、machine conclusion 與",
+                "historical evidence 不因核准而改寫，也不再要求第二輪人工資料整理。",
+                "",
+            ]
+        )
+        parts[4:4] = summary
+        replacements = dict(
+            [
+                (
+                    "**1.35973495 m 是待核准 landmark→floor 偏移，不是地板到天花板高度。**",
+                    "**1.35973495 m 是歷史 landmark→floor 偏移；HR-02 selected profile 已核准，"
+                    "不是地板到天花板高度；自動驗證仍待執行。**",
+                ),
+                (
+                    "人工只確認目標房間／鏡頭是否正確，以及追蹤點是固定身體 landmark 還是腳底。",
+                    "人類已確認目標房間／鏡頭綁定，以及 selected profile 的追蹤點語意。",
+                ),
+                (
+                    "fallback 沿用既有 protocol，不新增研究設定問題；"
+                    "原四項 decision 全部保持 null。",
+                    "fallback 沿用既有 protocol；四項 APPROVE 已記錄，不新增研究設定問題。",
+                ),
+                (
+                    "camera still，不代表當前連續影格或 CV pixel certification。"
+                    "矛盾未釐清時維持 KEEP_REVIEW。",
+                    "camera still，不代表當前連續影格或 CV pixel certification；"
+                    "新的實際 geometry contradiction 才重開人工 gate。",
+                ),
+                (
+                    "人物落點／語意仍待 HR-02，姿勢沿用 display-only 示意，沒有使用 GT。",
+                    "HR-02 語意已核准；落點／物理認證待自動檢查，"
+                    "姿勢仍為 display-only，未使用 GT。",
+                ),
+                (
+                    "先開 [dashboard](index.html)，依 **HR-01 → HR-02 → HR-03 → HR-04** 審查。",
+                    "[dashboard](index.html) 顯示已記錄四項核准，不需要重填人工決策。",
+                ),
+                (
+                    "每項只有 APPROVE / REJECT / FIX_GEOMETRY / KEEP_REVIEW；"
+                    "APPROVE 選一個完整 profile。",
+                    "既有四選項及完整 profiles 保留供 provenance 查核，selected profiles 已固定。",
+                ),
+                (
+                    "填審查者並匯出 `decisions.json`；下一輪提供這份檔案即可，無需另整理人工證據。",
+                    "審查者及 signed-off time 已記錄；下一輪直接驗證決策並續做自動認證。",
+                ),
+                (
+                    "只請核准 **1F office 的精確 body guard**；"
+                    "不審整棟、1,422 WALL patches、73 HC WALL、",
+                    "核准只涵蓋 **1F office 的精確 body guard**；不擴大到整棟、"
+                    "1,422 WALL patches、73 HC WALL、",
+                ),
+            ]
+        )
+        parts = [replacements.get(part, part) for part in parts]
+        for index, part in enumerate(parts):
+            if part.startswith("| Projection / reference |"):
+                parts[index] = (
+                    "| Projection / reference | HUMAN_APPROVED；自動驗證待執行 | "
+                    "source calibration "
+                    "+ approved floor + public pixels + HR-02 | exact-time multiview → single-view "
+                    f"fixed plane；{selected['HR-02']['id']} | "
+                    "房間／camera／marker 語意已核准；fresh observations 必須重建 |"
+                )
+            elif part.startswith("| Coverage |"):
+                parts[index] = (
+                    "| Coverage | HUMAN_APPROVED；formal config 待鎖定 | HR-03 explicit profile | "
+                    f"D=ADE；ADE < {selected['HR-03']['payload']['epsilon_m']:.2f} m | "
+                    "人類已選既有容差，不以 accuracy 調 threshold |"
+                )
+            elif part.startswith("| Speed / timing |"):
+                parts[index] = (
+                    "| Speed / timing | HUMAN_APPROVED；formal config 待鎖定 | "
+                    "HR-04 explicit profile | "
+                    f"{selected['HR-04']['label']} | 人類已核准既有運動模型 |"
+                )
     (HERE / "README.md").write_text("\n".join(parts) + "\n")
 
 

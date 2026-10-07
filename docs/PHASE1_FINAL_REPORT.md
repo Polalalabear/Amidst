@@ -1,5 +1,51 @@
 # Phase 1 finalization report / Phase 1 收尾報告
 
+## 2026-10-07 — Human approvals recorded / 人工核准已記錄
+
+Current human-review state: **EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION**.
+四項人類 APPROVE 已保存；Case 1–3 的人工未決／blocking IDs 均為空。此狀態只表示
+人工決策完成，**human_decisions_recorded=true、human_decisions_applied=false**。
+Physical certificate **NOT_RUN**；formal Cases 1–3、Baseline A/B/C、正式 GT-isolation／
+determinism／fresh rerun 仍 **NOT_RUN**。Phase 1 exit gate 尚未通過，沒有 freeze tag。
+
+| Item | Approved profile | Bounded meaning |
+| --- | --- | --- |
+| HR-01 | `LOCAL_SOURCE_SURFACE_ONLY` | 限定 body guard 的 source-surface 語意；指定零面積接縫不占實心體積，不核准整個 component |
+| HR-02 | `SOURCE_BOUND_RIGID_LANDMARK_OFFSET` | 目標房間／兩台 source cameras 綁定與固定剛性 landmark 語意；按 context plane − approved support 精確換算 footpoint |
+| HR-03 | `ADE_EPSILON_0_50_M` | Coverage D=ADE，嚴格 `< 0.50 m`；formal config 尚待鎖定 |
+| HR-04 | `EXISTING_SPEED_WITH_SUPPORTED_DWELL` | 0.7904 m/s，既有 timing slack 與已支援的 departure dwell；不發明新 timing contract |
+
+[Approval record](../human_review/approval_record.json)、
+[approval summary](../human_review/APPROVALS.md) 與
+[read-only validation](../human_review/approval_validation.json) 保存授權、selected profiles
+及 source-bound 核對結果。原 immutable question payload
+`e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463` 不變；
+29 locked inputs、57 original review frames、checkpoint ancestry 與 source hashes 驗證通過。
+這不是 authority application 或 physical certificate PASS。
+
+接續工作由 agent 負責：apply decisions、重算 bounded certificates、固定 formal configs、
+建立 fresh observations 與獨立 Case 1 uniqueness／Case 2 route diversity／Case 3 timing
+inventory，之後才跑正式 dataset、A/B/C、reports、Rerun 與 fresh exit gates。
+舊 diagnostic streams／parallel offset routes 不因本次 APPROVE 變成 FORMAL。
+只在新的 geometry contradiction、超出已核准 scope 或必要新 landmark 語意時重開人工 gate；
+不追加整棟 WALL／portal／stair 審查。Source `.blend`、architectural scale、Phase 2 freeze
+與既有 benchmark/projection policy 未改。
+
+本輪批准記錄的驗證：**177 review tests**、repo Ruff、strict mypy **4 review tools** 通過；
+沒有重跑下方歷史 full-suite／formal benchmark。完整持久副本已保存於 ignored
+`data/pilot/phase1_finalization_human_review_20261007/approvals_recorded/human_review/`，
+272 manifest artifacts／130,829,356 bytes、273 complete copy files 逐檔核對 PASS。
+Package manifest SHA-256：
+`923eb5f94cbe7bd1e0b45d5185b8189c07f62345c4c067d0fefc148e71e34187`。
+188 個既有 raw media hashes 保留；先前 `hr02_camera_audit` 副本未覆寫。
+
+All four explicit approvals are recorded and immutable inputs validate. There are zero
+pending human blockers, but no decisions have been applied and no physical certificate or
+formal case has run. Automatic certification, fresh observations, case inventories and the
+formal exit gates remain required. Historical diagnostics below retain their original status.
+
+## Historical blocked diagnostic checkpoint — 2026-10-06
+
 Status date: **2026-10-06**. Final state: **PHASE1_FINALIZATION_BLOCKED**.
 This is a reproducible blocked checkpoint, not a Phase 1 freeze or formal research result.
 

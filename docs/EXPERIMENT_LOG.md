@@ -439,3 +439,42 @@ layout geometry、獨立代表stills、完整播放至49停止，HR02defaultaudi
 artifacts仍逐檔hash相符。Package manifest SHA256：
 `b58ab23c76ad19e9997a337f4547d59c296e869c4e0da1369034a96277facdeb`。
 同一8768 loopback網址指向新副本，copy_verification.json保存核對結果。
+
+## 2026-10-07 — Explicit approvals recorded; automatic certification not run
+
+Current human gate：**EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION**。
+人類已確認房間／兩台 source cameras 綁定，接受剛性 landmark 建議，並核准其餘三項。
+保存四項 APPROVE 與原先定義的 profiles：HR-01 `LOCAL_SOURCE_SURFACE_ONLY`、HR-02
+`SOURCE_BOUND_RIGID_LANDMARK_OFFSET`、HR-03 `ADE_EPSILON_0_50_M`、HR-04
+`EXISTING_SPEED_WITH_SUPPORTED_DWELL`。人工 pending／blocking 為空，Case 1–3 共用
+人工 blockers 各 0；原 checkpoint 四項 blocker map 保留為歷史，另產生目前空的 IDs。
+
+[approval_record.json](../human_review/approval_record.json) 保存直接人類授權與限定 scope；
+[APPROVALS.md](../human_review/APPROVALS.md) 區分 semantic approval 和自動認證。
+[approval_validation.json](../human_review/approval_validation.json) 的唯讀核對通過：
+29 locked inputs、57 original frames、checkpoint ancestry、source hash 與 immutable
+`e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463` payload 保留。
+未使用 GT／recipe／evaluation 幫助決策；未改 source、物理 config、研究門檻或原問題內容。
+
+README／dashboard／package 狀態反映實際四項核准；Coverage 選定 **ADE < 0.50 m**、
+speed/timing 選定 **0.7904 m/s + supported departure dwell**。旧圖與機器結論保留為
+核准前證據，不再把目前人工狀態標成 null／KEEP_REVIEW。
+**human_decisions_recorded=true；human_decisions_applied=false；certificate NOT_RUN；
+formal execution disabled。** 沒有 apply、certificate generation、formal Case 1–3、
+Baseline A/B/C、formal dataset、freeze tag 或 main merge。
+
+177 review tests、repo Ruff、strict mypy 4 review tools 通過。這是批准記錄／介面的驗證，
+不替代 formal exit gates。下一階段由 agent 完成 bounded certificate、formal adapters、
+fresh observation 與 case inventory；原 diagnostic routes 不會直接變正式 Cases。
+先前 blocked diagnostic／pending review checkpoint、raw previews 與獨立副本全部保留。
+新版完整持久副本已存於 canonical checkout ignored
+`data/pilot/phase1_finalization_human_review_20261007/approvals_recorded/human_review/`；
+272 manifest artifacts／130,829,356 bytes、273 complete copy files 全部核對 PASS。
+Package manifest SHA-256：
+`923eb5f94cbe7bd1e0b45d5185b8189c07f62345c4c067d0fefc148e71e34187`。
+188 個 prior raw media hashes 未改；四個 APPROVE 與 immutable/source hashes 在副本一致。
+8768 loopback server 已改指 approved copy，HTTP 核對與 native UI 均通過。
+Native dashboard 已核對 4/4 HUMAN_APPROVED、四個 APPROVE/profile rows、Total 與 Case 1–3
+human blockers 均 0，active iframe 仍為 1。實際原生截圖
+`human_review/frames/dashboard_context/approvals_recorded.jpg` 為 84,378 bytes，分類為
+REGENERABLE；先前 267-artifact／130,717,159-byte preapproval package 保留不變。

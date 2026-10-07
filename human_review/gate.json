@@ -1,10 +1,26 @@
 {
   "schema_version": "phase1-minimal-human-review-gate-v1",
-  "status": "HUMAN_REVIEW_PENDING",
+  "status": "EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION",
+  "human_decision_count": 4,
+  "pending": [],
+  "blocking": [],
+  "unresolved_human_decision_count": 0,
+  "human_decisions_recorded": true,
+  "human_decisions_applied": false,
+  "formal_execution_enabled": false,
+  "physical_certificate_status": "NOT_RUN",
+  "case_pending_human_blocker_ids": {
+    "1": [],
+    "2": [],
+    "3": []
+  },
+  "approval_record": {
+    "path": "approval_record.json",
+    "sha256": "c33e8d89bfcfd95c9b541902e3ab06365eea5761dc3ba45bece42eca1a7aa109"
+  },
   "checkpoint_sha": "85f5e6b055e75d286c1519e6c5ba2f2efc416347",
   "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
   "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
-  "human_decision_count": 4,
   "geometry_decisions": [
     "HR-01"
   ],
@@ -60,7 +76,5 @@
       ]
     }
   },
-  "formal_execution_enabled": false,
-  "human_decisions_applied": false,
   "source_geometry_modified": false
 }

@@ -21,8 +21,9 @@ ROOT = Path(__file__).resolve().parents[2]
 REVIEW = ROOT / "human_review"
 
 
-@pytest.fixture
-def dashboard(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[str, dict, Any]:
+def build_dashboard_fixture(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, decisions: Path
+) -> tuple[str, dict, Any]:
     spec = importlib.util.spec_from_file_location(
         "dashboard_builder", REVIEW / "build_dashboard.py"
     )
@@ -44,6 +45,8 @@ def dashboard(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[str, dic
                     "argv",
                     [
                         "build_dashboard",
+                        "--decisions",
+                        str(decisions),
                         "--output",
                         str(output),
                         "--clarity-manifest",
@@ -53,13 +56,27 @@ def dashboard(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[str, dic
                 module.main()
                 return (
                     output.read_text(),
-                    json.loads((REVIEW / "decisions.json").read_text()),
+                    json.loads(decisions.read_text()),
                     module,
                 )
     output = tmp_path / "index.html"
-    monkeypatch.setattr(sys, "argv", ["build_dashboard", "--output", str(output)])
+    monkeypatch.setattr(
+        sys, "argv", ["build_dashboard", "--decisions", str(decisions), "--output", str(output)]
+    )
     module.main()
-    return output.read_text(), json.loads((REVIEW / "decisions.json").read_text()), module
+    return output.read_text(), json.loads(decisions.read_text()), module
+
+
+@pytest.fixture
+def dashboard(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[str, dict, Any]:
+    """Legacy editing behavior uses the immutable, originally pending template."""
+    return build_dashboard_fixture(tmp_path, monkeypatch, REVIEW / "review_template.json")
+
+
+@pytest.fixture
+def approved_dashboard(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[str, dict, Any]:
+    """Completion behavior uses the actual chat-approved canonical decisions."""
+    return build_dashboard_fixture(tmp_path, monkeypatch, REVIEW / "decisions.json")
 
 
 # This model executes the actual dashboard JavaScript with synthetic DOM and
@@ -131,12 +148,15 @@ for(const match of input.html.matchAll(/<([\w-]+)\b[^>]*\bid="([^"]+)"[^>]*>/g))
 for(const match of input.html.matchAll(
     /<script type="application\/json" id="([^"]+)">([\s\S]*?)<\/script>/g)){
   document.getElementById(match[1]).textContent=match[2];}
-const stored=new Map(),downloads=[];
+const stored=new Map(Object.entries(input.initial_storage||{})),downloads=[];
+const storageReads=[],storageWrites=[],storageDeletes=[];
 const context={document,structuredClone,console,Blob,Date,setTimeout:fn=>fn(),
-  localStorage:{getItem:key=>stored.get(key)??null,setItem:(key,value)=>stored.set(key,value)},
+  localStorage:{getItem:key=>{storageReads.push(key);return stored.get(key)??null;},
+    setItem:(key,value)=>{storageWrites.push(key);stored.set(key,value);},
+    removeItem:key=>{storageDeletes.push(key);stored.delete(key);}},
   URL:{createObjectURL:blob=>{downloads.push(blob);return 'blob:synthetic-download';},
     revokeObjectURL(){}},
-  navigator:{},stored,downloads};
+  navigator:{},stored,downloads,storageReads,storageWrites,storageDeletes};
 context.window=context;
 vm.createContext(context);
 for(const match of input.html.matchAll(/<script>([\s\S]*?)<\/script>/g)){
@@ -146,13 +166,22 @@ Promise.resolve(vm.runInContext(input.action,context)).then(result=>{
 """
 
 
-def browser_model(html: str, embedded: dict, action: str) -> Any:
+def browser_model(
+    html: str, embedded: dict, action: str, *, initial_storage: dict[str, str] | None = None
+) -> Any:
     node = shutil.which("node")
     if node is None:
         pytest.skip("dashboard behavior checks require Node.js; no real browser storage is used")
     result = subprocess.run(
         [node, "-e", DOM_MODEL],
-        input=json.dumps({"html": html, "embedded": embedded, "action": action}),
+        input=json.dumps(
+            {
+                "html": html,
+                "embedded": embedded,
+                "action": action,
+                "initial_storage": initial_storage,
+            }
+        ),
         capture_output=True,
         text=True,
         check=False,
@@ -720,3 +749,170 @@ def test_hr02_evidence_recommendation_changes_display_only_and_keeps_original_pr
     assert result["documentUnchanged"] is result["questionsUnchanged"] is True
     assert result["draftWrites"] == 0
     assert result["decisions"] == [item["decision"] for item in document["items"]]
+
+
+def review_storage_key(document: dict) -> str:
+    return ".".join(
+        (
+            "amidst.phase1.review",
+            document["metadata"]["checkpoint_sha"],
+            document["metadata"]["source_sha256"],
+            document["review_payload_sha256"],
+        )
+    )
+
+
+def html_with_review_document(html: str, document: dict) -> str:
+    encoded = json.dumps(document, ensure_ascii=False).replace("</", "<\\/")
+    return re.sub(
+        r'(<script type="application/json" id="review-data">).*?(</script>)',
+        lambda match: match[1] + encoded + match[2],
+        html,
+        flags=re.S,
+    )
+
+
+@pytest.mark.parametrize("cached_state", ["pending", "rejected"])
+def test_chat_approved_source_cannot_be_reopened_by_stale_cache(
+    approved_dashboard: tuple[str, dict, Any], cached_state: str
+) -> None:
+    html, document, module = approved_dashboard
+    template = json.loads((REVIEW / "review_template.json").read_text())
+    assert module.review_identity(document) == module.review_identity(template)
+    assert document["review_payload_sha256"] == template["review_payload_sha256"]
+    assert all(item["decision"] == "APPROVE" for item in document["items"])
+    assert document["metadata"]["reviewer"].strip()
+    assert document["metadata"]["submitted_at"] is not None
+    stale = copy.deepcopy(template)
+    stale["metadata"].update(reviewer="SYNTHETIC_OLD_CACHE", submitted_at=None)
+    if cached_state == "rejected":
+        stale["metadata"]["submitted_at"] = "2026-10-01T00:00:00+08:00"
+        for item in stale["items"]:
+            item.update(decision="REJECT", selected_option=None)
+    key = review_storage_key(document)
+    cache_value = json.dumps(
+        {"review_payload_hash": document["review_payload_sha256"], "document": stale}
+    )
+    result = browser_model(
+        html,
+        document,
+        r"""(()=>{
+          const current=documentState.items.find(i=>i.id==='HR-02');
+          const recommendation=evidenceRecommendation(current);
+          const row=document.getElementById('decision-table').children
+            .find(row=>row.children[0].textContent==='HR-02');
+          const before=canonical(documentState);openItem('HR-02');
+          const section=document.getElementById('item-content').querySelectorAll('section')
+            .find(section=>section.children[0]?.textContent==='Recommended decision:');
+          const primaryRecommendation=section.textContent;
+          const activeChoice=document.getElementById('decision-select').value;closeItem();
+          return {completed:completedEmbeddedReview(),
+            decisions:documentState.items.map(i=>i.decision),
+            profiles:documentState.items.map(i=>i.selected_option),
+            counts:document.getElementById('counts').children.map(c=>Number(c.children[0].textContent)),
+            status:document.getElementById('review-status').textContent,
+            recommendation:recommendation.decision,reviewed:recommendation.reviewed,
+            recommendationProfile:recommendation.option.id,
+            tableRecommendation:row.children[3].textContent,primaryRecommendation,activeChoice,
+            unchanged:before===canonical(documentState),
+            questionIdentity:canonical(reviewIdentity(documentState))===canonical(reviewIdentity(embedded)),
+            cache:stored.get(storageKey),reads:storageReads.length,writes:storageWrites.length,
+            deletes:storageDeletes.length};
+        })()""",
+        initial_storage={key: cache_value},
+    )
+    assert result["completed"] is True
+    assert result["decisions"] == ["APPROVE"] * 4
+    assert result["profiles"] == [item["selected_option"] for item in document["items"]]
+    assert result["counts"] == [0, 0, 0, 0, 1, 1, 2]
+    assert "4/4 HUMAN_APPROVED" in result["status"]
+    assert "AUTOMATIC_CERTIFICATION_PENDING" in result["status"]
+    assert result["recommendation"] == result["activeChoice"] == "APPROVE"
+    assert result["reviewed"] is True
+    assert result["recommendationProfile"] == "SOURCE_BOUND_RIGID_LANDMARK_OFFSET"
+    assert "KEEP_REVIEW" not in result["tableRecommendation"]
+    assert "KEEP_REVIEW" not in result["primaryRecommendation"]
+    assert result["unchanged"] is result["questionIdentity"] is True
+    assert result["cache"] == cache_value
+    assert result["reads"] == result["writes"] == result["deletes"] == 0
+
+
+@pytest.mark.parametrize("source_state", ["pending", "choices_without_submission"])
+def test_incomplete_sources_still_restore_valid_pending_drafts(
+    dashboard: tuple[str, dict, Any], source_state: str
+) -> None:
+    html, template, _ = dashboard
+    source = copy.deepcopy(template)
+    if source_state == "choices_without_submission":
+        source["metadata"]["reviewer"] = "SYNTHETIC_UNSUBMITTED_SOURCE"
+        for item in source["items"]:
+            item.update(decision="APPROVE", selected_option=item["recommended_option"])
+    source["metadata"]["submitted_at"] = None
+    html = html_with_review_document(html, source)
+    draft = copy.deepcopy(template)
+    draft["metadata"].update(reviewer="SYNTHETIC_DRAFT", submitted_at=None)
+    draft["items"][0].update(
+        decision="APPROVE", selected_option=draft["items"][0]["recommended_option"]
+    )
+    draft["items"][1].update(decision="KEEP_REVIEW", selected_option=None)
+    key = review_storage_key(source)
+    cache_value = json.dumps(
+        {"review_payload_hash": source["review_payload_sha256"], "document": draft}
+    )
+    result = browser_model(
+        html,
+        source,
+        r"""(()=>({completed:completedEmbeddedReview(),
+          document:documentState,
+          counts:document.getElementById('counts').children.map(c=>Number(c.children[0].textContent)),
+          reads:storageReads.length,writes:storageWrites.length,deletes:storageDeletes.length,
+          cache:stored.get(storageKey),
+          identity:canonical(reviewIdentity(documentState))===canonical(reviewIdentity(embedded))}))()""",
+        initial_storage={key: cache_value},
+    )
+    assert result["completed"] is False
+    assert result["document"] == draft
+    assert result["counts"] == [3, 3, 3, 3, 1, 1, 2]
+    assert result["reads"] == 1
+    assert result["writes"] == result["deletes"] == 0
+    assert result["cache"] == cache_value
+    assert result["identity"] is True
+
+
+def test_manual_save_and_import_update_blocker_counts_without_changing_questions(
+    dashboard: tuple[str, dict, Any],
+) -> None:
+    html, document, _ = dashboard
+    result = browser_model(
+        html,
+        document,
+        r"""(async()=>{
+          const identity=canonical(reviewIdentity(documentState));
+          const counts=()=>document.getElementById('counts').children
+            .map(card=>Number(card.children[0].textContent));
+          const initial=counts();openItem('HR-01');
+          const select=document.getElementById('decision-select');
+          select.value='APPROVE';await select.fire('change');
+          await document.getElementById('save-choice').fire('click');const afterSave=counts();
+          const submitted=structuredClone(embedded);
+          submitted.metadata.reviewer='SYNTHETIC_COMPLETE_IMPORT';
+          submitted.metadata.submitted_at='2026-10-07T00:00:00+08:00';
+          for(const item of submitted.items){item.decision='APPROVE';
+            item.selected_option=item.recommended_option;}
+          await document.getElementById('import-file').fire('change',{
+            target:{files:[{text:async()=>JSON.stringify(submitted)}],value:'synthetic.json'}});
+          return {initial,afterSave,afterImport:counts(),
+            status:document.getElementById('review-status').textContent,
+            decisionIds:documentState.items.map(i=>i.selected_option),
+            identity:identity===canonical(reviewIdentity(documentState)),
+            writes:storageWrites.length,deletes:storageDeletes.length};
+        })()""",
+    )
+    assert result["initial"] == [4, 4, 4, 4, 1, 1, 2]
+    assert result["afterSave"] == [3, 3, 3, 3, 1, 1, 2]
+    assert result["afterImport"] == [0, 0, 0, 0, 1, 1, 2]
+    assert "4/4 HUMAN_APPROVED" in result["status"]
+    assert "AUTOMATIC_CERTIFICATION_PENDING" in result["status"]
+    assert result["decisionIds"] == [item["recommended_option"] for item in document["items"]]
+    assert result["identity"] is True
+    assert result["writes"] == 2 and result["deletes"] == 0
