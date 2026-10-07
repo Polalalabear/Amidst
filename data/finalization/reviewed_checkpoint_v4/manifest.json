@@ -1,0 +1,27 @@
+{
+  "comparison_status": "PASS",
+  "curated_artifacts": {
+    "fresh_checkout_receipt.json": {
+      "sha256": "f36da4eae8420fb312ac0fa37297575a31e4c3a603091845e687c1de6eec0345",
+      "size_bytes": 15043
+    },
+    "fresh_delivery_comparison.json": {
+      "sha256": "983272fa1af405f3d170ee010e4c5234c4a0d1473cc4c3c0711bdd0c585b3722",
+      "size_bytes": 1042
+    }
+  },
+  "dataset_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+  "excluded_wrong_version_export_preserved": true,
+  "freeze_tag_permitted": false,
+  "new_semantic_authority_granted": false,
+  "new_uncommitted_scope_modules_covered": false,
+  "original_full_exit_complete": false,
+  "parent_checkpoint": "data/finalization/reviewed_checkpoint_v3",
+  "parent_checkpoint_manifest_sha256": "4ddda6ca3bfacd707d7173641ab695a64398837b4a53f29bca0e7136a8a31bd5",
+  "protected_producer_count": 26,
+  "raw_gt_observations_source_geometry_or_rrd_in_this_checkpoint": false,
+  "schema_version": "phase1-reviewed-collision-independent-fresh-checkpoint-v1",
+  "source_commit": "8cb0df3f2a530306e77e730f1a6395e824085e80",
+  "status": "PASS_READY_CASE_COLLISION_CHECKPOINT_ONLY",
+  "verified_fresh_output": "/private/tmp/amidst-collision-fresh-v7-8cb0df3"
+}

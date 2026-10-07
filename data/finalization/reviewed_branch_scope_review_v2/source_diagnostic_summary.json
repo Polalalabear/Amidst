@@ -1,0 +1,831 @@
+{
+  "schema_version": "source-corridor-review-diagnostic-v2",
+  "date": "2026-10-08",
+  "status": "HUMAN_REVIEW_NOT_CERTIFIED",
+  "authority_applied": false,
+  "formal_readiness": false,
+  "ground_truth_read": false,
+  "timestamps_generated": false,
+  "blender_scene_rendered": false,
+  "source_preservation": {
+    "after": {
+      "bytes": 468300506,
+      "mtime_ns": 1791198236746106977,
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+    },
+    "before": {
+      "bytes": 468300506,
+      "mtime_ns": 1791198236746106977,
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+    },
+    "source_geometry_modified": false,
+    "source_saved": false,
+    "unchanged": true
+  },
+  "raw_artifacts": [
+    {
+      "path": "data/finalization/reviewed_branch_discovery_v7/source_supported_proposal.json",
+      "bytes": 562708,
+      "sha256": "fc984af628d4e442ee04a3de4b24a8b3007b8c6fbbe7bad01f05b8dcc58762ef"
+    },
+    {
+      "path": "data/finalization/reviewed_branch_discovery_v7/source_visibility.json",
+      "bytes": 199770,
+      "sha256": "1f8b4b07c1525f24e491953b879030312a3ac63f185c99da7de12cbb99812f48"
+    },
+    {
+      "path": "data/finalization/reviewed_branch_discovery_v7/actual_source_cameras.json",
+      "bytes": 2058,
+      "sha256": "621a772a50efbb15bb2b98c7f0279c2862d90f5be317047f02cde1df5983bd1b"
+    },
+    {
+      "path": "data/finalization/reviewed_branch_discovery_v7/source_preservation.json",
+      "bytes": 407,
+      "sha256": "40809f54befc7c77b3e0c6d30415d157df9820a33271a56a8a19eb28d5c510fa"
+    },
+    {
+      "path": "data/finalization/reviewed_branch_discovery_v7/manifest.json",
+      "bytes": 3477,
+      "sha256": "a8ac2c1f92443df0fa9c9b466537155886560e99ddcf8e8bd12e818eca2e1df5"
+    }
+  ],
+  "source_body_region": {
+    "region_id": "BODY:WALK_1F_CORRIDOR_01",
+    "bounds_bu": {
+      "maximum": [
+        1498.7550819798519,
+        768.2760170384457,
+        104.93927125506073
+      ],
+      "minimum": [
+        524.3981162623355,
+        494.75730815686677,
+        10.0
+      ]
+    },
+    "kind": "FULL_BODY_CONTEXT",
+    "selection_complete": true
+  },
+  "physical_policy": {
+    "metres_per_blender_unit": 0.0247,
+    "body_radius_m": 0.3,
+    "body_height_m": 1.7,
+    "body_clearance_m": 0.05,
+    "contact_tolerance_m": 0.001,
+    "placement_margin_bu": 0.5,
+    "tube_half_width_bu": 0.1,
+    "remaining_placement_margin_m": 0.00988
+  },
+  "contact_support_request": {
+    "source_object_id": "group_0",
+    "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+    "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+    "exact_source_face_indices": [
+      1938,
+      1939,
+      1944,
+      1945,
+      1946,
+      1947,
+      1949,
+      1950,
+      1952,
+      1953,
+      1954,
+      1955,
+      1956,
+      1957,
+      2416,
+      2417,
+      2418,
+      2419,
+      2420,
+      2421,
+      2423,
+      2424,
+      2426,
+      2427,
+      2428,
+      2429,
+      2434,
+      2435
+    ],
+    "floor_z_bu": 20.07884979248047,
+    "contact_height_band_bu": [
+      20.038363962520954,
+      20.119335622439984
+    ],
+    "role": "CONTACT_SUPPORT_ONLY_EXPLICIT_FACES_WITHIN_SIX_CELLS",
+    "whole_object_role_requested": false,
+    "group0_003_support_role_requested": false,
+    "named_group0_only_support_checks": [
+      {
+        "centerline_on_named_group0_source_faces": true,
+        "minimum_source_union_boundary_distance_bu": 100.19745240415382,
+        "required_footprint_radius_bu": 14.17004048582996,
+        "source_support_geometrically_sufficient": true
+      },
+      {
+        "centerline_on_named_group0_source_faces": true,
+        "minimum_source_union_boundary_distance_bu": 82.22519130218296,
+        "required_footprint_radius_bu": 14.17004048582996,
+        "source_support_geometrically_sufficient": true
+      }
+    ],
+    "raw_extra_group0_003_support_patch_is_diagnostic_only": true,
+    "authority": "HUMAN_REVIEW"
+  },
+  "proposed_cells": [
+    {
+      "cell_index": 0,
+      "footpoint_bounds_xy_bu": [
+        1149.9,
+        649.9,
+        1250.1,
+        680.1
+      ],
+      "body_guard_bounds_bu": {
+        "maximum": [
+          1264.27004048583,
+          694.27004048583,
+          90.96953805158978
+        ],
+        "minimum": [
+          1135.72995951417,
+          635.72995951417,
+          18.014072464545244
+        ]
+      },
+      "continuous_source_triangle_sweep_clear": true,
+      "full_original_selection_complete": true,
+      "original_source_atlas_covers_guard": true
+    },
+    {
+      "cell_index": 1,
+      "footpoint_bounds_xy_bu": [
+        829.0834304405199,
+        649.9,
+        1150.1,
+        650.1
+      ],
+      "body_guard_bounds_bu": {
+        "maximum": [
+          1164.27004048583,
+          664.27004048583,
+          90.96953805158978
+        ],
+        "minimum": [
+          814.9133899546899,
+          635.72995951417,
+          18.014072464545244
+        ]
+      },
+      "continuous_source_triangle_sweep_clear": true,
+      "full_original_selection_complete": true,
+      "original_source_atlas_covers_guard": true
+    },
+    {
+      "cell_index": 2,
+      "footpoint_bounds_xy_bu": [
+        829.0834304405199,
+        649.9,
+        829.28343044052,
+        731.179044637651
+      ],
+      "body_guard_bounds_bu": {
+        "maximum": [
+          843.45347092635,
+          745.349085123481,
+          90.96953805158978
+        ],
+        "minimum": [
+          814.9133899546899,
+          635.72995951417,
+          18.014072464545244
+        ]
+      },
+      "continuous_source_triangle_sweep_clear": true,
+      "full_original_selection_complete": true,
+      "original_source_atlas_covers_guard": true
+    },
+    {
+      "cell_index": 3,
+      "footpoint_bounds_xy_bu": [
+        829.0834304405199,
+        730.979044637651,
+        914.1,
+        731.179044637651
+      ],
+      "body_guard_bounds_bu": {
+        "maximum": [
+          928.27004048583,
+          745.349085123481,
+          90.96953805158978
+        ],
+        "minimum": [
+          814.9133899546899,
+          716.809004151821,
+          18.014072464545244
+        ]
+      },
+      "continuous_source_triangle_sweep_clear": true,
+      "full_original_selection_complete": true,
+      "original_source_atlas_covers_guard": true
+    },
+    {
+      "cell_index": 4,
+      "footpoint_bounds_xy_bu": [
+        913.9,
+        679.9,
+        914.1,
+        731.179044637651
+      ],
+      "body_guard_bounds_bu": {
+        "maximum": [
+          928.27004048583,
+          745.349085123481,
+          90.96953805158978
+        ],
+        "minimum": [
+          899.72995951417,
+          665.72995951417,
+          18.014072464545244
+        ]
+      },
+      "continuous_source_triangle_sweep_clear": true,
+      "full_original_selection_complete": true,
+      "original_source_atlas_covers_guard": true
+    },
+    {
+      "cell_index": 5,
+      "footpoint_bounds_xy_bu": [
+        913.9,
+        679.9,
+        1250.1,
+        680.1
+      ],
+      "body_guard_bounds_bu": {
+        "maximum": [
+          1264.27004048583,
+          694.27004048583,
+          90.96953805158978
+        ],
+        "minimum": [
+          899.72995951417,
+          665.72995951417,
+          18.014072464545244
+        ]
+      },
+      "continuous_source_triangle_sweep_clear": true,
+      "full_original_selection_complete": true,
+      "original_source_atlas_covers_guard": true
+    }
+  ],
+  "bounded_no_solid_interior_requests": [
+    {
+      "source_object_id": "group_0",
+      "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+      "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+      "source_component_id": "component-00000000",
+      "source_component_face_count": 17596,
+      "source_component_face_indices_content_sha256": "c996710902fecba24866f95deb4f906e3dfba75c0c145c9576749dbdf106b7cd",
+      "applies_to_cell_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "requested_semantics": "NO_SOLID_INTERIOR_ONLY_WITHIN_EXACT_BODY_GUARDS",
+      "global_exact_zero_area_face_count": 1456,
+      "zero_area_triangle_guard_aabb_intersection_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_area_exemptions_requested": false,
+      "actual_surfaces_in_applied_guards": "ONLY_EXPLICIT_GROUP_0_SUPPORT_FACES",
+      "authority": "HUMAN_REVIEW"
+    },
+    {
+      "source_object_id": "group_0.003",
+      "source_mesh_id": "d6b040184be8cdb7b9e1d04c617d2cd2504a7c8bdf5c716f9946c3355b4ade59",
+      "source_geometry_sha256": "145be3f5078032983708f172afd13e57bb71ff8337f719208b5ea7d52f943d18",
+      "source_component_id": "component-00000000",
+      "source_component_face_count": 1764,
+      "source_component_face_indices_content_sha256": "52ef0d35f8e66cb93113a5365c3dcc6548a346ecf1216056ed0dcbeb28abc985",
+      "applies_to_cell_indices": [
+        2,
+        3,
+        4
+      ],
+      "requested_semantics": "NO_SOLID_INTERIOR_ONLY_WITHIN_EXACT_BODY_GUARDS",
+      "global_exact_zero_area_face_count": 104,
+      "zero_area_triangle_guard_aabb_intersection_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_area_exemptions_requested": false,
+      "actual_surfaces_in_applied_guards": "NONE",
+      "authority": "HUMAN_REVIEW"
+    }
+  ],
+  "source_winding_witness": {
+    "combined_loop_winding_number": 1.0,
+    "witness_xy_bu": [
+      861.4878471089711,
+      702.3354665606508
+    ],
+    "source_contact_triangle": {
+      "actual_source_triangle_bu": [
+        [
+          861.6730228682426,
+          702.8441883202147,
+          61.578938007354736
+        ],
+        [
+          861.6730229834649,
+          702.08110572281,
+          61.578938007354736
+        ],
+        [
+          861.117495475206,
+          702.0811056389277,
+          61.826101779937744
+        ]
+      ],
+      "distance_lower_m": 0.0,
+      "distance_upper_m": 1.6761984434029737e-16,
+      "reason": "SOURCE_BODY_CLEARANCE_OR_DISTANCE_UNCERTAIN",
+      "source_face_index": 0,
+      "source_geometry_sha256": "9dc36785e045e50411799e5b60c8438cffce19e52401d73992a7bb1dad209692",
+      "source_mesh_id": "cee38bc82b2421e861af0b959d040ea07d1acb14433e1c6b9dced35b25d0237c",
+      "source_object_id": "trash can01"
+    },
+    "obstruction_probe_is_common_endpoint_connector": false
+  },
+  "camera_landmark_request": {
+    "camera_ids": [
+      "CAM_1F_CORRIDOR_03",
+      "CAM_1F_CORRIDOR_01"
+    ],
+    "camera_export_content_sha256": "614a8fcdc2f570b47206645a5f117ea603e77bfd0a5a2cbd545545ec42bb0340",
+    "original_source_catalog_content_sha256": "a851ffebe3d6a6b71789a9afcfc2355c16d75603ef97d814d4d5bd4d5bc22b8e",
+    "landmark_offset_bu": 55.049998092651364,
+    "landmark_offset_m": 1.3597349528884888,
+    "marker_z_bu": 75.12884788513183,
+    "role": "EXACT_SOURCE_CALIBRATION_AND_LANDMARK_BINDING_WITHIN_NEW_SCOPE",
+    "authority": "HUMAN_REVIEW",
+    "prepared_calibration_content_sha256_by_camera": {
+      "CAM_1F_CORRIDOR_01": "f4a40c6f6358d519eb1a15fcff89a8b51bc1f3aa7aa800b7b0478a73dab390ae",
+      "CAM_1F_CORRIDOR_03": "65f64deff01850c89c58aabc7ed444fff038181cb1e4763e7b72e900d4d01c09"
+    }
+  },
+  "source_visibility": {
+    "sampling": "81_EQUAL_ARC_FRACTION_POINTS_NO_TIMESTAMPS_PER_PATH",
+    "camera_union": [
+      "CAM_1F_CORRIDOR_03",
+      "CAM_1F_CORRIDOR_01"
+    ],
+    "first_gap": {
+      "visible_entry_index": 8,
+      "jointly_blind_indices_inclusive": [
+        9,
+        38
+      ],
+      "visible_recovery_index": 39,
+      "source_visible_endpoint_camera": "CAM_1F_CORRIDOR_03",
+      "entry_footpoint_bu": [
+        1062.6208771605739,
+        650.0,
+        20.07884979248047
+      ],
+      "recovery_footpoint_bu": [
+        853.2610400855916,
+        731.079044637651,
+        20.07884979248047
+      ],
+      "entry_pixel": [
+        6.621242120220131,
+        302.4634756039543
+      ],
+      "recovery_pixel": [
+        2.994805770822495,
+        205.37393263382006
+      ],
+      "actual_endpoint_rays": "CLEAR",
+      "constructed_actual_path_bu": [
+        [
+          1062.6208771605739,
+          650.0,
+          20.07884979248047
+        ],
+        [
+          829.1834304405199,
+          650.0,
+          20.07884979248047
+        ],
+        [
+          829.1834304405199,
+          731.079044637651,
+          20.07884979248047
+        ],
+        [
+          853.2610400855916,
+          731.079044637651,
+          20.07884979248047
+        ]
+      ],
+      "constructed_alternative_path_bu": [
+        [
+          1062.6208771605739,
+          650.0,
+          20.07884979248047
+        ],
+        [
+          1150.0,
+          650.0,
+          20.07884979248047
+        ],
+        [
+          1250.0,
+          680.0,
+          20.07884979248047
+        ],
+        [
+          914.0,
+          680.0,
+          20.07884979248047
+        ],
+        [
+          914.0,
+          731.079044637651,
+          20.07884979248047
+        ],
+        [
+          853.2610400855916,
+          731.079044637651,
+          20.07884979248047
+        ]
+      ],
+      "constructed_actual_length_m": 8.363274294768582,
+      "constructed_alternative_length_m": 15.798124754270598,
+      "constructed_route_length_ratio": 1.8889879965018825,
+      "existing_max_detour_ratio": 2.0,
+      "evidence": "LOWER_BOUND_EXISTENCE_DIAGNOSIS_ONLY",
+      "network_shortest_or_exhaustive_search_certified": false
+    },
+    "second_separate_gap": {
+      "visible_entry_index": 39,
+      "jointly_blind_indices_inclusive": [
+        40,
+        55
+      ],
+      "visible_recovery_index": 56,
+      "recovery_footpoint_bu": [
+        987.8626314817213,
+        680.0,
+        20.07884979248047
+      ],
+      "endpoint_camera": "CAM_1F_CORRIDOR_03"
+    },
+    "actual_visible_index39_preserved": true,
+    "full_short_recipe_has_no_gap": true,
+    "continuous_visibility_between_queries": "NOT_CLAIMED",
+    "formal_visible_gap_visible": "NOT_PROVEN_REQUIRES_FROZEN_FRESH_EXPORT"
+  },
+  "rejected_v8": {
+    "reason": "CAM04_DEPARTURE_OCCLUDED_BY_GROUP_0_003_AND_CAM01_OUTSIDE_FOV",
+    "visibility_artifact": {
+      "path": "data/finalization/reviewed_branch_discovery_v8/source_visibility.json",
+      "bytes": 201378,
+      "sha256": "437ee1b52e06a6eb4ce15ed9a236b1556ebca456b63e9413c3e6cdc3c7ec614e"
+    }
+  },
+  "remaining_blockers": [
+    "NEW_NAMED_GROUP0_CONTACT_SUPPORT_ROLE_NOT_APPROVED",
+    "NEW_BOUNDED_GROUP0_GROUP0_003_NO_SOLID_INTERIOR_SEMANTICS_NOT_APPROVED",
+    "NEW_EXACT_SINGLE_TRIANGLE_WITNESS_ROLE_AND_CAMERA_LANDMARK_BINDING_NOT_APPROVED",
+    "FROZEN_FRESH_5HZ_VISIBILITY_TIMING_EXPORT_NOT_RUN",
+    "EXHAUSTIVE_DISTINCT_ADMISSIBLE_ROUTE_INVENTORY_CASE2_READINESS_NOT_PROVEN",
+    "STRICT_PER_CELL_CERTIFICATION_AND_SOURCE_BOUND_PROVIDER_NOT_APPLIED"
+  ],
+  "engineering_map": {
+    "path": "data/finalization/reviewed_branch_scope_review_v2/source_review_map.png",
+    "bytes": 298762,
+    "sha256": "8ae9e8edee7f2161e37c554c0041b26faa04e735d45997269f1e82d97cf44139"
+  },
+  "complete_source_island_diagnostic_face_sets": [
+    {
+      "source_object_id": "trash can01",
+      "source_mesh_id": "cee38bc82b2421e861af0b959d040ea07d1acb14433e1c6b9dced35b25d0237c",
+      "source_geometry_sha256": "9dc36785e045e50411799e5b60c8438cffce19e52401d73992a7bb1dad209692",
+      "source_face_count": 832,
+      "source_face_indices_content_sha256": "7b7fe60e3bc0c812cd73aeb06c762d2d2ed12eb1574b6fb313ae8c8e1e4de1f8",
+      "exact_face_indices_ref": "data/finalization/reviewed_branch_discovery_v7/source_supported_proposal.json#/source_island_bindings/0/source_face_indices",
+      "source_face_vertex_extrema_bu": {
+        "minimum": [
+          844.1693640947343,
+          688.5162870287894,
+          55.72305703163147
+        ],
+        "maximum": [
+          872.0620812177659,
+          716.409004151821,
+          63.27930474281311
+        ]
+      },
+      "whole_object_role_requested": false,
+      "collider_box_substituted": false,
+      "diagnostic_only": true,
+      "new_role_requested": false
+    },
+    {
+      "source_object_id": "trash can02",
+      "source_mesh_id": "9de6a41f671fecff6b0e890e6253e0ab3e7b31eb3f707254103a40723a90c2d7",
+      "source_geometry_sha256": "7b26e44523086654d0ec4d57e101b190aff7375a17fe2951b56ebd6c7c5182bc",
+      "source_face_count": 2936,
+      "source_face_indices_content_sha256": "977920b792531e23c9cde294f72527082b627b538ca307d5347c4651163be4ae",
+      "exact_face_indices_ref": "data/finalization/reviewed_branch_discovery_v7/source_supported_proposal.json#/source_island_bindings/1/source_face_indices",
+      "source_face_vertex_extrema_bu": {
+        "minimum": [
+          843.8534709263499,
+          688.9175025820732,
+          20.078834533691406
+        ],
+        "maximum": [
+          872.3779743861501,
+          716.0077903866768,
+          58.96495723724365
+        ]
+      },
+      "whole_object_role_requested": false,
+      "collider_box_substituted": false,
+      "diagnostic_only": true,
+      "new_role_requested": false
+    }
+  ],
+  "local_obstacle_witness_request": {
+    "authority": "HUMAN_REVIEW",
+    "requested_role": "MOVEMENT_OBSTACLE_SURFACE_ONLY_EXACT_SOURCE_FACE_0_WITHIN_BOUNDED_UNION",
+    "source_object_id": "trash can01",
+    "source_mesh_id": "cee38bc82b2421e861af0b959d040ea07d1acb14433e1c6b9dced35b25d0237c",
+    "source_geometry_sha256": "9dc36785e045e50411799e5b60c8438cffce19e52401d73992a7bb1dad209692",
+    "source_component_id": "component-00000000",
+    "source_face_index": 0,
+    "source_triangle_index": 0,
+    "all_source_triangle_indices_for_original_face": [
+      0,
+      1
+    ],
+    "original_triangle_vertices_bu": [
+      [
+        861.6730228682426,
+        702.8441883202147,
+        61.578938007354736
+      ],
+      [
+        861.6730229834649,
+        702.08110572281,
+        61.578938007354736
+      ],
+      [
+        861.117495475206,
+        702.0811056389277,
+        61.826101779937744
+      ]
+    ],
+    "selected_triangle_vertex_extrema_bu": {
+      "minimum": [
+        861.117495475206,
+        702.0811056389277,
+        61.578938007354736
+      ],
+      "maximum": [
+        861.6730229834649,
+        702.8441883202147,
+        61.826101779937744
+      ]
+    },
+    "entire_original_source_face_vertex_extrema_bu": {
+      "minimum": [
+        861.1174953599838,
+        702.0811056389277,
+        61.578938007354736
+      ],
+      "maximum": [
+        861.6730229834649,
+        702.8441883202147,
+        61.826101779937744
+      ]
+    },
+    "exact_nonzero_cross_product_rational": [
+      "-26543987303625/140737488355328",
+      "-65667587505/2305843009213693952",
+      "-4099838584210001645903627/9671406556917033397649408"
+    ],
+    "original_order_barycentric_weights": [
+      0.5,
+      0.25,
+      0.25
+    ],
+    "witness_point_bu": [
+      861.534141048789,
+      702.4626470005418,
+      61.64072895050049
+    ],
+    "exact_witness_rational_coordinates": [
+      "57816577503/67108864",
+      "6178926787643227/8796093022208",
+      "64634989/1048576"
+    ],
+    "witness_binary64_representation_exact": true,
+    "bounded_cell_union_hole_boundary_xy_bu": [
+      [
+        1149.9,
+        650.1
+      ],
+      [
+        1149.9,
+        679.9
+      ],
+      [
+        914.1,
+        679.9
+      ],
+      [
+        913.9,
+        679.9
+      ],
+      [
+        913.9,
+        680.1
+      ],
+      [
+        913.9,
+        730.979044637651
+      ],
+      [
+        829.28343044052,
+        730.979044637651
+      ],
+      [
+        829.28343044052,
+        650.1
+      ],
+      [
+        1149.9,
+        650.1
+      ]
+    ],
+    "witness_strictly_inside_hole": true,
+    "all_triangle_vertices_in_source_body_height": true,
+    "source_gjk_contact_upper_m": 1.6761984434029737e-16,
+    "whole_object_role_requested": false,
+    "other_island_source_face_roles_requested": false,
+    "all_actual_source_triangles_still_physically_screened": true,
+    "prepared_source_face_binding": {
+      "binding_id": "body-height-source-facet-witness:trash-can01:face-0",
+      "exact_triangles_content_sha256": "d1f9a5d6bc64cd79d423ad61ddc4b0c6c9ac0a5048dbc4f74709f757e06b1091",
+      "proposed_role": "MOVEMENT_OBSTACLE_SURFACE",
+      "role_application": "PROPOSED_BODY_GUARDS_AND_UNION_ONLY",
+      "solid_interior_approved": false,
+      "source_component_id": "component-00000000",
+      "source_face_indices": [
+        0
+      ],
+      "source_face_movement_obstacle_bounds_bu": [
+        [
+          861.1174953599838,
+          702.0811056389277,
+          61.578938007354736
+        ],
+        [
+          861.6730229834649,
+          702.8441883202147,
+          61.826101779937744
+        ]
+      ],
+      "source_geometry_sha256": "9dc36785e045e50411799e5b60c8438cffce19e52401d73992a7bb1dad209692",
+      "source_mesh_id": "cee38bc82b2421e861af0b959d040ea07d1acb14433e1c6b9dced35b25d0237c",
+      "source_object_id": "trash can01",
+      "source_triangle_indices": [
+        0,
+        1
+      ],
+      "whole_object_approved": false
+    }
+  },
+  "remaining_engineering_capabilities": {
+    "same_camera_gap_adapter": "NOT_IMPLEMENTED_CAMERA_TRANSITION_FORBIDS_SELF_AND_CURRENT_GRAPH_ONLY_FOLLOWS_OUTGOING_CAMERA_TRANSITIONS",
+    "metric_preserving_source_network": "NOT_PROVEN_NERVE_TOPOLOGY_DOES_NOT_PRESERVE_LENGTH_SPEED_DETOUR_OR_CAMERA_MASKS",
+    "repeat_cell_sequence_search": "NOT_IMPLEMENTED_SIMPLE_CELL_DFS_IS_NOT_EXHAUSTIVE_WHEN_ORIGINAL_GRAPH_PERMITS_REPEATS",
+    "new_protocol_policy_requested": false
+  },
+  "prepared_proposal": {
+    "path": "data/finalization/reviewed_branch_scope_review_v2/proposal.json",
+    "bytes": 17705,
+    "file_sha256": "65fa7fa00ae317a2b0039b1690ce42d551e36041858de9aa48b8c2a192dcf641",
+    "content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+    "status": "PREPARED_HUMAN_REVIEW_NO_AUTHORITY_APPLIED",
+    "schema_version": "phase1-new-local-scope-proposal-v1",
+    "scope_id": "school-v3-corridor-six-cell-scope-v2",
+    "formal_execution_enabled": false,
+    "authority": "HUMAN_REVIEW",
+    "pins": {
+      "camera_export_content_sha256": "614a8fcdc2f570b47206645a5f117ea603e77bfd0a5a2cbd545545ec42bb0340",
+      "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+      "floor_content_sha256": "5ffbf934ddf17a957456458a22dfe49a7a38607ded416ae0692fbbc6f2c54779",
+      "numerics_content_sha256": "d9429c2653f9ccb1e8a08922c74c9b4b83d70a4e31fe2bd80b24397525ed5ce4",
+      "original_human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+      "physical_contract_content_sha256": "fedef942e6a334b1608b9327b900918d0cf5d275bb25f23360929492c29369dc",
+      "protocol_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+    }
+  },
+  "source_only_request_provenance": {
+    "path": "data/finalization/reviewed_branch_scope_review_v2/request_provenance.json",
+    "bytes": 2105,
+    "sha256": "3bbe0392c78f31f9166cd4c46396b78c4982a2f0f11ceaccee4325f5b824ae1c"
+  },
+  "actual_strict_preview": {
+    "result": {
+      "path": "data/finalization/reviewed_branch_scope_review_v2/strict_preview/result.json",
+      "bytes": 6128,
+      "sha256": "bfc86184f4bd885c56aacba99699d4fdcbd7ee0cae2bd8bb10f9ab0bca0d6dc0"
+    },
+    "manifest": {
+      "path": "data/finalization/reviewed_branch_scope_review_v2/strict_preview/manifest.json",
+      "bytes": 2803,
+      "sha256": "9fe365e39073a3538dd9e7b10c2aed331592383b168de217d90b00b7bfca32b3"
+    },
+    "status": "HYPOTHETICAL_NUMERIC_NOT_AUTHORITY",
+    "manifest_status": "HYPOTHETICAL_NUMERIC_NOT_AUTHORITY",
+    "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+    "all_cells_strictly_sufficient_with_proposed_contact_permission_only": false,
+    "cell_statuses": [
+      {
+        "cell_id": "branch-cell-00",
+        "status": "REVIEW",
+        "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+        "source_object_id": "group_0",
+        "source_component_id": "component-00000000",
+        "bounded_surface_semantics_applied": false
+      },
+      {
+        "cell_id": "branch-cell-01",
+        "status": "REVIEW",
+        "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+        "source_object_id": "group_0",
+        "source_component_id": "component-00000000",
+        "bounded_surface_semantics_applied": false
+      },
+      {
+        "cell_id": "branch-cell-02",
+        "status": "REVIEW",
+        "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+        "source_object_id": "group_0",
+        "source_component_id": "component-00000000",
+        "bounded_surface_semantics_applied": false
+      },
+      {
+        "cell_id": "branch-cell-03",
+        "status": "REVIEW",
+        "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+        "source_object_id": "group_0",
+        "source_component_id": "component-00000000",
+        "bounded_surface_semantics_applied": false
+      },
+      {
+        "cell_id": "branch-cell-04",
+        "status": "REVIEW",
+        "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+        "source_object_id": "group_0",
+        "source_component_id": "component-00000000",
+        "bounded_surface_semantics_applied": false
+      },
+      {
+        "cell_id": "branch-cell-05",
+        "status": "REVIEW",
+        "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+        "source_object_id": "group_0",
+        "source_component_id": "component-00000000",
+        "bounded_surface_semantics_applied": false
+      }
+    ],
+    "formal_certificate": null,
+    "authority_applied": false,
+    "new_human_approval_exists": false,
+    "formal_execution_enabled": false,
+    "case_readiness": "NOT_RUN",
+    "source_geometry_modified": false
+  }
+}

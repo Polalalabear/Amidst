@@ -1,0 +1,62 @@
+{
+  "authority_applied": false,
+  "completed_source_visibility_file_sha256": "1f8b4b07c1525f24e491953b879030312a3ac63f185c99da7de12cbb99812f48",
+  "formal_execution_enabled": false,
+  "new_human_decision_exists": false,
+  "original_approvals_or_protocol_changed": false,
+  "original_discovery_bytes_modified": false,
+  "profiles_per_cell": [
+    1,
+    1,
+    2,
+    2,
+    2,
+    1
+  ],
+  "raw_source_discovery_content_sha256": "ef47e56030208d5bc4579dcc3c8d0bb276dcc6cf9279f1618f8fd17b5603c0ac",
+  "raw_source_discovery_file_sha256": "fc984af628d4e442ee04a3de4b24a8b3007b8c6fbbe7bad01f05b8dcc58762ef",
+  "schema_version": "source-only-scoped-review-request-provenance-v1",
+  "semantic_request_narrowing": "Only source face 0 / triangle 0 of trash can01 is proposed as bounded movement-obstacle surface; all original geometry remains independently screened.",
+  "source_face_binding": {
+    "binding_id": "body-height-source-facet-witness:trash-can01:face-0",
+    "exact_triangles_content_sha256": "d1f9a5d6bc64cd79d423ad61ddc4b0c6c9ac0a5048dbc4f74709f757e06b1091",
+    "proposed_role": "MOVEMENT_OBSTACLE_SURFACE",
+    "role_application": "PROPOSED_BODY_GUARDS_AND_UNION_ONLY",
+    "solid_interior_approved": false,
+    "source_component_id": "component-00000000",
+    "source_face_indices": [
+      0
+    ],
+    "source_face_movement_obstacle_bounds_bu": [
+      [
+        861.1174953599838,
+        702.0811056389277,
+        61.578938007354736
+      ],
+      [
+        861.6730229834649,
+        702.8441883202147,
+        61.826101779937744
+      ]
+    ],
+    "source_geometry_sha256": "9dc36785e045e50411799e5b60c8438cffce19e52401d73992a7bb1dad209692",
+    "source_mesh_id": "cee38bc82b2421e861af0b959d040ea07d1acb14433e1c6b9dced35b25d0237c",
+    "source_object_id": "trash can01",
+    "source_triangle_indices": [
+      0,
+      1
+    ],
+    "whole_object_approved": false
+  },
+  "source_witness_barycentric_native_order": [
+    0.5,
+    0.25,
+    0.25
+  ],
+  "source_witness_xyz_bu": [
+    861.534141048789,
+    702.4626470005418,
+    61.64072895050049
+  ],
+  "zero_area_exemptions_proposed": 0
+}

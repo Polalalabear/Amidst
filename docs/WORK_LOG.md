@@ -4,6 +4,47 @@
 
 ## 繁體中文
 
+### 2026-10-08 — Source-bound scope preparation and exact operation guards
+
+新增 source-only island discovery、scoped authority/CLI、1+ bounded semantic profiles、
+intact multi-profile numerical certificate/provider，以及 independent source route-class
+lower-bound。沿用原支撐、完整 body atlas、clearance/GJK、enclosure 與數值 budgets；
+新 receipt 只處理自身明確 component/guard，actual nondegenerate contacts 與第三個
+未核准 component 仍拒絕。Union path coverage 採 exact Fraction intervals，不跨 hole 或
+浮點 parameter rounding 下的極小縫隙。外層與內層 public operation 都重驗完整 receipt。
+Independent review 發現的 standalone inner receipt mutation 漏口已修正，新增兩個反例。
+
+實際 V7 六個 source cells 的 body-triangle sweep CLEAR、兩個分開的 source GAP 保留
+sample39 recovery；V8 departure 真實遮擋不成立，保留原診斷。新 scope request 收窄到
+28 support faces、1 obstacle source face（native triangles0/1；triangle0 exact witness）、
+6 cells、兩個 source cameras。group_0 六個 guards／group_0.003 cells2/3/4 bounded interior
+需新人工 decision；兩者全域零面1456/104都不與任何 guard 相交，沒有提出零面豁免。
+原 strict preview 全六個 cells REVIEW unknown closed-volume geometry，certificate null，
+未造 APPROVE。Exact proposal content SHA：
+`7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad`。
+Review packet 共11 files、378986 bytes（bounded coordinates／校準／map／strict preview／
+validation／historical receipt）；大 raw geometry、GT、observations、RRD 不入此 packet。
+
+最終完整 suite **1978 passed、0 skipped、0 failed、112.04s**，從開始即指定 canonical
+source 與 `--require-physical-evidence`。Repo Ruff、strict mypy111 source files、source CLI
+mypy PASS。Focused authority/inventory/wrapper60 tests PASS。1976-test／113.72s pre-fix
+run 依其原 source hashes 保存 historical，不冒充 final。Exact tested source/test hashes
+及30 protected bytes核對見 [validation receipt](../data/finalization/reviewed_branch_scope_review_v2/code_validation.json)。
+Original HR01–HR04／protocol／config locks、原 physical producers 與 `.blend` bytes不變；
+Phase2 branch/tag仍 `5b51d2c`。New source-only CLI Vec3 cast 是 type-only 修正，歷史
+V7 producer hash與raw outputs保留，不宣稱重跑 source visibility。
+
+另完成 collision `8cb0df3` 的獨立乾淨 clone actual export/infer/eval/reproduction與full
+delivery comparison：46JSON、2CSV、6MD、37nonruntimePNG、2reader-verifiedRRD一致，26原
+protected producers相同；small V4 receipt共3files／17332bytes。初次 fetch/checkout失敗
+前產生的舊版本raw export保留並明確排除於fresh proof，不能只以manifest相同升格。
+
+Case2／Case3 detour-growth仍 BLOCKED；new direct-human scope decision尚未收到。後續
+工程包括 same-camera HOLD adapter、相同 actual eligibility 的獨立 exhaustive inventory、
+新config先freeze再fresh5Hz正式執行。Simple-cellDFS不等同原可重複edge sequence的Graph；
+topological nerve proof不保證metric/speed/camera條件。Lower-boundrecall維持N/A；未建
+freeze tag，未改main或source。Current續作入口見 [handoff](CODEX_HANDOFF.md)。
+
 ### 2026-10-08 — Purpose-bound collision execution and frozen V3 lineage
 
 新增 reviewed collision bundle，使用原25 APPROVED KNOWN_COLLISION_PRUNING scopes／58非空
@@ -17,7 +58,7 @@ Fresh V7 export/infer/eval/reproduction完成；dataset manifest維持 `a3393f2e
 `add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de`。
 ReadyCase1/3 repeat/fresh-process/order/GT-recipe-annotation poison/termination PASS。
 45 ablation rows（30 evaluated、15 Case2blocked）、17 ablation charts；C/remove_collision
-eachcase1candidate與knowncollision0/3segments，沒有量测到消融效益。31份原始curated報表／
+eachcase1candidate與knowncollision0/3segments，沒有量測到消融效益。31份原始curated報表／
 plots加codevalidationreceipt保存於 `reviewed_checkpoint_v3/`；rawdatasets/GT/RRD不入Git。
 
 既有與collision suite **1905 passed、3 skipped、0 failed，102.88s**；3skip源於worktree

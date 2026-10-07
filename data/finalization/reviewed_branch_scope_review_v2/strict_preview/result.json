@@ -1,0 +1,188 @@
+{
+  "all_cells_strictly_sufficient_with_proposed_contact_permission_only": false,
+  "authority_applied": false,
+  "case_readiness": "NOT_RUN",
+  "cell_checks": [
+    {
+      "bounded_surface_semantics_applied": false,
+      "cell_id": "branch-cell-00",
+      "enclosure_evidence": {
+        "topology": {
+          "boundary_edge_count": 0,
+          "closed_consistent_nonzero_volume": false,
+          "degenerate_triangle_count": 1456,
+          "enclosed_volume_bu3": 1.2210530501346416e-07,
+          "inconsistent_winding_edge_count": 0,
+          "nonmanifold_edge_count": 11635,
+          "signed_volume_bu3": 1.2210530501346416e-07,
+          "triangle_count": 17596
+        }
+      },
+      "location_bu": [
+        1200.0,
+        665.0,
+        54.491805258067515
+      ],
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "source_component_id": "component-00000000",
+      "source_object_id": "group_0",
+      "status": "REVIEW"
+    },
+    {
+      "bounded_surface_semantics_applied": false,
+      "cell_id": "branch-cell-01",
+      "enclosure_evidence": {
+        "topology": {
+          "boundary_edge_count": 0,
+          "closed_consistent_nonzero_volume": false,
+          "degenerate_triangle_count": 1456,
+          "enclosed_volume_bu3": 1.2210530501346416e-07,
+          "inconsistent_winding_edge_count": 0,
+          "nonmanifold_edge_count": 11635,
+          "signed_volume_bu3": 1.2210530501346416e-07,
+          "triangle_count": 17596
+        }
+      },
+      "location_bu": [
+        989.5917152202599,
+        650.0,
+        54.491805258067515
+      ],
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "source_component_id": "component-00000000",
+      "source_object_id": "group_0",
+      "status": "REVIEW"
+    },
+    {
+      "bounded_surface_semantics_applied": false,
+      "cell_id": "branch-cell-02",
+      "enclosure_evidence": {
+        "topology": {
+          "boundary_edge_count": 0,
+          "closed_consistent_nonzero_volume": false,
+          "degenerate_triangle_count": 1456,
+          "enclosed_volume_bu3": 1.2210530501346416e-07,
+          "inconsistent_winding_edge_count": 0,
+          "nonmanifold_edge_count": 11635,
+          "signed_volume_bu3": 1.2210530501346416e-07,
+          "triangle_count": 17596
+        }
+      },
+      "location_bu": [
+        829.1834304405199,
+        690.5395223188254,
+        54.491805258067515
+      ],
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "source_component_id": "component-00000000",
+      "source_object_id": "group_0",
+      "status": "REVIEW"
+    },
+    {
+      "bounded_surface_semantics_applied": false,
+      "cell_id": "branch-cell-03",
+      "enclosure_evidence": {
+        "topology": {
+          "boundary_edge_count": 0,
+          "closed_consistent_nonzero_volume": false,
+          "degenerate_triangle_count": 1456,
+          "enclosed_volume_bu3": 1.2210530501346416e-07,
+          "inconsistent_winding_edge_count": 0,
+          "nonmanifold_edge_count": 11635,
+          "signed_volume_bu3": 1.2210530501346416e-07,
+          "triangle_count": 17596
+        }
+      },
+      "location_bu": [
+        871.59171522026,
+        731.079044637651,
+        54.491805258067515
+      ],
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "source_component_id": "component-00000000",
+      "source_object_id": "group_0",
+      "status": "REVIEW"
+    },
+    {
+      "bounded_surface_semantics_applied": false,
+      "cell_id": "branch-cell-04",
+      "enclosure_evidence": {
+        "topology": {
+          "boundary_edge_count": 0,
+          "closed_consistent_nonzero_volume": false,
+          "degenerate_triangle_count": 1456,
+          "enclosed_volume_bu3": 1.2210530501346416e-07,
+          "inconsistent_winding_edge_count": 0,
+          "nonmanifold_edge_count": 11635,
+          "signed_volume_bu3": 1.2210530501346416e-07,
+          "triangle_count": 17596
+        }
+      },
+      "location_bu": [
+        914.0,
+        705.5395223188254,
+        54.491805258067515
+      ],
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "source_component_id": "component-00000000",
+      "source_object_id": "group_0",
+      "status": "REVIEW"
+    },
+    {
+      "bounded_surface_semantics_applied": false,
+      "cell_id": "branch-cell-05",
+      "enclosure_evidence": {
+        "topology": {
+          "boundary_edge_count": 0,
+          "closed_consistent_nonzero_volume": false,
+          "degenerate_triangle_count": 1456,
+          "enclosed_volume_bu3": 1.2210530501346416e-07,
+          "inconsistent_winding_edge_count": 0,
+          "nonmanifold_edge_count": 11635,
+          "signed_volume_bu3": 1.2210530501346416e-07,
+          "triangle_count": 17596
+        }
+      },
+      "location_bu": [
+        1082.0,
+        680.0,
+        54.491805258067515
+      ],
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "source_component_id": "component-00000000",
+      "source_object_id": "group_0",
+      "status": "REVIEW"
+    }
+  ],
+  "formal_certificate": null,
+  "formal_execution_enabled": false,
+  "gt_used": false,
+  "new_human_approval_exists": false,
+  "original_approvals_modified": false,
+  "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "required_human_semantics": [
+    {
+      "binding_id": "body-height-source-facet-witness:trash-can01:face-0",
+      "kind": "SOURCE_FACE_MOVEMENT_OBSTACLE",
+      "solid_interior_approved": false,
+      "source_face_movement_obstacle_bounds_bu": [
+        [
+          861.1174953599838,
+          702.0811056389277,
+          61.578938007354736
+        ],
+        [
+          861.6730229834649,
+          702.8441883202147,
+          61.826101779937744
+        ]
+      ],
+      "whole_object_approved": false
+    }
+  ],
+  "schema_version": "phase1-new-local-scope-numeric-preview-v1",
+  "scope_id": "school-v3-corridor-six-cell-scope-v2",
+  "source_geometry_modified": false,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "status": "HYPOTHETICAL_NUMERIC_NOT_AUTHORITY"
+}

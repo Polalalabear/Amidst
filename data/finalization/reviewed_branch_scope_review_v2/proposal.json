@@ -1,0 +1,538 @@
+{
+  "authority": "HUMAN_REVIEW",
+  "camera_landmark_bindings": [
+    {
+      "calibration_content_sha256": "f4a40c6f6358d519eb1a15fcff89a8b51bc1f3aa7aa800b7b0478a73dab390ae",
+      "calibration_units": "BLENDER_UNITS",
+      "camera": {
+        "camera_id": "CAM_1F_CORRIDOR_01",
+        "camera_to_world": [
+          [
+            0.8980264663696289,
+            -0.16977588832378387,
+            0.40586283802986145,
+            1470.291748046875
+          ],
+          [
+            0.4399414360523224,
+            0.34655308723449707,
+            -0.8284640312194824,
+            508.2094421386719
+          ],
+          [
+            1.9526407868397655e-07,
+            0.9225383996963501,
+            0.38590535521507263,
+            143.86302185058594
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "convention": "BLENDER_NEG_Z_UP_Y",
+        "cx": 960.0,
+        "cy": 540.0,
+        "floor_id": "1F",
+        "fx": 1280.0000381469727,
+        "fy": 1280.0000381469727,
+        "height": 1080,
+        "meters_per_unit": 1,
+        "pixel_origin": "TOP_LEFT_CONTINUOUS",
+        "width": 1920,
+        "zone_id": "CORRIDOR"
+      },
+      "floor_id": "1F",
+      "landmark_offset_bu": [
+        0.0,
+        0.0,
+        55.049998092651364
+      ],
+      "projection_plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "projection_plane_point_bu": [
+        0.0,
+        0.0,
+        75.12884788513183
+      ],
+      "source_camera_export_content_sha256": "614a8fcdc2f570b47206645a5f117ea603e77bfd0a5a2cbd545545ec42bb0340"
+    },
+    {
+      "calibration_content_sha256": "65f64deff01850c89c58aabc7ed444fff038181cb1e4763e7b72e900d4d01c09",
+      "calibration_units": "BLENDER_UNITS",
+      "camera": {
+        "camera_id": "CAM_1F_CORRIDOR_03",
+        "camera_to_world": [
+          [
+            0.8285464644432068,
+            -0.21742476522922516,
+            0.5159817934036255,
+            1483.135986328125
+          ],
+          [
+            0.5599203109741211,
+            0.32174116373062134,
+            -0.7635259628295898,
+            504.4393615722656
+          ],
+          [
+            -3.127556738036219e-06,
+            0.9215254187583923,
+            0.3883180320262909,
+            153.0009002685547
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "clip_end": 1000.0,
+        "clip_start": 0.10000000149011612,
+        "convention": "BLENDER_NEG_Z_UP_Y",
+        "cx": 960.0,
+        "cy": 540.0,
+        "floor_id": "1F",
+        "fx": 1280.0000381469727,
+        "fy": 1280.0000381469727,
+        "height": 1080,
+        "meters_per_unit": 1,
+        "pixel_origin": "TOP_LEFT_CONTINUOUS",
+        "width": 1920,
+        "zone_id": "CORRIDOR"
+      },
+      "floor_id": "1F",
+      "landmark_offset_bu": [
+        0.0,
+        0.0,
+        55.049998092651364
+      ],
+      "projection_plane_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "projection_plane_point_bu": [
+        0.0,
+        0.0,
+        75.12884788513183
+      ],
+      "source_camera_export_content_sha256": "614a8fcdc2f570b47206645a5f117ea603e77bfd0a5a2cbd545545ec42bb0340"
+    }
+  ],
+  "cells": [
+    {
+      "body_region_id": "BODY:WALK_1F_CORRIDOR_01",
+      "cell_id": "branch-cell-00",
+      "extra_surface_semantics": [],
+      "proposed_body_guard_bounds_bu": [
+        [
+          1135.72995951417,
+          635.72995951417,
+          18.014072464545244
+        ],
+        [
+          1264.27004048583,
+          694.27004048583,
+          90.96953805158978
+        ]
+      ],
+      "rectangle_xy_bu": [
+        1149.9,
+        649.9,
+        1250.1,
+        680.1
+      ],
+      "surface_semantics": {
+        "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+        "source_component_id": "component-00000000",
+        "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+        "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+        "source_object_id": "group_0",
+        "whole_component_approved": false,
+        "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+        "zero_area_source_face_indices": []
+      }
+    },
+    {
+      "body_region_id": "BODY:WALK_1F_CORRIDOR_01",
+      "cell_id": "branch-cell-01",
+      "extra_surface_semantics": [],
+      "proposed_body_guard_bounds_bu": [
+        [
+          814.9133899546899,
+          635.72995951417,
+          18.014072464545244
+        ],
+        [
+          1164.27004048583,
+          664.27004048583,
+          90.96953805158978
+        ]
+      ],
+      "rectangle_xy_bu": [
+        829.0834304405199,
+        649.9,
+        1150.1,
+        650.1
+      ],
+      "surface_semantics": {
+        "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+        "source_component_id": "component-00000000",
+        "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+        "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+        "source_object_id": "group_0",
+        "whole_component_approved": false,
+        "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+        "zero_area_source_face_indices": []
+      }
+    },
+    {
+      "body_region_id": "BODY:WALK_1F_CORRIDOR_01",
+      "cell_id": "branch-cell-02",
+      "extra_surface_semantics": [
+        {
+          "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+          "source_component_id": "component-00000000",
+          "source_geometry_sha256": "145be3f5078032983708f172afd13e57bb71ff8337f719208b5ea7d52f943d18",
+          "source_mesh_id": "d6b040184be8cdb7b9e1d04c617d2cd2504a7c8bdf5c716f9946c3355b4ade59",
+          "source_object_id": "group_0.003",
+          "whole_component_approved": false,
+          "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+          "zero_area_source_face_indices": []
+        }
+      ],
+      "proposed_body_guard_bounds_bu": [
+        [
+          814.9133899546899,
+          635.72995951417,
+          18.014072464545244
+        ],
+        [
+          843.45347092635,
+          745.349085123481,
+          90.96953805158978
+        ]
+      ],
+      "rectangle_xy_bu": [
+        829.0834304405199,
+        649.9,
+        829.28343044052,
+        731.179044637651
+      ],
+      "surface_semantics": {
+        "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+        "source_component_id": "component-00000000",
+        "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+        "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+        "source_object_id": "group_0",
+        "whole_component_approved": false,
+        "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+        "zero_area_source_face_indices": []
+      }
+    },
+    {
+      "body_region_id": "BODY:WALK_1F_CORRIDOR_01",
+      "cell_id": "branch-cell-03",
+      "extra_surface_semantics": [
+        {
+          "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+          "source_component_id": "component-00000000",
+          "source_geometry_sha256": "145be3f5078032983708f172afd13e57bb71ff8337f719208b5ea7d52f943d18",
+          "source_mesh_id": "d6b040184be8cdb7b9e1d04c617d2cd2504a7c8bdf5c716f9946c3355b4ade59",
+          "source_object_id": "group_0.003",
+          "whole_component_approved": false,
+          "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+          "zero_area_source_face_indices": []
+        }
+      ],
+      "proposed_body_guard_bounds_bu": [
+        [
+          814.9133899546899,
+          716.809004151821,
+          18.014072464545244
+        ],
+        [
+          928.27004048583,
+          745.349085123481,
+          90.96953805158978
+        ]
+      ],
+      "rectangle_xy_bu": [
+        829.0834304405199,
+        730.979044637651,
+        914.1,
+        731.179044637651
+      ],
+      "surface_semantics": {
+        "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+        "source_component_id": "component-00000000",
+        "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+        "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+        "source_object_id": "group_0",
+        "whole_component_approved": false,
+        "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+        "zero_area_source_face_indices": []
+      }
+    },
+    {
+      "body_region_id": "BODY:WALK_1F_CORRIDOR_01",
+      "cell_id": "branch-cell-04",
+      "extra_surface_semantics": [
+        {
+          "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+          "source_component_id": "component-00000000",
+          "source_geometry_sha256": "145be3f5078032983708f172afd13e57bb71ff8337f719208b5ea7d52f943d18",
+          "source_mesh_id": "d6b040184be8cdb7b9e1d04c617d2cd2504a7c8bdf5c716f9946c3355b4ade59",
+          "source_object_id": "group_0.003",
+          "whole_component_approved": false,
+          "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+          "zero_area_source_face_indices": []
+        }
+      ],
+      "proposed_body_guard_bounds_bu": [
+        [
+          899.72995951417,
+          665.72995951417,
+          18.014072464545244
+        ],
+        [
+          928.27004048583,
+          745.349085123481,
+          90.96953805158978
+        ]
+      ],
+      "rectangle_xy_bu": [
+        913.9,
+        679.9,
+        914.1,
+        731.179044637651
+      ],
+      "surface_semantics": {
+        "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+        "source_component_id": "component-00000000",
+        "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+        "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+        "source_object_id": "group_0",
+        "whole_component_approved": false,
+        "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+        "zero_area_source_face_indices": []
+      }
+    },
+    {
+      "body_region_id": "BODY:WALK_1F_CORRIDOR_01",
+      "cell_id": "branch-cell-05",
+      "extra_surface_semantics": [],
+      "proposed_body_guard_bounds_bu": [
+        [
+          899.72995951417,
+          665.72995951417,
+          18.014072464545244
+        ],
+        [
+          1264.27004048583,
+          694.27004048583,
+          90.96953805158978
+        ]
+      ],
+      "rectangle_xy_bu": [
+        913.9,
+        679.9,
+        1250.1,
+        680.1
+      ],
+      "surface_semantics": {
+        "component_interior": "SURFACE_ONLY_NO_SOLID_INTERIOR_IN_BOUND",
+        "source_component_id": "component-00000000",
+        "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+        "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+        "source_object_id": "group_0",
+        "whole_component_approved": false,
+        "zero_area_face_ownership": "DEGENERATE_SEAM_NO_OCCUPIED_VOLUME_IN_BOUND",
+        "zero_area_source_face_indices": []
+      }
+    }
+  ],
+  "discovery_content_sha256": "ef47e56030208d5bc4579dcc3c8d0bb276dcc6cf9279f1618f8fd17b5603c0ac",
+  "floor": {
+    "approval_id": "SOURCE_BOUND_GEOMETRY_REVIEW_PHYSICAL_POLICY_2026_10_06",
+    "authority": "APPROVED",
+    "evidence_ids": [
+      "SOURCE_SHA256:cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM_OFFICE_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_AUDITORIUM_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_BATHROOM",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS101",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS101_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS102",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS102_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS103",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS103_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS104",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CLASS104_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_01",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_02",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_03",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_CORRIDOR_04",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MAIN_ENTRANCE",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MEETINGROOM",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_MEETINGROOM_01_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_OFFICE",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_OFFICE_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_A",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_A_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_B",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_RESTAURANT_B_THRESHOLD",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_SIDE_ENTRANCE",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_STORAGE",
+      "EXACT_SOURCE_SUPPORTED_WALKABLE:WALK_1F_STORAGE_THRESHOLD"
+    ],
+    "floor_id": "1F",
+    "normal": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "point": [
+      0.0,
+      0.0,
+      20.07884979248047
+    ]
+  },
+  "formal_execution_enabled": false,
+  "gt_used": false,
+  "maximum_enclosure_pair_checks": 250000,
+  "obstacle_bindings": [
+    {
+      "binding_id": "body-height-source-facet-witness:trash-can01:face-0",
+      "exact_triangles_content_sha256": "d1f9a5d6bc64cd79d423ad61ddc4b0c6c9ac0a5048dbc4f74709f757e06b1091",
+      "proposed_role": "MOVEMENT_OBSTACLE_SURFACE",
+      "role_application": "PROPOSED_BODY_GUARDS_AND_UNION_ONLY",
+      "solid_interior_approved": false,
+      "source_component_id": "component-00000000",
+      "source_face_indices": [
+        0
+      ],
+      "source_face_movement_obstacle_bounds_bu": [
+        [
+          861.1174953599838,
+          702.0811056389277,
+          61.578938007354736
+        ],
+        [
+          861.6730229834649,
+          702.8441883202147,
+          61.826101779937744
+        ]
+      ],
+      "source_geometry_sha256": "9dc36785e045e50411799e5b60c8438cffce19e52401d73992a7bb1dad209692",
+      "source_mesh_id": "cee38bc82b2421e861af0b959d040ea07d1acb14433e1c6b9dced35b25d0237c",
+      "source_object_id": "trash can01",
+      "source_triangle_indices": [
+        0,
+        1
+      ],
+      "whole_object_approved": false
+    }
+  ],
+  "original_approvals_modified": false,
+  "original_source_geometry_modified": false,
+  "pins": {
+    "camera_export_content_sha256": "614a8fcdc2f570b47206645a5f117ea603e77bfd0a5a2cbd545545ec42bb0340",
+    "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+    "floor_content_sha256": "5ffbf934ddf17a957456458a22dfe49a7a38607ded416ae0692fbbc6f2c54779",
+    "numerics_content_sha256": "d9429c2653f9ccb1e8a08922c74c9b4b83d70a4e31fe2bd80b24397525ed5ce4",
+    "original_human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+    "physical_contract_content_sha256": "fedef942e6a334b1608b9327b900918d0cf5d275bb25f23360929492c29369dc",
+    "protocol_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+    "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+  },
+  "requested_projection_authority": true,
+  "schema_version": "phase1-new-local-scope-proposal-v1",
+  "scope_id": "school-v3-corridor-six-cell-scope-v2",
+  "self_intersection_numeric_epsilon_bu": 1e-09,
+  "support_bindings": [
+    {
+      "binding_id": "new-contact-patch:component-00000000",
+      "exact_triangles_content_sha256": "0b8336be056caa40401ed2182360fe203d4ace2b6feb38b2c8278dae5ea64795",
+      "proposed_role": "WALKABLE_SUPPORT_SURFACE",
+      "role_application": "PROPOSED_BODY_GUARDS_AND_UNION_ONLY",
+      "solid_interior_approved": false,
+      "source_component_id": "component-00000000",
+      "source_face_indices": [
+        1938,
+        1939,
+        1944,
+        1945,
+        1946,
+        1947,
+        1949,
+        1950,
+        1952,
+        1953,
+        1954,
+        1955,
+        1956,
+        1957,
+        2416,
+        2417,
+        2418,
+        2419,
+        2420,
+        2421,
+        2423,
+        2424,
+        2426,
+        2427,
+        2428,
+        2429,
+        2434,
+        2435
+      ],
+      "source_face_movement_obstacle_bounds_bu": null,
+      "source_geometry_sha256": "9867422c383ce56b83048239a672fc9f0bb6224e7d6403b43487f9e783d24704",
+      "source_mesh_id": "a405ebd245d75da29d7e25aca8a193773639e751caf16c39bfedf0df703c2841",
+      "source_object_id": "group_0",
+      "source_triangle_indices": [
+        1938,
+        1939,
+        1944,
+        1945,
+        1946,
+        1947,
+        1949,
+        1950,
+        1952,
+        1953,
+        1954,
+        1955,
+        1956,
+        1957,
+        2416,
+        2417,
+        2418,
+        2419,
+        2420,
+        2421,
+        2423,
+        2424,
+        2426,
+        2427,
+        2428,
+        2429,
+        2434,
+        2435
+      ],
+      "whole_object_approved": false
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+{
+  "all_case_exit_complete": false,
+  "candidate_order_termination_failures_and_na_preserved": true,
+  "canonical_local_output": "data/finalization/reviewed_run_v7_collision",
+  "comparison_module_path": "/private/tmp/amidst-phase1-finalization-fresh-20261007/src/amidst/finalization/reviewed_reproduction.py",
+  "comparison_recomputed_using_committed_fresh_checkout": true,
+  "delivery_comparison_status": "PASS",
+  "excluded_unverified_historical_raw": {
+    "dataset_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+    "matching_export_bytes_do_not_retroactively_verify_execution_source_commit": true,
+    "path": "/private/tmp/amidst-phase1-finalization-fresh-20261007/data/finalization/reviewed_run_v7_collision",
+    "preserved": true,
+    "reason": "EXPORTED_BEFORE_CHECKOUT_SUCCESSFULLY_FETCHED_AND_CHECKED_OUT_8CB0DF3",
+    "used_for_this_fresh_proof": false
+  },
+  "explicit_nondeterministic_exclusions": [
+    "ablations/charts/runtime.png: measured runtime plot pixels only",
+    "charts/runtime.png: measured runtime plot pixels only",
+    "demos/case1/reviewed.rrd: container metadata bytes only",
+    "demos/case3/reviewed.rrd: container metadata bytes only"
+  ],
+  "export_producer_hashes": [
+    {
+      "matches_export_manifest": true,
+      "path": "scripts/export_blender_pilot.py",
+      "sha256": "33ee1f1ebf7f0511cbe0c7128bd7ce225ddaa94698a98c7bf3e478f3afdcfe23"
+    },
+    {
+      "matches_export_manifest": true,
+      "path": "scripts/export_phase1_reviewed_inputs.py",
+      "sha256": "92195c300d1f862425d62f275645f4f7a5767e38b97d17c5e595f5eeb6cfe93c"
+    },
+    {
+      "matches_export_manifest": true,
+      "path": "src/amidst/finalization/reviewed_reference_movement.py",
+      "sha256": "7da5526deaac1d540ec6e37c29aed4570ef0240345da50cc0aa5d64e731b1dac"
+    },
+    {
+      "matches_export_manifest": true,
+      "path": "src/amidst/simulation/blender_camera.py",
+      "sha256": "395675bbe0d1f3160fa94c843cd704380c554333aa2dfb9aba10c74b19758d7a"
+    },
+    {
+      "matches_export_manifest": true,
+      "path": "src/amidst/simulation/blender_visibility.py",
+      "sha256": "60b6d83a489610e25d61f73cee765c82c271f485327cd029992a2f0bb8bcb4a8"
+    }
+  ],
+  "freeze_tag_permitted": false,
+  "fresh_output_artifacts": {
+    "dataset/manifest.json": {
+      "sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+      "size_bytes": 3949
+    },
+    "delivery_comparison.json": {
+      "sha256": "983272fa1af405f3d170ee010e4c5234c4a0d1473cc4c3c0711bdd0c585b3722",
+      "size_bytes": 1042
+    },
+    "evaluation/ablations/benchmark_table.csv": {
+      "sha256": "732c3983a5e452791a5ff3c4f5802a09dc8fd84fd8d64abb56757d140d94fb42",
+      "size_bytes": 9370
+    },
+    "evaluation/ablations/benchmark_table.json": {
+      "sha256": "273ba0d8496160cde6c65a03657751fe4436c10efc9463f0caf785a4526ec495",
+      "size_bytes": 35881
+    },
+    "evaluation/ablations/benchmark_table.md": {
+      "sha256": "7ad6805f347c7cb97fa35194116a7b0604949a3ca178342531b7de8d53cb17ee",
+      "size_bytes": 11152
+    },
+    "evaluation/benchmark_table.csv": {
+      "sha256": "ae61ee5456be111696c889afc9f91b327cc8c1f730a39c7ec55ce42b77c9e9f0",
+      "size_bytes": 5581
+    },
+    "evaluation/benchmark_table.json": {
+      "sha256": "97884243e5308b7085dc06ec04ac8e512f565a4a378227fccf288a17189a4258",
+      "size_bytes": 21364
+    },
+    "evaluation/benchmark_table.md": {
+      "sha256": "23fa6446a77e14152c94855fc3401a90de0075ede9f1add7f0018b1d80b3fcd2",
+      "size_bytes": 6745
+    },
+    "evaluation/verification.json": {
+      "sha256": "dfc819c9f6c4b6a384e9047c4cfbdc2878114fc2a421dfb353159263167a792f",
+      "size_bytes": 97044
+    },
+    "inference_primary/collision_authority.json": {
+      "sha256": "1d55b308005edd09d79ec62c9c1d24d19f1339373e56c76ca46ea1530eba3624",
+      "size_bytes": 4731
+    },
+    "inference_primary/collision_inference_lock.json": {
+      "sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c",
+      "size_bytes": 6571
+    },
+    "inference_primary/inference_freeze.json": {
+      "sha256": "add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de",
+      "size_bytes": 3720
+    },
+    "reproduction/verification.json": {
+      "sha256": "30c882781afffdebcb85b26f5c7a84623939af484f89899317982daf9fef3bb9",
+      "size_bytes": 2019
+    }
+  },
+  "independent_checkout": {
+    "clean_at_audit": true,
+    "git_common_dir": "/private/tmp/amidst-phase1-finalization-fresh-20261007/.git",
+    "git_status_porcelain": "",
+    "head": "8cb0df3f2a530306e77e730f1a6395e824085e80",
+    "path": "/private/tmp/amidst-phase1-finalization-fresh-20261007",
+    "separate_git_common_directory": true
+  },
+  "known_collision_coverage": "PARTIAL",
+  "new_semantic_authority_granted": false,
+  "new_uncommitted_scope_modules_covered": false,
+  "nonempty_approved_colliders": 58,
+  "original_approved_scopes": 25,
+  "original_full_exit_complete": false,
+  "preserved_protocol_approvals_and_inference_locks": [
+    {
+      "byte_identical_between_checkouts": true,
+      "path": "human_review/decisions.json",
+      "sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9",
+      "size_bytes": 32343
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "path": "configs/benchmarks/protocol_v1.json",
+      "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+      "size_bytes": 22441
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "path": "configs/finalization/reviewed_case_inference_lock_v2.json",
+      "sha256": "6507483100dda089341a317bd412946fecafedcfa4c4ac3a6b75d8b7171c8f24",
+      "size_bytes": 4078
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "path": "configs/finalization/reviewed_case_inference_with_collision_v3.json",
+      "sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c",
+      "size_bytes": 6571
+    }
+  ],
+  "primary_checkout": {
+    "git_common_dir": "/Users/polalabear/Developer/amidst/.git",
+    "head": "8cb0df3f2a530306e77e730f1a6395e824085e80",
+    "path": "/private/tmp/amidst-phase1-finalization"
+  },
+  "protected_producer_bytes": [
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "human_review/apply_decisions.py",
+      "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d",
+      "size_bytes": 10701
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "human_review/certificate_application.py",
+      "sha256": "13c024966fed788b8e617d521caf41283de454938ecc4fc340c6d6cd0fac2c03",
+      "size_bytes": 9968
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "scripts/phase1_projection_policy.py",
+      "sha256": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6",
+      "size_bytes": 15746
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/architectural_scale.py",
+      "sha256": "cc85249ee7563663eae245f83babc8d8a66913671f74a578bd55db4d2ca81381",
+      "size_bytes": 4781
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "src/amidst/benchmark/baselines.py",
+      "sha256": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1",
+      "size_bytes": 20730
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "src/amidst/datasets/pilot.py",
+      "sha256": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792",
+      "size_bytes": 17575
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "src/amidst/datasets/pilot_topology.py",
+      "sha256": "980e3670edba58769b75fdea4a115f0a1b135d984787998fb6429eaf97e4caa3",
+      "size_bytes": 14357
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "src/amidst/domain/metric_config.py",
+      "sha256": "50b349d6300494d7cd0a89818270cee713a23de441855d8d536ebaabdc4a7532",
+      "size_bytes": 2693
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "src/amidst/domain/reconstruction.py",
+      "sha256": "9641a3072ed91d4c8ac4f7b35a5560089e052e9397f1bec81401428f62af963e",
+      "size_bytes": 444
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "src/amidst/domain/search.py",
+      "sha256": "c6719aed6832fb6c0ce7217dd254e4cca55b4f6fdf4c8c47442189b534158597",
+      "size_bytes": 851
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/evaluation/configured.py",
+      "sha256": "72fff0522aaa5d6d3cf6d73692e8294fcea232bd967313e0a4daa751e8ba5412",
+      "size_bytes": 3141
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/graph/engine.py",
+      "sha256": "f0c9e018067f05666056217d65afdaeeff651dbb8bf6a62e5721245b919c0562",
+      "size_bytes": 26237
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/local_physical_scopes.py",
+      "sha256": "52514c7cc1f787f129289b09a827b8ee71c2e3afa1c1642d4eee4f3a9dfae752",
+      "size_bytes": 32629
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": true,
+      "path": "src/amidst/local_semantic_review.py",
+      "sha256": "edff4f0f06b0d8594f61f7851d8d73cb84f6fccd51ecbf4e151a671324a9e6e4",
+      "size_bytes": 23602
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/navigation/graph.py",
+      "sha256": "f1e33b669b7d8ce8235830390f4c9c63e1983b89016fa6f95862192de98b2b5f",
+      "size_bytes": 8628
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/navigation/network.py",
+      "sha256": "39b78b62b65ec2903ded2535593cc6b54ef69066a067fc8b16bc29e0edb13c97",
+      "size_bytes": 4444
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/navigation/topology.py",
+      "sha256": "f33e49cf07dc194d32fbb9f34a560c22936842ab844d4af56d6e645041916fb0",
+      "size_bytes": 3427
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/observation/aggregation.py",
+      "sha256": "0b2e8c07bbc90808dd1a6f3db5811fcbb56b40d5fddb13be86b53a9d93ba87c4",
+      "size_bytes": 8866
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/obstacle_volume_authority.py",
+      "sha256": "9b0cc162525b22f7464c59c3f6c6584901e6e7679eaf561771a8d8d5ccc7a866",
+      "size_bytes": 39283
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/physical_authority.py",
+      "sha256": "4a2e57f155bea0a2b41ced7db55357577433e7a99fe7244256a1506bad6fa622",
+      "size_bytes": 19735
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/physical_collision.py",
+      "sha256": "5ab54116a357e28fae7347c56c3f2facfb79dc1d9b9e49fcf8e628bba65109db",
+      "size_bytes": 18760
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/physical_policy_contract.py",
+      "sha256": "e0f4870a758ca3034551e138de1c6eb7c3c83b9f8bda2d229342033cd262e5b3",
+      "size_bytes": 6689
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/physical_units.py",
+      "sha256": "caef2fe9dd7dbb070e36769cf391adc1bb2fe38153630157d83098f2429353cb",
+      "size_bytes": 9790
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/reconstruction/blind_gap.py",
+      "sha256": "8338e8033ebe0d5035151974da938d3fd368ab36ca1ead17784a237f509a183f",
+      "size_bytes": 12827
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/scene_geometry.py",
+      "sha256": "68475d49580c31fe35140241b63fabef10486db720213f5e64317a014751a64f",
+      "size_bytes": 29408
+    },
+    {
+      "byte_identical_between_checkouts": true,
+      "original_review_pin_checked": false,
+      "path": "src/amidst/walkable_clearance.py",
+      "sha256": "52959a9e502306943892674710aef6de9a51deb5dcb6d49ad0226996162d58bd",
+      "size_bytes": 26743
+    }
+  ],
+  "protected_producer_count": 26,
+  "raw_gt_observations_source_geometry_or_rrd_copied": false,
+  "recorded_at": "2026-10-07T17:20:32.259440+00:00",
+  "report_and_demo_comparison_counts": {
+    "csv": 2,
+    "json": 46,
+    "markdown": 6,
+    "png": 37,
+    "rrd": 2
+  },
+  "rrd_verification_receipts": [
+    {
+      "container_bytes_excluded_from_canonical_comparison": true,
+      "path": "evaluation/demos/case1/reviewed.rrd",
+      "presentation_receipt": "evaluation/demos/case1/presentation.json",
+      "presentation_sha256": "7861138cd2a3ac4474b094533233447c1beced26790febe12116141a4e710c0b",
+      "raw_recording_copied_to_checkpoint": false,
+      "reader_verified": true,
+      "sha256": "48bdbb2f23ca8bb0ba12a5c681cd5a57b8307eabf681b22e302e5b964a8c3c20",
+      "size_bytes": 141342
+    },
+    {
+      "container_bytes_excluded_from_canonical_comparison": true,
+      "path": "evaluation/demos/case3/reviewed.rrd",
+      "presentation_receipt": "evaluation/demos/case3/presentation.json",
+      "presentation_sha256": "69b6fe682adb3a16df017063438496d73911a5dd36aa112305f54dd86f318434",
+      "raw_recording_copied_to_checkpoint": false,
+      "reader_verified": true,
+      "sha256": "912b5dc1680c38a1f4bd184c78c5bf13ec81f942f850c77bcab08398092b5fe6",
+      "size_bytes": 162460
+    }
+  ],
+  "saved_comparison_matches_recomputed": true,
+  "schema_version": "phase1-reviewed-collision-independent-fresh-checkout-v1",
+  "source_asset": {
+    "matches_pinned_export_source_sha256": true,
+    "repository_relative_path": "blender/school_v3.blend",
+    "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "size_bytes": 468300506,
+    "source_byte_preservation_verified": true,
+    "source_saved": false
+  },
+  "source_commit": "8cb0df3f2a530306e77e730f1a6395e824085e80",
+  "status": "PASS_READY_CASE_COLLISION_CHECKPOINT_ONLY",
+  "verified_fresh_output": "/private/tmp/amidst-collision-fresh-v7-8cb0df3"
+}

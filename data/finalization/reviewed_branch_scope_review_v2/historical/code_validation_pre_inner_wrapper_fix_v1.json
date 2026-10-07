@@ -1,0 +1,227 @@
+{
+  "formal_case2_execution": false,
+  "freeze_tag_permitted": false,
+  "full_suite": {
+    "command": "AMIDST_PHYSICAL_SOURCE_SCENE=/Users/polalabear/Developer/amidst/blender/school_v3.blend UV_CACHE_DIR=/private/tmp/amidst-finalization-uv-cache uv run --offline --no-sync pytest --require-physical-evidence",
+    "elapsed_s": 113.72,
+    "failed": 0,
+    "meaning": "Engineering and source-bound integration validation; no unapproved school scope used as APPROVED.",
+    "passed": 1976,
+    "physical_evidence_required_from_start": true,
+    "skipped": 0
+  },
+  "new_direct_human_decision_exists": false,
+  "original_full_exit_complete": false,
+  "parent_collision_commit": "8cb0df3f2a530306e77e730f1a6395e824085e80",
+  "protected_inputs": [
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "human_review/apply_decisions.py",
+      "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "human_review/certificate_application.py",
+      "sha256": "13c024966fed788b8e617d521caf41283de454938ecc4fc340c6d6cd0fac2c03"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "scripts/phase1_projection_policy.py",
+      "sha256": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/architectural_scale.py",
+      "sha256": "cc85249ee7563663eae245f83babc8d8a66913671f74a578bd55db4d2ca81381"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/benchmark/baselines.py",
+      "sha256": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/datasets/pilot.py",
+      "sha256": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/datasets/pilot_topology.py",
+      "sha256": "980e3670edba58769b75fdea4a115f0a1b135d984787998fb6429eaf97e4caa3"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/domain/metric_config.py",
+      "sha256": "50b349d6300494d7cd0a89818270cee713a23de441855d8d536ebaabdc4a7532"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/domain/reconstruction.py",
+      "sha256": "9641a3072ed91d4c8ac4f7b35a5560089e052e9397f1bec81401428f62af963e"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/domain/search.py",
+      "sha256": "c6719aed6832fb6c0ce7217dd254e4cca55b4f6fdf4c8c47442189b534158597"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/evaluation/configured.py",
+      "sha256": "72fff0522aaa5d6d3cf6d73692e8294fcea232bd967313e0a4daa751e8ba5412"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/graph/engine.py",
+      "sha256": "f0c9e018067f05666056217d65afdaeeff651dbb8bf6a62e5721245b919c0562"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/local_physical_scopes.py",
+      "sha256": "52514c7cc1f787f129289b09a827b8ee71c2e3afa1c1642d4eee4f3a9dfae752"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/local_semantic_review.py",
+      "sha256": "edff4f0f06b0d8594f61f7851d8d73cb84f6fccd51ecbf4e151a671324a9e6e4"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/navigation/graph.py",
+      "sha256": "f1e33b669b7d8ce8235830390f4c9c63e1983b89016fa6f95862192de98b2b5f"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/navigation/network.py",
+      "sha256": "39b78b62b65ec2903ded2535593cc6b54ef69066a067fc8b16bc29e0edb13c97"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/navigation/topology.py",
+      "sha256": "f33e49cf07dc194d32fbb9f34a560c22936842ab844d4af56d6e645041916fb0"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/observation/aggregation.py",
+      "sha256": "0b2e8c07bbc90808dd1a6f3db5811fcbb56b40d5fddb13be86b53a9d93ba87c4"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/obstacle_volume_authority.py",
+      "sha256": "9b0cc162525b22f7464c59c3f6c6584901e6e7679eaf561771a8d8d5ccc7a866"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/physical_authority.py",
+      "sha256": "4a2e57f155bea0a2b41ced7db55357577433e7a99fe7244256a1506bad6fa622"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/physical_collision.py",
+      "sha256": "5ab54116a357e28fae7347c56c3f2facfb79dc1d9b9e49fcf8e628bba65109db"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/physical_policy_contract.py",
+      "sha256": "e0f4870a758ca3034551e138de1c6eb7c3c83b9f8bda2d229342033cd262e5b3"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/physical_units.py",
+      "sha256": "caef2fe9dd7dbb070e36769cf391adc1bb2fe38153630157d83098f2429353cb"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/reconstruction/blind_gap.py",
+      "sha256": "8338e8033ebe0d5035151974da938d3fd368ab36ca1ead17784a237f509a183f"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/scene_geometry.py",
+      "sha256": "68475d49580c31fe35140241b63fabef10486db720213f5e64317a014751a64f"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "src/amidst/walkable_clearance.py",
+      "sha256": "52959a9e502306943892674710aef6de9a51deb5dcb6d49ad0226996162d58bd"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "human_review/decisions.json",
+      "sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "configs/benchmarks/protocol_v1.json",
+      "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "configs/finalization/reviewed_case_inference_lock_v2.json",
+      "sha256": "6507483100dda089341a317bd412946fecafedcfa4c4ac3a6b75d8b7171c8f24"
+    },
+    {
+      "byte_identical_to_collision_commit": true,
+      "path": "configs/finalization/reviewed_case_inference_with_collision_v3.json",
+      "sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c"
+    }
+  ],
+  "recorded_at": "2026-10-07T17:32:15.344760+00:00",
+  "ruff": {
+    "command": "uv run --offline --no-sync ruff check .",
+    "status": "PASS"
+  },
+  "schema_version": "phase1-new-scope-implementation-validation-v1",
+  "scope_proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "source_and_test_files": {
+    "scripts/discover_source_branch_scope.py": {
+      "sha256": "042ccf873d545a477d4f9db94671e659f4db2afcd1227f012fd4c4a8274b5426",
+      "size_bytes": 13128
+    },
+    "src/amidst/finalization/scoped_authority.py": {
+      "sha256": "ae77bf9d101c0dc8e7d36851940690af2f8ded8e371eebbc94decf221d54d94f",
+      "size_bytes": 53198
+    },
+    "src/amidst/finalization/scoped_authority_cli.py": {
+      "sha256": "fc0c4bafa3333cbb75c0f6ab4036f10878b0dd5f62231186d5305e562b7ecbbf",
+      "size_bytes": 13093
+    },
+    "src/amidst/finalization/scoped_route_inventory.py": {
+      "sha256": "31c06b8ec7a816cd97bccd6e505e8024f1059db78db20dbf44e5e1bf38f7e60d",
+      "size_bytes": 21521
+    },
+    "src/amidst/finalization/scoped_semantic_cells.py": {
+      "sha256": "61b3ec6a86af3627210d79e7eb71e381e0b6ad148e5068030c3f4c1b9db49a61",
+      "size_bytes": 25133
+    },
+    "src/amidst/finalization/source_branch_discovery.py": {
+      "sha256": "ee3dbefbb6af0bede7696fb008e5fac2fd0f6b1684f781d4a69f2c580fd76042",
+      "size_bytes": 33189
+    },
+    "tests/unit/test_scoped_authority.py": {
+      "sha256": "bb37576b3fcf620bfd7cc4865d4351851603272d11382a40ebf57c684602b919",
+      "size_bytes": 25436
+    },
+    "tests/unit/test_scoped_route_inventory.py": {
+      "sha256": "234ea64a787c245921af2964ddf73512c67d2acb817a9973743c7bde0f8ca88d",
+      "size_bytes": 15579
+    },
+    "tests/unit/test_scoped_semantic_cells.py": {
+      "sha256": "800a408cb30178f7ba6b03bd10acadc99921a7fa6ef2af9ec8bbce7bbae28a1f",
+      "size_bytes": 6743
+    },
+    "tests/unit/test_source_branch_discovery.py": {
+      "sha256": "ed75e075d2c4f7874a46f46159858d554f6db7f97647cf21e6d92361dcdcc98b",
+      "size_bytes": 7874
+    }
+  },
+  "strict_mypy_package": {
+    "command": "uv run --offline --no-sync mypy",
+    "source_files": 111,
+    "status": "PASS"
+  },
+  "strict_mypy_source_cli": {
+    "command": "uv run --offline --no-sync mypy scripts/discover_source_branch_scope.py",
+    "status": "PASS",
+    "type_only_Vec3_cast_after_full_suite": "No runtime coordinate/operation changed; the source-only CLI is not executed by full pytest."
+  }
+}

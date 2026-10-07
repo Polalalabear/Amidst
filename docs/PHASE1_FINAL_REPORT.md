@@ -1,5 +1,35 @@
 # Phase 1 finalization report / Phase 1 收尾報告
 
+## 2026-10-08 — Source scope preparation / 新局部範圍準備
+
+Additive source discovery, exact bounded source/camera proposals, 1+ component semantic
+certificates, continuous cell-union providers and independent route-class lower bounds are
+implemented. New wrappers retain every original numerical proof and human receipt; exact
+rational interval coverage refuses holes and sub-ULP parameter gaps. Each public operation
+revalidates its complete wrapper. Original producers, source assets, HR01–HR04, reference
+policy and protocol remain unchanged.
+
+The [concrete corridor review](PHASE1_CORRIDOR_SCOPE_REVIEW.md) binds six cells, 28 support
+faces, one obstacle source face, bounded component interiors and two source-camera/landmark
+bindings. Proposal content SHA is
+`7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad`.
+No zero-area exemptions are requested. The actual strict preview retains six REVIEW results
+and no certificate. Source ray queries preserve sample 39 as a true recovery between two
+separate gaps. This is a pending source-only proposal, not a formal Case2 dataset.
+
+Case2 and Case3 detour-growth remain blocked. A new direct-human scope decision is required;
+after approval, original numerical regeneration, a source-bound same-camera HOLD adapter,
+identical-eligibility exhaustive inventory and frozen fresh 5 Hz execution are still needed.
+The original graph permits repeated edge sequences and rejects self-camera transitions;
+simple-cell DFS and a fabricated camera handoff cannot satisfy these requirements. Current
+route proofs retain lower-bound status, N/A recall and false readiness.
+
+中文：已實作新範圍準備與嚴格驗證能力，具體 proposal 已提交局部語意審閱；尚未套用新
+人工 receipt 或簽發 certificate。核准後仍須補 same-camera／exhaustive inventory 接入，
+再固定新 config 並做 fresh 正式執行。原研究條件與已核准 reference policy 保留。
+Implementation and validation: [new scope capability](PHASE1_NEW_SCOPE_IMPLEMENTATION.md),
+[exact review packet](../data/finalization/reviewed_branch_scope_review_v2/proposal.json).
+
 ## 2026-10-08 — Collision capability implemented / 碰撞消融已實作
 
 Current status remains **PHASE1_FINALIZATION_BLOCKED**. Fresh V7 uses 25 original
@@ -16,10 +46,22 @@ one candidate and a 0/3 known-collision segment rate in each ready case. This da
 provides no measured collision-pruning benefit. Exact V3 lock bytes are frozen with
 inference and revalidated during evaluation.
 
+An independent clean checkout at commit `8cb0df3f2a530306e77e730f1a6395e824085e80`
+reproduced the committed collision delivery in `/private/tmp/amidst-collision-fresh-v7-8cb0df3`.
+The recomputed comparison passes 46 JSON, 2 CSV, 6 Markdown, 37 non-runtime PNGs and
+2 RRDs with verified-reader receipts; 26 protected producers are byte-identical between
+checkouts and the pinned source `.blend` hash is unchanged. The earlier raw export inside
+the fresh checkout, produced before fetching/checking out 8cb0df3, is preserved as
+unverified historical raw and excluded from this proof. This result does not cover new
+uncommitted scope modules or extend the all-case Exit status.
+
 中文：已補齊先前缺少的 purpose-bound collision consumer 與消融報表；新的局部分支
 scope 尚在來源幾何／鏡頭核對，Case2 與 Case3 detour-growth 未完成。沒有 freeze tag。
+獨立乾淨 8cb0df3 checkout 的完整 collision delivery 比對 PASS；錯誤版本的早期 raw export
+明確排除，未 commit 的新 scope modules 與整體 Exit 不在此證據範圍。
 Details: [collision checkpoint](PHASE1_COLLISION_CONSUMER_CHECKPOINT.md),
-[curated V7 receipts and ablations](../data/finalization/reviewed_checkpoint_v3/manifest.json).
+[curated V7 receipts and ablations](../data/finalization/reviewed_checkpoint_v3/manifest.json),
+[independent fresh receipt](../data/finalization/reviewed_checkpoint_v4/manifest.json).
 
 ## Historical 2026-10-08 — Reviewed local formal execution / 核准後局部正式執行
 

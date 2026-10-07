@@ -2,9 +2,28 @@
 
 [English](#english) | [繁體中文](#繁體中文)
 
-Snapshot date: **2026-10-01**. This file records which artifacts are currently
+Snapshot date: **2026-10-08**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
+
+### 2026-10-08 finalization collision and pending scope / 收尾與待審範圍
+
+The [V3 collision checkpoint](finalization/reviewed_checkpoint_v3/manifest.json) retains
+the frozen V3 inference lock, collision receipt, 45 ablation rows, 17 charts and original
+blocked-case rows. The [V4 independent fresh receipt](finalization/reviewed_checkpoint_v4/manifest.json)
+verifies the exact `8cb0df3` committed source in a clean clone: 46 JSON, 2 CSV, 6 Markdown,
+37 non-runtime PNGs and two reader-verified RRDs match. Raw datasets, GT, observations,
+RRDs and bulk source geometry remain local; older outputs are preserved.
+
+The [corridor review packet](finalization/reviewed_branch_scope_review_v2/proposal.json)
+contains bounded source-only coordinates, camera calibration, diagnostic map and strict
+preview. Its authority is HUMAN_REVIEW, certificate is null and no new human receipt is
+applied. This packet is not a formal dataset. Large V3–V8 discovery artifacts remain local.
+Overall Phase1 Exit remains BLOCKED; Case4 is DEFERRED and Phase2 remains FROZEN.
+
+V3 保存既有碰撞消融與 blocked rows；V4 是乾淨獨立 checkout 的局部重現證據。新的
+corridor packet 只含精確 bounded proposal、source 診斷與未通過的 strict preview，仍待人工
+局部語意 review；沒有新 certificate、正式 Case2 dataset 或整體 Exit／freeze。
 
 ### 2026-10-06 current architectural scale / 目前建築尺度
 

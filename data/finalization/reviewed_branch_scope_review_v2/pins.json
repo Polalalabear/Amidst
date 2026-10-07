@@ -1,0 +1,10 @@
+{
+  "camera_export_content_sha256": "614a8fcdc2f570b47206645a5f117ea603e77bfd0a5a2cbd545545ec42bb0340",
+  "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+  "floor_content_sha256": "5ffbf934ddf17a957456458a22dfe49a7a38607ded416ae0692fbbc6f2c54779",
+  "numerics_content_sha256": "d9429c2653f9ccb1e8a08922c74c9b4b83d70a4e31fe2bd80b24397525ed5ce4",
+  "original_human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "physical_contract_content_sha256": "fedef942e6a334b1608b9327b900918d0cf5d275bb25f23360929492c29369dc",
+  "protocol_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+}

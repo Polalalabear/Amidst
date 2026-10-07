@@ -4,7 +4,15 @@
 
 ## 繁體中文
 
-2026-10-07 post-approval milestone：四項決策已套用到新的
+2026-10-08 source-only corridor discovery／prepared authority milestone：V7 六個 cell 的
+continuous body-triangle sweeps CLEAR，但原 strict preview 仍為 unknown closed-volume
+REVIEW；未套用新 semantic receipt。Actual source rays 有兩個 GAP，中間 sample39 visible
+必須保留；V8 departure occlusion 被排除。精確 source-only proposal、單一 facet witness、
+全部 bounds/hashes 與剩餘工程證據見 [corridor review](PHASE1_CORRIDOR_SCOPE_REVIEW.md)。
+這不是正式 Case2 dataset，route inventory 只證明 lower bound，recall N/A；原 protocol、
+source、HR01–HR04 與已核准 reference annotations 不變。程式與測試紀錄見 WORK_LOG。
+
+Historical 2026-10-07 post-approval milestone：四項決策已套用到新的
 `data/finalization/human_review_applied_v1/`；原 numerical proof 重算後 bounded certificate
 **PASS**，只有 `BODY:WALK_1F_OFFICE` 原 guard，whole component/building 不升格。
 正式 Case inventory/adapters 仍待驗證；`formal_execution_enabled=false` 保留。

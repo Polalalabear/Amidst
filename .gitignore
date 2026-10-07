@@ -45,7 +45,10 @@ data/pilot/
 /data/finalization/reviewed_branch_discovery_v4/
 /data/finalization/reviewed_branch_discovery_v5/
 /data/finalization/reviewed_branch_discovery_v6/
+/data/finalization/reviewed_branch_discovery_v7/
+/data/finalization/reviewed_branch_discovery_v8/
 /data/finalization/reviewed_branch_scope_inputs_v1/
+/data/finalization/reviewed_branch_scope_inputs_v2/
 /data/finalization/reviewed_branch_scope_preview_v1/
 /data/finalization/reviewed_branch_scope_proposal_v1/
 /data/finalization/reviewed_run_v6_collision/evaluation/

@@ -31,6 +31,18 @@ V3 lock 綁定精確原 V2 bytes 與既有 collision manifest。source、protoco
 `remove_collision` known-collision rate 都是 0/3 segments；filter enabled 分別為 true/false，
 獨立 evaluator 都保留。V6 保持歷史版本，整體 Exit 仍為 false。
 
+獨立乾淨 checkout 的 commit 為 `8cb0df3f2a530306e77e730f1a6395e824085e80`。
+正確 fresh output `/private/tmp/amidst-collision-fresh-v7-8cb0df3` 的完整 delivery comparison
+已從該 committed checkout 重新計算並 PASS：46 JSON、2 CSV、6 Markdown、37 個非 runtime
+PNG、2 個附 reader 驗證記錄的 RRD。26 個 protected producers 在兩個 checkout byte-identical，
+原 source `.blend` hash 保持不變。證據保存於
+[v4 fresh receipt](../data/finalization/reviewed_checkpoint_v4/fresh_checkout_receipt.json) 與
+[comparison](../data/finalization/reviewed_checkpoint_v4/fresh_delivery_comparison.json)，不含 raw bulk 或 RRD。
+
+先前在該 checkout 成功抓取並 checkout 8cb0df3 之前產生的
+`data/finalization/reviewed_run_v7_collision` 保留為未驗證歷史 raw，明確排除於本次 fresh proof。
+本次 PASS 不涵蓋尚未 commit 的新 scope modules，也不授予 all-case Exit 或 freeze。
+
 ## English
 
 Historical V6 completed fresh export, inference, evaluation and reproduction for ready
@@ -58,6 +70,21 @@ operation-local consumer preparation and the exact frozen V3 lock artifact. Its 
 C and `remove_collision` each have a known-collision rate of 0/3 segments per ready case;
 their filter is enabled/disabled respectively and both retain independent evaluation.
 V6 remains historical evidence and overall Exit remains false.
+
+The independent clean checkout is pinned to commit
+`8cb0df3f2a530306e77e730f1a6395e824085e80`. Its verified output is
+`/private/tmp/amidst-collision-fresh-v7-8cb0df3`. Recomputing the complete delivery comparison
+from that committed checkout passed: 46 JSON, 2 CSV, 6 Markdown, 37 non-runtime PNGs and
+2 RRDs with verified-reader receipts. All 26 protected producers are byte-identical across
+checkouts; the pinned source `.blend` hash is unchanged. The small
+[v4 checkpoint](../data/finalization/reviewed_checkpoint_v4/manifest.json) retains only the
+fresh receipt, comparison and manifest.
+
+The earlier `data/finalization/reviewed_run_v7_collision` export inside the fresh checkout
+was produced before 8cb0df3 was successfully fetched and checked out. It remains unverified
+historical raw and is excluded from this proof, even though the export manifest matches.
+This PASS covers the committed collision checkpoint; it does not cover new uncommitted
+scope modules or grant all-case Exit or freeze.
 
 V7 dataset manifest file SHA-256 / V7 dataset manifest 檔案 SHA-256:
 `a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5`.
