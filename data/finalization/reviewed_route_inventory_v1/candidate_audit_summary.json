@@ -1,0 +1,545 @@
+{
+  "approved_1f_closed_component_count": 58,
+  "approved_obstacle_role_count": 5,
+  "candidate_family": "TWO_AXES_TWO_RECTANGULAR_BYPASS_SIDES_PER_APPROVED_COMPONENT",
+  "candidate_margin_bu": 14.670040485829958,
+  "combined_support_and_camera_fov_pair_count": 0,
+  "configured_candidate_count": 116,
+  "global_exhaustive_branch_search": false,
+  "ground_truth_read": false,
+  "human_approval_applied": false,
+  "maximum_office_direct_detour_budget_m": 7.7686304906593495,
+  "minimum_office_return_route_length_lower_bound_m": 65.82844866949793,
+  "original_hr01_hr04_approvals_remain_valid": true,
+  "original_office_cameras_exclude_all_local_component_boxes": true,
+  "precise_blocker": "NO_CONFIGURED_TWO_SIDED_SOURCE_ISLAND_BYPASS_IN_APPROVED_CONTACT_DOMAIN",
+  "representative_source_candidates": [
+    {
+      "axis": "x",
+      "component": "Rust Cabinet-Freepoly.org.001:component-00000000",
+      "departure_source_cameras_in_frustum": [
+        "CAM_1F_CORRIDOR_02",
+        "CAM_1F_RESTAURANT_01"
+      ],
+      "free_space_certificate": "NOT_CERTIFIED",
+      "new_camera_landmark_binding": "HUMAN_REVIEW",
+      "obstacle_id": "OBSTACLE_1F_CORRIDOR_01_01",
+      "proposed_route_footpoints_bu": [
+        [
+          [
+            898.278339970548,
+            516.7373857375892,
+            20.07884979248047
+          ],
+          [
+            898.278339970548,
+            488.88773500129844,
+            20.07884979248047
+          ],
+          [
+            956.6066640914598,
+            488.88773500129844,
+            20.07884979248047
+          ],
+          [
+            956.6066640914598,
+            516.7373857375892,
+            20.07884979248047
+          ]
+        ],
+        [
+          [
+            898.278339970548,
+            516.7373857375892,
+            20.07884979248047
+          ],
+          [
+            898.278339970548,
+            544.5870364738801,
+            20.07884979248047
+          ],
+          [
+            956.6066640914598,
+            544.5870364738801,
+            20.07884979248047
+          ],
+          [
+            956.6066640914598,
+            516.7373857375892,
+            20.07884979248047
+          ]
+        ]
+      ],
+      "recovery_source_cameras_in_frustum": [
+        "CAM_1F_CORRIDOR_02"
+      ],
+      "scope_body_authority": "HUMAN_REVIEW",
+      "source_bounds_bu": {
+        "maximum": [
+          941.9366236056298,
+          529.9169959880501,
+          83.82434010505676
+        ],
+        "minimum": [
+          912.948380456378,
+          503.55777548712837,
+          82.10135459899902
+        ]
+      },
+      "source_face_count": 12,
+      "source_face_indices_content_sha256": "bc04adf5bcefb4d0d6d92548c048867a98e9134d8cedb53ac5ea1010d5016801",
+      "source_face_indices_first_16": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source_geometry_sha256": "c165f5ea5b84443cec9a0e7b50badbe3936e9a2e0683867615ac3f2635886529",
+      "source_mesh_id": "ae17d9e21a62cbb97cebc52ac3d70759be98baf1f630da0a1b6d96e2e467a10e",
+      "source_occlusion": "NOT_RUN",
+      "support_all_segments_pass": false,
+      "support_fail_reasons": [
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "OUTSIDE_APPROVED_WALKABLE"
+      ]
+    },
+    {
+      "axis": "x",
+      "component": "trash can02:component-00000036",
+      "departure_source_cameras_in_frustum": [
+        "CAM_1F_CORRIDOR_02",
+        "CAM_1F_RESTAURANT_01"
+      ],
+      "free_space_certificate": "NOT_CERTIFIED",
+      "new_camera_landmark_binding": "HUMAN_REVIEW",
+      "obstacle_id": "OBSTACLE_1F_CORRIDOR_01_02",
+      "proposed_route_footpoints_bu": [
+        [
+          [
+            829.1834313845272,
+            699.122270388704,
+            20.07884979248047
+          ],
+          [
+            829.1834313845272,
+            683.2926289164693,
+            20.07884979248047
+          ],
+          [
+            860.4572591790761,
+            683.2926289164693,
+            20.07884979248047
+          ],
+          [
+            860.4572591790761,
+            699.122270388704,
+            20.07884979248047
+          ]
+        ],
+        [
+          [
+            829.1834313845272,
+            699.122270388704,
+            20.07884979248047
+          ],
+          [
+            829.1834313845272,
+            714.9519118609386,
+            20.07884979248047
+          ],
+          [
+            860.4572591790761,
+            714.9519118609386,
+            20.07884979248047
+          ],
+          [
+            860.4572591790761,
+            699.122270388704,
+            20.07884979248047
+          ]
+        ]
+      ],
+      "recovery_source_cameras_in_frustum": [
+        "CAM_1F_CORRIDOR_02"
+      ],
+      "scope_body_authority": "HUMAN_REVIEW",
+      "source_bounds_bu": {
+        "maximum": [
+          845.7872186932461,
+          700.2818713751086,
+          54.673848390579224
+        ],
+        "minimum": [
+          843.8534718703572,
+          697.9626694022993,
+          53.46263074874878
+        ]
+      },
+      "source_face_count": 18,
+      "source_face_indices_content_sha256": "28174297232c3e147948d0052acf5f29834a91b3f55b8b07f12e94fdd58a7d77",
+      "source_face_indices_first_16": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "source_geometry_sha256": "7b26e44523086654d0ec4d57e101b190aff7375a17fe2951b56ebd6c7c5182bc",
+      "source_mesh_id": "9de6a41f671fecff6b0e890e6253e0ab3e7b31eb3f707254103a40723a90c2d7",
+      "source_occlusion": "NOT_RUN",
+      "support_all_segments_pass": false,
+      "support_fail_reasons": [
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE"
+      ]
+    },
+    {
+      "axis": "x",
+      "component": "chair.001:component-00000000",
+      "departure_source_cameras_in_frustum": [
+        "CAM_1F_RESTAURANT_01"
+      ],
+      "free_space_certificate": "NOT_CERTIFIED",
+      "new_camera_landmark_binding": "HUMAN_REVIEW",
+      "obstacle_id": "OBSTACLE_1F_RESTAURANT_01",
+      "proposed_route_footpoints_bu": [
+        [
+          [
+            797.4391294407201,
+            360.6188229638517,
+            20.07884979248047
+          ],
+          [
+            797.4391294407201,
+            336.64640537326636,
+            20.07884979248047
+          ],
+          [
+            845.3839646218909,
+            336.64640537326636,
+            20.07884979248047
+          ],
+          [
+            845.3839646218909,
+            360.6188229638517,
+            20.07884979248047
+          ]
+        ],
+        [
+          [
+            797.4391294407201,
+            360.6188229638517,
+            20.07884979248047
+          ],
+          [
+            797.4391294407201,
+            384.59124055443715,
+            20.07884979248047
+          ],
+          [
+            845.3839646218909,
+            384.59124055443715,
+            20.07884979248047
+          ],
+          [
+            845.3839646218909,
+            360.6188229638517,
+            20.07884979248047
+          ]
+        ]
+      ],
+      "recovery_source_cameras_in_frustum": [
+        "CAM_1F_RESTAURANT_01"
+      ],
+      "scope_body_authority": "HUMAN_REVIEW",
+      "source_bounds_bu": {
+        "maximum": [
+          830.7139241360609,
+          369.92120006860716,
+          38.77265810966492
+        ],
+        "minimum": [
+          812.1091699265501,
+          351.3164458590963,
+          35.40968298912048
+        ]
+      },
+      "source_face_count": 3072,
+      "source_face_indices_content_sha256": "c5692f622f8b3cafb3392852194904e21e262e58b4b3727465e547636666b383",
+      "source_face_indices_first_16": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "source_geometry_sha256": "3c5ce9c3375d2dda363c8d3ceadf7a4e9e7500e809c5c970559173a25e2932e8",
+      "source_mesh_id": "ff84c686f6f79567e0a81ea73e922dfdd8288bb15400aa56e67214d624e25bca",
+      "source_occlusion": "NOT_RUN",
+      "support_all_segments_pass": false,
+      "support_fail_reasons": [
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE"
+      ]
+    },
+    {
+      "axis": "x",
+      "component": "Chair Leg.001:component-00012030",
+      "departure_source_cameras_in_frustum": [
+        "CAM_1F_RESTAURANT_01"
+      ],
+      "free_space_certificate": "NOT_CERTIFIED",
+      "new_camera_landmark_binding": "HUMAN_REVIEW",
+      "obstacle_id": "OBSTACLE_1F_RESTAURANT_02",
+      "proposed_route_footpoints_bu": [
+        [
+          [
+            706.7892783576708,
+            447.4512157693507,
+            20.07884979248047
+          ],
+          [
+            706.7892783576708,
+            431.952451536436,
+            20.07884979248047
+          ],
+          [
+            737.2725589318106,
+            431.952451536436,
+            20.07884979248047
+          ],
+          [
+            737.2725589318106,
+            447.4512157693507,
+            20.07884979248047
+          ]
+        ],
+        [
+          [
+            706.7892783576708,
+            447.4512157693507,
+            20.07884979248047
+          ],
+          [
+            706.7892783576708,
+            462.94998000226553,
+            20.07884979248047
+          ],
+          [
+            737.2725589318106,
+            462.94998000226553,
+            20.07884979248047
+          ],
+          [
+            737.2725589318106,
+            447.4512157693507,
+            20.07884979248047
+          ]
+        ]
+      ],
+      "recovery_source_cameras_in_frustum": [
+        "CAM_1F_RESTAURANT_01"
+      ],
+      "scope_body_authority": "HUMAN_REVIEW",
+      "source_bounds_bu": {
+        "maximum": [
+          722.6025184459806,
+          448.27993951643555,
+          36.75008428328118
+        ],
+        "minimum": [
+          721.4593188435008,
+          446.62249202226593,
+          36.39698801096125
+        ]
+      },
+      "source_face_count": 218,
+      "source_face_indices_content_sha256": "f1c1b56942743f8145882c7080a8cb86b81eabdbf55dc89492e799d71816aba6",
+      "source_face_indices_first_16": [
+        5595,
+        5637,
+        5638,
+        5639,
+        5640,
+        5641,
+        5642,
+        5643,
+        5644,
+        5645,
+        5646,
+        5647,
+        5648,
+        5649,
+        5650,
+        5651
+      ],
+      "source_geometry_sha256": "79d7cbf7ba4a80ae74d03e162c0eabc69fa6d4e7fced33a2ef1e273e0c3a2d84",
+      "source_mesh_id": "eb45cf111814f5050c599cb67347a4f2db9617711199b73827eecfdaf9de47a8",
+      "source_occlusion": "NOT_RUN",
+      "support_all_segments_pass": false,
+      "support_fail_reasons": [
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE"
+      ]
+    },
+    {
+      "axis": "x",
+      "component": "Tool_cart:component-00006410",
+      "departure_source_cameras_in_frustum": [
+        "CAM_1F_CORRIDOR_02"
+      ],
+      "free_space_certificate": "NOT_CERTIFIED",
+      "new_camera_landmark_binding": "HUMAN_REVIEW",
+      "obstacle_id": "OBSTACLE_1F_STORAGE03",
+      "proposed_route_footpoints_bu": [
+        [
+          [
+            1676.1332300925544,
+            568.1618387103081,
+            20.07884979248047
+          ],
+          [
+            1676.1332300925544,
+            550.6997536444953,
+            20.07884979248047
+          ],
+          [
+            1709.76991665122,
+            550.6997536444953,
+            20.07884979248047
+          ],
+          [
+            1709.76991665122,
+            568.1618387103081,
+            20.07884979248047
+          ]
+        ],
+        [
+          [
+            1676.1332300925544,
+            568.1618387103081,
+            20.07884979248047
+          ],
+          [
+            1676.1332300925544,
+            585.6239237761208,
+            20.07884979248047
+          ],
+          [
+            1709.76991665122,
+            585.6239237761208,
+            20.07884979248047
+          ],
+          [
+            1709.76991665122,
+            568.1618387103081,
+            20.07884979248047
+          ]
+        ]
+      ],
+      "recovery_source_cameras_in_frustum": [
+        "CAM_1F_CORRIDOR_02",
+        "CAM_1F_MEETINGROOM"
+      ],
+      "scope_body_authority": "HUMAN_REVIEW",
+      "source_bounds_bu": {
+        "maximum": [
+          1695.09987616539,
+          570.9538832902908,
+          32.299576103687286
+        ],
+        "minimum": [
+          1690.8032705783844,
+          565.3697941303253,
+          23.349586203694344
+        ]
+      },
+      "source_face_count": 1428,
+      "source_face_indices_content_sha256": "e98e2abb865f7453167f4210bd45c973680ae53c06bf1bb14117cd5bb70cf671",
+      "source_face_indices_first_16": [
+        3138,
+        3139,
+        3140,
+        3141,
+        3142,
+        3143,
+        3144,
+        3145,
+        3146,
+        3147,
+        3148,
+        3149,
+        3150,
+        3151,
+        3152,
+        3153
+      ],
+      "source_geometry_sha256": "a7e2bb1645cf86350f6d0aeb8497a4f1f3259c208ddf6b425edfb087d41c3877",
+      "source_mesh_id": "681b43fa0d8b4549313e755cd6fa9cae828d64a815f55031b27b83591b60c5ba",
+      "source_occlusion": "NOT_RUN",
+      "support_all_segments_pass": false,
+      "support_fail_reasons": [
+        "OUTSIDE_APPROVED_WALKABLE",
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "INSUFFICIENT_WALKABLE_CLEARANCE",
+        "OUTSIDE_APPROVED_WALKABLE",
+        "OUTSIDE_APPROVED_WALKABLE"
+      ]
+    }
+  ],
+  "schema_version": "phase1-branch-candidate-audit-summary-v1",
+  "scope_extended": false,
+  "source_camera_catalog_content_sha256": "a851ffebe3d6a6b71789a9afcfc2355c16d75603ef97d814d4d5bd4d5bc22b8e",
+  "source_camera_count": 29,
+  "source_camera_fov_pair_count": 26,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "status": "PROPOSAL_NOT_AVAILABLE",
+  "support_pass_count": 0
+}

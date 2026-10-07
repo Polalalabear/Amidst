@@ -4,6 +4,35 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Fresh reviewed local execution, explicit reference metrics and demos
+
+新增 reviewed export／inference／evaluation／reproduction CLI，復用原 camera/raycaster／
+projection／FrameSampleDataset／Graph traversal／BlindGapReconstructor／A-B-C masks／
+comparison reporting／Rerun adapter，不重建 inference engine。所有正式 primary inference
+先凍結，再開 evaluation/reference。新 V2 export/inference locks 在 simulation 前固定，
+原 V1 config、29 review-bound inputs、57 frames、原 protocol 保持 bytes。
+Canonical local output：`data/finalization/reviewed_run_v5/`；V1–V4 探索結果全部 local ARCHIVE。
+Dataset manifest SHA `a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5`，
+primary freeze SHA `d16708cfb437b6dff2ea06139126d5784a181c547d9dba6d1633068988cf4059`。
+Formal local Case1/3 × A/B/C 已執行，27-row K matrix 包含 9 Case2 BLOCKED/N/A rows。
+C Case1 ADE=1.5968095443362998e-5 m、FDE=7.390309426983255e-6 m；
+C Case3 ADE=1.4052783774710346e-5 m、FDE=3.15227085453112e-6 m；A/B 同值。
+每 Case 1 route／2 timing hypotheses／2 expanded states，COMPLETE；Coverage@1/2/3=true。
+獨立 source-class recall=1、approved local handoff impossible-transition=0、certificate內
+continuous segments collision=0；不升格全球／中間未觀測 camera sequence authority。
+新 explicit reference annotations 產生 primary Travel-time Error=0 s，moving durations
+4.4 s／152.4 s；departure-dwell alternatives 保留，error=2.211203 s／150.283315 s。
+20 charts、兩份含 source cameras/certificate/body guard/projected/inferred 的 RRD+PNG，
+RRD reader verification／視覺 QA PASS，GT primary recording 關閉且未記錄。
+Repeat／fresh-process／ordering／GT poison／termination PASS，scope 僅 ready Case1/3；
+兩個新 annotation files 用 malformed poison 亦不改 primary inference。
+Source motion 是 CONFIGURATION_SAMPLER、camera/visibility 為 Blender source-bound export，
+不冒充 Blender actor animation 或真实拍攝；pixel noise 未宣告，uncertainty 保留 unavailable。
+130 focused tests、repo Ruff、strict mypy 104 source files＋3 new CLI PASS；最後 pipeline
+poison fix 的 10 tests 亦 PASS。完整 suite 與 clean-checkout delivery comparison 待獨立重跑。
+Case2 source branching、Case3 detour/growth 不足仍阻塞原 Exit Gate；remove_collision 缺
+獨立 purpose-bound consumer，保留 N/A，沒有用空 collider 或放寬 scope 造 PASS。
+
 ### 2026-10-07 — Independent reference movement policy approved and locked
 
 原 protocol 要求獨立 reference moving/dwell annotation，原 HR04 只有 inference timing；

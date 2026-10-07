@@ -1,0 +1,52 @@
+{
+  "artifacts": [
+    {
+      "bytes": 904558,
+      "path": "approved_island_candidates.json",
+      "sha256": "9744f24dc2de605d8a39ceeae1bc08df75325e06c005df32ea4e0f7e131c579d"
+    },
+    {
+      "bytes": 14726,
+      "path": "candidate_audit_summary.json",
+      "sha256": "ea60a820e1df9374eef357a7889eb4c50dec24d397ea1d5ebccf5d30f94f6300"
+    },
+    {
+      "bytes": 3240284,
+      "path": "two_sided_source_candidates.json",
+      "sha256": "d3cfec156286a3142941d89698b123030f4e90c13f699639290852772790606d"
+    }
+  ],
+  "input_files": [
+    {
+      "bytes": 35313518,
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/source_evidence.json.gz",
+      "sha256": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c"
+    },
+    {
+      "bytes": 469557,
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz",
+      "sha256": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0"
+    },
+    {
+      "bytes": 487046,
+      "path": "data/scene_audit/phase1_physical_policy_approval_20261006/obstacle_collider_authority.json",
+      "sha256": "cfcb6b7fd87fddda742eb05a9d69c31128803ba1dfca162e5283297eeb3c543d"
+    },
+    {
+      "bytes": 258450,
+      "path": "data/finalization/reviewed_route_inventory_v1/source_camera_catalog.json",
+      "sha256": "20bd0cc141d35aa66ec1e3116f1872f9d8ea94edc238079ab9716cf9fe7cdea4"
+    }
+  ],
+  "producer_hashes": {
+    "scripts/audit_reviewed_branch_scope.py": "3fb876976d7dc15db4eb32d67bd459c0a548f1cd14fddd06d3b922aee5e8f9f1",
+    "src/amidst/finalization/scope_inventory.py": "8ffadf1f5303524f7e236592986813b57d50af32552bd026cc6668f6f24c6d01"
+  },
+  "raw_output_directory": "data/finalization/reviewed_branch_scope_v2",
+  "raw_publication_policy": "LOCAL_ONLY_NOT_GIT",
+  "reproduce_entry": "UV_CACHE_DIR=/private/tmp/amidst-finalization-uv-cache uv run python scripts/audit_reviewed_branch_scope.py --source-catalog data/finalization/reviewed_route_inventory_v1/source_camera_catalog.json --output <fresh-local-output>",
+  "schema_version": "phase1-branch-scope-audit-manifest-v1",
+  "source_camera_extraction": "amidst.simulation.camera_calibration.read_camera_calibration_catalog(source, expected_count=29); unsaved Blender process, source SHA-256/size/mtime checked before and after",
+  "source_scene_unchanged_during_camera_extraction": true,
+  "status": "DIAGNOSTIC_READ_ONLY_NO_AUTHORITY_APPLIED"
+}

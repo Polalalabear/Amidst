@@ -40,6 +40,8 @@ DEPENDENT_GATES = frozenset({
     "fresh_formal_dataset_all_cases", "formal_cases_1_3_and_a_b_c_and_ablations",
     "required_metrics_complete", "benchmark_tables_and_charts_complete",
     "formal_rerun_png_replay_all_cases",
+    "gt_poison_pass", "repeated_inference_pass", "fresh_process_pass",
+    "observation_ordering_pass", "bounded_search_termination_pass",
     "fresh_checkout_materialization_export_inference_report_demo_comparison_pass",
 })
 

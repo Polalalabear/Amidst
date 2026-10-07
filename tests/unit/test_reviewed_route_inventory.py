@@ -136,3 +136,44 @@ def test_graph_and_readiness_do_not_call_recipe_validation_or_open_files() -> No
         ) for node in calls)
         assert not any(isinstance(node, ast.Attribute) and node.attr == "waypoints"
                        for node in ast.walk(functions[name]))
+
+
+def test_v2_reference_policy_envelope_loads_only_hash_bound_gt_free_base(tmp_path: Path) -> None:
+    base = load_reviewed_case_inference_config(INFERENCE).model_dump(mode="json")
+    # Actual V2 export lock hashes are caller-supplied before dataset export.
+    base["export_config_file_sha256"] = "e" * 64
+    base["export_config_content_sha256"] = "f" * 64
+    envelope = {
+        "schema_version": "phase1-reviewed-case-inference-lock-v2",
+        "base_inference_config": base,
+        "base_inference_config_content_sha256": content_sha256(base),
+        "reference_movement_policy_content_sha256": "a" * 64,
+        "reference_movement_approval_receipt_content_sha256": "b" * 64,
+    }
+    path = tmp_path / "inference_v2.json"
+    path.write_text(json.dumps(envelope))
+    loaded = load_reviewed_case_inference_config(path)
+    assert loaded.export_config_file_sha256 == "e" * 64
+    assert loaded.model_dump(mode="json") == base
+    envelope["base_inference_config_content_sha256"] = "c" * 64
+    path.write_text(json.dumps(envelope))
+    with pytest.raises(ValidationError, match="base config content hash mismatch"):
+        load_reviewed_case_inference_config(path)
+
+
+@pytest.mark.parametrize("field", ["reference_movement_annotations", "waypoints", "ground_truth"])
+def test_v2_inference_envelope_forbids_reference_and_recipe_values(
+    tmp_path: Path, field: str,
+) -> None:
+    base = load_reviewed_case_inference_config(INFERENCE).model_dump(mode="json")
+    path = tmp_path / "inference_v2.json"
+    path.write_text(json.dumps({
+        "schema_version": "phase1-reviewed-case-inference-lock-v2",
+        "base_inference_config": base,
+        "base_inference_config_content_sha256": content_sha256(base),
+        "reference_movement_policy_content_sha256": "a" * 64,
+        "reference_movement_approval_receipt_content_sha256": "b" * 64,
+        field: [{"timestamp": 0, "position": [1400, 1940, 20]}],
+    }))
+    with pytest.raises(ValidationError, match="Extra inputs are not permitted"):
+        load_reviewed_case_inference_config(path)

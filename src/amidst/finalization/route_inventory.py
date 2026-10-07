@@ -9,6 +9,7 @@ uses only the resulting projected endpoint observations.
 from __future__ import annotations
 
 import hashlib
+import json
 import math
 from itertools import pairwise
 from pathlib import Path
@@ -259,12 +260,40 @@ class ReviewedCaseInferenceConfig(DomainModel):
         return next(case for case in self.cases if case.case_id == case_id)
 
 
+class ReviewedCaseInferenceLockV2(DomainModel):
+    """Reference-policy lineage around an unchanged GT-free inference contract.
+
+    Reference movement annotations remain in simulation/evaluation packages.
+    These hashes bind their approved policy without exposing annotation values,
+    reference positions or recipes to any inference consumer.
+    """
+
+    schema_version: Literal["phase1-reviewed-case-inference-lock-v2"]
+    base_inference_config: ReviewedCaseInferenceConfig
+    base_inference_config_content_sha256: Digest
+    reference_movement_policy_content_sha256: Digest
+    reference_movement_approval_receipt_content_sha256: Digest
+
+    @model_validator(mode="after")
+    def verified_base(self) -> Self:
+        if content_sha256(self.base_inference_config.model_dump(mode="json")) != (
+            self.base_inference_config_content_sha256
+        ):
+            raise ValueError("V2 inference envelope base config content hash mismatch")
+        return self
+
+
 def load_reviewed_case_inference_config(
     path: Path, *, expected_sha256: str | None = None,
 ) -> ReviewedCaseInferenceConfig:
     raw = path.read_bytes()
     if expected_sha256 is not None and hashlib.sha256(raw).hexdigest() != expected_sha256:
         raise ValueError("reviewed inference lock file SHA-256 mismatch")
+    document = json.loads(raw)
+    if isinstance(document, dict) and document.get("schema_version") == (
+        "phase1-reviewed-case-inference-lock-v2"
+    ):
+        return ReviewedCaseInferenceLockV2.model_validate_json(raw).base_inference_config
     return ReviewedCaseInferenceConfig.model_validate_json(raw)
 
 

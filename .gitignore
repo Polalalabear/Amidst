@@ -24,6 +24,23 @@ data/pilot/
 # Phase 1 finalization local raw packages; curated summaries remain tracked.
 /data/finalization/local_run/
 /data/finalization/fresh_run/
+/data/finalization/reviewed_run_*/dataset/
+/data/finalization/reviewed_run_*/inference*/
+/data/finalization/reviewed_run_*/poison_dataset/
+/data/finalization/reviewed_run_*/reproduction/
+/data/finalization/reviewed_run_*/demo/
+/data/finalization/reviewed_run_*/evaluation*/demos/**/*.png
+# Superseded local exploratory orchestration evidence is preserved, not published.
+/data/finalization/reviewed_run_v1/evaluation/
+/data/finalization/reviewed_run_v2/evaluation/
+/data/finalization/reviewed_run_v3/evaluation*/
+/data/finalization/reviewed_run_v4/evaluation*/
+/data/finalization/reviewed_route_inventory_v1/approved_island_candidates.json
+/data/finalization/reviewed_route_inventory_v1/source_camera_catalog.json
+/data/finalization/reviewed_route_inventory_v1/supported_branch_candidates.json
+/data/finalization/reviewed_route_inventory_v1/two_sided_branch_candidate_audit.json
+/data/finalization/reviewed_branch_scope_v1/
+/data/finalization/reviewed_branch_scope_v2/
 
 # Lightweight physical-policy checkpoint: exact locally materialized evidence paths.
 /data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz
