@@ -30,6 +30,7 @@ from amidst.domain.observation import Observation
 from amidst.domain.pipeline import InferenceInput, PipelineConfig
 from amidst.domain.stream import ObservationAggregation, StreamBinding
 from amidst.domain.trajectory import Event, ReconstructionResult
+from amidst.finalization.reviewed_collision import ReviewedCollisionBundle
 from amidst.graph.engine import GeometricSearchResult, GraphFactorMask, SpatiotemporalGraphEngine
 from amidst.local_semantic_review import (
     ReviewedLocalScopeCertificate,
@@ -504,6 +505,11 @@ class ReviewedBaselineRun(DomainModel):
     physical_records: tuple[RoutePhysicalRecord, ...]
     physical_status: Literal["APPROVED_LOCAL_SCOPE"] = "APPROVED_LOCAL_SCOPE"
     physical_scope_id: str
+    collision_consumer_receipt: dict[str, Any] | None = None
+    collision_filter_enabled: bool = False
+    collision_filter_status: Literal[
+        "AVAILABLE", "N/A_NO_APPROVED_COLLIDER_AUTHORITY",
+    ] = "N/A_NO_APPROVED_COLLIDER_AUTHORITY"
 
 
 def run_reviewed_baseline(
@@ -511,6 +517,7 @@ def run_reviewed_baseline(
     context: ReviewedInferenceContext, frozen_config_sha256: str, case_readiness_sha256: str,
     case_readiness: Mapping[str, Any], aggregation: ObservationAggregation,
     ablation_id: str | None = None, collision_consumer: CylinderCollisionConsumer | None = None,
+    collision_bundle: ReviewedCollisionBundle | None = None,
     clock: Callable[[], float] = monotonic,
 ) -> ReviewedBaselineRun:
     """Use exactly the existing baseline masks, traversal and timing implementations.
@@ -583,12 +590,22 @@ def run_reviewed_baseline(
         factors = GraphFactorMask(travel_time_filter=False, camera_topology_filter=True)
     elif ablation_id == "remove_topology":
         factors = GraphFactorMask(travel_time_filter=True, camera_topology_filter=False)
-    if collision_consumer is not None and collision_consumer.inputs.source_sha256 != (
-        authority.source_sha256
-    ):
-        raise ValueError("reviewed collision consumer source differs")
-    if ablation_id == "remove_collision" and collision_consumer is None:
+    if collision_consumer is not None:
+        raise ValueError("reviewed collision consumer requires a bound reviewed collision bundle")
+    collision_consumers: tuple[CylinderCollisionConsumer, ...] = ()
+    collision_receipt = None
+    if collision_bundle is not None:
+        prepared_collision = collision_bundle.validate_bindings(
+            source_sha256=authority.source_sha256,
+            local_certificate_content_sha256=authority.certificate_content_sha256,
+            semantic_receipt_content_sha256=authority.semantic_review_content_sha256,
+            floor_ids=(native.zone.floor_id,), contract=authority.provider.contract,
+        )
+        collision_receipt = prepared_collision.receipt()
+        collision_consumers = prepared_collision.consumers
+    if ablation_id == "remove_collision" and not collision_consumers:
         raise ValueError("remove_collision requires a supplied approved collision consumer")
+    collision_enabled = bool(collision_consumers) and ablation_id != "remove_collision"
     records: list[RoutePhysicalRecord] = []
     ratio = authority.provider.contract.scale.metres_per_blender_unit
 
@@ -601,12 +618,14 @@ def run_reviewed_baseline(
                 polyline_m=polyline, state="UNVALIDATED", reasons=error.reasons,
             ))
             return False
-        if collision_consumer is not None and ablation_id != "remove_collision":
-            decision = collision_consumer.validate(polyline)
-            records.append(RoutePhysicalRecord(
-                polyline_m=polyline, state=decision.state, reasons=decision.reasons,
-            ))
-            return decision.state == "RETAINED"
+        if collision_enabled:
+            for consumer in collision_consumers:
+                decision = consumer.validate(polyline)
+                if decision.state != "RETAINED":
+                    records.append(RoutePhysicalRecord(
+                        polyline_m=polyline, state=decision.state, reasons=decision.reasons,
+                    ))
+                    return False
         records.append(RoutePhysicalRecord(polyline_m=polyline, state="RETAINED"))
         return True
 
@@ -649,6 +668,9 @@ def run_reviewed_baseline(
             else "AVAILABLE"
         ), physical_records=tuple(records),
         physical_scope_id=authority.certificate.physical_certificate.scope_id,
+        collision_consumer_receipt=collision_receipt, collision_filter_enabled=collision_enabled,
+        collision_filter_status=("AVAILABLE" if collision_consumers
+                                 else "N/A_NO_APPROVED_COLLIDER_AUTHORITY"),
     )
 
 

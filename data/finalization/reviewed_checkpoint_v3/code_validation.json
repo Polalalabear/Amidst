@@ -1,0 +1,40 @@
+{
+  "base_commit": "8cc8bdcf8987f5b0b30f788340a38506d40181e1",
+  "code_and_test_hashes": {
+    "configs/finalization/reviewed_case_inference_with_collision_v3.json": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c",
+    "src/amidst/finalization/reviewed_authority.py": "d1d08047033358c4ac9631cbabf7927439c7d816c7d0461b99e33047f75132be",
+    "src/amidst/finalization/reviewed_collision.py": "f0ebdb85c25bc2a267302afc43d992911a48909f15e61cd051d6ed4cf6c14c38",
+    "src/amidst/finalization/reviewed_collision_lock.py": "0c0729f374f6730cc3a1f2f28b32270d2a326e29d1c6e040051707fa5a227cd3",
+    "src/amidst/finalization/reviewed_pipeline.py": "effb7fb5072c16ec30dba7adea73fa2e9fe24c8712f3cabd08d7e2a7f447a905",
+    "tests/unit/test_phase1_reviewed_pipeline.py": "339ba213ecea9065a8059c4b703077701d189cde9aebe2f4837125e37089650b",
+    "tests/unit/test_reviewed_collision.py": "3e9f6c674f64314a1f069a54653259948f6dbf6436e4ec9fb9976e7425434c9f",
+    "tests/unit/test_reviewed_collision_lock.py": "79fa10f331ba4ccc6b19d40f12a7d4df58f2c38702fdf727e13ae96a6653a985",
+    "tests/unit/test_reviewed_collision_pipeline.py": "8d1fd39d77dfdb6f2c273c70fed8d9d395ef778815e354841cbc2754dcdee077",
+    "uv.lock": "c2fa5d90c4333857c2f4b1fd53abe8b281da1062c68ec10b6884cd1159bef521"
+  },
+  "existing_and_collision_suite": {
+    "excluded_unfinished_new_scope_tests": [
+      "test_scoped_authority.py",
+      "test_source_branch_discovery.py",
+      "test_scoped_route_inventory.py"
+    ],
+    "failed": 0,
+    "passed": 1905,
+    "seconds": 102.88,
+    "skipped": 3
+  },
+  "modified_collision_modules_ruff": "PASS",
+  "modified_collision_modules_strict_mypy": "PASS",
+  "original_full_exit_complete": false,
+  "recorded_at": "2026-10-07T17:02:28.600824+00:00",
+  "required_actual_physical_evidence_followup": {
+    "failed": 0,
+    "missing_evidence_fails_instead_of_skips": true,
+    "passed": 9,
+    "previously_skipped_tests_executed": 3,
+    "seconds": 7.94,
+    "skipped": 0,
+    "source": "/Users/polalabear/Developer/amidst/blender/school_v3.blend"
+  },
+  "schema_version": "phase1-collision-milestone-code-validation-v1"
+}

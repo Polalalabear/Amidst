@@ -1,8 +1,29 @@
 # Phase 1 finalization report / Phase 1 收尾報告
 
-## 2026-10-08 — Reviewed local formal execution / 核准後局部正式執行
+## 2026-10-08 — Collision capability implemented / 碰撞消融已實作
 
-Current status: **PHASE1_FINALIZATION_BLOCKED**. The four original approvals are applied;
+Current status remains **PHASE1_FINALIZATION_BLOCKED**. Fresh V7 uses 25 original
+APPROVED known-collision scopes and 58 nonempty colliders, retaining their partial
+coverage. `remove_collision` now executes; it disables only the inference filter.
+The complete reviewed local body/domain guard and both independent physical evaluators
+remain active. No source semantics or original HR01–HR04/protocol values changed.
+
+V7 fresh export, inference, evaluation and ready-case reproduction are complete.
+Repeat, fresh process, ordering, GT/recipe/annotation poison and termination checks
+pass. The 45-row ablation matrix has 30 evaluated Case1/Case3 rows and 15 blocked
+Case2 rows; its comparison includes 17 charts. C and `remove_collision` each retain
+one candidate and a 0/3 known-collision segment rate in each ready case. This dataset
+provides no measured collision-pruning benefit. Exact V3 lock bytes are frozen with
+inference and revalidated during evaluation.
+
+中文：已補齊先前缺少的 purpose-bound collision consumer 與消融報表；新的局部分支
+scope 尚在來源幾何／鏡頭核對，Case2 與 Case3 detour-growth 未完成。沒有 freeze tag。
+Details: [collision checkpoint](PHASE1_COLLISION_CONSUMER_CHECKPOINT.md),
+[curated V7 receipts and ablations](../data/finalization/reviewed_checkpoint_v3/manifest.json).
+
+## Historical 2026-10-08 — Reviewed local formal execution / 核准後局部正式執行
+
+V5 checkpoint status: **PHASE1_FINALIZATION_BLOCKED**. The four original approvals are applied;
 the exact bounded office certificate is **PASS**. Formal local Case1 and the temporal component
 of Case3 have fresh A/B/C results. The original full Case1–3 Exit Gate is incomplete; no freeze
 tag is permitted. Case4 remains DEFERRED and Phase2 remains FROZEN.

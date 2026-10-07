@@ -1,0 +1,145 @@
+{
+  "canonical_local_run": "data/finalization/reviewed_run_v7_collision",
+  "curated_artifacts": {
+    "code_validation.json": {
+      "sha256": "67f0c806426006e27c312f37e8ba30e526c7f5f7f93b7ce7e7d2d1f886d90939",
+      "size_bytes": 2125
+    },
+    "evaluation/ablations/benchmark_table.csv": {
+      "sha256": "9a968456e57a9a6e7a7cba4495afba3f33ac3a680ea9083f7e5527a9d8b942cc",
+      "size_bytes": 9379
+    },
+    "evaluation/ablations/benchmark_table.json": {
+      "sha256": "0ed2277de8782b998aee0a7dcac77b709c9f2b35d066a396eda45ee3764f345b",
+      "size_bytes": 35890
+    },
+    "evaluation/ablations/benchmark_table.md": {
+      "sha256": "0db1126729378543b5d880e210f29a217152a9375afb0d73698f737a05806869",
+      "size_bytes": 11161
+    },
+    "evaluation/ablations/charts/accuracy_ade.png": {
+      "sha256": "982a3ff000cc942ee329718580f5740166b93d15f6b97ac0d6d929caac8a07e0",
+      "size_bytes": 190733
+    },
+    "evaluation/ablations/charts/accuracy_fde.png": {
+      "sha256": "afead425f8838b8b2445750f035ea39b4b3d5c8ff3589450390a14aa73ec5649",
+      "size_bytes": 191680
+    },
+    "evaluation/ablations/charts/accuracy_minade_at_k.png": {
+      "sha256": "3df8f21f3fad1ca64b3877530c6aa856b081bc2f4e457fd147fb3c052f1d374e",
+      "size_bytes": 209675
+    },
+    "evaluation/ablations/charts/accuracy_minfde_at_k.png": {
+      "sha256": "4b7383c5ff0b9240edf676edbc8b64be22515cdc55f366edda3ca572dbaed3ff",
+      "size_bytes": 210041
+    },
+    "evaluation/ablations/charts/benchmark_summary.json": {
+      "sha256": "0556a1598c9552e4d3feaf87ad0aceeba2d319516ac3a569b1d7f8d372873822",
+      "size_bytes": 94335
+    },
+    "evaluation/ablations/charts/benchmark_summary.md": {
+      "sha256": "32ee7fd3faceb8efadcdc3934c32b6738033456d76b4cfdc39f93f8ae0d834be",
+      "size_bytes": 11947
+    },
+    "evaluation/ablations/charts/candidate_count.png": {
+      "sha256": "4e4c3209775419589d7cbf58209e973ed08dadaeab1c4e43c798448284df414c",
+      "size_bytes": 179097
+    },
+    "evaluation/ablations/charts/collision_rate.png": {
+      "sha256": "8710f3cddd034941cf054682460117e1acf0a6380efb53637fb4ea65f253254d",
+      "size_bytes": 180026
+    },
+    "evaluation/ablations/charts/constraint_rate.png": {
+      "sha256": "25f34d2d6d14eaf3da8bcc201ed788b3269ffad510d09792294027b3bbc5e56c",
+      "size_bytes": 185487
+    },
+    "evaluation/ablations/charts/coverage_at_k.png": {
+      "sha256": "1db04ee1b0d048fee876a2ee8146c27545a9577b7b0eab818beda560680cc1fc",
+      "size_bytes": 115187
+    },
+    "evaluation/ablations/charts/feasible_recall.png": {
+      "sha256": "35523ae1385c02119f02b15f513c76f7bf68ac7af90242d9f964ff5cf597af35",
+      "size_bytes": 183624
+    },
+    "evaluation/ablations/charts/impossible_transition_rate.png": {
+      "sha256": "844bd126b5da6e1e1d2f6db22bd3b0cdd2e7f1f665d7545d3019d6d3d41552dd",
+      "size_bytes": 185655
+    },
+    "evaluation/ablations/charts/path_length_error.png": {
+      "sha256": "bfe1badddabfa321ea6d8b93b5f7ae8dd0fb961790d0be7acb96e2b9c6402e95",
+      "size_bytes": 196399
+    },
+    "evaluation/ablations/charts/physical_validity.png": {
+      "sha256": "6734d0a987020356e09af443df54bf671a2abaea70fa2070f4577764f78420d9",
+      "size_bytes": 196385
+    },
+    "evaluation/ablations/charts/projection_error.png": {
+      "sha256": "668e41800a9caf1b7288403812a0d9488100ae87b9a87c270d33dd9359dfa3cd",
+      "size_bytes": 193644
+    },
+    "evaluation/ablations/charts/runtime.png": {
+      "sha256": "04e1c0dfe5c041f762cf04ee4b2d3ca9700b736084c62be32a50441615750c79",
+      "size_bytes": 190185
+    },
+    "evaluation/ablations/charts/search_nodes.png": {
+      "sha256": "71044fc3b8393c0995524c3aac9d819e80f0e50704c3efff54f8b4fa98bae012",
+      "size_bytes": 189095
+    },
+    "evaluation/ablations/charts/termination_categories.png": {
+      "sha256": "c702aa6058b58613cd8290a17f2b28254871c3500666c619b83b05869e6e24dc",
+      "size_bytes": 180911
+    },
+    "evaluation/ablations/charts/travel_time_error.png": {
+      "sha256": "e0d240dcf43004cfd0a4b7279f83c5d374da3840723ec37e1059baa21e1510e0",
+      "size_bytes": 178764
+    },
+    "evaluation/ablations/comparison.json": {
+      "sha256": "d2d0af3b27236b4a4fc53a9fe4ac254ea229f6e653dcd6b8f7f2f0e4b8aff792",
+      "size_bytes": 19540
+    },
+    "evaluation/benchmark_table.csv": {
+      "sha256": "fa55384da6473ac184dba928952eba70c3ddee6cdb88bb2176e5bb5731afc1e3",
+      "size_bytes": 5581
+    },
+    "evaluation/benchmark_table.json": {
+      "sha256": "ca4a15809d230d5dbe34ecbd383b8b76a2ad9621b292fbbc662d8bf0c3f9344d",
+      "size_bytes": 21364
+    },
+    "evaluation/benchmark_table.md": {
+      "sha256": "241ee254fec4b75f46efd7d29c42b11392debb5904e61cfc76da3d6531697465",
+      "size_bytes": 6745
+    },
+    "evaluation/verification.json": {
+      "sha256": "e4c7b567d280c4b326b73865ff624fa0e7b74097e715c3dece5599eb66127dd7",
+      "size_bytes": 97035
+    },
+    "inference_primary/collision_authority.json": {
+      "sha256": "1d55b308005edd09d79ec62c9c1d24d19f1339373e56c76ca46ea1530eba3624",
+      "size_bytes": 4731
+    },
+    "inference_primary/collision_inference_lock.json": {
+      "sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c",
+      "size_bytes": 6571
+    },
+    "inference_primary/inference_freeze.json": {
+      "sha256": "add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de",
+      "size_bytes": 3720
+    },
+    "reproduction/verification.json": {
+      "sha256": "30c882781afffdebcb85b26f5c7a84623939af484f89899317982daf9fef3bb9",
+      "size_bytes": 2019
+    }
+  },
+  "dataset_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+  "freeze_tag_permitted": false,
+  "known_collision_coverage": "PARTIAL",
+  "new_semantic_authority_granted": false,
+  "nonempty_approved_colliders": 58,
+  "original_approved_scopes": 25,
+  "original_full_exit_complete": false,
+  "raw_gt_observations_rrd_source_geometry_in_git": false,
+  "recorded_at": "2026-10-07T17:00:01.072471+00:00",
+  "schema_version": "phase1-reviewed-collision-checkpoint-v1",
+  "source_scene_saved": false,
+  "status": "PASS_READY_CASE_COLLISION_CAPABILITY_ONLY"
+}

@@ -9,20 +9,21 @@
 `/Users/polalabear/Developer/amidst` 在另一個 physical branch，只供應 scene/raw artifacts。
 不要在 canonical checkout 實作或切換它的 branch。
 
-目前 source checkpoint：`e6fbc8fbb3bf8c36355db38c299de5ff37705604`；最終文件／curated
-publication commit 由 branch tip 取得。原 handoff `62ea9b1` 與 approval `10a3fcc` 是歷史
+目前 collision milestone／publication commit 由 branch tip 取得；
+`e6fbc8fbb3bf8c36355db38c299de5ff37705604` 是歷史 V5 source checkpoint。
+原 handoff `62ea9b1` 與 approval `10a3fcc` 是歷史
 入口，保留原 hashes，不重新套原人工問題。完整現況見
 [final report](PHASE1_FINAL_REPORT.md)、[reviewed benchmark](PHASE1_REVIEWED_BENCHMARK.md)，
 重建指令見 [reviewed reproduction](PHASE1_REVIEWED_REPRODUCTION.md)。
 
-人工 gate **4/4 APPROVE、0 human blockers**；[approval summary](../human_review/APPROVALS.md)
+原 office 人工 gate **4/4 APPROVE、0 original human blockers**；[approval summary](../human_review/APPROVALS.md)
 與 [decisions.json](../human_review/decisions.json) 已提交並 **applied**；bounded office
 certificate **PASS**。原問題／profiles／payload、29 inputs、57 original frames 不變。
 新增 reference movement policy 已另行明確核准／lock／fresh export／evaluation，不重問
 原 HR01–HR04。Phase 1 **PHASE1_FINALIZATION_BLOCKED**；overall **PARTIAL_APPROVED**。
 
 已完成 additive reviewed adapters、GT-free V2 config lock、canonical fresh local
-`data/finalization/reviewed_run_v5/`：Case1／Case3 temporal component 的 A/B/C、27-row
+歷史 `data/finalization/reviewed_run_v5/`：Case1／Case3 temporal component 的 A/B/C、27-row
 K matrix（9 Case2 N/A）、20 charts、2 RRD+PNG、independent metrics/reference annotations。
 Ready Case1/3 的 repeat／fresh-process／ordering／GT/recipe/annotation poison／termination
 PASS。完整 source suite **1859 passed、0 skipped**，Ruff／strict mypy PASS。
@@ -30,6 +31,14 @@ Fresh checkout 位於 `/private/tmp/amidst-phase1-finalization-fresh-20261007`�
 同 hash application／dataset、198 code/config/lock files 與 final full delivery comparison
 均 PASS；[最終 receipt](../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json)
 保留 41 JSON／1 CSV／4 MD／21 non-runtime PNG／2 reader-verified RRD 的核對。
+
+Current V7 collision milestone 使用原25 APPROVED known-collision scopes／58 nonempty
+colliders；coverage仍PARTIAL，未新增語意批准。C與可執行 `remove_collision` 保留完整
+office domain/body guard與獨立評估；readyCase1/3的 repeat/fresh-process/order/GT-recipe-
+annotation poison/termination PASS。另有45列ablation table（30 EVALUATED、15 Case2 BLOCKED）
+和17張圖，沒有測到candidate/accuracy差異。見 [collision checkpoint](PHASE1_COLLISION_CONSUMER_CHECKPOINT.md)
+及 [curated manifest](../data/finalization/reviewed_checkpoint_v3/manifest.json)。
+剩餘工作仍是數值可通過且具actualcamera GAP的新局部分支scope；新scope不能借用office HR01/02。
 
 **唯一 remaining prerequisite 是新合法 branching scope。** 原 complete convex office
 只有 1 major route class／0 branches；Case2 及 Case3 detour/candidate-growth 不能完成。
@@ -39,7 +48,8 @@ Fresh checkout 位於 `/private/tmp/amidst-phase1-finalization-fresh-20261007`�
 把平行偏移／timings 算 branching、修改 source 或升格未知 WALL/portal/stair。
 後續只處理能真正提出 source-bound supported branching domain／camera-landmark binding
 的最小新範圍；其餘原核准與已完成流程不重做。原 full Exit Gate 未通過，不建 freeze tag。
-Collision ablation 缺獨立 purpose-bound consumer，保留 N/A；不填空 collider。
+Collision ablation 已由 V7 purpose-bound consumer 執行；partial known-collision coverage
+不升格完整學校碰撞／free-space authority。
 
 Immutable scene 在 canonical checkout：`blender/school_v3.blend`；scale 0.0247 m/BU。
 完整 review/raw media 在 canonical ignored
@@ -60,8 +70,11 @@ Continue substantial implementation in `/private/tmp/amidst-phase1-finalization`
 All four original approvals are applied and bounded numerical certification passes. Fresh
 formal local Case1/Case3-temporal A/B/C, approved independent moving-time reference metrics,
 reports/demos and scoped poison/determinism checks are complete. Read the current report,
-benchmark and reproduction links above; the code checkpoint is `e6fbc8f`. Full source validation
-passes 1859 tests without skips. The sole remaining source prerequisite is a genuinely supported
+benchmark and reproduction links above. Historical V5 source checkpoint `e6fbc8f` passed
+1859 tests without skips. Current V7 implements purpose-bound collision ablation, freezes exact
+V3 lock bytes and passes ready-case reproduction, with 45 ablation rows and 17 charts.
+The new collision code/checks are bound by the curated V3 validation receipt.
+The remaining source prerequisite is a genuinely supported
 branching local domain with valid camera/landmark binding. The bounded candidate audit supplies
 exact failed witnesses and no executable approval-only proposal. Keep Case2/Case3-growth blocked,
 the original receipts/protocol/source immutable, raw versions preserved, Case4 deferred and

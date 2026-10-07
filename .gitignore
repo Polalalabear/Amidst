@@ -41,6 +41,15 @@ data/pilot/
 /data/finalization/reviewed_route_inventory_v1/two_sided_branch_candidate_audit.json
 /data/finalization/reviewed_branch_scope_v1/
 /data/finalization/reviewed_branch_scope_v2/
+/data/finalization/reviewed_branch_discovery_v3/
+/data/finalization/reviewed_branch_discovery_v4/
+/data/finalization/reviewed_branch_discovery_v5/
+/data/finalization/reviewed_branch_discovery_v6/
+/data/finalization/reviewed_branch_scope_inputs_v1/
+/data/finalization/reviewed_branch_scope_preview_v1/
+/data/finalization/reviewed_branch_scope_proposal_v1/
+/data/finalization/reviewed_run_v6_collision/evaluation/
+/data/finalization/reviewed_run_v7_collision/evaluation/
 
 # Lightweight physical-policy checkpoint: exact locally materialized evidence paths.
 /data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz

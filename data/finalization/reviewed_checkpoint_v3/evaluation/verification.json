@@ -1,0 +1,1834 @@
+{
+  "ablation_chart_files": [
+    "projection_error.png",
+    "accuracy_ade.png",
+    "accuracy_fde.png",
+    "accuracy_minade_at_k.png",
+    "accuracy_minfde_at_k.png",
+    "feasible_recall.png",
+    "collision_rate.png",
+    "constraint_rate.png",
+    "impossible_transition_rate.png",
+    "path_length_error.png",
+    "travel_time_error.png",
+    "runtime.png",
+    "candidate_count.png",
+    "search_nodes.png",
+    "coverage_at_k.png",
+    "physical_validity.png",
+    "termination_categories.png"
+  ],
+  "ablation_measurements": {
+    "case1": {
+      "full_deterministic_graph": {
+        "ade_m": 1.5968095443362998e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+            "moving_time_s": 4.3999999999999995,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:dwell_at_start",
+            "moving_time_s": 2.188797071352546,
+            "travel_time_error_s": 2.2112029286474533
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8115441661793739,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "c6036d95965fa3916ab28860f74fb6ede1041dfd3940da6752ca15eb5e4dd439",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          }
+        },
+        "path_length_error_m": 1.7041931752226347e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 4.3999999999999995,
+        "primary_hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.556798091519553e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 29,
+        "reference_annotation_content_sha256": "02735550ed0785d89e9a2cdaa587abedf81611c530790a2e359ee4b75f1e9da0",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          4.2,
+          8.6
+        ],
+        "reference_moving_time_s": 4.3999999999999995,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "remove_collision": {
+        "ade_m": 1.5968095443362998e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+            "moving_time_s": 4.3999999999999995,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:dwell_at_start",
+            "moving_time_s": 2.188797071352546,
+            "travel_time_error_s": 2.2112029286474533
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.6907150000333786,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "c6036d95965fa3916ab28860f74fb6ede1041dfd3940da6752ca15eb5e4dd439",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          }
+        },
+        "path_length_error_m": 1.7041931752226347e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 4.3999999999999995,
+        "primary_hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.556798091519553e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 29,
+        "reference_annotation_content_sha256": "02735550ed0785d89e9a2cdaa587abedf81611c530790a2e359ee4b75f1e9da0",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          4.2,
+          8.6
+        ],
+        "reference_moving_time_s": 4.3999999999999995,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "remove_topology": {
+        "ade_m": 1.5968095443362998e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f",
+            "hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:continuous",
+            "moving_time_s": 4.3999999999999995,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f",
+            "hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:dwell_at_start",
+            "moving_time_s": 2.188797071352546,
+            "travel_time_error_s": 2.2112029286474533
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.7660316249821335,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "c6036d95965fa3916ab28860f74fb6ede1041dfd3940da6752ca15eb5e4dd439",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          }
+        },
+        "path_length_error_m": 1.7041931752226347e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 4.3999999999999995,
+        "primary_hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.556798091519553e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 29,
+        "reference_annotation_content_sha256": "02735550ed0785d89e9a2cdaa587abedf81611c530790a2e359ee4b75f1e9da0",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          4.2,
+          8.6
+        ],
+        "reference_moving_time_s": 4.3999999999999995,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "remove_travel_time": {
+        "ade_m": 1.5968095443362998e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+            "moving_time_s": 4.3999999999999995,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:dwell_at_start",
+            "moving_time_s": 2.188797071352546,
+            "travel_time_error_s": 2.2112029286474533
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.766051041893661,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "c6036d95965fa3916ab28860f74fb6ede1041dfd3940da6752ca15eb5e4dd439",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          }
+        },
+        "path_length_error_m": 1.7041931752226347e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 4.3999999999999995,
+        "primary_hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.556798091519553e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 29,
+        "reference_annotation_content_sha256": "02735550ed0785d89e9a2cdaa587abedf81611c530790a2e359ee4b75f1e9da0",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          4.2,
+          8.6
+        ],
+        "reference_moving_time_s": 4.3999999999999995,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "shortest_path_only": {
+        "ade_m": 1.5968095443362998e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+            "moving_time_s": 4.3999999999999995,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:dwell_at_start",
+            "moving_time_s": 2.188797071352546,
+            "travel_time_error_s": 2.2112029286474533
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.7871691659092903,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "c6036d95965fa3916ab28860f74fb6ede1041dfd3940da6752ca15eb5e4dd439",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          }
+        },
+        "path_length_error_m": 1.7041931752226347e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 4.3999999999999995,
+        "primary_hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.556798091519553e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 29,
+        "reference_annotation_content_sha256": "02735550ed0785d89e9a2cdaa587abedf81611c530790a2e359ee4b75f1e9da0",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          4.2,
+          8.6
+        ],
+        "reference_moving_time_s": 4.3999999999999995,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      }
+    },
+    "case2": {},
+    "case3": {
+      "full_deterministic_graph": {
+        "ade_m": 1.4052783774710346e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+            "moving_time_s": 152.4,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:dwell_at_start",
+            "moving_time_s": 2.1166854064416043,
+            "travel_time_error_s": 150.2833145935584
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8462715831119567,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "5ed8b0ced2c8443eea8ed9357c2d98cbf450f9d70bd7725eac8875d5a9c69af5",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          }
+        },
+        "path_length_error_m": 1.4811918097823451e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 152.4,
+        "primary_hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.0172611977452637e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 164,
+        "reference_annotation_content_sha256": "52b5b4937ecd24fd3d51d87283fcaa2c1d9d77008443e56e482287c958ae7350",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          14.0,
+          166.4
+        ],
+        "reference_moving_time_s": 152.4,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "remove_collision": {
+        "ade_m": 1.4052783774710346e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+            "moving_time_s": 152.4,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:dwell_at_start",
+            "moving_time_s": 2.1166854064416043,
+            "travel_time_error_s": 150.2833145935584
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8221403330098838,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "5ed8b0ced2c8443eea8ed9357c2d98cbf450f9d70bd7725eac8875d5a9c69af5",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          }
+        },
+        "path_length_error_m": 1.4811918097823451e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 152.4,
+        "primary_hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.0172611977452637e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 164,
+        "reference_annotation_content_sha256": "52b5b4937ecd24fd3d51d87283fcaa2c1d9d77008443e56e482287c958ae7350",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          14.0,
+          166.4
+        ],
+        "reference_moving_time_s": 152.4,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "remove_topology": {
+        "ade_m": 1.4052783774710346e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+            "moving_time_s": 152.4,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:dwell_at_start",
+            "moving_time_s": 2.1166854064416043,
+            "travel_time_error_s": 150.2833145935584
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8481485419906676,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "5ed8b0ced2c8443eea8ed9357c2d98cbf450f9d70bd7725eac8875d5a9c69af5",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          }
+        },
+        "path_length_error_m": 1.4811918097823451e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 152.4,
+        "primary_hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.0172611977452637e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 164,
+        "reference_annotation_content_sha256": "52b5b4937ecd24fd3d51d87283fcaa2c1d9d77008443e56e482287c958ae7350",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          14.0,
+          166.4
+        ],
+        "reference_moving_time_s": 152.4,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "remove_travel_time": {
+        "ade_m": 1.4052783774710346e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+            "moving_time_s": 152.4,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:dwell_at_start",
+            "moving_time_s": 2.1166854064416043,
+            "travel_time_error_s": 150.2833145935584
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8513730829581618,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "5ed8b0ced2c8443eea8ed9357c2d98cbf450f9d70bd7725eac8875d5a9c69af5",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          }
+        },
+        "path_length_error_m": 1.4811918097823451e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 152.4,
+        "primary_hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.0172611977452637e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 164,
+        "reference_annotation_content_sha256": "52b5b4937ecd24fd3d51d87283fcaa2c1d9d77008443e56e482287c958ae7350",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          14.0,
+          166.4
+        ],
+        "reference_moving_time_s": 152.4,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "shortest_path_only": {
+        "ade_m": 1.4052783774710346e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+            "moving_time_s": 152.4,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:dwell_at_start",
+            "moving_time_s": 2.1166854064416043,
+            "travel_time_error_s": 150.2833145935584
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8434286250267178,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "5ed8b0ced2c8443eea8ed9357c2d98cbf450f9d70bd7725eac8875d5a9c69af5",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          }
+        },
+        "path_length_error_m": 1.4811918097823451e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 152.4,
+        "primary_hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.0172611977452637e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 164,
+        "reference_annotation_content_sha256": "52b5b4937ecd24fd3d51d87283fcaa2c1d9d77008443e56e482287c958ae7350",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          14.0,
+          166.4
+        ],
+        "reference_moving_time_s": 152.4,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      }
+    }
+  },
+  "ablation_table_rows": 45,
+  "all_case_exit_complete": false,
+  "benchmark_rows": 27,
+  "case4_status": "DEFERRED",
+  "cases": [
+    {
+      "aggregation_max_visible_sample_gap_s": 0.200001,
+      "aggregation_policy": {
+        "max_visible_sample_gap_s": 0.200001
+      },
+      "aggregation_policy_content_sha256": "6fd432320912233d7930848d1d01c680a7db6283a95661b3425d36e15c586144",
+      "branch_count": 0,
+      "candidate_growth_status": "N/A_NO_APPROVED_BRANCHING_SCOPE",
+      "candidate_growth_supported": false,
+      "canonical_route_length_m": 1.7300252051970524,
+      "case2_blockers": [
+        "CASE2_REQUIRES_SOURCE_DISTINCT_BRANCHES_OUTSIDE_APPROVED_RECTANGLE"
+      ],
+      "case3_original_full_stress_exit_gate_complete": false,
+      "case_config_content_sha256": "739481f1df418537d3058f549f47d9bc9294e2c93ea90d7463ccb0a296877564",
+      "case_execution_ready": true,
+      "case_id": "case1",
+      "config_sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c",
+      "departure_dwell_supported": true,
+      "endpoint_observation_content_sha256": "d6550c99033f5477039684ca25e4e6457cd1adb776e0197dd175411e47cc2b02",
+      "endpoint_observation_ids": [
+        "obs_e37dbe624f6f3724b2c4bb2e",
+        "obs_d8930a34d90abfdf35271249"
+      ],
+      "endpoint_point_ids": [
+        "projected:fc43523608737c01be0a1bc343352f5f4c7912b916c9b2b3d744d6c52a957214",
+        "projected:a5635ec8926082ee50cf4746b3311fa6c02c13b906ede3c228f7654e4948d6ef"
+      ],
+      "export_config_content_sha256": "9ef5753929f118303cf2e1040d66234c7b315a994ba9544a1adad3685f09c016",
+      "fresh_visible_gap_visible_proof_required_separately": true,
+      "gap_duration_s": 4.3999999999999995,
+      "gap_time_range": [
+        4.2,
+        8.6
+      ],
+      "gap_to_minimum_travel_time_ratio": 2.0102366078555933,
+      "graph_content_sha256": "1a94adbec455f13d18e30721ee0fe5e0c98fb67e368f0ea123f381fc779a47e8",
+      "ground_truth_read": false,
+      "ground_truth_used": false,
+      "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+      "long_gap": false,
+      "minimum_travel_time_s": 2.188797071352546,
+      "overall_exit_gate_enabled": false,
+      "physical_certificate_pass": true,
+      "result_type": "FORMAL",
+      "reviewed_certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+      "schema_version": "phase1-reviewed-case-readiness-v1",
+      "scope_hashes_retained": true,
+      "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+      "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+      "source_distinct_routes": 1,
+      "source_route_inventory_proof": "FIXED_ENDPOINT_STRAIGHT_LINE_HOMOTOPY_IN_CONVEX_COMPLETE_FREE_RECTANGLE",
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "speed_time_feasible": true,
+      "status": "READY",
+      "temporal_slack_s": 2.2112029286474533,
+      "uniform_timing_primary": true,
+      "unique_major_source_route": true,
+      "visible_gap_visible": true
+    },
+    {
+      "blockers": [
+        "CASE2_REQUIRES_SOURCE_DISTINCT_BRANCHES_OUTSIDE_APPROVED_RECTANGLE"
+      ],
+      "case_id": "case2",
+      "formal_inference_executed": false,
+      "ground_truth_read": false,
+      "result_type": "N/A",
+      "status": "BLOCKED"
+    },
+    {
+      "aggregation_max_visible_sample_gap_s": 0.200001,
+      "aggregation_policy": {
+        "max_visible_sample_gap_s": 0.200001
+      },
+      "aggregation_policy_content_sha256": "6fd432320912233d7930848d1d01c680a7db6283a95661b3425d36e15c586144",
+      "branch_count": 0,
+      "candidate_growth_status": "N/A_NO_APPROVED_BRANCHING_SCOPE",
+      "candidate_growth_supported": false,
+      "canonical_route_length_m": 1.673028145251437,
+      "case2_blockers": [
+        "CASE2_REQUIRES_SOURCE_DISTINCT_BRANCHES_OUTSIDE_APPROVED_RECTANGLE"
+      ],
+      "case3_original_full_stress_exit_gate_complete": false,
+      "case_config_content_sha256": "739481f1df418537d3058f549f47d9bc9294e2c93ea90d7463ccb0a296877564",
+      "case_execution_ready": true,
+      "case_id": "case3",
+      "config_sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c",
+      "departure_dwell_supported": true,
+      "endpoint_observation_content_sha256": "bcc40d0ef58ec1295d615638b8d3dd7b242e7c302c89a0659d4a74de913bd161",
+      "endpoint_observation_ids": [
+        "obs_0f288cb60435578010d48897",
+        "obs_58774807134add945dbf2992"
+      ],
+      "endpoint_point_ids": [
+        "projected:f308c49c24c1a10417414353752c61c11cad5ca13555e0e5b847b3d93c3fe992",
+        "projected:62840f4bc21639f5b125382f65a2fe172ab7e3b865540f6c82970d10375facac"
+      ],
+      "export_config_content_sha256": "9ef5753929f118303cf2e1040d66234c7b315a994ba9544a1adad3685f09c016",
+      "fresh_visible_gap_visible_proof_required_separately": true,
+      "gap_duration_s": 152.4,
+      "gap_time_range": [
+        14.0,
+        166.4
+      ],
+      "gap_to_minimum_travel_time_ratio": 71.99936255818142,
+      "graph_content_sha256": "63a7e1481994342df592030d94047f2e6b83445abd0dd382419d1c2832ff8119",
+      "ground_truth_read": false,
+      "ground_truth_used": false,
+      "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+      "long_gap": true,
+      "minimum_travel_time_s": 2.1166854064415954,
+      "overall_exit_gate_enabled": false,
+      "physical_certificate_pass": true,
+      "result_type": "FORMAL",
+      "reviewed_certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+      "schema_version": "phase1-reviewed-case-readiness-v1",
+      "scope_hashes_retained": true,
+      "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+      "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+      "source_distinct_routes": 1,
+      "source_route_inventory_proof": "FIXED_ENDPOINT_STRAIGHT_LINE_HOMOTOPY_IN_CONVEX_COMPLETE_FREE_RECTANGLE",
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "speed_time_feasible": true,
+      "status": "READY",
+      "temporal_slack_s": 150.2833145935584,
+      "uniform_timing_primary": true,
+      "unique_major_source_route": true,
+      "visible_gap_visible": true
+    }
+  ],
+  "chart_files": [
+    "projection_error.png",
+    "accuracy_ade.png",
+    "accuracy_fde.png",
+    "accuracy_minade_at_k.png",
+    "accuracy_minfde_at_k.png",
+    "feasible_recall.png",
+    "collision_rate.png",
+    "constraint_rate.png",
+    "impossible_transition_rate.png",
+    "path_length_error.png",
+    "travel_time_error.png",
+    "runtime.png",
+    "candidate_count.png",
+    "search_nodes.png",
+    "coverage_at_k.png",
+    "physical_validity.png",
+    "termination_categories.png",
+    "projection_methods.png",
+    "projection_confidence.png",
+    "projection_uncertainty.png"
+  ],
+  "collision_consumer_authority": {
+    "body_domain_guard_removed_by_ablation": false,
+    "complete_free_space_or_physical_metric_authority": false,
+    "floor_ids": [
+      "1F"
+    ],
+    "geometry_content_sha256": "64caadf047a09649ef3e1c475a03241f01fa16ad41c4f285c7319c78543cc011",
+    "ground_truth_read": false,
+    "known_collision_coverage": "PARTIAL",
+    "local_certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+    "manifest_sha256": "5622d7ef1a986db34fb9f63baa4b70a3192befcedeebeb053550c470ec300d49",
+    "nonempty_approved_collider_count": 58,
+    "numerics_content_sha256": "d9429c2653f9ccb1e8a08922c74c9b4b83d70a4e31fe2bd80b24397525ed5ce4",
+    "original_approved_scope_ids": [
+      "school-v3:known-components:04b7d2312189c797",
+      "school-v3:known-components:094a5c2d7676bc23",
+      "school-v3:known-components:1b8d84ae45cc7724",
+      "school-v3:known-components:2f72f603e9bb8b43",
+      "school-v3:known-components:349521b9fe5681a1",
+      "school-v3:known-components:36d84c91ec086b39",
+      "school-v3:known-components:3c398ed0a17b0925",
+      "school-v3:known-components:3eb9810d90d99573",
+      "school-v3:known-components:4dd2b9bf5017799e",
+      "school-v3:known-components:555e2ec6a981de7c",
+      "school-v3:known-components:56810f24700cef9b",
+      "school-v3:known-components:63b44ad7538907b1",
+      "school-v3:known-components:7d64eee659eee164",
+      "school-v3:known-components:82bd2683369deb38",
+      "school-v3:known-components:8483f90189034161",
+      "school-v3:known-components:8cb2fb669279761c",
+      "school-v3:known-components:902ab73ef5e92ea2",
+      "school-v3:known-components:a3b15599864aa386",
+      "school-v3:known-components:a64535f44e2aa721",
+      "school-v3:known-components:bdc6f7965af12605",
+      "school-v3:known-components:d66b9fb17fc585c7",
+      "school-v3:known-components:db3d84fadcf29988",
+      "school-v3:known-components:edabd65162c0a086",
+      "school-v3:known-components:eddcb87099d284d9",
+      "school-v3:known-components:ef0806afc6805e4d"
+    ],
+    "physical_authority_content_sha256": "b24c7ff2ce560f5e0830c76a91759791fb5bc0d531e2a0cfef7769b849967a4f",
+    "purpose": "KNOWN_COLLISION_PRUNING",
+    "roles_inferred_from_names": false,
+    "schema_version": "phase1-reviewed-collision-consumer-v1",
+    "semantic_receipt_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+    "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+  },
+  "dataset_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+  "demos": [
+    {
+      "case_id": "case1",
+      "gt_debug_default_visible": false,
+      "preview": "data/finalization/reviewed_run_v7_collision/evaluation/demos/case1/preview.png",
+      "recording": "data/finalization/reviewed_run_v7_collision/evaluation/demos/case1/reviewed.rrd",
+      "rrd_reader_verified": true
+    },
+    {
+      "case_id": "case3",
+      "gt_debug_default_visible": false,
+      "preview": "data/finalization/reviewed_run_v7_collision/evaluation/demos/case3/preview.png",
+      "recording": "data/finalization/reviewed_run_v7_collision/evaluation/demos/case3/reviewed.rrd",
+      "rrd_reader_verified": true
+    }
+  ],
+  "evaluation_inference_freeze_verified": true,
+  "formal_case_execution": {
+    "case1": true,
+    "case2": false,
+    "case3": true
+  },
+  "freeze_allowed": false,
+  "geometry_scope": "ONE_COMPLETE_REVIEWED_RESTRICTED_OFFICE_RECTANGLE",
+  "measurements": {
+    "case1": {
+      "geometry": {
+        "ade_m": 1.5968095443362998e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f",
+            "hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:continuous",
+            "moving_time_s": 4.3999999999999995,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f",
+            "hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:dwell_at_start",
+            "moving_time_s": 2.188797071352546,
+            "travel_time_error_s": 2.2112029286474533
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.7550045840907842,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "c6036d95965fa3916ab28860f74fb6ede1041dfd3940da6752ca15eb5e4dd439",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          }
+        },
+        "path_length_error_m": 1.7041931752226347e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 4.3999999999999995,
+        "primary_hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.556798091519553e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 29,
+        "reference_annotation_content_sha256": "02735550ed0785d89e9a2cdaa587abedf81611c530790a2e359ee4b75f1e9da0",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          4.2,
+          8.6
+        ],
+        "reference_moving_time_s": 4.3999999999999995,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "shortest_path": {
+        "ade_m": 1.5968095443362998e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f",
+            "hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:continuous",
+            "moving_time_s": 4.3999999999999995,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f",
+            "hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:dwell_at_start",
+            "moving_time_s": 2.188797071352546,
+            "travel_time_error_s": 2.2112029286474533
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.753558750031516,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "c6036d95965fa3916ab28860f74fb6ede1041dfd3940da6752ca15eb5e4dd439",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          }
+        },
+        "path_length_error_m": 1.7041931752226347e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 4.3999999999999995,
+        "primary_hypothesis_id": "candidate:55de0c8c47c059d775b726772d7174005232395d194d23f823c387757543b57f:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.556798091519553e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 29,
+        "reference_annotation_content_sha256": "02735550ed0785d89e9a2cdaa587abedf81611c530790a2e359ee4b75f1e9da0",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          4.2,
+          8.6
+        ],
+        "reference_moving_time_s": 4.3999999999999995,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "spatiotemporal": {
+        "ade_m": 1.5968095443362998e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+            "moving_time_s": 4.3999999999999995,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02",
+            "hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:dwell_at_start",
+            "moving_time_s": 2.188797071352546,
+            "travel_time_error_s": 2.2112029286474533
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:bb5d5f60875a89d64b0281aab36282760a73ccdbf74861354c7e7decd89c8a1d",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.7535443329252303,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "c6036d95965fa3916ab28860f74fb6ede1041dfd3940da6752ca15eb5e4dd439",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.5968095443362998e-05,
+            "min_fde_at_k_m": 7.390309426983255e-06
+          }
+        },
+        "path_length_error_m": 1.7041931752226347e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 4.3999999999999995,
+        "primary_hypothesis_id": "candidate:8400a8b056b91a7cecfcaeaa862c8e67c6e2a7eb08b53454059784f95f9d1f02:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.556798091519553e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 29,
+        "reference_annotation_content_sha256": "02735550ed0785d89e9a2cdaa587abedf81611c530790a2e359ee4b75f1e9da0",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          4.2,
+          8.6
+        ],
+        "reference_moving_time_s": 4.3999999999999995,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      }
+    },
+    "case2": {},
+    "case3": {
+      "geometry": {
+        "ade_m": 1.4052783774710346e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+            "moving_time_s": 152.4,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:dwell_at_start",
+            "moving_time_s": 2.1166854064416043,
+            "travel_time_error_s": 150.2833145935584
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8636268749833107,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "5ed8b0ced2c8443eea8ed9357c2d98cbf450f9d70bd7725eac8875d5a9c69af5",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          }
+        },
+        "path_length_error_m": 1.4811918097823451e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 152.4,
+        "primary_hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.0172611977452637e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 164,
+        "reference_annotation_content_sha256": "52b5b4937ecd24fd3d51d87283fcaa2c1d9d77008443e56e482287c958ae7350",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          14.0,
+          166.4
+        ],
+        "reference_moving_time_s": 152.4,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "shortest_path": {
+        "ade_m": 1.4052783774710346e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+            "moving_time_s": 152.4,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:dwell_at_start",
+            "moving_time_s": 2.1166854064416043,
+            "travel_time_error_s": 150.2833145935584
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8846217500977218,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "5ed8b0ced2c8443eea8ed9357c2d98cbf450f9d70bd7725eac8875d5a9c69af5",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          }
+        },
+        "path_length_error_m": 1.4811918097823451e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 152.4,
+        "primary_hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.0172611977452637e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 164,
+        "reference_annotation_content_sha256": "52b5b4937ecd24fd3d51d87283fcaa2c1d9d77008443e56e482287c958ae7350",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          14.0,
+          166.4
+        ],
+        "reference_moving_time_s": 152.4,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      },
+      "spatiotemporal": {
+        "ade_m": 1.4052783774710346e-05,
+        "all_geometric_curves_enumerated": false,
+        "annotations_used_for_inference_ranking_or_pruning": false,
+        "approved_portal_or_cross_floor_transitions": 0,
+        "candidate_count": 1,
+        "candidate_moving_times": [
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+            "moving_time_s": 152.4,
+            "travel_time_error_s": 0.0
+          },
+          {
+            "candidate_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e",
+            "hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:dwell_at_start",
+            "moving_time_s": 2.1166854064416043,
+            "travel_time_error_s": 150.2833145935584
+          }
+        ],
+        "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+        "collision_rate": 0.0,
+        "collision_status": "AVAILABLE_COMPLETE_SCOPE",
+        "constraint_violation_rate": 0.0,
+        "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+        "engine_corridor_or_topology_used_for_inventory": false,
+        "expanded_states": 2,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "feasible_candidate_recall_denominator": 1,
+        "feasible_candidate_recall_eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+        "feasible_candidate_recall_numerator": 1,
+        "feasible_candidate_recall_status": "AVAILABLE_EXHAUSTIVE_DECLARED_SOURCE_CLASS",
+        "feasible_inventory_exhaustive_for_declared_eligibility": true,
+        "from_camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "ground_truth_used_for_inventory": false,
+        "impossible_transition_count": 0,
+        "impossible_transition_rate": 0.0,
+        "impossible_transition_status": "AVAILABLE_REVIEWED_DIRECTED_LOCAL_HANDOFFS",
+        "inference_runtime_s": 1.8321444999892265,
+        "internal_camera_transition_sequence_available": false,
+        "metric_inventory_content_sha256": "5ed8b0ced2c8443eea8ed9357c2d98cbf450f9d70bd7725eac8875d5a9c69af5",
+        "metrics_at_k": {
+          "1": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "2": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          },
+          "3": {
+            "coverage_at_k": true,
+            "min_ade_at_k_m": 1.4052783774710346e-05,
+            "min_fde_at_k_m": 3.15227085453112e-06
+          }
+        },
+        "path_length_error_m": 1.4811918097823451e-05,
+        "path_length_reference": "ALL_EXACT_GAP_REFERENCE_TIMESTAMPS_3D_POLYLINE",
+        "physical_segment_count": 3,
+        "physical_violation_segment_count": 0,
+        "primary_candidate_moving_time_s": 152.4,
+        "primary_hypothesis_id": "candidate:cbb6a28a58f0fd896534c0df351afb17eea1278a961b270b009071cc2385e07e:continuous",
+        "primary_selection_uses_reference_error": false,
+        "projection_error_m": 2.0172611977452637e-05,
+        "projection_error_population": "POLICY_SELECTED_VISIBLE_TIMESTAMP_FOOTPOINTS",
+        "projection_error_sample_count": 164,
+        "reference_annotation_content_sha256": "52b5b4937ecd24fd3d51d87283fcaa2c1d9d77008443e56e482287c958ae7350",
+        "reference_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+        "reference_dwell_time_s": 0.0,
+        "reference_gap_time_range_s": [
+          14.0,
+          166.4
+        ],
+        "reference_moving_time_s": 152.4,
+        "reference_policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+        "reference_proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+        "result_type": "FORMAL",
+        "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+        "source_route_inventory_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+        "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "status": "EVALUATED",
+        "termination_reason": "COMPLETE",
+        "to_camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "transition_authority": "INDEPENDENT_SOURCE_BOUND_COMPLETE_SAME_FLOOR_LOCAL_HANDOFF",
+        "transition_count": 1,
+        "transition_failures": [],
+        "transition_population": "ONE_OBSERVED_ENDPOINT_CAMERA_HANDOFF_PER_DISTINCT_CANDIDATE",
+        "travel_time_error_s": 0.0,
+        "travel_time_error_status": "AVAILABLE_APPROVED_REFERENCE_MOVEMENT",
+        "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON"
+      }
+    }
+  },
+  "overall_physical_authority": "PARTIAL_APPROVED",
+  "phase2_status": "FROZEN",
+  "primary_inference_freeze_sha256": "add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de",
+  "projection_diagnostics": {
+    "cases": [
+      {
+        "case_id": "case1",
+        "confidence_is_calibrated_probability": false,
+        "confidence_states": {
+          "LOW_CONFIDENCE": 29,
+          "UNAVAILABLE": 21
+        },
+        "methods": {
+          "SINGLE_VIEW_FIXED_PLANE": 29,
+          "UNAVAILABLE": 21
+        },
+        "pixel_sigma_px": null,
+        "retained_evidence_count": 100,
+        "surface_constrained_inference": "N/A_UNAPPROVED_SCHOOL_SURFACE_AUTHORITY",
+        "uncertainty_states": {
+          "UNAVAILABLE": 50
+        }
+      },
+      {
+        "case_id": "case3",
+        "confidence_is_calibrated_probability": false,
+        "confidence_states": {
+          "LOW_CONFIDENCE": 164,
+          "UNAVAILABLE": 761
+        },
+        "methods": {
+          "SINGLE_VIEW_FIXED_PLANE": 164,
+          "UNAVAILABLE": 761
+        },
+        "pixel_sigma_px": null,
+        "retained_evidence_count": 1850,
+        "surface_constrained_inference": "N/A_UNAPPROVED_SCHOOL_SURFACE_AUTHORITY",
+        "uncertainty_states": {
+          "UNAVAILABLE": 925
+        }
+      }
+    ],
+    "ground_truth_used": false,
+    "pixel_noise_not_declared": true,
+    "uncertainty_probability_not_calibrated": true
+  },
+  "required_metric_unavailable_reasons": {},
+  "schema_version": "phase1-reviewed-evaluation-report-v1",
+  "status": "PHASE1_FINALIZATION_BLOCKED"
+}

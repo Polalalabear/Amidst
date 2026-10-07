@@ -1,0 +1,157 @@
+{
+  "base_inference_lock": {
+    "base_inference_config": {
+      "aggregation_max_visible_sample_gap_s": 0.200001,
+      "baseline_protocol": "EXISTING_A_B_C_FACTOR_MASKS_AND_SUPPORTED_ABLATIONS",
+      "branch_count": 0,
+      "cases": [
+        {
+          "blockers": [],
+          "camera_ids": [
+            "CAM_1F_AUDITORIUM_FRONT",
+            "CAM_1F_AUDITORIUM_REAR"
+          ],
+          "case_id": "case1",
+          "floor_id": "1F",
+          "status": "FROZEN_PENDING_FRESH_VISIBILITY",
+          "walkable_id": "WALK_1F_OFFICE",
+          "zone_id": "AREA_1F_OFFICE"
+        },
+        {
+          "blockers": [
+            "CASE2_REQUIRES_SOURCE_DISTINCT_BRANCHES_OUTSIDE_APPROVED_RECTANGLE"
+          ],
+          "camera_ids": [
+            "CAM_1F_AUDITORIUM_FRONT",
+            "CAM_1F_AUDITORIUM_REAR"
+          ],
+          "case_id": "case2",
+          "floor_id": "1F",
+          "status": "BLOCKED_SCOPE",
+          "walkable_id": "WALK_1F_OFFICE",
+          "zone_id": "AREA_1F_OFFICE"
+        },
+        {
+          "blockers": [],
+          "camera_ids": [
+            "CAM_1F_AUDITORIUM_FRONT",
+            "CAM_1F_AUDITORIUM_REAR"
+          ],
+          "case_id": "case3",
+          "floor_id": "1F",
+          "status": "FROZEN_PENDING_FRESH_VISIBILITY",
+          "walkable_id": "WALK_1F_OFFICE",
+          "zone_id": "AREA_1F_OFFICE"
+        }
+      ],
+      "eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+      "export_config_content_sha256": "9ef5753929f118303cf2e1040d66234c7b315a994ba9544a1adad3685f09c016",
+      "export_config_file_sha256": "3afd62816463896259bc9b2a2c54889a761ee1665a9e6933173213a51c2d2223",
+      "footpoint_bounds_max": [
+        1411.9999242955855,
+        2096.8005463472678,
+        20.07884979248047
+      ],
+      "footpoint_bounds_min": [
+        1399.9985317206952,
+        1939.9994361310253,
+        20.07884979248047
+      ],
+      "ground_truth_available_to_inference": false,
+      "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+      "inference_seed": 42,
+      "k_values": [
+        1,
+        2,
+        3
+      ],
+      "metres_per_blender_unit": 0.0247,
+      "movement": {
+        "max_speed_m_s": 0.7904
+      },
+      "overall_exit_gate_enabled": false,
+      "protocol_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+      "protocol_version": "phase1-benchmark-protocol-v1",
+      "reconstruction_policy": {
+        "direct_path_slack_tolerance_s": 1.0,
+        "endpoint_tolerance_m": 2.47e-08,
+        "include_dwell_hypotheses": true
+      },
+      "reviewed_certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+      "sampling_extent": "SOURCE_ENDPOINTS_INCLUSIVE_NO_REJECTION",
+      "sampling_fps": 5,
+      "schema_version": "phase1-reviewed-case-inference-lock-v1",
+      "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+      "search_policy": {
+        "max_branch_factor": 3,
+        "max_candidate_paths": 3,
+        "max_detour_ratio": 2.0,
+        "max_path_length_m": 24.7,
+        "max_search_nodes": 1000,
+        "max_search_time_s": 10.0
+      },
+      "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+      "simulation_recipe_positions_available_to_inference": false,
+      "source_camera_zones": {
+        "CAM_1F_AUDITORIUM_FRONT": "AUDITORIUM_FRONT",
+        "CAM_1F_AUDITORIUM_REAR": "AUDITORIUM_REAR"
+      },
+      "source_distinct_route_classes": 1,
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "status": "FROZEN_BEFORE_INFERENCE",
+      "supported_ablations": [
+        "remove_travel_time",
+        "remove_topology",
+        "remove_collision",
+        "shortest_path_only",
+        "full_deterministic_graph"
+      ]
+    },
+    "base_inference_config_content_sha256": "739481f1df418537d3058f549f47d9bc9294e2c93ea90d7463ccb0a296877564",
+    "reference_movement_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+    "reference_movement_policy_content_sha256": "f7452152ff8981287033aa9b75c8faab1841df2981fe59de74a54e5403f45c73",
+    "schema_version": "phase1-reviewed-case-inference-lock-v2"
+  },
+  "base_inference_lock_content_sha256": "d853789362b724ca116d407b6410339c2d230118ab0f3793181220b0ef82b64e",
+  "base_inference_lock_file_sha256": "6507483100dda089341a317bd412946fecafedcfa4c4ac3a6b75d8b7171c8f24",
+  "known_collision": {
+    "complete_school_collision_claimed": false,
+    "context_path": "configs/physical_context_school_v3.json",
+    "coverage": "PARTIAL_KNOWN_COLLIDERS",
+    "new_semantic_authority_granted": false,
+    "physical_manifest_file_sha256": "5622d7ef1a986db34fb9f63baa4b70a3192befcedeebeb053550c470ec300d49",
+    "purpose": "KNOWN_COLLISION_PRUNING",
+    "scope_ids": [
+      "school-v3:known-components:04b7d2312189c797",
+      "school-v3:known-components:094a5c2d7676bc23",
+      "school-v3:known-components:1b8d84ae45cc7724",
+      "school-v3:known-components:2f72f603e9bb8b43",
+      "school-v3:known-components:349521b9fe5681a1",
+      "school-v3:known-components:36d84c91ec086b39",
+      "school-v3:known-components:3c398ed0a17b0925",
+      "school-v3:known-components:3eb9810d90d99573",
+      "school-v3:known-components:4dd2b9bf5017799e",
+      "school-v3:known-components:555e2ec6a981de7c",
+      "school-v3:known-components:56810f24700cef9b",
+      "school-v3:known-components:63b44ad7538907b1",
+      "school-v3:known-components:7d64eee659eee164",
+      "school-v3:known-components:82bd2683369deb38",
+      "school-v3:known-components:8483f90189034161",
+      "school-v3:known-components:8cb2fb669279761c",
+      "school-v3:known-components:902ab73ef5e92ea2",
+      "school-v3:known-components:a3b15599864aa386",
+      "school-v3:known-components:a64535f44e2aa721",
+      "school-v3:known-components:bdc6f7965af12605",
+      "school-v3:known-components:d66b9fb17fc585c7",
+      "school-v3:known-components:db3d84fadcf29988",
+      "school-v3:known-components:edabd65162c0a086",
+      "school-v3:known-components:eddcb87099d284d9",
+      "school-v3:known-components:ef0806afc6805e4d"
+    ],
+    "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+  },
+  "old_outputs_relabelled_or_overwritten": false,
+  "original_hr01_hr04_profiles_modified": false,
+  "schema_version": "phase1-reviewed-case-inference-lock-v3",
+  "status": "FROZEN_BEFORE_NEW_EXPORT_AND_INFERENCE"
+}

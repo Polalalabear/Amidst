@@ -12,6 +12,7 @@ from typing import Any
 import pytest
 
 from amidst.finalization.reviewed_pipeline import (
+    ABLATIONS,
     benchmark_rows,
     compare_frozen_runs,
     create_gt_poison_dataset,
@@ -30,6 +31,32 @@ assert SPEC and SPEC.loader
 exporter = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = exporter
 SPEC.loader.exec_module(exporter)
+
+
+def test_ablation_table_retains_actual_variant_values_and_blocked_cases() -> None:
+    measurements = {"case1": {
+        "remove_collision": {"result_type": "FORMAL", "status": "EVALUATED",
+                             "candidate_count": 4, "ade_m": .4,
+                             "metrics_at_k": {"3": {"coverage_at_k": True}}},
+        "remove_travel_time": {"result_type": "FORMAL", "status": "EVALUATED",
+                               "candidate_count": 2, "ade_m": .2,
+                               "metrics_at_k": {"3": {"coverage_at_k": False}}},
+    }}
+    rows = benchmark_rows(
+        [{"case_id": "case1", "status": "READY"},
+         {"case_id": "case2", "status": "BLOCKED", "blockers": ["NO_APPROVED_BRANCH"]}],
+        measurements, method_ids=ABLATIONS,
+    )
+    assert len(rows) == 45
+    compared = {r["method_id"]: r for r in rows if r["case_id"] == "case1" and r["k"] == 3}
+    assert compared["remove_collision"]["candidate_count"] == 4
+    assert compared["remove_travel_time"]["candidate_count"] == 2
+    assert compared["remove_collision"]["coverage_at_k"] is True
+    assert compared["remove_travel_time"]["coverage_at_k"] is False
+    blocked = [r for r in rows if r["case_id"] == "case2"]
+    assert len(blocked) == 15
+    assert all(r["status"] == "BLOCKED" and r["ade_m"] is None
+               and r["blockers"] == ["NO_APPROVED_BRANCH"] for r in blocked)
 
 
 def test_piecewise_sampling_preserves_inclusive_source_endpoints_and_dwell() -> None:

@@ -1,0 +1,33 @@
+# Reviewed Phase 1 benchmark
+
+N/A values retain their recorded blockers.
+
+| case_id | method_id | k | result_type | status | ade_m | fde_m | min_ade_at_k_m | min_fde_at_k_m | coverage_at_k | collision_rate | constraint_violation_rate | candidate_count | expanded_states | inference_runtime_s | termination_reason | projection_error_m | feasible_candidate_recall | impossible_transition_rate | path_length_error_m | travel_time_error_s |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| case1 | shortest_path | 1 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.753558750031516 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case1 | shortest_path | 2 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.753558750031516 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case1 | shortest_path | 3 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.753558750031516 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case1 | geometry | 1 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.7550045840907842 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case1 | geometry | 2 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.7550045840907842 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case1 | geometry | 3 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.7550045840907842 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case1 | spatiotemporal | 1 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.7535443329252303 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case1 | spatiotemporal | 2 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.7535443329252303 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case1 | spatiotemporal | 3 | FORMAL | EVALUATED | 1.5968095443362998e-05 | 7.390309426983255e-06 | 1.5968095443362998e-05 | 7.390309426983255e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.7535443329252303 | COMPLETE | 2.556798091519553e-05 | 1.0 | 0.0 | 1.7041931752226347e-05 | 0.0 |
+| case2 | shortest_path | 1 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case2 | shortest_path | 2 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case2 | shortest_path | 3 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case2 | geometry | 1 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case2 | geometry | 2 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case2 | geometry | 3 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case2 | spatiotemporal | 1 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case2 | spatiotemporal | 2 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case2 | spatiotemporal | 3 | N/A | BLOCKED | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| case3 | shortest_path | 1 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8846217500977218 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |
+| case3 | shortest_path | 2 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8846217500977218 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |
+| case3 | shortest_path | 3 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8846217500977218 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |
+| case3 | geometry | 1 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8636268749833107 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |
+| case3 | geometry | 2 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8636268749833107 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |
+| case3 | geometry | 3 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8636268749833107 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |
+| case3 | spatiotemporal | 1 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8321444999892265 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |
+| case3 | spatiotemporal | 2 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8321444999892265 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |
+| case3 | spatiotemporal | 3 | FORMAL | EVALUATED | 1.4052783774710346e-05 | 3.15227085453112e-06 | 1.4052783774710346e-05 | 3.15227085453112e-06 | True | 0.0 | 0.0 | 1 | 2 | 1.8321444999892265 | COMPLETE | 2.0172611977452637e-05 | 1.0 | 0.0 | 1.4811918097823451e-05 | 0.0 |

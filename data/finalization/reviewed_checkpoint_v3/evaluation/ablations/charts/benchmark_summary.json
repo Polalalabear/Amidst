@@ -1,0 +1,3362 @@
+{
+  "schema_version": "benchmark-comparison/v1",
+  "benchmark_label": "MIXED INPUT — BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE); UNVERIFIED INPUT",
+  "comparison_warnings": [],
+  "aggregation": "ARITHMETIC_MEAN_OF_AVAILABLE_INDEPENDENT_RUNS",
+  "missing_policy": "NULL_AND_N/A; never zero-filled; availability counts retained",
+  "ordering": "DECLARED_OR_DISCOVERY_IDENTITY_ORDER; never Ground Truth metric order",
+  "native_gap_aggregation": "ACCURACY/COVERAGE=EQUAL_GAP_MEAN; PHYSICAL=POOLED_SEGMENT_RATE; CANDIDATE=MEAN; SEARCH=SUM; RUNTIME=ONCE_PER_CASE",
+  "cases": [
+    "case1",
+    "case2",
+    "case3"
+  ],
+  "methods": [
+    "spatiotemporal",
+    "remove_travel_time",
+    "remove_collision",
+    "remove_topology",
+    "shortest_path_only",
+    "full_deterministic_graph"
+  ],
+  "rows": [
+    {
+      "case_id": "case1",
+      "method_id": "spatiotemporal",
+      "method_label": "Spatiotemporal Graph",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.556798091519553e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.7041931752226347e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.7535443329252303,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case1",
+      "method_id": "remove_travel_time",
+      "method_label": "remove_travel_time",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.556798091519553e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.7041931752226347e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.766051041893661,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case1",
+      "method_id": "remove_collision",
+      "method_label": "remove_collision",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.556798091519553e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.7041931752226347e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.6907150000333786,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case1",
+      "method_id": "remove_topology",
+      "method_label": "remove_topology",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.556798091519553e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.7041931752226347e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.7660316249821335,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case1",
+      "method_id": "shortest_path_only",
+      "method_label": "shortest_path_only",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.556798091519553e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.7041931752226347e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.7871691659092903,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case1",
+      "method_id": "full_deterministic_graph",
+      "method_label": "full_deterministic_graph",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.556798091519553e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.5968095443362998e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 7.390309426983255e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.7041931752226347e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.8115441661793739,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "spatiotemporal",
+      "method_label": "Spatiotemporal Graph",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "UNVERIFIED INPUT"
+      ],
+      "status_counts": {
+        "BLOCKED": 1
+      },
+      "termination_counts": {},
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "coverage_at_k"
+          ]
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "runtime_s"
+          ]
+        }
+      },
+      "selected_k": null,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "constraint_violation_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "warnings": [
+        "Benchmark provenance is missing or lacks formal approval evidence"
+      ],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "remove_travel_time",
+      "method_label": "remove_travel_time",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "UNVERIFIED INPUT"
+      ],
+      "status_counts": {
+        "BLOCKED": 1
+      },
+      "termination_counts": {},
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "coverage_at_k"
+          ]
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "runtime_s"
+          ]
+        }
+      },
+      "selected_k": null,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "constraint_violation_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "warnings": [
+        "Benchmark provenance is missing or lacks formal approval evidence"
+      ],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "remove_collision",
+      "method_label": "remove_collision",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "UNVERIFIED INPUT"
+      ],
+      "status_counts": {
+        "BLOCKED": 1
+      },
+      "termination_counts": {},
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "coverage_at_k"
+          ]
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "runtime_s"
+          ]
+        }
+      },
+      "selected_k": null,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "constraint_violation_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "warnings": [
+        "Benchmark provenance is missing or lacks formal approval evidence"
+      ],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "remove_topology",
+      "method_label": "remove_topology",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "UNVERIFIED INPUT"
+      ],
+      "status_counts": {
+        "BLOCKED": 1
+      },
+      "termination_counts": {},
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "coverage_at_k"
+          ]
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "runtime_s"
+          ]
+        }
+      },
+      "selected_k": null,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "constraint_violation_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "warnings": [
+        "Benchmark provenance is missing or lacks formal approval evidence"
+      ],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "shortest_path_only",
+      "method_label": "shortest_path_only",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "UNVERIFIED INPUT"
+      ],
+      "status_counts": {
+        "BLOCKED": 1
+      },
+      "termination_counts": {},
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "coverage_at_k"
+          ]
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "runtime_s"
+          ]
+        }
+      },
+      "selected_k": null,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "constraint_violation_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "warnings": [
+        "Benchmark provenance is missing or lacks formal approval evidence"
+      ],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case2",
+      "method_id": "full_deterministic_graph",
+      "method_label": "full_deterministic_graph",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "UNVERIFIED INPUT"
+      ],
+      "status_counts": {
+        "BLOCKED": 1
+      },
+      "termination_counts": {},
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ]
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ]
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "coverage_at_k"
+          ]
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "travel_time_error_s"
+          ]
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ]
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "NO_MEASUREMENTS",
+          "available_metrics": [],
+          "missing_metrics": [
+            "runtime_s"
+          ]
+        }
+      },
+      "selected_k": null,
+      "metrics": {
+        "projection_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "constraint_violation_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": null,
+          "available_runs": 0,
+          "total_runs": 1
+        }
+      },
+      "warnings": [
+        "Benchmark provenance is missing or lacks formal approval evidence"
+      ],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "spatiotemporal",
+      "method_label": "Spatiotemporal Graph",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.0172611977452637e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.4811918097823451e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.8321444999892265,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "remove_travel_time",
+      "method_label": "remove_travel_time",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.0172611977452637e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.4811918097823451e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.8513730829581618,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "remove_collision",
+      "method_label": "remove_collision",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.0172611977452637e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.4811918097823451e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.8221403330098838,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "remove_topology",
+      "method_label": "remove_topology",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.0172611977452637e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.4811918097823451e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.8481485419906676,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "shortest_path_only",
+      "method_label": "shortest_path_only",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.0172611977452637e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.4811918097823451e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.8434286250267178,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    },
+    {
+      "case_id": "case3",
+      "method_id": "full_deterministic_graph",
+      "method_label": "full_deterministic_graph",
+      "run_count": 1,
+      "run_ids": [
+        "reviewed_v1"
+      ],
+      "sources": [
+        "/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v7_collision/evaluation/ablations/comparison.json"
+      ],
+      "benchmark_labels": [
+        "BLENDER RESEARCH RESULT (SUPPLIED PROVENANCE)"
+      ],
+      "status_counts": {
+        "EVALUATED": 1
+      },
+      "termination_counts": {
+        "COMPLETE": 1
+      },
+      "acceptance_categories": {
+        "GEOMETRIC_ACCURACY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "projection_error_m",
+            "ade_m",
+            "fde_m",
+            "min_ade_at_k_m",
+            "min_fde_at_k_m",
+            "path_length_error_m"
+          ],
+          "missing_metrics": []
+        },
+        "PHYSICAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "collision_rate",
+            "constraint_violation_rate",
+            "impossible_transition_rate"
+          ],
+          "missing_metrics": []
+        },
+        "TOP_K_COVERAGE": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "coverage_at_k"
+          ],
+          "missing_metrics": []
+        },
+        "TEMPORAL_VALIDITY": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "travel_time_error_s"
+          ],
+          "missing_metrics": []
+        },
+        "SEARCH_BEHAVIOR": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "candidate_count",
+            "feasible_candidate_recall",
+            "search_nodes",
+            "termination_reason"
+          ],
+          "missing_metrics": []
+        },
+        "SYSTEM_RUNTIME": {
+          "acceptance": "NOT_ASSESSED",
+          "criteria_status": "UNRESOLVED_RESEARCH_SETTING",
+          "measurement_status": "MEASUREMENTS_AVAILABLE",
+          "available_metrics": [
+            "runtime_s"
+          ],
+          "missing_metrics": []
+        }
+      },
+      "selected_k": 3,
+      "metrics": {
+        "projection_error_m": {
+          "mean": 2.0172611977452637e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "ade_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "fde_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_ade_at_k_m": {
+          "mean": 1.4052783774710346e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "min_fde_at_k_m": {
+          "mean": 3.15227085453112e-06,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "feasible_candidate_recall": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "collision_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "numerator": 0.0,
+          "denominator": 3.0,
+          "aggregation": "POOLED_SEGMENT_RATE"
+        },
+        "constraint_violation_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1,
+          "aggregation": "MEAN_OF_REPORTED_RATES"
+        },
+        "impossible_transition_rate": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "path_length_error_m": {
+          "mean": 1.4811918097823451e-05,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "travel_time_error_s": {
+          "mean": 0.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "runtime_s": {
+          "mean": 1.8462715831119567,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "candidate_count": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "search_nodes": {
+          "mean": 2.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "coverage_at_k": {
+        "1": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "2": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        },
+        "3": {
+          "mean": 1.0,
+          "available_runs": 1,
+          "total_runs": 1
+        }
+      },
+      "warnings": [],
+      "gap_availability": {
+        "reviewed_v1": {}
+      }
+    }
+  ],
+  "generated_charts": [
+    "projection_error.png",
+    "accuracy_ade.png",
+    "accuracy_fde.png",
+    "accuracy_minade_at_k.png",
+    "accuracy_minfde_at_k.png",
+    "feasible_recall.png",
+    "collision_rate.png",
+    "constraint_rate.png",
+    "impossible_transition_rate.png",
+    "path_length_error.png",
+    "travel_time_error.png",
+    "runtime.png",
+    "candidate_count.png",
+    "search_nodes.png",
+    "coverage_at_k.png",
+    "physical_validity.png",
+    "termination_categories.png"
+  ],
+  "skipped_charts": {}
+}

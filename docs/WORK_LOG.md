@@ -4,6 +4,29 @@
 
 ## 繁體中文
 
+### 2026-10-08 — Purpose-bound collision execution and frozen V3 lineage
+
+新增 reviewed collision bundle，使用原25 APPROVED KNOWN_COLLISION_PRUNING scopes／58非空
+source colliders，保留partial coverage與各scope原purpose/source/geometry/resolution/numerics
+hashes。每次run/eval入口完整重驗，僅在單次操作重用consumer；mutation在下次入口拒絕。
+A/B/C與 `remove_collision` 共用原graph/reconstructor/masks；該消融只停額外filter，完整
+office domain/body guard與獨立physical evaluator保留。V3保留原V2 bytes，精確lock artifact
+與binding/receipt一同凍結並於evaluation重驗；原HR/protocol/scene/input locks不變。
+
+Fresh V7 export/infer/eval/reproduction完成；dataset manifest維持 `a3393f2e…`，primaryfreeze
+`add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de`。
+ReadyCase1/3 repeat/fresh-process/order/GT-recipe-annotation poison/termination PASS。
+45 ablation rows（30 evaluated、15 Case2blocked）、17 ablation charts；C/remove_collision
+eachcase1candidate與knowncollision0/3segments，沒有量测到消融效益。31份原始curated報表／
+plots加codevalidationreceipt保存於 `reviewed_checkpoint_v3/`；rawdatasets/GT/RRD不入Git。
+
+既有與collision suite **1905 passed、3 skipped、0 failed，102.88s**；3skip源於worktree
+預設school_v3位置不存在。明確指定canonical source並開 `--require-physical-evidence` 的
+physical bundle **9 passed、0 skipped、7.94s**，包含上述3個實際檢查，未修改／補造evidence。
+新scope仍在開發的3個testfiles未納入此milestone suite；collision source Ruff／strictmypy PASS。
+Code/test hashes及兩組command範圍見curated code_validation.json。原fullallcaseExit仍BLOCKED；
+新局部sourcebranch/camera proposal正準備，沒有自動核准或freeze tag。
+
 ### 2026-10-08 — Final fresh-checkout evidence and original Exit Gate accounting
 
 Code checkpoint `e6fbc8fbb3bf8c36355db38c299de5ff37705604` 的完整實際 physical suite

@@ -143,7 +143,15 @@ def infer_dataset(dataset: Path, application: Path, config_path: Path, output: P
     )
 
     manifest = verify_dataset(dataset)
-    typed_config = load_reviewed_case_inference_config(config_path)
+    configuration_document = read_json(config_path)
+    collision_lock = None
+    if configuration_document.get("schema_version") == "phase1-reviewed-case-inference-lock-v3":
+        from amidst.finalization.reviewed_collision_lock import load_reviewed_collision_lock
+
+        collision_lock = load_reviewed_collision_lock(config_path, repo_root=repo_root)
+        typed_config = collision_lock.base_inference_lock.base_inference_config
+    else:
+        typed_config = load_reviewed_case_inference_config(config_path)
     config = typed_config.model_dump(mode="json")
     if manifest["config_sha256"] != typed_config.export_config_file_sha256:
         raise ValueError("dataset configuration does not match frozen reviewed config")
@@ -154,9 +162,36 @@ def infer_dataset(dataset: Path, application: Path, config_path: Path, output: P
         manifest.get("human_decisions_sha256") != authority.human_decisions_sha256
     ):
         raise ValueError("dataset application manifest or human decisions binding differs")
+    collision_bundle = None
+    if collision_lock is not None:
+        from amidst.finalization.reviewed_collision import load_reviewed_collision_bundle
+
+        binding = collision_lock.known_collision
+        collision_bundle = load_reviewed_collision_bundle(
+            repo_root / binding.context_path, repo_root=repo_root,
+            expected_manifest_sha256=binding.physical_manifest_file_sha256,
+            expected_source_sha256=authority.source_sha256,
+            contract=authority.provider.contract,
+            floor_ids=(authority.historical_context.zone.floor_id,),
+            local_certificate_content_sha256=authority.certificate_content_sha256,
+            semantic_receipt_content_sha256=authority.semantic_review_content_sha256,
+            scope_ids=binding.scope_ids,
+        )
     if output.exists():
         raise FileExistsError("inference output must be fresh")
     output.mkdir(parents=True)
+    if collision_bundle is not None and collision_lock is not None:
+        (output / "collision_inference_lock.json").write_bytes(config_path.read_bytes())
+        write_json(output / "collision_authority.json", {
+            "schema_version": "phase1-reviewed-inference-collision-binding-v1",
+            "inference_lock_file_sha256": digest(config_path),
+            "inference_lock_content_sha256": content_sha256(configuration_document),
+            "binding": collision_lock.known_collision.model_dump(mode="json"),
+            "consumer": collision_bundle.receipt(),
+            "domain_body_guard_retained_for_all_variants": True,
+            "independent_evaluation_collision_checks_retained": True,
+            "ground_truth_read": False,
+        })
     composer = _module(repo_root, "phase1_projection_policy")
     summaries: list[dict[str, Any]] = []
     for recipe in _cases(config):
@@ -262,6 +297,7 @@ def infer_dataset(dataset: Path, application: Path, config_path: Path, output: P
                     case_readiness_sha256=content_sha256(readiness),
                     case_readiness=readiness, aggregation=aggregation,
                     ablation_id=ablation,
+                    collision_bundle=collision_bundle,
                 )
             except ValueError as error:
                 if ablation != "remove_collision":
@@ -287,13 +323,14 @@ def infer_dataset(dataset: Path, application: Path, config_path: Path, output: P
 
 
 def benchmark_rows(case_summaries: list[dict[str, Any]],
-                   measurements: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+                   measurements: dict[str, dict[str, Any]], *,
+                   method_ids: tuple[str, ...] = METHODS) -> list[dict[str, Any]]:
     """Keep every Case × A/B/C × K row, preserving nulls and actual blockers."""
     by_case = {row["case_id"]: row for row in case_summaries}
     rows = []
     for case_id in ("case1", "case2", "case3"):
         case = by_case.get(case_id, {"status": "NOT_RUN", "blockers": ["CASE_NOT_RUN"]})
-        for method in METHODS:
+        for method in method_ids:
             measurement = measurements.get(case_id, {}).get(method, {})
             for k in K_VALUES:
                 at_k = measurement.get("metrics_at_k", {}).get(str(k), {})
@@ -481,6 +518,29 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
     output.mkdir(parents=True)
     authority = load_reviewed_authority(application, repo_root=repo_root)
     metrics = reviewed_metric_config(authority)
+    collision_bundle = None
+    collision_path = inference / "collision_authority.json"
+    if collision_path.exists():
+        from amidst.finalization.reviewed_collision import load_reviewed_collision_bundle
+        from amidst.finalization.reviewed_collision_lock import load_frozen_collision_binding
+
+        collision_document = load_frozen_collision_binding(
+            inference, freeze, repo_root=repo_root, expected_source_sha256=authority.source_sha256,
+        )
+        binding = collision_document.binding
+        collision_bundle = load_reviewed_collision_bundle(
+            repo_root / binding.context_path, repo_root=repo_root,
+            expected_manifest_sha256=binding.physical_manifest_file_sha256,
+            expected_source_sha256=authority.source_sha256, contract=authority.provider.contract,
+            floor_ids=(authority.historical_context.zone.floor_id,),
+            local_certificate_content_sha256=authority.certificate_content_sha256,
+            semantic_receipt_content_sha256=authority.semantic_review_content_sha256,
+            scope_ids=binding.scope_ids,
+        )
+        if content_sha256(collision_bundle.receipt()) != content_sha256(
+            collision_document.consumer,
+        ):
+            raise ValueError("evaluation collision authority differs from frozen inference")
     movement_approval = None
     if "reference_movement_approval_receipt_content_sha256" in manifest:
         movement_approval = load_reference_movement_approval(
@@ -502,17 +562,27 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
     write_json(output / "metric_authority.json", metrics.model_dump(mode="json"))
     case_summaries = read_json(inference / "summary.json")["cases"]
     measurements: dict[str, dict[str, Any]] = {}
-    normalized = []
-    demo_results = []
+    ablation_measurements: dict[str, dict[str, Any]] = {}
+    normalized: list[dict[str, Any]] = []
+    ablation_normalized: list[dict[str, Any]] = []
+    demo_results: list[dict[str, Any]] = []
     for case in case_summaries:
         identity = case["case_id"]
         measurements[identity] = {}
+        ablation_measurements[identity] = {}
         if case["status"] != "READY":
             for method in METHODS:
                 normalized.append({"case_id": identity, "method_id": method,
                                    "run_id": "reviewed_v1", "status": case["status"],
                                    "metrics": {}, "coverage_at_k": {"1": None, "2": None,
                                                                         "3": None}})
+            for blocked_ablation in ABLATIONS:
+                ablation_normalized.append({
+                    "case_id": identity, "method_id": blocked_ablation,
+                    "run_id": "reviewed_v1",
+                    "status": case["status"], "metrics": {},
+                    "coverage_at_k": {"1": None, "2": None, "3": None},
+                })
             continue
         directory = inference / identity
         frozen_aggregation = ObservationAggregation.model_validate_json(
@@ -542,6 +612,13 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
             raw = read_json(directory / (variant + ".json"))
             if raw.get("result_type") == "N/A":
                 write_json(output / identity / (variant + ".json"), raw)
+                if ablation is not None:
+                    ablation_measurements[identity][ablation] = raw
+                    ablation_normalized.append({
+                        "case_id": identity, "method_id": ablation, "run_id": "reviewed_v1",
+                        "status": raw.get("status", "N/A"), "metrics": {},
+                        "coverage_at_k": {"1": None, "2": None, "3": None},
+                    })
                 continue
             run = ReviewedBaselineRun.model_validate(raw)
             if run.timed_metrics_status != "AVAILABLE":
@@ -561,12 +638,33 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
                     normalized.append({"case_id": identity, "method_id": method,
                                        "run_id": "reviewed_v1", "status": record["status"],
                                        "metrics": {}, "coverage_at_k": {"1": None, "2": None,
-                                                                            "3": None}})
+                                                                           "3": None}})
+                else:
+                    ablation_measurements[identity][ablation] = record
+                    ablation_normalized.append({
+                        "case_id": identity, "method_id": ablation, "run_id": "reviewed_v1",
+                        "status": record["status"], "metrics": {},
+                        "coverage_at_k": {"1": None, "2": None, "3": None},
+                    })
                 continue
             reference = evaluation_reference(truth, run.event, seed=manifest["inference_seed"])
             evaluated = evaluate_reviewed_trajectories(
                 run.event, reference, metrics, constraints=constraints, authority=authority,
             )
+            if collision_bundle is not None:
+                from amidst.finalization.reviewed_collision import (
+                    evaluate_reviewed_known_collisions,
+                )
+
+                if content_sha256(run.collision_consumer_receipt) != content_sha256(
+                    collision_bundle.receipt(),
+                ):
+                    raise ValueError("baseline collision binding differs from frozen authority")
+                evaluated["known_collision_evaluation"] = evaluate_reviewed_known_collisions(
+                    run.event, collision_bundle,
+                )
+                evaluated["inference_collision_filter_enabled"] = run.collision_filter_enabled
+                evaluated["independent_collision_evaluator_retained"] = True
             evaluated["inference_freeze_sha256"] = digest(inference / "inference_freeze.json")
             evaluated["ground_truth_loaded_after_inference_freeze"] = True
             write_json(output / identity / (variant + ".json"), evaluated)
@@ -608,10 +706,13 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
                 "physical_segment_count": physical["segment_count"],
                 "physical_violation_segment_count": physical["violation_segment_count"],
             } | extra
+            if ablation is not None:
+                ablation_measurements[identity][ablation] = record
             if ablation is None:
                 measurements[identity][method] = record
-                normalized.append({
-                    "case_id": identity, "method_id": method, "run_id": "reviewed_v1",
+            comparison_rows = normalized if ablation is None else ablation_normalized
+            comparison_rows.append({
+                    "case_id": identity, "method_id": variant, "run_id": "reviewed_v1",
                     "status": "EVALUATED", "selected_k": 3,
                     "metrics": {"ade_m": record["ade_m"], "fde_m": record["fde_m"],
                                 "min_ade_at_k_m": record["metrics_at_k"]["3"]["min_ade_at_k_m"],
@@ -637,7 +738,7 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
                                    "scene_sha256": authority.source_sha256,
                                    "dataset_id": manifest["dataset_version"],
                                    "protocol_version": "phase1-benchmark-protocol-v1"},
-                })
+            })
             if demos and method == "spatiotemporal" and ablation is None:
                 demo_results.append(write_reviewed_demo(
                     directory, run.event, pipeline, output / "demos" / identity,
@@ -683,6 +784,13 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
         "legacy_diagnostic_artifacts_promoted": False,
     })
     write_benchmark_tables(output, rows)
+    ablation_rows: list[dict[str, Any]] = []
+    if collision_bundle is not None:
+        ablation_rows = benchmark_rows(
+            case_summaries, ablation_measurements, method_ids=ABLATIONS,
+        )
+        (output / "ablations").mkdir()
+        write_benchmark_tables(output / "ablations", ablation_rows)
     write_json(output / "comparison.json", {
         "schema_version": "benchmark-comparison/v1", "cases": ["case1", "case2", "case3"],
         "methods": list(METHODS), "runs": normalized,
@@ -692,6 +800,18 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
                                 "requested_k": list(K_VALUES)},
     })
     comparison = generate_comparison(output / "comparison.json", output / "charts")
+    ablation_charts: list[str] = []
+    if collision_bundle is not None:
+        ablation_comparison = read_json(output / "comparison.json")
+        ablation_comparison["methods"] = ["spatiotemporal", *ABLATIONS]
+        ablation_comparison["runs"] = [
+            row for row in normalized if row["method_id"] == "spatiotemporal"
+        ] + ablation_normalized
+        write_json(output / "ablations/comparison.json", ablation_comparison)
+        ablation_result = generate_comparison(
+            output / "ablations/comparison.json", output / "ablations/charts",
+        )
+        ablation_charts = ablation_result["generated_charts"]
     projection_summary = write_projection_charts(inference, output / "charts")
     report = {
         "schema_version": "phase1-reviewed-evaluation-report-v1",
@@ -713,6 +833,11 @@ def evaluate_dataset(dataset: Path, inference: Path, application: Path, output: 
             "travel_time_error_s": "REFERENCE_MOVING_TIME_DWELL_ANNOTATION_NOT_APPROVED"},
         "case4_status": "DEFERRED", "phase2_status": "FROZEN",
     }
+    if collision_bundle is not None:
+        report["ablation_table_rows"] = len(ablation_rows)
+        report["ablation_chart_files"] = ablation_charts
+        report["ablation_measurements"] = ablation_measurements
+        report["collision_consumer_authority"] = collision_bundle.receipt()
     require_inference_freeze(inference)
     write_json(output / "verification.json", report)
     return report
