@@ -1,0 +1,10 @@
+{
+  "ablation_id": "remove_collision",
+  "method_id": "spatiotemporal",
+  "reasons": [
+    "remove_collision requires a supplied approved collision consumer"
+  ],
+  "reference_full_collision_scope_preserved": true,
+  "result_type": "N/A",
+  "status": "UNAVAILABLE"
+}

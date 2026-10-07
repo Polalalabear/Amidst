@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "case_id": "case1",
+      "confidence_is_calibrated_probability": false,
+      "confidence_states": {
+        "LOW_CONFIDENCE": 29,
+        "UNAVAILABLE": 21
+      },
+      "methods": {
+        "SINGLE_VIEW_FIXED_PLANE": 29,
+        "UNAVAILABLE": 21
+      },
+      "pixel_sigma_px": null,
+      "retained_evidence_count": 100,
+      "surface_constrained_inference": "N/A_UNAPPROVED_SCHOOL_SURFACE_AUTHORITY",
+      "uncertainty_states": {
+        "UNAVAILABLE": 50
+      }
+    },
+    {
+      "case_id": "case3",
+      "confidence_is_calibrated_probability": false,
+      "confidence_states": {
+        "LOW_CONFIDENCE": 164,
+        "UNAVAILABLE": 761
+      },
+      "methods": {
+        "SINGLE_VIEW_FIXED_PLANE": 164,
+        "UNAVAILABLE": 761
+      },
+      "pixel_sigma_px": null,
+      "retained_evidence_count": 1850,
+      "surface_constrained_inference": "N/A_UNAPPROVED_SCHOOL_SURFACE_AUTHORITY",
+      "uncertainty_states": {
+        "UNAVAILABLE": 925
+      }
+    }
+  ],
+  "ground_truth_used": false,
+  "pixel_noise_not_declared": true,
+  "uncertainty_probability_not_calibrated": true
+}

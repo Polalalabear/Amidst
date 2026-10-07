@@ -4,6 +4,38 @@
 
 ## 繁體中文
 
+### 2026-10-08 — Final fresh-checkout evidence and original Exit Gate accounting
+
+Code checkpoint `e6fbc8fbb3bf8c36355db38c299de5ff37705604` 的完整實際 physical suite
+**1859 passed in 111.14 s，0 skipped／0 failed**；repo Ruff、strict mypy 104 source files
+與3 new CLI、diff check PASS。原 source、29 locked inputs／57 frames、protocol、HR01–HR04
+與 V1 configs 不變。Canonical asset checkout 保持 `phase1/physical-policy-approval / c5956dc`；
+live Phase2 branch及freeze tag仍指向 `5b51d2c`，Case4 DEFERRED。
+
+獨立 fresh checkout 初始 clean clone `efd2889`，最終 source `e6fbc8f`，locked Python
+3.12.12／uv.lock。Actual Blender 重建 physical evidence 為
+MATERIALIZED_AND_RESEARCH_EQUIVALENT；四個 raw artifact hashes 全匹配，source hash/size/mtime
+不變，原 physical producers 在上述 source checkpoints 間未改。歷史 hydration 首次
+verified297／copied192／existing105／overwrite0，最後重驗297／copied0；application manifest
+與 committed original 逐 byte 相同。Fresh `reviewed_fresh_v5_final` export／inference／evaluation／
+reproduction 已完成；dataset manifest同 `a3393f2e…`，repeat/fresh-process/order/GT-recipe-annotation
+poison/termination皆 PASS（只對readyCase1／Case3 temporal）。198 code/config/lock files全部匹配。
+
+完整 delivery comparison 最終 **PASS**，無 differences／missing reports：41 JSON、1 CSV、
+4 Markdown、21 non-runtime PNG、2 reader-verified RRD。Runtime數值／圖像、RRD container bytes
+及 artifact output locations明示排除；availability/counts、failed/N/A rows、candidate order、
+termination保留。最初僅四個 demo output location strings 不同的 FAIL receipt留 ARCHIVE，
+normalizer只認可精確 recording/preview root；非 runtime numeric/counts 不被略過。
+
+Curated receipts與report/chart matrix保存於 `data/finalization/reviewed_checkpoint_v2/` 及
+`reviewed_run_v5/evaluation/`。原 Exit Gate逐項 fail closed；readyCase1/3 scoped PASS不可升格
+all-case PASS。唯一來源 prerequisite為目前 convex complete approved domain只有1 route class／
+0 branches，58 components／116 bypass audit的26 distinct-camera FOV pairs中0全部source-supported
+body-clear。Case2／Case3 detour-growth仍 BLOCKED，無可直接APPROVE的合法新scope proposal。
+Final status **PHASE1_FINALIZATION_BLOCKED**；不建 freeze tag、不 merge main，raw source／
+media／所有舊版本保留本機。使用者已授權 sprint branch fast-forward publication；推送另以
+live remote SHA核對，不以本記錄當作已推送證據。
+
 ### 2026-10-07 — Fresh reviewed local execution, explicit reference metrics and demos
 
 新增 reviewed export／inference／evaluation／reproduction CLI，復用原 camera/raycaster／

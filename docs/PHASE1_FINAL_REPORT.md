@@ -1,8 +1,88 @@
 # Phase 1 finalization report / Phase 1 收尾報告
 
-## 2026-10-07 — Human approvals recorded / 人工核准已記錄
+## 2026-10-08 — Reviewed local formal execution / 核准後局部正式執行
 
-Current human-review state: **EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION**.
+Current status: **PHASE1_FINALIZATION_BLOCKED**. The four original approvals are applied;
+the exact bounded office certificate is **PASS**. Formal local Case1 and the temporal component
+of Case3 have fresh A/B/C results. The original full Case1–3 Exit Gate is incomplete; no freeze
+tag is permitted. Case4 remains DEFERRED and Phase2 remains FROZEN.
+
+The remaining source prerequisite is a physically supported, approved local branching domain
+with source-camera/landmark binding. The present 0.2964343966 m ×3.8729874223 m complete convex
+office rectangle has one major route class and zero branches. It cannot supply Case2 or Case3's
+detour/candidate-growth stress. A bounded 58-component/116-bypass automatic audit found 26
+distinct-camera FOV pairs but zero pairs passing every approved support/body-clearance segment;
+it does not claim a global exhaustive school search. Source witnesses and exact hashes are in
+[branch scope readiness](PHASE1_BRANCH_SCOPE_GATE.md). No failed scope was promoted by approval.
+
+| Current local measurement | Case1 | Case3 temporal component |
+| --- | --- | --- |
+| Actual visible→GAP→visible extent | 4.2–8.6 s | 14.0–166.4 s |
+| GAP / minimum travel time | 4.4 /2.1887970714 s | 152.4 /2.1166854064 s |
+| A/B/C primary ADE (m) | 0.00001596809544 | 0.00001405278377 |
+| A/B/C primary FDE (m) | 0.00000739030943 | 0.00000315227085 |
+| Coverage@1/2/3, strict ADE <0.50 m | true /true /true | true /true /true |
+| Source-class recall / local handoff impossible-transition rate | 1 /0 | 1 /0 |
+| Certified continuous-segment collision | 0 /3 segments | 0 /3 segments |
+| Routes / timed hypotheses / expanded states | 1 /2 /2 | 1 /2 /2 |
+| Primary reference moving-time error | 0 s | 0 s |
+| Departure-dwell alternative moving-time error | 2.2112029286 s | 150.2833145936 s |
+| Termination | COMPLETE | COMPLETE |
+| Original full Case stress gate | local unique-route evidence | BLOCKED detour/growth |
+
+These are **FORMAL local synthetic research measurements** with reviewed source authority.
+Blender supplies source cameras, projection and occlusion; target motion is explicitly
+`CONFIGURATION_SAMPLER`, not actual sensor capture or Blender-evaluated actor animation.
+Ideal synthetic pixel evidence explains the tiny displacement errors. Pixel noise remains
+undeclared, uncertainty unavailable/LOW_CONFIDENCE is retained, and surface-constrained
+inference is N/A outside approved surface authority. No overall school accuracy/readiness claim
+or cross-case Coverage average is made.
+
+The independently approved reference movement extension is separately recorded in
+[reference policy receipt](../data/finalization/reference_movement_approved_v1/approval_receipt.json).
+V2 configs were locked before fresh export; explicit MOVING/departure-DWELL annotations are in
+the evaluation partition. Evaluation sums their exact GAP intersections, excluding dwell.
+The zero primary errors above are measured against explicit all-moving references; alternate
+dwell errors remain visible. It never replaces reference moving time with GAP duration.
+Original HR01–HR04/protocol/V1 configs/29 inputs/57 frames remain immutable.
+
+Canonical local run: `data/finalization/reviewed_run_v5/`. Dataset manifest SHA256
+`a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5`;
+primary inference freeze SHA256
+`d16708cfb437b6dff2ea06139126d5784a181c547d9dba6d1633068988cf4059`.
+The 27-row matrix retains 18 evaluated FORMAL local rows and 9 Case2 BLOCKED/N/A rows.
+20 charts and two source/certificate/projected/inferred RRD+PNG demos are produced and reader
+verified. Primary recordings contain no GT; its independent evaluation/debug package is off by
+default. `remove_collision` remains N/A without a supplied independent purpose-bound consumer;
+no empty collider or weakened domain substitutes for it.
+
+Repeated inference, fresh process, reversed observation order, GT/recipe/malformed annotation
+poison and termination checks **PASS for ready Case1/3**, including candidate order and all
+primary hashes. These scoped passes do not establish unexecuted Case2 gates.
+Clean-checkout physical materialization, hash-identical authority application and fresh
+export/inference/evaluation/reproduction are complete at code checkpoint `e6fbc8f`.
+The [final complete-delivery comparison](../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json)
+is **PASS**: 41 JSON, 1 CSV, 4 Markdown, 21 non-runtime PNG and 2 reader-verified RRD records.
+Runtime values/plot pixels, RRD container metadata bytes and artifact output locations are
+explicit exclusions; availability/counts, failed/N/A rows, candidate order and termination
+remain required. All 198 code/config/lock files match the fresh checkout. The full suite with
+actual physical evidence passes **1859 tests, zero skips/failures**; Ruff and strict mypy pass.
+These checks remain scoped to ready Case1/3 and do not grant the original all-case Exit Gate.
+
+See [complete reviewed benchmark](PHASE1_REVIEWED_BENCHMARK.md),
+[reviewed reproduction commands](PHASE1_REVIEWED_REPRODUCTION.md) and
+[original Exit Gate accounting](../data/finalization/reviewed_checkpoint_v2/original_exit_gate.json).
+The older approval-only and diagnostic records below retain their historical status.
+
+English: Applied bounded authority and independently locked policies support fresh formal
+local Case1/Case3-temporal results with isolated reference evaluation, reader-verified demos
+and scoped determinism/poison evidence. A true source-distinct branching domain is still
+unavailable. Case2 and Case3 detour/growth keep the original sprint BLOCKED; no freeze tag,
+global authority upgrade, main merge or Phase2 change is claimed.
+
+## Historical 2026-10-07 — Human approvals recorded / 人工核准已記錄
+
+Historical human-review state: **EXPLICIT_APPROVALS_READY_FOR_AUTOMATIC_CERTIFICATION**.
 四項人類 APPROVE 已保存；Case 1–3 的人工未決／blocking IDs 均為空。此狀態只表示
 人工決策完成，**human_decisions_recorded=true、human_decisions_applied=false**。
 Physical certificate **NOT_RUN**；formal Cases 1–3、Baseline A/B/C、正式 GT-isolation／

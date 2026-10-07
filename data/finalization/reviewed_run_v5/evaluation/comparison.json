@@ -1,0 +1,335 @@
+{
+  "cases": [
+    "case1",
+    "case2",
+    "case3"
+  ],
+  "comparison_settings": {
+    "dataset_version": "phase1-reviewed-inputs-with-reference-movement-v2",
+    "metric_config": {
+      "ade_policy": "ARITHMETIC_MEAN_3D_EUCLIDEAN",
+      "collision_boundary_policy": "CLOSED_AABB_TOUCH_COUNTS",
+      "collision_tolerance_m": 0.001,
+      "collision_tolerance_policy": "EXPAND_CLOSED_AABB",
+      "constraint_corridor_tolerance_m": 1e-06,
+      "constraint_denominator": "CONSECUTIVE_TIMED_POINT_PAIRS_INCLUDING_DWELL",
+      "constraint_speed_relative_tolerance": 1e-12,
+      "coverage_comparison": "STRICTLY_LESS_THAN",
+      "coverage_epsilon_m": 0.5,
+      "fde_policy": "LAST_GROUND_TRUTH_TIMESTAMP_3D_EUCLIDEAN",
+      "formal_benchmark_status": "UNRESOLVED",
+      "interpolation_policy": "PIECEWISE_LINEAR",
+      "k_values": [
+        1,
+        2,
+        3
+      ],
+      "metric_config_version": "phase1-reviewed-metric-computation-v1",
+      "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+      "top_k_policy": "FIRST_HYPOTHESIS_PER_DISTINCT_CANDIDATE_IN_INPUT_ORDER",
+      "trajectory_distance_metric": "ADE"
+    },
+    "requested_k": [
+      1,
+      2,
+      3
+    ],
+    "seed": 42
+  },
+  "methods": [
+    "shortest_path",
+    "geometry",
+    "spatiotemporal"
+  ],
+  "runs": [
+    {
+      "case_id": "case1",
+      "coverage_at_k": {
+        "1": true,
+        "2": true,
+        "3": true
+      },
+      "method_id": "shortest_path",
+      "metrics": {
+        "ade_m": 1.5968095443362998e-05,
+        "candidate_count": 1,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.0,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "impossible_transition_rate": 0.0,
+        "min_ade_at_k_m": 1.5968095443362998e-05,
+        "min_fde_at_k_m": 7.390309426983255e-06,
+        "path_length_error_m": 1.7041931752226347e-05,
+        "projection_error_m": 2.556798091519553e-05,
+        "runtime_s": 0.028417165856808424,
+        "search_nodes": 2,
+        "travel_time_error_s": 0.0
+      },
+      "physical_counts": {
+        "collision_rate": {
+          "denominator": 3,
+          "numerator": 0
+        }
+      },
+      "provenance": {
+        "benchmark_kind": "BLENDER_RESEARCH_RESULT",
+        "dataset_id": "phase1-reviewed-inputs-with-reference-movement-v2",
+        "formal_benchmark_status": "APPROVED",
+        "protocol_version": "phase1-benchmark-protocol-v1",
+        "scene_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "run_id": "reviewed_v1",
+      "selected_k": 3,
+      "status": "EVALUATED",
+      "termination_reason": "COMPLETE"
+    },
+    {
+      "case_id": "case1",
+      "coverage_at_k": {
+        "1": true,
+        "2": true,
+        "3": true
+      },
+      "method_id": "geometry",
+      "metrics": {
+        "ade_m": 1.5968095443362998e-05,
+        "candidate_count": 1,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.0,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "impossible_transition_rate": 0.0,
+        "min_ade_at_k_m": 1.5968095443362998e-05,
+        "min_fde_at_k_m": 7.390309426983255e-06,
+        "path_length_error_m": 1.7041931752226347e-05,
+        "projection_error_m": 2.556798091519553e-05,
+        "runtime_s": 0.02851575007662177,
+        "search_nodes": 2,
+        "travel_time_error_s": 0.0
+      },
+      "physical_counts": {
+        "collision_rate": {
+          "denominator": 3,
+          "numerator": 0
+        }
+      },
+      "provenance": {
+        "benchmark_kind": "BLENDER_RESEARCH_RESULT",
+        "dataset_id": "phase1-reviewed-inputs-with-reference-movement-v2",
+        "formal_benchmark_status": "APPROVED",
+        "protocol_version": "phase1-benchmark-protocol-v1",
+        "scene_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "run_id": "reviewed_v1",
+      "selected_k": 3,
+      "status": "EVALUATED",
+      "termination_reason": "COMPLETE"
+    },
+    {
+      "case_id": "case1",
+      "coverage_at_k": {
+        "1": true,
+        "2": true,
+        "3": true
+      },
+      "method_id": "spatiotemporal",
+      "metrics": {
+        "ade_m": 1.5968095443362998e-05,
+        "candidate_count": 1,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.0,
+        "fde_m": 7.390309426983255e-06,
+        "feasible_candidate_recall": 1.0,
+        "impossible_transition_rate": 0.0,
+        "min_ade_at_k_m": 1.5968095443362998e-05,
+        "min_fde_at_k_m": 7.390309426983255e-06,
+        "path_length_error_m": 1.7041931752226347e-05,
+        "projection_error_m": 2.556798091519553e-05,
+        "runtime_s": 0.028301416896283627,
+        "search_nodes": 2,
+        "travel_time_error_s": 0.0
+      },
+      "physical_counts": {
+        "collision_rate": {
+          "denominator": 3,
+          "numerator": 0
+        }
+      },
+      "provenance": {
+        "benchmark_kind": "BLENDER_RESEARCH_RESULT",
+        "dataset_id": "phase1-reviewed-inputs-with-reference-movement-v2",
+        "formal_benchmark_status": "APPROVED",
+        "protocol_version": "phase1-benchmark-protocol-v1",
+        "scene_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "run_id": "reviewed_v1",
+      "selected_k": 3,
+      "status": "EVALUATED",
+      "termination_reason": "COMPLETE"
+    },
+    {
+      "case_id": "case2",
+      "coverage_at_k": {
+        "1": null,
+        "2": null,
+        "3": null
+      },
+      "method_id": "shortest_path",
+      "metrics": {},
+      "run_id": "reviewed_v1",
+      "status": "BLOCKED"
+    },
+    {
+      "case_id": "case2",
+      "coverage_at_k": {
+        "1": null,
+        "2": null,
+        "3": null
+      },
+      "method_id": "geometry",
+      "metrics": {},
+      "run_id": "reviewed_v1",
+      "status": "BLOCKED"
+    },
+    {
+      "case_id": "case2",
+      "coverage_at_k": {
+        "1": null,
+        "2": null,
+        "3": null
+      },
+      "method_id": "spatiotemporal",
+      "metrics": {},
+      "run_id": "reviewed_v1",
+      "status": "BLOCKED"
+    },
+    {
+      "case_id": "case3",
+      "coverage_at_k": {
+        "1": true,
+        "2": true,
+        "3": true
+      },
+      "method_id": "shortest_path",
+      "metrics": {
+        "ade_m": 1.4052783774710346e-05,
+        "candidate_count": 1,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.0,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "impossible_transition_rate": 0.0,
+        "min_ade_at_k_m": 1.4052783774710346e-05,
+        "min_fde_at_k_m": 3.15227085453112e-06,
+        "path_length_error_m": 1.4811918097823451e-05,
+        "projection_error_m": 2.0172611977452637e-05,
+        "runtime_s": 0.08283600001595914,
+        "search_nodes": 2,
+        "travel_time_error_s": 0.0
+      },
+      "physical_counts": {
+        "collision_rate": {
+          "denominator": 3,
+          "numerator": 0
+        }
+      },
+      "provenance": {
+        "benchmark_kind": "BLENDER_RESEARCH_RESULT",
+        "dataset_id": "phase1-reviewed-inputs-with-reference-movement-v2",
+        "formal_benchmark_status": "APPROVED",
+        "protocol_version": "phase1-benchmark-protocol-v1",
+        "scene_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "run_id": "reviewed_v1",
+      "selected_k": 3,
+      "status": "EVALUATED",
+      "termination_reason": "COMPLETE"
+    },
+    {
+      "case_id": "case3",
+      "coverage_at_k": {
+        "1": true,
+        "2": true,
+        "3": true
+      },
+      "method_id": "geometry",
+      "metrics": {
+        "ade_m": 1.4052783774710346e-05,
+        "candidate_count": 1,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.0,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "impossible_transition_rate": 0.0,
+        "min_ade_at_k_m": 1.4052783774710346e-05,
+        "min_fde_at_k_m": 3.15227085453112e-06,
+        "path_length_error_m": 1.4811918097823451e-05,
+        "projection_error_m": 2.0172611977452637e-05,
+        "runtime_s": 0.0838584580924362,
+        "search_nodes": 2,
+        "travel_time_error_s": 0.0
+      },
+      "physical_counts": {
+        "collision_rate": {
+          "denominator": 3,
+          "numerator": 0
+        }
+      },
+      "provenance": {
+        "benchmark_kind": "BLENDER_RESEARCH_RESULT",
+        "dataset_id": "phase1-reviewed-inputs-with-reference-movement-v2",
+        "formal_benchmark_status": "APPROVED",
+        "protocol_version": "phase1-benchmark-protocol-v1",
+        "scene_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "run_id": "reviewed_v1",
+      "selected_k": 3,
+      "status": "EVALUATED",
+      "termination_reason": "COMPLETE"
+    },
+    {
+      "case_id": "case3",
+      "coverage_at_k": {
+        "1": true,
+        "2": true,
+        "3": true
+      },
+      "method_id": "spatiotemporal",
+      "metrics": {
+        "ade_m": 1.4052783774710346e-05,
+        "candidate_count": 1,
+        "collision_rate": 0.0,
+        "constraint_violation_rate": 0.0,
+        "fde_m": 3.15227085453112e-06,
+        "feasible_candidate_recall": 1.0,
+        "impossible_transition_rate": 0.0,
+        "min_ade_at_k_m": 1.4052783774710346e-05,
+        "min_fde_at_k_m": 3.15227085453112e-06,
+        "path_length_error_m": 1.4811918097823451e-05,
+        "projection_error_m": 2.0172611977452637e-05,
+        "runtime_s": 0.08449791604653001,
+        "search_nodes": 2,
+        "travel_time_error_s": 0.0
+      },
+      "physical_counts": {
+        "collision_rate": {
+          "denominator": 3,
+          "numerator": 0
+        }
+      },
+      "provenance": {
+        "benchmark_kind": "BLENDER_RESEARCH_RESULT",
+        "dataset_id": "phase1-reviewed-inputs-with-reference-movement-v2",
+        "formal_benchmark_status": "APPROVED",
+        "protocol_version": "phase1-benchmark-protocol-v1",
+        "scene_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+      },
+      "run_id": "reviewed_v1",
+      "selected_k": 3,
+      "status": "EVALUATED",
+      "termination_reason": "COMPLETE"
+    }
+  ],
+  "schema_version": "benchmark-comparison/v1"
+}

@@ -1,5 +1,20 @@
 # Phase 1 benchmark / Phase 1 實驗執行
 
+## 2026-10-08 current reviewed checkpoint / 目前 reviewed checkpoint
+
+目前正式比較見 [reviewed benchmark](PHASE1_REVIEWED_BENCHMARK.md)，重建入口見
+[reviewed reproduction](PHASE1_REVIEWED_REPRODUCTION.md)。Canonical run 為
+`reviewed_run_v5`；[curated evaluation receipt](../data/finalization/reviewed_checkpoint_v2/local_evaluation_verification.json)
+保留 Case1–3 × A/B/C × K=1/2/3 的 27 列，其中 18 列為 FORMAL local synthetic
+evaluation、9 列為 Case2 blocked/N/A。證據來自 frozen configuration sampler 與既有
+source-camera visibility；不是實際拍攝或 Blender actor animation。
+
+整體仍為 **PHASE1_FINALIZATION_BLOCKED**：Case1 與 Case3 temporal component 已執行，
+Case2 缺核准 branching scope，Case3 full detour/candidate-growth stress 仍未成立。
+已核准的 reference movement policy 使 V5 Travel-time Error 可計算；原
+[protocol](PHASE1_BENCHMARK_PROTOCOL.md) 不變。以下既有內容保留為歷史 checkpoint
+與 synthetic runner 說明；其舊 pending／N/A 敘述不取代上述 V5 現況。
+
 [繁體中文](#繁體中文) | [English](#english)
 
 2026-10-06 finalization：**PHASE1_FINALIZATION_BLOCKED**。正式 Cases 1–3 的完整

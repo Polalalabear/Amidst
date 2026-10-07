@@ -1,5 +1,22 @@
 # Phase 1 artifact cleanup / Artifact 整理
 
+## 2026-10-08 current reviewed artifact inventory / 目前 reviewed 分類
+
+Canonical `reviewed_run_v5` 的結果與重建方式見
+[reviewed benchmark](PHASE1_REVIEWED_BENCHMARK.md) 和
+[reviewed reproduction](PHASE1_REVIEWED_REPRODUCTION.md)；目前整體仍為
+**PHASE1_FINALIZATION_BLOCKED**。本段只更新分類，沒有刪除或移動 artifact。
+
+| Category | Current artifacts and treatment |
+| --- | --- |
+| KEEP | Curated reports、frozen configs、code/tests/docs、human/reference approval receipts，以及 `data/finalization/reviewed_checkpoint_v2/` 的小型 manifest、freeze、evaluation/reproduction 與 fresh comparison receipts。入口為 [evaluation receipt](../data/finalization/reviewed_checkpoint_v2/local_evaluation_verification.json)、[reproduction receipt](../data/finalization/reviewed_checkpoint_v2/local_reproduction_verification.json) 與 [final fresh comparison](../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json)。 |
+| ARCHIVE | 既有 diagnostic/V3、partial V4、failed comparison/trial 與較早 blocked/pending 報告，連同各自 provenance 保留；不改稱目前正式結果。 |
+| LOCAL ONLY | 原始 Blender source、大型 raw physical/source evidence、raw datasets、RRD、frame images 與其他 raw media 留在本機並依既有 ignore policy 排除 Git；不刪除、不提交。可重建內容的命令與 source/hash binding 見 reviewed reproduction。 |
+
+沒有選取 DELETE_CANDIDATE。以下既有 inventory、數量與 approval-recording 狀態
+保留為歷史 snapshot；目前 certificate／正式局部結果以連結的 V5 curated receipts
+為準，原 protocol 不變。
+
 Status: **inventory only** after completed diagnostic verification. Formal validation remains blocked. No artifact was deleted.
 
 2026-10-07 approval-recording update: all four human profiles are APPROVED, with zero

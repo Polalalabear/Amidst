@@ -1,0 +1,54 @@
+{
+  "all_case_exit_complete": false,
+  "annotation_poison_inference_unchanged": true,
+  "comparisons": {
+    "fresh_process": {
+      "candidate_order_and_termination_included": true,
+      "canonical_inference_equal": true,
+      "freeze_permitted_by_this_comparison": false,
+      "noncanonical_reason": "measured runtime and recording metadata",
+      "runtime_and_rrd_container_bytes_excluded": true,
+      "status": "PASS"
+    },
+    "gt_poison": {
+      "candidate_order_and_termination_included": true,
+      "canonical_inference_equal": true,
+      "freeze_permitted_by_this_comparison": false,
+      "noncanonical_reason": "measured runtime and recording metadata",
+      "runtime_and_rrd_container_bytes_excluded": true,
+      "status": "PASS"
+    },
+    "reordered": {
+      "candidate_order_and_termination_included": true,
+      "canonical_inference_equal": true,
+      "freeze_permitted_by_this_comparison": false,
+      "noncanonical_reason": "measured runtime and recording metadata",
+      "runtime_and_rrd_container_bytes_excluded": true,
+      "status": "PASS"
+    },
+    "repeat": {
+      "candidate_order_and_termination_included": true,
+      "canonical_inference_equal": true,
+      "freeze_permitted_by_this_comparison": false,
+      "noncanonical_reason": "measured runtime and recording metadata",
+      "runtime_and_rrd_container_bytes_excluded": true,
+      "status": "PASS"
+    }
+  },
+  "config_sha256": "6507483100dda089341a317bd412946fecafedcfa4c4ac3a6b75d8b7171c8f24",
+  "dataset_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+  "freeze_allowed": false,
+  "fresh_process_status": "PASS",
+  "gt_poison_evaluation_changed": [
+    true,
+    true
+  ],
+  "gt_poison_status": "PASS",
+  "ordering_status": "PASS",
+  "poisoned_reference_annotation_files": 2,
+  "repeat_status": "PASS",
+  "schema_version": "phase1-reviewed-reproduction-v1",
+  "scope": "READY_REVIEWED_CASES_ONLY_CASE2_REMAINS_BLOCKED",
+  "status": "PASS",
+  "termination_status": "PASS"
+}

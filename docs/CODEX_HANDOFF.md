@@ -4,29 +4,42 @@
 
 ## 繁體中文
 
-狀態日期：2026-10-07。Branch：`phase1/finalization-sprint`。
+狀態日期：2026-10-08。Branch：`phase1/finalization-sprint`。
 **實作 worktree：`/private/tmp/amidst-phase1-finalization`**；canonical checkout
 `/Users/polalabear/Developer/amidst` 在另一個 physical branch，只供應 scene/raw artifacts。
 不要在 canonical checkout 實作或切換它的 branch。
 
-使用者已要求 checkpoint／commit 後，交給新對話進行**大規模續作實作**。
-精確入口、授權範圍、automatic blockers、指令與 Exit Gate 見
-[post-approval implementation handoff](PHASE1_POST_APPROVAL_HANDOFF.md)；
-[source/config/approval checkpoint](PHASE1_POST_APPROVAL_CHECKPOINT.json) 保存 hashes。
-Approval commit：`10a3fccea609128dc3d7c31062c0bdde9f17b0cb`；handoff commit 精確 SHA
-由新對話初始 prompt 提供。本 checkpoint 不是 freeze tag。
+目前 source checkpoint：`e6fbc8fbb3bf8c36355db38c299de5ff37705604`；最終文件／curated
+publication commit 由 branch tip 取得。原 handoff `62ea9b1` 與 approval `10a3fcc` 是歷史
+入口，保留原 hashes，不重新套原人工問題。完整現況見
+[final report](PHASE1_FINAL_REPORT.md)、[reviewed benchmark](PHASE1_REVIEWED_BENCHMARK.md)，
+重建指令見 [reviewed reproduction](PHASE1_REVIEWED_REPRODUCTION.md)。
 
 人工 gate **4/4 APPROVE、0 human blockers**；[approval summary](../human_review/APPROVALS.md)
-與 [decisions.json](../human_review/decisions.json) 已提交。原問題／profiles／payload 不變，
-不重問同樣決策。尚未 `--apply`、重算 certificate 或執行 formal Cases。
-Phase 1 仍 **PHASE1_FINALIZATION_BLOCKED**；physical overall **PARTIAL_APPROVED**。
+與 [decisions.json](../human_review/decisions.json) 已提交並 **applied**；bounded office
+certificate **PASS**。原問題／profiles／payload、29 inputs、57 original frames 不變。
+新增 reference movement policy 已另行明確核准／lock／fresh export／evaluation，不重問
+原 HR01–HR04。Phase 1 **PHASE1_FINALIZATION_BLOCKED**；overall **PARTIAL_APPROVED**。
 
-直接續作：apply decisions → bounded certificate → additive formal authority/marker/
-metric/provider adapters → GT-free Case 1 unique／Case 2 real branches／Case 3 long-GAP
-inventory → frozen formal configs → fresh dataset → Cases／A–C／supported ablations →
-report/charts／Rerun → GT poison/determinism/fresh rerun → all Exit Gates → freeze。
-舊 diagnostic contracts/hash-bound producers 不放寬或改寫，candidate ordering 不接觸 GT。
-只有真正新 source contradiction 或必要 domain 超出明示核准，才重開最小 human gate。
+已完成 additive reviewed adapters、GT-free V2 config lock、canonical fresh local
+`data/finalization/reviewed_run_v5/`：Case1／Case3 temporal component 的 A/B/C、27-row
+K matrix（9 Case2 N/A）、20 charts、2 RRD+PNG、independent metrics/reference annotations。
+Ready Case1/3 的 repeat／fresh-process／ordering／GT/recipe/annotation poison／termination
+PASS。完整 source suite **1859 passed、0 skipped**，Ruff／strict mypy PASS。
+Fresh checkout 位於 `/private/tmp/amidst-phase1-finalization-fresh-20261007`；物理重建、
+同 hash application／dataset、198 code/config/lock files 與 final full delivery comparison
+均 PASS；[最終 receipt](../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json)
+保留 41 JSON／1 CSV／4 MD／21 non-runtime PNG／2 reader-verified RRD 的核對。
+
+**唯一 remaining prerequisite 是新合法 branching scope。** 原 complete convex office
+只有 1 major route class／0 branches；Case2 及 Case3 detour/candidate-growth 不能完成。
+58 approved components／116 bounded bypass candidates 中 26 有不同 camera endpoint FOV，
+0 通過全部 source support/body-clearance；[scope readiness](PHASE1_BRANCH_SCOPE_GATE.md)
+是 **PROPOSAL_NOT_AVAILABLE**，不是待點選 APPROVE 的可行新 scope。不要擴原 guard、
+把平行偏移／timings 算 branching、修改 source 或升格未知 WALL/portal/stair。
+後續只處理能真正提出 source-bound supported branching domain／camera-landmark binding
+的最小新範圍；其餘原核准與已完成流程不重做。原 full Exit Gate 未通過，不建 freeze tag。
+Collision ablation 缺獨立 purpose-bound consumer，保留 N/A；不填空 collider。
 
 Immutable scene 在 canonical checkout：`blender/school_v3.blend`；scale 0.0247 m/BU。
 完整 review/raw media 在 canonical ignored
@@ -44,12 +57,12 @@ Phase 1 validated/frozen 只在原正式 Exit Gate 全數通過後成立。
 
 Continue substantial implementation in `/private/tmp/amidst-phase1-finalization` on
 `phase1/finalization-sprint`; do not change the canonical asset checkout's branch.
-All four original human approvals are recorded and read-only verified, but not yet applied.
-Physical certification and every formal Case/benchmark/reproduction gate remain pending.
-Read the focused implementation handoff and hash-bound checkpoint linked above; the new
-conversation prompt supplies the exact handoff commit SHA. Reuse existing algorithms with
-additive reviewed formal adapters; preserve pinned diagnostics, source and GT isolation.
-Apply decisions and perform automatic readiness proofs without repeating settled human
-questions. Only a new genuine geometry contradiction or indispensable out-of-scope domain
-reopens human review. Preserve raw evidence. Freeze only after all original exit gates;
-Case 4 stays deferred, Phase 2 frozen, and main unmerged. Dated evidence belongs to the logs.
+All four original approvals are applied and bounded numerical certification passes. Fresh
+formal local Case1/Case3-temporal A/B/C, approved independent moving-time reference metrics,
+reports/demos and scoped poison/determinism checks are complete. Read the current report,
+benchmark and reproduction links above; the code checkpoint is `e6fbc8f`. Full source validation
+passes 1859 tests without skips. The sole remaining source prerequisite is a genuinely supported
+branching local domain with valid camera/landmark binding. The bounded candidate audit supplies
+exact failed witnesses and no executable approval-only proposal. Keep Case2/Case3-growth blocked,
+the original receipts/protocol/source immutable, raw versions preserved, Case4 deferred and
+Phase2 frozen. No freeze tag or main merge is authorized by scoped passes.

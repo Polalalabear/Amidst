@@ -1,0 +1,364 @@
+{
+  "computation_result": {
+    "constraints": {
+      "collision_tolerance_m": 0.001,
+      "corridor_tolerance_m": 1e-06,
+      "max_speed_m_s": 0.7904,
+      "navigation_graph": {
+        "cross_floor_policy": "DISCONNECTED",
+        "data_kind": "CONFIGURED",
+        "edges": [
+          {
+            "edge_id": "reviewed_route:case3:direct",
+            "from_node_id": "projected_departure",
+            "polyline": [
+              [
+                34.728155290519155,
+                49.60856609132884,
+                0.49594758987426757
+              ],
+              [
+                34.72818052016633,
+                51.28159423639004,
+                0.49594758987426757
+              ]
+            ],
+            "stair_id": null,
+            "to_node_id": "projected_recovery",
+            "transition_type": "WALK",
+            "walkable": true
+          }
+        ],
+        "graph_id": "reviewed_graph:394e3dd67d71f7461d5b51a0",
+        "node_match_tolerance_m": 2.47e-08,
+        "nodes": [
+          {
+            "floor_id": "1F",
+            "node_id": "projected_departure",
+            "position": [
+              34.728155290519155,
+              49.60856609132884,
+              0.49594758987426757
+            ],
+            "zone_id": "AREA_1F_OFFICE"
+          },
+          {
+            "floor_id": "1F",
+            "node_id": "projected_recovery",
+            "position": [
+              34.72818052016633,
+              51.28159423639004,
+              0.49594758987426757
+            ],
+            "zone_id": "AREA_1F_OFFICE"
+          }
+        ],
+        "source_asset_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+        "spatial_context_id": "REVIEWED_LOCAL_OFFICE_CASE3"
+      },
+      "obstacles": [],
+      "speed_relative_tolerance": 1e-12
+    },
+    "evaluations": [
+      {
+        "collision_rate": 0.0,
+        "collision_segment_count": 0,
+        "config": {
+          "benchmark_kind": "SYNTHETIC_TEST_FIXTURE",
+          "coverage_distance": "ADE",
+          "coverage_epsilon_m": 0.5,
+          "k_routes": 1
+        },
+        "constraint_violation_rate": 0.0,
+        "constraint_violation_segment_count": 0,
+        "coverage_at_k": true,
+        "denominator_definition": "CONSECUTIVE_TIMED_POINT_PAIRS_INCLUDING_DWELL",
+        "evaluated_hypothesis_count": 2,
+        "limits": [
+          "Coverage distance and epsilon are synthetic test configuration, not a formal benchmark.",
+          "Collision checks cover supplied AABBs only; they do not certify Blender mesh geometry.",
+          "Corridor checks use directed configured polylines, not navigation mesh volume.",
+          "ADE averages supplied Ground Truth timestamps; it is not a continuous-time integral.",
+          "Top-K scores the first timing hypothesis for each candidate route in caller order."
+        ],
+        "min_ade_at_k_m": 1.4052783774710346e-05,
+        "min_fde_at_k_m": 3.15227085453112e-06,
+        "selected_route_count": 1,
+        "temporal_contract": "STRICTLY_ORDERED_POINTS_AND_EXACT_GROUND_TRUTH_EXTENT",
+        "time_alignment": "LINEAR_AT_ALL_GROUND_TRUTH_TIMESTAMPS",
+        "top_k_hypothesis_ids": [
+          "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous"
+        ],
+        "total_segment_count": 3,
+        "trajectory_metrics": [
+          {
+            "ade_m": 1.4052783774710346e-05,
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "fde_m": 3.15227085453112e-06,
+            "ground_truth_sample_count": 763,
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+            "physical": {
+              "collision_method": "CONTINUOUS_SEGMENT_CLOSED_AABB",
+              "collision_rate": 0.0,
+              "collision_segment_count": 0,
+              "constraint_violation_rate": 0.0,
+              "constraint_violation_segment_count": 0,
+              "corridor_segment_count": 1,
+              "corridor_violation_rate": 0.0,
+              "corridor_violation_segment_count": 0,
+              "mesh_collision_certified": false,
+              "segment_count": 1,
+              "speed_violation_rate": 0.0,
+              "speed_violation_segment_count": 0
+            }
+          },
+          {
+            "ade_m": 0.8237937322125901,
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "fde_m": 3.15227085453112e-06,
+            "ground_truth_sample_count": 763,
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:dwell_at_start",
+            "physical": {
+              "collision_method": "CONTINUOUS_SEGMENT_CLOSED_AABB",
+              "collision_rate": 0.0,
+              "collision_segment_count": 0,
+              "constraint_violation_rate": 0.0,
+              "constraint_violation_segment_count": 0,
+              "corridor_segment_count": 2,
+              "corridor_violation_rate": 0.0,
+              "corridor_violation_segment_count": 0,
+              "mesh_collision_certified": false,
+              "segment_count": 2,
+              "speed_violation_rate": 0.0,
+              "speed_violation_segment_count": 0
+            }
+          }
+        ]
+      },
+      {
+        "collision_rate": 0.0,
+        "collision_segment_count": 0,
+        "config": {
+          "benchmark_kind": "SYNTHETIC_TEST_FIXTURE",
+          "coverage_distance": "ADE",
+          "coverage_epsilon_m": 0.5,
+          "k_routes": 2
+        },
+        "constraint_violation_rate": 0.0,
+        "constraint_violation_segment_count": 0,
+        "coverage_at_k": true,
+        "denominator_definition": "CONSECUTIVE_TIMED_POINT_PAIRS_INCLUDING_DWELL",
+        "evaluated_hypothesis_count": 2,
+        "limits": [
+          "Coverage distance and epsilon are synthetic test configuration, not a formal benchmark.",
+          "Collision checks cover supplied AABBs only; they do not certify Blender mesh geometry.",
+          "Corridor checks use directed configured polylines, not navigation mesh volume.",
+          "ADE averages supplied Ground Truth timestamps; it is not a continuous-time integral.",
+          "Top-K scores the first timing hypothesis for each candidate route in caller order."
+        ],
+        "min_ade_at_k_m": 1.4052783774710346e-05,
+        "min_fde_at_k_m": 3.15227085453112e-06,
+        "selected_route_count": 1,
+        "temporal_contract": "STRICTLY_ORDERED_POINTS_AND_EXACT_GROUND_TRUTH_EXTENT",
+        "time_alignment": "LINEAR_AT_ALL_GROUND_TRUTH_TIMESTAMPS",
+        "top_k_hypothesis_ids": [
+          "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous"
+        ],
+        "total_segment_count": 3,
+        "trajectory_metrics": [
+          {
+            "ade_m": 1.4052783774710346e-05,
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "fde_m": 3.15227085453112e-06,
+            "ground_truth_sample_count": 763,
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+            "physical": {
+              "collision_method": "CONTINUOUS_SEGMENT_CLOSED_AABB",
+              "collision_rate": 0.0,
+              "collision_segment_count": 0,
+              "constraint_violation_rate": 0.0,
+              "constraint_violation_segment_count": 0,
+              "corridor_segment_count": 1,
+              "corridor_violation_rate": 0.0,
+              "corridor_violation_segment_count": 0,
+              "mesh_collision_certified": false,
+              "segment_count": 1,
+              "speed_violation_rate": 0.0,
+              "speed_violation_segment_count": 0
+            }
+          },
+          {
+            "ade_m": 0.8237937322125901,
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "fde_m": 3.15227085453112e-06,
+            "ground_truth_sample_count": 763,
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:dwell_at_start",
+            "physical": {
+              "collision_method": "CONTINUOUS_SEGMENT_CLOSED_AABB",
+              "collision_rate": 0.0,
+              "collision_segment_count": 0,
+              "constraint_violation_rate": 0.0,
+              "constraint_violation_segment_count": 0,
+              "corridor_segment_count": 2,
+              "corridor_violation_rate": 0.0,
+              "corridor_violation_segment_count": 0,
+              "mesh_collision_certified": false,
+              "segment_count": 2,
+              "speed_violation_rate": 0.0,
+              "speed_violation_segment_count": 0
+            }
+          }
+        ]
+      },
+      {
+        "collision_rate": 0.0,
+        "collision_segment_count": 0,
+        "config": {
+          "benchmark_kind": "SYNTHETIC_TEST_FIXTURE",
+          "coverage_distance": "ADE",
+          "coverage_epsilon_m": 0.5,
+          "k_routes": 3
+        },
+        "constraint_violation_rate": 0.0,
+        "constraint_violation_segment_count": 0,
+        "coverage_at_k": true,
+        "denominator_definition": "CONSECUTIVE_TIMED_POINT_PAIRS_INCLUDING_DWELL",
+        "evaluated_hypothesis_count": 2,
+        "limits": [
+          "Coverage distance and epsilon are synthetic test configuration, not a formal benchmark.",
+          "Collision checks cover supplied AABBs only; they do not certify Blender mesh geometry.",
+          "Corridor checks use directed configured polylines, not navigation mesh volume.",
+          "ADE averages supplied Ground Truth timestamps; it is not a continuous-time integral.",
+          "Top-K scores the first timing hypothesis for each candidate route in caller order."
+        ],
+        "min_ade_at_k_m": 1.4052783774710346e-05,
+        "min_fde_at_k_m": 3.15227085453112e-06,
+        "selected_route_count": 1,
+        "temporal_contract": "STRICTLY_ORDERED_POINTS_AND_EXACT_GROUND_TRUTH_EXTENT",
+        "time_alignment": "LINEAR_AT_ALL_GROUND_TRUTH_TIMESTAMPS",
+        "top_k_hypothesis_ids": [
+          "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous"
+        ],
+        "total_segment_count": 3,
+        "trajectory_metrics": [
+          {
+            "ade_m": 1.4052783774710346e-05,
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "fde_m": 3.15227085453112e-06,
+            "ground_truth_sample_count": 763,
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:continuous",
+            "physical": {
+              "collision_method": "CONTINUOUS_SEGMENT_CLOSED_AABB",
+              "collision_rate": 0.0,
+              "collision_segment_count": 0,
+              "constraint_violation_rate": 0.0,
+              "constraint_violation_segment_count": 0,
+              "corridor_segment_count": 1,
+              "corridor_violation_rate": 0.0,
+              "corridor_violation_segment_count": 0,
+              "mesh_collision_certified": false,
+              "segment_count": 1,
+              "speed_violation_rate": 0.0,
+              "speed_violation_segment_count": 0
+            }
+          },
+          {
+            "ade_m": 0.8237937322125901,
+            "candidate_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47",
+            "fde_m": 3.15227085453112e-06,
+            "ground_truth_sample_count": 763,
+            "hypothesis_id": "candidate:c3a85e74154bbe6906f1f6cfaf5d9a3e03b5716e2c8b9ff8542c852ccfdc1e47:dwell_at_start",
+            "physical": {
+              "collision_method": "CONTINUOUS_SEGMENT_CLOSED_AABB",
+              "collision_rate": 0.0,
+              "collision_segment_count": 0,
+              "constraint_violation_rate": 0.0,
+              "constraint_violation_segment_count": 0,
+              "corridor_segment_count": 2,
+              "corridor_violation_rate": 0.0,
+              "corridor_violation_segment_count": 0,
+              "mesh_collision_certified": false,
+              "segment_count": 2,
+              "speed_violation_rate": 0.0,
+              "speed_violation_segment_count": 0
+            }
+          }
+        ]
+      }
+    ],
+    "metric_config": {
+      "ade_policy": "ARITHMETIC_MEAN_3D_EUCLIDEAN",
+      "collision_boundary_policy": "CLOSED_AABB_TOUCH_COUNTS",
+      "collision_tolerance_m": 0.001,
+      "collision_tolerance_policy": "EXPAND_CLOSED_AABB",
+      "constraint_corridor_tolerance_m": 1e-06,
+      "constraint_denominator": "CONSECUTIVE_TIMED_POINT_PAIRS_INCLUDING_DWELL",
+      "constraint_speed_relative_tolerance": 1e-12,
+      "coverage_comparison": "STRICTLY_LESS_THAN",
+      "coverage_epsilon_m": 0.5,
+      "fde_policy": "LAST_GROUND_TRUTH_TIMESTAMP_3D_EUCLIDEAN",
+      "formal_benchmark_status": "UNRESOLVED",
+      "interpolation_policy": "PIECEWISE_LINEAR",
+      "k_values": [
+        1,
+        2,
+        3
+      ],
+      "metric_config_version": "phase1-reviewed-metric-computation-v1",
+      "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+      "top_k_policy": "FIRST_HYPOTHESIS_PER_DISTINCT_CANDIDATE_IN_INPUT_ORDER",
+      "trajectory_distance_metric": "ADE"
+    }
+  },
+  "core_aabb_metrics_are_school_collision_authority": false,
+  "core_synthetic_labels_preserved": true,
+  "ground_truth_loaded_after_inference_freeze": true,
+  "inference_freeze_sha256": "d16708cfb437b6dff2ea06139126d5784a181c547d9dba6d1633068988cf4059",
+  "metric_authority": {
+    "computation_config": {
+      "ade_policy": "ARITHMETIC_MEAN_3D_EUCLIDEAN",
+      "collision_boundary_policy": "CLOSED_AABB_TOUCH_COUNTS",
+      "collision_tolerance_m": 0.001,
+      "collision_tolerance_policy": "EXPAND_CLOSED_AABB",
+      "constraint_corridor_tolerance_m": 1e-06,
+      "constraint_denominator": "CONSECUTIVE_TIMED_POINT_PAIRS_INCLUDING_DWELL",
+      "constraint_speed_relative_tolerance": 1e-12,
+      "coverage_comparison": "STRICTLY_LESS_THAN",
+      "coverage_epsilon_m": 0.5,
+      "fde_policy": "LAST_GROUND_TRUTH_TIMESTAMP_3D_EUCLIDEAN",
+      "formal_benchmark_status": "UNRESOLVED",
+      "interpolation_policy": "PIECEWISE_LINEAR",
+      "k_values": [
+        1,
+        2,
+        3
+      ],
+      "metric_config_version": "phase1-reviewed-metric-computation-v1",
+      "temporal_alignment_policy": "ALL_GROUND_TRUTH_TIMESTAMPS_EXACT_EXTENT",
+      "top_k_policy": "FIRST_HYPOTHESIS_PER_DISTINCT_CANDIDATE_IN_INPUT_ORDER",
+      "trajectory_distance_metric": "ADE"
+    },
+    "cross_case_aggregation": "NONE",
+    "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+    "result_type": "FORMAL",
+    "reviewed_input_lock_content_sha256": "d6fbdbdb1fb7458d83a86462a6fafdca9b1335d36a2775d4f0b223809c3eeb65",
+    "sampling_extent": "SOURCE_ENDPOINTS_INCLUSIVE_NO_REJECTION",
+    "sampling_hz": 5,
+    "schema_version": "phase1-reviewed-metrics-v1"
+  },
+  "result_type": "FORMAL",
+  "reviewed_physical": {
+    "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+    "failures": [],
+    "method": "COMPLETE_REVIEWED_SCOPE_CONTINUOUS_SEGMENTS",
+    "outside_scope": "REFUSE_VALIDATION",
+    "result_type": "FORMAL",
+    "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+    "segment_count": 3,
+    "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+    "status": "AVAILABLE",
+    "violation_rate": 0.0,
+    "violation_segment_count": 0
+  },
+  "schema_version": "phase1-reviewed-evaluation-v1"
+}

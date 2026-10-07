@@ -1,0 +1,11 @@
+{
+  "copied_file_count": 0,
+  "existing_matching_file_count": 297,
+  "formal_outputs_used": false,
+  "historical_inputs_replaced": false,
+  "review_bound_input_count": 29,
+  "review_manifest_sha256": "923eb5f94cbe7bd1e0b45d5185b8189c07f62345c4c067d0fefc148e71e34187",
+  "schema_version": "phase1-historical-review-hydration-v1",
+  "status": "PASS",
+  "verified_file_count": 297
+}

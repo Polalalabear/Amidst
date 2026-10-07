@@ -1,0 +1,29 @@
+{
+  "case_failure_na_and_candidate_order_preserved": true,
+  "dataset_manifest_and_all_artifacts_equal": true,
+  "differences": [],
+  "explicit_nondeterministic_exclusions": [
+    "charts/runtime.png: measured runtime plot pixels only",
+    "demos/case1/reviewed.rrd: container metadata bytes only",
+    "demos/case3/reviewed.rrd: container metadata bytes only"
+  ],
+  "inference": {
+    "candidate_order_and_termination_included": true,
+    "canonical_inference_equal": true,
+    "freeze_permitted_by_this_comparison": false,
+    "noncanonical_reason": "measured runtime and recording metadata",
+    "runtime_and_rrd_container_bytes_excluded": true,
+    "status": "PASS"
+  },
+  "missing_required_reports": [],
+  "overall_exit_gate_or_freeze_granted": false,
+  "report_and_demo_comparison_counts": {
+    "csv": 1,
+    "json": 41,
+    "markdown": 4,
+    "png": 21,
+    "rrd": 2
+  },
+  "schema_version": "phase1-reviewed-fresh-delivery-comparison-v1",
+  "status": "PASS"
+}

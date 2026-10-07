@@ -1,0 +1,5178 @@
+{
+  "all_geometric_curves_enumerated": false,
+  "approved_portal_or_cross_floor_transitions": 0,
+  "canonical_direct_polyline_m": [
+    [
+      34.728155290519155,
+      49.60856609132884,
+      0.49594758987426757
+    ],
+    [
+      34.72818052016633,
+      51.28159423639004,
+      0.49594758987426757
+    ]
+  ],
+  "canonical_route_class_id": "reviewed-direct-class:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+  "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+  "directed_local_handoff_id": "reviewed-local-handoff:ef8395a232639ba9228563d8a4976317a7eeb71225ac447e0dcd97fa44670b44",
+  "eligibility": "ONE_CANONICAL_DIRECT_ROUTE_PER_SOURCE_DISTINCT_CLASS",
+  "eligible_feasible_route_classes": 1,
+  "end_observation": {
+    "appearance_embedding": null,
+    "appearance_labels": null,
+    "appearance_quality": null,
+    "camera_id": "CAM_1F_AUDITORIUM_REAR",
+    "end_time": 184.8,
+    "entry_direction": null,
+    "exit_direction": null,
+    "floor_id": "1F",
+    "fragment_count": null,
+    "frames": [
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 832,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          280.82968994619625,
+          68.44414322548633
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 166.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 833,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          280.8925247289068,
+          68.43721232054551
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 166.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 834,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          280.9552740557293,
+          68.43037008873446
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 166.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 835,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.01808571747995,
+          68.42344172683039
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 167.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 836,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.08095247380015,
+          68.41658218046192
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 167.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 837,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.1437743145138,
+          68.40969013176678
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 167.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 838,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.2064440760497,
+          68.40281919004022
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 167.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 839,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.269242794193,
+          68.39592967766504
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 167.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 840,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.33188948641487,
+          68.3890612656026
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 168.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 841,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.3946650947523,
+          68.3821742881473
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 168.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 842,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.4572887303949,
+          68.37530840435255
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 168.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 843,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.51993408345254,
+          68.36847753953265
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 168.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 844,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.58264183347046,
+          68.36156060349549
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 168.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 845,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.64526412193567,
+          68.35473226094206
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 169.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 846,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.7079488211032,
+          68.34781786023899
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 169.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 847,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.77068835155956,
+          68.34097222818346
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 169.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 848,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.83338315071455,
+          68.33409411146906
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 169.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 849,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.8959261632945,
+          68.32723706515912
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 169.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 850,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          281.95859790998276,
+          68.3203614770766
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 170.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 851,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.02111792318937,
+          68.31350695276228
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 170.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 852,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.08376663012376,
+          68.30663389191722
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 170.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 853,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.14626365664026,
+          68.2997818882076
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 170.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 854,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.2088893365244,
+          68.29296487814258
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 170.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 855,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.2713633890249,
+          68.28606186871193
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 171.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 856,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.33385902435396,
+          68.27924737326217
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 171.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 857,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.3964171457021,
+          68.27234689149401
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 171.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 858,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.4588897990257,
+          68.26553490927179
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 171.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 859,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.5215979785978,
+          68.25865090458603
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 171.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 860,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.5840146263419,
+          68.2518077115829
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 172.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 861,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.646559786307,
+          68.24494600560703
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 172.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 862,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.7089535043358,
+          68.23810532696189
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 172.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 863,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.7714756943163,
+          68.23124614057207
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 172.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 864,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.83384649526204,
+          68.22440797489972
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 172.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 865,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.8963457279101,
+          68.21760477757502
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 173.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 866,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          282.95869362439566,
+          68.21071565262434
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 173.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 867,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.0210629902539,
+          68.20391496229462
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 173.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 868,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.08349491699335,
+          68.19702835736581
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 173.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 869,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.145841370422,
+          68.19023017264894
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 173.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 870,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.20842302076863,
+          68.18336004822899
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 174.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 871,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.27071368624615,
+          68.17653066659278
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 174.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 872,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.33313264266724,
+          68.16968280070782
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 174.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 873,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.39540044780665,
+          68.16285592582284
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 174.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 874,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.45779650373083,
+          68.15601057190338
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 174.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 875,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.52004146111335,
+          68.14918620238998
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 175.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 876,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.582414629142,
+          68.14239677596066
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 175.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 877,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.64463675133965,
+          68.13552149353333
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 175.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 878,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.7068802298446,
+          68.12873456650945
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 175.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 879,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.7691863436403,
+          68.12186179649416
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 175.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 880,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.831406979011,
+          68.11507736749911
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 176.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 881,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.8938624827946,
+          68.10822108137694
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 176.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 882,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          283.95602754703214,
+          68.1014054693369
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 176.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 883,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.0183206815434,
+          68.0945714016965
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 176.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 884,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.0804629545404,
+          68.0877582888316
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 176.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 885,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.14273325776253,
+          68.08092672556683
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 177.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 886,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.20485275204953,
+          68.0741161105029
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 177.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 887,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.2671002365331,
+          68.06734041329284
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 177.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 888,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.3291969646315,
+          68.06047893160118
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 177.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 889,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.39131493636063,
+          68.05370572623755
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 177.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 890,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.45349561733974,
+          68.04684674937874
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 178.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 891,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.51559081495077,
+          68.04007603449051
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 178.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 892,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.57792055329224,
+          68.03323354486702
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 178.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 893,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.6399603957815,
+          68.02643166082072
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 178.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 894,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.70212808847987,
+          68.01961134974704
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 178.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 895,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.7641452085479,
+          68.01281195733023
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 179.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 896,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.8262901388863,
+          68.00599414307294
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 179.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 897,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.8882845490133,
+          67.999197240917
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 179.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 898,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          284.95040672949176,
+          67.99243523141789
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 179.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 899,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.0123784421487,
+          67.9855875088424
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 179.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 900,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.0743712861471,
+          67.97882798366118
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 180.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 901,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.1364269129069,
+          67.97198275836979
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 180.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 902,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.19839705152566,
+          67.96522571614096
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 180.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 903,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.26042998622256,
+          67.95838298676449
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 180.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 904,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.3225164027174,
+          67.95160878389768
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 180.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 905,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.38455903217033,
+          67.94480218788064
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 181.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 906,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.44645137699706,
+          67.93801647450721
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 181.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 907,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.50847131274196,
+          67.93121236777768
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 181.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 908,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.5703410161201,
+          67.92442913715536
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 181.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 909,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.63233827060674,
+          67.917680774026
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 181.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 910,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.6941853449571,
+          67.91084676911444
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 182.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 911,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.75605343874514,
+          67.90410088280473
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 182.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 912,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.8179843883606,
+          67.89726936765885
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 182.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 913,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.87982984523114,
+          67.89052595680877
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 182.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 914,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          285.94173817116507,
+          67.8836969300649
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 182.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 915,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          286.00369972128965,
+          67.87693638326002
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 183.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 916,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          286.0656176645428,
+          67.87014346095637
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 183.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 917,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          286.12738561029767,
+          67.86337138538806
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 183.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 918,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          286.18928092821886,
+          67.85658094487326
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 183.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 919,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          286.2510263007424,
+          67.84981134457644
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 183.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 920,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          286.31289900573154,
+          67.84307658664187
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 184.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 921,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          288.3923677279655,
+          67.61509799729174
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 184.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 922,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          290.4591956396932,
+          67.38851685303186
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 184.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 923,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          292.513393183792,
+          67.16332034419978
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 184.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 924,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          294.5550757836884,
+          66.93949581721566
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 184.8
+      }
+    ],
+    "observation_id": "obs_58774807134add945dbf2992",
+    "observation_quality": null,
+    "occlusion_quality": null,
+    "projected_path": [
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:62840f4bc21639f5b125382f65a2fe172ab7e3b865540f6c82970d10375facac",
+        "projection_quality": 0.09804773523043457,
+        "provenance": "PROJECTED",
+        "timestamp": 166.4,
+        "world_position": [
+          34.72818052016633,
+          51.28159423639004,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:e1d9141b3b9a32a76f878b3a61b9e184a7522016748055aeaee4758103f3c40f",
+        "projection_quality": 0.0980408687942096,
+        "provenance": "PROJECTED",
+        "timestamp": 166.6,
+        "world_position": [
+          34.728171494695204,
+          51.28379816338412,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:dc70915f6bc869ff2043a760d60e07c8fcfea1e1fe0636930580507d26dab19b",
+        "projection_quality": 0.09803411778039625,
+        "provenance": "PROJECTED",
+        "timestamp": 166.8,
+        "world_position": [
+          34.72817918880105,
+          51.285985793277426,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:a5eb0242d3b15b8b878ab7473712e06975f0959479b6c65b01f89f3c4ca5abb0",
+        "projection_quality": 0.09802725174425532,
+        "provenance": "PROJECTED",
+        "timestamp": 167.0,
+        "world_position": [
+          34.72817016332805,
+          51.288189723656714,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2b3caa7c9b98b523bd6a8e522cfa30b61569c94f63d510b422e898c217da62cf",
+        "projection_quality": 0.09802047988431827,
+        "provenance": "PROJECTED",
+        "timestamp": 167.2,
+        "world_position": [
+          34.72817692204779,
+          51.29038303514159,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c870c69c33fc9459b1c778fc2e72b436910743df3fb23c5aa2785e949fe8e439",
+        "projection_quality": 0.098013661233743,
+        "provenance": "PROJECTED",
+        "timestamp": 167.4,
+        "world_position": [
+          34.72817578867081,
+          51.292581656733965,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:fae77fd2f4e538aa7fdeadacda6c801125edbd83183a744cd4fefbfe2f20171e",
+        "projection_quality": 0.09800686401572097,
+        "provenance": "PROJECTED",
+        "timestamp": 167.6,
+        "world_position": [
+          34.728175590681744,
+          51.294774594255244,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f910334f071b6c6c45f04cfc310bd40d950e347f5b5bab6376aae40674e41b31",
+        "projection_quality": 0.09800004576215743,
+        "provenance": "PROJECTED",
+        "timestamp": 167.8,
+        "world_position": [
+          34.72817445730452,
+          51.29697321651197,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:11f5730cb31ec5406cd0ea4b57026360b2a7dffa5f6f1772eb41b01cc58695cc",
+        "projection_quality": 0.09799324894048869,
+        "provenance": "PROJECTED",
+        "timestamp": 168.0,
+        "world_position": [
+          34.72817425931541,
+          51.29916615426656,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:3c773df68da26fb4fc8d69b072bc7d81da88180aa862e52983588d6315935425",
+        "projection_quality": 0.09798643108501713,
+        "provenance": "PROJECTED",
+        "timestamp": 168.2,
+        "world_position": [
+          34.72817312593795,
+          51.301364777187594,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:4c5ccf08347d934f28deb0a2959077bb40f118d5fbb1a2a8c5ede1bfa3efdd38",
+        "projection_quality": 0.09797963466077882,
+        "provenance": "PROJECTED",
+        "timestamp": 168.4,
+        "world_position": [
+          34.72817292794881,
+          51.30355771517549,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:1b3b452f9633d9e0225c746e50c0e581a9972d20eca06f67b36293e35259ebbc",
+        "projection_quality": 0.09797288540344043,
+        "provenance": "PROJECTED",
+        "timestamp": 168.6,
+        "world_position": [
+          34.72818062205294,
+          51.30574533262818,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:609119721d0a202873f64e0a8b053bf51ae347fe3a07c4364275b7b15eeb03d4",
+        "projection_quality": 0.09796602117874598,
+        "provenance": "PROJECTED",
+        "timestamp": 168.8,
+        "world_position": [
+          34.72817159658195,
+          51.307949276982036,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:0a2918ff496015a3176b09c0781b62a069f5431be4160b723da35303cf72c5ab",
+        "projection_quality": 0.09795927231521664,
+        "provenance": "PROJECTED",
+        "timestamp": 169.0,
+        "world_position": [
+          34.72817929068767,
+          51.31013689194714,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:5b1d88fc06593e8c3fd5d90f4d5d782377791425fe51657c1bcc64dd87404dd5",
+        "projection_quality": 0.09795240849654231,
+        "provenance": "PROJECTED",
+        "timestamp": 169.2,
+        "world_position": [
+          34.72817026521481,
+          51.312340839686236,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:3d1e4ac4814d05c6477ac39045f82bd3f12618cdaafbb8857403de5d78761d8f",
+        "projection_quality": 0.09794563879942562,
+        "provenance": "PROJECTED",
+        "timestamp": 169.4,
+        "world_position": [
+          34.72817702393445,
+          51.31453413861007,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:bf2228de4f3c47c79553f7f8e0b4d1e03a0ed8e99f996ca0e73b80564e46cfa8",
+        "projection_quality": 0.09793882234344815,
+        "provenance": "PROJECTED",
+        "timestamp": 169.6,
+        "world_position": [
+          34.728175890557495,
+          51.31673276260186,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:a57772e30e9cda9cacfa3360f26e83e8f0e656cc4e3110be3f16b78b1038e507",
+        "projection_quality": 0.09793202731636831,
+        "provenance": "PROJECTED",
+        "timestamp": 169.8,
+        "world_position": [
+          34.728175692568406,
+          51.318925700155326,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c33a4c9672473c834531ab702c4d6586d8f2988dace1aecbe41fab85251d459f",
+        "projection_quality": 0.09792521126332901,
+        "provenance": "PROJECTED",
+        "timestamp": 170.0,
+        "world_position": [
+          34.72817455919122,
+          51.321124324811436,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:1219490273292fbb0bed789fb709ca3085cfd09ae6afbfefcbaee48be1f3511b",
+        "projection_quality": 0.097918416638512,
+        "provenance": "PROJECTED",
+        "timestamp": 170.2,
+        "world_position": [
+          34.7281743612021,
+          51.3233172625982,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:64a0910f6bc3590c0457c9db12d7a6e4f4a2d6890f316b1e2feae710d6f40577",
+        "projection_quality": 0.0979116009894841,
+        "provenance": "PROJECTED",
+        "timestamp": 170.4,
+        "world_position": [
+          34.72817322782466,
+          51.32551588791865,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:5225ca4bb216ddec53d9993c2d25e407f52b12895813296f0b996f861616b980",
+        "projection_quality": 0.09790480676800037,
+        "provenance": "PROJECTED",
+        "timestamp": 170.6,
+        "world_position": [
+          34.72817302983552,
+          51.32770882593871,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:1e05c0ddf44959fc9bd580efeb8e43e98c9a867b1397cfff3a90f0c5b2320237",
+        "projection_quality": 0.09789806392228781,
+        "provenance": "PROJECTED",
+        "timestamp": 170.8,
+        "world_position": [
+          34.72818320279134,
+          51.32989814495427,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:1e1a4942b292050863e64183c22e6aeb79c0a7651e5fa9b552e35aef488905b5",
+        "projection_quality": 0.0978911977069747,
+        "provenance": "PROJECTED",
+        "timestamp": 171.0,
+        "world_position": [
+          34.72817169846868,
+          51.33210039017684,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f10bb64ee1a63fa1906f2afc34701c1c23466d5b27c260850a58779f9c74330a",
+        "projection_quality": 0.09788445102624826,
+        "provenance": "PROJECTED",
+        "timestamp": 171.2,
+        "world_position": [
+          34.728179392574276,
+          51.3342879902137,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:79ccbf3358c781427dcc915740ff786cc3a4fbfa9678099c55663b9c002aa252",
+        "projection_quality": 0.09787758945757369,
+        "provenance": "PROJECTED",
+        "timestamp": 171.4,
+        "world_position": [
+          34.72817036710156,
+          51.33649195531259,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2596c24acc9a3f3c5af80b91ebef9f9f2b41702dc1d75d8dd8c8958b9c953114",
+        "projection_quality": 0.09787084317762065,
+        "provenance": "PROJECTED",
+        "timestamp": 171.6,
+        "world_position": [
+          34.72817806120875,
+          51.338679552861855,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:276872090219dcaa23e0a4f8f8d5bcf6017b172790b41be88ab3954826715610",
+        "projection_quality": 0.09786400772696952,
+        "provenance": "PROJECTED",
+        "timestamp": 171.8,
+        "world_position": [
+          34.728175992444164,
+          51.34088386806661,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:bb797355e2d2d3679459f88dbf12d2194d3d9ff58006bd90b6e0cdd998122442",
+        "projection_quality": 0.09785721492325629,
+        "provenance": "PROJECTED",
+        "timestamp": 172.0,
+        "world_position": [
+          34.728175794455076,
+          51.34307680565225,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:40b0bc7c4486437c5e31d1d468fb166e5d831e818345f17f3252e36223920ba0",
+        "projection_quality": 0.0978504011032205,
+        "provenance": "PROJECTED",
+        "timestamp": 172.2,
+        "world_position": [
+          34.7281746610779,
+          51.345275432707766,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:a9fa3622b5cc6c366063e9dbb37d8627c3a8714a20e2dfb5f10f605c49db9a6f",
+        "projection_quality": 0.09784360870764279,
+        "provenance": "PROJECTED",
+        "timestamp": 172.4,
+        "world_position": [
+          34.72817446308879,
+          51.347468370526705,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b670d4c8c367a613a68fa8345a770797ee77999ca4ebc28bfe6de2ae81f89141",
+        "projection_quality": 0.0978367952975009,
+        "provenance": "PROJECTED",
+        "timestamp": 172.6,
+        "world_position": [
+          34.72817332971137,
+          51.34966699824654,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b96686449251a3770d671398f65002413ad1a745423216f562407d0458fa9422",
+        "projection_quality": 0.09783000331112238,
+        "provenance": "PROJECTED",
+        "timestamp": 172.8,
+        "world_position": [
+          34.72817313172225,
+          51.35185993629878,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c6b2844e00585268280cedcfd02c0d4451aaa8ffc13178cab4624b9d848ac210",
+        "projection_quality": 0.09782326265454172,
+        "provenance": "PROJECTED",
+        "timestamp": 173.0,
+        "world_position": [
+          34.72818330467791,
+          51.354049240386125,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:ff80e819e4481d040bd8ace0dec5b44ab296ec56b92bb797819fa8e55fabae03",
+        "projection_quality": 0.09781639873582289,
+        "provenance": "PROJECTED",
+        "timestamp": 173.2,
+        "world_position": [
+          34.728171800355426,
+          51.35625150296848,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:0800bd4b2c18124e27cec9e9311a09f7ddd000604db416dfc8e792c999e54cfb",
+        "projection_quality": 0.09780965427021486,
+        "provenance": "PROJECTED",
+        "timestamp": 173.4,
+        "world_position": [
+          34.72817949446089,
+          51.35843908807713,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:fe0e9871154a0fa8cf90a0b80c6e95b8ecca1bb42eda8f52e2ebb28025f87d90",
+        "projection_quality": 0.09780279498386951,
+        "provenance": "PROJECTED",
+        "timestamp": 173.6,
+        "world_position": [
+          34.72817046898831,
+          51.36064307053583,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:77b78790764cee2b7a9bd943c73460700295b7092362c8c44186b9dc3baa43de",
+        "projection_quality": 0.09779605092488786,
+        "provenance": "PROJECTED",
+        "timestamp": 173.8,
+        "world_position": [
+          34.728178163095386,
+          51.36283065315686,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:8feafc39e4e49d27bfbca2770866e7983b3a797c7a4d844357e020a4dcb51db5",
+        "projection_quality": 0.0977892177404202,
+        "provenance": "PROJECTED",
+        "timestamp": 174.0,
+        "world_position": [
+          34.72817609433082,
+          51.365034973128225,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:ea9521f334d543e8fad0d28ce95586def71fe926ebf4194e1ccd1dbc51b8f150",
+        "projection_quality": 0.09778242719229509,
+        "provenance": "PROJECTED",
+        "timestamp": 174.2,
+        "world_position": [
+          34.728175896341746,
+          51.367227910746045,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:1b88b76a9eef0592d36d0a849e45ec25503acd945c90b77dd527745a370a33d1",
+        "projection_quality": 0.09777561563753893,
+        "provenance": "PROJECTED",
+        "timestamp": 174.4,
+        "world_position": [
+          34.7281747629646,
+          51.36942654020094,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:440162668f486cb037685f69792ed1ffbaa4c0d53ffc4c42ec4a73f273567c1c",
+        "projection_quality": 0.097768825503385,
+        "provenance": "PROJECTED",
+        "timestamp": 174.6,
+        "world_position": [
+          34.72817456497548,
+          51.37161947805207,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c9450819bfc8e58e525a7badcb2c2214ed2c4769c9ee8c1bc0509d185f70fb91",
+        "projection_quality": 0.09776201436436835,
+        "provenance": "PROJECTED",
+        "timestamp": 174.8,
+        "world_position": [
+          34.72817343159807,
+          51.37381810817131,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:915c50217c8825f74c674261c4883c805cbc74d55f955b706edd094c7769535e",
+        "projection_quality": 0.09775522464524271,
+        "provenance": "PROJECTED",
+        "timestamp": 175.0,
+        "world_position": [
+          34.72817323360895,
+          51.37601104625572,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:60bb655f9f78a631731486363b7781a1a823f65a468fa96cddc66356ec8c6a90",
+        "projection_quality": 0.09774848621000963,
+        "provenance": "PROJECTED",
+        "timestamp": 175.2,
+        "world_position": [
+          34.728183406564476,
+          51.378200335414824,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:6d860747bfbbc75bc5f0864e18546971d9f63930aa0d909ccf9b4bfea31cb12c",
+        "projection_quality": 0.09774162461998255,
+        "provenance": "PROJECTED",
+        "timestamp": 175.4,
+        "world_position": [
+          34.72817190224214,
+          51.380402615357006,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:72f18e6cd1fb63644e8888ddab8b0db8091be5e123ad2b868b9ba040b3f5a7e6",
+        "projection_quality": 0.0977348824016061,
+        "provenance": "PROJECTED",
+        "timestamp": 175.6,
+        "world_position": [
+          34.72817959634749,
+          51.382590185537424,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f9b2f02b80b6d2e66dbcd274dfff9380c7b82225be82f2d0f89b9a8c8964f01d",
+        "projection_quality": 0.09772802542971683,
+        "provenance": "PROJECTED",
+        "timestamp": 175.8,
+        "world_position": [
+          34.72817057087508,
+          51.384794185355894,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:23bb62220409a9d387d3e8d702716b27298238f047adb8a328749afcfc5c94de",
+        "projection_quality": 0.09772128362378264,
+        "provenance": "PROJECTED",
+        "timestamp": 176.0,
+        "world_position": [
+          34.72817826498202,
+          51.386981753048715,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:66deb1c030e3a0a9d1c8c0658bedf1125699c72dff18787bbb3acc4814434590",
+        "projection_quality": 0.09771445273768135,
+        "provenance": "PROJECTED",
+        "timestamp": 176.2,
+        "world_position": [
+          34.7281761962175,
+          51.38918607778669,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f1fe45a598ededbb868616ba95a406bb72108157b9ba602717d35d748c9df74d",
+        "projection_quality": 0.09770766447716331,
+        "provenance": "PROJECTED",
+        "timestamp": 176.4,
+        "world_position": [
+          34.72817599822841,
+          51.391379015436705,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:08e4943243c7b7bc78f2127f23ce456d71f1267b9bf2bc7aef64aa90e09f1630",
+        "projection_quality": 0.09770085521976007,
+        "provenance": "PROJECTED",
+        "timestamp": 176.6,
+        "world_position": [
+          34.728174864851276,
+          51.39357764729099,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:d023a78e8c605b736afb6e46408b08a61604f4c0c68091704926196835a83198",
+        "projection_quality": 0.09769406737901244,
+        "provenance": "PROJECTED",
+        "timestamp": 176.8,
+        "world_position": [
+          34.72817466686218,
+          51.39577058517428,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:3aafe3555c1e717948a7d7e5e0aa52c9d9c9e7cf4e27a5cec51ce17954550f8e",
+        "projection_quality": 0.0976872585431576,
+        "provenance": "PROJECTED",
+        "timestamp": 177.0,
+        "world_position": [
+          34.728173533484785,
+          51.39796921769292,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:77077b95f63f53f1223b864c5d236d8dce15441552d1e0c9015b2f3a58022109",
+        "projection_quality": 0.09768047112323043,
+        "provenance": "PROJECTED",
+        "timestamp": 177.2,
+        "world_position": [
+          34.728173335495654,
+          51.400162155809504,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b7003643eb0beef4d5d9f9d4fe8883fc960718559ffbb5e10c51e738dd84549a",
+        "projection_quality": 0.0976737349413584,
+        "provenance": "PROJECTED",
+        "timestamp": 177.4,
+        "world_position": [
+          34.728183508451046,
+          51.40235143004039,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:07055e8efcafed7311d02e33257e3b1b92c6fb4287c9f8d2e163cf7732251d90",
+        "projection_quality": 0.09766687571191852,
+        "provenance": "PROJECTED",
+        "timestamp": 177.6,
+        "world_position": [
+          34.728172004128865,
+          51.404553727342375,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:52a79c61e371925c164eb9fd2ccc3ee1476b6ee462a6fd31770c17f8d35ec0b4",
+        "projection_quality": 0.09766013577268455,
+        "provenance": "PROJECTED",
+        "timestamp": 177.8,
+        "world_position": [
+          34.7281796982341,
+          51.40674128259456,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:fc5e7fd36a99737474f7da99361eb40b63d3eda44a6dd4b2ae8b3ff457648b7f",
+        "projection_quality": 0.09765328114717556,
+        "provenance": "PROJECTED",
+        "timestamp": 178.0,
+        "world_position": [
+          34.728170672761834,
+          51.408945299772846,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:6dee3d90821203444cb8c26c6d89d59cc56637992501a089a219dee1f1e011ff",
+        "projection_quality": 0.09764654162616325,
+        "provenance": "PROJECTED",
+        "timestamp": 178.2,
+        "world_position": [
+          34.72817836686864,
+          51.411132852537435,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:7b716af736b76de520e185a361fc1b0cae016fe852987d1f930af1f48efbbf12",
+        "projection_quality": 0.0976397130704086,
+        "provenance": "PROJECTED",
+        "timestamp": 178.4,
+        "world_position": [
+          34.72817629810416,
+          51.41333718204202,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:1cc8db7733ecaba15fb6e94bc7527ca2406da085fc3f2f51a044e4af218df209",
+        "projection_quality": 0.09763292712931512,
+        "provenance": "PROJECTED",
+        "timestamp": 178.6,
+        "world_position": [
+          34.72817610011508,
+          51.4155301197242,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:1dc2405f05fafcc1dec11dbaee4346a1d43afb4870eef4bfa1c9c96f61250f56",
+        "projection_quality": 0.09762612020113604,
+        "provenance": "PROJECTED",
+        "timestamp": 178.8,
+        "world_position": [
+          34.72817496673796,
+          51.41772875397789,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:4ebb2ca5101682f7cb75c8f37f163baa4f963dd17ca2a3231f1afc326ad86e30",
+        "projection_quality": 0.09761933468557535,
+        "provenance": "PROJECTED",
+        "timestamp": 179.0,
+        "world_position": [
+          34.72817476874887,
+          51.419921691893364,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:d993e5a7e56f403042f1ba39b617c1bce18119c9d00bf5dcd44dcfff18407285",
+        "projection_quality": 0.09761252818471691,
+        "provenance": "PROJECTED",
+        "timestamp": 179.2,
+        "world_position": [
+          34.7281736353715,
+          51.42212032681139,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:3e6a5a6bb33df347dfa5874895d811f88bd5e49445a674a8702b0535faf754ea",
+        "projection_quality": 0.09760574309573244,
+        "provenance": "PROJECTED",
+        "timestamp": 179.4,
+        "world_position": [
+          34.72817343738237,
+          51.42431326496016,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:085d39434edab9aff23a1835a590510d6e6b8464702d6a2ce9726dd7cab43561",
+        "projection_quality": 0.09759900919903318,
+        "provenance": "PROJECTED",
+        "timestamp": 179.6,
+        "world_position": [
+          34.72818361033759,
+          51.42650252426282,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:816b0ca2f51b8ea034255e0ddac59ee9ff322fe6cf4c36a6658ff3e9b0ff8826",
+        "projection_quality": 0.09759215236187432,
+        "provenance": "PROJECTED",
+        "timestamp": 179.8,
+        "world_position": [
+          34.728172106015606,
+          51.42870483892459,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:4d86e569876a78a181373507eddb7513035e4b5acbc37854aa68429d177c03eb",
+        "projection_quality": 0.0975854147334924,
+        "provenance": "PROJECTED",
+        "timestamp": 180.0,
+        "world_position": [
+          34.728179800120685,
+          51.43089237924858,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:570de69dd575e19a74ec2a03d681e53baf383cc86f5724f9a77d9991b52df211",
+        "projection_quality": 0.0975785624860864,
+        "provenance": "PROJECTED",
+        "timestamp": 180.2,
+        "world_position": [
+          34.728170774648575,
+          51.43309641378665,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:9eb672293ec4aa0b086cc38852ab49026e314486b1338d4533294599e9ae1415",
+        "projection_quality": 0.0975718252816692,
+        "provenance": "PROJECTED",
+        "timestamp": 180.4,
+        "world_position": [
+          34.72817846875527,
+          51.435283951623006,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:87df28e9e4d0988c282261f4460c20e1832f5e276ca91e8ff1e35074feb11d48",
+        "projection_quality": 0.09756497347045155,
+        "provenance": "PROJECTED",
+        "timestamp": 180.6,
+        "world_position": [
+          34.72816944328127,
+          51.43748798954634,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:bcbc676398852d02af63184773bdb48c233467ef0e25cdb1e89aa23c06f67822",
+        "projection_quality": 0.09755821549798666,
+        "provenance": "PROJECTED",
+        "timestamp": 180.8,
+        "world_position": [
+          34.72817620200175,
+          51.43968122360857,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:08fb3d265187378d8ccbaeac66f44a317b4a2d65b011480920f999442cd67450",
+        "projection_quality": 0.09755141093070147,
+        "provenance": "PROJECTED",
+        "timestamp": 181.0,
+        "world_position": [
+          34.728175068624644,
+          51.44187986026166,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2f8533063f4cadf294804a5cdd6552290122bb4ec6b7590c34437ce529f18786",
+        "projection_quality": 0.09754462777190749,
+        "provenance": "PROJECTED",
+        "timestamp": 181.2,
+        "world_position": [
+          34.72817487063555,
+          51.4440727982093,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f929436908bef92d92eab456f5b031daffa370f955ba5f9138ffd84b0c457ec0",
+        "projection_quality": 0.0975378236376786,
+        "provenance": "PROJECTED",
+        "timestamp": 181.4,
+        "world_position": [
+          34.728173737258196,
+          51.446271435526725,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:48a72bee7ef57259312f19e4936141021d7863bba16b8c7e19cb5c52579abd5b",
+        "projection_quality": 0.09753104091118027,
+        "provenance": "PROJECTED",
+        "timestamp": 181.6,
+        "world_position": [
+          34.728173539269086,
+          51.44846437370767,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f9a354462e94d8440af0e1a7e8f19e86ccc6ebe6109bb413f724410fb4987432",
+        "projection_quality": 0.09752430933126474,
+        "provenance": "PROJECTED",
+        "timestamp": 181.8,
+        "world_position": [
+          34.72818371222416,
+          51.4506536180821,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2b2881dd5521133a215ba15ea13a709f6e33b50140f1f54eb9f163a27df43003",
+        "projection_quality": 0.09751745491787943,
+        "provenance": "PROJECTED",
+        "timestamp": 182.0,
+        "world_position": [
+          34.72817220790235,
+          51.452855950103675,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:52ff55a6900422963b4927733cf65c4eb8de33dbd979a934ba15c282ef5883c9",
+        "projection_quality": 0.09751071963185867,
+        "provenance": "PROJECTED",
+        "timestamp": 182.2,
+        "world_position": [
+          34.7281799020073,
+          51.45504347549943,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c6b0bbbf756018e40527e7adc404d6da2a2b5d9e764835a47271bbd3f99f5419",
+        "projection_quality": 0.09750386979407713,
+        "provenance": "PROJECTED",
+        "timestamp": 182.4,
+        "world_position": [
+          34.72817087653532,
+          51.45724752739731,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:ad5d278b1542d1e4e79f44a6cc35ce6bad898c3b5aa780ca4e51af9864929696",
+        "projection_quality": 0.09749713493772756,
+        "provenance": "PROJECTED",
+        "timestamp": 182.6,
+        "world_position": [
+          34.72817857064189,
+          51.459435050305444,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b7e5768381099cb4fe5bfd7d280e2b202551256952862117c2573027bd777b06",
+        "projection_quality": 0.09749028554184316,
+        "provenance": "PROJECTED",
+        "timestamp": 182.8,
+        "world_position": [
+          34.728169545168036,
+          51.46163910558858,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:913393e814e8c052666cd521bd072ce584399c613e25b0771c12d59363aa0f4b",
+        "projection_quality": 0.09748352993020316,
+        "provenance": "PROJECTED",
+        "timestamp": 183.0,
+        "world_position": [
+          34.728176303888404,
+          51.46383232708979,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:20aa608877d32ece06b79ec68f458891ab1c3759fd3489730958acdaf7b8359c",
+        "projection_quality": 0.09747672775528086,
+        "provenance": "PROJECTED",
+        "timestamp": 183.2,
+        "world_position": [
+          34.72817517051132,
+          51.466030966142284,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:28dc3bbed7a4765d1772cf28d3ddde9879fe0aeb0a212923d95cc924d2f741b1",
+        "projection_quality": 0.09746994698463304,
+        "provenance": "PROJECTED",
+        "timestamp": 183.4,
+        "world_position": [
+          34.72817497252223,
+          51.4682239041221,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b55f950b95cfff84d3b625e15d05740117d62e95bae68cd5b5ae9a168cabfca1",
+        "projection_quality": 0.09746314524846622,
+        "provenance": "PROJECTED",
+        "timestamp": 183.6,
+        "world_position": [
+          34.72817383914491,
+          51.47042254383892,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c4a7da598b1af1b0a255e765cbbafcd2443e620a9e150d15212302c0bb2b8237",
+        "projection_quality": 0.09745636491579693,
+        "provenance": "PROJECTED",
+        "timestamp": 183.8,
+        "world_position": [
+          34.728173641155784,
+          51.47261548205204,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:66927c08de737d8968939e9edd606a35bb563fd9040e53594b8057541f4ac727",
+        "projection_quality": 0.0974496356840757,
+        "provenance": "PROJECTED",
+        "timestamp": 184.0,
+        "world_position": [
+          34.72818381411071,
+          51.474804711498244,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:5b89d243291ea9a660987b6a747769f887dcf1309cb89408fd32e118e5310e92",
+        "projection_quality": 0.09722066978146188,
+        "provenance": "PROJECTED",
+        "timestamp": 184.2,
+        "world_position": [
+          34.728179051711216,
+          51.54890519806349,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:54b258b7d7cd3f50a90e2d4c2a7b652f79222cdb3502d3d6d785ff244a94ceed",
+        "projection_quality": 0.09699196791115607,
+        "provenance": "PROJECTED",
+        "timestamp": 184.4,
+        "world_position": [
+          34.7281767681626,
+          51.62300742785604,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:ce01412ae45aaecba70936625004a837f8061cb4f614272ccff6ad5918a7e790",
+        "projection_quality": 0.09676353556786509,
+        "provenance": "PROJECTED",
+        "timestamp": 184.6,
+        "world_position": [
+          34.72817448461317,
+          51.69710968438486,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_REAR",
+        "floor_id": "1F",
+        "observation_id": "obs_58774807134add945dbf2992",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:53ca67266aac37cace1a1d032f5ba17899fbdc3ddd02cf45bf551bddccb9b255",
+        "projection_quality": 0.0965353821706429,
+        "provenance": "PROJECTED",
+        "timestamp": 184.8,
+        "world_position": [
+          34.72817220106291,
+          51.77121196765,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      }
+    ],
+    "projection_quality": null,
+    "provenance": "PROJECTED",
+    "source_video_reference": null,
+    "start_time": 166.4,
+    "stitching_count": null,
+    "target_id": "reviewed_case3",
+    "track_ids": null,
+    "tracking_quality": null,
+    "zone_id": "AREA_1F_OFFICE"
+  },
+  "endpoint_tolerance_m": 2.47e-08,
+  "engine_corridor_or_topology_used_for_inventory": false,
+  "floor_id": "1F",
+  "frozen_config_sha256": "739481f1df418537d3058f549f47d9bc9294e2c93ea90d7463ccb0a296877564",
+  "gap_duration_s": 152.4,
+  "ground_truth_read": false,
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "max_speed_m_s": 0.7904,
+  "minimum_travel_time_s": 2.1166854064415954,
+  "result_type": "FORMAL",
+  "schema_version": "phase1-reviewed-independent-metric-inventory-v1",
+  "scope_id": "school-v3:reviewed-physical-island:450c93b7752f1677b305",
+  "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+  "simulation_recipe_read": false,
+  "source_camera_calibration_content_sha256": "ee81821df4acbbb154c529f1cc05f3483aeec68e697908fba3c5c7db3a85648e",
+  "source_distinct_route_classes": 1,
+  "source_route_proof_content_sha256": "c3b0805a84b0b6042944d8b4060f358d8c6078cfeb110ea1a103b4208a930041",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "start_observation": {
+    "appearance_embedding": null,
+    "appearance_labels": null,
+    "appearance_quality": null,
+    "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+    "end_time": 14.0,
+    "entry_direction": null,
+    "exit_direction": null,
+    "floor_id": "1F",
+    "fragment_count": null,
+    "frames": [
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 0,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          771.528598657235,
+          80.09503431467508
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 0.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 1,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          774.4775427584307,
+          80.41613617533162
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 0.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 2,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          777.4491427149464,
+          80.73975862162987
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 0.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 3,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          780.4432301440071,
+          81.06578174470363
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 0.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 4,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          783.4601867209913,
+          81.3942950659445
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 0.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 5,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          786.5002754657437,
+          81.72532722531483
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 1.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 6,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          789.5637029913173,
+          82.05894400725018
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 1.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 7,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          792.651047330965,
+          82.39512756643097
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 1.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 8,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          795.7620899217975,
+          82.73392963027126
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 1.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 9,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          798.8974193265981,
+          83.07533280950997
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 1.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 10,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          802.0572583154967,
+          83.41940481516292
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 2.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 11,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          805.2418954117211,
+          83.76617706426308
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 2.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 12,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          808.4516236849436,
+          84.11574543982235
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 2.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 13,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          811.6866742717507,
+          84.46798768224801
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 2.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 14,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          814.9476782727468,
+          84.8230814063599
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 2.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 15,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          818.2344174102248,
+          85.18101649491234
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 3.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 16,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          821.5475347805607,
+          85.54177922684318
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 3.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 17,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          824.8872800869797,
+          85.9054414536887
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 3.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 18,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          828.2539756427655,
+          86.2720382718876
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 3.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 19,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          831.6479489841226,
+          86.64167113158373
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 3.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 20,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.0695329764012,
+          87.01424497583821
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 4.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 21,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.16498621788,
+          87.02463018972179
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 4.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 22,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.2604610192136,
+          87.03501774929526
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 4.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 23,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.3560307631217,
+          87.04543595307592
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 4.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 24,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.4514165692353,
+          87.05582821175653
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 4.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 25,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.5470295385273,
+          87.06625112693527
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 5.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 26,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.6424584987474,
+          87.07664808791193
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 5.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 27,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.7380412352175,
+          87.08704739855955
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 5.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 28,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.8336455754388,
+          87.09744905967469
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 5.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 29,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          835.9293450704007,
+          87.10788140188114
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 5.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 30,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.0249339853741,
+          87.11824997957626
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 6.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 31,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.1206032220408,
+          87.12872483487664
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 6.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 32,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.2162940917976,
+          87.13913591654762
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 6.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 33,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.3118743025385,
+          87.14954935267801
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 6.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 34,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.407682129704,
+          87.15992734348083
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 6.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 35,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.5035116682773,
+          87.17037385079587
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 7.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 36,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.5992891851313,
+          87.18079435834045
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 7.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 37,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.694956012454,
+          87.19121722354345
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 7.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 38,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.7907768613563,
+          87.20170863437531
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 7.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 39,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.8865608304328,
+          87.21209841358998
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 7.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 40,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          836.9826313265118,
+          87.22255675078631
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 8.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 41,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.0783848881902,
+          87.23298906537181
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 8.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 42,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.1742925608816,
+          87.2434237416239
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 8.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 43,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.2700894982815,
+          87.25386078034461
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 8.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 44,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.3661145574376,
+          87.26432859268971
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 8.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 45,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.4620874075888,
+          87.27477036413356
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 9.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 46,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.5581560164624,
+          87.28524292157948
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 9.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 47,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.6540398652289,
+          87.2956894289658
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 9.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 48,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.7500779593208,
+          87.30613830283986
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 9.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 49,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.8460793797074,
+          87.31655171157823
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 9.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 50,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          837.9421610111651,
+          87.32707159594062
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 10.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 51,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.0383385797509,
+          87.33755602756582
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 10.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 52,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.1344637932211,
+          87.34801438621713
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 10.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 53,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.2304781951191,
+          87.35847511538435
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 10.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 54,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.3267212258686,
+          87.36890037283703
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 10.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 55,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.4229118387796,
+          87.37936584333363
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 11.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 56,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.5189916172358,
+          87.38990000909678
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 11.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 57,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.6153001770006,
+          87.40039871425427
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 11.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 58,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.7115562561354,
+          87.41087131890026
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 11.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 59,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.8079085586194,
+          87.42130844526224
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 11.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 60,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          838.9040756336551,
+          87.43178579931782
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 12.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 61,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.0003972458879,
+          87.44226553035142
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 12.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 62,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.0966079779,
+          87.45281400667531
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 12.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 63,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.1931805467082,
+          87.46332701453878
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 12.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 64,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.289509541921,
+          87.473776030051
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 12.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 65,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.3859186597977,
+          87.48426528791535
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 13.0
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 66,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.4822168669322,
+          87.49475692680977
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 13.2
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 67,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.5786697463482,
+          87.50525094754505
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 13.4
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 68,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.6752191721712,
+          87.51577589093048
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 13.6
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 69,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.7717905619783,
+          87.52630322863038
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 13.8
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "data_kind": "SYNTHETIC",
+        "frame_id": 70,
+        "gap_reason": null,
+        "occluder_id": null,
+        "point_2d": [
+          839.8681763635682,
+          87.53680441059936
+        ],
+        "provenance": "OBSERVED",
+        "status": "OBSERVED",
+        "target_id": "reviewed_case3",
+        "timestamp": 14.0
+      }
+    ],
+    "observation_id": "obs_0f288cb60435578010d48897",
+    "observation_quality": null,
+    "occlusion_quality": null,
+    "projected_path": [
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:5a370d290e5ea7458cdb05d51510881b704556c7379ec646a5a54b7f67d35001",
+        "projection_quality": 0.10727673359881927,
+        "provenance": "PROJECTED",
+        "timestamp": 0.0,
+        "world_position": [
+          34.72815346650155,
+          47.917986965709986,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:4deff498498943eadf4b7519aa8df2017d2302c6977cffa71af4a58da198b561",
+        "projection_quality": 0.10751913115537441,
+        "provenance": "PROJECTED",
+        "timestamp": 0.2,
+        "world_position": [
+          34.72814977141804,
+          47.99701978417317,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:3cffc68eb1810d3d54fadca3c78fd283e88635d5d94e779c52a3e7f101da0159",
+        "projection_quality": 0.10776117229011549,
+        "provenance": "PROJECTED",
+        "timestamp": 0.4,
+        "world_position": [
+          34.7281559507618,
+          48.07606680835673,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:9b5befe876305f73d95130c41e2db58eaf722fb7737eee084a7f01881b09e458",
+        "projection_quality": 0.10800266654981551,
+        "provenance": "PROJECTED",
+        "timestamp": 0.6,
+        "world_position": [
+          34.728153270051685,
+          48.15510505845759,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:cbbc430649430fa79b6aa9f10051bfb0c3cedd9b71f0e3a849c9a3fc1a25eb40",
+        "projection_quality": 0.1082436618762213,
+        "provenance": "PROJECTED",
+        "timestamp": 0.8,
+        "world_position": [
+          34.72815058934045,
+          48.23414334166125,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:eda2ea67a2174176a63d11277508330fe653dbdfc5d2127315f7b3c420465c28",
+        "projection_quality": 0.10848413364518679,
+        "provenance": "PROJECTED",
+        "timestamp": 1.0,
+        "world_position": [
+          34.72814790862809,
+          48.313181657967704,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b52adcd40bd716ff8d1818d0b4e190122fa53e46523f00113f4b37ed36f0fd06",
+        "projection_quality": 0.1087241079488156,
+        "provenance": "PROJECTED",
+        "timestamp": 1.2,
+        "world_position": [
+          34.72815307360182,
+          48.3922231564884,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:e8679846bd87a56fa5a2e659e05f3ac4d4633c289bf14f778998f4b51b24e6d8",
+        "projection_quality": 0.10896347929170715,
+        "provenance": "PROJECTED",
+        "timestamp": 1.4,
+        "world_position": [
+          34.7281514072627,
+          48.47126685649267,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:addb237c59417b59e560e01d22ac23cf7de44983ff39d63225e6f7f1c5cac4bd",
+        "projection_quality": 0.10920228101474592,
+        "provenance": "PROJECTED",
+        "timestamp": 1.6,
+        "world_position": [
+          34.72815657223346,
+          48.55030826690379,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:de355292b98fefbc9b87eab4b5f32d936e3ea49573a72dbb98361ddc3cb831e0",
+        "projection_quality": 0.10944040666193165,
+        "provenance": "PROJECTED",
+        "timestamp": 1.8,
+        "world_position": [
+          34.72815389152368,
+          48.62934661008683,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:1b579c371f7bf5ed8f5d7324b4eae35bf81385a41c071ebca5a74385e009c7d5",
+        "projection_quality": 0.10967788127945818,
+        "provenance": "PROJECTED",
+        "timestamp": 2.0,
+        "world_position": [
+          34.72815121081278,
+          48.70838498637267,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:0a47e46b97146692c72c0b1c9d6740a282b943125eb1f749b8cdaa1ea833b90d",
+        "projection_quality": 0.10991467852001054,
+        "provenance": "PROJECTED",
+        "timestamp": 2.2,
+        "world_position": [
+          34.728148530100775,
+          48.78742339576138,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:189295f49a4b1065264a0209a3455c11485c618e1459a4e099cbff152cefc148",
+        "projection_quality": 0.11015085323892676,
+        "provenance": "PROJECTED",
+        "timestamp": 2.4,
+        "world_position": [
+          34.72815717630805,
+          48.86646828733986,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:bd2a16d5876c02c0ad1830102d839d2b9ea5d5e5ce16f85388caa6211cb0b4e7",
+        "projection_quality": 0.1103861858348914,
+        "provenance": "PROJECTED",
+        "timestamp": 2.6,
+        "world_position": [
+          34.728151014362865,
+          48.94550312153587,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:5477a2d6059161fbdae8f3e0ce047fdffc4e7b13fb5bd248d6a9da5c283649f2",
+        "projection_quality": 0.11062081158834974,
+        "provenance": "PROJECTED",
+        "timestamp": 2.8,
+        "world_position": [
+          34.728149348023315,
+          49.02454689179679,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:e8d16eda7aa4189a7c76135acbe83466db7343c9e5eebf79148c7b3fba410e29",
+        "projection_quality": 0.11085468235792076,
+        "provenance": "PROJECTED",
+        "timestamp": 3.0,
+        "world_position": [
+          34.72815451299558,
+          49.10358808697028,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f01398de4476b73c258eb3d70d36fbe7e07ef5636518ea9dd89ce597d2dff401",
+        "projection_quality": 0.11108768807077134,
+        "provenance": "PROJECTED",
+        "timestamp": 3.2,
+        "world_position": [
+          34.72815183228503,
+          49.182626556338306,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c59ad6368367d07a86af94380e97d1f74d51cf2340e3b850a254086d55239eaa",
+        "projection_quality": 0.1113198526112495,
+        "provenance": "PROJECTED",
+        "timestamp": 3.4,
+        "world_position": [
+          34.728149151573355,
+          49.26166505880921,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:a2217f2fed0043b02fad0a41c251298c0a195cbbcfcc49eb338bc954816f533e",
+        "projection_quality": 0.11155114776426747,
+        "provenance": "PROJECTED",
+        "timestamp": 3.6,
+        "world_position": [
+          34.72814647086055,
+          49.340703594383,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b8caabdaac0bb2fd0cb24dce11e07f330dd4d4bec9c2ff694fabbb8afbb3ec7c",
+        "projection_quality": 0.11178162772196756,
+        "provenance": "PROJECTED",
+        "timestamp": 3.8,
+        "world_position": [
+          34.728155117070024,
+          49.419748214795,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2eebf35be33b880b1ba29313eb04b2a9b4c1ab634802dc4b5c8b006cbbcc80cd",
+        "projection_quality": 0.11201109862401505,
+        "provenance": "PROJECTED",
+        "timestamp": 4.0,
+        "world_position": [
+          34.728152436359274,
+          49.498786759812305,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2c9564f48532b2ebb1d274f652e3500eceec7811f25a57cef6b8e2e59df07876",
+        "projection_quality": 0.11201744929073476,
+        "provenance": "PROJECTED",
+        "timestamp": 4.2,
+        "world_position": [
+          34.72815088359071,
+          49.50098176594019,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:01d96fd2ce7949dd4e1f01860b4d2df582b8647aaa7937aea661c148cbe4fed5",
+        "projection_quality": 0.11202379921699257,
+        "provenance": "PROJECTED",
+        "timestamp": 4.4,
+        "world_position": [
+          34.72814933082212,
+          49.50317677209103,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c4670dc30f287aabd06fe2ed212f2d040143b59764ae3ef28effbb098d9d4b4b",
+        "projection_quality": 0.11203017874747377,
+        "provenance": "PROJECTED",
+        "timestamp": 4.6,
+        "world_position": [
+          34.728151259289234,
+          49.50537530630601,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:87af45101741c9eb95a76100e81ff58c33190d04a5bf2287b106cdabf8c3457b",
+        "projection_quality": 0.11203653643586316,
+        "provenance": "PROJECTED",
+        "timestamp": 4.8,
+        "world_position": [
+          34.728152173384075,
+          49.50756857859154,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:7397df0be4c26e03fde9590b823ac1548c4aa403825f6209ad73e08139f7e788",
+        "projection_quality": 0.11204291449010638,
+        "provenance": "PROJECTED",
+        "timestamp": 5.0,
+        "world_position": [
+          34.72815410185075,
+          49.509767112186296,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:17e611c2a8a9be7479f897e18d85ee7269f8e84ee742e9424d00dd5036aebb60",
+        "projection_quality": 0.11204927070383967,
+        "provenance": "PROJECTED",
+        "timestamp": 5.2,
+        "world_position": [
+          34.72815501594553,
+          49.511960384296025,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:6199d36f0a8e5b876ea0638eab1892221493ed5b3b65009e20c66e6a12a801be",
+        "projection_quality": 0.11205561692764654,
+        "provenance": "PROJECTED",
+        "timestamp": 5.4,
+        "world_position": [
+          34.72815346317724,
+          49.51415539011791,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:d43ff2993759ad6cb3a7990429867c8dcc389de56ecfdbce80a60165b02ad8b8",
+        "projection_quality": 0.11206196240725175,
+        "provenance": "PROJECTED",
+        "timestamp": 5.6,
+        "world_position": [
+          34.72815191040895,
+          49.51635039596275,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:7b8f339ee8f0b9db1daccaf611184d9e5ac16681033457fa2fa2e824cca1f633",
+        "projection_quality": 0.112068337496908,
+        "provenance": "PROJECTED",
+        "timestamp": 5.8,
+        "world_position": [
+          34.72815383887548,
+          49.518548928539445,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:4fa0b3a746aa5f489f63b66a8d12b31248369860f05c96efb0db139e923d9648",
+        "projection_quality": 0.11207463823770755,
+        "provenance": "PROJECTED",
+        "timestamp": 6.0,
+        "world_position": [
+          34.728146907284724,
+          49.52073974780536,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2bd0cfb35a8940f0f670baff78c84ae851af317f97cdc4547f4e0a983d342f79",
+        "projection_quality": 0.11208106435516531,
+        "provenance": "PROJECTED",
+        "timestamp": 6.2,
+        "world_position": [
+          34.728156681436275,
+          49.522940732475746,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:709e8245f111447901ead3d8777f9fab49acddadce172828f15a31e552d002b0",
+        "projection_quality": 0.11208740685791078,
+        "provenance": "PROJECTED",
+        "timestamp": 6.4,
+        "world_position": [
+          34.72815512866828,
+          49.52513573796868,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:537b44c1bef0a9b0e806d1b212f750a438bd04c7558dfba36c2355c1e65efbd1",
+        "projection_quality": 0.11209375788380108,
+        "provenance": "PROJECTED",
+        "timestamp": 6.6,
+        "world_position": [
+          34.728156042762905,
+          49.52732900979566,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:509cc970f995fedf26615e85202d66bc8d67f9fdbc4905413dcf8f5852acc69c",
+        "projection_quality": 0.1121000463708704,
+        "provenance": "PROJECTED",
+        "timestamp": 6.8,
+        "world_position": [
+          34.72814664430989,
+          49.52952156803994,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:0a8c5ea643b43053bbbccb19e6bbacbb25b347a2995c430e92d3bf8f14f64752",
+        "projection_quality": 0.11210641699422946,
+        "provenance": "PROJECTED",
+        "timestamp": 7.0,
+        "world_position": [
+          34.72814857277779,
+          49.531720100335285,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b922898ac5670c6ba49e4d3cc7e012a7d46d6b4a5038d819f331b9ba453b7764",
+        "projection_quality": 0.11211275650556567,
+        "provenance": "PROJECTED",
+        "timestamp": 7.2,
+        "world_position": [
+          34.728147020008905,
+          49.53391510705268,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:278eed700c7de9a9ed9ae5f8b3773395608343656893455bc621ae38d30964b2",
+        "projection_quality": 0.11211910454961749,
+        "provenance": "PROJECTED",
+        "timestamp": 7.4,
+        "world_position": [
+          34.72814793410399,
+          49.53610838010318,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:e5b364f07da6cd1369c6768569b4d9726f591656198b68888d8ca994e847f187",
+        "projection_quality": 0.1121255254681869,
+        "provenance": "PROJECTED",
+        "timestamp": 7.6,
+        "world_position": [
+          34.728157708253185,
+          49.53830935345217,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:79d0a19ab3496d0d9505cae5d9967a26433faf1f25b6963e9cccafa06dd6b920",
+        "projection_quality": 0.11213181948604177,
+        "provenance": "PROJECTED",
+        "timestamp": 7.8,
+        "world_position": [
+          34.72815077666662,
+          49.54050018445409,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f006026d1cf8fadfb03850bae748b7be3f2e663546ff6cf540f48f8d2f86f626",
+        "projection_quality": 0.11213817708269344,
+        "provenance": "PROJECTED",
+        "timestamp": 8.0,
+        "world_position": [
+          34.72815023827027,
+          49.54270044899959,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:bf514c849d6a5eff74cd082f25ff29f9407d409ea570f5170c4d4f28d8ef027c",
+        "projection_quality": 0.11214452213946773,
+        "provenance": "PROJECTED",
+        "timestamp": 8.2,
+        "world_position": [
+          34.7281511523652,
+          49.5448937216985,
+          0.4959475898742679
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:61598d24f48524ec24fef551d03927c5ffe57217c60adafe2756c2b9bb590ede",
+        "projection_quality": 0.11215085715169176,
+        "provenance": "PROJECTED",
+        "timestamp": 8.4,
+        "world_position": [
+          34.72814959959659,
+          49.54708872810989,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:b13920294afc17a7a2a3fcfc0a051e8da0dc000bd635f6867f8fb71b92f21939",
+        "projection_quality": 0.11215720071100274,
+        "provenance": "PROJECTED",
+        "timestamp": 8.6,
+        "world_position": [
+          34.728150513691546,
+          49.549282000854696,
+          0.4959475898742679
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:62e6ec85c6193f96718410c8c6d712362a1e66eacc9cc3d93a88fc8fcb459eb2",
+        "projection_quality": 0.11216356459713038,
+        "provenance": "PROJECTED",
+        "timestamp": 8.8,
+        "world_position": [
+          34.72815244215857,
+          49.55148053069262,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c789f79cb9fb3e64b23cbc38c2ea331d163957ceab7940d31c573b7b5f726b0c",
+        "projection_quality": 0.11216989735135127,
+        "provenance": "PROJECTED",
+        "timestamp": 9.0,
+        "world_position": [
+          34.72815088939011,
+          49.55367553695101,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:444cd28e5176ca2d4f0f786798deda7214f2dc8e0667e0f59300bd0ff1f64a90",
+        "projection_quality": 0.1121762597319322,
+        "provenance": "PROJECTED",
+        "timestamp": 9.2,
+        "world_position": [
+          34.72815281785694,
+          49.55587406616854,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:921f16f2a0019b255905129db473f9a440c762af10ef7f506a2004bbdb5b682a",
+        "projection_quality": 0.11218260028895236,
+        "provenance": "PROJECTED",
+        "timestamp": 9.4,
+        "world_position": [
+          34.72815373195172,
+          49.55806733856174,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:176a192711aae3e35fbfeb17170bf6802b621987f48c283899f0354e6b435d8f",
+        "projection_quality": 0.11218893077953389,
+        "provenance": "PROJECTED",
+        "timestamp": 9.6,
+        "world_position": [
+          34.728152179183404,
+          49.56026234466714,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:65faf5579d22894d75b231d8bc6c924b5bbbc17cbcbc2caf980a4e00cb764ac1",
+        "projection_quality": 0.11219521726353593,
+        "provenance": "PROJECTED",
+        "timestamp": 9.8,
+        "world_position": [
+          34.72814524759086,
+          49.56245319013295,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:fedcfdd82fa5b4118816a82d4a3590f9d07eb26b8465cde51df4e25c723b7ab9",
+        "projection_quality": 0.11220162919801771,
+        "provenance": "PROJECTED",
+        "timestamp": 10.0,
+        "world_position": [
+          34.72815502174467,
+          49.56465414530587,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:562bae0e6dd10bedc94eff2cffd069b5140917d5f0879647e6930d6944b2d20e",
+        "projection_quality": 0.11220798780901212,
+        "provenance": "PROJECTED",
+        "timestamp": 10.2,
+        "world_position": [
+          34.72815695021075,
+          49.56685267308404,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:0c83bad5137b5fdcd506f613b3648e1728c36c05b29a693dfd42c161ba44d0c5",
+        "projection_quality": 0.1122143152726705,
+        "provenance": "PROJECTED",
+        "timestamp": 10.4,
+        "world_position": [
+          34.72815539744272,
+          49.56904767883752,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2611a99e1a6fe64d1056601cb126e37173e3eeced2b0ca62d742034a4f54edc2",
+        "projection_quality": 0.112220651307399,
+        "provenance": "PROJECTED",
+        "timestamp": 10.6,
+        "world_position": [
+          34.72815631153737,
+          49.57124095092502,
+          0.49594758987426724
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:3d4744d5858fc8d9323c3e1f67468725f9f93994f231b62b2fafb06aae46fa03",
+        "projection_quality": 0.11222692467084736,
+        "provenance": "PROJECTED",
+        "timestamp": 10.8,
+        "world_position": [
+          34.728146913084394,
+          49.57343353652741,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:c01c554cbf62bc1965d43431e3b54390e7b8a47ec8f64316db13fd2df75bc0f7",
+        "projection_quality": 0.11223324985315908,
+        "provenance": "PROJECTED",
+        "timestamp": 11.0,
+        "world_position": [
+          34.728145360315345,
+          49.57562854370426,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:3eb55d89d2be1c940ab648fd8d961be6cc5dc6b266a96cb70e45a1fba10811f7",
+        "projection_quality": 0.11223966660015787,
+        "provenance": "PROJECTED",
+        "timestamp": 11.2,
+        "world_position": [
+          34.72815760132987,
+          49.57782775541917,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:0f39a4928e086c5c133d4e782cc5ff91fd1367619fb32785397b5cefef700898",
+        "projection_quality": 0.11224602066508077,
+        "provenance": "PROJECTED",
+        "timestamp": 11.4,
+        "world_position": [
+          34.728159529795384,
+          49.58002628155905,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:5ae80441016441707294f495b187ca40122e796f36606007457d4ded41fedac6",
+        "projection_quality": 0.11225234356947568,
+        "provenance": "PROJECTED",
+        "timestamp": 11.6,
+        "world_position": [
+          34.72815797702764,
+          49.58222128700654,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:6922909b4fcce4029cc20c6545ec72db06d9cc8d5e3a1bfd3f8679f66c51efa2",
+        "projection_quality": 0.11225861311245042,
+        "provenance": "PROJECTED",
+        "timestamp": 11.8,
+        "world_position": [
+          34.72814857857735,
+          49.58441387905626,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:eff089abe92a19fc7761150f1e71863c26c4ec481e63d069777c54aa5957c703",
+        "projection_quality": 0.11226494383813886,
+        "provenance": "PROJECTED",
+        "timestamp": 12.0,
+        "world_position": [
+          34.72814949267237,
+          49.58660715221443,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:33d7d0c9210e6013d965cfbd2dc1e73545584ad256183f5faf44928ad655184d",
+        "projection_quality": 0.11227126444989027,
+        "provenance": "PROJECTED",
+        "timestamp": 12.2,
+        "world_position": [
+          34.72814793990359,
+          49.58880215908528,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:a6632545393f27cfddf3a3c182485cb28542101d50946335ecc1c234c69e16e5",
+        "projection_quality": 0.11227767666799958,
+        "provenance": "PROJECTED",
+        "timestamp": 12.4,
+        "world_position": [
+          34.728160180914195,
+          49.5910013610325,
+          0.49594758987426724
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:bc40e6f18a30aaaac0168305eb6f001c6c988f814554d326508d1e19b8bacdae",
+        "projection_quality": 0.11228401680300941,
+        "provenance": "PROJECTED",
+        "timestamp": 12.6,
+        "world_position": [
+          34.728159642517305,
+          49.59320161922245,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:2ba0007f1671c5127e24afdebe49365d86e1a754bdc90cf246c78023da8c89a7",
+        "projection_quality": 0.11229029187402968,
+        "provenance": "PROJECTED",
+        "timestamp": 12.8,
+        "world_position": [
+          34.72815271093307,
+          49.595392484030064,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:709da69bd15eb20dd41bd12c416c0ce4b0f97f126323b28febea36a3a3ff1f27",
+        "projection_quality": 0.11229660942620096,
+        "provenance": "PROJECTED",
+        "timestamp": 13.0,
+        "world_position": [
+          34.728151158164586,
+          49.59758749054901,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:372297b6ff70ac2c3679e869c747601fad6c1703ce7bcbe99f9a28a2528e8906",
+        "projection_quality": 0.11230293558066401,
+        "provenance": "PROJECTED",
+        "timestamp": 13.2,
+        "world_position": [
+          34.72815207225947,
+          49.59978076340147,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:9e56d2410d20a6d86ed6e548d7d32bbdf3f00cc185b1cdd1096df58f8db5ab16",
+        "projection_quality": 0.11230925159923118,
+        "provenance": "PROJECTED",
+        "timestamp": 13.4,
+        "world_position": [
+          34.72815051949097,
+          49.60197576996632,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:ab58c5c975c4dd175f2bbef094ef7b7d855322e60ff0a091213c56ca2d164b18",
+        "projection_quality": 0.11231559726482884,
+        "provenance": "PROJECTED",
+        "timestamp": 13.6,
+        "world_position": [
+          34.728152447957875,
+          49.6041742946079,
+          0.4959475898742679
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:10273b157e7e0570e87b15d5032bee0634454ff7e8c0d7510a6bca17cc577976",
+        "projection_quality": 0.1123219421636509,
+        "provenance": "PROJECTED",
+        "timestamp": 13.8,
+        "world_position": [
+          34.728154376424406,
+          49.60637281882798,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      },
+      {
+        "camera_id": "CAM_1F_AUDITORIUM_FRONT",
+        "floor_id": "1F",
+        "observation_id": "obs_0f288cb60435578010d48897",
+        "plane_id": "DIAGNOSTIC_OFFICE_LANDMARK",
+        "point_id": "projected:f308c49c24c1a10417414353752c61c11cad5ca13555e0e5b847b3d93c3fe992",
+        "projection_quality": 0.11232826525808688,
+        "provenance": "PROJECTED",
+        "timestamp": 14.0,
+        "world_position": [
+          34.728155290519155,
+          49.60856609132884,
+          0.49594758987426757
+        ],
+        "zone_id": "AREA_1F_OFFICE"
+      }
+    ],
+    "projection_quality": null,
+    "provenance": "PROJECTED",
+    "source_video_reference": null,
+    "start_time": 0.0,
+    "stitching_count": null,
+    "target_id": "reviewed_case3",
+    "track_ids": null,
+    "tracking_quality": null,
+    "zone_id": "AREA_1F_OFFICE"
+  },
+  "zone_id": "AREA_1F_OFFICE"
+}

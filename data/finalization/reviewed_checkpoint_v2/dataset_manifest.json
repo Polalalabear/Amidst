@@ -1,0 +1,73 @@
+{
+  "application_manifest_sha256": "d7db7fddd07980fec6bf775aa2e5e7aff21293e02e62dd02990c85db3885a995",
+  "artifacts": {
+    "evaluation/case1/ground_truth.json": "6c60414d81022ecc2259f698b2ec3cb581ed2ee41e3a6c4f3aadc583d9ddbf93",
+    "evaluation/case1/reference_movement_annotations.json": "e721a89e0246d37a89811adbaa0d3bdcd57387bbe51d6bc5efb6f158c6e46c67",
+    "evaluation/case3/ground_truth.json": "1a51ef937ba80be970ad1303a64301a1493b95b6b2e02f9b936d36f6216e72db",
+    "evaluation/case3/reference_movement_annotations.json": "304987bd2fbecaa0d0ae7e644caaa392dc744dfba3c0bad4837500003cf82389",
+    "inference/case1/context.json": "b467667ca364636971bbd0073bc627b432d266c2befd26e1524ed1f9b33c4f85",
+    "inference/case1/observations.json": "302c382c62f23055a09843869f316825dc7ff13d5ac97af322178b50eb7d043b",
+    "inference/case1/visibility.json": "3d0a558c4fe2d0afe3e465d181ac16514c9c370aa90c7bd2708d05cc0be0d1fa",
+    "inference/case3/context.json": "52abf656c17d2606a8a25fa3f54258e68497d849ec899deac2e43a7423deffcc",
+    "inference/case3/observations.json": "fb853f5b9a7e084a5b5f85d3e5eb2cc72db5896cfdd5a39cc2557adf3041cfce",
+    "inference/case3/visibility.json": "ebedcdd90b205c60e21443305d954ee1ccc6f9bc0e37102222e71e5b44bcf974",
+    "simulation/case1/recipe.json": "c66cb2f9822abf055b91950890ff30c93bb0c329967efd1db96e7332b412a98e",
+    "simulation/case3/recipe.json": "aa0d78fa9097b54dd62c37bcc78654ca31a3d1e25e0e8130e81d7a0355774455"
+  },
+  "blender_build": "9e2066aef7ef",
+  "blender_version": "5.2.1 LTS",
+  "cases": [
+    {
+      "case_id": "case1",
+      "gap_records": 71,
+      "observed_records": 29,
+      "records": 100,
+      "status": "EXPORTED_READINESS_PENDING",
+      "timestamps": 50
+    },
+    {
+      "blockers": [
+        "CASE2_REQUIRES_SOURCE_DISTINCT_BRANCHES_OUTSIDE_APPROVED_RECTANGLE"
+      ],
+      "case_id": "case2",
+      "status": "BLOCKED"
+    },
+    {
+      "case_id": "case3",
+      "gap_records": 1686,
+      "observed_records": 164,
+      "records": 1850,
+      "status": "EXPORTED_READINESS_PENDING",
+      "timestamps": 925
+    }
+  ],
+  "config_sha256": "3afd62816463896259bc9b2a2c54889a761ee1665a9e6933173213a51c2d2223",
+  "coordinate_storage": "BLENDER_NATIVE_UNITS",
+  "dataset_version": "phase1-reviewed-inputs-with-reference-movement-v2",
+  "export_seed": 20261005,
+  "formal_cases_executed": false,
+  "ground_truth_sample_source": "CONFIGURATION_SAMPLER",
+  "gt_isolation": "inference never reads evaluation/ or simulation/",
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "inference_seed": 42,
+  "legacy_diagnostic_artifacts_promoted": false,
+  "metres_per_blender_unit": 0.0247,
+  "producer_hashes": {
+    "scripts/export_blender_pilot.py": "33ee1f1ebf7f0511cbe0c7128bd7ce225ddaa94698a98c7bf3e478f3afdcfe23",
+    "scripts/export_phase1_reviewed_inputs.py": "92195c300d1f862425d62f275645f4f7a5767e38b97d17c5e595f5eeb6cfe93c",
+    "src/amidst/finalization/reviewed_reference_movement.py": "7da5526deaac1d540ec6e37c29aed4570ef0240345da50cc0aa5d64e731b1dac",
+    "src/amidst/simulation/blender_camera.py": "395675bbe0d1f3160fa94c843cd704380c554333aa2dfb9aba10c74b19758d7a",
+    "src/amidst/simulation/blender_visibility.py": "60b6d83a489610e25d61f73cee765c82c271f485327cd029992a2f0bb8bcb4a8"
+  },
+  "reference_annotations_partition": "evaluation",
+  "reference_movement_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+  "reference_movement_policy_content_sha256": "f7452152ff8981287033aa9b75c8faab1841df2981fe59de74a54e5403f45c73",
+  "sampling_extent": "SOURCE_ENDPOINTS_INCLUSIVE",
+  "sampling_fps": 5,
+  "scale_authority": "APPROVED",
+  "schema_version": "phase1-reviewed-dataset-v1",
+  "source_saved": false,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_size_bytes": 468300506,
+  "status": "REVIEWED_SOURCE_EXPORT_CASE_READINESS_PENDING"
+}

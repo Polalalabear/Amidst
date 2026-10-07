@@ -484,3 +484,39 @@ Native dashboard 已核對 4/4 HUMAN_APPROVED、四個 APPROVE/profile rows、To
 human blockers 均 0，active iframe 仍為 1。實際原生截圖
 `human_review/frames/dashboard_context/approvals_recorded.jpg` 為 84,378 bytes，分類為
 REGENERABLE；先前 267-artifact／130,717,159-byte preapproval package 保留不變。
+
+## 2026-10-08 — Final reviewed clean-checkout rerun verified
+
+最終 fresh checkout：`/private/tmp/amidst-phase1-finalization-fresh-20261007`，code SHA
+`e6fbc8fbb3bf8c36355db38c299de5ff37705604`。新輸出為
+`data/finalization/reviewed_fresh_v5_final/`；local canonical 保持
+`/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v5/`。
+原 source、HR01–HR04 payload、舊 review／dataset／demo／各次 fresh outputs 全部保留。
+新增 reference movement policy 沿獨立批准 receipt 在 fresh export 前鎖定，沒有回寫舊結果。
+
+Fresh `evaluation/verification.json` 如實記錄 **PHASE1_FINALIZATION_BLOCKED**：Case1 是
+`FORMAL_REVIEWED_LOCAL_RUN`，Case3 是 `FORMAL_REVIEWED_LOCAL_TEMPORAL_COMPONENT`，
+兩者 execution ready；Case2 為 `N/A_BLOCKED_SCOPE`。目前完整批准 domain 只有一個主要
+source-distinct route class；Case2 的真正 branching 與 Case3 detour／candidate-growth
+完整 stress gate 仍依賴合法新增 branching scope，不把平行 offset 或 timing duplicates
+當成不同分支。Overall formal execution／all-case dataset validation／freeze 仍為 false。
+
+Fresh `verify-reproduction` **PASS**：repeat、fresh process、observation ordering、GT poison
+及 bounded termination 全部通過。Poison 同時改 evaluation GT、simulation recipe 和兩份
+reference movement annotations；malformed annotations 沒有改變 primary inference，
+poisoned positions 改變 evaluation。Ready Case1／3 的推論順序與 termination 保持相同。
+
+[最終完整交付對照 receipt](../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json)
+為 **PASS**，differences 與 missing required reports 均為空。Dataset 全部 artifact hashes、
+canonical inference／candidate order／termination、metrics／report semantics、非 runtime
+PNG 與 canonical demo presentations 一致；核對 41 JSON、1 CSV、4 Markdown、21 PNG、
+2 RRD。實測 runtime／runtime plot pixels 與 RRD container metadata bytes 明確排除
+byte equality，但仍要求 artifacts 的 availability、counts 和 recording verification。
+
+Final fresh dataset manifest SHA256：
+`a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5`；primary inference
+freeze SHA256：`d16708cfb437b6dff2ea06139126d5784a181c547d9dba6d1633068988cf4059`，
+兩者與 local canonical 相同。Fresh reproduction receipt SHA256：
+`9020af0f8f8e1ac3098096a711a50d8dd927b5d6e3bec1fe96c68d6415d9a4d1`。
+本項記錄是 ready local cases 的實際 fresh delivery evidence；不宣稱完整 Case2 已解決，
+不宣稱原 Phase1 Exit Gate／全部 formal Cases 通過，不授予 freeze tag。

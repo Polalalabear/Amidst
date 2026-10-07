@@ -1,5 +1,22 @@
 # Phase 1 finalization reproduction / 收尾重建
 
+## 2026-10-08 current reviewed reproduction / 目前 reviewed 重建
+
+目前請依 [reviewed reproduction guide](PHASE1_REVIEWED_REPRODUCTION.md) 重建 V5；
+設定、case scope 與實際結果見 [reviewed benchmark](PHASE1_REVIEWED_BENCHMARK.md)。
+[Curated dataset manifest](../data/finalization/reviewed_checkpoint_v2/dataset_manifest.json)
+綁定 canonical `reviewed_run_v5` 輸入；
+[local reproduction receipt](../data/finalization/reviewed_checkpoint_v2/local_reproduction_verification.json)
+記錄 repeat、fresh process、ordering、GT poison 與 annotation isolation PASS；
+[complete fresh delivery receipt](../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json)
+記錄 dataset、canonical inference、reports 與 demos 比較 PASS，明列 runtime/RRD
+metadata 的排除範圍。
+
+這些 PASS 限於 ready reviewed cases，沒有授予整體 Exit Gate 或 freeze；Case2 與
+Case3 full stress 仍 blocked。Source、GT/inference 隔離與新的 output directory 規則
+沿用 reviewed guide。以下舊指令與 pending 狀態保留為歷史 diagnostic checkpoint，
+目前重建使用上方 reviewed guide；原 protocol 不變。
+
 Status: **PHASE1_FINALIZATION_BLOCKED**. The commands below reproduce the
 completed diagnostic checkpoint. They do not execute or certify formal Cases 1–3.
 

@@ -1,0 +1,154 @@
+{
+  "all_original_exit_gates_complete": false,
+  "case4": "DEFERRED",
+  "code_checkpoint_sha": "e6fbc8fbb3bf8c36355db38c299de5ff37705604",
+  "collision_ablation": {
+    "empty_collider_or_weakened_scope_used": false,
+    "status": "N/A_NO_INDEPENDENT_PURPOSE_BOUND_CONSUMER"
+  },
+  "freeze_tag_permitted": false,
+  "gates": [
+    {
+      "gate": "source_and_historical_inputs_verified",
+      "status": "PASS"
+    },
+    {
+      "gate": "bounded_reviewed_certificate_pass",
+      "status": "PASS"
+    },
+    {
+      "gate": "formal_adapters_verified",
+      "status": "PASS"
+    },
+    {
+      "gate": "config_locked_before_simulation",
+      "status": "PASS"
+    },
+    {
+      "gate": "case1_unique_visible_gap_visible",
+      "status": "PASS"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "case2_source_distinct_feasible_branches",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "case3_long_gap_detour_growth_and_budget_stress",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "fresh_formal_dataset_all_cases",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "formal_cases_1_3_and_a_b_c_and_ablations",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "required_metrics_complete",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "benchmark_tables_and_charts_complete",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "formal_rerun_png_replay_all_cases",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "gt_poison_pass",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "repeated_inference_pass",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "fresh_process_pass",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "observation_ordering_pass",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "bounded_search_termination_pass",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "dependency": "APPROVED_SOURCE_SCOPE_INSUFFICIENT",
+      "gate": "fresh_checkout_materialization_export_inference_report_demo_comparison_pass",
+      "status": "NOT_COMPLETE"
+    },
+    {
+      "gate": "full_pytest_with_actual_physical_evidence_pass",
+      "status": "PASS"
+    },
+    {
+      "gate": "ruff_pass",
+      "status": "PASS"
+    },
+    {
+      "gate": "strict_mypy_pass",
+      "status": "PASS"
+    },
+    {
+      "gate": "diff_check_pass",
+      "status": "PASS"
+    },
+    {
+      "gate": "local_raw_artifact_policy_pass",
+      "status": "PASS"
+    },
+    {
+      "gate": "phase2_frozen_and_case4_deferred",
+      "status": "PASS"
+    }
+  ],
+  "human_approvals_reopened": false,
+  "minimal_real_blockers": [
+    "APPROVED_SOURCE_SCOPE_HAS_ONE_ROUTE_CLASS_AND_NO_BRANCHING_DETOUR_GROWTH"
+  ],
+  "original_protocol_or_hr01_hr04_reopened": false,
+  "overall_physical_authority": "PARTIAL_APPROVED",
+  "phase2": "FROZEN",
+  "ready_case_partial_passes": {
+    "datasets_a_b_c_supported_ablations_metrics_reports_demos": "PASS_SCOPED",
+    "fresh_checkout_complete_delivery_comparison": "PASS_SCOPED",
+    "receipt": "fresh_delivery_comparison_final.json",
+    "repeat_fresh_process_order_gt_recipe_annotation_poison_termination": "PASS_SCOPED",
+    "scope": [
+      "case1",
+      "case3_temporal_component"
+    ]
+  },
+  "schema_version": "phase1-original-exit-gate-v1",
+  "source_scope_evidence": {
+    "approved_component_count_audited": 58,
+    "audit": "../reviewed_route_inventory_v1/candidate_audit_summary.json",
+    "bounded_bypass_candidates_audited": 116,
+    "branches": 0,
+    "complete_convex_approved_domain": true,
+    "distinct_endpoint_camera_fov_pairs": 26,
+    "fully_supported_body_clear_pairs": 0,
+    "globally_exhaustive_school_search_claimed": false,
+    "major_route_classes": 1,
+    "proof": "../reviewed_route_inventory_v1/proof.json",
+    "proposal_status": "PROPOSAL_NOT_AVAILABLE"
+  },
+  "status": "PHASE1_FINALIZATION_BLOCKED",
+  "status_date": "2026-10-08"
+}

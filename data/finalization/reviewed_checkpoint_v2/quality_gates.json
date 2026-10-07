@@ -1,0 +1,93 @@
+{
+  "all_original_exit_gates_complete": false,
+  "artifact_policy": {
+    "old_local_versions_deleted": false,
+    "pre_publication_committed_max_blob_bytes": 318279,
+    "pre_publication_committed_new_blob_bytes": 8124909,
+    "pre_publication_committed_new_blob_count": 278,
+    "prospective_curated_bytes": 2764643,
+    "prospective_curated_new_file_count": 84,
+    "prospective_max_file_bytes": 162803,
+    "raw_source_evidence_dataset_rrd_media_included": false,
+    "scientific_report_chart_png_only": true,
+    "status": "PASS_PENDING_AUTHORIZED_FAST_FORWARD_PUBLICATION"
+  },
+  "canonical_asset_checkout": {
+    "branch": "phase1/physical-policy-approval",
+    "clean": true,
+    "sha": "c5956dc825f669e28e2694578be0fed97432a786"
+  },
+  "case4": "DEFERRED",
+  "code_checkpoint_sha": "e6fbc8fbb3bf8c36355db38c299de5ff37705604",
+  "diff_check": "PASS",
+  "freeze_allowed": false,
+  "fresh_checkout_receipt": "fresh_checkout_verification.json",
+  "fresh_delivery_comparison_receipt": "fresh_delivery_comparison_final.json",
+  "immutable_input_audit": {
+    "all_hashes_and_existing_tracked_bytes_preserved": true,
+    "checkpoint_file_count": 13,
+    "historical_checkpoint_sha": "62ea9b12c43aaa90683da6c36ebc6f93248de0de",
+    "human_decisions_content_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+    "human_decisions_file_sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9",
+    "locked_input_count": 29,
+    "original_hr01_hr04_profiles_decisions_protocol_preserved": true,
+    "original_v1_configs_unchanged_since_dc0bcf6": true,
+    "protocol_document_sha256": "e68d6c90e2aba31a36c042f5e192727100d817b19a4348f36c0739bfc035d9d2",
+    "protocol_file_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+    "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+    "status": "PASS",
+    "unique_original_frame_count": 57
+  },
+  "local_document_links": {
+    "links_checked": 169,
+    "status": "PASS"
+  },
+  "mypy": {
+    "cli_files": [
+      "scripts/export_phase1_reviewed_inputs.py",
+      "scripts/run_phase1_reviewed.py",
+      "scripts/audit_reviewed_branch_scope.py"
+    ],
+    "new_cli_files": 3,
+    "source_files": 104,
+    "status": "PASS",
+    "strict": true
+  },
+  "phase2": {
+    "live_branch_and_tag_peeled_sha": "5b51d2c67917ff434f53e12a8af8af3d711d2a19",
+    "status": "FROZEN"
+  },
+  "pytest": {
+    "actual_physical_evidence_required": true,
+    "command": "BLENDER_BIN=/Applications/Blender.app/Contents/MacOS/Blender AMIDST_PHYSICAL_SOURCE_SCENE=/Users/polalabear/Developer/amidst/blender/school_v3.blend uv run pytest --require-physical-evidence -rs",
+    "elapsed_seconds": 111.14,
+    "failed": 0,
+    "passed": 1859,
+    "skipped": 0,
+    "status": "PASS"
+  },
+  "reference_policy": {
+    "annotation_poison_inference_unchanged": true,
+    "inference_json_artifacts_scanned": 35,
+    "opaque_reference_policy_hashes_only": true,
+    "receipt": "../reference_movement_approved_v1/approval_receipt.json",
+    "receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+    "receipt_file_sha256": "5794d6f3e689a987ade06add876224c86be8ac3c46f828be233ca33245acb697",
+    "reference_gt_recipe_payload_fields_in_inference": 0,
+    "status": "EXPLICITLY_APPROVED_AND_LOCKED_BEFORE_NEW_EXPORT",
+    "user_reply": "\u6838\u51c6\u6b64\u65b0\u589e reference policy"
+  },
+  "ruff": {
+    "command": "uv run --offline --no-sync ruff check .",
+    "status": "PASS"
+  },
+  "schema_version": "phase1-reviewed-final-quality-gates-v1",
+  "source": {
+    "architectural_scale_m_per_bu": 0.0247,
+    "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "size": 468300506,
+    "size_mtime_hash_preserved": true
+  },
+  "status": "PASS_CODE_AND_READY_CASE_EVIDENCE_ONLY",
+  "status_date": "2026-10-08"
+}

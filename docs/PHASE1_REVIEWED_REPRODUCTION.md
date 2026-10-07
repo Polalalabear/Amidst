@@ -7,6 +7,45 @@ The canonical asset checkout supplies source and historical raw inputs; developm
 in `/private/tmp/amidst-phase1-finalization`. Every generated destination below must be new.
 Case2 remains blocked; reproduction of ready local cases does not grant the original Exit Gate.
 
+## Final verified fresh run — 2026-10-08
+
+The final clean-checkout rerun used
+`/private/tmp/amidst-phase1-finalization-fresh-20261007` at code SHA
+`e6fbc8fbb3bf8c36355db38c299de5ff37705604`. Its new output is
+`data/finalization/reviewed_fresh_v5_final`; the local canonical comparison source is
+`/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v5`.
+The examples below use `reviewed_fresh_v5` as a new destination; the recorded final run
+used `reviewed_fresh_v5_final` consistently for dataset, inference, evaluation and reproduction.
+Never overwrite either recorded output.
+
+The fresh `evaluation/verification.json` reports **PHASE1_FINALIZATION_BLOCKED**:
+Case1 executed as a reviewed local formal run, Case3 executed its reviewed local temporal
+component, and Case2 remained `N/A_BLOCKED_SCOPE`. Both ready cases have
+`per_case_execution_ready=true`; the complete Case3 detour/candidate-growth stress gate and
+the full Case2 branching requirement remain unresolved under the single approved route class.
+The fresh `reproduction/verification.json` reports **PASS** for repeated inference,
+fresh process, ordering, GT poison and termination. Both reference-annotation files were
+poisoned without changing inference; evaluation changed when reference positions were poisoned.
+
+The final [complete-delivery comparison receipt](
+../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json) is **PASS**,
+with no differences or missing required reports. It verifies all dataset artifact hashes,
+canonical inference, candidate order/termination, report semantics, canonical demo presentations
+and required recording availability. The comparison includes 41 JSON, 1 CSV, 4 Markdown,
+21 PNG and 2 RRD artifacts. Measured runtime/runtime plot pixels and RRD container metadata
+bytes retain their explicit nondeterministic exclusions; their presence and verification remain
+required.
+
+The final fresh dataset manifest SHA256 is
+`a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5`, and the frozen
+primary inference receipt SHA256 is
+`d16708cfb437b6dff2ea06139126d5784a181c547d9dba6d1633068988cf4059`; both match the
+local canonical run. Fresh reproduction receipt SHA256 is
+`9020af0f8f8e1ac3098096a711a50d8dd927b5d6e3bec1fe96c68d6415d9a4d1`.
+This verified ready-case reproduction leaves `overall_formal_execution_enabled=false`,
+`formal_dataset_all_cases_validated=false` and `freeze_allowed=false`. It does not certify
+formal Cases1–3 as a complete set or grant the original Phase1 Exit Gate.
+
 ## Clean-checkout prerequisites
 
 Create a clean checkout at the recorded code checkpoint. Install the exact locked environment,

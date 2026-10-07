@@ -1,0 +1,29 @@
+{
+  "all_case_exit_complete": false,
+  "case2": "BLOCKED_SCOPE",
+  "case3_detour_growth": "BLOCKED_SCOPE",
+  "code_config_lock_files_equal": 198,
+  "code_package_sha256": "bc7fc6ae5d85d09ffd3118c7cb6e5b659bb2222be707574bfcd8c637f5d85a8d",
+  "dataset_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+  "final_code_checkpoint_sha": "e6fbc8fbb3bf8c36355db38c299de5ff37705604",
+  "final_worktree_clean": true,
+  "freeze_allowed": false,
+  "full_delivery_comparison": "fresh_delivery_comparison_final.json",
+  "historical_hydration_verification": "fresh_historical_hydration_verification.json",
+  "initial_clean_clone_sha": "efd288939375da3ce508021fa4c1da3f3322529f",
+  "locked_python_version": "3.12.12",
+  "physical_materialization": "MATERIALIZED_AND_RESEARCH_EQUIVALENT",
+  "physical_producer_files_unchanged_between_materialization_and_final_code": true,
+  "ready_cases": [
+    "case1",
+    "case3_temporal_component"
+  ],
+  "reproduction_verification": "fresh_reproduction_verification.json",
+  "reviewed_application_manifest_byte_equal": true,
+  "reviewed_application_manifest_sha256": "d7db7fddd07980fec6bf775aa2e5e7aff21293e02e62dd02990c85db3885a995",
+  "schema_version": "phase1-reviewed-fresh-checkout-verification-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "source_size": 468300506,
+  "status": "PASS_READY_CASES_ONLY",
+  "uv_sync_locked": true
+}
