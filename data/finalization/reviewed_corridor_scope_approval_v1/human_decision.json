@@ -1,0 +1,12 @@
+{
+  "approval_origin": "DIRECT_HUMAN_DECISION",
+  "approval_scope": "EXACT_PROPOSAL_ONLY",
+  "decision": "APPROVE",
+  "decision_timestamp": "2026-10-07T17:59:31.033805Z",
+  "direct_human_decision_text": "核准，準備開啟新對話繼續完成 phase 1 一個可重現 dataset、一份 benchmark 結果表、一個 Rerun 3D 視覺化 demo 形成第一版可展示、可驗證的研究成果。",
+  "human_approval_id": "USER_CORRIDOR_EXACT_LOCAL_SCOPE_2026_10_08",
+  "original_approvals_superseded": false,
+  "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "reviewer_id": "CURRENT_HUMAN_USER",
+  "schema_version": "phase1-new-local-scope-human-decision-v1"
+}

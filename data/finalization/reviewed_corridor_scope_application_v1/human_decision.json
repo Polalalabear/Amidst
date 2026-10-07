@@ -1,0 +1,12 @@
+{
+  "approval_origin": "DIRECT_HUMAN_DECISION",
+  "approval_scope": "EXACT_PROPOSAL_ONLY",
+  "decision": "APPROVE",
+  "decision_timestamp": "2026-10-07T17:59:31.033805Z",
+  "direct_human_decision_text": "\u6838\u51c6\uff0c\u6e96\u5099\u958b\u555f\u65b0\u5c0d\u8a71\u7e7c\u7e8c\u5b8c\u6210 phase 1 \u4e00\u500b\u53ef\u91cd\u73fe dataset\u3001\u4e00\u4efd benchmark \u7d50\u679c\u8868\u3001\u4e00\u500b Rerun 3D \u8996\u89ba\u5316 demo \u5f62\u6210\u7b2c\u4e00\u7248\u53ef\u5c55\u793a\u3001\u53ef\u9a57\u8b49\u7684\u7814\u7a76\u6210\u679c\u3002",
+  "human_approval_id": "USER_CORRIDOR_EXACT_LOCAL_SCOPE_2026_10_08",
+  "original_approvals_superseded": false,
+  "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "reviewer_id": "CURRENT_HUMAN_USER",
+  "schema_version": "phase1-new-local-scope-human-decision-v1"
+}

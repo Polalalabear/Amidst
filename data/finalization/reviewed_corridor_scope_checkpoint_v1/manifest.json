@@ -1,0 +1,59 @@
+{
+  "artifacts": {
+    "data/finalization/reviewed_corridor_scope_application_v1/certificate.json": {
+      "sha256": "0b40d594624bdb06b074627b82aa93f3135ba65324510e6a9fb1e4f816627a34",
+      "size_bytes": 31099
+    },
+    "data/finalization/reviewed_corridor_scope_application_v1/human_decision.json": {
+      "sha256": "05931e8b86890a1c5fef8c1670fb42303ac87e86a40bfa15c83650a78dc03386",
+      "size_bytes": 857
+    },
+    "data/finalization/reviewed_corridor_scope_application_v1/manifest.json": {
+      "sha256": "49a0f5274ba0c9130ed989ab50aa8ea53f7de14a13a261b31367f9ae40cdd772",
+      "size_bytes": 3116
+    },
+    "data/finalization/reviewed_corridor_scope_application_v1/proposal.json": {
+      "sha256": "65fa7fa00ae317a2b0039b1690ce42d551e36041858de9aa48b8c2a192dcf641",
+      "size_bytes": 17705
+    },
+    "data/finalization/reviewed_corridor_scope_application_v1/result.json": {
+      "sha256": "29cf95e571367ac63b623c3e7387a9cf6f870c247764fe481e0a0fc38e97e716",
+      "size_bytes": 1279
+    },
+    "data/finalization/reviewed_corridor_scope_approval_v1/human_decision.json": {
+      "sha256": "3a68a9645463ab9554d49664333e7740ef23354a447768716d549d695c4c7774",
+      "size_bytes": 710
+    },
+    "data/finalization/reviewed_corridor_scope_approval_v1/provenance.json": {
+      "sha256": "7c9611fec044158d75254f59477676479d500ba481b27c551227ecaeec3bf456",
+      "size_bytes": 1469
+    },
+    "data/finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json": {
+      "sha256": "5eb84347e268c5a9958ea85a23a4cb9b61baf101cb02346eda0906edbbcb9a49",
+      "size_bytes": 10610
+    },
+    "data/finalization/reviewed_corridor_scope_verification_v1/human_decision.json": {
+      "sha256": "05931e8b86890a1c5fef8c1670fb42303ac87e86a40bfa15c83650a78dc03386",
+      "size_bytes": 857
+    },
+    "data/finalization/reviewed_corridor_scope_verification_v1/manifest.json": {
+      "sha256": "4141b422497ada63c38e3908473ae9b4c985ea5d27231eb88b96f6ec2d36c4e1",
+      "size_bytes": 3162
+    },
+    "data/finalization/reviewed_corridor_scope_verification_v1/proposal.json": {
+      "sha256": "65fa7fa00ae317a2b0039b1690ce42d551e36041858de9aa48b8c2a192dcf641",
+      "size_bytes": 17705
+    },
+    "data/finalization/reviewed_corridor_scope_verification_v1/result.json": {
+      "sha256": "4bfd01591901d48a65015522a4af79941820071d4db6c6ec48b44987f265f91e",
+      "size_bytes": 115
+    }
+  },
+  "formal_case_readiness_granted": false,
+  "freeze_tag_permitted": false,
+  "ground_truth_read": false,
+  "schema_version": "phase1-approved-corridor-curated-manifest-v1",
+  "status": "PASS_EXACT_APPROVAL_APPLICATION_AND_INDEPENDENT_NUMERIC_REGENERATION",
+  "total_bytes_excluding_manifest": 88684,
+  "total_files_excluding_manifest": 12
+}

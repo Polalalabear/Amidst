@@ -1,6 +1,27 @@
 # Phase 1 finalization report / Phase 1 收尾報告
 
-## 2026-10-08 — Source scope preparation / 新局部範圍準備
+## 2026-10-08 — Exact corridor approval and release continuation / 精確核准與續作
+
+The human explicitly approved proposal `752404…1bad`; its separate direct-human receipt
+is recorded without modifying HR01–HR04, reference policy, protocol or source assets.
+All six original numerical cell applications pass and the complete union certificate is
+`f8fe588620b4f871d49f6ed50d61d6185c8648b5551d9b7528dfb7c696cb06c5`.
+Independent clean `d8b94a6` regeneration passes **PASS_LOCAL_UNION_REGENERATED**;
+protected/source hashes are bound by the
+[current checkpoint](../data/finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json).
+Historical pending review/strict-preview packets below retain their original bytes/status.
+
+Phase1 full Exit remains BLOCKED. The next conversation must integrate scoped pipeline
+adapters, same-camera HOLD, identical-eligibility exhaustive inventory and a new frozen
+5 Hz run, then jointly deliver dataset/benchmark/Rerun and reproduce it in a clean checkout.
+Existing office pipeline inputs and Rerun authority are still office-specific; passing a
+new union application to those old CLIs is insufficient.
+
+中文：精確局部 scope 已核准、六個 cells 原數值 application 全通過；尚未完成 Case2、
+Case3 detour-growth 與新的三項交付。原因／解法、交付驗收、既有證據與可貼上 prompt
+見 [研究成果續作交接](PHASE1_RESEARCH_RELEASE_HANDOFF.md)。不重問已核准政策，不建 freeze tag。
+
+## Historical pre-approval 2026-10-08 — Source scope preparation / 核准前範圍準備
 
 Additive source discovery, exact bounded source/camera proposals, 1+ component semantic
 certificates, continuous cell-union providers and independent route-class lower bounds are
@@ -33,7 +54,7 @@ An independent clean checkout at source commit `d8b94a6` reproduced actual inspe
 strict preview with identical proposal/preview bytes and ten tested source/test files;
 [V5 evidence](../data/finalization/reviewed_checkpoint_v5/manifest.json) grants no new authority.
 
-## 2026-10-08 — Collision capability implemented / 碰撞消融已實作
+## Historical 2026-10-08 — Collision capability implemented / 碰撞消融已實作
 
 Current status remains **PHASE1_FINALIZATION_BLOCKED**. Fresh V7 uses 25 original
 APPROVED known-collision scopes and 58 nonempty colliders, retaining their partial

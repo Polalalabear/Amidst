@@ -6,7 +6,22 @@ Snapshot date: **2026-10-08**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
-### 2026-10-08 finalization collision and pending scope / 收尾與待審範圍
+### 2026-10-08 exact corridor approval / 精確局部核准
+
+The [new direct-human receipt](finalization/reviewed_corridor_scope_approval_v1/human_decision.json)
+approves exact proposal `752404…1bad`. The [application](finalization/reviewed_corridor_scope_application_v1/result.json)
+passes all six original numerical cells and issues the intact union certificate. Independent
+clean-checkout regeneration, source/protected hashes and curated artifact inventory are in the
+[current checkpoint](finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json).
+Historical proposal/strict-preview/V5 packets retain their pre-approval bytes. No new corridor
+simulation dataset, all-case benchmark or Rerun demo is claimed by this physical checkpoint;
+Phase1 full Exit remains BLOCKED. See [release continuation](../docs/PHASE1_RESEARCH_RELEASE_HANDOFF.md).
+
+精確 corridor scope 已核准並套用六個 cells 的原數值證明，完整 union certificate 已物化；
+獨立重建證據另存 current checkpoint。原 review、GT/raw、歷史輸出均保留。下一對話完成
+scoped adapters、HOLD／exhaustive inventory 與 fresh 5 Hz dataset/benchmark/Rerun 三項交付。
+
+### Historical pre-approval 2026-10-08 collision and pending scope / 核准前收尾與待審範圍
 
 The [V3 collision checkpoint](finalization/reviewed_checkpoint_v3/manifest.json) retains
 the frozen V3 inference lock, collision receipt, 45 ablation rows, 17 charts and original

@@ -1,0 +1,70 @@
+{
+  "artifacts": {
+    "human_decision.json": "05931e8b86890a1c5fef8c1670fb42303ac87e86a40bfa15c83650a78dc03386",
+    "proposal.json": "65fa7fa00ae317a2b0039b1690ce42d551e36041858de9aa48b8c2a192dcf641",
+    "result.json": "4bfd01591901d48a65015522a4af79941820071d4db6c6ec48b44987f265f91e"
+  },
+  "formal_execution_enabled": false,
+  "gt_used": false,
+  "input_files": {
+    "camera_export": {
+      "bytes": 2058,
+      "file_sha256": "621a772a50efbb15bb2b98c7f0279c2862d90f5be317047f02cde1df5983bd1b"
+    },
+    "certificate": {
+      "bytes": 31099,
+      "file_sha256": "0b40d594624bdb06b074627b82aa93f3135ba65324510e6a9fb1e4f816627a34"
+    },
+    "decision": {
+      "bytes": 710,
+      "file_sha256": "3a68a9645463ab9554d49664333e7740ef23354a447768716d549d695c4c7774"
+    },
+    "evidence": {
+      "bytes": 35313518,
+      "file_sha256": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c"
+    },
+    "numerics": {
+      "bytes": 283,
+      "file_sha256": "cca85ae64f56538f4e2b5352c4962c82d468a3d00622b6c99f35e8a329ac795b"
+    },
+    "pins": {
+      "bytes": 780,
+      "file_sha256": "714a1bebd77322c7a936ba532597a6b6ca4b793b06a13368c4be83781b076aab"
+    },
+    "proposal": {
+      "bytes": 17705,
+      "file_sha256": "65fa7fa00ae317a2b0039b1690ce42d551e36041858de9aa48b8c2a192dcf641"
+    },
+    "runtime": {
+      "bytes": 732,
+      "file_sha256": "704b0f2fb115b691ff61249dc8d4521e39a06467aec0bcca913119fce0491f08"
+    },
+    "source": {
+      "bytes": 468300506,
+      "file_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+    }
+  },
+  "original_approvals_modified": false,
+  "pins": {
+    "camera_export_content_sha256": "614a8fcdc2f570b47206645a5f117ea603e77bfd0a5a2cbd545545ec42bb0340",
+    "evidence_content_sha256": "29fb4a634a2f0cb38e5359f4e4a8d84d36abad7c44eb039df7997f187bbf205e",
+    "floor_content_sha256": "5ffbf934ddf17a957456458a22dfe49a7a38607ded416ae0692fbbc6f2c54779",
+    "numerics_content_sha256": "d9429c2653f9ccb1e8a08922c74c9b4b83d70a4e31fe2bd80b24397525ed5ce4",
+    "original_human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+    "physical_contract_content_sha256": "fedef942e6a334b1608b9327b900918d0cf5d275bb25f23360929492c29369dc",
+    "protocol_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+    "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+  },
+  "producer_files": {
+    "scoped_authority.py": "ae77bf9d101c0dc8e7d36851940690af2f8ded8e371eebbc94decf221d54d94f",
+    "scoped_authority_cli.py": "fc0c4bafa3333cbb75c0f6ab4036f10878b0dd5f62231186d5305e562b7ecbbf",
+    "scoped_semantic_cells.py": "eb78dd30e5407943aaf1c4f91549f9238215135cdd64166c73fe2b1524614cc7"
+  },
+  "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "schema_version": "phase1-new-local-scope-stage-manifest-v1",
+  "scope_id": "school-v3-corridor-six-cell-scope-v2",
+  "source_geometry_modified": false,
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "stage": "verify",
+  "status": "PASS_LOCAL_UNION_REGENERATED"
+}

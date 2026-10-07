@@ -1,0 +1,231 @@
+{
+  "application_path": "data/finalization/reviewed_corridor_scope_application_v1",
+  "approval_provenance_path": "data/finalization/reviewed_corridor_scope_approval_v1/provenance.json",
+  "approval_receipt_path": "data/finalization/reviewed_corridor_scope_approval_v1/human_decision.json",
+  "branch": "phase1/finalization-sprint",
+  "case2_readiness": "BLOCKED_PENDING_SCOPED_PIPELINE_HOLD_EXHAUSTIVE_INVENTORY_AND_FRESH_RUN",
+  "case3_detour_growth_readiness": "BLOCKED_PENDING_SAME_ENGINEERING",
+  "case4_status": "DEFERRED",
+  "certificate_content_sha256": "f8fe588620b4f871d49f6ed50d61d6185c8648b5551d9b7528dfb7c696cb06c5",
+  "continuation_document": "docs/PHASE1_RESEARCH_RELEASE_HANDOFF.md",
+  "decision_content_sha256": "702c2f7ca8165fc7669072847e26f38174b6525ed104999e35b467d23cebda09",
+  "feasible_candidate_recall": null,
+  "formal_execution_enabled": false,
+  "freeze_tag_permitted": false,
+  "full_suite_rerun_this_checkpoint": false,
+  "historical_full_suite": {
+    "command": "AMIDST_PHYSICAL_SOURCE_SCENE=/Users/polalabear/Developer/amidst/blender/school_v3.blend UV_CACHE_DIR=/private/tmp/amidst-finalization-uv-cache uv run --offline --no-sync pytest --require-physical-evidence",
+    "elapsed_s": 112.04,
+    "failed": 0,
+    "meaning": "Engineering and source-bound integration validation; no unapproved school scope used as APPROVED.",
+    "passed": 1978,
+    "physical_evidence_required_from_start": true,
+    "skipped": 0
+  },
+  "historical_review_packet_and_review_document_bytes_preserved": true,
+  "independent_verification": {
+    "actual_source_geometry_reused_and_verified": true,
+    "fresh_checkout": "/private/tmp/amidst-phase1-finalization-fresh-20261007",
+    "fresh_checkout_clean": true,
+    "fresh_code_commit": "d8b94a6708cfad75d5052f4619ab29b036e10370",
+    "new_blender_export_or_simulation_run": false,
+    "producer_files_equal": {
+      "src/amidst/finalization/scoped_authority.py": "ae77bf9d101c0dc8e7d36851940690af2f8ded8e371eebbc94decf221d54d94f",
+      "src/amidst/finalization/scoped_authority_cli.py": "fc0c4bafa3333cbb75c0f6ab4036f10878b0dd5f62231186d5305e562b7ecbbf",
+      "src/amidst/finalization/scoped_semantic_cells.py": "eb78dd30e5407943aaf1c4f91549f9238215135cdd64166c73fe2b1524614cc7"
+    },
+    "status": "PASS_LOCAL_UNION_REGENERATED",
+    "whole_original_numeric_proofs_regenerated": true
+  },
+  "inventory_exhaustive": false,
+  "main_merge_authorized": false,
+  "new_benchmark_generated": false,
+  "new_rerun_demo_generated": false,
+  "new_simulation_dataset_generated": false,
+  "next_chat_prompt": "docs/PHASE1_NEXT_CHAT_PROMPT.md",
+  "numeric_cells_approved": 6,
+  "numeric_cells_requested": 6,
+  "ordinary_sprint_push_authorized_by_existing_user_sprint_scope": true,
+  "original_full_exit_complete": false,
+  "phase1_status": "PHASE1_FINALIZATION_BLOCKED",
+  "phase2_commit": "5b51d2c67917ff434f53e12a8af8af3d711d2a19",
+  "phase2_status": "FROZEN",
+  "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "protected_inputs": [
+    {
+      "path": "human_review/apply_decisions.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d"
+    },
+    {
+      "path": "human_review/certificate_application.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "13c024966fed788b8e617d521caf41283de454938ecc4fc340c6d6cd0fac2c03"
+    },
+    {
+      "path": "scripts/phase1_projection_policy.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6"
+    },
+    {
+      "path": "src/amidst/architectural_scale.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "cc85249ee7563663eae245f83babc8d8a66913671f74a578bd55db4d2ca81381"
+    },
+    {
+      "path": "src/amidst/benchmark/baselines.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1"
+    },
+    {
+      "path": "src/amidst/datasets/pilot.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792"
+    },
+    {
+      "path": "src/amidst/datasets/pilot_topology.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "980e3670edba58769b75fdea4a115f0a1b135d984787998fb6429eaf97e4caa3"
+    },
+    {
+      "path": "src/amidst/domain/metric_config.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "50b349d6300494d7cd0a89818270cee713a23de441855d8d536ebaabdc4a7532"
+    },
+    {
+      "path": "src/amidst/domain/reconstruction.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "9641a3072ed91d4c8ac4f7b35a5560089e052e9397f1bec81401428f62af963e"
+    },
+    {
+      "path": "src/amidst/domain/search.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "c6719aed6832fb6c0ce7217dd254e4cca55b4f6fdf4c8c47442189b534158597"
+    },
+    {
+      "path": "src/amidst/evaluation/configured.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "72fff0522aaa5d6d3cf6d73692e8294fcea232bd967313e0a4daa751e8ba5412"
+    },
+    {
+      "path": "src/amidst/graph/engine.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "f0c9e018067f05666056217d65afdaeeff651dbb8bf6a62e5721245b919c0562"
+    },
+    {
+      "path": "src/amidst/local_physical_scopes.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "52514c7cc1f787f129289b09a827b8ee71c2e3afa1c1642d4eee4f3a9dfae752"
+    },
+    {
+      "path": "src/amidst/local_semantic_review.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "edff4f0f06b0d8594f61f7851d8d73cb84f6fccd51ecbf4e151a671324a9e6e4"
+    },
+    {
+      "path": "src/amidst/navigation/graph.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "f1e33b669b7d8ce8235830390f4c9c63e1983b89016fa6f95862192de98b2b5f"
+    },
+    {
+      "path": "src/amidst/navigation/network.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "39b78b62b65ec2903ded2535593cc6b54ef69066a067fc8b16bc29e0edb13c97"
+    },
+    {
+      "path": "src/amidst/navigation/topology.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "f33e49cf07dc194d32fbb9f34a560c22936842ab844d4af56d6e645041916fb0"
+    },
+    {
+      "path": "src/amidst/observation/aggregation.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "0b2e8c07bbc90808dd1a6f3db5811fcbb56b40d5fddb13be86b53a9d93ba87c4"
+    },
+    {
+      "path": "src/amidst/obstacle_volume_authority.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "9b0cc162525b22f7464c59c3f6c6584901e6e7679eaf561771a8d8d5ccc7a866"
+    },
+    {
+      "path": "src/amidst/physical_authority.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "4a2e57f155bea0a2b41ced7db55357577433e7a99fe7244256a1506bad6fa622"
+    },
+    {
+      "path": "src/amidst/physical_collision.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "5ab54116a357e28fae7347c56c3f2facfb79dc1d9b9e49fcf8e628bba65109db"
+    },
+    {
+      "path": "src/amidst/physical_policy_contract.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "e0f4870a758ca3034551e138de1c6eb7c3c83b9f8bda2d229342033cd262e5b3"
+    },
+    {
+      "path": "src/amidst/physical_units.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "caef2fe9dd7dbb070e36769cf391adc1bb2fe38153630157d83098f2429353cb"
+    },
+    {
+      "path": "src/amidst/reconstruction/blind_gap.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "8338e8033ebe0d5035151974da938d3fd368ab36ca1ead17784a237f509a183f"
+    },
+    {
+      "path": "src/amidst/scene_geometry.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "68475d49580c31fe35140241b63fabef10486db720213f5e64317a014751a64f"
+    },
+    {
+      "path": "src/amidst/walkable_clearance.py",
+      "same_as_protected_checkpoint": true,
+      "sha256": "52959a9e502306943892674710aef6de9a51deb5dcb6d49ad0226996162d58bd"
+    },
+    {
+      "path": "human_review/decisions.json",
+      "same_as_protected_checkpoint": true,
+      "sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9"
+    },
+    {
+      "path": "configs/benchmarks/protocol_v1.json",
+      "same_as_protected_checkpoint": true,
+      "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7"
+    },
+    {
+      "path": "configs/finalization/reviewed_case_inference_lock_v2.json",
+      "same_as_protected_checkpoint": true,
+      "sha256": "6507483100dda089341a317bd412946fecafedcfa4c4ac3a6b75d8b7171c8f24"
+    },
+    {
+      "path": "configs/finalization/reviewed_case_inference_with_collision_v3.json",
+      "same_as_protected_checkpoint": true,
+      "sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c"
+    }
+  ],
+  "publication_commit_lookup": "git rev-parse HEAD; git ls-remote origin refs/heads/phase1/finalization-sprint",
+  "raw_gt_observations_rrd_blend_or_bulk_geometry_in_this_checkpoint": false,
+  "recorded_at": "2026-10-07T18:04:35.531514+00:00",
+  "remaining_engineering": [
+    "Additive scoped export/infer/evaluate/reproduction adapters; old office CLI cannot consume union application.",
+    "Source-bound same-camera HOLD using original Graph/reconstructor/masks.",
+    "Canonical directed graph and independent exhaustive inventory under identical actual length/speed/detour/camera eligibility, preserving repeated-edge semantics.",
+    "Audit original Case2 PORTALS_WITH_TWO_SIDED_ACCESS against existing approved portal/anchor evidence for exact endpoints/routes; new corridor receipt grants no portal roles.",
+    "GT-free readiness and new config/version lock before fresh 5 Hz export.",
+    "Primary inference freeze before independent GT/reference evaluation.",
+    "One reproducible dataset, benchmark table, Rerun3D demo tied to same frozen run; complete clean-checkout delivery comparison."
+  ],
+  "schema_version": "phase1-corridor-approved-physical-continuation-checkpoint-v1",
+  "source_asset": {
+    "bytes": 468300506,
+    "modified": false,
+    "mtime_ns": 1791198236746106977,
+    "saved": false,
+    "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+  },
+  "starting_publication_commit": "d0de2b6fe69100847e798b95ae85d204a2cade99",
+  "status": "PASS_EXACT_APPROVAL_APPLICATION_AND_INDEPENDENT_NUMERIC_REGENERATION",
+  "tested_producer_commit": "d8b94a6708cfad75d5052f4619ab29b036e10370",
+  "verification_path": "data/finalization/reviewed_corridor_scope_verification_v1",
+  "worktree": "/private/tmp/amidst-phase1-finalization"
+}

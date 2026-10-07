@@ -1,0 +1,37 @@
+{
+  "case_readiness": "NOT_RUN",
+  "cell_checks": [
+    {
+      "cell_id": "branch-cell-00",
+      "status": "APPROVED_RESTRICTED_MULTI_HUMAN_REVIEWED_SCOPE"
+    },
+    {
+      "cell_id": "branch-cell-01",
+      "status": "APPROVED_RESTRICTED_MULTI_HUMAN_REVIEWED_SCOPE"
+    },
+    {
+      "cell_id": "branch-cell-02",
+      "status": "APPROVED_RESTRICTED_MULTI_HUMAN_REVIEWED_SCOPE"
+    },
+    {
+      "cell_id": "branch-cell-03",
+      "status": "APPROVED_RESTRICTED_MULTI_HUMAN_REVIEWED_SCOPE"
+    },
+    {
+      "cell_id": "branch-cell-04",
+      "status": "APPROVED_RESTRICTED_MULTI_HUMAN_REVIEWED_SCOPE"
+    },
+    {
+      "cell_id": "branch-cell-05",
+      "status": "APPROVED_RESTRICTED_MULTI_HUMAN_REVIEWED_SCOPE"
+    }
+  ],
+  "certificate_content_sha256": "f8fe588620b4f871d49f6ed50d61d6185c8648b5551d9b7528dfb7c696cb06c5",
+  "formal_execution_enabled": false,
+  "human_decision_content_sha256": "702c2f7ca8165fc7669072847e26f38174b6525ed104999e35b467d23cebda09",
+  "original_approvals_modified": false,
+  "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "schema_version": "phase1-new-local-scope-application-result-v1",
+  "scope_id": "school-v3-corridor-six-cell-scope-v2",
+  "status": "APPROVED_LOCAL_PHYSICAL_UNION"
+}

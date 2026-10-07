@@ -4,6 +4,38 @@
 
 ## 繁體中文
 
+### 2026-10-08 — Exact corridor approval, numerical regeneration and next-chat checkpoint
+
+使用者直接核准 exact corridor proposal content SHA
+`7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad`，並要求準備新對話
+完成同一 frozen run 的可重現 dataset、benchmark 表、Rerun 3D demo。另存原始決策原文、
+時區時間與 EXACT_PROPOSAL_ONLY receipt；decision content SHA
+`702c2f7ca8165fc7669072847e26f38174b6525ed104999e35b467d23cebda09`，未取代原 approvals。
+原 pending proposal／strict-preview／V5 packet 與 review document bytes 全保留。
+
+Actual scoped-authority `apply` 重算六個原數值 cells 全通過，status
+**APPROVED_LOCAL_PHYSICAL_UNION**，完整 union certificate content SHA
+`f8fe588620b4f871d49f6ed50d61d6185c8648b5551d9b7528dfb7c696cb06c5`。
+乾淨獨立 `d8b94a6708cfad75d5052f4619ab29b036e10370` checkout actual `verify` 再次重建
+全部原數值證明，status **PASS_LOCAL_UNION_REGENERATED**；三個 authority producers bytes
+相同，certificate/proposal/decision 使用獨立 pinned content hashes。既有 verified physical
+source evidence 重用且驗 hash；本次沒有新 Blender export／simulation／GT／benchmark／RRD。
+Source SHA/468300506 bytes/mtime1791198236746106977 未變，30 protected inputs 全匹配。
+
+Curated approval/application/verification 與 machine checkpoint／manifest 保存於
+[approved checkpoint](../data/finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json)。
+本次為實際 authority application/regeneration 與文件／hash/link 驗證；未改程式碼，沒有
+重跑 full pytest／Ruff／mypy，1978-test 結果仍明列 historical `d8b94a6` validation。
+新 [release handoff](PHASE1_RESEARCH_RELEASE_HANDOFF.md) 和 [可貼上 prompt](PHASE1_NEXT_CHAT_PROMPT.md)
+提供 continuation 起點、剩餘原因／解法與三項交付驗收；live handoff 縮短，原紀錄保留。
+
+Read-only independent review 確認 old office exporter/pipeline/Rerun 不能直接載入新 union，
+需 additive scoped adapters、same-camera HOLD、相同 actual eligibility 的獨立 exhaustive
+inventory、config 先鎖定再 fresh5Hz run。另列原 Case2 two-sided portal/anchor evidence
+requirement 待 audit；新 approval 不授予 portal role，尚未判定須新增人工 gate。
+Case2／Case3 growth 和 full Exit 保持 BLOCKED；Case4 DEFERRED，Phase2仍5b51d2c FROZEN。
+不改 source、HR/reference/protocol/locks，不建 freeze tag、不 merge main。
+
 ### 2026-10-08 — Source-bound scope preparation and exact operation guards
 
 新增 source-only island discovery、scoped authority/CLI、1+ bounded semantic profiles、
@@ -1137,6 +1169,24 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-08 — Exact corridor approval and independent numerical regeneration
+
+The direct human reply approves exact proposal `752404…1bad`; a separate immutable receipt
+binds the original reply, recording timestamp and exact scope without superseding approvals.
+Actual application passes all six original numerical cells, issuing union certificate
+`f8fe588620b4f871d49f6ed50d61d6185c8648b5551d9b7528dfb7c696cb06c5`.
+A clean independent `d8b94a6` checkout regenerates the complete proofs and passes
+PASS_LOCAL_UNION_REGENERATED; three producer files match and all expected hashes are pinned.
+Source hash/size/mtime, 30 protected inputs and the historical review/preview packet remain
+unchanged. Verified physical evidence is reused; no new Blender export, simulation, GT,
+benchmark or RRD is generated. No code edits or full-suite rerun are claimed in this turn.
+Current approval/application/verification evidence and the next-chat release handoff are linked
+in the Chinese entry above. Existing office CLIs require additive scoped adapters; same-camera
+HOLD, identical-eligibility exhaustive inventory and frozen fresh 5 Hz execution remain.
+Audit the original Case2 two-sided-portal requirement against existing approved evidence;
+no portal role is added by the corridor receipt. Full Exit stays blocked, Case4 deferred and
+Phase2 frozen, with no freeze tag or main merge.
 
 ### 2026-10-07 — Post-approval implementation handoff checkpoint
 

@@ -1,0 +1,19 @@
+{
+  "approval_interpretation": "Direct affirmative reply to the immediately preceding exact-proposal scope question. Only this proposal is approved.",
+  "approval_scope": "EXACT_PROPOSAL_ONLY",
+  "approval_time_basis": "RECORDING_TIME_AFTER_EXPLICIT_USER_REPLY",
+  "case_readiness": "NOT_GRANTED_BY_APPROVAL",
+  "decision_content_sha256": "702c2f7ca8165fc7669072847e26f38174b6525ed104999e35b467d23cebda09",
+  "decision_file_sha256": "3a68a9645463ab9554d49664333e7740ef23354a447768716d549d695c4c7774",
+  "numeric_certification": "REQUIRED_SEPARATE_APPLICATION_AND_REGENERATION",
+  "original_approvals_superseded": false,
+  "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "proposal_file_sha256": "65fa7fa00ae317a2b0039b1690ce42d551e36041858de9aa48b8c2a192dcf641",
+  "proposal_path": "data/finalization/reviewed_branch_scope_review_v2/proposal.json",
+  "question_reference": "docs/PHASE1_CORRIDOR_SCOPE_REVIEW.md",
+  "question_scope": "Six exact cells, 28 support faces, one obstacle source face including both native triangles, group_0 bounded no-solid interior in all six guards, group_0.003 only in cells 2/3/4, source CAM01/CAM03 landmark bindings; no zero-area exemptions.",
+  "recorded_at": "2026-10-07T17:59:31.033805+00:00",
+  "schema_version": "phase1-corridor-direct-human-approval-provenance-v1",
+  "source_geometry_modified": false,
+  "starting_publication_commit": "d0de2b6fe69100847e798b95ae85d204a2cade99"
+}

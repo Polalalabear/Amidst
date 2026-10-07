@@ -1,8 +1,13 @@
 # New local scope implementation / 新局部 scope 實作
 
-Recorded 2026-10-08. **Preparatory capability implemented; no new scope approved and no
+Historical preparation record, before the direct approval on 2026-10-08.
+**Preparatory capability implemented; no new scope approved at that checkpoint and no
 all-case readiness claimed.**
-記錄日期：2026-10-08。**準備能力已實作；尚未核准新 scope，也未宣稱所有 cases ready。**
+歷史準備紀錄：2026-10-08 當次核准前。**準備能力已實作；當時未核准新 scope，也未宣稱所有 cases ready。**
+
+Current exact human approval, numerical application/regeneration and continuation are recorded
+in the [release handoff](PHASE1_RESEARCH_RELEASE_HANDOFF.md) and its current checkpoint.
+以下 API／歷史 preview 保留；目前批准與數值證據另存，不回寫原 packet。
 
 ## 繁體中文
 
