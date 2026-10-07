@@ -377,3 +377,23 @@ physical authority／protocol修改、formal Cases、push、merge或freeze tag�
 225個manifest artifacts共107,304,824bytes，source／副本每項hash與完整file inventory一致。
 Package manifest SHA256：`c60c8193747039e25891a63ad2be5b04878c0f487f870b4345cd791ed2e8a06c`；
 copy_verification.json另記錄核對結果。所有舊副本保留，localhost preview改指向新副本。
+
+## 2026-10-07 — Stable topology playback layout
+
+**DIAGNOSTIC / HUMAN_REVIEW_PENDING**；base `095af134dfb22eab51277e7affcce1198f67b0fd`。
+修正每格 loading paragraph 在空／非空切換造成的版面重排：提示改為 model 內的 absolute
+overlay，狀態欄保留固定兩行、play/time 固定寬度及穩定 scrollbar。原播放時序、50 renders、
+人物座標、graph、projection、authority與四項pending decisions保持原樣。
+Native browser 在 717及1124px content widths各核對50影格，layout/model/graph/controls/
+current panel rectangles完全相同；各70個連續播放samples（含loading）也只有一組geometry。
+221原files、166PNG／1GIF／3JPEG、33個既有hash-bound inputs及source SHA256核對不變。
+新增58511-byte native JPEG及 `topology_playback_integration_manifest.json`。15項相關tests、
+repo Ruff、mypy93core、diff check通過；全套舊benchmark/GT tests未重跑。無source修改、
+GT、render、formal Cases、decision application、push、merge或freeze tag。
+
+完整APFS獨立副本保存於canonical checkout的ignored
+`data/pilot/phase1_finalization_human_review_20261007/topology_playback_stable/human_review/`。
+227個artifacts共107,368,346bytes，逐檔hash／大小及完整inventory一致；前版225artifacts仍
+逐檔hash相符。Package manifest SHA256：
+`c7c3abc17c65b449b33558400bcb177edb46c351c3520351ddbed054902b3a72`。
+8768 loopback preview指向新副本；copy_verification.json保存核對結果。

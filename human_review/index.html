@@ -68,7 +68,7 @@ iframe{display:block;width:100%;height:990px;border:1px solid #cfdae2;border-rad
 'use strict';
 const embedded=JSON.parse(document.getElementById('review-data').textContent);
 const reviewClarity=JSON.parse(document.getElementById('review-clarity-data')?.textContent||'{}')||{};
-const topologyViewHash='9b6c675b519052b7d4f9f32d8cdcbbc49dd651c2c1047fad720ea4fd8666c153';
+const topologyViewHash='b9ed07b4455e1a512040b9435771d51ee0c44dd55c01643e53188ecd8b67bf49';
 const immutableHash='e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463';
 let documentState=structuredClone(embedded),activeItem=null;
 const allowed=['APPROVE','REJECT','FIX_GEOMETRY','KEEP_REVIEW'];

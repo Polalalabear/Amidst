@@ -1,0 +1,218 @@
+{
+  "schema_version": "phase1-review-topology-playback-stability-v1",
+  "base_sha": "095af134dfb22eab51277e7affcce1198f67b0fd",
+  "result_type": "DIAGNOSTIC_UI_FIX",
+  "status": "HUMAN_REVIEW_PENDING",
+  "native_browser_qa": [
+    {
+      "scrubbed_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "playback_sample_count": 70,
+      "loading_samples": 1,
+      "unique_geometry_count": 1,
+      "geometry": {
+        "layout": {
+          "h": 1029.3046875,
+          "w": 1124,
+          "x": 18,
+          "y": 281.78125
+        },
+        "model": {
+          "h": 462.5,
+          "w": 740,
+          "x": 18,
+          "y": 281.78125
+        },
+        "graph": {
+          "h": 285,
+          "w": 334,
+          "x": 790,
+          "y": 379.5703125
+        },
+        "controls": {
+          "h": 38.3984375,
+          "w": 1124,
+          "x": 18,
+          "y": 182.7890625
+        },
+        "current": {
+          "h": 231.1796875,
+          "w": 334,
+          "x": 790,
+          "y": 676.5703125
+        },
+        "scroll": 0
+      }
+    },
+    {
+      "scrubbed_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "playback_sample_count": 70,
+      "loading_samples": 1,
+      "unique_geometry_count": 1,
+      "geometry": {
+        "layout": {
+          "h": 1050.9765625,
+          "w": 717,
+          "x": 18,
+          "y": 302.578125
+        },
+        "model": {
+          "h": 283.125,
+          "w": 453,
+          "x": 18,
+          "y": 302.578125
+        },
+        "graph": {
+          "h": 245,
+          "w": 224,
+          "x": 498,
+          "y": 417.1640625
+        },
+        "controls": {
+          "h": 38.3984375,
+          "w": 717,
+          "x": 18,
+          "y": 203.5859375
+        },
+        "current": {
+          "h": 231.1796875,
+          "w": 224,
+          "x": 498,
+          "y": 674.1640625
+        },
+        "scroll": 0
+      }
+    }
+  ],
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "review_payload_sha256": "e105c3116ebec64e94667f2f863bb0868f4fc34eeeedf1ced0a0b1a931ee1463",
+  "source_geometry_modified": false,
+  "physical_authority_changed": false,
+  "raw_graph_changed": false,
+  "gt_used": false,
+  "formal_cases_run": false,
+  "human_decisions_applied": false,
+  "frozen_inputs_verified": 33,
+  "preserved_prior_files": 221,
+  "original_media_preserved": {
+    "png": 166,
+    "jpg": 3,
+    "gif": 1
+  },
+  "topology_data_sha256": "c8a1a46b74837651e280660f1c380c1eae869b1d028630b5a85ff4808723c952",
+  "topology_view_sha256": "b9ed07b4455e1a512040b9435771d51ee0c44dd55c01643e53188ecd8b67bf49",
+  "validation": {
+    "related_tests_passed": 15,
+    "ruff": "PASS",
+    "mypy_core_files": 93,
+    "diff_check": "PASS"
+  },
+  "screenshot": {
+    "path": "frames/dashboard_context/topology_playback_stable.jpg",
+    "bytes": 58511,
+    "sha256": "06d07d8a0b47ad01c2fc97a60c3b03ba74691869a7b873a510cb4c717e0cba2b",
+    "type": "NATIVE_BROWSER_SCREENSHOT",
+    "frame": 25
+  }
+}

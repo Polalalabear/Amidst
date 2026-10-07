@@ -3,6 +3,12 @@
 <title>模型中的節點與邊 — Phase 1 Human Review</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;line-height:1.6;color:#172b38;background:#edf3f6}*{box-sizing:border-box}body{margin:0}main{max-width:1480px;margin:auto;padding:22px 18px 32px}h1{font-size:25px;margin:0 0 5px}p{margin:7px 0}.intro,.small{color:#557081;font-size:13px}.badge{display:inline-block;font-size:12px;background:#dfeaf0;border-radius:5px;padding:3px 8px;margin:8px 0 13px}.layout{display:grid;grid-template-columns:minmax(0,960px) minmax(290px,370px);gap:14px}.model{background:#253746;border-radius:9px;overflow:hidden;position:relative;aspect-ratio:960/600;border:1px solid #cedce4}.model img,.model svg{display:block;width:100%;height:100%;position:absolute;inset:0}.model svg{pointer-events:none}.panel{background:white;border:1px solid #d1e0e8;border-radius:9px;padding:14px 17px}.panel h2{font-size:17px;margin:0 0 6px}.panel svg{display:block;width:100%;height:285px}.mapping{font-size:13px;display:grid;grid-template-columns:35px 1fr;gap:7px 7px;margin-top:7px}.mapping code{font-size:12px;overflow-wrap:anywhere}.label{font-weight:750}.vertex{font-size:12px;border-top:1px solid #e1e9ed;padding-top:10px;margin-top:12px}.current{border:1px solid #a6ccd7;border-left:4px solid #027d9c;background:#effafd;border-radius:6px;padding:9px 11px;margin:12px 0;font-size:13px}.current h3{margin:0 0 4px;font-size:14px}.current p{margin:3px 0}.current strong{font-size:15px}.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}.controls button,.controls select{font:inherit;font-size:14px;border-radius:6px;padding:7px 12px;border:1px solid #9ab8c8}.controls button{background:#176d90;color:white;cursor:pointer}.controls input{flex:1;min-width:120px}#time{font-variant-numeric:tabular-nums;font-size:13px}.notice{background:white;border-left:3px solid #799eae;padding:10px 14px;border-radius:4px;margin:13px 0;font-size:13px}.checks{font-size:13px}.links{display:flex;gap:20px;flex-wrap:wrap;margin:15px 0}a{color:#12698d}details{font-size:12px;margin-top:12px}code{overflow-wrap:anywhere}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #38a1cd;outline-offset:3px}@media(min-width:701px) and (max-width:1000px){.layout{grid-template-columns:minmax(0,1fr) 250px}.panel{padding:10px 12px}.panel svg{height:245px}.mapping{font-size:12px}}@media(max-width:700px){.layout{grid-template-columns:1fr}.panel svg{height:285px}.mapping{grid-template-columns:35px 1fr 35px 1fr}.vertex{margin-top:14px}}@media(max-width:550px){main{padding:15px 10px}.mapping{grid-template-columns:35px 1fr}h1{font-size:22px}}
+html{overflow-y:scroll}
+#play{inline-size:8em;flex:0 0 8em}
+#time{inline-size:9em;flex:0 0 9em;white-space:nowrap}
+#frame-state,#current-time-state,#current-relation,#current-source{display:block;block-size:3.2em;line-height:1.6;overflow:auto}
+#load-state{position:absolute;inset:10px 10px auto;z-index:3;margin:0;padding:5px 8px;border-radius:4px;background:rgba(255,255,255,.95);color:#172b38;pointer-events:none}
+#load-state:empty{visibility:hidden}
 </style></head><body><main>
 <h1>模型中的節點、邊與折線頂點</h1>
 <p class="intro">同一份 configured pilot graph：2 個 graph nodes、3 條 N1 → N2 directed edges。模型影格沿用既有 10 秒動畫。</p>
@@ -10,9 +16,8 @@
 <span class="badge">DIAGNOSTIC · GT 未使用 · graph 原樣保留</span>
 <div class="controls"><button id="play">播放 10 秒</button><input id="slider" type="range" min="0" max="49" value="25" aria-label="Existing motion frame"><span id="time"></span><label for="mode" class="small">模型定位高度</label><select id="mode"><option value="floor">Footprint · pending HR-02</option><option value="raw">原 graph landmark 高度</option></select></div>
 <p id="frame-state" class="small"></p>
-<p id="load-state" class="small" aria-live="polite"></p>
 <div class="layout">
-<div class="model"><img id="frame" alt="Existing source-model motion frame with synchronized current person and fixed topology"><svg id="overlay" viewBox="0 0 960 600" aria-label="Fixed model topology and moving P(t) person position"></svg></div>
+<div class="model"><img id="frame" alt="Existing source-model motion frame with synchronized current person and fixed topology"><svg id="overlay" viewBox="0 0 960 600" aria-label="Fixed model topology and moving P(t) person position"></svg><p id="load-state" class="small" aria-live="polite"></p></div>
 <aside class="panel"><h2>同一組 ID：模型 ↔ 拓樸圖</h2>
 <p class="small">黑線是固定 graph edges；白心小圓是固定 polyline vertices。藍綠／橙色人物 P(t) 與左側模型同步移動。</p>
 <svg id="graph" viewBox="0 0 310 310" aria-label="Fixed graph nodes and vertices with synchronized moving person position"></svg>

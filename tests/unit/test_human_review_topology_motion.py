@@ -10,6 +10,7 @@ import math
 import re
 import shutil
 import subprocess
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
@@ -421,3 +422,122 @@ def test_loaded_frame_cursor_tracks_scrubbing_playback_and_mode_without_moving_g
     assert result["afterStale"] == result["afterLatest"]
     assert result["afterFailure"] == result["afterLatest"]
     assert result["timersAfterFailure"] == 0
+
+
+def test_playback_status_elements_stay_mounted_during_load_commit_pause_and_error() -> None:
+    """Status changes must not insert/remove rows around the fixed model viewport.
+
+    CSS reserves the status slots; this executes the actual template to ensure
+    playback never bypasses those slots by removing or hiding the elements.
+    The native-browser check separately verifies the rendered bounding boxes.
+    """
+    html = (TOPOLOGY / "view.html").read_text()
+    result = browser_model(
+        html,
+        r"""(async()=>{
+          const ids=['load-state','frame-state','current-time-state',
+            'current-relation','current-source','play','time'];
+          const original=new Map(ids.map(id=>[id,document.getElementById(id)]));
+          const sample=()=>Object.fromEntries(ids.map(id=>{
+            const element=document.getElementById(id);
+            return [id,{same:element===original.get(id),mounted:!!element.parentElement,
+              hidden:element.hidden,display:element.style.display||'',
+              height:element.style.height||'',width:element.style.width||'',
+              text:element.textContent}];}));
+          const snapshots=[sample()];pendingImages.at(-1).onload();snapshots.push(sample());
+          for(let i=0;i<50;i++){
+            await document.getElementById('slider').fire('input',{target:{value:String(i)}});
+            snapshots.push(sample());pendingImages.at(-1).onload();snapshots.push(sample());}
+          await document.getElementById('play').fire('click');snapshots.push(sample());
+          await document.getElementById('play').fire('click');snapshots.push(sample());
+          show(25);snapshots.push(sample());pendingImages.at(-1).onerror();snapshots.push(sample());
+          return {snapshots,timers:timers.size,
+            displayed:Number(document.getElementById('frame').getAttribute('data-loaded-frame'))};
+        })()""",
+    )
+    assert result["displayed"] == 49
+    assert result["timers"] == 0
+    snapshots = result["snapshots"]
+    assert len(snapshots) == 106
+    for snapshot in snapshots:
+        for status in snapshot.values():
+            assert status["same"] is True and status["mounted"] is True
+            assert status["hidden"] is False and status["display"] != "none"
+            assert status["height"] == status["width"] == ""
+    texts = {snapshot["load-state"]["text"] for snapshot in snapshots}
+    assert "" in texts
+    assert any("載入" in text for text in texts)
+    assert any("失敗" in text for text in texts)
+    assert {snapshot["play"]["text"] for snapshot in snapshots} - {""} == {
+        "播放 10 秒", "暫停"
+    }
+    assert any("OBSERVED" in snapshot["current-time-state"]["text"] for snapshot in snapshots)
+    assert any("GAP" in snapshot["current-time-state"]["text"] for snapshot in snapshots)
+
+
+def test_playback_text_has_reserved_slots_and_loading_overlay_cannot_move_the_model() -> None:
+    """Guard the flow contract that prevents empty/loading and role-text jitter.
+
+    The JavaScript test above covers the real status transitions; these rules
+    ensure neither those strings nor the play/pause label can resize the flow.
+    Overflow remains readable rather than silently truncating review evidence.
+    """
+    for filename in ("template.html", "view.html"):
+        html = (TOPOLOGY / filename).read_text()
+        style = re.search(r"<style>(.*?)</style>", html, re.S)
+        assert style is not None
+
+        def declarations(selector: str, style_text: str = style[1]) -> dict[str, str]:
+            result = {}
+            for selectors, body in re.findall(r"([^{}]+)\{([^{}]*)\}", style_text):
+                if selector in (part.strip() for part in selectors.split(",")):
+                    result.update(
+                        tuple(part.strip() for part in declaration.split(":", 1))
+                        for declaration in body.split(";") if ":" in declaration
+                    )
+            return result
+
+        for selector in (
+            "#frame-state", "#current-time-state", "#current-relation", "#current-source"
+        ):
+            slot = declarations(selector)
+            assert slot["block-size"].endswith("em")
+            assert float(slot["block-size"][:-2]) == 2 * float(slot["line-height"])
+            assert slot["overflow"] == "auto"
+        loading = declarations("#load-state")
+        assert loading["position"] == "absolute"
+        assert declarations(".model")["position"] == "relative"
+        assert declarations("#load-state:empty")["visibility"] == "hidden"
+        assert declarations("html")["overflow-y"] == "scroll"
+        assert declarations("#play")["inline-size"] == "8em"
+        assert declarations("#play")["flex"] == "0 0 8em"
+        assert declarations("#time")["inline-size"] == "9em"
+        assert declarations("#time")["flex"] == "0 0 9em"
+        assert declarations("#time")["white-space"] == "nowrap"
+
+        class LoadingParent(HTMLParser):
+            def __init__(self) -> None:
+                super().__init__()
+                self.stack: list[tuple[str, dict[str, str | None]]] = []
+                self.parents: list[list[tuple[str, dict[str, str | None]]]] = []
+
+            def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+                attributes = dict(attrs)
+                if attributes.get("id") == "load-state":
+                    self.parents.append(self.stack.copy())
+                if tag not in {"meta", "input", "img", "br", "hr", "link"}:
+                    self.stack.append((tag, attributes))
+
+            def handle_endtag(self, tag: str) -> None:
+                for i in range(len(self.stack) - 1, -1, -1):
+                    if self.stack[i][0] == tag:
+                        del self.stack[i:]
+                        return
+
+        ancestry = LoadingParent()
+        ancestry.feed(html)
+        assert len(ancestry.parents) == 1
+        assert any(
+            "model" in (attributes.get("class") or "").split()
+            for _, attributes in ancestry.parents[0]
+        )

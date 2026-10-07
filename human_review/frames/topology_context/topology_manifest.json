@@ -178,10 +178,10 @@
     }
   ],
   "builder_sha256": "10eb8c2adf182c490cf872601368a1ae6cdf234866ca7907289d381afa22f28a",
-  "template_sha256": "903e903541affbdc1afbc78ae367fa641caf199602d1bbf453642963dfd8e9cd",
+  "template_sha256": "9339f50afa873c90b37539ddb6dfba9dd6a410b076f0af91259146ed654fc2f2",
   "view": {
     "path": "view.html",
-    "sha256": "9b6c675b519052b7d4f9f32d8cdcbbc49dd651c2c1047fad720ea4fd8666c153"
+    "sha256": "b9ed07b4455e1a512040b9435771d51ee0c44dd55c01643e53188ecd8b67bf49"
   },
   "data": {
     "path": "topology_data.json",

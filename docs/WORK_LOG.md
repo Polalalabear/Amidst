@@ -4,6 +4,14 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Stable model/topology playback layout
+
+在 `095af134dfb22eab51277e7affcce1198f67b0fd` 修正每影格loading文字切換造成的重排；
+提示浮在model內，狀態／control尺寸固定。Native在717／1124px content widths各核對
+50影格及70個播放samples，model／graph／controls／current panel座標與尺寸零變化。
+原renders、人物／graph資料、33既有hash-bound inputs與四項pending decisions保留。
+15相關tests、repo Ruff、mypy93core、diff gate通過；未重跑formal／GT benchmark。
+
 ### 2026-10-07 — Synchronized person position in model/topology review
 
 在 `e4b7821f1e6c282ff571f6d56322b74e6354a958` 上補齊人物與拓樸對照：每個既有
@@ -911,6 +919,15 @@ Review 的證據範圍：
 - 本次文件驗證：4 份雙語 Markdown、57 個本機連結與 fence／有效待修／暫緩狀態檢查通過；diff check 通過。歷史測試數字另以對應 commit 保存的 handoff 核對，不沿用未核實的快照。
 
 ## English
+
+### 2026-10-07 — Stable model/topology playback layout
+
+From `095af134dfb22eab51277e7affcce1198f67b0fd`, loading status overlays the model,
+and status/control dimensions remain fixed. At both717/1124px content widths,
+50scrubbed frames and70playback samples retain identical model/graph/control/card
+rectangles. All original renders, graph/person data,33existing hash-bound inputs and
+pending decisions remain unchanged.15related tests, Ruff, mypy93core and diff checks
+pass; formal/GT benchmark tests were not rerun.
 
 ### 2026-10-07 — Synchronized person position in model/topology review
 

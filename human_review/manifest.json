@@ -35,7 +35,7 @@
   },
   "topology_supplement": {
     "manifest": "frames/topology_context/topology_manifest.json",
-    "manifest_sha256": "6c10e52aa8fea5f5fce26a2c77756e5d04d2cc3995c8210481329d0753b3a977",
+    "manifest_sha256": "ea5fc6814caddfcd7e64e27418d2b2d3d90e614c8a76e6b2caeccd8bf5b34566",
     "result_type": "DIAGNOSTIC",
     "nodes": 2,
     "edges": 3,
@@ -190,6 +190,11 @@
       "path": "frames/dashboard_context/topology_motion_review.jpg",
       "bytes": 60323,
       "sha256": "22aa2b25049e3d4bb374e857fcaedf2c5dbd734f8f87c4b299d5ed53270e8e6f"
+    },
+    {
+      "path": "frames/dashboard_context/topology_playback_stable.jpg",
+      "bytes": 58511,
+      "sha256": "06d07d8a0b47ad01c2fc97a60c3b03ba74691869a7b873a510cb4c717e0cba2b"
     },
     {
       "path": "frames/motion_context/gif_manifest.json",
@@ -1058,8 +1063,8 @@
     },
     {
       "path": "frames/topology_context/template.html",
-      "bytes": 18858,
-      "sha256": "903e903541affbdc1afbc78ae367fa641caf199602d1bbf453642963dfd8e9cd"
+      "bytes": 19310,
+      "sha256": "9339f50afa873c90b37539ddb6dfba9dd6a410b076f0af91259146ed654fc2f2"
     },
     {
       "path": "frames/topology_context/topology_data.json",
@@ -1069,7 +1074,7 @@
     {
       "path": "frames/topology_context/topology_manifest.json",
       "bytes": 29399,
-      "sha256": "6c10e52aa8fea5f5fce26a2c77756e5d04d2cc3995c8210481329d0753b3a977"
+      "sha256": "ea5fc6814caddfcd7e64e27418d2b2d3d90e614c8a76e6b2caeccd8bf5b34566"
     },
     {
       "path": "frames/topology_context/topology_preview.png",
@@ -1078,8 +1083,8 @@
     },
     {
       "path": "frames/topology_context/view.html",
-      "bytes": 84652,
-      "sha256": "9b6c675b519052b7d4f9f32d8cdcbbc49dd651c2c1047fad720ea4fd8666c153"
+      "bytes": 85104,
+      "sha256": "b9ed07b4455e1a512040b9435771d51ee0c44dd55c01643e53188ecd8b67bf49"
     },
     {
       "path": "frames/visual_manifest.json",
@@ -1129,7 +1134,7 @@
     {
       "path": "index.html",
       "bytes": 72022,
-      "sha256": "d826b5b6f5604ec094bd091399b2fae2997413e5de7797d0bf51af04ee404d68"
+      "sha256": "34043cafaeea08d36c7f97797b743834f9ebbfc7d5c56faaa053ec57d12326a3"
     },
     {
       "path": "inspect_review_settings.py",
@@ -1190,6 +1195,11 @@
       "path": "topology_motion_integration_manifest.json",
       "bytes": 3012,
       "sha256": "a378cb0d782428aceb64b5dc0819dba4ee2518d01457b295664fd1cc7ad259a7"
+    },
+    {
+      "path": "topology_playback_integration_manifest.json",
+      "bytes": 4107,
+      "sha256": "528ce5eddbea608c038c623a0a5f59c6aa141a75a90a87de76610fc52e2c4432"
     },
     {
       "path": "write_review_docs.py",
