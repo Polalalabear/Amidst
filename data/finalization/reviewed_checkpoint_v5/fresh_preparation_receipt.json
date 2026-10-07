@@ -1,0 +1,69 @@
+{
+  "authority_applied": false,
+  "clean_after_actual_inspection_and_preview": true,
+  "formal_case2_execution": false,
+  "formal_certificate": null,
+  "freeze_tag_permitted": false,
+  "fresh_output": "/private/tmp/amidst-scope-fresh-d8b94a6",
+  "independent_checkout": "/private/tmp/amidst-phase1-finalization-fresh-20261007",
+  "inspection_status": "VALID_SOURCE_BOUND_PROPOSAL_PENDING_HUMAN_REVIEW",
+  "new_blender_materialization_or_source_visibility_claimed": false,
+  "new_human_decision_exists": false,
+  "original_full_exit_complete": false,
+  "original_materialized_physical_evidence_reused_from_verified_checkpoint": true,
+  "package_import_verified_from_fresh_checkout": true,
+  "proposal_bytes_identical_across_source_checkout_and_all_fresh_stages": true,
+  "recorded_at": "2026-10-07T17:41:42.444025+00:00",
+  "scene_saved": false,
+  "schema_version": "phase1-scoped-preparation-independent-fresh-v1",
+  "scope_proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "scope_proposal_file_sha256": "65fa7fa00ae317a2b0039b1690ce42d551e36041858de9aa48b8c2a192dcf641",
+  "source_commit": "d8b94a6708cfad75d5052f4619ab29b036e10370",
+  "status": "PASS_SOURCE_BOUND_PREPARATION_ONLY",
+  "strict_cell_statuses": [
+    {
+      "cell_id": "branch-cell-00",
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "status": "REVIEW"
+    },
+    {
+      "cell_id": "branch-cell-01",
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "status": "REVIEW"
+    },
+    {
+      "cell_id": "branch-cell-02",
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "status": "REVIEW"
+    },
+    {
+      "cell_id": "branch-cell-03",
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "status": "REVIEW"
+    },
+    {
+      "cell_id": "branch-cell-04",
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "status": "REVIEW"
+    },
+    {
+      "cell_id": "branch-cell-05",
+      "reason": "UNKNOWN_CLOSED_VOLUME_GEOMETRY_UNCERTAIN",
+      "status": "REVIEW"
+    }
+  ],
+  "strict_preview_bytes_identical": true,
+  "strict_preview_status": "HYPOTHETICAL_NUMERIC_NOT_AUTHORITY",
+  "tested_source_and_test_sha256_equal": {
+    "scripts/discover_source_branch_scope.py": "042ccf873d545a477d4f9db94671e659f4db2afcd1227f012fd4c4a8274b5426",
+    "src/amidst/finalization/scoped_authority.py": "ae77bf9d101c0dc8e7d36851940690af2f8ded8e371eebbc94decf221d54d94f",
+    "src/amidst/finalization/scoped_authority_cli.py": "fc0c4bafa3333cbb75c0f6ab4036f10878b0dd5f62231186d5305e562b7ecbbf",
+    "src/amidst/finalization/scoped_route_inventory.py": "31c06b8ec7a816cd97bccd6e505e8024f1059db78db20dbf44e5e1bf38f7e60d",
+    "src/amidst/finalization/scoped_semantic_cells.py": "eb78dd30e5407943aaf1c4f91549f9238215135cdd64166c73fe2b1524614cc7",
+    "src/amidst/finalization/source_branch_discovery.py": "ee3dbefbb6af0bede7696fb008e5fac2fd0f6b1684f781d4a69f2c580fd76042",
+    "tests/unit/test_scoped_authority.py": "bb37576b3fcf620bfd7cc4865d4351851603272d11382a40ebf57c684602b919",
+    "tests/unit/test_scoped_route_inventory.py": "234ea64a787c245921af2964ddf73512c67d2acb817a9973743c7bde0f8ca88d",
+    "tests/unit/test_scoped_semantic_cells.py": "cdd89fdc382ce9cf498cda3aafd39d212dcd09f17dae9df3c26cb9efc2035cb1",
+    "tests/unit/test_source_branch_discovery.py": "ed75e075d2c4f7874a46f46159858d554f6db7f97647cf21e6d92361dcdcc98b"
+  }
+}

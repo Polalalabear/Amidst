@@ -1,0 +1,31 @@
+{
+  "curated_artifacts": {
+    "fresh_preparation_receipt.json": {
+      "sha256": "fc0e9ea95df6ee54b49677131c9cd488b2afa3069d20f3433663c7e2d1ac5ad5",
+      "size_bytes": 3410
+    },
+    "manifest_inspection.json": {
+      "sha256": "2e235082d07e757e04c8371fc8c53a5dab9cdf1ceef26d76b020289e672f87ae",
+      "size_bytes": 2817
+    },
+    "manifest_preview.json": {
+      "sha256": "c19b1c1c023469c63af0e6bf361ed3c09cd6ec1908378e793366caaf2ec3171a",
+      "size_bytes": 2803
+    },
+    "result_inspection.json": {
+      "sha256": "6eb14d14966807da7cffcc86e55e635392db74fa2109635b4477c583a47c9f59",
+      "size_bytes": 201
+    },
+    "result_preview.json": {
+      "sha256": "bfc86184f4bd885c56aacba99699d4fdcbd7ee0cae2bd8bb10f9ab0bca0d6dc0",
+      "size_bytes": 6128
+    }
+  },
+  "formal_case_readiness": false,
+  "freeze_tag_permitted": false,
+  "new_semantic_authority_granted": false,
+  "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+  "schema_version": "phase1-scoped-preparation-fresh-checkpoint-v1",
+  "source_commit": "d8b94a6708cfad75d5052f4619ab29b036e10370",
+  "status": "PASS_SOURCE_BOUND_PREPARATION_ONLY"
+}

@@ -200,3 +200,11 @@ These engineering tests do not approve the pending school scope or complete its 
 Repo Ruff、111 source files 及 CLI 的 strict mypy 通過。60 個 focused tests 包含兩個新的
 內層 public operation receipt mutation 反例；source hashes 與歷史結果見上述 receipt。
 這些工程檢查不是待審 school scope 的批准或正式 case 完成。
+
+Independent clean checkout `d8b94a6708cfad75d5052f4619ab29b036e10370` reproduced actual
+inspection and strict preview; proposal/preview bytes and ten tested source/test files match.
+The [V5 fresh receipt](../data/finalization/reviewed_checkpoint_v5/manifest.json) records this
+preparatory proof only, reusing previously verified physical evidence without claiming a new
+Blender materialization or source-visibility run.
+獨立乾淨 `d8b94a6` checkout 的實際 inspect／strict preview 重現相同 proposal與preview bytes；
+10個source/testfiles一致。這僅驗證準備能力，沒有新scope批准、certificate或formal case。

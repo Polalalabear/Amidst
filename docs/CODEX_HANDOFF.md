@@ -55,6 +55,9 @@ content SHA `7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad`�
 camera/landmark bindings；`group_0` bounded no-solid interior 在六個 guards、`group_0.003`
 只在 cells 2/3/4。不請求 zero-area 豁免。Authority **HUMAN_REVIEW**；尚無新 receipt。
 原 strict preview 六個 cells 都 REVIEW unknown closed-volume geometry，certificate null。
+準備 source commit `d8b94a6708cfad75d5052f4619ab29b036e10370` 的完整 suite1978／零skip
+與Ruff/mypy PASS；獨立 clean checkout 的 actual inspect／strict preview 亦 PASS。
+Proposal、preview bytes與10個source/testfiles完全相同，見 [V5 fresh receipt](../data/finalization/reviewed_checkpoint_v5/manifest.json)。
 V7 actual source visibility 有兩個分開的 GAP，sample 39 的短暫 visible recovery 必須保留。
 V8 departure 被來源 geometry 遮擋，保留為被排除診斷；不繼續放寬 geometry/camera 搜索。
 
@@ -103,6 +106,9 @@ The concrete corridor proposal linked above requires a new direct-human decision
 landmark bindings, with no zero-area exemptions. Strict preview remains REVIEW without a
 certificate. Its V7 visibility preserves sample 39 as a real recovery between separate gaps;
 V8 is rejected source-occlusion evidence.
+Source commit `d8b94a6` passed 1978 tests without skips, Ruff and strict mypy; an independent
+clean checkout reproduced actual proposal inspection and the exact strict-preview bytes.
+V5 records equal proposal and ten tested source/test files, with no new approval or certificate.
 After approval, original numerical regeneration, a same-camera HOLD adapter, metric-preserving
 canonical graph/exhaustive inventory, frozen new config and fresh 5 Hz formal execution remain.
 The existing graph permits repeated edge sequences and rejects self-camera transitions; a

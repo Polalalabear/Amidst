@@ -19,6 +19,9 @@ The [corridor review packet](finalization/reviewed_branch_scope_review_v2/propos
 contains bounded source-only coordinates, camera calibration, diagnostic map and strict
 preview. Its authority is HUMAN_REVIEW, certificate is null and no new human receipt is
 applied. This packet is not a formal dataset. Large V3–V8 discovery artifacts remain local.
+The [V5 fresh preparation receipt](finalization/reviewed_checkpoint_v5/manifest.json) records
+clean `d8b94a6` inspection/preview reproduction with identical proposal and preview bytes;
+it grants no new scope authority and claims no new Blender materialization.
 Overall Phase1 Exit remains BLOCKED; Case4 is DEFERRED and Phase2 remains FROZEN.
 
 V3 保存既有碰撞消融與 blocked rows；V4 是乾淨獨立 checkout 的局部重現證據。新的

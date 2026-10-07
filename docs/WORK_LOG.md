@@ -25,6 +25,12 @@ sample39 recovery；V8 departure 真實遮擋不成立，保留原診斷。新 s
 Review packet 共11 files、378986 bytes（bounded coordinates／校準／map／strict preview／
 validation／historical receipt）；大 raw geometry、GT、observations、RRD 不入此 packet。
 
+Exact source commit `d8b94a6708cfad75d5052f4619ab29b036e10370` 的獨立 clean checkout
+實際 inspect 與 strict preview 重現完成：proposal／preview bytes、10個testedsource/test
+files相同；preview保留六個REVIEW和nullcertificate。V5保存6個smallreceipts/files，
+既有verifiedphysicalmaterialization重用，沒有宣稱重跑Blender materialization/source
+visibility，沒有新批准或formal結果。Document/evidence-only commit接在該source之後。
+
 最終完整 suite **1978 passed、0 skipped、0 failed、112.04s**，從開始即指定 canonical
 source 與 `--require-physical-evidence`。Repo Ruff、strict mypy111 source files、source CLI
 mypy PASS。Focused authority/inventory/wrapper60 tests PASS。1976-test／113.72s pre-fix

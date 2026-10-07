@@ -29,6 +29,9 @@ route proofs retain lower-bound status, N/A recall and false readiness.
 再固定新 config 並做 fresh 正式執行。原研究條件與已核准 reference policy 保留。
 Implementation and validation: [new scope capability](PHASE1_NEW_SCOPE_IMPLEMENTATION.md),
 [exact review packet](../data/finalization/reviewed_branch_scope_review_v2/proposal.json).
+An independent clean checkout at source commit `d8b94a6` reproduced actual inspection and
+strict preview with identical proposal/preview bytes and ten tested source/test files;
+[V5 evidence](../data/finalization/reviewed_checkpoint_v5/manifest.json) grants no new authority.
 
 ## 2026-10-08 — Collision capability implemented / 碰撞消融已實作
 
