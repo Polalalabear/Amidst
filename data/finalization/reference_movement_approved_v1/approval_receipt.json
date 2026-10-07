@@ -1,0 +1,17 @@
+{
+  "approval_time_basis": "RECORDING_TIME_AFTER_EXPLICIT_USER_TOOL_REPLY",
+  "approved_at": "2026-10-07T15:35:00Z",
+  "decision": "APPROVE",
+  "human_approval_id": "USER_REFERENCE_MOVEMENT_POLICY_2026_10_07",
+  "human_approval_text": "核准此新增 reference policy",
+  "locked_before_simulation_and_evaluation": true,
+  "old_results_relabelled": false,
+  "original_hr01_hr04_profiles_modified": false,
+  "original_human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+  "proposal_content_sha256": "f7452152ff8981287033aa9b75c8faab1841df2981fe59de74a54e5403f45c73",
+  "proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+  "protocol_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+  "schema_version": "phase1-reference-movement-approval-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+}

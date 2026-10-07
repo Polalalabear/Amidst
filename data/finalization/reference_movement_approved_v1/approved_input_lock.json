@@ -1,0 +1,14 @@
+{
+  "inference_may_read_annotations": false,
+  "new_dataset_and_evaluation_version_required": true,
+  "original_human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "proposal_content_sha256": "f7452152ff8981287033aa9b75c8faab1841df2981fe59de74a54e5403f45c73",
+  "proposal_file_sha256": "85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31",
+  "proposal_path": "configs/finalization/proposed_reference_movement_policy_v1.json",
+  "protocol_sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7",
+  "receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+  "receipt_path": "data/finalization/reference_movement_approved_v1/approval_receipt.json",
+  "schema_version": "phase1-reference-movement-input-lock-v1",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "status": "APPROVED_LOCKED_BEFORE_FRESH_EXPORT"
+}

@@ -1,0 +1,13 @@
+{
+  "artifacts": [
+    {
+      "path": "approval_receipt.json",
+      "sha256": "5794d6f3e689a987ade06add876224c86be8ac3c46f828be233ca33245acb697"
+    },
+    {
+      "path": "approved_input_lock.json",
+      "sha256": "d235d3bbd61ed1055518c08d8565df67d321d11783b8f1e286d397f24d2e9087"
+    }
+  ],
+  "schema_version": "phase1-reference-movement-application-v1"
+}

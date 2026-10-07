@@ -4,6 +4,20 @@
 
 ## 繁體中文
 
+### 2026-10-07 — Independent reference movement policy approved and locked
+
+原 protocol 要求獨立 reference moving/dwell annotation，原 HR04 只有 inference timing；
+提出 exact simulation segment MOVING／departure DWELL annotation profile，附 10 s gap／
+4 s dwell／6 s movement 的反例定義，避免用完整 gap duration 製造必然零誤差。
+使用者明示「核准此新增 reference policy」，另存
+`data/finalization/reference_movement_approved_v1/` receipt／input lock／manifest。
+Proposal file SHA256 `85b9467ec8ba18f2ec3fa001e97bec9b4be4185a41a43baed05a849f0bbbdf31`，
+receipt content SHA256 `972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac`。
+時間為 explicit reply 後的記錄時間，未捏造原訊息時間。鎖定發生在新版 fresh simulation／
+export／evaluation 前；原四項 APPROVE、immutable questions、protocol、v1 configs 和所有
+已存在 datasets/results 不回寫。Annotations 只供 simulation/export/evaluation/debug。
+此 milestone 是新增 reference policy 授權，尚非新版 metric 執行或 final Exit Gate PASS。
+
 ### 2026-10-07 — Reviewed adapters, GT-free policy lock and route-scope proof
 
 新增 additive reviewed context／rigid landmark→footpoint／metric／A-B-C provider adapters；

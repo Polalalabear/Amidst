@@ -1,0 +1,22 @@
+{
+  "schema_version": "phase1-reference-movement-policy-proposal-v1",
+  "status": "PROPOSED_NOT_APPROVED_NOT_EXECUTED",
+  "policy_id": "EXPLICIT_SIMULATION_SEGMENT_MOVEMENT_ANNOTATIONS",
+  "scope": "NEW_SOURCE_BOUND_SYNTHETIC_CASE_EXPORTS_ONLY",
+  "reference_partition": "evaluation",
+  "annotation_producer_partition": "simulation_export",
+  "segment_kinds": ["MOVING", "DWELL"],
+  "moving_rule": "EXPLICIT_RECIPE_SEGMENT_WITH_DISTINCT_FLOOR_CONTACT_ENDPOINTS",
+  "dwell_rule": "EXPLICIT_RECIPE_SEGMENT_WITH_IDENTICAL_FLOOR_CONTACT_ENDPOINTS",
+  "dwell_location": "DEPARTURE_WAYPOINT_ONLY",
+  "exact_gap_intersection": "SUM_DURATION_OF_ANNOTATED_MOVING_SEGMENTS_INTERSECTING_OBSERVED_GAP",
+  "candidate_moving_time": "SUM_EXPLICIT_TIMED_HYPOTHESIS_MOVING_SEGMENT_DURATIONS_EXCLUDING_DWELL",
+  "travel_time_error": "ABS_PRIMARY_CANDIDATE_MOVING_TIME_MINUS_INDEPENDENT_REFERENCE_MOVING_TIME",
+  "zero_distance_threshold": "EXACT_ENDPOINT_EQUALITY_NO_NEW_EPSILON",
+  "inference_can_read_annotations": false,
+  "reference_used_for_ranking_or_pruning": false,
+  "original_hr01_hr04_profiles_modified": false,
+  "old_datasets_relabelled_or_overwritten": false,
+  "fresh_version_required_after_approval": true,
+  "lock_before_simulation_and_evaluation": true
+}
