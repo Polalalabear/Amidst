@@ -1,0 +1,19 @@
+{
+  "schema_version": "workbench.catalog.v1",
+  "scenes": [
+    {
+      "scene_id": "local-camera",
+      "adapter": "local_camera",
+      "checkpoint": "data/engineering/local_run/local_camera_v1/test/checkpoints/final",
+      "label": "局部多鏡頭研究場景",
+      "description": "E1 · 四鏡頭透視 RGB、門口與轉角事件研究"
+    },
+    {
+      "scene_id": "synthetic-lab",
+      "adapter": "synthetic_lab",
+      "checkpoint": "data/engineering/local_run/simulation_v2",
+      "label": "雙鏡頭基礎實驗室",
+      "description": "E0 · 仿射地面投影與盲區候選診斷；無實體鏡頭姿態"
+    }
+  ]
+}
