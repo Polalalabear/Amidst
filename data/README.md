@@ -1,5 +1,18 @@
 # Current data inventory / 目前資料盤點
 
+## 2026-10-08 local camera research extension
+
+[Curated pilot validation](engineering/local_camera_20261008/validation.json) and
+[index validation](engineering/local_camera_20261008/index_validation.json) bind the
+versioned scoped-index / E1 perspective RGB pilot to actual source/config/run hashes.
+Four cameras,244 RGB,150 measurements,18 tracks and multi-frame behavior/gap cards
+remain local under ignored `engineering/local_run/local_camera_v1/`. New checkpoints
+reuse the existing split RGB; no school Blender/source or historical inputs change.
+The published receipts contain counts/hashes and bounded synthetic metrics only;
+raw RGB,GT/recipe sidecars,identity labels,full snapshots,PNG/UI screenshots stay local.
+Operation and reproducibility: [local pilot](../docs/engineering/LOCAL_CAMERA_PILOT.md).
+This does not upgrade formal gates or frozen Phase2.
+
 ## 2026-10-08 simulation engineering M1–M6
 
 [Curated engineering receipts](engineering/simulation_20261008/validation.json) bind the

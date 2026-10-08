@@ -20,9 +20,13 @@ artifacts，不在那裡實作或切換 branch。
 
 ### 局部跨鏡頭與行為研究續作
 
-使用者指定以鄰近 camera／可達拓樸、時間與人物連續性做局部關聯，輸出數個實際畫面及進門／出門／轉角／可能遊蕩等事件，避免全域掃描。[研究交接與可複製 prompt](LOCAL_CAMERA_EVENT_RESEARCH_HANDOFF.md) 固定具體 R1–R8、局部索引、同 scope 檢索漏取實驗、固定候選 pool 的 feature 消融與多畫面交付；這是 RESEARCH_PLAN／NOT_RUN，未新增正式研究 PASS。
+[局部 pilot](../engineering/LOCAL_CAMERA_PILOT.md) 已依 [R1–R8 交接](LOCAL_CAMERA_EVENT_RESEARCH_HANDOFF.md) 完成可操作的 E1 synthetic extension；[protocol](../research/LOCAL_CAMERA_EVENT_PROTOCOL.md) 與 [curated receipt](../../data/engineering/local_camera_20261008/validation.json) 固定scope、版本、同run hashes及當次驗證。原 M1–M6 registry／RGB tracks／provisional v1／simulation-v2 不變，新 `local_association` 與 `local_behavior` 是外層版本化composition，不改原BoundGapEvent／Graph排序。
 
-研究交接中對 M1/M2 與全pair／catalog遍歷的觀察屬當時基線；目前 M1–M6 已完成獨立 lab 閉環，仍保留全部 pairwise alternatives。R1–R8 的真正局部索引、行為研究與消融在同 checkout 的 `local_*` 新模組並行開發，未納入本次 M1–M6 驗收；不覆寫或 stage 其修改，也不以工程結果宣稱該研究 PASS。原2255測試只綁定 `4271b2b`。
+目前 `local-camera-test-v1` checkpoint：4 cameras／244 pinhole RGB／150 measurements／18 local tracks；真正scope/ref／camera-time／region/portal index在形成pairs前沿可達拓樸擴查。115 local pairs對照153 global diagnostic pairs，獨立條件式next-segment reference 8/8取回；不是未檢出人物的整段recall。Pair precision/recall 0.35/0.467；轉角／可能遊蕩仍有誤報，進出門在bounded identity評估仍未定。完整feature消融、混淆／缺失與限制見receipt；不宣稱唯一人物身分或行為意圖。
+
+可直接開啟loopback8012（原8010保留）查局部camera/time事件卡、3–5實際RGB、局部3D候選與replay；操作／重建命令見pilot文件。Final artifacts位於ignored `data/engineering/local_run/local_camera_v1/test/checkpoints/final`，同一RGB materialization被development/test各自新freeze重用。2427 full tests／Ruff／mypy145files、34真HTTP、378MockAgent calls、瀏覽器操作、同run GT poisoning與empty-output hash reproduction當次PASS；formal clean-checkout與school authority未因此解鎖。
+
+有效後續：以development改善pixel merges/ID switches、appearance與soft priors／可見行為precision，再用新frozen run评估；原Cases2/3、full Exit BLOCKED、Case4 DEFERRED及frozenPhase2繼續有效。原研究交接的NOT_RUN標頭是交接日期基線，實作狀態以本節與pilot checkpoint為準。
 
 ### 已接入的工程能力與續作邊界
 
@@ -103,7 +107,7 @@ The current engineering branch is `codex/simulation-engineering`, reusing the ex
 
 M1–M6 now provide an operating synthetic RGB-to-local-track-to-provisional-association-to-3D-event composition, strict typed tools, immutable repositories, a browser/MockAgent workflow and independent evaluation/reproduction. See the simulation engineering document and current validation receipt. The local run has 102 images, 89 measurements, six tracks, 21 association records and four canonical gaps with eight alternatives. The separate office certificate covers structured partial recovery only; school RGB, arbitrary corridor packages and formal gates remain uncertified.
 
-The linked R1–R8 local camera/event research is a separate concurrent continuation in new `local_*` modules. Its drafts and historical records are preserved. M1–M6 pairwise alternatives do not prove indexed-retrieval or behavior research acceptance. Original Phase 2 remains frozen; no main merge or external model integration is performed.
+R1–R8 now provides an operating, separately versioned indexed synthetic pilot. See the local pilot guide and curated receipt for current metrics, 2427 full passing tests and scoped photo/3D/replay operation. Low pair accuracy and behavior false positives remain explicit; the original lab, formal gates, main and frozen Phase 2 are preserved.
 
 Continue in the sprint worktree above. The human approved the exact corridor proposal and
 requests a new-chat continuation to finish one reproducible dataset, benchmark table and

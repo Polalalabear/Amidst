@@ -1,0 +1,584 @@
+{
+  "baseline_commit": "3df3ccdd504b044a773188a53a1ac8d2a1ff1479",
+  "camera_count": 4,
+  "date": "2026-10-08",
+  "evaluation": {
+    "association_all_provisional_hypotheses": {
+      "global_false_merge_count": "N/A: no global identity solver",
+      "global_false_split_count": "N/A: no global identity solver",
+      "is_true_next_continuation_metric": false,
+      "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+      "pair_level_false_merge_count": 13,
+      "pair_level_missed_link_count": 8,
+      "predicted_link_count": 43,
+      "resolved_link_count": 20,
+      "same_identity_eligible_pair_precision": 0.35,
+      "same_identity_eligible_pair_recall": 0.4666666666666667,
+      "true_link_count": 15,
+      "true_positive": 7,
+      "unresolved_link_count": 23
+    },
+    "association_by_kind": {
+      "CROSS_CAMERA_GAP": {
+        "global_false_merge_count": "N/A: no global identity solver",
+        "global_false_split_count": "N/A: no global identity solver",
+        "is_true_next_continuation_metric": false,
+        "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+        "pair_level_false_merge_count": 12,
+        "pair_level_missed_link_count": 4,
+        "predicted_link_count": 37,
+        "resolved_link_count": 19,
+        "same_identity_eligible_pair_precision": 0.3684210526315789,
+        "same_identity_eligible_pair_recall": 0.6363636363636364,
+        "true_link_count": 11,
+        "true_positive": 7,
+        "unresolved_link_count": 18
+      },
+      "OVERLAPPING_VISIBILITY": {
+        "global_false_merge_count": "N/A: no global identity solver",
+        "global_false_split_count": "N/A: no global identity solver",
+        "is_true_next_continuation_metric": false,
+        "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+        "pair_level_false_merge_count": 1,
+        "pair_level_missed_link_count": 0,
+        "predicted_link_count": 6,
+        "resolved_link_count": 1,
+        "same_identity_eligible_pair_precision": 0.0,
+        "same_identity_eligible_pair_recall": null,
+        "true_link_count": 0,
+        "true_positive": 0,
+        "unresolved_link_count": 5
+      },
+      "SAME_CAMERA_RECOVERY": {
+        "global_false_merge_count": "N/A: no global identity solver",
+        "global_false_split_count": "N/A: no global identity solver",
+        "is_true_next_continuation_metric": false,
+        "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+        "pair_level_false_merge_count": 0,
+        "pair_level_missed_link_count": 4,
+        "predicted_link_count": 0,
+        "resolved_link_count": 0,
+        "same_identity_eligible_pair_precision": null,
+        "same_identity_eligible_pair_recall": 0.0,
+        "true_link_count": 4,
+        "true_positive": 0,
+        "unresolved_link_count": 0
+      }
+    },
+    "behavior": {
+      "expected_all_recipe_events": 8,
+      "groups": {
+        "inferred_gap": {
+          "canonical_candidate_count": 78,
+          "canonical_gap_event_count": 46,
+          "canonical_timing_hypothesis_count": 146,
+          "confusion": "N/A: no independently labeled blind-gap behavior population",
+          "direction_error": "N/A",
+          "hypothesis_event_count": 46,
+          "per_kind": {
+            "CORNER": {
+              "false_negative": "N/A",
+              "false_positive": "N/A",
+              "precision": "N/A",
+              "recall": "N/A"
+            },
+            "DWELL": {
+              "false_negative": "N/A",
+              "false_positive": "N/A",
+              "precision": "N/A",
+              "recall": "N/A"
+            },
+            "ENTER": {
+              "false_negative": "N/A",
+              "false_positive": "N/A",
+              "precision": "N/A",
+              "recall": "N/A"
+            },
+            "EXIT": {
+              "false_negative": "N/A",
+              "false_positive": "N/A",
+              "precision": "N/A",
+              "recall": "N/A"
+            },
+            "POSSIBLE_WANDERING": {
+              "false_negative": "N/A",
+              "false_positive": "N/A",
+              "precision": "N/A",
+              "recall": "N/A"
+            }
+          },
+          "status": "N/A_UNLABELED_GAP_BEHAVIOR_ALTERNATIVES",
+          "trigger_error_s": "N/A",
+          "uncertainty": "Canonical route/timing alternatives preserve ambiguity; they do not constitute visible event detections or independently labeled gap behavior."
+        },
+        "visible_supported": {
+          "confusion": {
+            "DWELL->DWELL": 1,
+            "NONE->CORNER": 5,
+            "NONE->POSSIBLE_WANDERING": 1
+          },
+          "direction_error": "N/A: no calibrated direction-error reference",
+          "per_kind": {
+            "CORNER": {
+              "false_negative": 1,
+              "false_positive": 5,
+              "precision": 0.0,
+              "recall": 0.0,
+              "true_positive": 0,
+              "unresolved": 1
+            },
+            "DWELL": {
+              "false_negative": 0,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "true_positive": 1,
+              "unresolved": 0
+            },
+            "ENTER": {
+              "false_negative": 3,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "true_positive": 0,
+              "unresolved": 2
+            },
+            "EXIT": {
+              "false_negative": 2,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "true_positive": 0,
+              "unresolved": 4
+            },
+            "POSSIBLE_WANDERING": {
+              "false_negative": 1,
+              "false_positive": 1,
+              "precision": 0.0,
+              "recall": 0.0,
+              "true_positive": 0,
+              "unresolved": 3
+            }
+          },
+          "prediction_count": 17,
+          "trigger_midpoint_error_s": {
+            "maximum": 0.7999999999999989,
+            "mean": 0.7999999999999989,
+            "rms": 0.7999999999999989,
+            "samples": 1
+          }
+        }
+      },
+      "note": "Recipe labels operationalize movement; possible wandering is not intent.",
+      "status": "POST_FREEZE_SYNTHETIC_MEASURED",
+      "time_tolerance_s": 1.2
+    },
+    "behavior_bundle_binding_verified": true,
+    "config_sha256": "ed843f2916f4c25c5b5f42ff730349ba482356ec278ecd52df81a02264a0a73a",
+    "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+    "evaluation_truth_sha256": "5573cb6b29be20498aefa7cc42f29afe13fd614f3966a324501367339ff8d483",
+    "evaluator_policy": {
+      "ambiguous_assignment_score_margin": 0.08,
+      "behavior_time_tolerance_s": 1.2,
+      "contact_tolerance_px": 24.0,
+      "global_identity_metrics": "N/A: no global identity solver",
+      "minimum_bbox_iou": 0.1,
+      "minimum_visible_pixels": 28,
+      "reference_retrieval_max_hops": 3,
+      "reference_retrieval_window_s": 12.0,
+      "schema_version": "local.camera.evaluator-policy.v1",
+      "segment_known_identity_purity": 0.7,
+      "true_next_reference": "Conditional on GT-labeled produced segments; earliest later nonoverlap physically feasible same-actor segments; retain all earliest-start ties",
+      "true_next_uses_retrieval_window_hop_or_budget": false
+    },
+    "evaluator_policy_sha256": "05d4a094eb88c3b4dbfdca863cee13d2dfcf52f5a40ee16952673dde523fd3db",
+    "evaluator_sha256": "f6e3d6575327cdbfe8e26d517018c0e1155dc9ba6ef465ff7e4823f447296929",
+    "external_model_calls": false,
+    "fixed_pool_feature_ablations": {
+      "full": {
+        "candidate_pool_sha256": "210e24bb7ce547730a86c0275a82b1ec8ddc1b2243324e660c217a53dedec043",
+        "eligible_query_count": 8,
+        "global_false_merge_count": "N/A: no global identity solver",
+        "global_false_split_count": "N/A: no global identity solver",
+        "hard_physics_preserved": true,
+        "identity_candidate_recall_at_k": {
+          "1": 0.375,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "is_true_next_continuation_metric": false,
+        "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+        "pair_level_false_merge_count": 7,
+        "pair_level_missed_link_count": 12,
+        "predicted_link_count": 16,
+        "removed_feature": null,
+        "resolved_link_count": 10,
+        "same_identity_eligible_pair_precision": 0.3,
+        "same_identity_eligible_pair_recall": 0.2,
+        "scores_are_probabilities": false,
+        "true_link_count": 15,
+        "true_positive": 3,
+        "unresolved_link_count": 6
+      },
+      "without_appearance": {
+        "candidate_pool_sha256": "210e24bb7ce547730a86c0275a82b1ec8ddc1b2243324e660c217a53dedec043",
+        "eligible_query_count": 8,
+        "global_false_merge_count": "N/A: no global identity solver",
+        "global_false_split_count": "N/A: no global identity solver",
+        "hard_physics_preserved": true,
+        "identity_candidate_recall_at_k": {
+          "1": 0.375,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "is_true_next_continuation_metric": false,
+        "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+        "pair_level_false_merge_count": 7,
+        "pair_level_missed_link_count": 12,
+        "predicted_link_count": 16,
+        "removed_feature": "APPEARANCE",
+        "resolved_link_count": 10,
+        "same_identity_eligible_pair_precision": 0.3,
+        "same_identity_eligible_pair_recall": 0.2,
+        "scores_are_probabilities": false,
+        "true_link_count": 15,
+        "true_positive": 3,
+        "unresolved_link_count": 6
+      },
+      "without_space": {
+        "candidate_pool_sha256": "210e24bb7ce547730a86c0275a82b1ec8ddc1b2243324e660c217a53dedec043",
+        "eligible_query_count": 8,
+        "global_false_merge_count": "N/A: no global identity solver",
+        "global_false_split_count": "N/A: no global identity solver",
+        "hard_physics_preserved": true,
+        "identity_candidate_recall_at_k": {
+          "1": 0.75,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "is_true_next_continuation_metric": false,
+        "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+        "pair_level_false_merge_count": 5,
+        "pair_level_missed_link_count": 9,
+        "predicted_link_count": 16,
+        "removed_feature": "SPACE",
+        "resolved_link_count": 11,
+        "same_identity_eligible_pair_precision": 0.5454545454545454,
+        "same_identity_eligible_pair_recall": 0.4,
+        "scores_are_probabilities": false,
+        "true_link_count": 15,
+        "true_positive": 6,
+        "unresolved_link_count": 5
+      },
+      "without_time": {
+        "candidate_pool_sha256": "210e24bb7ce547730a86c0275a82b1ec8ddc1b2243324e660c217a53dedec043",
+        "eligible_query_count": 8,
+        "global_false_merge_count": "N/A: no global identity solver",
+        "global_false_split_count": "N/A: no global identity solver",
+        "hard_physics_preserved": true,
+        "identity_candidate_recall_at_k": {
+          "1": 0.625,
+          "3": 0.75,
+          "5": 0.875
+        },
+        "is_true_next_continuation_metric": false,
+        "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+        "pair_level_false_merge_count": 6,
+        "pair_level_missed_link_count": 10,
+        "predicted_link_count": 16,
+        "removed_feature": "TIME",
+        "resolved_link_count": 11,
+        "same_identity_eligible_pair_precision": 0.45454545454545453,
+        "same_identity_eligible_pair_recall": 0.3333333333333333,
+        "scores_are_probabilities": false,
+        "true_link_count": 15,
+        "true_positive": 5,
+        "unresolved_link_count": 5
+      }
+    },
+    "formal_phase1_acceptance": false,
+    "freeze_sha256": "292d9a2068756a289776b4ff564ffcfe8c3571a64e588e045c953f3d58263468",
+    "geometry": {
+      "candidate_count": 78,
+      "formal_route_Coverage_at_K": "N/A: separate formal gates remain blocked",
+      "hard_speed_violation_count": 0,
+      "outside_configured_region_count": 0,
+      "projection_authority": "SYNTHETIC_CONFIG"
+    },
+    "inference_sha256": "3875bf512dc3482477b4c3986e2ef744c03b217e82eb868b038a7a6e087789f9",
+    "limitations": [
+      "Metrics use bounded evaluation-only pixel labels; unresolved identities are retained.",
+      "Every provisional association is a hypothesis; no global identity is certified.",
+      "No actor/appearance or camera/place generalization is claimed.",
+      "Candidate identity recall is distinct from formal route Coverage@K.",
+      "Missing reference metrics stay N/A; original formal gates remain effective."
+    ],
+    "model_id": "synthetic-local-camera-v1",
+    "origin": "SYNTHETIC",
+    "pixels_and_local_identity": {
+      "IDF1": "N/A: no global identity trajectory assignment is produced",
+      "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+      "bounded_detection_precision": 0.96,
+      "bounded_labeled_measurements": 144,
+      "eligible_visible_actor_contacts": 160,
+      "ground_contact_error_m": {
+        "maximum": 1.8666173777897603,
+        "mean": 0.23562966186286335,
+        "rms": 0.3045108247382402,
+        "samples": 144
+      },
+      "impure_segment_count": 6,
+      "measurement_count": 150,
+      "one_to_one_visible_contact_recall": 0.9,
+      "pixel_contact_error_px": {
+        "maximum": 16.76720692530351,
+        "mean": 3.213221041313729,
+        "rms": 3.7199694370285434,
+        "samples": 144
+      },
+      "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+      "unresolved_segment_count": 4,
+      "within_local_track_id_switches": 8
+    },
+    "retrieval": {
+      "bytes_read": 0,
+      "complete_scope_pair_coverage": 1.0,
+      "crops_read": 0,
+      "expansions": 54,
+      "frames_read": 0,
+      "full_global_pair_count_for_comparison_only": 153,
+      "independent_complete_scope_candidate_count": 115,
+      "index_entries_touched": 143,
+      "inventory": "Independent evaluator full scope/time/reachability inventory; no runtime GT",
+      "pairs_considered": 115,
+      "query_latency_ms": "N/A: measured external telemetry must be supplied by runner",
+      "records_read": 161,
+      "reference_retrieval_max_hops": 3,
+      "reference_retrieval_window_s": 12.0,
+      "retrieved_pair_count": 115,
+      "retrieved_same_identity_eligible_pair_count": 15,
+      "retrieved_true_next_successor_pair_count": 8,
+      "same_identity_eligible_pair_count": 15,
+      "same_identity_eligible_pair_miss_count": 0,
+      "same_identity_eligible_pair_retrieval_recall": 1.0,
+      "scope_completeness_is_formal_graph_proof": false,
+      "stop_reasons": {
+        "FINITE_LOOKUP_WINDOW_EXHAUSTED": 18
+      },
+      "touched_camera_count_per_query": [
+        3,
+        3,
+        3,
+        3,
+        1,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "true_next_reference_condition": "Detected, GT-labeled produced segments only; earliest later nonoverlap physically feasible same-actor segment(s), all start-time ties",
+      "true_next_reference_has_window_hop_or_record_budget": false,
+      "true_next_successor_miss_count": 0,
+      "true_next_successor_pair_count": 8,
+      "true_next_successor_retrieval_recall": 1.0,
+      "truncation_reasons": {},
+      "undetected_full_actor_trajectory_recall": "N/A: reference is conditional on produced segments"
+    },
+    "run_id": "local-camera-test-v1",
+    "schema_version": "local.camera.evaluation.v1",
+    "split": "test",
+    "status": "E1_SYNTHETIC_PILOT_MEASURED"
+  },
+  "event_counts": {
+    "DWELL": 1,
+    "ENTER_DOOR": 2,
+    "EXIT_DOOR": 4,
+    "INFERRED_GAP_ALTERNATIVES": 46,
+    "LOST_NEAR_CORNER": 1,
+    "POSSIBLE_LOITERING": 4,
+    "TURN_CORNER": 6
+  },
+  "external_model_calls": false,
+  "formal_case4": "DEFERRED",
+  "formal_cases2_3_full_exit": "BLOCKED",
+  "fps": 2.5,
+  "frozen_phase2_unchanged": true,
+  "hashes": {
+    "cards_receipt_sha256": "e05b6e6f6a0bbd348be3909c3443baaa62fb59f8ec3a239ca4e4cd3c52d3a904",
+    "config_sha256": "be9f1945782f15d77e93b6a5b170c1242c750f1b75b034b55a8719a4f4b83990",
+    "context_sha256": "e349eba8782b78937700b7bf1f83921c5fb458e62d8c3975e90bda0ee6fb0132",
+    "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+    "evaluation_policy": {
+      "behavior_time_tolerance_s": 1.2,
+      "contact_tolerance_px": 24.0,
+      "reference_max_hops": 3,
+      "reference_window_s": 12.0,
+      "segment_purity": 0.7,
+      "version": "development-fixed-evaluator-v1"
+    },
+    "evaluation_sha256": "7d3e3c88a32adb62fae9d7ad31f877637591bfe9a1264e072094727741104283",
+    "event_hashes": {
+      "photos_only": "01d28aa31270bdfb451f7866079ef577de0aab5dcf8d5e4617a409e5ae67fac5",
+      "photos_plus_observations": "01d28aa31270bdfb451f7866079ef577de0aab5dcf8d5e4617a409e5ae67fac5"
+    },
+    "receipts": {
+      "photos_only": {
+        "binding": {
+          "clock_id": "synthetic-seconds-v1",
+          "config_sha256": "be9f1945782f15d77e93b6a5b170c1242c750f1b75b034b55a8719a4f4b83990",
+          "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+          "media_sha256": "8961a1b5b4d5456a7fca387e69ccdc840844199d877886aab9871c9235b7bfbf",
+          "model_id": "synthetic-local-camera-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "place_id": "synthetic-local-camera",
+          "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+          "registry_sha256": "7da7c1aafda6397cd61f95a5a4db3835e7c627360bda9a4f428b71072d97f937",
+          "registry_version": "local-camera-index.v1",
+          "run_id": "local-camera-test-v1",
+          "source_ref": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "spatial_context_id": "context:synthetic-local-camera-v1"
+        },
+        "inference_sha256": "3875bf512dc3482477b4c3986e2ef744c03b217e82eb868b038a7a6e087789f9",
+        "measurement_sha256": "4ce3b998b7787b013adacad22234a77ed72bbd23d14c683150af3b62b5b6a36b",
+        "receipt_sha256": "292d9a2068756a289776b4ff564ffcfe8c3571a64e588e045c953f3d58263468",
+        "schema_version": "simulation.freeze.v1"
+      },
+      "photos_plus_observations": {
+        "binding": {
+          "clock_id": "synthetic-seconds-v1",
+          "config_sha256": "be9f1945782f15d77e93b6a5b170c1242c750f1b75b034b55a8719a4f4b83990",
+          "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+          "media_sha256": "8961a1b5b4d5456a7fca387e69ccdc840844199d877886aab9871c9235b7bfbf",
+          "model_id": "synthetic-local-camera-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_plus_observations",
+          "place_id": "synthetic-local-camera",
+          "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+          "registry_sha256": "7da7c1aafda6397cd61f95a5a4db3835e7c627360bda9a4f428b71072d97f937",
+          "registry_version": "local-camera-index.v1",
+          "run_id": "local-camera-test-v1",
+          "source_ref": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "spatial_context_id": "context:synthetic-local-camera-v1"
+        },
+        "inference_sha256": "3875bf512dc3482477b4c3986e2ef744c03b217e82eb868b038a7a6e087789f9",
+        "measurement_sha256": "4ce3b998b7787b013adacad22234a77ed72bbd23d14c683150af3b62b5b6a36b",
+        "receipt_sha256": "2effefbd9b4825c8241ffc8d446791df50b84d81a3850bd678dc70661bf3cf02",
+        "schema_version": "simulation.freeze.v1"
+      }
+    },
+    "registry_sha256": "7da7c1aafda6397cd61f95a5a4db3835e7c627360bda9a4f428b71072d97f937",
+    "source_sha256": "91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+    "tool_receipt_sha256": "bc64ddb20f327909ec68edb0e9d0b6b68a873ca626014f54cd26354727e8f285",
+    "topology_sha256": "10a3647ba8712371928613bdf53c40516087bf5666d3c54b776e297fcda03043"
+  },
+  "independent_reproduction": {
+    "checks": {
+      "behavior_config_sha256": true,
+      "config_sha256": true,
+      "evaluation_sha256": true,
+      "event_hashes": true,
+      "frame_links": true,
+      "receipts": true,
+      "registry_sha256": true,
+      "runtime_config_sha256": true,
+      "topology_sha256": true
+    },
+    "independent_empty_output_rebuild": true,
+    "path_sensitive_package_manifest_excluded": true,
+    "run_id": "local-camera-test-v1"
+  },
+  "limitations": [
+    "Conditional detected-segment reference, not undetected full trajectory recall.",
+    "No global identity solver, IDF1 or school/appearance/place generalization.",
+    "Corner/possible-loitering false positives remain; gap behavior metrics N/A.",
+    "Import/pixel/media costs are separate from indexed query counts and latency.",
+    "Fresh-output reproduction is not formal full clean-checkout certification."
+  ],
+  "local_track_count": 18,
+  "main_unchanged": true,
+  "measurement_count": 150,
+  "mode_comparison_identical_inference_and_events": true,
+  "query_telemetry": [
+    {
+      "bytes_read": 0,
+      "crops_read": 0,
+      "frames_read": 0,
+      "index_entries_touched_max": 25,
+      "latency_ms_median": 0.21625000044878107,
+      "latency_ms_p95": 0.43841700062330347,
+      "mode": "photos_only",
+      "note": "Local frozen event query; media and build costs are separate.",
+      "population": "4 cameras \u00d7 3 windows \u00d7 10 repeats",
+      "query_count": 120,
+      "records_read_max": 21,
+      "run_id": "local-camera-test-v1",
+      "stage": "RESULTS"
+    },
+    {
+      "bytes_read": 0,
+      "crops_read": 0,
+      "frames_read": 0,
+      "index_entries_touched_max": 25,
+      "latency_ms_median": 0.21720800032198895,
+      "latency_ms_p95": 0.4388329998619156,
+      "mode": "photos_plus_observations",
+      "note": "Local frozen event query; media and build costs are separate.",
+      "population": "4 cameras \u00d7 3 windows \u00d7 10 repeats",
+      "query_count": 120,
+      "records_read_max": 21,
+      "run_id": "local-camera-test-v1",
+      "stage": "RESULTS"
+    }
+  ],
+  "raw_media_and_gt_publication": false,
+  "rgb_frame_count": 244,
+  "run_id": "local-camera-test-v1",
+  "same_run_poisoning": {
+    "measurement_inference_behavior_tool_hashes_unchanged": true,
+    "poisoned_and_removed_gt_recipe_reference": true,
+    "run_id": "local-camera-test-v1",
+    "same_pixels_calibration_config": true
+  },
+  "schema_version": "local.camera.pilot-validation.v1",
+  "source_inventory": {
+    "configs/engineering/local_camera_v1.json": "63a120e69a8dca4c70687e17b6cdbff7a93e66fce698c3b94f172441a62635d1",
+    "src/amidst/engineering/local_association.py": "1c008addf5391ad5aeca2be43e14e90cd18507b6b89ae9c1afc6a79a49440e20",
+    "src/amidst/engineering/local_behavior.py": "2eea10f22934bc39edcaae9e9dcb069d201472ebde994c3749af75fd0ad8e71c",
+    "src/amidst/engineering/local_evaluation.py": "f6e3d6575327cdbfe8e26d517018c0e1155dc9ba6ef465ff7e4823f447296929",
+    "src/amidst/engineering/local_index.py": "b88547a9cc546be4b2f0a8ca156981408bafcc455870226edef731f58a6ddfec",
+    "src/amidst/engineering/local_pilot.html": "2acb4735ad21e484c064e8a7541226b281874b4d7ec37cb636ab905489e181dc",
+    "src/amidst/engineering/local_pilot.py": "de1ca8e31a5612d05853d129e102c074f76c229186632c8d1a0a6bdc2342426f",
+    "src/amidst/engineering/local_service.py": "725b05e167930aa4c796c89f488ecb59c89fd3bb4f83cb3f8adeceeaf6e28862",
+    "src/amidst/engineering/research_scene.py": "e1b20d0dff5f3de3f98373bff4877a221a5b7543dffdffce8dff0d1a56e8c632",
+    "tests/engineering/test_local_association.py": "d2b5a2c952f5870cb57533a7b99c0f6036b6678199328d88d259d312fdce9612",
+    "tests/engineering/test_local_behavior.py": "230b3d61ea26bf7a04e5b7427b9c47fa95b9a7b0bccc22f1b3bcade1e85a0e64",
+    "tests/engineering/test_local_index.py": "7b7a0aed7e733dac3151037b2537bc1220a5f06013344f994ef4e81579f4c5fa",
+    "tests/engineering/test_local_pilot.py": "f179343a68b9d72524fc70eeb3a1d416412a0717f800bbee3992d27cfec18315",
+    "tests/engineering/test_local_research_scene.py": "9d4f405ad6e6ba4a7a325b4a62793884279ecebebc5c0a0c20498d7c255d0122"
+  },
+  "split": "test",
+  "status": "OPERATING_E1_SYNTHETIC_PILOT",
+  "validation": {
+    "browser_ui_photos_3d_replay_verified": true,
+    "failures": 0,
+    "full_seconds": 206.01,
+    "full_tests": 2427,
+    "git_diff_check": "PASS",
+    "http_requests": 34,
+    "mock_tool_calls": 138,
+    "physical_evidence_required": true,
+    "ruff": "PASS",
+    "skipped": 0,
+    "strict_mypy_source_files": 145
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "local.camera.research.config.v1",
+  "generator_version": "pinhole-local-research-v1",
+  "authority": "SYNTHETIC_CONFIG",
+  "model_id": "synthetic-local-camera-v1",
+  "revision": "1",
+  "fps": 2.5,
+  "duration_s": 24.0,
+  "image_size": [240, 180],
+  "focal_px": 210.0,
+  "policy_frozen_before_test": true,
+  "split_unit": "WHOLE_TRAJECTORY",
+  "appearance_generalization_claim": false,
+  "place_generalization_claim": false,
+  "cameras": [
+    {"camera_id": "WEST", "position": [2.5, -6.5, 4.6], "target": [2.5, 2.0, 0.6], "coverage": [0.0, 0.0, 5.2, 4.0], "light": 0.98},
+    {"camera_id": "DOOR", "position": [7.0, -6.0, 4.2], "target": [6.0, 2.0, 0.6], "coverage": [4.8, 0.0, 8.0, 4.0], "light": 0.90},
+    {"camera_id": "CORNER", "position": [13.5, -5.0, 5.0], "target": [10.0, 2.5, 0.6], "coverage": [8.7, 0.0, 11.5, 5.0], "light": 1.05},
+    {"camera_id": "ISLAND", "position": [14.5, 0.0, 4.5], "target": [14.5, 6.5, 0.6], "coverage": [13.0, 5.0, 16.0, 8.0], "light": 0.95}
+  ],
+  "directed_camera_edges": [["WEST", "DOOR"], ["DOOR", "WEST"], ["DOOR", "CORNER"], ["CORNER", "DOOR"]],
+  "regions": [
+    {"region_id": "west", "bounds_xy_m": [0.0, 0.0, 6.0, 4.0]},
+    {"region_id": "east", "bounds_xy_m": [6.0, 0.0, 10.5, 4.0]},
+    {"region_id": "corner-near", "bounds_xy_m": [9.0, 1.0, 11.0, 3.0]},
+    {"region_id": "north-branch", "bounds_xy_m": [9.0, 2.0, 11.0, 5.0]},
+    {"region_id": "island", "bounds_xy_m": [13.0, 5.0, 16.0, 8.0]}
+  ],
+  "portals": [{"portal_id": "door-west-east", "outside_region_id": "west", "inside_region_id": "east", "line_xy_m": [[6.0, 0.5], [6.0, 3.5]], "enter_normal_xy": [1.0, 0.0]}],
+  "corners": [{"corner_id": "east-north-corner", "approach_region_id": "east", "departure_region_id": "north-branch", "near_region_id": "corner-near"}],
+  "static_pillar": {"min_xyz": [3.4, 0.8, 0.0], "max_xyz": [3.9, 1.3, 2.4]},
+  "association_policy": {"max_speed_m_s": 3.0, "max_association_gap_s": 12.0, "projection_uncertainty_m": 0.5},
+  "splits": {
+    "development": {
+      "actors": [
+        {"actor_identity": "development-blue-main", "scenario": "enter_exit_corner_revisit_dwell", "shirt_rgb": [40, 98, 196], "waypoints": [[0.0, 1.0, 2.0], [6.0, 10.0, 2.0], [8.0, 10.0, 4.2], [10.0, 10.0, 2.0], [14.0, 4.5, 2.0], [16.0, 4.5, 2.0], [21.0, 10.0, 2.0], [24.0, 10.5, 2.0]]},
+        {"actor_identity": "development-blue-cross", "scenario": "similar_crossing_occlusion", "shirt_rgb": [43, 101, 191], "waypoints": [[3.0, 8.0, 2.35], [9.0, 1.0, 2.35], [13.0, 5.8, 2.35], [17.0, 5.0, 2.35]]},
+        {"actor_identity": "development-red-approach", "scenario": "door_approach_no_cross", "shirt_rgb": [190, 61, 47], "waypoints": [[16.0, 2.0, 1.2], [19.0, 5.7, 1.2], [22.0, 2.5, 1.2]]},
+        {"actor_identity": "development-island", "scenario": "disconnected_same_appearance", "shirt_rgb": [40, 98, 196], "waypoints": [[4.0, 13.5, 6.3], [10.0, 15.5, 6.3]]}
+      ]
+    },
+    "test": {
+      "actors": [
+        {"actor_identity": "test-blue-main", "scenario": "enter_exit_corner_revisit_dwell", "shirt_rgb": [40, 98, 196], "waypoints": [[0.0, 0.8, 2.0], [6.4, 10.0, 2.0], [8.4, 10.0, 4.3], [10.4, 10.0, 2.0], [14.4, 4.4, 2.0], [17.2, 4.4, 2.0], [22.0, 10.0, 2.0], [24.0, 10.7, 2.0]]},
+        {"actor_identity": "test-blue-cross", "scenario": "similar_crossing_occlusion", "shirt_rgb": [43, 101, 191], "waypoints": [[3.2, 8.0, 2.32], [9.2, 0.8, 2.32], [13.2, 5.7, 2.32], [17.2, 5.0, 2.32]]},
+        {"actor_identity": "test-red-approach", "scenario": "door_approach_no_cross", "shirt_rgb": [190, 61, 47], "waypoints": [[16.4, 2.0, 1.2], [19.6, 5.7, 1.2], [23.2, 2.4, 1.2]]},
+        {"actor_identity": "test-corner-turnback", "scenario": "corner_turnback", "shirt_rgb": [78, 158, 74], "waypoints": [[14.0, 8.8, 3.2], [17.0, 9.7, 2.5], [20.0, 8.8, 3.2]]},
+        {"actor_identity": "test-island", "scenario": "disconnected_same_appearance", "shirt_rgb": [40, 98, 196], "waypoints": [[4.4, 13.5, 6.3], [10.4, 15.5, 6.3]]},
+        {"actor_identity": "test-fast-negative", "scenario": "physically_too_fast_negative", "shirt_rgb": [40, 98, 196], "waypoints": [[11.2, 4.0, 3.0], [11.6, 9.3, 3.0], [12.0, 9.7, 3.0]]},
+        {"actor_identity": "test-blind-slow", "scenario": "long_blind_alternative_endpoints", "shirt_rgb": [180, 146, 45], "waypoints": [[0.0, 7.5, 3.4], [1.2, 8.1, 3.4], [4.8, 8.3, 3.4], [8.4, 8.8, 3.4], [10.0, 10.0, 3.4]]}
+      ]
+    }
+  }
+}

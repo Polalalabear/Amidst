@@ -12,6 +12,15 @@
 
 影像 producer 從未加 GT 標註的 RGB pixels 量測，不讀 simulator object-index／segmentation／depth、GT bbox／身分／位置或 recipe/reference annotations。合成照片經影像演算法處理仍屬 SYNTHETIC 來源，另外保留量測 producer／版本／輸入 hashes；既有模擬 UV 不改稱影像量測。Local tracks 使用 model/run/camera namespace；跨鏡頭身分只形成 provisional hypotheses，adapter 保存原 records 映射，不把 GT actor ID 填入既有 target_id 或回寫 canonical records。
 
+### 局部研究 extension
+
+[局部 pilot](LOCAL_CAMERA_PILOT.md) 使用原八個 typed request schemas 與 server-owned
+SessionGuard，新增versioned local behavior composition與import-built camera/time／region／portal index。
+Query需camera或region anchor，不以全snapshot/catalog讀回後過濾；INPUT兩模式禁止region filter，
+photos-only禁止stored measurements，RESULTS驗同run freeze／events／config／source。所有候選與
+原Graph排序保留，media/ref直接取用，private locators與GT仍留在local export/evaluator。
+新loader與原v1／simulation-v2隔離，精度／缺失／scope-limited不確定性見curated receipt。
+
 ### Agent 定位
 
 Agent 根據調查意圖定位資源、調用查詢工具、取得必要證據並解釋結果。第一版以 MockAgent 和記錄可重播的工具流程展示。Projection、world-to-region、navigation、graph search、collision 與 reconstruction 由確定性服務處理。候選和時間假設保持原順序與原資料；語意判斷不改寫已證明的物理限制。

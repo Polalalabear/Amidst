@@ -1,0 +1,181 @@
+{
+  "schema_version": "local.camera.http-smoke.v1",
+  "base": "LOOPBACK_ONLY",
+  "requests": [
+    {
+      "method": "GET",
+      "status": 200,
+      "response_sha256": "0a0aec73e98b84505ada35792b6fe3a28381979879b4e866d02f73b71a950163"
+    },
+    {
+      "tool": "resolve_place",
+      "status": 200,
+      "response_sha256": "dcc6cf51ed6d6561c9c597d08ad1bb391e2bfe631757c11950bb0f2694547be1"
+    },
+    {
+      "tool": "list_cameras",
+      "status": 200,
+      "response_sha256": "15f3f1e233388aca7c9775f0c580a8f8f2d69b6cf45c275f4539077e579837d9"
+    },
+    {
+      "tool": "query_observations",
+      "status": 200,
+      "response_sha256": "055972c4938a44368cd2288fcd04b0c5d59018080f6d2c469f8db85bacaffe7a"
+    },
+    {
+      "tool": "query_events",
+      "status": 200,
+      "response_sha256": "c717382284979caf81377e0a50064bd8e3be1d3da768243f8d9652a9de21fda5"
+    },
+    {
+      "tool": "get_event_summary",
+      "status": 200,
+      "response_sha256": "507fea925da5129160369f5e5dd91b100aba3dbade171daf5e85fd228daceec9"
+    },
+    {
+      "tool": "get_event_detail",
+      "status": 200,
+      "response_sha256": "008ab6be0284dc337b129c48c224ff0a6995003988c9e1e135edeb1e219e9d38"
+    },
+    {
+      "tool": "get_media",
+      "status": 200,
+      "response_sha256": "c1079b503863cc19d097669cb82d1c72d64dc636b2c85587413f03c1dd17fdc7"
+    },
+    {
+      "tool": "get_media",
+      "status": 200,
+      "response_sha256": "88006931c41acc92dea63345941215424a2a765b31525b18681f65557f41b2ea"
+    },
+    {
+      "tool": "get_media",
+      "status": 200,
+      "response_sha256": "bbf4e8b9326198803fd99ca7157d603427778d42e908e38ec960cc3c936b0dac"
+    },
+    {
+      "tool": "get_media",
+      "status": 200,
+      "response_sha256": "6711aa004abe851c657271e7e4c47301bb7ffc5d147c97afd7e413b5370cbcb0"
+    },
+    {
+      "tool": "get_replay",
+      "status": 200,
+      "response_sha256": "4422a236824521c5a7978a4bc5c28de6bc90917cc43fb65672a87fd5c0c9a52b"
+    },
+    {
+      "tool": "get_event_summary",
+      "status": 200,
+      "response_sha256": "507fea925da5129160369f5e5dd91b100aba3dbade171daf5e85fd228daceec9"
+    },
+    {
+      "tool": "list_cameras",
+      "status": 400,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "tool": "get_media",
+      "status": 400,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "tool": "query_events",
+      "status": 400,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "tool": "query_events",
+      "status": 400,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "method": "GET",
+      "status": 200,
+      "response_sha256": "de7806ba30647f352a895a880beec751c5598b15579f5fecf2e77ff3cab33822"
+    },
+    {
+      "tool": "resolve_place",
+      "status": 200,
+      "response_sha256": "0af50aedb82795c75e5c1d04cc3b83ebed05e95213414feed46c672721b9de5d"
+    },
+    {
+      "tool": "list_cameras",
+      "status": 200,
+      "response_sha256": "85ced7510cc755e8c96cbd6559e6ee5fade1819bcf1f773acd94dd9ed4542cc0"
+    },
+    {
+      "tool": "query_observations",
+      "status": 200,
+      "response_sha256": "ddc322c1849898a895212abfeb151cee8dc474588027dd5cd8f91c89f3a6c3f7"
+    },
+    {
+      "tool": "query_events",
+      "status": 200,
+      "response_sha256": "92ecda11f728f2305e78c567af6fe3cc6d02d21c59bcefe9200afbb91723d22f"
+    },
+    {
+      "tool": "get_event_summary",
+      "status": 200,
+      "response_sha256": "507fea925da5129160369f5e5dd91b100aba3dbade171daf5e85fd228daceec9"
+    },
+    {
+      "tool": "get_event_detail",
+      "status": 200,
+      "response_sha256": "008ab6be0284dc337b129c48c224ff0a6995003988c9e1e135edeb1e219e9d38"
+    },
+    {
+      "tool": "get_media",
+      "status": 200,
+      "response_sha256": "c1079b503863cc19d097669cb82d1c72d64dc636b2c85587413f03c1dd17fdc7"
+    },
+    {
+      "tool": "get_media",
+      "status": 200,
+      "response_sha256": "88006931c41acc92dea63345941215424a2a765b31525b18681f65557f41b2ea"
+    },
+    {
+      "tool": "get_media",
+      "status": 200,
+      "response_sha256": "bbf4e8b9326198803fd99ca7157d603427778d42e908e38ec960cc3c936b0dac"
+    },
+    {
+      "tool": "get_media",
+      "status": 200,
+      "response_sha256": "6711aa004abe851c657271e7e4c47301bb7ffc5d147c97afd7e413b5370cbcb0"
+    },
+    {
+      "tool": "get_replay",
+      "status": 200,
+      "response_sha256": "4422a236824521c5a7978a4bc5c28de6bc90917cc43fb65672a87fd5c0c9a52b"
+    },
+    {
+      "tool": "get_event_summary",
+      "status": 200,
+      "response_sha256": "507fea925da5129160369f5e5dd91b100aba3dbade171daf5e85fd228daceec9"
+    },
+    {
+      "tool": "list_cameras",
+      "status": 400,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "tool": "get_media",
+      "status": 400,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "tool": "query_events",
+      "status": 400,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "tool": "query_events",
+      "status": 400,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    }
+  ],
+  "request_count": 34,
+  "all_eight_typed_tools": true,
+  "repeat_reads_stable": true,
+  "candidate_order_preserved": true,
+  "external_model_calls": false
+}
