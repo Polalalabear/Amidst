@@ -1,0 +1,350 @@
+{
+  "schema_version": "phase1-persistent-runtime-recovery-v1",
+  "recorded_at": "2026-10-08T02:53:49.076864+00:00",
+  "status": "PASS_RUNTIME_REVALIDATION_PHASE1_FULL_EXIT_BLOCKED",
+  "starting_code_commit": "5c2b67b9c48ae4028fd9fb2e7636f6b3af5121c0",
+  "branch": "phase1/finalization-sprint",
+  "worktree": "/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization",
+  "canonical_asset_checkout": "/Users/polalabear/Developer/amidst",
+  "canonical_checkout_head": "c5956dc825f669e28e2694578be0fed97432a786",
+  "old_temporary_paths_currently_absent": {
+    "/private/tmp/amidst-phase1-finalization": true,
+    "/private/tmp/amidst-phase1-finalization-fresh-20261007": true,
+    "/private/tmp/amidst-collision-fresh-v7-8cb0df3": true
+  },
+  "restoration": "Existing published branch restored without history rewrite; original raw inputs copied only after exact pin verification.",
+  "environment": {
+    "python": "3.12.12",
+    "installation": "uv sync --locked --offline --python 3.12.12",
+    "uv_lock_sha256": "c2fa5d90c4333857c2f4b1fd53abe8b281da1062c68ec10b6884cd1159bef521",
+    "blender": "5.2.1 LTS",
+    "blender_build": "9e2066aef7ef"
+  },
+  "source_scene": {
+    "path": "/Users/polalabear/Developer/amidst/blender/school_v3.blend",
+    "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "size_bytes": 468300506,
+    "mtime_ns": 1791198236746106977,
+    "bytes_size_mtime_match_original": true,
+    "saved_or_modified": false
+  },
+  "hydration": {
+    "status": "PASS",
+    "original_run_verified_files": 297,
+    "copied": 187,
+    "existing_matching": 110,
+    "review_bound_input_count": 29,
+    "durable_artifact_count": 272,
+    "durable_manifest_sha256": "923eb5f94cbe7bd1e0b45d5185b8189c07f62345c4c067d0fefc148e71e34187",
+    "original_57_frames_retained": true,
+    "formal_outputs_used": false,
+    "historical_inputs_replaced": false
+  },
+  "physical_evidence": {
+    "status": "VERIFIED",
+    "command": "uv run --offline --no-sync python -m amidst.materialize_physical_evidence --source-scene /Users/polalabear/Developer/amidst/blender/school_v3.blend --verify-only",
+    "artifact_count": 14,
+    "all_original_sha_and_sizes_match": true
+  },
+  "engineering_validation": {
+    "ruff": {
+      "status": "PASS",
+      "command": "uv run --offline --no-sync ruff check ."
+    },
+    "mypy": {
+      "status": "PASS",
+      "files": 111,
+      "command": "uv run --offline --no-sync mypy"
+    },
+    "source_cli_mypy": {
+      "status": "PASS",
+      "command": "uv run --offline --no-sync mypy --strict scripts/discover_source_branch_scope.py"
+    },
+    "first_full_suite": {
+      "passed": 1977,
+      "failed": 0,
+      "skipped": 1,
+      "elapsed_s": 208.26,
+      "skip_reason": "Three original frozen topology JSON prerequisites missing; original files subsequently hash-verified and restored, test unchanged."
+    },
+    "final_full_suite": {
+      "status": "PASS",
+      "command": "BLENDER_BIN=/Applications/Blender.app/Contents/MacOS/Blender AMIDST_PHYSICAL_SOURCE_SCENE=/Users/polalabear/Developer/amidst/blender/school_v3.blend uv run --offline --no-sync pytest --require-physical-evidence -rs",
+      "passed": 1978,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_s": 116.28,
+      "physical_evidence_required_from_start": true,
+      "test_requirements_relaxed": false
+    }
+  },
+  "protected_inputs": {
+    "count": 30,
+    "all_sha_match_prior_checkpoint": true,
+    "files": [
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "human_review/apply_decisions.py",
+        "sha256": "81aa262d4a596ba8fcee5164cc3ad25210d55eca22bbc1602d8300dd5f732d1d"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "human_review/certificate_application.py",
+        "sha256": "13c024966fed788b8e617d521caf41283de454938ecc4fc340c6d6cd0fac2c03"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "scripts/phase1_projection_policy.py",
+        "sha256": "f6f7546641e26e4c154e0cd693e57597ac294ccb042fd0ad74441cc32a0786d6"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/architectural_scale.py",
+        "sha256": "cc85249ee7563663eae245f83babc8d8a66913671f74a578bd55db4d2ca81381"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/benchmark/baselines.py",
+        "sha256": "57864e9c0af1eb7e0f0b345e71c71c0878fede5f2dfd1574280ef4b0a73f52e1"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/datasets/pilot.py",
+        "sha256": "ad2d075250487357d1fc391dbbdd74cfc86719e9059044025badc9dc783d8792"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/datasets/pilot_topology.py",
+        "sha256": "980e3670edba58769b75fdea4a115f0a1b135d984787998fb6429eaf97e4caa3"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/domain/metric_config.py",
+        "sha256": "50b349d6300494d7cd0a89818270cee713a23de441855d8d536ebaabdc4a7532"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/domain/reconstruction.py",
+        "sha256": "9641a3072ed91d4c8ac4f7b35a5560089e052e9397f1bec81401428f62af963e"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/domain/search.py",
+        "sha256": "c6719aed6832fb6c0ce7217dd254e4cca55b4f6fdf4c8c47442189b534158597"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/evaluation/configured.py",
+        "sha256": "72fff0522aaa5d6d3cf6d73692e8294fcea232bd967313e0a4daa751e8ba5412"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/graph/engine.py",
+        "sha256": "f0c9e018067f05666056217d65afdaeeff651dbb8bf6a62e5721245b919c0562"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/local_physical_scopes.py",
+        "sha256": "52514c7cc1f787f129289b09a827b8ee71c2e3afa1c1642d4eee4f3a9dfae752"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/local_semantic_review.py",
+        "sha256": "edff4f0f06b0d8594f61f7851d8d73cb84f6fccd51ecbf4e151a671324a9e6e4"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/navigation/graph.py",
+        "sha256": "f1e33b669b7d8ce8235830390f4c9c63e1983b89016fa6f95862192de98b2b5f"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/navigation/network.py",
+        "sha256": "39b78b62b65ec2903ded2535593cc6b54ef69066a067fc8b16bc29e0edb13c97"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/navigation/topology.py",
+        "sha256": "f33e49cf07dc194d32fbb9f34a560c22936842ab844d4af56d6e645041916fb0"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/observation/aggregation.py",
+        "sha256": "0b2e8c07bbc90808dd1a6f3db5811fcbb56b40d5fddb13be86b53a9d93ba87c4"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/obstacle_volume_authority.py",
+        "sha256": "9b0cc162525b22f7464c59c3f6c6584901e6e7679eaf561771a8d8d5ccc7a866"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/physical_authority.py",
+        "sha256": "4a2e57f155bea0a2b41ced7db55357577433e7a99fe7244256a1506bad6fa622"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/physical_collision.py",
+        "sha256": "5ab54116a357e28fae7347c56c3f2facfb79dc1d9b9e49fcf8e628bba65109db"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/physical_policy_contract.py",
+        "sha256": "e0f4870a758ca3034551e138de1c6eb7c3c83b9f8bda2d229342033cd262e5b3"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/physical_units.py",
+        "sha256": "caef2fe9dd7dbb070e36769cf391adc1bb2fe38153630157d83098f2429353cb"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/reconstruction/blind_gap.py",
+        "sha256": "8338e8033ebe0d5035151974da938d3fd368ab36ca1ead17784a237f509a183f"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/scene_geometry.py",
+        "sha256": "68475d49580c31fe35140241b63fabef10486db720213f5e64317a014751a64f"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "src/amidst/walkable_clearance.py",
+        "sha256": "52959a9e502306943892674710aef6de9a51deb5dcb6d49ad0226996162d58bd"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "human_review/decisions.json",
+        "sha256": "adf08bafb98f21006041beab990036d124a5f4c9efca12e40d89e4128d95a5a9"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "configs/benchmarks/protocol_v1.json",
+        "sha256": "2f88aabe108c217aac43466b118de75fbed53ba16c6068cb24bf082bae714ac7"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "configs/finalization/reviewed_case_inference_lock_v2.json",
+        "sha256": "6507483100dda089341a317bd412946fecafedcfa4c4ac3a6b75d8b7171c8f24"
+      },
+      {
+        "byte_identical_to_collision_commit": true,
+        "path": "configs/finalization/reviewed_case_inference_with_collision_v3.json",
+        "sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c"
+      }
+    ]
+  },
+  "source_test_config_producers_changed": false,
+  "original_approvals_modified": false,
+  "corridor_numerical_regeneration": {
+    "status": "PASS_LOCAL_UNION_REGENERATED",
+    "actual_source_verified": true,
+    "all_original_numeric_proofs_regenerated": true,
+    "proposal_content_sha256": "7524042121654d399188f52afd2bcfca29effb61287f96eb9f3da2159ddd1bad",
+    "decision_content_sha256": "702c2f7ca8165fc7669072847e26f38174b6525ed104999e35b467d23cebda09",
+    "certificate_content_sha256": "f8fe588620b4f871d49f6ed50d61d6185c8648b5551d9b7528dfb7c696cb06c5",
+    "case_readiness": "NOT_RUN"
+  },
+  "fresh_existing_office_run": {
+    "path": "data/finalization/reviewed_run_recovery_20261008",
+    "export": "SUCCESS",
+    "sampling_fps": 5,
+    "case_timestamp_counts": {
+      "case1": 50,
+      "case3": 925
+    },
+    "dataset_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+    "inference_status": "FROZEN_BEFORE_EVALUATION",
+    "primary_freeze_sha256": "add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de",
+    "evaluation_status": "PHASE1_FINALIZATION_BLOCKED",
+    "benchmark_row_count": 27,
+    "ablation_row_count": 45,
+    "ready_case_reproduction_status": "PASS",
+    "demos": [
+      {
+        "case_id": "case1",
+        "rrd": {
+          "path": "data/finalization/reviewed_run_recovery_20261008/evaluation/demos/case1/reviewed.rrd",
+          "sha256": "71559102cd15f1f678e7ec5ad39ae3ee85f4173a83e85465039ecdf4035e9636",
+          "size_bytes": 141304
+        },
+        "preview": {
+          "path": "data/finalization/reviewed_run_recovery_20261008/evaluation/demos/case1/preview.png",
+          "sha256": "f5caa4f52d443b35b6c87005497d45feeada1c908a8f53b2406dbbd092680866",
+          "size_bytes": 36866
+        },
+        "presentation": {
+          "path": "data/finalization/reviewed_run_recovery_20261008/evaluation/demos/case1/presentation.json",
+          "sha256": "7861138cd2a3ac4474b094533233447c1beced26790febe12116141a4e710c0b",
+          "size_bytes": 11838
+        },
+        "reader_verified": true,
+        "primary_ground_truth_logged": false,
+        "preview_visually_checked": true
+      },
+      {
+        "case_id": "case3",
+        "rrd": {
+          "path": "data/finalization/reviewed_run_recovery_20261008/evaluation/demos/case3/reviewed.rrd",
+          "sha256": "94211b76162b7b73028ed38b6482e352e01c3e4cdb77e1aa3d5e6e36871502b6",
+          "size_bytes": 162545
+        },
+        "preview": {
+          "path": "data/finalization/reviewed_run_recovery_20261008/evaluation/demos/case3/preview.png",
+          "sha256": "da62a3460613267d9281cbe427d88427a63bd011a4a0b5b98620b9fc8c43f152",
+          "size_bytes": 36811
+        },
+        "presentation": {
+          "path": "data/finalization/reviewed_run_recovery_20261008/evaluation/demos/case3/presentation.json",
+          "sha256": "69b6fe682adb3a16df017063438496d73911a5dd36aa112305f54dd86f318434",
+          "size_bytes": 11818
+        },
+        "reader_verified": true,
+        "primary_ground_truth_logged": false,
+        "preview_visually_checked": true
+      }
+    ],
+    "new_corridor_pipeline_run": false,
+    "new_second_clean_checkout_delivery_comparison": false
+  },
+  "limits": {
+    "phase1": "PHASE1_FINALIZATION_BLOCKED",
+    "case2": "BLOCKED_PENDING_SCOPED_ADAPTERS_HOLD_EXHAUSTIVE_INVENTORY_PORTAL_AUDIT_AND_FRESH_RUN",
+    "case3_detour_growth": "BLOCKED",
+    "formal_dataset_all_cases_validated": false,
+    "overall_formal_execution_enabled": false,
+    "original_full_exit_complete": false,
+    "freeze_allowed": false,
+    "case4": "DEFERRED",
+    "phase2": "FROZEN",
+    "phase2_branch_and_tag_sha": "5b51d2c67917ff434f53e12a8af8af3d711d2a19",
+    "main_merge_performed": false
+  },
+  "curated_artifacts": {
+    "dataset_acceptance.json": {
+      "sha256": "2a6787eeef91087c72c95ec3c95d2f4eb0acca0264c005a742b20d6c7516535e",
+      "size_bytes": 1176
+    },
+    "reproduction.json": {
+      "sha256": "30c882781afffdebcb85b26f5c7a84623939af484f89899317982daf9fef3bb9",
+      "size_bytes": 2019
+    },
+    "corridor_result.json": {
+      "sha256": "4bfd01591901d48a65015522a4af79941820071d4db6c6ec48b44987f265f91e",
+      "size_bytes": 115
+    },
+    "corridor_manifest.json": {
+      "sha256": "4141b422497ada63c38e3908473ae9b4c985ea5d27231eb88b96f6ec2d36c4e1",
+      "size_bytes": 3162
+    },
+    "input_recovery.json": {
+      "sha256": "2d20a276c52fbd947b1dfc0e27bd54b4a3e8014d8f5f4e2590d5477f9a1a0537",
+      "size_bytes": 5110
+    },
+    "topology_prerequisite_recovery.json": {
+      "sha256": "5a3843c707d4327d0e997141b198e9f0e84ba049942d26ba884926929601558b",
+      "size_bytes": 906
+    }
+  },
+  "raw_gt_observations_rrd_source_geometry_in_git": false
+}

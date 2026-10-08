@@ -1,5 +1,37 @@
 # Phase 1 finalization report / Phase 1 收尾報告
 
+## 2026-10-08 — Persistent runtime recovery / 持久 runtime 恢復
+
+The sprint checkout was restored from `5c2b67b9c48ae4028fd9fb2e7636f6b3af5121c0` to
+`/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization`; the canonical
+asset checkout retains its original physical branch. The locked Python 3.12.12 environment,
+all 29 review inputs, 57 original frames and exact physical blobs were restored without
+changing source assets, approvals, protocol or frozen configs.
+
+The available office run is `data/finalization/reviewed_run_recovery_20261008/`.
+Fresh export completed with 50 Case1 and 925 Case3 timestamps; primary inference was frozen
+before independent evaluation. Evaluation completed with Case1 and the Case3 temporal
+component executed, Case2 BLOCKED, `all_case_exit_complete=false` and `freeze_allowed=false`.
+Ready-case repeat/fresh-process/ordering/GT-recipe-annotation poison/termination reproduction
+**PASS**. The 27-row baseline and 45-row ablation tables retain blocked cases; both RRDs are
+present and reader-verified, with primary GT=false. Dataset manifest SHA is
+`a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5`;
+primary freeze SHA is `add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de`.
+The original corridor numerical verifier again returned **PASS_LOCAL_UNION_REGENERATED**;
+this does not supply the missing scoped pipeline/readiness adapters.
+
+Runtime commands and exact-copy sources are in [restored runtime](PHASE1_RESTORED_RUNTIME.md).
+The actual full-suite rerun passed **1978 tests, zero failures and zero skips** (116.28s),
+with physical evidence required; Ruff, mypy and source CLI strict mypy passed.
+Exact current evidence is in [recovery validation](../data/finalization/recovery_checkpoint_20261008/validation.json).
+Former `/private/tmp` worktrees and V3–V8 raw datasets/RRDs are no longer on disk. Their
+original paths, hashes and curated Git evidence below remain historical records.
+
+中文：目前可開啟的實作入口已移到持久 `.local-worktrees/phase1-finalization`。
+新 office export／infer／eval 與 ready-case reproduction 已完成，原 corridor 數值證明重建
+PASS；可用 benchmark 與 demos 在本次 recovery run。原 HR／reference／corridor 核准不重問，
+完整 Exit 仍 BLOCKED。
+
 ## 2026-10-08 — Exact corridor approval and release continuation / 精確核准與續作
 
 The human explicitly approved proposal `752404…1bad`; its separate direct-human receipt
@@ -75,8 +107,9 @@ reproduced the committed collision delivery in `/private/tmp/amidst-collision-fr
 The recomputed comparison passes 46 JSON, 2 CSV, 6 Markdown, 37 non-runtime PNGs and
 2 RRDs with verified-reader receipts; 26 protected producers are byte-identical between
 checkouts and the pinned source `.blend` hash is unchanged. The earlier raw export inside
-the fresh checkout, produced before fetching/checking out 8cb0df3, is preserved as
-unverified historical raw and excluded from this proof. This result does not cover new
+the fresh checkout, produced before fetching/checking out 8cb0df3, was preserved as
+unverified historical raw and excluded from this proof. Those temporary raw outputs are
+now unavailable; the committed comparison receipt remains. This result does not cover new
 uncommitted scope modules or extend the all-case Exit status.
 
 中文：已補齊先前缺少的 purpose-bound collision consumer 與消融報表；新的局部分支
@@ -133,7 +166,8 @@ The zero primary errors above are measured against explicit all-moving reference
 dwell errors remain visible. It never replaces reference moving time with GAP duration.
 Original HR01–HR04/protocol/V1 configs/29 inputs/57 frames remain immutable.
 
-Canonical local run: `data/finalization/reviewed_run_v5/`. Dataset manifest SHA256
+Historical canonical local run: `data/finalization/reviewed_run_v5/` (original raw no longer
+available). Dataset manifest SHA256
 `a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5`;
 primary inference freeze SHA256
 `d16708cfb437b6dff2ea06139126d5784a181c547d9dba6d1633068988cf4059`.

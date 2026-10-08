@@ -1,0 +1,24 @@
+{
+  "status": "PASS_EXACT_ORIGINAL_PREREQUISITES_RESTORED",
+  "artifacts": [
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/pipeline_config.json",
+      "sha256": "492591e47c48642e157621c9c05adf111f3c6909d671d84e248c4ae0807c80e1",
+      "size_bytes": 5529,
+      "exact_surviving_original": true
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/digests.json",
+      "sha256": "e5b8135552d0324c97ac6770c21cf4e84782c2735736faaa8101ace7e4d58df9",
+      "size_bytes": 1094,
+      "exact_surviving_original": true
+    },
+    {
+      "path": "data/finalization/local_run/diagnostics/office/policy_graph_primary/topology_evidence.json",
+      "sha256": "1bc6f6c108d1fc3775f3c0836132138bf852bcabd1bb9489deef6b4f298dbcf9",
+      "size_bytes": 3284,
+      "exact_surviving_original": true
+    }
+  ],
+  "test_modified": false
+}

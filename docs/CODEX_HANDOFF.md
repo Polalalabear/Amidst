@@ -4,10 +4,22 @@
 
 ## 繁體中文
 
-日期：2026-10-08。實作 worktree：`/private/tmp/amidst-phase1-finalization`，branch：
+日期：2026-10-08。實作 worktree：`/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization`，branch：
 `phase1/finalization-sprint`；HEAD／origin 以實際 Git 為準。Canonical checkout
 `/Users/polalabear/Developer/amidst` 在另一個 physical branch，只供應 immutable scene/raw
 artifacts，不在那裡實作或切換 branch。
+
+本次因舊 `/private/tmp` worktree 與 raw outputs 已不存在，從已發布
+`5c2b67b9c48ae4028fd9fb2e7636f6b3af5121c0` 恢復到上述持久路徑。
+使用 locked Python 3.12.12；29 個原鎖定輸入與297份 review package 檔案均驗證，
+physical evidence 為 VERIFIED。完整測試 **1978 passed／0 failed／0 skipped**，
+Ruff、mypy 與 source CLI strict mypy 全 PASS。執行指令見 [恢復後運行指南](PHASE1_RESTORED_RUNTIME.md)，
+本次實際檢查見 [recovery receipt](../data/finalization/recovery_checkpoint_20261008/validation.json)。
+新的 office 5 Hz export → V3 inference freeze → evaluation → ready-case reproduction
+已實際完成；27列 baseline、45列 ablation、兩個 reader-verified RRD／PNG 在
+`data/finalization/reviewed_run_recovery_20261008/`。這是既有核准 office 流程的重新運行，
+新 corridor 全案例研究交付仍待下列工程。原 source/核准/config/producer bytes 保留。
+歷史 V3–V8 bulk raw 與舊獨立 `/tmp` 輸出目前不存在；Git 中 curated receipts 仍在。
 
 使用者已核准精確 corridor proposal，要求準備新對話，完成一個可重現 dataset、
 一份 benchmark 結果表、一個 Rerun 3D demo，綁定同一 frozen run。直接使用
@@ -21,7 +33,8 @@ artifacts，不在那裡實作或切換 branch。
 `702c2f7ca8165fc7669072847e26f38174b6525ed104999e35b467d23cebda09`。
 六個 cells 原數值 application 全通過，完整 union certificate SHA
 `f8fe588620b4f871d49f6ed50d61d6185c8648b5551d9b7528dfb7c696cb06c5`。
-Independent clean `d8b94a6` regeneration **PASS_LOCAL_UNION_REGENERATED**；全部 hashes 見
+Historical independent clean `d8b94a6` regeneration **PASS_LOCAL_UNION_REGENERATED**；
+本次恢復後再執行原完整數值重建亦通過；原 hashes 見
 [current checkpoint](../data/finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json)。
 不重問既有核准；歷史 review/strict-preview/V5 packet 保留原 bytes。
 
@@ -36,11 +49,11 @@ CAM01 handoff。Lower-bound proof 的 recall N/A/readiness=false；V7 sample39 �
 原 Case2 `PORTALS_WITH_TWO_SIDED_ACCESS` 仍須查核既有 approved portal/anchor 證據；
 新 corridor receipt 不新增 portal role，不能由 HOLD／分支數代替此 gate。
 
-已有 verified office 局部成果：V7 Case1／Case3 temporal A/B/C、27列 baseline、45列
+本次 fresh office 局部成果：Case1／Case3 temporal A/B/C、27列 baseline、45列
 ablation、RRD/PNG 與 ready-case reproduction；Case2 BLOCKED rows 保留。
 [Collision V4 fresh receipt](../data/finalization/reviewed_checkpoint_v4/manifest.json) 僅證明
 `8cb0df3` 的既有 delivery。Source preparation `d8b94a6` 的1978 tests／zero skips、Ruff/mypy
-是歷史 code validation；本次批准與數值重建另存 current checkpoint，不冒充 full-suite rerun。
+是歷史 code validation；本次重新運行的測試、資料流程與數值重建另存 recovery receipt。
 
 完成／歷史證據見 [WORK_LOG](WORK_LOG.md)、[final report](PHASE1_FINAL_REPORT.md)；
 持續規則只留在 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)。原29 inputs／57 frames、
@@ -64,5 +77,8 @@ CLI cannot consume the new union directly. Preserve repeated-edge graph semantic
 actual sample39 recovery; lower-bound proofs do not establish recall/readiness.
 Audit the original Case2 two-sided-portal requirement against existing approved evidence;
 the new corridor receipt grants no portal role.
-Existing office results remain scoped historical evidence. Case4 stays deferred, Phase2
+The persistent recovery rebuild actually reruns the existing office dataset/inference/evaluation,
+reader-verified demos, ready-case reproduction and corridor numerical verification. Read the
+recovery receipt and runtime guide for current results; old temporary bulk outputs are absent.
+This does not complete the new corridor release. Case4 stays deferred, Phase2
 frozen, and a Phase1 freeze requires every original full Exit Gate.

@@ -1,0 +1,24 @@
+{
+  "case3_full_stress_exit_complete": false,
+  "case_results": {
+    "case1": "FORMAL_REVIEWED_LOCAL_RUN",
+    "case2": "N/A_BLOCKED_SCOPE",
+    "case3": "FORMAL_REVIEWED_LOCAL_TEMPORAL_COMPONENT"
+  },
+  "certificate_content_sha256": "7c068355477603f5456498222f9576970aaf7c7f43674f972910d43e5a0d23b1",
+  "formal_dataset_all_cases_validated": false,
+  "human_decisions_sha256": "8df8cda06dd9fd0848bc39395d4c6b5c695aae30b3f5329b4c0d30ff7fea085a",
+  "legacy_diagnostic_artifacts_promoted": false,
+  "overall_formal_execution_enabled": false,
+  "per_case_execution_ready": {
+    "case1": true,
+    "case2": false,
+    "case3": true
+  },
+  "primary_inference_freeze_sha256": "add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de",
+  "reference_movement_approval_receipt_content_sha256": "972fc01f5026311de52c934dd8315e1ee35bef9cf800af88b91b07d44e01d5ac",
+  "schema_version": "phase1-reviewed-dataset-acceptance-v1",
+  "semantic_review_content_sha256": "a945047cd46a44eaa0eaf25526628a770aa849b75bb85ddd038a5093510366d5",
+  "source_export_manifest_preserved": true,
+  "source_export_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5"
+}

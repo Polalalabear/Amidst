@@ -1,13 +1,42 @@
 # Reviewed Phase 1 reproduction
 
+## Current persistent runtime / 目前可執行入口
+
+使用 `/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization` 的
+`phase1/finalization-sprint`；恢復起點是 `5c2b67b9c48ae4028fd9fb2e7636f6b3af5121c0`。
+Locked Python 3.12.12、原29 inputs／57 frames 與 physical evidence 已恢復。
+完整 exact-copy／hydration／physical verification，以及 V2 export + V3 collision
+infer/evaluate/reproduction／Rerun 指令，全部使用
+[持久 runtime 指南](PHASE1_RESTORED_RUNTIME.md)。使用 uv 預設 cache，不依賴舊 temporary cache。
+
+目前 raw run 是 `data/finalization/reviewed_run_recovery_20261008/`，不得覆寫。
+Office export（Case1 50 timestamps、Case3 925 timestamps）、primary inference freeze、
+independent evaluation 已完成；corridor verifier 得到 `PASS_LOCAL_UNION_REGENERATED`。
+Ready-case repeat／fresh-process／ordering／GT-recipe-annotation poison／termination
+reproduction **PASS**；兩個 RRD reader verification 通過、primary GT=false。
+Dataset manifest SHA `a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5`；
+primary freeze SHA `add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de`。
+Case2、Case3 full stress 和 full Exit 仍 BLOCKED。本次完整 tests **1978 passed／0 failed／0 skipped**，
+Ruff/mypy PASS；精確 reproduction evidence 讀
+[本次 validation receipt](../data/finalization/recovery_checkpoint_20261008/validation.json)，
+不能把歷史 PASS 當作本次執行。
+
+Former temporary worktrees, V3–V8 raw runs and recordings are no longer on disk. Their
+committed receipts remain historical evidence. Every command block below records the
+historical V5 workflow; its old hydration root/cache/output paths are not current commands.
+For execution, use the persistent runtime guide and a fresh output directory.
+
+## Historical V5 environment / 歷史環境
+
 Use the published `phase1/finalization-sprint` SHA, committed `uv.lock`, Python 3.12.12,
 and the preserved school-v3 source (468300506 bytes, SHA256
 `cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e`).
-The canonical asset checkout supplies source and historical raw inputs; development stays
-in `/private/tmp/amidst-phase1-finalization`. Every generated destination below must be new.
+The canonical asset checkout supplied source and historical raw inputs; development used
+`/private/tmp/amidst-phase1-finalization`, which no longer exists. Historical destinations
+below are retained as provenance, not available runtime paths.
 Case2 remains blocked; reproduction of ready local cases does not grant the original Exit Gate.
 
-## Final verified fresh run — 2026-10-08
+## Historical V5 verified fresh run — 2026-10-08
 
 The final clean-checkout rerun used
 `/private/tmp/amidst-phase1-finalization-fresh-20261007` at code SHA
@@ -16,7 +45,8 @@ The final clean-checkout rerun used
 `/private/tmp/amidst-phase1-finalization/data/finalization/reviewed_run_v5`.
 The examples below use `reviewed_fresh_v5` as a new destination; the recorded final run
 used `reviewed_fresh_v5_final` consistently for dataset, inference, evaluation and reproduction.
-Never overwrite either recorded output.
+Both original temporary output trees are now unavailable; never recreate results and claim
+they are the retained original raw bytes. Their curated Git receipts and hashes remain.
 
 The fresh `evaluation/verification.json` reports **PHASE1_FINALIZATION_BLOCKED**:
 Case1 executed as a reviewed local formal run, Case3 executed its reviewed local temporal
@@ -48,8 +78,8 @@ formal Cases1–3 as a complete set or grant the original Phase1 Exit Gate.
 
 ## Clean-checkout prerequisites
 
-Create a clean checkout at the recorded code checkpoint. Install the exact locked environment,
-then reconstruct physical evidence from the original scene with the historical materializer.
+Historical V5 prerequisite commands follow. The old `--historical-root` directory has been
+lost; use the current runtime guide's exact-copy plan and restored checkout as hydration root.
 
 ```sh
 uv sync --locked --python 3.12.12
@@ -170,7 +200,8 @@ uv run mypy
 git diff --check
 ```
 
-If sandboxed uv fails macOS system-configuration initialization, the existing locked runtime
-can use `UV_CACHE_DIR=/private/tmp/amidst-finalization-uv-cache uv run --offline --no-sync`;
-Blender subprocesses still require the authorized environment that can execute Blender.
-Raw source/evidence/RRD/large renders stay local. Every prior version is retained.
+The historical sandbox workaround used
+`UV_CACHE_DIR=/private/tmp/amidst-finalization-uv-cache uv run --offline --no-sync`.
+That temporary cache is no longer available; the recovered runtime uses the default uv cache.
+Raw source/evidence/RRD/large renders stay local. Prior Git receipts remain preserved;
+lost temporary raw versions are explicitly unavailable.

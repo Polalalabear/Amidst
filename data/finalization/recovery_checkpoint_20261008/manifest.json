@@ -1,0 +1,38 @@
+{
+  "schema_version": "phase1-runtime-recovery-artifacts-v1",
+  "starting_code_commit": "5c2b67b9c48ae4028fd9fb2e7636f6b3af5121c0",
+  "status": "PASS_RUNTIME_REVALIDATION_PHASE1_FULL_EXIT_BLOCKED",
+  "curated_artifacts": {
+    "corridor_manifest.json": {
+      "sha256": "4141b422497ada63c38e3908473ae9b4c985ea5d27231eb88b96f6ec2d36c4e1",
+      "size_bytes": 3162
+    },
+    "corridor_result.json": {
+      "sha256": "4bfd01591901d48a65015522a4af79941820071d4db6c6ec48b44987f265f91e",
+      "size_bytes": 115
+    },
+    "dataset_acceptance.json": {
+      "sha256": "2a6787eeef91087c72c95ec3c95d2f4eb0acca0264c005a742b20d6c7516535e",
+      "size_bytes": 1176
+    },
+    "input_recovery.json": {
+      "sha256": "2d20a276c52fbd947b1dfc0e27bd54b4a3e8014d8f5f4e2590d5477f9a1a0537",
+      "size_bytes": 5110
+    },
+    "reproduction.json": {
+      "sha256": "30c882781afffdebcb85b26f5c7a84623939af484f89899317982daf9fef3bb9",
+      "size_bytes": 2019
+    },
+    "topology_prerequisite_recovery.json": {
+      "sha256": "5a3843c707d4327d0e997141b198e9f0e84ba049942d26ba884926929601558b",
+      "size_bytes": 906
+    },
+    "validation.json": {
+      "sha256": "5562059a472d3b629a3f2a2cf8173a582490a037701d0e5b6445eaad995ddf96",
+      "size_bytes": 14494
+    }
+  },
+  "raw_gt_observations_rrd_source_geometry_in_git": false,
+  "original_full_exit_complete": false,
+  "freeze_allowed": false
+}

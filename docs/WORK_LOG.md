@@ -4,6 +4,44 @@
 
 ## 繁體中文
 
+### 2026-10-08 — Persistent runtime recovery and actual revalidation
+
+舊 `/private/tmp` sprint/fresh worktrees 與歷史 bulk outputs 目前不存在；Git branch/origin
+仍保有5c2b67b。恢復 `phase1/finalization-sprint` 到
+`/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization`，canonical physical
+checkout 保持c5956dc及clean。以committed `uv.lock` offline安裝Python3.12.12。
+八份原diagnostic/topology JSON由canonical pilot找到並逐檔SHA驗證；四個physical gzip
+原檔恢復，14 artifacts全符合original SHA/size。Hydration驗證297 files、187 copied／
+110 matching、29 frozen inputs與原review frames保留；未使用new formal inputs取代歷史。
+
+實際執行physical `--verify-only` VERIFIED；完整corridor union原數值重建
+PASS_LOCAL_UNION_REGENERATED。新5 Hz office export於
+`data/finalization/reviewed_run_recovery_20261008`產生Case1 50timestamps、Case3 925timestamps，
+Case2保持BLOCKED。V3 primary inference freeze SHA `add7e625…c4de`、dataset manifest
+SHA `a3393f2e…68a5`符合歷史pins。Fresh evaluation產生27列baseline、45列ablation，
+兩個RRD與preview PNG；actualreader驗證true、primary GT=false、preview已目視檢查。
+Ready-case repeat/fresh-process/order/GT-recipe-annotation poison/termination全部PASS。
+沒有產生新的corridor全案例pipeline或第二個clean-checkout complete-delivery comparison。
+
+Ruff、mypy111package files與source CLI strict mypy實際PASS。初次full suite
+1977passed／1skip／0fail (208.26s)；skip只因三份原topology prerequisite缺失，找到原檔
+並核對SHA後補回，未改測試。補回後full suite實際 **1978passed／0skip／0fail (116.28s)**，結果見
+[新validation receipt](../data/finalization/recovery_checkpoint_20261008/validation.json)。
+30 protected producer/config/HR inputs與school-v3 SHA／size／mtime均未變；source未保存。
+Case2與Case3 detour-growth、all-case dataset validation、freeze依舊BLOCKED；Case4 DEFERRED，
+Phase2 branch/tag仍5b51d2c FROZEN。
+
+更新current handoff／next-chat prompt／runtime/reproduction/release文件到持久可用路徑，
+清楚標記已不存在的歷史bulk raw。原approval/checkpoint/preview/protocol保留原bytes。
+小型recovery receipts保存本次實際結果；GT/observations/RRD/source.gz保持local ignored。
+本地便利入口在canonical `data/pilot/phase1_handoff_20261008/PHASE1_NEXT_CHAT.md`。
+
+English: Restored the published sprint into a persistent checkout, rebuilt the locked
+environment and exact inputs, and actually reran physical/corridor verification and the
+existing office export/inference/evaluation/reproduction/demos. Current tests are recorded
+separately from historical checks. Temporary historical bulk outputs are absent. This
+recovery preserves all approvals/source bytes and does not complete the new corridor release.
+
 ### 2026-10-08 — Exact corridor approval, numerical regeneration and next-chat checkpoint
 
 使用者直接核准 exact corridor proposal content SHA

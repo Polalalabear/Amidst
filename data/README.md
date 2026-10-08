@@ -6,6 +6,27 @@ Snapshot date: **2026-10-08**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
 [`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
 
+### 2026-10-08 persistent recovery / 持久工作目錄恢復
+
+Current implementation and materialized data live in
+`/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization`.
+The old `/private/tmp` worktrees, historical office V3–V8 bulk outputs and independent fresh
+output directories are currently absent; dated inventory below records historical availability.
+Tracked curated receipts, original source assets, original pilot inputs and the durable human
+review package survive. Exact hydration restored29 locked inputs and297 review-package files;
+all14 original physical artifacts matched their pinned bytes.
+
+The actual new office run is `finalization/reviewed_run_recovery_20261008/` with fresh
+5 Hz dataset, frozen V3 inference,27-row baseline,45-row ablation, two reader-verified
+RRDs/PNGs and PASS ready-case reproduction. These bulk outputs are local/ignored;
+[small recovery evidence](finalization/recovery_checkpoint_20261008/validation.json) is tracked.
+The full original corridor union numerical verification was also rerun and passed.
+See [runtime rebuild instructions](../docs/PHASE1_RESTORED_RUNTIME.md).
+Case2 and Case3 detour-growth, all-case dataset validation and freeze remain blocked.
+
+舊暫存連結已失效；本次重新運行輸出與交接放在持久目錄。原source、核准與locked inputs
+保留原bytes。下面dated records不代表原bulk raw仍在磁碟；新corridor研究成果尚未完成。
+
 ### 2026-10-08 exact corridor approval / 精確局部核准
 
 The [new direct-human receipt](finalization/reviewed_corridor_scope_approval_v1/human_decision.json)
@@ -18,7 +39,7 @@ simulation dataset, all-case benchmark or Rerun demo is claimed by this physical
 Phase1 full Exit remains BLOCKED. See [release continuation](../docs/PHASE1_RESEARCH_RELEASE_HANDOFF.md).
 
 精確 corridor scope 已核准並套用六個 cells 的原數值證明，完整 union certificate 已物化；
-獨立重建證據另存 current checkpoint。原 review、GT/raw、歷史輸出均保留。下一對話完成
+獨立重建證據另存 current checkpoint。原 review 與 committed 歷史證據保留；bulk raw 目前可用性見上方 recovery inventory。下一對話完成
 scoped adapters、HOLD／exhaustive inventory 與 fresh 5 Hz dataset/benchmark/Rerun 三項交付。
 
 ### Historical pre-approval 2026-10-08 collision and pending scope / 核准前收尾與待審範圍
@@ -27,13 +48,13 @@ The [V3 collision checkpoint](finalization/reviewed_checkpoint_v3/manifest.json)
 the frozen V3 inference lock, collision receipt, 45 ablation rows, 17 charts and original
 blocked-case rows. The [V4 independent fresh receipt](finalization/reviewed_checkpoint_v4/manifest.json)
 verifies the exact `8cb0df3` committed source in a clean clone: 46 JSON, 2 CSV, 6 Markdown,
-37 non-runtime PNGs and two reader-verified RRDs match. Raw datasets, GT, observations,
-RRDs and bulk source geometry remain local; older outputs are preserved.
+37 non-runtime PNGs and two reader-verified RRDs match. At that historical checkpoint, raw datasets, GT, observations,
+RRDs and bulk source geometry were local. Their current availability is recorded above.
 
 The [corridor review packet](finalization/reviewed_branch_scope_review_v2/proposal.json)
 contains bounded source-only coordinates, camera calibration, diagnostic map and strict
 preview. Its authority is HUMAN_REVIEW, certificate is null and no new human receipt is
-applied. This packet is not a formal dataset. Large V3–V8 discovery artifacts remain local.
+applied. This packet is not a formal dataset. Large V3–V8 discovery artifacts were local then and are currently absent.
 The [V5 fresh preparation receipt](finalization/reviewed_checkpoint_v5/manifest.json) records
 clean `d8b94a6` inspection/preview reproduction with identical proposal and preview bytes;
 it grants no new scope authority and claims no new Blender materialization.
