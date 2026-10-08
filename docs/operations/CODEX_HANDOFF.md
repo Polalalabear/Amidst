@@ -5,7 +5,7 @@
 ## 繁體中文
 
 日期：2026-10-08。重用 checkout：`/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization`。
-本次文件整理 branch 為 `codex/docs-agent-handoff`；研究基線仍是
+目前工程 branch 為 `codex/simulation-engineering`；文件整理基線 `codex/docs-agent-handoff / 2c586b1` 已包含在其中。研究基線仍是
 `phase1/finalization-sprint / 883204af854bed301506b39d63ccb33312b79ff2`，HEAD／origin 以實際 Git 為準。Canonical checkout
 `/Users/polalabear/Developer/amidst` 在另一個 physical branch，只供應 immutable scene/raw
 artifacts，不在那裡實作或切換 branch。
@@ -16,11 +16,23 @@ artifacts，不在那裡實作或切換 branch。
 
 入口見 [Agent 檢索契約](../engineering/AGENT_RETRIEVAL_BOUNDARY.md) 與 [擴大工程續作 prompt](PHASE1_NEXT_CHAT_PROMPT.md)。可在同一 checkout 連續完成多個可執行 milestones，每段驗證、commit、普通 push 對應工程 branch；不為每段新增 worktree/clone/raw 副本。文件分類見 [導覽](../README.md)；正文按分類存放；必要的機器路徑與不可變核准文件見該頁說明。
 
-工程閉環與原正式研究驗收並行。下方既有 corridor／formal blockers 保持有效；本次只完成文件分類、角色審查與 prompt 更新，沒有把新工程契約標成已實作或 formal PASS。
+工程閉環與原正式研究驗收並行。下方既有 corridor／formal blockers 保持有效。
+
+### 已接入的工程能力與續作邊界
+
+`codex/phase1-preview-workspace / 04c699d` 已以 merge commit `ded5572` 接入目前工程分支；50 frames／58 verified images 的 view-only playback 可由原 exact inputs 重建。Projection branch `8f4055f` 的四個 model helpers 已在研究基底中；本次僅補相容的 comparison／surface-control／downstream／robustness 診斷工具，保留 sidecars，不改 Graph 權重或 domain schema。
+
+FROZEN Phase 2 checkpoint `5b51d2c` 的 repository、read-only API、legacy replay importer 與 TypeScript consumer 已選擇性接入。使用 [Phase 2 整合](../engineering/PHASE2_INTEGRATION.md) 的本機啟動命令與 [本次驗證 receipt](../../data/engineering/integration_20261008/compatibility.json)。這是 SYNTHETIC_MOCK_ONLY 接口：GET 讀固定 snapshot、保留 canonical observation/event IDs 與候選順序，不重跑 inference。
+
+本次完整測試 **2255 passed／0 failed／0 skipped**，含 Blender／physical evidence；Ruff PASS，strict mypy PASS（125 source files）。25次實際 loopback HTTP requests 與 Node consumer／replay 驗證通過，既有318個核心／腳本／測試檔、29 inputs、297 review records 及 immutable source 不變。
+
+可繼續工程操作，但尚未完成 LocationRegistry、兩種照片模式、image perception／跨鏡頭 association、Agent allowlist DTO／typed tools 或 MockAgent UI。低階 mock API 的 synthetic target IDs／座標／source references 不得直接交給 Agent。新 reviewed/finalization package 尚未接入此 importer；先完成 source／clock／unit bindings、明確 BU→metres normalization 及獨立 import certification，不能由 mock PASS 推定真實 package 相容。M1–M6 繼續按 prompt 推進。
+
+原 `phase2/integration-hardening` 與 tag 保持 FROZEN；新增碼只在工程分支。不 merge `main`，不改原 Blender/source、locked inputs 或正式研究狀態；外部模型 API 與 token 兜底章節仍空白。
 
 ### 恢復 checkpoint 的既有證據
 
-以下是 `883204a` 所記錄的 runtime 恢復工作，本次文件整理未重跑程式測試。
+以下是 `883204a` 所記錄的 runtime 恢復工作；本次工程整合的測試另見上方 receipt，不與恢復紀錄混用。
 該恢復工作因舊 `/private/tmp` worktree 與 raw outputs 已不存在，從已發布
 `5c2b67b9c48ae4028fd9fb2e7636f6b3af5121c0` 恢復到上述持久路徑。
 使用 locked Python 3.12.12；29 個原鎖定輸入與297份 review package 檔案均驗證，
@@ -75,7 +87,9 @@ Case4 **DEFERRED**；Phase2 `phase2/integration-hardening / 5b51d2c` **FROZEN**�
 
 ## English
 
-The current documentation branch is `codex/docs-agent-handoff`, reusing the existing checkout; the research baseline remains `phase1/finalization-sprint / 883204a`. New engineering prepares Agent context, scoped registries, typed summary/detail/media/replay tools and data boundaries. It is **SYNTHETIC_MOCK_ONLY / NO_EXTERNAL_MODEL_CALLS**. API wiring and the token fallback algorithm remain empty. Reuse one checkout and shared assets, commit and push validated engineering milestones, and keep formal research gates independent. This documentation change does not implement those services.
+The current engineering branch is `codex/simulation-engineering`, reusing the existing checkout and including documentation checkpoint `2c586b1`; the research baseline remains `phase1/finalization-sprint / 883204a`. Preview checkpoint `04c699d` was merged as `ded5572`. Compatible projection diagnostics and the frozen `5b51d2c` mock repository/API/replay/TypeScript adapters were imported selectively, preserving current core contracts and dependencies. See the integration document and current receipt above. This is **SYNTHETIC_MOCK_ONLY / NO_EXTERNAL_MODEL_CALLS**; API wiring and the token fallback algorithm remain empty.
+
+LocationRegistry, observation modes, image perception/association, Agent allowlist DTOs/tools and the MockAgent interface remain to implement. The internal mock API is not an Agent payload. Reviewed/finalization packages need separate source/clock/unit normalization and import certification before use. Keep the original Phase 2 branch/tag frozen and formal research gates independent; do not merge main.
 
 Continue in the sprint worktree above. The human approved the exact corridor proposal and
 requests a new-chat continuation to finish one reproducible dataset, benchmark table and
@@ -92,7 +106,7 @@ actual sample39 recovery; lower-bound proofs do not establish recall/readiness.
 Audit the original Case2 two-sided-portal requirement against existing approved evidence;
 the new corridor receipt grants no portal role.
 The earlier `883204a` recovery checkpoint reran the existing office dataset/inference/evaluation;
-the current documentation task did not rerun code tests. That recovery checkpoint includes
+the current integration checks have their own receipt. That recovery checkpoint includes
 reader-verified demos, ready-case reproduction and corridor numerical verification. Read the
 recovery receipt and runtime guide for current results; old temporary bulk outputs are absent.
 This does not complete the new corridor release. Case4 stays deferred, Phase2

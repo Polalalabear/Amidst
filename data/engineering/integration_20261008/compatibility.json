@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-10-08",
+  "branch": "codex/simulation-engineering",
+  "status": "SYNTHETIC_MOCK_INTEGRATION_VALIDATED",
+  "external_model_calls": false,
+  "formal_phase1_acceptance": false,
+  "baseline_commit": "2c586b13f957b1b0d17675b4ff8aa89629681172",
+  "preview_merge_commit": "ded5572e29896d624c650d7117321d05af447759",
+  "projection_checkpoint": "f58157f04472a26457a47081cc79e1a6283fb5be",
+  "projection_import": {
+    "donor_commit": "8f4055ffcdc3bf6efd723c7956ac685e1fe033f1",
+    "files": [
+      {
+        "path": "scripts/compare_projection_mitigations.py",
+        "sha256": "eb6191d1413fd0e6fc580fba6a40fa4d10f7a5c422ed3d7ff42236c80878eca1"
+      },
+      {
+        "path": "scripts/compare_projection_upgrade.py",
+        "sha256": "9102299e8b733e578fd2f627849bfef88e7c7f61d7596c52b5a538e948900a2d"
+      },
+      {
+        "path": "scripts/evaluate_pilot_robustness.py",
+        "sha256": "eed53ceefd14da098485125d7d0c2cada1663fe05fa8f0d359127e12f3162559"
+      },
+      {
+        "path": "scripts/projection_surface_controls.py",
+        "sha256": "6ccc9f2db2a6cfd0f6af5b14fd7b6a18c2307465e43a67701a218c4386f66937"
+      },
+      {
+        "path": "scripts/report_projection_upgrade.py",
+        "sha256": "2bacb917213f2a87e1c7241229fc0324dc84fda179cd0b4e210149fdf8a4255e"
+      },
+      {
+        "path": "scripts/run_pilot_robustness.py",
+        "sha256": "5ded3aa087aa5555076acbbcc057f5e6df53a967ff42488ffc3cf0f2a5e8a719"
+      },
+      {
+        "path": "scripts/run_projection_mitigation_downstream.py",
+        "sha256": "cb19b679dd4018b983fb074ae30d9483b7505b81fb641ced6ce739c204cf95bc"
+      },
+      {
+        "path": "scripts/sweep_projection_downstream.py",
+        "sha256": "772031d34d678c191e1365cabcea89f51ddf504e678f557e3ca2e3ebf2e91f5f"
+      },
+      {
+        "path": "tests/unit/test_pilot_robustness_consumer.py",
+        "sha256": "929d9c324e8b9be3613329376d6056ad957bdc44672574b6ed1341aac3fe5550"
+      },
+      {
+        "path": "tests/unit/test_pilot_robustness_evaluation.py",
+        "sha256": "2f57f3a28c5524abbfe475639a99c09f92bafbdf62ef0254b43469a914afb6fe"
+      },
+      {
+        "path": "tests/unit/test_projection_mitigation_comparison.py",
+        "sha256": "065cd1e9e34ad3161a79d46a1c865d8fec7273c575b89eb238d0b2881d7cd1cf"
+      },
+      {
+        "path": "tests/unit/test_projection_mitigation_downstream.py",
+        "sha256": "5e771ad17d32eff6360a960bdecb8887bf5c6853eba41e7c503e57da0082917e"
+      },
+      {
+        "path": "tests/unit/test_projection_sensitivity_downstream.py",
+        "sha256": "3565f1fea0d5412bc722737a2dc762ced4776a53d36dd11c33dd21ada94c871a"
+      },
+      {
+        "path": "tests/unit/test_projection_surface_controls.py",
+        "sha256": "ebdd5e9d73cf193b262d2cfb0a184ce52c8f4fe231a6891113d7058e43c53ded"
+      },
+      {
+        "path": "tests/unit/test_projection_upgrade_comparison.py",
+        "sha256": "5a5bf6ccd4d660b163a60543a6897224885f3d3cdf40bf0677e0224aea49c0ae"
+      }
+    ],
+    "exact_donor_bytes": true
+  },
+  "phase2_import": {
+    "donor_commit": "5b51d2c67917ff434f53e12a8af8af3d711d2a19",
+    "files": [
+      {
+        "path": "configs/integration/mock_v1.json",
+        "sha256": "bc479970386eaf187133cdd11383fa5ddafd18f9188452c33126bc3a404cee13"
+      },
+      {
+        "path": "frontend/phase2/consumer.ts",
+        "sha256": "69422e470503b4317ccc65319eb3191fc49f71969ae60b010f09f13cb8da518a"
+      },
+      {
+        "path": "frontend/phase2/contracts.ts",
+        "sha256": "7d6bf0dfcc8f5ce90153a67595b6be028c58784fafbc85191ef839e97b08aa47"
+      },
+      {
+        "path": "src/amidst/integration/__init__.py",
+        "sha256": "fb50ba7656b51e42556e13042205af27fdd907f274d85452b3f01a802dd45316"
+      },
+      {
+        "path": "src/amidst/integration/__main__.py",
+        "sha256": "382d0da4ede13a9f4a0fbf92003a4faa4951e13be0fcdc65f7f2e924c8b3e108"
+      },
+      {
+        "path": "src/amidst/integration/api.py",
+        "sha256": "fafaa9c6354f56499d572d8fd29f8f5ed067673a02307650904a68ccc2b7945a"
+      },
+      {
+        "path": "src/amidst/integration/config.py",
+        "sha256": "e4855c039d827e21344a72a0ce9795073bc7f8d55ffe70e34a47c6be934f240c"
+      },
+      {
+        "path": "src/amidst/integration/consumer.py",
+        "sha256": "4d77ec2686c05b7f06e3f2e877c79e6a9ef28a26c487987ff5d9b1d5840bb755"
+      },
+      {
+        "path": "src/amidst/integration/contracts.py",
+        "sha256": "1f46cda3415c76e62bc9cea06eebb98c59a535fe6c32f84e9fccb1213501ba99"
+      },
+      {
+        "path": "src/amidst/integration/local_repository.py",
+        "sha256": "587609271805cf9081061c1116e5fa1a769ce4f8a9751f6938286608b7a0251f"
+      },
+      {
+        "path": "src/amidst/integration/replay.py",
+        "sha256": "0d05fd917061f5485ed4aaf41b94b6fb6fb1ae782fdc58ca2e9cdb0bcd909052"
+      },
+      {
+        "path": "src/amidst/integration/repositories.py",
+        "sha256": "2f503d115b699303512969ecbf063e97a0f9aa81d1a29f5290e46e859305bc92"
+      },
+      {
+        "path": "src/amidst/integration/service.py",
+        "sha256": "e74c9738659d8deee96e0ae2afd7350005ff97e14236d5b70d604d35d066ae2c"
+      },
+      {
+        "path": "src/amidst/integration/wiring.py",
+        "sha256": "f84f6e80f6443b3eb38917605281782ac22e180dd4857398824ad8a97621a48a"
+      },
+      {
+        "path": "src/amidst/portability/__init__.py",
+        "sha256": "ac9fffb8412853f5dadc1d1468079c69d8213ab43e83cd4aa9b46a866e6cb304"
+      },
+      {
+        "path": "src/amidst/portability/files.py",
+        "sha256": "623ba557e6a6eb2033072eb5e9ed9d6b3a2a0a3a6f33448c9370201b180a19b5"
+      },
+      {
+        "path": "src/amidst/portability/paths.py",
+        "sha256": "aea097ca82a3e760c2e7746c4034e1b4bee0298d840f2d17f496902cbf4756be"
+      }
+    ],
+    "exact_donor_bytes": true
+  },
+  "unchanged": {
+    "required_existing_files": {
+      "files": 137,
+      "unchanged": true,
+      "inventory_sha256": "492246214eab612342d6bd2d6fa11905bd3fcc7ccc7c1fbb35fb535b8500dfb2"
+    },
+    "additional_existing_scripts_tests": {
+      "files": 181,
+      "unchanged": true,
+      "inventory_sha256": "76bcb62eeea688fb62618b221ea29cbf158ed22e7b10c1de65cbcb1c7198bc94"
+    },
+    "locked_inputs": {
+      "files": 29,
+      "unchanged": true,
+      "inventory_sha256": "e5a269f47dc3826baad83952234c585bdf60848fc4f1c8ad296f1a37583e2c13"
+    },
+    "frozen_review_records": {
+      "files": 297,
+      "unchanged": true,
+      "inventory_sha256": "b7ea8dd7a8b0b93e7cbcc05e477fdf6d91d87b95bae871f6173b0194f0ba2927"
+    },
+    "source_scene": {
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "bytes": 468300506,
+      "unchanged": true
+    },
+    "corridor_exact_review": {
+      "files": 1,
+      "unchanged": true,
+      "inventory_sha256": "473dc604a3221eb383e7b0897b67a2d738e37839f564777990643b9ceb02a288"
+    },
+    "docs_root_files": 6,
+    "docs_root_symlinks": 3,
+    "main_and_frozen_phase2_modified": false
+  },
+  "validation": {
+    "full_pytest": {
+      "passed": 2255,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "wall_seconds": 160.21,
+      "junit_sha256": "ee0c31ef39f463f838ddfcb9941f74803e8b3be2568c0d0d022dc3b87d0457e5",
+      "physical_evidence_required": true
+    },
+    "ruff": "PASS",
+    "strict_mypy": {
+      "status": "PASS",
+      "source_files": 125
+    },
+    "projection_scope": {
+      "test_files": 12,
+      "passed": 246,
+      "new_test_files": 7,
+      "new_tests": 115,
+      "cli_help_checks": 6
+    },
+    "phase2_scope": {
+      "passed": 150,
+      "failed": 0,
+      "skipped": 0,
+      "wall_seconds": 38.49
+    },
+    "preview": {
+      "passed": 12,
+      "frames": 50,
+      "verified_images": 58,
+      "data_sha256": "d3c31f7cd64baeb920ee308c7b7d4b70206e8fd80f93db8799b5503bd5595783"
+    },
+    "real_http_and_typescript": "http_smoke.json",
+    "documents": {
+      "status": "PASS",
+      "relative_links": 707,
+      "introduced_missing_links": 0,
+      "historical_missing_links": 16,
+      "immutable_json_evidence_files": 298,
+      "indexes": 1,
+      "api_and_token_sections_empty": true
+    }
+  },
+  "boundaries": {
+    "low_level_mock_api_is_agent_allowlist_dto": false,
+    "reviewed_finalization_package_import": "NOT_CERTIFIED",
+    "mock_metadata_units": "METRES",
+    "historical_school_units": "NATIVE_BU",
+    "school_scale_m_per_bu": 0.0247,
+    "historical_source_artifacts_relabelled": false,
+    "new_registry_modes_perception_association_agent_tools": "NOT_IMPLEMENTED",
+    "openai_wiring_and_token_algorithm_sections": "EMPTY",
+    "gt_metrics_payloads_excluded": true,
+    "original_phase2_branch_and_tag": "FROZEN",
+    "original_preview_server": "UNCHANGED"
+  },
+  "commands": {
+    "pytest": "uv run --offline --no-sync pytest --require-physical-evidence -rs",
+    "lint": "uv run --offline --no-sync ruff check .",
+    "types": "uv run --offline --no-sync mypy",
+    "mock_service": "uv run python -m amidst.integration --config configs/integration/mock_v1.json --serve --port 8000"
+  }
+}

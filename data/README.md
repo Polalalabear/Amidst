@@ -27,6 +27,20 @@ Case2 and Case3 detour-growth, all-case dataset validation and freeze remain blo
 舊暫存連結已失效；本次重新運行輸出與交接放在持久目錄。原source、核准與locked inputs
 保留原bytes。下面dated records不代表原bulk raw仍在磁碟；新corridor研究成果尚未完成。
 
+### 2026-10-08 engineering integration / 工程整合
+
+`codex/simulation-engineering` includes the synchronized view-only preview, compatible
+projection diagnostics and additive frozen Phase 2 mock repository/API/replay/consumer.
+The [integration receipt](engineering/integration_20261008/compatibility.json) records donor
+hashes, preserved inputs/core and current checks; the [HTTP smoke receipt](engineering/integration_20261008/http_smoke.json)
+records25 actual loopback requests and the TypeScript consumer/replay checks.
+The service uses existing mock fixtures:8 observations,4 events,11 hypotheses. No new
+formal dataset or external-model output was created. Reviewed/finalization package import
+remains uncertified, requiring source/clock/unit normalization and a separate adapter.
+
+完整2255 tests／零失敗零跳過通過；這是相容工程驗證，原 formal blockers 保留。Receipt
+只有 hashes／計數／檢查結果，不上傳 raw images、GT 或 source archives。
+
 ### 2026-10-08 exact corridor approval / 精確局部核准
 
 The [new direct-human receipt](finalization/reviewed_corridor_scope_approval_v1/human_decision.json)

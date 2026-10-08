@@ -4,20 +4,21 @@
 
 ## 繁體中文
 
-直接複製以下 prompt。這是後續實作範圍；本次文件整理不代表下列功能已實作。
+直接複製以下 prompt。既有 mock 接口與診斷工具已接入；以下 M1–M6 仍是後續實作範圍，不由本次整合推定完成。
 
 ```text
 請完成 Amidst 純模擬環境的第一版可調用、可查找、可展示系統，並建立「2D camera 照片 → local tracks → 跨鏡頭候選關聯 → 3D 區域事件」研究入口。工程可先以有限精度形成閉環，持續改善；保留完整 GT、來源、時間、尺度、候選與不確定性。本階段不接真攝影機，也不串接 OpenAI 或其他外部模型 API。
 
 一、起點、分支與資源
 
-使用既有 checkout /Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization；先確認 pwd、git status、branch、HEAD 與 origin。2026-10-08 的恢復 checkpoint 是 883204af854bed301506b39d63ccb33312b79ff2，後續 docs 整理位於 codex/docs-agent-handoff；以實際 Git 與本任務最新已驗證 checkpoint 為準，不 reset 到舊版本。
+使用既有 checkout /Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization 和 codex/simulation-engineering；先確認 pwd、git status、branch、HEAD 與 origin。2026-10-08 的恢復 checkpoint 是 883204af854bed301506b39d63ccb33312b79ff2，文件 checkpoint 2c586b1 和 preview merge ded5572 已包含在工程分支。Projection 8f4055f 的相容診斷工具及 Phase 2 5b51d2c 的 additive mock adapters 已接入；讀 data/engineering/integration_20261008/compatibility.json，使用目前 GitHub 工程分支與最新已驗證 checkpoint，不 reset 到舊版本。
 
-依序讀 docs/README.md、docs/specs/DEVELOPMENT_RULES.md、docs/operations/CODEX_HANDOFF.md、docs/engineering/AGENT_RETRIEVAL_BOUNDARY.md、docs/operations/PHASE1_RESTORED_RUNTIME.md、docs/operations/PHASE1_RESEARCH_RELEASE_HANDOFF.md、data/finalization/recovery_checkpoint_20261008/validation.json、data/finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json；其餘文件按分類與本次問題讀取，不全目錄掃描。
+依序讀 docs/README.md、docs/specs/DEVELOPMENT_RULES.md、docs/operations/CODEX_HANDOFF.md、docs/engineering/AGENT_RETRIEVAL_BOUNDARY.md、docs/engineering/PHASE2_INTEGRATION.md、docs/operations/PHASE1_RESTORED_RUNTIME.md、docs/operations/PHASE1_RESEARCH_RELEASE_HANDOFF.md、data/finalization/recovery_checkpoint_20261008/validation.json、data/finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json；其餘文件按分類與本次問題讀取，不全目錄掃描。
 
 重用這個 checkout 和既有 environment。工程碼使用專用 codex/simulation-engineering 分支（以 GitHub 上該分支或最新已驗證文件 checkpoint 為起點）；codex/docs-agent-handoff 只供本次文件整理。正式研究仍使用 phase1/finalization-sprint。同一 checkout 在工作狀態已保存且 clean 時切換分支，驗證後普通 push 對應 GitHub branch；不要為每個 milestone 建一份新 worktree、clone、venv 或 raw dataset 副本。GitHub branch 是版本入口，本機重型 scene/media 保留單一 immutable 來源。GitHub remote 不能取代本機執行環境或未公開素材；用 manifest、hash、materialization 與 replay refs 接入。分支間文件位置可能不同，依該分支的 docs/README.md 或實際正文路徑讀取。
 
-canonical checkout /Users/polalabear/Developer/amidst 只供應 immutable Blender scene/raw artifacts，不切換它的 branch。保留無關修改與原始資產，不清理／刪除既有 worktree 或 media。phase2/integration-hardening / 5b51d2c 保持 FROZEN；在目前工程分支核對後重用相容的 repository/API/replay/consumer，不直接在 frozen branch 開發，不 whole-branch merge，不 merge main。
+canonical checkout /Users/polalabear/Developer/amidst 只供應 immutable Blender scene/raw artifacts，不切換它的 branch。保留無關修改與原始資產，不清理／刪除既有 worktree 或 media。phase2/integration-hardening / 5b51d2c 保持 FROZEN；從工程分支已接入的 repository/API/replay/consumer 擴充，不直接在 frozen branch 開發，不 whole-branch merge，不 merge main。
+既有低階 API 能以 configs/integration/mock_v1.json 服務四個 synthetic cases，但尚非 Agent allowlist DTO；其 target_id／world coordinates／source references 不直接提供給 Agent。既有 importer 只認 COMPLETE artifacts.json v1.0 package，新 reviewed/finalization package 必須新增獨立 source/clock/unit adapter，核對 BU 與 METRES、顯式 normalization 並完成 import certification。不得用 mock PASS 當正式 package 驗證，也不重新匯入舊 branch 全套 core。可用 uv run python -m amidst.integration --config configs/integration/mock_v1.json --serve --port 8000 驗證本機接口。
 
 二、資料、照片模式與地點模型
 
@@ -51,7 +52,7 @@ canonical checkout /Users/polalabear/Developer/amidst 只供應 immutable Blende
 M1：LocationRegistry／CameraCatalog／media索引／source-clock-unit bindings；至少能從地點查到真實存在的 camera/frame references。
 M2：兩種觀測模式、資料輸出守門、local image perception/tracks；來源明確且不使用 simulator global identity 當跨鏡頭答案。
 M3：跨鏡頭 association hypotheses、合法 projection、world-to-region、既有 Graph/reconstructor 的相容 adapter。保留歧義與全部替代候選，避免 fabricated self-camera handoff。
-M4：canonical snapshots、Memory/LOCAL_JSON、place/camera/time/region/event 查詢、summary/detail/media/replay tools；GET 不重跑推論，不重新聚合來改寫永久 IDs。
+M4：重用已接入的 canonical snapshots、Memory/LOCAL_JSON、camera/time/event reads 與 legacy replay adapter；補 place/region 查詢及 Agent summary/detail/media/replay tools。GET 不重跑推論，不重新聚合來改寫永久 IDs；對新的 package 完成獨立 adapter certification。
 M5：MockAgent 調用流程與可操作展示入口：地點定位→鏡頭/時間查詢→摘要→必要照片/細節→3D區域事件/replay。可以使用既有 Rerun 與影片素材，但不能只交預錄影片或接口 scaffold。
 M6：共同 run 的 dataset/config/model-registry/media hashes、sample輸入輸出、模式比較、工具紀錄、GT/外洩邊界驗證、可重現命令與必要RRD/PNG；完成新增功能相稱的unit/integration與文件連結檢查。
 
