@@ -2,6 +2,8 @@
 
 import hashlib
 import json
+import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -190,3 +192,24 @@ def test_reviewed_hash_manifest_path_cannot_escape(package: dict[str, Any]) -> N
     package["expected_freeze_sha256"] = write(root / "inference_freeze.json", freeze)
     with pytest.raises(ValueError, match="contained relative path"):
         importer.certify_reviewed_package(**package)
+
+
+def test_reviewed_certification_cli_is_reproducible_and_does_not_overwrite(
+    package: dict[str, Any], tmp_path: Path,
+) -> None:
+    receipt = tmp_path / "receipt.json"
+    args = [sys.executable, "-m", "amidst.engineering.importer",
+            "--run", str(package["run_root"]), "--source-scene", str(package["source_scene"]),
+            "--scale", str(package["scale_path"]),
+            "--dataset-sha256", package["expected_dataset_sha256"],
+            "--freeze-sha256", package["expected_freeze_sha256"], "--receipt", str(receipt)]
+    first = subprocess.run(args, text=True, capture_output=True, check=True)
+    second = subprocess.run(args, text=True, capture_output=True, check=True)
+    assert first.stdout == second.stdout == receipt.read_text()
+    assert json.loads(first.stdout)["status"] == "CERTIFIED_STRUCTURED_RECOVERY_PARTIAL_SCOPE"
+    receipt.write_text("preserved older receipt")
+    failed = subprocess.run(args, text=True, capture_output=True, check=False)
+    assert failed.returncode == 2
+    assert failed.stderr == "REVIEWED_IMPORT_UNAVAILABLE_OR_BINDING_INVALID\n"
+    assert str(package["run_root"]) not in failed.stderr
+    assert receipt.read_text() == "preserved older receipt"

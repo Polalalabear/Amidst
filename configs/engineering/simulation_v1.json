@@ -1,0 +1,11 @@
+{
+  "schema_version": "simulation.engineering.config.v1",
+  "model_id": "synthetic-lab-v1",
+  "frame_count": 51,
+  "fps": 5.0,
+  "input_modes": ["photos_only", "photos_plus_observations"],
+  "receiver": "LOCAL_DETERMINISTIC_IMAGE_ASSOCIATION",
+  "decision_stage": "PIXEL_MEASUREMENT_THEN_PROVISIONAL_ASSOCIATION",
+  "external_model_calls": false,
+  "formal_phase1_acceptance": false
+}

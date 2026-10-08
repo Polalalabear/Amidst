@@ -7,6 +7,7 @@ certification never makes them pixel measurements or Agent allowlisted answers.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import math
@@ -277,3 +278,37 @@ def certify_reviewed_package(
         registry_sha256=registry.sha256,
     )
     return ReviewedImport(snapshot=snapshot, registry=registry, certificate=certificate)
+
+
+def main() -> None:
+    """Certify a fixed local package and emit a small idempotent public receipt."""
+    parser = argparse.ArgumentParser(description="Verify reviewed structured recovery import")
+    parser.add_argument("--run", required=True, type=Path)
+    parser.add_argument("--source-scene", required=True, type=Path)
+    parser.add_argument("--scale", required=True, type=Path)
+    parser.add_argument("--dataset-sha256", required=True)
+    parser.add_argument("--freeze-sha256", required=True)
+    parser.add_argument("--receipt", type=Path)
+    args = parser.parse_args()
+    try:
+        result = certify_reviewed_package(
+            args.run, source_scene=args.source_scene, scale_path=args.scale,
+            expected_dataset_sha256=args.dataset_sha256,
+            expected_freeze_sha256=args.freeze_sha256,
+        )
+        output = (result.certificate.model_dump_json(indent=2) + "\n").encode()
+        if args.receipt is not None:
+            if args.receipt.exists():
+                if args.receipt.read_bytes() != output:
+                    raise ValueError("existing certificate differs")
+            else:
+                args.receipt.parent.mkdir(parents=True, exist_ok=True)
+                with args.receipt.open("xb") as stream:
+                    stream.write(output)
+    except (ValueError, KeyError, TypeError, OSError):
+        parser.exit(2, "REVIEWED_IMPORT_UNAVAILABLE_OR_BINDING_INVALID\n")
+    print(output.decode(), end="")
+
+
+if __name__ == "__main__":
+    main()

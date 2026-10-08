@@ -207,3 +207,29 @@ def test_affine_calibration_is_finite_invertible_and_strict() -> None:
     with pytest.raises(ValidationError):
         PixelPlaneCalibration(camera_id="CAM", width=True, height=240,
                               ground_to_pixel=((1, 0, 0), (0, 1, 0)))
+
+
+@pytest.mark.parametrize("time_range", [(float("nan"), 1), (0, float("inf")), (-1, 0),
+                                        (False, 1)])
+def test_registry_direct_queries_require_finite_nonnegative_time(
+    tmp_path: Path, time_range: tuple[float, float],
+) -> None:
+    binding = scope()
+    store = RegistryStore(LocationRegistry(models=(model(binding),), cameras=(camera(binding),)),
+                          tmp_path)
+    with pytest.raises(ValueError, match="invalid time range"):
+        store.query_frames(binding, time_range=time_range)
+
+
+def test_derivation_cannot_collapse_a_coordinate_dimension() -> None:
+    with pytest.raises(ValidationError, match="invertible"):
+        ModelDerivation(
+            parent_model_id="parent", parent_revision="1", parent_source_sha256="a" * 64,
+            derivation_manifest_sha256="b" * 64,
+            parent_to_child_metres=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 0, 0), (0, 0, 0, 1)),
+            camera_correspondence=(CameraCorrespondence(
+                parent_camera_id="CAM_PARENT", child_camera_id="CAM_A",
+                parent_calibration_sha256="d" * 64, child_calibration_sha256="e" * 64,
+                mapping_sha256="f" * 64,
+            ),),
+        )

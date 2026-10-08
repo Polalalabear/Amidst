@@ -39,6 +39,7 @@ class SyntheticPackage(PixelModel):
     frames: tuple[RGBFrame, ...]
     cameras: tuple[SyntheticCamera, ...]
     source_sha256: str
+    model_source_sha256: str
     context_sha256: str
     config_sha256: str
     dataset_sha256: str
@@ -118,8 +119,9 @@ def generate_sequence(
     config_hash = sha256(_canonical_bytes(recipe)).hexdigest()
     model_source = {key: value for key, value in recipe.items()
                     if key not in {"run_id", "frame_count", "fps"}}
+    model_source_hash = sha256(_canonical_bytes(model_source)).hexdigest()
     source_hash = sha256(_canonical_bytes({"generator": generator_hash,
-                                          "model": model_source})).hexdigest()
+                                          "model_sha256": model_source_hash})).hexdigest()
     context_hash = sha256(_canonical_bytes({"frame": "RIGHT_HANDED_XYZ_Z_UP",
                                            "units": "METRES", "floor_z": 0.0,
                                            "extent": [0.0, 12.0, 0.0, 4.0],
@@ -179,7 +181,8 @@ def generate_sequence(
         gt_path.write_bytes(gt_payload)
     return SyntheticPackage(
         model_id=model_id, revision="1", run_id=run_id, frames=tuple(frames), cameras=cameras,
-        source_sha256=source_hash, context_sha256=context_hash, config_sha256=config_hash,
+        source_sha256=source_hash, model_source_sha256=model_source_hash,
+        context_sha256=context_hash, config_sha256=config_hash,
         dataset_sha256=dataset_hash, generator_sha256=generator_hash,
         simulation_export_path=gt_path, fps=fps,
     )

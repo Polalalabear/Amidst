@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from pathlib import Path, PurePosixPath
 from typing import Annotated, Literal, Self
 
@@ -105,6 +106,12 @@ class ModelDerivation(RegistryModel):
         children = [item.child_camera_id for item in self.camera_correspondence]
         if len(children) != len(set(children)) or self.parent_to_child_metres[3] != (0, 0, 0, 1):
             raise ValueError("derivation requires unique camera mapping and affine transform")
+        a, b, c = self.parent_to_child_metres[:3]
+        determinant = (a[0] * (b[1] * c[2] - b[2] * c[1])
+                       - a[1] * (b[0] * c[2] - b[2] * c[0])
+                       + a[2] * (b[0] * c[1] - b[1] * c[0]))
+        if abs(determinant) < 1e-12:
+            raise ValueError("derivation coordinate transform must be invertible")
         return self
 
 
@@ -284,8 +291,12 @@ class RegistryStore:
 
     def query_frames(self, scope: ResourceScope, *, camera_id: str | None = None,
                      time_range: tuple[float, float] | None = None) -> tuple[MediaFrame, ...]:
-        if time_range is not None and time_range[1] < time_range[0]:
-            raise ValueError("invalid time range")
+        if time_range is not None:
+            if len(time_range) != 2 or any(
+                isinstance(value, bool) or not isinstance(value, (int, float))
+                or not math.isfinite(value) or value < 0 for value in time_range
+            ) or time_range[1] < time_range[0]:
+                raise ValueError("invalid time range")
         return tuple(item for item in self.registry.frames if item.scope == scope
                      and (camera_id is None or item.camera_id == camera_id)
                      and (time_range is None or time_range[0] <= item.timestamp <= time_range[1]))

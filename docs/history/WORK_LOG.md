@@ -2043,3 +2043,22 @@ Persisted bundle核對source/context/model/run／全部local與derived record li
 English: M3 preserves provisional association alternatives and immutable local-to-canonical
 maps while reusing the existing Graph/reconstructor. Overlap and same-camera recovery are
 explicit unresolved results. Twenty-seven current tests, lint and strict types pass.
+
+## 2026-10-08 — Simulation engineering M4
+
+新增AgentFacade八個typed read tools、server-owned session scope與allowlist DTO。
+Photos-only input封裝包含所有照片refs且不含structured observations；plus使用同照片及
+真實pixel measurements。Run loader核對input envelopes、frame links的camera/time/hash、
+source/context/clock、effective config／static context／algorithm hashes、registry/media與
+freeze receipt；跨mode/run、caller改stage、錯reference、錯誤logs皆fail closed。
+MEMORY／LOCAL_JSON讀同一完整canonical snapshot，窄window不改endpoints；GET不重跑inference。
+補reviewed importer CLI與registry可逆derivation／finite time guards。
+
+當次63 tests PASS（20 facade、28 registry/importer、14既有Phase2 compatibility及1transport
+smoke），scoped Ruff PASS、strict mypy137 source files PASS。更廣的完整驗證於後續M6綁定。
+實際 `simulation-v2` 兩模式freeze完成：102照片、89量測、6tracks、21association records、
+4canonical gaps／8routes。完整GT只在simulation/export，low-level legacy API不掛入facade。
+
+English: M4 adds typed scoped tools, genuine mode inputs and fully verified frozen reads,
+including immutable canonical joins and safe errors/logs. Sixty-three current checks pass.
+The local synthetic run operates independently of reviewed/formal research acceptance.
