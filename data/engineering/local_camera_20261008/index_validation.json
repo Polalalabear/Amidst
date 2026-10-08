@@ -1,0 +1,31 @@
+{
+  "schema_version": "local.camera.index-validation.v1",
+  "date": "2026-10-08",
+  "baseline_commit": "b234968197895075b7af987bb725ef8e80aa6780",
+  "status": "SYNTHETIC_INDEXED_EXTENSION_PASS",
+  "tests": 40,
+  "failures": 0,
+  "skipped": 0,
+  "ruff": "PASS",
+  "strict_mypy": "PASS",
+  "legacy_v1_unchanged": true,
+  "scale_probe": {
+    "unrelated_records": 16000,
+    "records_read": 3,
+    "index_entries_touched": 2,
+    "receipt_identical_to_local_only": true
+  },
+  "long_interval_probe": {
+    "old_records": 5000,
+    "overlap_records": 2,
+    "index_entries_touched_less_than": 40
+  },
+  "source_sha256": {
+    "src/amidst/engineering/local_index.py": "b88547a9cc546be4b2f0a8ca156981408bafcc455870226edef731f58a6ddfec",
+    "src/amidst/engineering/local_association.py": "1c008addf5391ad5aeca2be43e14e90cd18507b6b89ae9c1afc6a79a49440e20",
+    "tests/engineering/test_local_index.py": "7b7a0aed7e733dac3151037b2537bc1220a5f06013344f994ef4e81579f4c5fa",
+    "tests/engineering/test_local_association.py": "d2b5a2c952f5870cb57533a7b99c0f6036b6678199328d88d259d312fdce9612"
+  },
+  "formal_gate_changed": false,
+  "external_model_calls": false
+}

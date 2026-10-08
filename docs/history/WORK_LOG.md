@@ -2121,3 +2121,11 @@ required physical evidence and zero failures/skips; lint, 138-file strict types,
 HTTP calls and 12 TypeScript replay samples pass. Strict response validation and INPUT
 region-filter denial close the final answer-leak paths. Low-precision fixture results retain
 failures/ambiguity; formal research and concurrent R1–R8 work remain independently pending.
+
+## 2026-10-08 — Local camera R1–R2 indexed checkpoint
+
+從live `b234968` 續接，與並行 M1–M6 約定檔案／Git index 時段；保留其所有提交、registry、RGB tracks、v1 provisional bindings 與 frozen run。新增獨立 `simulation.local-association.v1`，source-bound scope/ref dictionaries、camera/time interval trees、region/portal adjacency、有界多跳／時間擴查與讀取／truncation receipts；候選取出後才形成pairs，沒有全pair／catalog query fallback。原 Graph routes／timing／排序、same-camera HOLD 與 overlap語意不變；appearance與pixel-derived motion只作未校準soft ranking。
+
+當次40 tests PASS（27 indexed extension＋13原v1）、scoped Ruff／strict mypy PASS。16000無關records仍維持3筆讀取／2 index entries與相同receipt；5000歷史長區間overlap probe命中2筆且觸及少於40 entries。缺clock/coverage、window/hop/read budgets、錯scope與最低合法路程／速度gate已驗證。Curated [index receipt](../../data/engineering/local_camera_20261008/index_validation.json) 綁定實際source hashes；新protocol固定R1邊界，完整RGB／事件／評估／UI後續checkpoint另驗。不是formal研究驗收，Phase2／main與原資產不變。
+
+English: A separate versioned local association composes genuine scoped interval/ref/adjacency indices before pairing. Forty current tests, lint and strict types pass, including unrelated-record and long-overlap scaling. Existing v1 schemas, RGB/provisional records and concurrent checkpoints are preserved. Formal gates remain unchanged.
