@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amidst · Local simulation research</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#10151f;color:#e7edf6}
+body{max-width:1250px;margin:30px auto;padding:0 20px}h1{font-size:28px;margin:0}
+.muted{color:#a1b0c4}button,select,input{background:#202d41;color:#e7edf6;border:1px solid #516078;
+padding:9px;border-radius:5px}button{cursor:pointer}button:hover{background:#324864}
+.panel{border:1px solid #344055;padding:18px;border-radius:9px;margin-top:16px;background:#161f2d}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+pre{overflow:auto;max-height:440px;font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+#events{max-height:220px;overflow:auto}#summary{max-height:220px}
+img{width:100%;max-width:480px;border-radius:6px}canvas{width:100%;height:340px;background:#101722}
+.event{display:block;width:100%;text-align:left;margin-top:9px}.badge{background:#23334a;padding:5px 9px;border-radius:8px}
+@media(max-width:750px){.grid{grid-template-columns:1fr}}
+</style>
+<h1>Amidst · 合成照片研究入口</h1>
+<p class="muted">本機 SYNTHETIC · pixel measurements · provisional associations · CONFIGURED_ENGINEERING_ONLY</p>
+<div class="panel row"><label>輸入模式 <select id="sessions"></select></label>
+<button id="resolve">1 地點定位</button><button id="cameras">2 鏡頭與照片</button>
+<label>時間 <input id="start" type="number" value="0" min="0" step="0.2" size="4"> —
+<input id="end" type="number" value="30" min="0" step="0.2" size="4"></label>
+<button id="query">3 查事件</button></div>
+<div class="grid"><div class="panel"><h3>資源／事件摘要</h3><div id="events"></div>
+<p id="summaryText"></p><details><summary>來源／references</summary><pre id="summary"></pre></details></div>
+<div class="panel"><h3>合成相機照片（無 GT overlay）</h3><select id="photo"></select><div id="media"></div></div></div>
+<div class="grid"><div class="panel"><h3>3D 候選 replay</h3><p class="muted">XYZ／metres，所有候選保留。拖曳僅改 presentation。藍：投影端點；橘：推論路線。</p>
+<canvas id="view" width="680" height="340"></canvas><input id="seek" type="range" min="0" max="1" step="0.01" value="0" style="width:98%">
+<div id="replaystatus"></div></div><div class="panel"><h3>按需細節／工具紀錄</h3><pre id="details"></pre></div></div>
+<script>
+'use strict';
+let contexts=[],ctx=null,current=null,detail=null,frames=new Map();const $=id=>document.getElementById(id);
+const display=(id,value)=>$(id).textContent=JSON.stringify(value,null,2);
+async function call(tool,args={}){const session=ctx.session_ref;const r=await fetch('/agent/v1/'+tool,{method:'POST',headers:{'Content-Type':'application/json'},
+body:JSON.stringify({session_ref:session,...args})});const data=await r.json();if(ctx.session_ref!==session)throw Error('SESSION_CHANGED');if(!r.ok)throw Error(data.error);
+display('details',{tool,response:data});return data;}
+function draw(data){const c=$('view'),g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);
+const p=v=>[60+v[0]*42+v[1]*15,290-v[1]*24-v[2]*35];g.lineWidth=1;g.strokeStyle='#24334a';
+for(let x=0;x<=12;x++){g.beginPath();g.moveTo(...p([x,0,0]));g.lineTo(...p([x,8,0]));g.stroke();}
+for(let y=0;y<=8;y++){g.beginPath();g.moveTo(...p([0,y,0]));g.lineTo(...p([12,y,0]));g.stroke();}
+const candidates=detail?.candidates||[];for(const route of candidates){g.beginPath();g.strokeStyle='#e8a24a99';g.lineWidth=2;
+route.polyline.forEach((v,i)=>i?g.lineTo(...p(v)):g.moveTo(...p(v)));g.stroke();}
+for(const mark of data.markers||[]){g.fillStyle=mark.interpolated?'#efad53':'#65beee';g.beginPath();g.arc(...p(mark.world_position),5,0,Math.PI*2);g.fill();}
+g.fillStyle='#a1b0c4';g.fillText('Configured synthetic lab · Z up · all alternatives',20,20);}
+async function media(ref){const data=await call('get_media',{media_ref:ref});const im=document.createElement('img');
+im.src='data:'+data.mime_type+';base64,'+data.content_base64;im.alt=data.camera_id+' at '+data.timestamp+' seconds';
+const label=document.createElement('p');label.textContent=im.alt;$('media').replaceChildren(label,im);}
+function photoOptions(refs){$('photo').replaceChildren();for(const ref of refs){const op=document.createElement('option');
+op.value=ref;const f=frames.get(ref);op.textContent=f?f.camera_id+' · '+f.timestamp+'s':ref;$('photo').append(op);}}
+async function selectEvent(item){current=item;const summary=await call('get_event_summary',{event_ref:item.event_ref});
+display('summary',summary);$('summaryText').textContent=summary.kind+' · '+summary.camera_ids.join(' → ')+
+' · '+summary.time_range.join('–')+'秒。路線 '+summary.candidate_count+'；時間假設 '+summary.hypothesis_count+
+'；搜尋 '+summary.termination_reason+' / complete='+summary.complete+'. '+summary.uncertainty;
+detail=await call('get_event_detail',{event_ref:item.event_ref});photoOptions(summary.media_refs||[]);
+if(summary.media_refs?.length)await media(summary.media_refs[0]);
+$('seek').min=summary.time_range[0];$('seek').max=summary.time_range[1];$('seek').value=summary.time_range[0];
+if(summary.replay_ref)await replay();else{draw({markers:[]});$('replaystatus').textContent=summary.termination_reason;}}
+async function replay(){if(!current||!detail?.replay_ref)return;const data=await call('get_replay',{event_ref:current.event_ref,timestamp:Number($('seek').value)});
+draw(data);$('replaystatus').textContent='t='+data.timestamp+' · '+data.markers.length+' hypothesis markers';}
+async function query(){const data=await call('query_events',{time_range:[Number($('start').value),Number($('end').value)]});
+$('events').replaceChildren();display('summary',data);for(const item of data.items){const b=document.createElement('button');
+b.className='event';b.textContent=item.kind+' · '+item.camera_ids.join(' → ')+' · '+item.time_range.join('–')+'s · '+item.candidate_count+' routes';
+b.onclick=()=>selectEvent(item).catch(error);$('events').append(b);}if(data.items.length)
+await selectEvent(data.items.find(e=>e.replay_ref&&e.candidate_count)||data.items[0]);}
+function error(e){display('details',{error:e.message});}
+$('resolve').onclick=()=>call('resolve_place',{query:'Synthetic lab'}).then(data=>display('summary',data)).catch(error);
+$('cameras').onclick=()=>call('list_cameras').then(async data=>{display('summary',data);const refs=data.items.flatMap(c=>c.media_refs);
+frames=new Map(data.items.flatMap(c=>c.frames.map(f=>[f.media_ref,{...f,camera_id:c.camera_id}])));
+photoOptions(refs);$('summaryText').textContent=data.items.length+'個鏡頭，'+refs.length+'張完整合成照片。';
+if(refs.length)await media(refs[Math.floor(refs.length/4)]);}).catch(error);
+$('photo').onchange=()=>media($('photo').value).catch(error);
+$('query').onclick=()=>query().catch(error);$('seek').oninput=()=>replay().catch(error);
+$('sessions').onchange=()=>{ctx=contexts[$('sessions').value];current=null;detail=null;
+$('events').replaceChildren();$('media').replaceChildren();$('details').textContent='';
+$('photo').replaceChildren();frames=new Map();$('summaryText').textContent='';
+$('replaystatus').textContent='';display('summary',ctx);draw({markers:[]});};
+fetch('/agent/v1/contexts').then(r=>r.json()).then(data=>{contexts=data.items;for(let i=0;i<contexts.length;i++){
+const op=document.createElement('option');op.value=i;op.textContent=contexts[i].observation_mode+' · '+contexts[i].decision_stage;$('sessions').append(op);}
+ctx=contexts[0];display('summary',ctx);draw({markers:[]});}).catch(error);
+</script></html>

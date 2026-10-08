@@ -2062,3 +2062,21 @@ smoke），scoped Ruff PASS、strict mypy137 source files PASS。更廣的完整
 English: M4 adds typed scoped tools, genuine mode inputs and fully verified frozen reads,
 including immutable canonical joins and safe errors/logs. Sixty-three current checks pass.
 The local synthetic run operates independently of reviewed/formal research acceptance.
+
+## 2026-10-08 — Simulation engineering M5
+
+新增loopback typed HTTP transport／schema入口、MockAgent CLI與可操作browser研究介面。
+可定位地點、列camera/frame index、選完整RGB照片、查時間／region events、取摘要／細節、
+显示全部3D候選與seek所有時間hypotheses。不是單交預錄影像；每次操作經typed工具讀固定
+snapshot。主照片、viewer與replay無GT overlay，inferred／projected與presentation interpolation
+明示。UI切session清空舊結果並拒絕stale async response，transport不記raw URLs／bad payloads。
+
+當次35 tests PASS（21 facade/transport + 14既有Phase2 compatibility），Ruff PASS、
+strict mypy137 source files PASS；真實loopback36 requests PASS，保存
+[HTTP receipt](../../data/engineering/simulation_20261008/http_smoke.json)。
+實際browser操作核對照片與3routes／6hypotheses，seek8.79s顯示所有INFERRED_GAP markers。
+並行R1–R8工作改採獨立新版local association模組，原v1與simulation-v2 frozen bytes保留。
+
+English: M5 provides an operating local browser and MockAgent workflow, including full
+images and all-alternative replay. Thirty-five current checks and thirty-six real HTTP
+requests pass. The live viewer was operated and inspected; truth is absent from the main UI.

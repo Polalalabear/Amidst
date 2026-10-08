@@ -1,0 +1,190 @@
+{
+  "schema_version": "simulation.http-smoke.v1",
+  "run_id": "simulation-v2",
+  "requests": 36,
+  "checks": [
+    {
+      "route": "/",
+      "status": 200,
+      "sha256": "2070c432889ff00f67fd05ade4eff958637fde139eb01a63fd3d03bae10c1f9f"
+    },
+    {
+      "route": "/agent/v1/contexts",
+      "status": 200,
+      "sha256": "7fc85f8e36293c1b19cd1b13aaaa2c68de5a735521cc1617577414dc85777e51"
+    },
+    {
+      "route": "/agent/v1/contract",
+      "status": 200,
+      "sha256": "8b1ec49640d434f05550df29d87797222dd6f62e1e0b8939f55cdb31ffe1ce7f"
+    },
+    {
+      "route": "/agent/v1/resolve_place",
+      "status": 200,
+      "sha256": "3f538bc7e7f28bc9a671aa8163c7388d5721b3eadce7ceca496df22c17e77283"
+    },
+    {
+      "route": "/agent/v1/list_cameras",
+      "status": 200,
+      "sha256": "0da907df6fb222e842a7f22e1677150ef01811a8eac134073a477f53880ed1d7"
+    },
+    {
+      "route": "/agent/v1/query_observations",
+      "status": 200,
+      "sha256": "6fc99db80005e64198c831034f3f6db1be59bd1e9c98459f769d937d64f74faa"
+    },
+    {
+      "route": "/agent/v1/query_events",
+      "status": 200,
+      "sha256": "b32a8d8cfa9993409103e799c236b5dc54933ad9f98278c23addcf68452ac3b6"
+    },
+    {
+      "route": "/agent/v1/get_event_detail",
+      "status": 200,
+      "sha256": "80b1ee9b3b829203139deb6677fa994866db46bc54f0176848b7d8dbd05550c7"
+    },
+    {
+      "route": "/agent/v1/get_event_summary",
+      "status": 200,
+      "sha256": "1c38e2e66432605ef3b11e0fc3ac7ed89a7d9972fec82fde295f7009702a4300"
+    },
+    {
+      "route": "/agent/v1/get_media",
+      "status": 200,
+      "sha256": "4542e1619d9b4503dd097e3dfedf996090ea511e13e8b7e4ae315f89f57cce38"
+    },
+    {
+      "route": "/agent/v1/get_replay",
+      "status": 200,
+      "sha256": "f5b60215243c53fe386c8e3f0b534e2f34644d44641663703d0f8a52ae810507"
+    },
+    {
+      "route": "/agent/v1/query_events",
+      "status": 200,
+      "sha256": "7cc97541c0c3f409ade5976fc1f1ba6f39145fbffd076c5f1232e452b7c9bddf"
+    },
+    {
+      "route": "/agent/v1/query_events",
+      "status": 200,
+      "sha256": "890533e55e03b460a762d91725663155ab3a994949a366bfc4819830af55d13c"
+    },
+    {
+      "route": "/agent/v1/list_cameras",
+      "status": 403,
+      "sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "route": "/agent/v1/list_cameras",
+      "status": 403,
+      "sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "route": "/agent/v1/list_cameras",
+      "status": 403,
+      "sha256": "f76f34da90b8d395bfa97c36aff81cc9f29054b8e19beb15b3023adce61b9882"
+    },
+    {
+      "route": "/agent/v1/get_media",
+      "status": 403,
+      "sha256": "43556cd6fddf312529bdd2f7cca0882105fa3ab33b0839448f79d123673c2236"
+    },
+    {
+      "route": "/agent/v1/get_event_detail",
+      "status": 403,
+      "sha256": "a0948d1ebd58afef823b83ac444b3c8e3337a1c050a00a9ed09c5adefbe3f51d"
+    },
+    {
+      "route": "/agent/v1/get_replay",
+      "status": 403,
+      "sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "route": "/agent/v1/resolve_place",
+      "status": 200,
+      "sha256": "75301303f7eab778fa7e51bb00fbae8437f61c08f37de9f46c334dcd1f5ebbb6"
+    },
+    {
+      "route": "/agent/v1/list_cameras",
+      "status": 200,
+      "sha256": "81104cf62618db6af57a9d08399b1ab2dad0a359246dc651a36173422c0797af"
+    },
+    {
+      "route": "/agent/v1/query_observations",
+      "status": 200,
+      "sha256": "1b750faeb6e66f59133adfee584b97e3c57544aa5910f45091438293dff20e43"
+    },
+    {
+      "route": "/agent/v1/query_events",
+      "status": 200,
+      "sha256": "7e81a501de3f8d1f0ca220290e82b743f98d67eaa0b2e9dd9f416cf313358698"
+    },
+    {
+      "route": "/agent/v1/get_event_detail",
+      "status": 200,
+      "sha256": "e860cf996f407ff69c694937d067dc9979be26974ce80078379eb1e2ac8849b7"
+    },
+    {
+      "route": "/agent/v1/get_event_summary",
+      "status": 200,
+      "sha256": "be6ece1f715917ad764b9d0bf973be0af0143e3d32e5642c1bf83eb3e495f20b"
+    },
+    {
+      "route": "/agent/v1/get_media",
+      "status": 200,
+      "sha256": "c86bae6e29263726d5bd94ff0bce7aec7b5412c743d93887c16c7662a6db21de"
+    },
+    {
+      "route": "/agent/v1/get_replay",
+      "status": 200,
+      "sha256": "3e9b29d0a76f1b0230fa52c43ea4d2ffd7d1f92e6f3e716dc4bd9b77b6cd0d24"
+    },
+    {
+      "route": "/agent/v1/query_events",
+      "status": 200,
+      "sha256": "c695f03973048857274daa295f9b57a50b6cfee622eb6591e9e04a6704cf4839"
+    },
+    {
+      "route": "/agent/v1/query_events",
+      "status": 200,
+      "sha256": "98af434234c6199ef6e25ddd516f0e6dbcafce8513fc7c43db7a98103de42a26"
+    },
+    {
+      "route": "/agent/v1/list_cameras",
+      "status": 403,
+      "sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "route": "/agent/v1/list_cameras",
+      "status": 403,
+      "sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "route": "/agent/v1/list_cameras",
+      "status": 403,
+      "sha256": "f76f34da90b8d395bfa97c36aff81cc9f29054b8e19beb15b3023adce61b9882"
+    },
+    {
+      "route": "/agent/v1/get_media",
+      "status": 403,
+      "sha256": "43556cd6fddf312529bdd2f7cca0882105fa3ab33b0839448f79d123673c2236"
+    },
+    {
+      "route": "/agent/v1/get_event_detail",
+      "status": 403,
+      "sha256": "a0948d1ebd58afef823b83ac444b3c8e3337a1c050a00a9ed09c5adefbe3f51d"
+    },
+    {
+      "route": "/agent/v1/get_replay",
+      "status": 403,
+      "sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906"
+    },
+    {
+      "route": "/v1/events",
+      "status": 404,
+      "sha256": "62180dc2bc8a015515190d1b3cd90d8172066eecc5b114363d45427ca950da0f"
+    }
+  ],
+  "status": "PASS",
+  "external_model_calls": false,
+  "canonical_narrow_query_and_dto_boundary": true
+}

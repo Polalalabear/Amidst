@@ -215,6 +215,9 @@ class AgentFacade:
                 "group_ids": c.group_ids, "coverage_status": c.coverage_status,
                 "region_ids": c.region_ids, "origin": c.origin, "authority": c.authority,
                 "media_refs": [f.media_ref for f in self.frames if f.camera_id == c.camera_id],
+                "frames": [{"media_ref": f.media_ref, "frame_id": f.frame_id,
+                            "timestamp": f.timestamp} for f in self.frames
+                           if f.camera_id == c.camera_id],
                 "time_range": self._camera_extent(c.camera_id),
             } for c in self.cameras]}
         if tool in ("query_events", "query_observations"):

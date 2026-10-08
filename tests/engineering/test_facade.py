@@ -164,4 +164,3 @@ def test_tampered_bindings_fail_before_result_read(frozen: Path, tmp_path: Path,
     path.write_text(json.dumps(data))
     with pytest.raises(ValueError):
         load_facades(root)
-
