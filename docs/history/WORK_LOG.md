@@ -1976,3 +1976,24 @@ English: Imported seventeen byte-identical frozen mock source/config/frontend fi
 同步相同澄清至 Agent 工程契約，四個 OpenAI／token 空章節保持空白。只修改兩份文件與本紀錄，不執行 prompt 內 M1–M6、不改程式或資料、不重跑2255 tests。文件相對連結／anchors、diff 與既有 protected bytes 使用相稱檢查；歷史測試仍明確綁定原工程 checkpoint。
 
 English: Rewrote the copyable prompt around the verified integrated baseline, real pixel-derived synthetic observations, provisional association bindings, server-owned stage authorization and a scoped Agent facade. Preserved blank API/token sections and independent formal obligations; this is a documentation revision, not M1–M6 implementation or a test rerun.
+
+## 2026-10-08 — Simulation engineering M1
+
+在 `codex/simulation-engineering` / `3117113` 上新增 source/context/model/run/clock 綁定的
+LocationRegistry、CameraCatalog、opaque media refs、hash/containment 驗證與衍生模型對應契約。
+獨立 recovery importer 核對實際 school-v3 source、12 dataset files、34 inference files、
+4 cameras 與193投影；明確保留 native BU，校正執行 source Z offset 後乘0.0247 m/BU。
+只認證既有 office structured partial scope，4 observations／2 events 的 canonical records
+保持原值；不是 RGB、Agent DTO、corridor 或 formal full Exit 認證。
+
+本次36 tests PASS（22新 registry/importer + 14既有 Phase2 integration）、Ruff與strict mypy
+PASS。58既有圖片 hash/size 驗證，包含50 diagnostic overlay frames與8代表／模型圖；
+可直接用作未標註 RGB tracking sequence 的數量為0。Curated receipts 見
+[import certification](../../data/engineering/simulation_20261008/reviewed_import_certificate.json)
+與[existing media audit](../../data/engineering/simulation_20261008/existing_media_audit.json)。
+本機新 RGB／GT／snapshot／debug outputs 依 artifact policy 排除 Git；沒有修改原 scene或歷史輸入。
+
+English: M1 adds source-bound local resource indexing and independently certifies the existing
+reviewed structured office recovery with explicit BU normalization. Thirty-six current tests,
+lint and strict types pass. Existing diagnostic media was verified and is insufficient as an
+unannotated tracking sequence. Formal research gates remain separate and blocked.

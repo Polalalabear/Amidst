@@ -1,0 +1,39 @@
+{
+  "schema_version": "engineering.reviewed-import-certificate.v1",
+  "status": "CERTIFIED_STRUCTURED_RECOVERY_PARTIAL_SCOPE",
+  "dataset_manifest_sha256": "a3393f2ed29666b8aa1ea61263bb7c46f1d952b44bd89551863c7d24794f68a5",
+  "inference_freeze_sha256": "add7e6256c8e5d2ab834a00cb147f969bd0f091eb3ac62c34d6170461388c4de",
+  "inference_config_sha256": "6f1924b3d2836d022004ad76aea0c32808332cbae5b45e93b6419aa01514966c",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "scale_sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf",
+  "native_units": "NATIVE_BU",
+  "canonical_units": "METRES",
+  "metres_per_native_unit": 0.0247,
+  "normalization": "SOURCE_BOUND_Z_OFFSET_THEN_BU_TO_METRES",
+  "cases": [
+    "case1",
+    "case3"
+  ],
+  "blocked_cases": [
+    "case2"
+  ],
+  "checked_dataset_files": 12,
+  "checked_inference_files": 34,
+  "normalized_camera_count": 4,
+  "checked_projection_count": 193,
+  "observation_count": 4,
+  "event_count": 2,
+  "snapshot_sha256": "11c87ff91d845f2fe8e63c21bbd642026e909a58f8c79d713da4ffcaec0d35e8",
+  "registry_sha256": "94c109f367c002039cefa2960f06f58a0e0954c18b8bd0d8bc1fdeaba2f627a4",
+  "gt_deserialized": false,
+  "image_measurement": false,
+  "source_files_mutated": false,
+  "formal_phase1_acceptance": false,
+  "agent_allowlist_certified": false,
+  "limitations": [
+    "Existing structured simulation records only; camera RGB sequence absent",
+    "Scope remains the reviewed office recovery, without corridor-union expansion",
+    "Case2 and full Case3 research exit gates remain blocked",
+    "Legacy synthetic identity and raw source references remain internal"
+  ]
+}

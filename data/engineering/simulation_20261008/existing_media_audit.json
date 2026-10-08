@@ -1,0 +1,50 @@
+{
+  "schema_version": "engineering.existing-media-inventory.v1",
+  "status": "EXISTING_DIAGNOSTIC_MEDIA_VERIFIED_NOT_RGB_TRACKING_INPUT",
+  "playback_manifest_sha256": "56d6d7817bf26c705d5295e10e7a8e98c92cabf2d71ff4ba771ac7a5eca582c1",
+  "camera_renderer_manifest_sha256": "70998fdb1fe6a0fbfaafb7d7c1a8817e79a74913e8ea9658f4f8f69fdb8e2260",
+  "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+  "verified_images": 58,
+  "diagnostic_body_motion_frames": 50,
+  "diagnostic_body_motion_hz": 5,
+  "source_camera_stills": 6,
+  "source_camera_still_times_seconds": [
+    4.0,
+    5.0,
+    9.0
+  ],
+  "source_model_side_and_wide_images": 2,
+  "qualified_unannotated_camera_rgb_sequences": 0,
+  "grey_geometry_not_cv_pixel_evidence": true,
+  "visual_inspection": [
+    "motion_000.png includes path/body/clearance/authority overlays",
+    "camera_FRONT_frame020.png includes diagnostic text and body marker"
+  ],
+  "decision": "Generate a new minimal unannotated synthetic camera RGB sequence",
+  "historical_structured_5hz_records_are_camera_photos": false,
+  "source_or_existing_media_modified": false,
+  "audited_manifests": [
+    {
+      "reference": "human_review/playback/build_manifest.json",
+      "sha256": "56d6d7817bf26c705d5295e10e7a8e98c92cabf2d71ff4ba771ac7a5eca582c1",
+      "result_type": "VIEW_ONLY"
+    },
+    {
+      "reference": "human_review/frames/topology_context/preview_manifest.json",
+      "sha256": "92e3abc290ca0698328ed954cee9feb9fcd9425df9a5d5d0d23a32e517aafd88",
+      "result_type": "DIAGNOSTIC"
+    },
+    {
+      "reference": "human_review/topology_playback_integration_manifest.json",
+      "sha256": "528ce5eddbea608c038c623a0a5f59c6aa141a75a90a87de76610fc52e2c4432",
+      "result_type": "DIAGNOSTIC_UI_FIX"
+    },
+    {
+      "reference": "human_review/playback/status_snapshot.json",
+      "sha256": "d041419fd1921897cf697b98679808eb236d75c2dcc5dfe90bee5e330ff3bc91",
+      "result_type": "VIEW_ONLY"
+    }
+  ],
+  "topology_preview_qualified_as_camera_rgb": false,
+  "playback_status_snapshot_is_current_formal_acceptance": false
+}

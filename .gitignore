@@ -60,3 +60,6 @@ data/pilot/
 /data/scene_audit/phase1_physical_policy_approval_20261006/obstacle_collider_details.json.gz
 /data/scene_audit/phase1_physical_policy_approval_20261006/source_evidence.json.gz
 /data/scene_audit/phase1_physical_policy_approval_20261006/materialization_receipt.json
+
+# Synthetic engineering RGB, complete GT, canonical runtime snapshots and debug stay local.
+/data/engineering/local_run/
