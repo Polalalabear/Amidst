@@ -43,6 +43,12 @@ git diff --check
 
 純文件整理只做相稱的 diff、連結與內容一致性檢查；若沒有重跑程式測試，引用既有結果時標明歷史 checkpoint，不宣稱本次執行。
 
+### 共用網頁工作台
+
+- Amidst 網頁以 `frontend/workbench/` 的[共用工作台](../engineering/SHARED_WORKBENCH.md)為主入口；既有及後續需要頁面展示的功能均接入它的導覽、元件及流程。
+- 新場景使用 catalog／adapter，新增展示、調查、測試或人審功能擴充共用工作台。研究／管理權限由後端限制，工作模式及產品的輸入模式／凍結階段不改變權限。
+- 遷移既有頁面時重用資料與後端服務，保留原介面、來源綁定及歷史驗證；以局部查詢與獨立 milestone 驗證遷移。未遷入的功能在 handoff 明列，不把主入口決策或舊頁面的 PASS 當作遷移完成。
+
 ### 研究有效性與資產
 
 - 原始 `.blend` 保持不變；研究副本與生成資料依既有隔離決策處理。Audit／export 不儲存來源；清理、刪除、修改來源資產或 render 必須另外明確授權。
@@ -63,6 +69,13 @@ Store maintained text in the five category folders and use only `docs/README.md`
 Verify workspace, Git status and branch before work; preserve unrelated changes. Use uv, pyproject.toml and uv.lock. Implement, validate and independently commit each milestone before the next. Stage narrowly; do not reset, force-push or rewrite user history. Publication requires explicit authorization. Code checks are listed above; documentation-only changes use proportionate diff/link/consistency checks and must not claim an old test run as new.
 
 Prefer reusing one checkout/environment and shared immutable assets rather than accumulating worktrees, clones or raw copies per milestone. Branches can share the same checkout. Necessary isolation remains available; existing assets/checkouts are not deleted or archived without authorization.
+
+Use `frontend/workbench/` as the primary Amidst web entry for existing and future presentation,
+investigation, testing and human review. Extend its shared navigation, components and scene
+catalog/adapters. Enforce Research/Management access on the server; work modes and product
+input/frozen stages do not grant permissions. Reuse existing backend/data contracts during
+migration, preserve source-bound history, validate each bounded migration milestone and keep
+unmigrated capabilities explicit in the handoff.
 
 The 2026-10-08 direction permits local synthetic/mock engineering alongside formal Phase 1 research, without turning engineering passes into formal acceptance. Follow the [Agent retrieval boundary](../engineering/AGENT_RETRIEVAL_BOUNDARY.md). No external model API is connected now; API wiring and the token fallback algorithm stay empty.
 

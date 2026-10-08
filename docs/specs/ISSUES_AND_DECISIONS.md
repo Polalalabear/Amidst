@@ -1,3 +1,29 @@
+## Unified Amidst web workbench / 統一 Amidst 網頁工作台
+
+問題：展示、調查、測試及人審若各自建立頁面，場景更換時會重做介面，
+角色限制、時間軸、證據與審查流程也容易分散。
+
+採用解法：依使用者 2026-10-08 明確指示，以已交付的
+[`frontend/workbench/`](../../frontend/workbench/index.html) 與
+[共用工作台](../engineering/SHARED_WORKBENCH.md)為主要網頁；既有及後續需要頁面展示的功能
+均接入共用導覽、元件、場景接口及 human 審查流程。本機主入口為 8016，桌面版維持本輪範圍。
+研究／管理決定權限，展示／測試／人審決定工具；產品輸入模式與凍結階段另行綁定。
+
+狀態：**ADOPTED / MIGRATION_PARTIAL**。工作台雙角色、雙場景及標註版本流程已交付；
+既有 8010／8012／8020 頁面的全部功能尚未遷入。既有 product 的索引、調查、影片、
+案例、報告與 review 由原後端重用，逐項遷入工作台；來源、原接口及歷史 receipt 保留。
+工作台的 server-owned session 必須綁定已註冊 scene/run/mode/stage 再呼叫產品服務，
+管理 allowlist、GT 隔離、有限鏡頭／時間窗及多解持續有效。
+場景 annotation、事件判定與調查報告 review 分別保存並綁定各自來源版本。
+此決策不核准未知場景語意、不解除 formal gates，也不把舊頁面驗證冒充遷移驗證。
+
+Decision: The user's 2026-10-08 instruction adopts `frontend/workbench/` as the common
+desktop web entry for all existing and future presentation, investigation, tests and human
+review. Reuse scene adapters, navigation, components and server-owned role enforcement.
+Migration remains partial: older engineering pages and their backend/contracts/history are
+preserved until each capability is integrated and validated. Keep product mode/stage bindings,
+local retrieval, competing hypotheses, separate review records and GT isolation intact.
+
 ## Approved school v3 architectural scale / school v3 建築尺度核准
 
 2026-10-06 explicit user approval: **1 BU = 0.0247 m** is the defined Phase 1

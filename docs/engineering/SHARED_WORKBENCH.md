@@ -5,6 +5,35 @@
 目前支援兩個已凍結的合成研究場景，重用既有影像、registry 與研究結果。
 手機版不在本輪範圍內。
 
+## 統一網頁入口
+
+依使用者 2026-10-08 指示，這套工作台是 Amidst 網頁的主要入口。
+既有及後續需要網頁展示的場景、影片、事件、調查、測試、評估與 human 審查，
+都接入 `frontend/workbench/` 的共用導覽、元件與流程。研究／管理決定資料與操作權限；
+展示／測試／人審決定工具與排版。新增場景以 catalog／adapter 接入。
+
+既有 `frontend/product/` 控制室是可遷移的功能與驗證來源；其後端、資料契約、
+freeze 及歷史證據繼續保留。主入口使用本機 8016；8010／8012／8020 的既有頁面
+與歷史驗證尚未全部遷入工作台，不能因入口決策而宣稱功能遷移已完成。
+
+遷移的對應位置：
+
+| 既有能力 | 工作台中的位置 |
+| --- | --- |
+| 人物片段、RGB 外觀查找與關聯假說 | 左側資源與右側證據／替代解釋 |
+| typed investigation plans、執行／停止／續跑、保存案例 | 研究角色的調查工具區 |
+| MP4、主鏡頭、速度、seek、同步診斷 | 中央展示與共用時間軸 |
+| 多目標、衝突、報告、HTML 匯出與結果 review | 事件／調查資訊區與共用結果審查 |
+| 模式比較、benchmark、工具紀錄 | 研究角色的測試／獨立評估面板 |
+
+工作台後端必須將 server-owned role session 綁到已註冊 scene/run/mode/stage，
+再重用現有產品服務。舊 product operator session 不能直接取得工作台研究或管理權限。
+管理回傳依既有 allowlist；GT 評估仍在獨立端點，Agent 維持限定範圍。
+每個遷移 milestone 以共用入口的操作驗證、版本／來源綁定與原功能回歸確認完成。
+產品的輸入模式與 INPUT／RESULTS 階段和工作模式分開；場景 annotation、事件判定、
+調查報告 review 也分別保存。影片與調查沿用工作台的相關鏡頭／有限時間窗，
+保留多解、截斷及缺圖狀態；E0 或其他場景未提供的能力依 capability 顯示缺失。
+
 ## 啟動與重現
 
 在現有工程 checkout 執行：
@@ -199,6 +228,12 @@ This desktop-only local workbench reuses two distinct frozen synthetic models:
 the E1 four-camera pinhole scene and the E0 two-camera affine lab. Install the
 locked frontend dependency with `npm ci --prefix frontend/workbench`, then run
 `uv run --offline --no-sync python -m amidst.workbench --port 8016`.
+
+By the user's 2026-10-08 decision, this is the primary web entry for existing and future
+presentation, investigation, testing and human review. Reuse its navigation, components,
+role enforcement and scene adapters. Existing product backend/contracts and historical
+receipts remain reusable; older pages have not all been migrated. Product operator sessions
+must be mapped through workbench-owned role and scene/run/mode/stage bindings before reuse.
 
 Select Research or Management without a password. This is trusted local role
 selection, not authenticated identity. Research exposes scene review, bounded

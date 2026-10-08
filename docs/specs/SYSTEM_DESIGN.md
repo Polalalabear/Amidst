@@ -10,6 +10,15 @@ benchmark boundaries are specified below and in [BENCHMARK](../research/PHASE1_B
 is a deferred optional Phase 1 extension. Preserved CV, ReID, full tool-calling Agent,
 database and Three.js interfaces do not imply their Phase 2 implementations.
 
+網頁展示層採[統一工作台決策](ISSUES_AND_DECISIONS.md#unified-amidst-web-workbench--統一-amidst-網頁工作台)：
+`frontend/workbench/` 共用場景接口、影像／3D／時間軸及審查流程，既有與後續網頁能力接入其中。
+研究／管理權限由服務端限制；舊工程頁面尚未全部遷移，當前能力與接入邊界見
+[工作台操作文件](../engineering/SHARED_WORKBENCH.md)。
+
+The web presentation layer uses the shared workbench for current and future capabilities.
+Scene adapters and common evidence/timeline/review components serve Research and Management
+through server-side permissions. Migration of earlier engineering pages remains partial.
+
 本系統建立一條從 **監控影像、結構化 Observation、物理可行 Candidate Event、Agent 仲裁，到 3D Event Reconstruction** 的完整技術鏈路。整體設計的核心原則，是將不同性質的工作交由最適合的模組處理，使高頻、確定性與數值型運算不依賴 LLM，而 Agent 僅處理需要語意判斷、不確定性比較與 Event-level Reasoning 的部分。
 
 在此架構中，**CV** 負責取得與追蹤人物 Evidence；**Tracklet Stitching** 修復單一 Camera 內因短暫遮擋或 Tracking Loss 所造成的追蹤斷裂；**Geometry** 將 2D Evidence 轉換至實際空間；**Spatiotemporal Graph Engine** 根據 Camera Topology、時間與移動條件建立物理上合理的 Candidate Trajectory；**Agent** 比較候選事件、處理 Evidence 衝突與不確定性；最後由 **Three.js Runtime 與 Global Timeline** 同步呈現 Camera Video、3D Trajectory 與 Provenance。
