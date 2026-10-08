@@ -1,0 +1,2371 @@
+{
+  "external_model_calls": false,
+  "logs": [
+    {
+      "response_sha256": "7c9a570330c8b3245a6b0fed0152e869fc765eb138d2ad2150ff1f4b33361b6e",
+      "stage": "RESULTS",
+      "status": "OK",
+      "tool": "resolve_place"
+    },
+    {
+      "response_sha256": "837d2db3ac1dc585974e17452b741c7d94964d172ee52329506c9cb366bba4bc",
+      "stage": "RESULTS",
+      "status": "OK",
+      "tool": "list_cameras"
+    },
+    {
+      "response_sha256": "aac41e2c11179385ed16e559709509db7425b53c18b9fd420c7b8b9a7218cdc5",
+      "stage": "RESULTS",
+      "status": "OK",
+      "tool": "query_observations"
+    },
+    {
+      "response_sha256": "1b5f0c4fd355988c94cf1899e7f19668be3dc198a11f83674bde0582cdc66ce4",
+      "stage": "RESULTS",
+      "status": "OK",
+      "tool": "query_events"
+    },
+    {
+      "response_sha256": "170e2f2e64afc500775ee539fe110961cd4dc10b391917159e10b96419434022",
+      "stage": "RESULTS",
+      "status": "OK",
+      "tool": "get_event_summary"
+    },
+    {
+      "response_sha256": "56de6fb0f30b2bb074b96aca80bb4a5cb41ec2e83d4a47bed7ec4a0f44d78e3d",
+      "stage": "RESULTS",
+      "status": "OK",
+      "tool": "get_event_detail"
+    },
+    {
+      "response_sha256": "e65e1a99372ccfd771f3956140c80fef2615eb283dada26606ca7e3a0ced4d30",
+      "stage": "RESULTS",
+      "status": "OK",
+      "tool": "get_media"
+    },
+    {
+      "response_sha256": "321a8606e4c1ff134bc9b73e0bfd0dfe46f97f8ae158f7a714e75e3c90b12270",
+      "stage": "RESULTS",
+      "status": "OK",
+      "tool": "get_replay"
+    }
+  ],
+  "mode": "photos_only",
+  "run_id": "simulation-v2",
+  "samples": [
+    {
+      "request": {
+        "query": "lab",
+        "session_ref": "session-5a03568c4fb1c2accc3a5361"
+      },
+      "response": {
+        "ambiguous": false,
+        "items": [
+          {
+            "display_name": "Synthetic lab",
+            "model_id": "synthetic-lab-v1",
+            "model_revision": "1",
+            "place_id": "synthetic-lab",
+            "resource_ref": "place:96e26bf003a3afe3ea310deb"
+          }
+        ],
+        "scope": {
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "clock_id": "synthetic-lab-seconds-v1",
+          "decision_stage": "RESULTS",
+          "freeze_ref": "freeze-43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "origin": "SYNTHETIC",
+          "place_id": "synthetic-lab",
+          "registry_version": "engineering.location-registry.v1",
+          "resource_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "run_id": "simulation-v2",
+          "session_ref": "session-5a03568c4fb1c2accc3a5361",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        }
+      },
+      "tool": "resolve_place"
+    },
+    {
+      "request": {
+        "session_ref": "session-5a03568c4fb1c2accc3a5361"
+      },
+      "response": {
+        "items": [
+          {
+            "authority": "SYNTHETIC_CONFIG",
+            "camera_id": "CAM_A",
+            "camera_ref": "camera:5912f97fb1b6f5af6a3be251",
+            "coverage_status": "CONFIGURED_SYNTHETIC",
+            "frames": [
+              {
+                "frame_id": 0,
+                "media_ref": "media:088045773d4063ab0ab18b14",
+                "timestamp": 0.0
+              },
+              {
+                "frame_id": 1,
+                "media_ref": "media:ae7fcea9eff1e704d5c7e363",
+                "timestamp": 0.2
+              },
+              {
+                "frame_id": 2,
+                "media_ref": "media:d008eeab18b4b8ccf1c70c7f",
+                "timestamp": 0.4
+              },
+              {
+                "frame_id": 3,
+                "media_ref": "media:b01419472a4245f2b2eb6105",
+                "timestamp": 0.6
+              },
+              {
+                "frame_id": 4,
+                "media_ref": "media:1b28f8b67756fe07af5eaf8e",
+                "timestamp": 0.8
+              },
+              {
+                "frame_id": 5,
+                "media_ref": "media:0954e52f7b71cda5d847a28e",
+                "timestamp": 1.0
+              },
+              {
+                "frame_id": 6,
+                "media_ref": "media:280a760745918c896df0b527",
+                "timestamp": 1.2
+              },
+              {
+                "frame_id": 7,
+                "media_ref": "media:56ff265da48449e01af0d46e",
+                "timestamp": 1.4
+              },
+              {
+                "frame_id": 8,
+                "media_ref": "media:9a5f1e3e0af2e76ed986cc43",
+                "timestamp": 1.6
+              },
+              {
+                "frame_id": 9,
+                "media_ref": "media:c286c8ba77ce8284e7102534",
+                "timestamp": 1.8
+              },
+              {
+                "frame_id": 10,
+                "media_ref": "media:dd9a4b54bc5385fb8fcffb3b",
+                "timestamp": 2.0
+              },
+              {
+                "frame_id": 11,
+                "media_ref": "media:51194abb7fd394ab7462c5ef",
+                "timestamp": 2.2
+              },
+              {
+                "frame_id": 12,
+                "media_ref": "media:12aefa2cda8f37bb4d728863",
+                "timestamp": 2.4
+              },
+              {
+                "frame_id": 13,
+                "media_ref": "media:2a2f1e322ff16d40c924604d",
+                "timestamp": 2.6
+              },
+              {
+                "frame_id": 14,
+                "media_ref": "media:39deb11041bdd9d5db96dc8e",
+                "timestamp": 2.8
+              },
+              {
+                "frame_id": 15,
+                "media_ref": "media:6647753d591612f4f2e98118",
+                "timestamp": 3.0
+              },
+              {
+                "frame_id": 16,
+                "media_ref": "media:b6a96cc0457040db66aba2ff",
+                "timestamp": 3.2
+              },
+              {
+                "frame_id": 17,
+                "media_ref": "media:030d748917b1e3a49a990a92",
+                "timestamp": 3.4
+              },
+              {
+                "frame_id": 18,
+                "media_ref": "media:c23e75c08880a619668b4565",
+                "timestamp": 3.6
+              },
+              {
+                "frame_id": 19,
+                "media_ref": "media:1da3b3b52bdd97b141c7ad15",
+                "timestamp": 3.8
+              },
+              {
+                "frame_id": 20,
+                "media_ref": "media:3075eac45b2c3a0d3d045ac4",
+                "timestamp": 4.0
+              },
+              {
+                "frame_id": 21,
+                "media_ref": "media:98e84f822ab69e22669ab066",
+                "timestamp": 4.2
+              },
+              {
+                "frame_id": 22,
+                "media_ref": "media:fa4b59b3aae4c6318145d942",
+                "timestamp": 4.4
+              },
+              {
+                "frame_id": 23,
+                "media_ref": "media:134873bebba233682f0aed09",
+                "timestamp": 4.6
+              },
+              {
+                "frame_id": 24,
+                "media_ref": "media:518f7547d8c762aa64b378bf",
+                "timestamp": 4.8
+              },
+              {
+                "frame_id": 25,
+                "media_ref": "media:841429a1713b52fe5ab5bf7e",
+                "timestamp": 5.0
+              },
+              {
+                "frame_id": 26,
+                "media_ref": "media:9a0e0e0b0977251c519b6baa",
+                "timestamp": 5.2
+              },
+              {
+                "frame_id": 27,
+                "media_ref": "media:66f832a0a9aabc71af434e3b",
+                "timestamp": 5.4
+              },
+              {
+                "frame_id": 28,
+                "media_ref": "media:7c41d2cddf6218db901bd560",
+                "timestamp": 5.6
+              },
+              {
+                "frame_id": 29,
+                "media_ref": "media:2a017ee97fdee23728095801",
+                "timestamp": 5.8
+              },
+              {
+                "frame_id": 30,
+                "media_ref": "media:b5fd3a9f44fc720d46c12748",
+                "timestamp": 6.0
+              },
+              {
+                "frame_id": 31,
+                "media_ref": "media:74d6ae1f2642a003a2d6681f",
+                "timestamp": 6.2
+              },
+              {
+                "frame_id": 32,
+                "media_ref": "media:4a6739521aea962fc924c5f5",
+                "timestamp": 6.4
+              },
+              {
+                "frame_id": 33,
+                "media_ref": "media:cdf7929650fa8f0d4232f13f",
+                "timestamp": 6.6
+              },
+              {
+                "frame_id": 34,
+                "media_ref": "media:aec2f99d3d8d881502654103",
+                "timestamp": 6.8
+              },
+              {
+                "frame_id": 35,
+                "media_ref": "media:a3db7a0b4ca07e7114aab2b2",
+                "timestamp": 7.0
+              },
+              {
+                "frame_id": 36,
+                "media_ref": "media:38f0bbb410ee664114997a9b",
+                "timestamp": 7.2
+              },
+              {
+                "frame_id": 37,
+                "media_ref": "media:693bfaa683c985aebccca15c",
+                "timestamp": 7.4
+              },
+              {
+                "frame_id": 38,
+                "media_ref": "media:845905c57c408e420901bf91",
+                "timestamp": 7.6
+              },
+              {
+                "frame_id": 39,
+                "media_ref": "media:baaadb7425fe75b44ee70898",
+                "timestamp": 7.8
+              },
+              {
+                "frame_id": 40,
+                "media_ref": "media:99b1a899abdf9bd205678bb4",
+                "timestamp": 8.0
+              },
+              {
+                "frame_id": 41,
+                "media_ref": "media:e7785565d839b1f4018cb8ee",
+                "timestamp": 8.2
+              },
+              {
+                "frame_id": 42,
+                "media_ref": "media:21158decb03abceeaec35ee8",
+                "timestamp": 8.4
+              },
+              {
+                "frame_id": 43,
+                "media_ref": "media:260594af486a2944a6c69375",
+                "timestamp": 8.6
+              },
+              {
+                "frame_id": 44,
+                "media_ref": "media:46cca5d4cbc0635d998dde77",
+                "timestamp": 8.8
+              },
+              {
+                "frame_id": 45,
+                "media_ref": "media:b98595a4f2ae5f06ae9bb063",
+                "timestamp": 9.0
+              },
+              {
+                "frame_id": 46,
+                "media_ref": "media:6f297e5aa9f1b166c6096d84",
+                "timestamp": 9.2
+              },
+              {
+                "frame_id": 47,
+                "media_ref": "media:95a85ef8cac6c6d7172c586f",
+                "timestamp": 9.4
+              },
+              {
+                "frame_id": 48,
+                "media_ref": "media:358ca48aa756a8d9077b66dd",
+                "timestamp": 9.6
+              },
+              {
+                "frame_id": 49,
+                "media_ref": "media:0376ef327bd54eca2cfa8608",
+                "timestamp": 9.8
+              },
+              {
+                "frame_id": 50,
+                "media_ref": "media:7f49cf55a3e97c314a864496",
+                "timestamp": 10.0
+              }
+            ],
+            "group_ids": [
+              "lab"
+            ],
+            "media_refs": [
+              "media:088045773d4063ab0ab18b14",
+              "media:ae7fcea9eff1e704d5c7e363",
+              "media:d008eeab18b4b8ccf1c70c7f",
+              "media:b01419472a4245f2b2eb6105",
+              "media:1b28f8b67756fe07af5eaf8e",
+              "media:0954e52f7b71cda5d847a28e",
+              "media:280a760745918c896df0b527",
+              "media:56ff265da48449e01af0d46e",
+              "media:9a5f1e3e0af2e76ed986cc43",
+              "media:c286c8ba77ce8284e7102534",
+              "media:dd9a4b54bc5385fb8fcffb3b",
+              "media:51194abb7fd394ab7462c5ef",
+              "media:12aefa2cda8f37bb4d728863",
+              "media:2a2f1e322ff16d40c924604d",
+              "media:39deb11041bdd9d5db96dc8e",
+              "media:6647753d591612f4f2e98118",
+              "media:b6a96cc0457040db66aba2ff",
+              "media:030d748917b1e3a49a990a92",
+              "media:c23e75c08880a619668b4565",
+              "media:1da3b3b52bdd97b141c7ad15",
+              "media:3075eac45b2c3a0d3d045ac4",
+              "media:98e84f822ab69e22669ab066",
+              "media:fa4b59b3aae4c6318145d942",
+              "media:134873bebba233682f0aed09",
+              "media:518f7547d8c762aa64b378bf",
+              "media:841429a1713b52fe5ab5bf7e",
+              "media:9a0e0e0b0977251c519b6baa",
+              "media:66f832a0a9aabc71af434e3b",
+              "media:7c41d2cddf6218db901bd560",
+              "media:2a017ee97fdee23728095801",
+              "media:b5fd3a9f44fc720d46c12748",
+              "media:74d6ae1f2642a003a2d6681f",
+              "media:4a6739521aea962fc924c5f5",
+              "media:cdf7929650fa8f0d4232f13f",
+              "media:aec2f99d3d8d881502654103",
+              "media:a3db7a0b4ca07e7114aab2b2",
+              "media:38f0bbb410ee664114997a9b",
+              "media:693bfaa683c985aebccca15c",
+              "media:845905c57c408e420901bf91",
+              "media:baaadb7425fe75b44ee70898",
+              "media:99b1a899abdf9bd205678bb4",
+              "media:e7785565d839b1f4018cb8ee",
+              "media:21158decb03abceeaec35ee8",
+              "media:260594af486a2944a6c69375",
+              "media:46cca5d4cbc0635d998dde77",
+              "media:b98595a4f2ae5f06ae9bb063",
+              "media:6f297e5aa9f1b166c6096d84",
+              "media:95a85ef8cac6c6d7172c586f",
+              "media:358ca48aa756a8d9077b66dd",
+              "media:0376ef327bd54eca2cfa8608",
+              "media:7f49cf55a3e97c314a864496"
+            ],
+            "origin": "SYNTHETIC",
+            "region_ids": [
+              "west",
+              "central"
+            ],
+            "time_range": [
+              0.0,
+              10.0
+            ]
+          },
+          {
+            "authority": "SYNTHETIC_CONFIG",
+            "camera_id": "CAM_B",
+            "camera_ref": "camera:7e2332a50428def590fbbac7",
+            "coverage_status": "CONFIGURED_SYNTHETIC",
+            "frames": [
+              {
+                "frame_id": 0,
+                "media_ref": "media:11eba6bf8da8f088349c9197",
+                "timestamp": 0.0
+              },
+              {
+                "frame_id": 1,
+                "media_ref": "media:599a23142d0a68aa42fdd7b5",
+                "timestamp": 0.2
+              },
+              {
+                "frame_id": 2,
+                "media_ref": "media:c10cfdfd07b1441ef7597132",
+                "timestamp": 0.4
+              },
+              {
+                "frame_id": 3,
+                "media_ref": "media:f08a781122061249317959e3",
+                "timestamp": 0.6
+              },
+              {
+                "frame_id": 4,
+                "media_ref": "media:c8d6df67570e30237f96e81c",
+                "timestamp": 0.8
+              },
+              {
+                "frame_id": 5,
+                "media_ref": "media:255b057b1fbe671caa3a8729",
+                "timestamp": 1.0
+              },
+              {
+                "frame_id": 6,
+                "media_ref": "media:ba0a7c5f7abdbb2233bd0ed9",
+                "timestamp": 1.2
+              },
+              {
+                "frame_id": 7,
+                "media_ref": "media:053996cc16265ee6d71fe6fa",
+                "timestamp": 1.4
+              },
+              {
+                "frame_id": 8,
+                "media_ref": "media:531139ae122a68781f28a780",
+                "timestamp": 1.6
+              },
+              {
+                "frame_id": 9,
+                "media_ref": "media:acfaeda5e2ad8aa0a059a372",
+                "timestamp": 1.8
+              },
+              {
+                "frame_id": 10,
+                "media_ref": "media:0bbcc5885d7f5d46056de076",
+                "timestamp": 2.0
+              },
+              {
+                "frame_id": 11,
+                "media_ref": "media:d3bcc3cdf1d3c07572b64f08",
+                "timestamp": 2.2
+              },
+              {
+                "frame_id": 12,
+                "media_ref": "media:5396dab4510a8afb87c11bdf",
+                "timestamp": 2.4
+              },
+              {
+                "frame_id": 13,
+                "media_ref": "media:1ff90be5a6c7ea2ff4fb8ff2",
+                "timestamp": 2.6
+              },
+              {
+                "frame_id": 14,
+                "media_ref": "media:9e51605d3fd2695b68bfc9e5",
+                "timestamp": 2.8
+              },
+              {
+                "frame_id": 15,
+                "media_ref": "media:8d68a0de015e4f70927a52f9",
+                "timestamp": 3.0
+              },
+              {
+                "frame_id": 16,
+                "media_ref": "media:23df78aa79805ca108b1f376",
+                "timestamp": 3.2
+              },
+              {
+                "frame_id": 17,
+                "media_ref": "media:24b2e768d78b35f40fdc841c",
+                "timestamp": 3.4
+              },
+              {
+                "frame_id": 18,
+                "media_ref": "media:32914ea3c7ce5dc05008e167",
+                "timestamp": 3.6
+              },
+              {
+                "frame_id": 19,
+                "media_ref": "media:54db8c90abcbaf4fcd5a5f4e",
+                "timestamp": 3.8
+              },
+              {
+                "frame_id": 20,
+                "media_ref": "media:4734066e987e23fdad7f5265",
+                "timestamp": 4.0
+              },
+              {
+                "frame_id": 21,
+                "media_ref": "media:f81d920dd8f140dca70d7946",
+                "timestamp": 4.2
+              },
+              {
+                "frame_id": 22,
+                "media_ref": "media:aa99f5a176e51d59e89a3f32",
+                "timestamp": 4.4
+              },
+              {
+                "frame_id": 23,
+                "media_ref": "media:f97f04eff065ebe5d7b52eb8",
+                "timestamp": 4.6
+              },
+              {
+                "frame_id": 24,
+                "media_ref": "media:5752f3f144997cdd25d05611",
+                "timestamp": 4.8
+              },
+              {
+                "frame_id": 25,
+                "media_ref": "media:855fcd0f5010a701e9df3558",
+                "timestamp": 5.0
+              },
+              {
+                "frame_id": 26,
+                "media_ref": "media:c30fd7000df8f8a36b218066",
+                "timestamp": 5.2
+              },
+              {
+                "frame_id": 27,
+                "media_ref": "media:2884a1c9548cdb834f03c7ee",
+                "timestamp": 5.4
+              },
+              {
+                "frame_id": 28,
+                "media_ref": "media:d11bfdc3376df9fc43a9f61e",
+                "timestamp": 5.6
+              },
+              {
+                "frame_id": 29,
+                "media_ref": "media:0da5fa359e7bb80f92b9ce33",
+                "timestamp": 5.8
+              },
+              {
+                "frame_id": 30,
+                "media_ref": "media:a8ce2f01f73ad4c2f9dc4d11",
+                "timestamp": 6.0
+              },
+              {
+                "frame_id": 31,
+                "media_ref": "media:53bd2a4b45dd06d545745007",
+                "timestamp": 6.2
+              },
+              {
+                "frame_id": 32,
+                "media_ref": "media:5e864e1a86a8ec5b052b1830",
+                "timestamp": 6.4
+              },
+              {
+                "frame_id": 33,
+                "media_ref": "media:8e063c7d900ec7c04de47007",
+                "timestamp": 6.6
+              },
+              {
+                "frame_id": 34,
+                "media_ref": "media:c48eb501a1789693cdee7e0a",
+                "timestamp": 6.8
+              },
+              {
+                "frame_id": 35,
+                "media_ref": "media:2088a0b42fc284d4d30b2365",
+                "timestamp": 7.0
+              },
+              {
+                "frame_id": 36,
+                "media_ref": "media:1dd044f26e495bcf91514b01",
+                "timestamp": 7.2
+              },
+              {
+                "frame_id": 37,
+                "media_ref": "media:dc5d9380d8cca0620134aaab",
+                "timestamp": 7.4
+              },
+              {
+                "frame_id": 38,
+                "media_ref": "media:da7a845b719c5cd78626c7b9",
+                "timestamp": 7.6
+              },
+              {
+                "frame_id": 39,
+                "media_ref": "media:b74579171cd30bfacb48606f",
+                "timestamp": 7.8
+              },
+              {
+                "frame_id": 40,
+                "media_ref": "media:eca103b1aff85c827918d748",
+                "timestamp": 8.0
+              },
+              {
+                "frame_id": 41,
+                "media_ref": "media:62df4dc688c0f6e391bd491a",
+                "timestamp": 8.2
+              },
+              {
+                "frame_id": 42,
+                "media_ref": "media:08b75e08807c5b86b015c965",
+                "timestamp": 8.4
+              },
+              {
+                "frame_id": 43,
+                "media_ref": "media:1344cf99e68a48535cc6679b",
+                "timestamp": 8.6
+              },
+              {
+                "frame_id": 44,
+                "media_ref": "media:a5cb6710181b44c940de2bf2",
+                "timestamp": 8.8
+              },
+              {
+                "frame_id": 45,
+                "media_ref": "media:87b1991ff3090a3025cac957",
+                "timestamp": 9.0
+              },
+              {
+                "frame_id": 46,
+                "media_ref": "media:b07d9cd10d3cf1979d6db297",
+                "timestamp": 9.2
+              },
+              {
+                "frame_id": 47,
+                "media_ref": "media:29834338d5645edb2fe74cf8",
+                "timestamp": 9.4
+              },
+              {
+                "frame_id": 48,
+                "media_ref": "media:21d2b4d201af98e51800c242",
+                "timestamp": 9.6
+              },
+              {
+                "frame_id": 49,
+                "media_ref": "media:4574bfef5c47cd94d7c252d3",
+                "timestamp": 9.8
+              },
+              {
+                "frame_id": 50,
+                "media_ref": "media:d6fd5c1826a6f9ab6d3ac485",
+                "timestamp": 10.0
+              }
+            ],
+            "group_ids": [
+              "lab"
+            ],
+            "media_refs": [
+              "media:11eba6bf8da8f088349c9197",
+              "media:599a23142d0a68aa42fdd7b5",
+              "media:c10cfdfd07b1441ef7597132",
+              "media:f08a781122061249317959e3",
+              "media:c8d6df67570e30237f96e81c",
+              "media:255b057b1fbe671caa3a8729",
+              "media:ba0a7c5f7abdbb2233bd0ed9",
+              "media:053996cc16265ee6d71fe6fa",
+              "media:531139ae122a68781f28a780",
+              "media:acfaeda5e2ad8aa0a059a372",
+              "media:0bbcc5885d7f5d46056de076",
+              "media:d3bcc3cdf1d3c07572b64f08",
+              "media:5396dab4510a8afb87c11bdf",
+              "media:1ff90be5a6c7ea2ff4fb8ff2",
+              "media:9e51605d3fd2695b68bfc9e5",
+              "media:8d68a0de015e4f70927a52f9",
+              "media:23df78aa79805ca108b1f376",
+              "media:24b2e768d78b35f40fdc841c",
+              "media:32914ea3c7ce5dc05008e167",
+              "media:54db8c90abcbaf4fcd5a5f4e",
+              "media:4734066e987e23fdad7f5265",
+              "media:f81d920dd8f140dca70d7946",
+              "media:aa99f5a176e51d59e89a3f32",
+              "media:f97f04eff065ebe5d7b52eb8",
+              "media:5752f3f144997cdd25d05611",
+              "media:855fcd0f5010a701e9df3558",
+              "media:c30fd7000df8f8a36b218066",
+              "media:2884a1c9548cdb834f03c7ee",
+              "media:d11bfdc3376df9fc43a9f61e",
+              "media:0da5fa359e7bb80f92b9ce33",
+              "media:a8ce2f01f73ad4c2f9dc4d11",
+              "media:53bd2a4b45dd06d545745007",
+              "media:5e864e1a86a8ec5b052b1830",
+              "media:8e063c7d900ec7c04de47007",
+              "media:c48eb501a1789693cdee7e0a",
+              "media:2088a0b42fc284d4d30b2365",
+              "media:1dd044f26e495bcf91514b01",
+              "media:dc5d9380d8cca0620134aaab",
+              "media:da7a845b719c5cd78626c7b9",
+              "media:b74579171cd30bfacb48606f",
+              "media:eca103b1aff85c827918d748",
+              "media:62df4dc688c0f6e391bd491a",
+              "media:08b75e08807c5b86b015c965",
+              "media:1344cf99e68a48535cc6679b",
+              "media:a5cb6710181b44c940de2bf2",
+              "media:87b1991ff3090a3025cac957",
+              "media:b07d9cd10d3cf1979d6db297",
+              "media:29834338d5645edb2fe74cf8",
+              "media:21d2b4d201af98e51800c242",
+              "media:4574bfef5c47cd94d7c252d3",
+              "media:d6fd5c1826a6f9ab6d3ac485"
+            ],
+            "origin": "SYNTHETIC",
+            "region_ids": [
+              "west",
+              "central",
+              "east"
+            ],
+            "time_range": [
+              0.0,
+              10.0
+            ]
+          }
+        ],
+        "scope": {
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "clock_id": "synthetic-lab-seconds-v1",
+          "decision_stage": "RESULTS",
+          "freeze_ref": "freeze-43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "origin": "SYNTHETIC",
+          "place_id": "synthetic-lab",
+          "registry_version": "engineering.location-registry.v1",
+          "resource_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "run_id": "simulation-v2",
+          "session_ref": "session-5a03568c4fb1c2accc3a5361",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        }
+      },
+      "tool": "list_cameras"
+    },
+    {
+      "request": {
+        "session_ref": "session-5a03568c4fb1c2accc3a5361",
+        "time_range": [
+          1.2,
+          1.2
+        ]
+      },
+      "response": {
+        "items": [
+          {
+            "authority": "CONFIGURED_ENGINEERING_ONLY",
+            "camera_id": "CAM_A",
+            "camera_ref": "camera:5912f97fb1b6f5af6a3be251",
+            "canonical_observation_id": "local-observation:fe9c609c88ba45324f2779183cae53396fc1686285b5eda36ae2448fa6d103db",
+            "evidence_refs": [
+              "measurement:53a044b1f12033e57fe9dfef",
+              "measurement:0fc7ac06a509f811b7156db3",
+              "measurement:d67f5ede0462336b4555ce82",
+              "measurement:bb2a0cf71c78f84029c12b45",
+              "measurement:bb2637410fa5214df3345811",
+              "measurement:c2a1398f9f642637946a261a",
+              "measurement:c37a399935f9e24f2a3287a0"
+            ],
+            "image_measurement": true,
+            "local_track_ref": "track:4508bea442e39883c3e1c473",
+            "measurements": [
+              {
+                "bbox": [
+                  34.0,
+                  159.0,
+                  59.0,
+                  203.0
+                ],
+                "frame_ref": "media:088045773d4063ab0ab18b14",
+                "measurement_ref": "measurement:53a044b1f12033e57fe9dfef",
+                "point_2d": [
+                  46.0,
+                  202.0
+                ],
+                "timestamp": 0.0,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  42.0,
+                  159.0,
+                  67.0,
+                  203.0
+                ],
+                "frame_ref": "media:ae7fcea9eff1e704d5c7e363",
+                "measurement_ref": "measurement:0fc7ac06a509f811b7156db3",
+                "point_2d": [
+                  54.0,
+                  202.0
+                ],
+                "timestamp": 0.2,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  50.0,
+                  159.0,
+                  75.0,
+                  203.0
+                ],
+                "frame_ref": "media:d008eeab18b4b8ccf1c70c7f",
+                "measurement_ref": "measurement:d67f5ede0462336b4555ce82",
+                "point_2d": [
+                  62.0,
+                  202.0
+                ],
+                "timestamp": 0.4,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  57.0,
+                  159.0,
+                  82.0,
+                  203.0
+                ],
+                "frame_ref": "media:b01419472a4245f2b2eb6105",
+                "measurement_ref": "measurement:bb2a0cf71c78f84029c12b45",
+                "point_2d": [
+                  69.0,
+                  202.0
+                ],
+                "timestamp": 0.6,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  65.0,
+                  159.0,
+                  90.0,
+                  203.0
+                ],
+                "frame_ref": "media:1b28f8b67756fe07af5eaf8e",
+                "measurement_ref": "measurement:bb2637410fa5214df3345811",
+                "point_2d": [
+                  77.0,
+                  202.0
+                ],
+                "timestamp": 0.8,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  72.0,
+                  159.0,
+                  97.0,
+                  203.0
+                ],
+                "frame_ref": "media:0954e52f7b71cda5d847a28e",
+                "measurement_ref": "measurement:c2a1398f9f642637946a261a",
+                "point_2d": [
+                  84.0,
+                  202.0
+                ],
+                "timestamp": 1.0,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  80.0,
+                  159.0,
+                  105.0,
+                  203.0
+                ],
+                "frame_ref": "media:280a760745918c896df0b527",
+                "measurement_ref": "measurement:c37a399935f9e24f2a3287a0",
+                "point_2d": [
+                  92.0,
+                  202.0
+                ],
+                "timestamp": 1.2,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              }
+            ],
+            "media_refs": [
+              "media:088045773d4063ab0ab18b14",
+              "media:ae7fcea9eff1e704d5c7e363",
+              "media:d008eeab18b4b8ccf1c70c7f",
+              "media:b01419472a4245f2b2eb6105",
+              "media:1b28f8b67756fe07af5eaf8e",
+              "media:0954e52f7b71cda5d847a28e",
+              "media:280a760745918c896df0b527"
+            ],
+            "observation_ref": "observation:8a2cfc95f2814a9a8181eeda",
+            "origin": "SYNTHETIC",
+            "producer_version": "rgb-temporal-components-v1",
+            "projected_positions": [
+              [
+                0.7894736842105263,
+                2.0,
+                0.0
+              ],
+              [
+                1.0,
+                2.0,
+                0.0
+              ],
+              [
+                1.2105263157894737,
+                2.0,
+                0.0
+              ],
+              [
+                1.394736842105263,
+                2.0,
+                0.0
+              ],
+              [
+                1.605263157894737,
+                2.0,
+                0.0
+              ],
+              [
+                1.7894736842105263,
+                2.0,
+                0.0
+              ],
+              [
+                2.0,
+                2.0,
+                0.0
+              ]
+            ],
+            "region_ids": [
+              "west"
+            ],
+            "time_range": [
+              0.0,
+              1.2
+            ],
+            "uncertainty": "Pixel components may be partial, merged or locally misassociated."
+          },
+          {
+            "authority": "CONFIGURED_ENGINEERING_ONLY",
+            "camera_id": "CAM_A",
+            "camera_ref": "camera:5912f97fb1b6f5af6a3be251",
+            "canonical_observation_id": "local-observation:27ad3c37629045568595c55d5ebf695fdefddb3697448fbcba35bc98519bb913",
+            "evidence_refs": [
+              "measurement:a3009021a8978a98d1a6e47c",
+              "measurement:271ae58f40b10e5471c2aacf",
+              "measurement:8be3d75baaed8b57b1e06ba4",
+              "measurement:9092e44d93becf7cd2007454",
+              "measurement:ad6f3f9f3bda4ad4978d9ca1",
+              "measurement:690b7391260ee3329cf4eced",
+              "measurement:9c5393ad34857a196561d86a",
+              "measurement:8ebe7f6bf90295ddee6a53a0",
+              "measurement:3481534b46366fb64fa33d68",
+              "measurement:cd4f1bde40ba7e57681b062d",
+              "measurement:98e6a9f6098c0a482ccb4bcd",
+              "measurement:c472523f25777d4e6b970894",
+              "measurement:d5f983bdf1f53c68c6479e14",
+              "measurement:1cafa16bcf70c4f2466e353c"
+            ],
+            "image_measurement": true,
+            "local_track_ref": "track:f02f498b2d393b9da6adb0e1",
+            "measurements": [
+              {
+                "bbox": [
+                  69.0,
+                  158.0,
+                  94.0,
+                  202.0
+                ],
+                "frame_ref": "media:088045773d4063ab0ab18b14",
+                "measurement_ref": "measurement:a3009021a8978a98d1a6e47c",
+                "point_2d": [
+                  81.0,
+                  201.0
+                ],
+                "timestamp": 0.0,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  75.0,
+                  158.0,
+                  100.0,
+                  202.0
+                ],
+                "frame_ref": "media:ae7fcea9eff1e704d5c7e363",
+                "measurement_ref": "measurement:271ae58f40b10e5471c2aacf",
+                "point_2d": [
+                  87.0,
+                  201.0
+                ],
+                "timestamp": 0.2,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  81.0,
+                  158.0,
+                  106.0,
+                  202.0
+                ],
+                "frame_ref": "media:d008eeab18b4b8ccf1c70c7f",
+                "measurement_ref": "measurement:8be3d75baaed8b57b1e06ba4",
+                "point_2d": [
+                  93.0,
+                  201.0
+                ],
+                "timestamp": 0.4,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  87.0,
+                  158.0,
+                  112.0,
+                  202.0
+                ],
+                "frame_ref": "media:b01419472a4245f2b2eb6105",
+                "measurement_ref": "measurement:9092e44d93becf7cd2007454",
+                "point_2d": [
+                  99.0,
+                  201.0
+                ],
+                "timestamp": 0.6,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  94.0,
+                  158.0,
+                  119.0,
+                  202.0
+                ],
+                "frame_ref": "media:1b28f8b67756fe07af5eaf8e",
+                "measurement_ref": "measurement:ad6f3f9f3bda4ad4978d9ca1",
+                "point_2d": [
+                  106.0,
+                  201.0
+                ],
+                "timestamp": 0.8,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  100.0,
+                  158.0,
+                  125.0,
+                  202.0
+                ],
+                "frame_ref": "media:0954e52f7b71cda5d847a28e",
+                "measurement_ref": "measurement:690b7391260ee3329cf4eced",
+                "point_2d": [
+                  112.0,
+                  201.0
+                ],
+                "timestamp": 1.0,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  106.0,
+                  158.0,
+                  131.0,
+                  202.0
+                ],
+                "frame_ref": "media:280a760745918c896df0b527",
+                "measurement_ref": "measurement:9c5393ad34857a196561d86a",
+                "point_2d": [
+                  118.0,
+                  201.0
+                ],
+                "timestamp": 1.2,
+                "visible_features": [
+                  82.12446351931331,
+                  99.95708154506438,
+                  141.55650929899858
+                ]
+              },
+              {
+                "bbox": [
+                  88.0,
+                  158.0,
+                  137.0,
+                  203.0
+                ],
+                "frame_ref": "media:56ff265da48449e01af0d46e",
+                "measurement_ref": "measurement:8ebe7f6bf90295ddee6a53a0",
+                "point_2d": [
+                  112.0,
+                  202.0
+                ],
+                "timestamp": 1.4,
+                "visible_features": [
+                  82.04080171796707,
+                  99.92125984251969,
+                  141.5848246241947
+                ]
+              },
+              {
+                "bbox": [
+                  95.0,
+                  158.0,
+                  138.0,
+                  203.0
+                ],
+                "frame_ref": "media:9a5f1e3e0af2e76ed986cc43",
+                "measurement_ref": "measurement:3481534b46366fb64fa33d68",
+                "point_2d": [
+                  116.0,
+                  202.0
+                ],
+                "timestamp": 1.6,
+                "visible_features": [
+                  79.78892215568862,
+                  99.04191616766467,
+                  142.5800898203593
+                ]
+              },
+              {
+                "bbox": [
+                  103.0,
+                  158.0,
+                  138.0,
+                  203.0
+                ],
+                "frame_ref": "media:c286c8ba77ce8284e7102534",
+                "measurement_ref": "measurement:cd4f1bde40ba7e57681b062d",
+                "point_2d": [
+                  120.0,
+                  202.0
+                ],
+                "timestamp": 1.8,
+                "visible_features": [
+                  81.5909090909091,
+                  99.88636363636364,
+                  142.17045454545453
+                ]
+              },
+              {
+                "bbox": [
+                  110.0,
+                  159.0,
+                  138.0,
+                  203.0
+                ],
+                "frame_ref": "media:dd9a4b54bc5385fb8fcffb3b",
+                "measurement_ref": "measurement:98e6a9f6098c0a482ccb4bcd",
+                "point_2d": [
+                  123.5,
+                  202.0
+                ],
+                "timestamp": 2.0,
+                "visible_features": [
+                  80.59158415841584,
+                  99.10891089108911,
+                  141.54826732673268
+                ]
+              },
+              {
+                "bbox": [
+                  118.0,
+                  159.0,
+                  138.0,
+                  203.0
+                ],
+                "frame_ref": "media:51194abb7fd394ab7462c5ef",
+                "measurement_ref": "measurement:c472523f25777d4e6b970894",
+                "point_2d": [
+                  127.5,
+                  202.0
+                ],
+                "timestamp": 2.2,
+                "visible_features": [
+                  78.296875,
+                  98.4375,
+                  143.1796875
+                ]
+              },
+              {
+                "bbox": [
+                  126.0,
+                  159.0,
+                  138.0,
+                  203.0
+                ],
+                "frame_ref": "media:12aefa2cda8f37bb4d728863",
+                "measurement_ref": "measurement:d5f983bdf1f53c68c6479e14",
+                "point_2d": [
+                  131.5,
+                  202.0
+                ],
+                "timestamp": 2.4,
+                "visible_features": [
+                  81.0119760479042,
+                  98.98203592814372,
+                  140.562874251497
+                ]
+              },
+              {
+                "bbox": [
+                  133.0,
+                  172.0,
+                  138.0,
+                  203.0
+                ],
+                "frame_ref": "media:2a2f1e322ff16d40c924604d",
+                "measurement_ref": "measurement:1cafa16bcf70c4f2466e353c",
+                "point_2d": [
+                  135.0,
+                  202.0
+                ],
+                "timestamp": 2.6,
+                "visible_features": [
+                  129.0677966101695,
+                  118.13559322033899,
+                  120.38983050847457
+                ]
+              }
+            ],
+            "media_refs": [
+              "media:088045773d4063ab0ab18b14",
+              "media:ae7fcea9eff1e704d5c7e363",
+              "media:d008eeab18b4b8ccf1c70c7f",
+              "media:b01419472a4245f2b2eb6105",
+              "media:1b28f8b67756fe07af5eaf8e",
+              "media:0954e52f7b71cda5d847a28e",
+              "media:280a760745918c896df0b527",
+              "media:56ff265da48449e01af0d46e",
+              "media:9a5f1e3e0af2e76ed986cc43",
+              "media:c286c8ba77ce8284e7102534",
+              "media:dd9a4b54bc5385fb8fcffb3b",
+              "media:51194abb7fd394ab7462c5ef",
+              "media:12aefa2cda8f37bb4d728863",
+              "media:2a2f1e322ff16d40c924604d"
+            ],
+            "observation_ref": "observation:86ae3358c9c20b0b6d3ff4df",
+            "origin": "SYNTHETIC",
+            "producer_version": "rgb-temporal-components-v1",
+            "projected_positions": [
+              [
+                1.7105263157894737,
+                2.125,
+                0.0
+              ],
+              [
+                1.868421052631579,
+                2.125,
+                0.0
+              ],
+              [
+                2.026315789473684,
+                2.125,
+                0.0
+              ],
+              [
+                2.1842105263157894,
+                2.125,
+                0.0
+              ],
+              [
+                2.3684210526315788,
+                2.125,
+                0.0
+              ],
+              [
+                2.526315789473684,
+                2.125,
+                0.0
+              ],
+              [
+                2.6842105263157894,
+                2.125,
+                0.0
+              ],
+              [
+                2.526315789473684,
+                2.0,
+                0.0
+              ],
+              [
+                2.6315789473684212,
+                2.0,
+                0.0
+              ],
+              [
+                2.736842105263158,
+                2.0,
+                0.0
+              ],
+              [
+                2.8289473684210527,
+                2.0,
+                0.0
+              ],
+              [
+                2.9342105263157894,
+                2.0,
+                0.0
+              ],
+              [
+                3.039473684210526,
+                2.0,
+                0.0
+              ],
+              [
+                3.1315789473684212,
+                2.0,
+                0.0
+              ]
+            ],
+            "region_ids": [
+              "west"
+            ],
+            "time_range": [
+              0.0,
+              2.6
+            ],
+            "uncertainty": "Pixel components may be partial, merged or locally misassociated."
+          }
+        ],
+        "scope": {
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "clock_id": "synthetic-lab-seconds-v1",
+          "decision_stage": "RESULTS",
+          "freeze_ref": "freeze-43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "origin": "SYNTHETIC",
+          "place_id": "synthetic-lab",
+          "registry_version": "engineering.location-registry.v1",
+          "resource_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "run_id": "simulation-v2",
+          "session_ref": "session-5a03568c4fb1c2accc3a5361",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        }
+      },
+      "tool": "query_observations"
+    },
+    {
+      "request": {
+        "session_ref": "session-5a03568c4fb1c2accc3a5361",
+        "time_range": [
+          100,
+          101
+        ]
+      },
+      "response": {
+        "association_hypothesis_count": 21,
+        "items": [],
+        "scope": {
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "clock_id": "synthetic-lab-seconds-v1",
+          "decision_stage": "RESULTS",
+          "freeze_ref": "freeze-43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "origin": "SYNTHETIC",
+          "place_id": "synthetic-lab",
+          "registry_version": "engineering.location-registry.v1",
+          "resource_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "run_id": "simulation-v2",
+          "session_ref": "session-5a03568c4fb1c2accc3a5361",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        }
+      },
+      "tool": "query_events"
+    },
+    {
+      "request": {
+        "event_ref": "event:973268aa1263a5c1fb21f6e5",
+        "session_ref": "session-5a03568c4fb1c2accc3a5361"
+      },
+      "response": {
+        "association_hypothesis_count": 21,
+        "association_ref": "association:973268aa1263a5c1fb21f6e5",
+        "authority": "CONFIGURED_ENGINEERING_ONLY",
+        "camera_ids": [
+          "CAM_A",
+          "CAM_B"
+        ],
+        "camera_refs": [
+          "camera:5912f97fb1b6f5af6a3be251",
+          "camera:7e2332a50428def590fbbac7"
+        ],
+        "candidate_count": 3,
+        "canonical_event_id": "event_8bc93c3a6be0529ced5dfaaf",
+        "complete": true,
+        "detail_ref": "event:973268aa1263a5c1fb21f6e5",
+        "event_ref": "event:973268aa1263a5c1fb21f6e5",
+        "evidence_refs": [
+          "measurement:53a044b1f12033e57fe9dfef",
+          "measurement:0fc7ac06a509f811b7156db3",
+          "measurement:d67f5ede0462336b4555ce82",
+          "measurement:bb2a0cf71c78f84029c12b45",
+          "measurement:bb2637410fa5214df3345811",
+          "measurement:c2a1398f9f642637946a261a",
+          "measurement:c37a399935f9e24f2a3287a0",
+          "measurement:1192f355b602a937fc4ee1c9",
+          "measurement:8360b7aefd0ce4f7d7d257d6",
+          "measurement:51f0a5e4ff6e9d4734e351ab",
+          "measurement:e8cf16aa6d904afaaadc8050",
+          "measurement:94fd7c84ed85ab7ad60c29e3",
+          "measurement:f912f5e1adcaaf58297777ed",
+          "measurement:717b5523f7f941d14146fc06"
+        ],
+        "hypothesis_count": 6,
+        "kind": "CROSS_CAMERA_GAP",
+        "media_refs": [
+          "media:088045773d4063ab0ab18b14",
+          "media:ae7fcea9eff1e704d5c7e363",
+          "media:d008eeab18b4b8ccf1c70c7f",
+          "media:b01419472a4245f2b2eb6105",
+          "media:1b28f8b67756fe07af5eaf8e",
+          "media:0954e52f7b71cda5d847a28e",
+          "media:280a760745918c896df0b527",
+          "media:a5cb6710181b44c940de2bf2",
+          "media:87b1991ff3090a3025cac957",
+          "media:b07d9cd10d3cf1979d6db297",
+          "media:29834338d5645edb2fe74cf8",
+          "media:21d2b4d201af98e51800c242",
+          "media:4574bfef5c47cd94d7c252d3",
+          "media:d6fd5c1826a6f9ab6d3ac485"
+        ],
+        "observation_refs": [
+          "observation:8a2cfc95f2814a9a8181eeda",
+          "observation:2668c733e75ed03653200b04"
+        ],
+        "origin": "SYNTHETIC",
+        "region_ids": [
+          "west",
+          "east",
+          "central"
+        ],
+        "replay_ref": "replay:ba01f4d0643bb6daf4aa2bbb",
+        "scope": {
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "clock_id": "synthetic-lab-seconds-v1",
+          "decision_stage": "RESULTS",
+          "freeze_ref": "freeze-43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "origin": "SYNTHETIC",
+          "place_id": "synthetic-lab",
+          "registry_version": "engineering.location-registry.v1",
+          "resource_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "run_id": "simulation-v2",
+          "session_ref": "session-5a03568c4fb1c2accc3a5361",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        },
+        "termination_reason": "COMPLETE",
+        "time_range": [
+          1.2,
+          8.8
+        ],
+        "uncertainty": "RGB appearance can merge or swap local identities. This is an independent pair hypothesis, with all unmatched and competing pairs retained; no probability is calibrated. Projection assumes the explicitly configured synthetic ground plane."
+      },
+      "tool": "get_event_summary"
+    },
+    {
+      "request": {
+        "event_ref": "event:973268aa1263a5c1fb21f6e5",
+        "session_ref": "session-5a03568c4fb1c2accc3a5361"
+      },
+      "response": {
+        "candidates": [
+          {
+            "candidate_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537",
+            "end_observation_id": "association-observation:5b319f27c0b8c7665ffcf646aa7b933559fd9d5bcb65443164556aaf0206ca88",
+            "estimated_travel_time": 7.6000000000000005,
+            "feasibility_flags": [
+              "CAMERA_REACHABLE",
+              "TOPOLOGY_AUTHORIZED",
+              "WALKABLE",
+              "WITHIN_MAX_SPEED"
+            ],
+            "minimum_travel_time": 2.5350877192982453,
+            "navmesh_corridor": [
+              "direct"
+            ],
+            "path_length": 7.605263157894736,
+            "path_score": null,
+            "polyline": [
+              [
+                2.0,
+                2.0,
+                0.0
+              ],
+              [
+                9.605263157894736,
+                2.0,
+                0.0
+              ]
+            ],
+            "provenance": "INFERRED_GAP",
+            "semantic_regions": [
+              "west",
+              "central",
+              "east"
+            ],
+            "spatial_cost": 7.605263157894736,
+            "start_observation_id": "association-observation:23546c779ef56ee08fdc27b19bea43546581bc16871532d069d77d1dda929e0b",
+            "temporal_cost": 5.064912280701755
+          },
+          {
+            "candidate_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa",
+            "end_observation_id": "association-observation:5b319f27c0b8c7665ffcf646aa7b933559fd9d5bcb65443164556aaf0206ca88",
+            "estimated_travel_time": 7.6000000000000005,
+            "feasibility_flags": [
+              "CAMERA_REACHABLE",
+              "TOPOLOGY_AUTHORIZED",
+              "WALKABLE",
+              "WITHIN_MAX_SPEED"
+            ],
+            "minimum_travel_time": 2.6633791739354717,
+            "navmesh_corridor": [
+              "detour-0-a",
+              "detour-0-b"
+            ],
+            "path_length": 7.990137521806416,
+            "path_score": null,
+            "polyline": [
+              [
+                2.0,
+                2.0,
+                0.0
+              ],
+              [
+                5.0,
+                0.8,
+                0.0
+              ],
+              [
+                9.605263157894736,
+                2.0,
+                0.0
+              ]
+            ],
+            "provenance": "INFERRED_GAP",
+            "semantic_regions": [
+              "west",
+              "central",
+              "east"
+            ],
+            "spatial_cost": 7.990137521806416,
+            "start_observation_id": "association-observation:23546c779ef56ee08fdc27b19bea43546581bc16871532d069d77d1dda929e0b",
+            "temporal_cost": 4.936620826064528
+          },
+          {
+            "candidate_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5",
+            "end_observation_id": "association-observation:5b319f27c0b8c7665ffcf646aa7b933559fd9d5bcb65443164556aaf0206ca88",
+            "estimated_travel_time": 7.6000000000000005,
+            "feasibility_flags": [
+              "CAMERA_REACHABLE",
+              "TOPOLOGY_AUTHORIZED",
+              "WALKABLE",
+              "WITHIN_MAX_SPEED"
+            ],
+            "minimum_travel_time": 2.6633791739354717,
+            "navmesh_corridor": [
+              "detour-1-a",
+              "detour-1-b"
+            ],
+            "path_length": 7.990137521806416,
+            "path_score": null,
+            "polyline": [
+              [
+                2.0,
+                2.0,
+                0.0
+              ],
+              [
+                5.0,
+                3.2,
+                0.0
+              ],
+              [
+                9.605263157894736,
+                2.0,
+                0.0
+              ]
+            ],
+            "provenance": "INFERRED_GAP",
+            "semantic_regions": [
+              "west",
+              "central",
+              "east"
+            ],
+            "spatial_cost": 7.990137521806416,
+            "start_observation_id": "association-observation:23546c779ef56ee08fdc27b19bea43546581bc16871532d069d77d1dda929e0b",
+            "temporal_cost": 4.936620826064528
+          }
+        ],
+        "canonical_endpoint_ids": [
+          "association-observation:23546c779ef56ee08fdc27b19bea43546581bc16871532d069d77d1dda929e0b",
+          "association-observation:5b319f27c0b8c7665ffcf646aa7b933559fd9d5bcb65443164556aaf0206ca88"
+        ],
+        "hypotheses": [
+          {
+            "candidate_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537",
+            "dwell_duration": 0.0,
+            "hypothesis_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537:continuous",
+            "kind": "SLOWER_MOVEMENT",
+            "minimum_travel_time": 2.5350877192982453,
+            "movement_duration": 7.6000000000000005,
+            "provenance": "INFERRED_GAP",
+            "segments": [
+              {
+                "kind": "MOVEMENT",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  1.2,
+                  8.8
+                ]
+              }
+            ],
+            "temporal_slack": 5.064912280701755,
+            "timed_points": [
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 1.2,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 8.8,
+                "world_position": [
+                  9.605263157894736,
+                  2.0,
+                  0.0
+                ]
+              }
+            ],
+            "uncertainty": "Uniform timing is one admissible hypothesis; no behavioral probability is calibrated or assigned."
+          },
+          {
+            "candidate_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537",
+            "dwell_duration": 5.064912280701755,
+            "hypothesis_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537:dwell_at_start",
+            "kind": "DWELL",
+            "minimum_travel_time": 2.5350877192982453,
+            "movement_duration": 2.5350877192982453,
+            "provenance": "INFERRED_GAP",
+            "segments": [
+              {
+                "kind": "DWELL",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  1.2,
+                  6.264912280701755
+                ]
+              },
+              {
+                "kind": "MOVEMENT",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  6.264912280701755,
+                  8.8
+                ]
+              }
+            ],
+            "temporal_slack": 5.064912280701755,
+            "timed_points": [
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 1.2,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "INFERRED_GAP",
+                "timestamp": 6.264912280701755,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 8.8,
+                "world_position": [
+                  9.605263157894736,
+                  2.0,
+                  0.0
+                ]
+              }
+            ],
+            "uncertainty": "Dwell at the departure waypoint is a deterministic timing alternative, not observed behavior; no behavioral probability is calibrated or assigned."
+          },
+          {
+            "candidate_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa",
+            "dwell_duration": 0.0,
+            "hypothesis_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa:continuous",
+            "kind": "DETOUR",
+            "minimum_travel_time": 2.6633791739354717,
+            "movement_duration": 7.6000000000000005,
+            "provenance": "INFERRED_GAP",
+            "segments": [
+              {
+                "kind": "MOVEMENT",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  1.2,
+                  8.8
+                ]
+              }
+            ],
+            "temporal_slack": 4.936620826064528,
+            "timed_points": [
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 1.2,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "INFERRED_GAP",
+                "timestamp": 4.2733327747507435,
+                "world_position": [
+                  5.0,
+                  0.8,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 8.8,
+                "world_position": [
+                  9.605263157894736,
+                  2.0,
+                  0.0
+                ]
+              }
+            ],
+            "uncertainty": "A longer supplied route is a possible detour relative to retained routes. Uniform timing is one admissible hypothesis; no behavioral probability is calibrated or assigned."
+          },
+          {
+            "candidate_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa",
+            "dwell_duration": 4.936620826064528,
+            "hypothesis_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa:dwell_at_start",
+            "kind": "DWELL",
+            "minimum_travel_time": 2.6633791739354717,
+            "movement_duration": 2.6633791739354717,
+            "provenance": "INFERRED_GAP",
+            "segments": [
+              {
+                "kind": "DWELL",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  1.2,
+                  6.1366208260645285
+                ]
+              },
+              {
+                "kind": "MOVEMENT",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  6.1366208260645285,
+                  8.8
+                ]
+              }
+            ],
+            "temporal_slack": 4.936620826064528,
+            "timed_points": [
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 1.2,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "INFERRED_GAP",
+                "timestamp": 6.1366208260645285,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "INFERRED_GAP",
+                "timestamp": 7.213653787491429,
+                "world_position": [
+                  5.0,
+                  0.8,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 8.8,
+                "world_position": [
+                  9.605263157894736,
+                  2.0,
+                  0.0
+                ]
+              }
+            ],
+            "uncertainty": "Dwell at the departure waypoint is a deterministic timing alternative, not observed behavior; no behavioral probability is calibrated or assigned."
+          },
+          {
+            "candidate_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5",
+            "dwell_duration": 0.0,
+            "hypothesis_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5:continuous",
+            "kind": "DETOUR",
+            "minimum_travel_time": 2.6633791739354717,
+            "movement_duration": 7.6000000000000005,
+            "provenance": "INFERRED_GAP",
+            "segments": [
+              {
+                "kind": "MOVEMENT",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  1.2,
+                  8.8
+                ]
+              }
+            ],
+            "temporal_slack": 4.936620826064528,
+            "timed_points": [
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 1.2,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "INFERRED_GAP",
+                "timestamp": 4.2733327747507435,
+                "world_position": [
+                  5.0,
+                  3.2,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 8.8,
+                "world_position": [
+                  9.605263157894736,
+                  2.0,
+                  0.0
+                ]
+              }
+            ],
+            "uncertainty": "A longer supplied route is a possible detour relative to retained routes. Uniform timing is one admissible hypothesis; no behavioral probability is calibrated or assigned."
+          },
+          {
+            "candidate_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5",
+            "dwell_duration": 4.936620826064528,
+            "hypothesis_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5:dwell_at_start",
+            "kind": "DWELL",
+            "minimum_travel_time": 2.6633791739354717,
+            "movement_duration": 2.6633791739354717,
+            "provenance": "INFERRED_GAP",
+            "segments": [
+              {
+                "kind": "DWELL",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  1.2,
+                  6.1366208260645285
+                ]
+              },
+              {
+                "kind": "MOVEMENT",
+                "provenance": "INFERRED_GAP",
+                "time_range": [
+                  6.1366208260645285,
+                  8.8
+                ]
+              }
+            ],
+            "temporal_slack": 4.936620826064528,
+            "timed_points": [
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 1.2,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "INFERRED_GAP",
+                "timestamp": 6.1366208260645285,
+                "world_position": [
+                  2.0,
+                  2.0,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "INFERRED_GAP",
+                "timestamp": 7.213653787491429,
+                "world_position": [
+                  5.0,
+                  3.2,
+                  0.0
+                ]
+              },
+              {
+                "provenance": "PROJECTED",
+                "timestamp": 8.8,
+                "world_position": [
+                  9.605263157894736,
+                  2.0,
+                  0.0
+                ]
+              }
+            ],
+            "uncertainty": "Dwell at the departure waypoint is a deterministic timing alternative, not observed behavior; no behavioral probability is calibrated or assigned."
+          }
+        ],
+        "original_observation_refs": [
+          "observation:8a2cfc95f2814a9a8181eeda",
+          "observation:2668c733e75ed03653200b04"
+        ],
+        "provisional_association_ref": "association:973268aa1263a5c1fb21f6e5",
+        "replay_ref": "replay:ba01f4d0643bb6daf4aa2bbb",
+        "scope": {
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "clock_id": "synthetic-lab-seconds-v1",
+          "decision_stage": "RESULTS",
+          "freeze_ref": "freeze-43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "origin": "SYNTHETIC",
+          "place_id": "synthetic-lab",
+          "registry_version": "engineering.location-registry.v1",
+          "resource_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "run_id": "simulation-v2",
+          "session_ref": "session-5a03568c4fb1c2accc3a5361",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        },
+        "summary": {
+          "association_hypothesis_count": 21,
+          "association_ref": "association:973268aa1263a5c1fb21f6e5",
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "camera_ids": [
+            "CAM_A",
+            "CAM_B"
+          ],
+          "camera_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "candidate_count": 3,
+          "canonical_event_id": "event_8bc93c3a6be0529ced5dfaaf",
+          "complete": true,
+          "detail_ref": "event:973268aa1263a5c1fb21f6e5",
+          "event_ref": "event:973268aa1263a5c1fb21f6e5",
+          "evidence_refs": [
+            "measurement:53a044b1f12033e57fe9dfef",
+            "measurement:0fc7ac06a509f811b7156db3",
+            "measurement:d67f5ede0462336b4555ce82",
+            "measurement:bb2a0cf71c78f84029c12b45",
+            "measurement:bb2637410fa5214df3345811",
+            "measurement:c2a1398f9f642637946a261a",
+            "measurement:c37a399935f9e24f2a3287a0",
+            "measurement:1192f355b602a937fc4ee1c9",
+            "measurement:8360b7aefd0ce4f7d7d257d6",
+            "measurement:51f0a5e4ff6e9d4734e351ab",
+            "measurement:e8cf16aa6d904afaaadc8050",
+            "measurement:94fd7c84ed85ab7ad60c29e3",
+            "measurement:f912f5e1adcaaf58297777ed",
+            "measurement:717b5523f7f941d14146fc06"
+          ],
+          "hypothesis_count": 6,
+          "kind": "CROSS_CAMERA_GAP",
+          "media_refs": [
+            "media:088045773d4063ab0ab18b14",
+            "media:ae7fcea9eff1e704d5c7e363",
+            "media:d008eeab18b4b8ccf1c70c7f",
+            "media:b01419472a4245f2b2eb6105",
+            "media:1b28f8b67756fe07af5eaf8e",
+            "media:0954e52f7b71cda5d847a28e",
+            "media:280a760745918c896df0b527",
+            "media:a5cb6710181b44c940de2bf2",
+            "media:87b1991ff3090a3025cac957",
+            "media:b07d9cd10d3cf1979d6db297",
+            "media:29834338d5645edb2fe74cf8",
+            "media:21d2b4d201af98e51800c242",
+            "media:4574bfef5c47cd94d7c252d3",
+            "media:d6fd5c1826a6f9ab6d3ac485"
+          ],
+          "observation_refs": [
+            "observation:8a2cfc95f2814a9a8181eeda",
+            "observation:2668c733e75ed03653200b04"
+          ],
+          "origin": "SYNTHETIC",
+          "region_ids": [
+            "west",
+            "east",
+            "central"
+          ],
+          "replay_ref": "replay:ba01f4d0643bb6daf4aa2bbb",
+          "termination_reason": "COMPLETE",
+          "time_range": [
+            1.2,
+            8.8
+          ],
+          "uncertainty": "RGB appearance can merge or swap local identities. This is an independent pair hypothesis, with all unmatched and competing pairs retained; no probability is calibrated. Projection assumes the explicitly configured synthetic ground plane."
+        }
+      },
+      "tool": "get_event_detail"
+    },
+    {
+      "request": {
+        "media_ref": "media:088045773d4063ab0ab18b14",
+        "session_ref": "session-5a03568c4fb1c2accc3a5361"
+      },
+      "response": {
+        "annotations": "NONE",
+        "camera_id": "CAM_A",
+        "camera_ref": "camera:5912f97fb1b6f5af6a3be251",
+        "frame_id": 0,
+        "input_sha256": "8354cdaa45813a67dc8d8b24cf2fb0e5a0cbd9230d4cf41e51c9b6c79926d0d3",
+        "media_ref": "media:088045773d4063ab0ab18b14",
+        "mime_type": "image/png",
+        "origin": "SYNTHETIC",
+        "sample_transport_omission": {
+          "encoded_characters": 1860,
+          "field": "content_base64",
+          "reason": "complete RGB remains available through local media tool; no image bytes published"
+        },
+        "scope": {
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "clock_id": "synthetic-lab-seconds-v1",
+          "decision_stage": "RESULTS",
+          "freeze_ref": "freeze-43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "origin": "SYNTHETIC",
+          "place_id": "synthetic-lab",
+          "registry_version": "engineering.location-registry.v1",
+          "resource_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "run_id": "simulation-v2",
+          "session_ref": "session-5a03568c4fb1c2accc3a5361",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        },
+        "timestamp": 0.0
+      },
+      "tool": "get_media"
+    },
+    {
+      "request": {
+        "event_ref": "event:973268aa1263a5c1fb21f6e5",
+        "session_ref": "session-5a03568c4fb1c2accc3a5361",
+        "timestamp": 5.0
+      },
+      "response": {
+        "contract_version": "phase2.integration.v1",
+        "coordinate_system": "BLENDER_RIGHT_HANDED_Z_UP",
+        "data_kind": "SYNTHETIC",
+        "event_id": "event_8bc93c3a6be0529ced5dfaaf",
+        "markers": [
+          {
+            "candidate_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537",
+            "hypothesis_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537:continuous",
+            "interpolated": true,
+            "provenance": "INFERRED_GAP",
+            "world_position": [
+              5.802631578947368,
+              2.0,
+              0.0
+            ]
+          },
+          {
+            "candidate_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537",
+            "hypothesis_id": "candidate:11fe6ab44d91f3e7471e2be54822cf13e35a96de07a9125a17b38dfe7dd29537:dwell_at_start",
+            "interpolated": true,
+            "provenance": "INFERRED_GAP",
+            "world_position": [
+              2.0,
+              2.0,
+              0.0
+            ]
+          },
+          {
+            "candidate_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa",
+            "hypothesis_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa:continuous",
+            "interpolated": true,
+            "provenance": "INFERRED_GAP",
+            "world_position": [
+              5.739284253506336,
+              0.9926363540565083,
+              0.0
+            ]
+          },
+          {
+            "candidate_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa",
+            "hypothesis_id": "candidate:a31b96de76248b5b0d49f32612f77ba56c564899546e6351b576a03da7bbe2fa:dwell_at_start",
+            "interpolated": true,
+            "provenance": "INFERRED_GAP",
+            "world_position": [
+              2.0,
+              2.0,
+              0.0
+            ]
+          },
+          {
+            "candidate_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5",
+            "hypothesis_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5:continuous",
+            "interpolated": true,
+            "provenance": "INFERRED_GAP",
+            "world_position": [
+              5.739284253506336,
+              3.007363645943492,
+              0.0
+            ]
+          },
+          {
+            "candidate_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5",
+            "hypothesis_id": "candidate:9b76bd774a1cef541fb00eac68352db4e4bdc700fd4494b87fb15201ea836df5:dwell_at_start",
+            "interpolated": true,
+            "provenance": "INFERRED_GAP",
+            "world_position": [
+              2.0,
+              2.0,
+              0.0
+            ]
+          }
+        ],
+        "replay_ref": "replay:ba01f4d0643bb6daf4aa2bbb",
+        "scope": {
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "clock_id": "synthetic-lab-seconds-v1",
+          "decision_stage": "RESULTS",
+          "freeze_ref": "freeze-43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "origin": "SYNTHETIC",
+          "place_id": "synthetic-lab",
+          "registry_version": "engineering.location-registry.v1",
+          "resource_refs": [
+            "camera:5912f97fb1b6f5af6a3be251",
+            "camera:7e2332a50428def590fbbac7"
+          ],
+          "run_id": "simulation-v2",
+          "session_ref": "session-5a03568c4fb1c2accc3a5361",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        },
+        "time_basis": "CONFIGURED_SECONDS",
+        "time_interval": "CLOSED",
+        "timestamp": 5.0,
+        "units": "METRES"
+      },
+      "tool": "get_replay"
+    }
+  ],
+  "schema_version": "simulation.sample-tools.v1",
+  "stage": "RESULTS"
+}

@@ -1,0 +1,81 @@
+{
+  "all_rgb_bytes_identical": true,
+  "command": "uv run --offline --no-sync python -m amidst.engineering build --config configs/engineering/simulation_v1.json --output data/engineering/local_run/simulation_v2_reproduction --run-id simulation-v2",
+  "config_sha256": "02729186cee74f3bc2f002ee76518557c35d22c5d5c01cdc406e45f00ccf791c",
+  "dataset_sha256": "189bbb73e559ac9df8a8c3e3b5b92943fa85e915d45b7bb5998a82336d74de2a",
+  "files": [
+    {
+      "byte_identical": true,
+      "path": "run_manifest.json",
+      "sha256": "579cf42226c1289ba4f48c028dccccefad049e495673d2ef4579ae229d59e81e"
+    },
+    {
+      "byte_identical": true,
+      "path": "registry.json",
+      "sha256": "eebffa50cd0048eac41548be16a1ab031097f4f09a874be47310295a9811f622"
+    },
+    {
+      "byte_identical": true,
+      "path": "engineering_config.json",
+      "sha256": "4b8ec88cfe64ecc7bd518dfdca0cc806570aa676ba8fdf0613a52d6598a0041b"
+    },
+    {
+      "byte_identical": true,
+      "path": "static_context.json",
+      "sha256": "809c921d9bc1d5d15900eed7a6716bb3940524f9705a6c7cd58c3777746fb964"
+    },
+    {
+      "byte_identical": true,
+      "path": "mode_comparison.json",
+      "sha256": "fe2b9a7918b730dd6eca681c3bd3538b6bb906f31bfda0a0c7017193fe874678"
+    },
+    {
+      "byte_identical": true,
+      "path": "input_photos_only.json",
+      "sha256": "9878af4bcb665cdb7a8e01184952cfcb20ca6fbcd6f6969a05f5bf166f7d73ce"
+    },
+    {
+      "byte_identical": true,
+      "path": "perception_photos_only.json",
+      "sha256": "4eb863b4656f08259fbbae9b81fa3db983bbb46b4fa0c657b32008091ddefaf0"
+    },
+    {
+      "byte_identical": true,
+      "path": "inference_photos_only.json",
+      "sha256": "0f27594801bdffff6f25dc5d3f686234f964d87301fa1158b2938986a55b968a"
+    },
+    {
+      "byte_identical": true,
+      "path": "snapshot_photos_only.json",
+      "sha256": "d0896b8d5d5c3ec69499c2cedaa57ac44562085700a122b9699bdee93a462404"
+    },
+    {
+      "byte_identical": true,
+      "path": "input_photos_plus_observations.json",
+      "sha256": "0f8fd9e88c02d94693176e5a11f8fce1a822354d38024406232d6c5d6347f9ba"
+    },
+    {
+      "byte_identical": true,
+      "path": "perception_photos_plus_observations.json",
+      "sha256": "4eb863b4656f08259fbbae9b81fa3db983bbb46b4fa0c657b32008091ddefaf0"
+    },
+    {
+      "byte_identical": true,
+      "path": "inference_photos_plus_observations.json",
+      "sha256": "0f27594801bdffff6f25dc5d3f686234f964d87301fa1158b2938986a55b968a"
+    },
+    {
+      "byte_identical": true,
+      "path": "snapshot_photos_plus_observations.json",
+      "sha256": "d0896b8d5d5c3ec69499c2cedaa57ac44562085700a122b9699bdee93a462404"
+    }
+  ],
+  "formal_clean_checkout_reproduction": false,
+  "fresh_output": true,
+  "registry_sha256": "c0cd5ef6346f4f1f6474100f0f4ed9988f020b2ec7ad68613aa1946d37ec3841",
+  "rgb_frame_count": 102,
+  "run_id": "simulation-v2",
+  "schema_version": "simulation.reproduction.v1",
+  "source": "same current engineering source and locked environment",
+  "status": "PASS"
+}

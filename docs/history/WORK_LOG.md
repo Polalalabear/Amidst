@@ -2080,3 +2080,44 @@ strict mypy137 source files PASS；真實loopback36 requests PASS，保存
 English: M5 provides an operating local browser and MockAgent workflow, including full
 images and all-alternative replay. Thirty-five current checks and thirty-six real HTTP
 requests pass. The live viewer was operated and inspected; truth is absent from the main UI.
+
+
+## 2026-10-08 — Simulation engineering M6
+
+完成獨立evaluation與inference-only PNG／reader-verified RRD、fresh output重現、兩種mode
+comparison、八工具sample I/O及hash-bound curated receipts。Evaluation在freeze/source/config/
+lineage核對後才讀完整GT；actor matching/debug留本機，不選association winner。兩模式相同
+102張RGB，photos-only從pixels重新量測，89measurements／6tracks／21associations，4canonical
+gaps／8routes保持canonical IDs、ordering、bindings、nullable、termination與complete。
+
+最後補nested strict response allowlists及published response schemas；INPUT plus不補空geometry
+欄位，並拒絕region filter，避免藉查詢篩選反推隱藏region答案。Injection／private-ref／stage／
+cross-run／GT污染與缺失情境均通過。Main UI照片／projection／all-alternative replay沒有GT。
+Office nativeBU僅由獨立partial adapter顯式0.0247 m/BU normalize，原scene與historical records不改。
+
+**本輪當次2351 tests PASS，0 failed／0 skipped**，完整執行required physical-evidence入口；
+包含96個M1–M6 tests與全部既有階段相容tests。Ruff PASS、strict mypy138source files PASS；
+兩者及full pytest只排除同checkout另一chat未交付的local research草稿。當次36真loopback
+requests、4個新canonical events／12Node26replay samples、兩mode MockAgent與browser實際操作
+PASS；3routes／6hypotheses在8.79s均顯示INFERRED_GAP。13個frozen JSON及102張RGB於獨立fresh
+output逐byte相同。驗證parent `1eb1ba0` 加actual source inventory／config／run／freeze hashes，
+見[current validation](../../data/engineering/simulation_20261008/validation.json)；不是歷史2255的重述。
+
+獨立synthetic fixture evaluation：83/129 eligible contact recall＝64.34%（24px threshold）、
+mean pixel contact error3.092px、mean ground error0.102m。保留28merged/partial measurements、
+28NO_DETECTION frames與1out-of-static-scope projection。Association identity accuracy及未量測
+formal指標維持N/A；有限grammar complete不冒充exhaustive。Formal Cases1–3／A/B/C×K、消融、
+相同eligibility independent inventory、fresh research dataset與完整clean-checkout reproduction
+仍是獨立待辦，Case2／Case3 full gates BLOCKED，Case4 DEFERRED，原Phase2 branch/tag FROZEN。
+
+只發布code/docs/curated receipts；raw RGB／GT／snapshots／debug／RRD／PNG排除Git且不刪除。
+30prior-checkpoint protected files與school source hash/size/mtime重新核對，既有core／integration／
+locked inputs／review／protocol與依賴bytes不變。保留並行local_*工作與其文件，不混stage。
+更新CODEX_HANDOFF、Agent契約、simulation操作與data inventory，四個API/token空章節仍空白。
+
+English: M6 completes independent evaluation, truth-free presentations, exact fresh-output
+reproduction and curated source/run/config-bound receipts. All 2351 current tests pass with
+required physical evidence and zero failures/skips; lint, 138-file strict types, 36 actual
+HTTP calls and 12 TypeScript replay samples pass. Strict response validation and INPUT
+region-filter denial close the final answer-leak paths. Low-precision fixture results retain
+failures/ambiguity; formal research and concurrent R1–R8 work remain independently pending.

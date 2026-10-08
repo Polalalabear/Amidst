@@ -1,5 +1,24 @@
 # Current data inventory / 目前資料盤點
 
+## 2026-10-08 simulation engineering M1–M6
+
+[Curated engineering receipts](engineering/simulation_20261008/validation.json) bind the
+current tested source/config to `simulation-v2`:102 actual RGB frames,89 measurements,6 local
+tracks,21 provisional association records,4 canonical gaps and8 route alternatives.
+The operating local entry and materialization commands are in
+[simulation engineering](../docs/engineering/SIMULATION_ENGINEERING.md).
+
+KEEP:code/contracts,small source/hash inventories,mode comparison,evaluation aggregates,
+tool samples,HTTP/reproduction/presentation receipts. LOCAL ONLY:full RGB,GT/recipe,
+canonical snapshots,debug matches,RRD/PNG under ignored `engineering/local_run/`.
+The new model is an independent procedural synthetic lab. Its fixed-camera affine plane
+and low-precision pixel evidence grant no school geometry/portal/walkability authority.
+Formal Cases1–3 full gates remain independent and incomplete; Case4 DEFERRED,Phase2 FROZEN.
+
+繁體中文：當次工程資料已物化，實際hash與驗證見receipt；完整照片／GT／snapshots／展示素材
+僅本機保存，不上傳或刪除。School office structured partial certificate另存，不能用lab或mock
+推定school RGB、corridor package或formal驗收已完成。
+
 [English](#english) | [繁體中文](#繁體中文)
 
 Snapshot date: **2026-10-08**. This file records which artifacts are currently

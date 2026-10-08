@@ -6,9 +6,9 @@
 
 ### 目前範圍與實作狀態
 
-本文件依 2026-10-08 的使用者指示整理後續工程契約，狀態為 **PLANNED / SYNTHETIC_MOCK_ONLY**，不是已完成的服務。本階段不串接 OpenAI 或其他外部模型 API，不送出照片、摘要或模型原始資料；不建立 live provider、SDK 接線或秘密配置。API 接線與大幅減少 token 的兜底演算法尚未正式，文末只保留空章節。
+本文件依 2026-10-08 的使用者指示整理後續工程契約，第一版狀態為 **IMPLEMENTED / SYNTHETIC_ENGINEERING_ONLY**；可操作入口與當次證據見 [模擬工程](SIMULATION_ENGINEERING.md)。本階段不串接 OpenAI 或其他外部模型 API，不送出照片、摘要或模型原始資料；不建立 live provider、SDK 接線或秘密配置。API 接線與大幅減少 token 的兜底演算法尚未正式，文末只保留空章節。
 
-依據：[架構責任](../specs/SYSTEM_DESIGN.md#11-agent-arbitration-layer)、[摘要與 context](../specs/SYSTEM_DESIGN.md#29-token-and-context-control)、[資料契約](../specs/DATA_SCHEMA.md)。工程基底 `4271b2b` 已接入 [Phase 2 mock API/repository/replay](PHASE2_INTEGRATION.md)，但低階 mock 契約尚非 Agent allowlist DTO，新 reviewed/finalization package 的 normalization／匯入認證仍待完成；原 frozen branch/tag 不變。
+依據：[架構責任](../specs/SYSTEM_DESIGN.md#11-agent-arbitration-layer)、[摘要與 context](../specs/SYSTEM_DESIGN.md#29-token-and-context-control)、[資料契約](../specs/DATA_SCHEMA.md)。工程基底 `4271b2b` 已接入 [Phase 2 mock API/repository/replay](PHASE2_INTEGRATION.md)，低階 mock 契約仍保持內部隔離；外層已完成八個 strict Agent allowlist DTO。獨立 normalization adapter 只認證已核對的 office structured partial package，其他 finalization/corridor scope 未認證；原 frozen branch/tag 不變。
 
 影像 producer 從未加 GT 標註的 RGB pixels 量測，不讀 simulator object-index／segmentation／depth、GT bbox／身分／位置或 recipe/reference annotations。合成照片經影像演算法處理仍屬 SYNTHETIC 來源，另外保留量測 producer／版本／輸入 hashes；既有模擬 UV 不改稱影像量測。Local tracks 使用 model/run/camera namespace；跨鏡頭身分只形成 provisional hypotheses，adapter 保存原 records 映射，不把 GT actor ID 填入既有 target_id 或回寫 canonical records。
 
@@ -25,18 +25,18 @@ Agent 不取得 repository、filesystem、任意 SQL、shell 或整個 scene 的
 外層 LocationRegistry 明確連接 place → model/source/context → camera groups/regions → media/observations/events。每個模型各自綁定時間、座標和 normalization。原 camera IDs 保留，外層 camera reference 有模型與地點 namespace；名稱本身不證明 coverage。
 衍生子模型保留 parent revision/source hash、derivation manifest/hash、顯式 source→submodel transform 與原 camera/calibration correspondence。缺映射不可混用校正／region authority；subset/crop 不自動升級核准範圍。
 
-| Proposed tool | 責任 |
+| Implemented tool | 責任 |
 | --- | --- |
 | `resolve_place` | 回傳已登錄地點或歧義集合 |
 | `list_cameras` | 在固定 place/model/run scope 中列鏡頭、群組與已知 coverage 狀態 |
 | `query_observations` | 查 canonical records，不重新聚合或更換 IDs |
-| `query_events` | 以明確 scope、時間與已有 region index 查事件 |
+| `query_events` | 按固定 scope、時間與 region 條件查已存事件 |
 | `get_event_summary` | 回傳精簡、可引用的事件摘要 |
 | `get_event_detail` | 按 reference 取得完整候選、hypotheses 與證據細節 |
 | `get_media` | 取得本機准許的合成照片及必要 frame/time references |
 | `get_replay` | 取得事件 replay，顯示插值不改推論資料 |
 
-工具列表為後續契約，尚未全部實作。所有工具由本機服務執行並驗證參數、scope 和 references；MockAgent 不自行掃描資料樹。
+八個工具已實作，request 與 response 都以 strict typed allowlist 驗證。所有工具由本機服務執行並驗證參數、scope 和 references；MockAgent 不自行掃描資料樹。
 
 ### 預設摘要與完整資料
 
@@ -50,7 +50,7 @@ Agent-facing API/data-export 守門先驗證 mode、decision stage、source/cont
 
 - `photos_only`：完整合成照片與必要 camera/frame/time/evidence references，不附觀測答案。
 - `photos_plus_observations`：相同照片加上真正影像 producer 產生、來源明確的觀測或幾何衍生資料；模擬投影不改稱影像量測。
-- 該 run 的圖片判斷／association 前，`photos_only` 不可透過 summary/detail/query 工具取得既有投影、zone、candidate 或身分答案。完成 inference freeze 後，結果查詢 stage 才可讀准許的已產生事件；輸入比較與結果展示分開。
+- 該 run 的圖片判斷／association 前，`photos_only` 不可透過 summary/detail/query 工具取得既有投影、zone、candidate 或身分答案。INPUT 的 observation query 也拒絕 region filter，防止隱藏答案經篩選結果旁路外洩。完成 inference freeze 後，結果查詢 stage 才可讀准許的已產生事件；輸入比較與結果展示分開。
 - 兩模式都完整保存 GT，但 GT actor identity／GT 3D position/path、recipe/reference annotations 不進入 Agent、association、Graph、ranking 或一般 query payload。靜態相機校正與合法 scene 配置可由 registry 提供；合法推論出的投影、區域與候選可由相應服務使用並保留 origin/authority/uncertainty。
 - 照片、crop 與資料使用 opaque references；回傳可用證據，避免本機 private paths、secret、完整 source archives 和 evaluation references 外洩。
 - Agent／工具／API／export 可見的 DTO 與 logs 一併檢查准許欄位；錯誤不能回傳秘密或 raw payload。後續 external adapter 仍必須沿用這個資料邊界。獨立 local evaluation/debug 可保存 GT 與必要定位資料；immutable 歷史紀錄不清洗或回寫。
@@ -69,15 +69,15 @@ Agent-facing API/data-export 守門先驗證 mode、decision stage、source/cont
 
 ### Scope and implementation status
 
-This document records the user's 2026-10-08 engineering direction as **PLANNED / SYNTHETIC_MOCK_ONLY**. No OpenAI or other external model API is connected. No images, summaries or source data are sent out; no live provider, SDK wiring or secret configuration is created. The API wiring and token fallback algorithm remain empty sections.
+The first version is **IMPLEMENTED / SYNTHETIC_ENGINEERING_ONLY**; see the [operating composition and current evidence](SIMULATION_ENGINEERING.md). No OpenAI or other external model API is connected. No images, summaries or source data are sent out; no live provider, SDK wiring or secret configuration is created. The API wiring and token fallback algorithm remain empty sections.
 
-Engineering baseline `4271b2b` includes the legacy mock adapters, but Agent-facing DTOs and reviewed-package import certification remain pending. Pixel-derived synthetic measurements retain producer/hash lineage and never substitute simulator truth channels. Camera-scoped local tracks feed provisional association hypotheses, preserving original record mappings without rewriting frozen identities.
+Engineering baseline `4271b2b` includes the legacy mock adapters, with eight strict Agent request/response DTOs in an isolated facade. Separate reviewed import certification covers only the verified office structured partial package. Pixel-derived synthetic measurements retain producer/hash lineage and never substitute simulator truth channels. Camera-scoped local tracks feed provisional association hypotheses, preserving original record mappings without rewriting frozen identities.
 
 ### Agent role and resources
 
 The Agent locates resources, calls typed retrieval tools, requests necessary evidence and explains results. A MockAgent demonstrates a recorded, replayable tool flow. Deterministic services own projection, region containment, navigation, graph search, collision and reconstruction. Canonical alternatives, provenance, ordering and search status remain unchanged.
 
-A small `TaskContext` fixes place/model/source/context/run/clock/mode/decision-stage/registry scope and supplies opaque references plus allowed tools. The server owns mode/stage/permissions and verifies the matching run/mode/input/config freeze receipt before result reads; callers cannot select a stage to bypass policy. The proposed tools are `resolve_place`, `list_cameras`, `query_observations`, `query_events`, `get_event_summary`, `get_event_detail`, `get_media` and `get_replay`. They are not all implemented yet. The Agent has no repository scan, filesystem, arbitrary SQL or shell tool. Derived submodels retain parent revision/hash, derivation lineage, an explicit transform and camera/calibration correspondence; cropping does not extend authority.
+A small `TaskContext` fixes place/model/source/context/run/clock/mode/decision-stage/registry scope and supplies opaque references plus allowed tools. The server owns mode/stage/permissions and verifies the matching run/mode/input/config freeze receipt before result reads; callers cannot select a stage to bypass policy. The implemented tools are `resolve_place`, `list_cameras`, `query_observations`, `query_events`, `get_event_summary`, `get_event_detail`, `get_media` and `get_replay`. All eight are locally callable. The Agent has no repository scan, filesystem, arbitrary SQL or shell tool. Derived submodels retain parent revision/hash, derivation lineage, an explicit transform and camera/calibration correspondence; cropping does not extend authority.
 
 ### Summary and data boundary
 

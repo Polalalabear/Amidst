@@ -1,0 +1,147 @@
+{
+  "authority": "ENGINEERING_FIXTURE_ONLY",
+  "config_sha256": "02729186cee74f3bc2f002ee76518557c35d22c5d5c01cdc406e45f00ccf791c",
+  "dataset_sha256": "189bbb73e559ac9df8a8c3e3b5b92943fa85e915d45b7bb5998a82336d74de2a",
+  "eligibility": {
+    "bbox": "Full annotated bbox inside image with no exact v1 pillar intersection",
+    "contact": "GT contact inside RGB image and outside exact v1 static pillar image mask",
+    "error_matching": "Per-measurement nearest eligible contact, evaluation only",
+    "merged_partial_measurements": "Retained; one component can match at most one actor",
+    "recall_matching": "Greedy one-to-one nearest pixel contact, distance <=24px"
+  },
+  "evaluation_truth_sha256": "c68e5b04ac83576cd4265c88e766bfa46d6f9f79e82e395d6e6d598a89e9e496",
+  "external_model_calls": false,
+  "formal_phase1_acceptance": false,
+  "freeze_receipt_sha256": [
+    "43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+    "94e7d7f4669290b178fbecb4e3d3a543b30fdc1807e7d5f4c57d984e978a8bb5"
+  ],
+  "limitations": [
+    "Procedural scene diagnostics do not certify school or real cameras.",
+    "Nearest-contact/best-IoU diagnostics are not mAP or identity accuracy.",
+    "Association has multiple provisional hypotheses; evaluation never chooses a winner.",
+    "Detailed actor annotations remain in local evaluation/debug only."
+  ],
+  "model_id": "synthetic-lab-v1",
+  "modes": {
+    "photos_only": {
+      "association_identity_precision": "N/A",
+      "association_identity_recall": "N/A",
+      "association_kind_counts": {
+        "CROSS_CAMERA_GAP": 6,
+        "OVERLAPPING_VISIBILITY": 6,
+        "SAME_CAMERA_RECOVERY": 3,
+        "UNMATCHED": 6
+      },
+      "association_status_counts": {
+        "HOLD": 2,
+        "INCOMPATIBLE": 7,
+        "PROVISIONAL": 6,
+        "UNMATCHED": 6
+      },
+      "best_unoccluded_bbox_iou": {
+        "maximum": 1.0,
+        "mean": 0.8381897619439042,
+        "rms": 0.8543672705486078,
+        "samples": 75
+      },
+      "candidate_count": 8,
+      "canonical_gap_count": 4,
+      "detection_precision": "N/A",
+      "eligible_actor_contacts": 129,
+      "eligible_detection_recall_24px": 0.6434108527131783,
+      "formal_research_metrics": "N/A",
+      "frame_count": 102,
+      "frame_status_counts": {
+        "AMBIGUOUS_COMPONENT": 28,
+        "MEASURED": 46,
+        "NO_DETECTION": 28
+      },
+      "local_track_count": 6,
+      "measurement_count": 89,
+      "measurement_status_counts": {
+        "DETECTED": 61,
+        "MERGED_OR_PARTIAL": 28
+      },
+      "nearest_eligible_pixel_contact_error_px": {
+        "maximum": 12.254777728877926,
+        "mean": 3.0921319573221755,
+        "rms": 4.466116710332654,
+        "samples": 83
+      },
+      "one_to_one_contact_matches_24px": 83,
+      "projection_status_counts": {
+        "OUTSIDE_STATIC_SCOPE": 1,
+        "PROJECTED": 88
+      },
+      "same_nearest_contact_ground_error_m": {
+        "maximum": 0.3394887697775962,
+        "mean": 0.10217586381889923,
+        "rms": 0.13252181923159334,
+        "samples": 83
+      }
+    },
+    "photos_plus_observations": {
+      "association_identity_precision": "N/A",
+      "association_identity_recall": "N/A",
+      "association_kind_counts": {
+        "CROSS_CAMERA_GAP": 6,
+        "OVERLAPPING_VISIBILITY": 6,
+        "SAME_CAMERA_RECOVERY": 3,
+        "UNMATCHED": 6
+      },
+      "association_status_counts": {
+        "HOLD": 2,
+        "INCOMPATIBLE": 7,
+        "PROVISIONAL": 6,
+        "UNMATCHED": 6
+      },
+      "best_unoccluded_bbox_iou": {
+        "maximum": 1.0,
+        "mean": 0.8381897619439042,
+        "rms": 0.8543672705486078,
+        "samples": 75
+      },
+      "candidate_count": 8,
+      "canonical_gap_count": 4,
+      "detection_precision": "N/A",
+      "eligible_actor_contacts": 129,
+      "eligible_detection_recall_24px": 0.6434108527131783,
+      "formal_research_metrics": "N/A",
+      "frame_count": 102,
+      "frame_status_counts": {
+        "AMBIGUOUS_COMPONENT": 28,
+        "MEASURED": 46,
+        "NO_DETECTION": 28
+      },
+      "local_track_count": 6,
+      "measurement_count": 89,
+      "measurement_status_counts": {
+        "DETECTED": 61,
+        "MERGED_OR_PARTIAL": 28
+      },
+      "nearest_eligible_pixel_contact_error_px": {
+        "maximum": 12.254777728877926,
+        "mean": 3.0921319573221755,
+        "rms": 4.466116710332654,
+        "samples": 83
+      },
+      "one_to_one_contact_matches_24px": 83,
+      "projection_status_counts": {
+        "OUTSIDE_STATIC_SCOPE": 1,
+        "PROJECTED": 88
+      },
+      "same_nearest_contact_ground_error_m": {
+        "maximum": 0.3394887697775962,
+        "mean": 0.10217586381889923,
+        "rms": 0.13252181923159334,
+        "samples": 83
+      }
+    }
+  },
+  "origin": "SYNTHETIC",
+  "registry_sha256": "c0cd5ef6346f4f1f6474100f0f4ed9988f020b2ec7ad68613aa1946d37ec3841",
+  "run_id": "simulation-v2",
+  "schema_version": "simulation.evaluation.v1",
+  "status": "SYNTHETIC_ENGINEERING_MEASURED"
+}

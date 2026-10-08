@@ -169,6 +169,7 @@ class AgentFacade:
 
     def invoke(self, tool: Tool, payload: object) -> dict[str, object]:
         from amidst.engineering.access import TOOLS, AccessDenied, digest
+        from amidst.engineering.dto import RESPONSE_TYPES
 
         if tool not in TOOLS:
             self.logs.append({"tool": "UNKNOWN_TOOL", "stage": self.guard.stage,
@@ -184,7 +185,8 @@ class AgentFacade:
         try:
             request = schemas[tool].model_validate(payload)
             self.guard.require(request.session_ref, tool)
-            result = self._invoke(tool, request)
+            result = RESPONSE_TYPES[tool].model_validate(self._invoke(tool, request))
+            exported = result.model_dump(mode="json")
         except (AccessDenied, ToolFailure) as error:
             code = str(error)
             self.logs.append({"tool": tool, "stage": self.guard.stage, "status": code})
@@ -194,8 +196,8 @@ class AgentFacade:
                               "status": "INVALID_OR_UNAVAILABLE"})
             raise ToolFailure("INVALID_OR_UNAVAILABLE") from None
         self.logs.append({"tool": tool, "stage": self.guard.stage, "status": "OK",
-                          "response_sha256": digest(result)})
-        return result
+                          "response_sha256": digest(exported)})
+        return exported
 
     def _invoke(self, tool: Tool, request: ToolRequest) -> dict[str, object]:
         if tool == "resolve_place":
@@ -222,6 +224,8 @@ class AgentFacade:
             } for c in self.cameras]}
         if tool in ("query_events", "query_observations"):
             assert isinstance(request, QueryRequest)
+            if self.guard.stage == "INPUT" and request.region_id is not None:
+                raise ToolFailure("STAGE_DENIED")
             camera_id = self._query(request)
             if request.region_id is not None and request.region_id not in {
                 r for c in self.cameras for r in c.region_ids

@@ -12,7 +12,7 @@ artifacts，不在那裡實作或切換 branch。
 
 ### 新工程範圍與入口
 
-使用者要求先準備 Agent 操作檢索系統的資源與角色：固定 TaskContext、LocationRegistry、typed tools、summary/detail/media/replay references 與輸出邊界，避免 Agent 掃描整個資料庫或 repository。本階段 **SYNTHETIC_MOCK_ONLY / NO_EXTERNAL_MODEL_CALLS**；OpenAI API 接線與 token 兜底演算法保留空章節，不自行填入。
+使用者要求先準備 Agent 操作檢索系統的資源與角色：固定 TaskContext、LocationRegistry、typed tools、summary/detail/media/replay references 與輸出邊界，避免 Agent 掃描整個資料庫或 repository。本階段 **SYNTHETIC_ENGINEERING_ONLY / NO_EXTERNAL_MODEL_CALLS**；OpenAI API 接線與 token 兜底演算法保留空章節，不自行填入。
 
 入口見 [Agent 檢索契約](../engineering/AGENT_RETRIEVAL_BOUNDARY.md) 與 [擴大工程續作 prompt](PHASE1_NEXT_CHAT_PROMPT.md)。可在同一 checkout 連續完成多個可執行 milestones，每段驗證、commit、普通 push 對應工程 branch；不為每段新增 worktree/clone/raw 副本。文件分類見 [導覽](../README.md)；正文按分類存放；必要的機器路徑與不可變核准文件見該頁說明。
 
@@ -22,7 +22,7 @@ artifacts，不在那裡實作或切換 branch。
 
 使用者指定以鄰近 camera／可達拓樸、時間與人物連續性做局部關聯，輸出數個實際畫面及進門／出門／轉角／可能遊蕩等事件，避免全域掃描。[研究交接與可複製 prompt](LOCAL_CAMERA_EVENT_RESEARCH_HANDOFF.md) 固定具體 R1–R8、局部索引、同 scope 檢索漏取實驗、固定候選 pool 的 feature 消融與多畫面交付；這是 RESEARCH_PLAN／NOT_RUN，未新增正式研究 PASS。
 
-最初核對時 engineering 目錄有未提交並行草稿；期間另一工作新增 M1 `0cb2f15`（registry／office structured partial importer）與 M2 `6a00541`（synthetic RGB／pixel tracks／stage guards），工作紀錄分別報36／34 tests PASS，本交接沒有重跑。Association／facade／UI等仍有並行工作；先核對live commits/status與receipt，續接而不覆寫，不以存在tests宣稱PASS。當時association仍全pair列舉、registry仍遍歷catalog；下一步先補真正scope/camera/time/ref index，不能把「不掃filesystem」當成「不全量掃records」。原2255測試綁定 `4271b2b`，不是這些增量或本研究的PASS。
+研究交接中對 M1/M2 與全pair／catalog遍歷的觀察屬當時基線；目前 M1–M6 已完成獨立 lab 閉環，仍保留全部 pairwise alternatives。R1–R8 的真正局部索引、行為研究與消融在同 checkout 的 `local_*` 新模組並行開發，未納入本次 M1–M6 驗收；不覆寫或 stage 其修改，也不以工程結果宣稱該研究 PASS。原2255測試只綁定 `4271b2b`。
 
 ### 已接入的工程能力與續作邊界
 
@@ -32,7 +32,13 @@ FROZEN Phase 2 checkpoint `5b51d2c` 的 repository、read-only API、legacy repl
 
 工程基底 `4271b2b` 的完整測試 **2255 passed／0 failed／0 skipped**，含 Blender／physical evidence；Ruff PASS，strict mypy PASS（125 source files）。該checkpoint的25次實際loopback HTTP requests與Node consumer／replay驗證通過，既有318個核心／腳本／測試檔、29 inputs、297 review records及immutable source不變；這不是後續M1/M2或目前草稿的全測試重跑。
 
-後續M1/M2已新增局部registry、RGB量測與stage契約，但完整跨鏡頭association／Agent typed tools／多事件UI與本研究消融尚待完成。低階mock API的synthetic target IDs／座標／source references不直接交給Agent。新獨立reviewed importer只對原office structured partial scope有certificate，不等於legacy importer支援所有finalization/corridor packages，也不是RGB／Agent輸出認證；來源、clock、unit、BU normalization及scope仍依certificate限制，不能從mock或partial PASS推定全部相容。M1–M6續作先核對最新狀態。
+M1–M6 已實作：source/context/clock/unit registry／media、真實未標註 RGB 與 pixel local tracks、兩種輸入與 stage/freeze 守門、provisional associations／Graph adapter、八個 strict typed Agent tools、MEMORY／LOCAL_JSON fixed reads、MockAgent／互動照片與3D alternatives replay、independent evaluation／reproduction。操作與完整界限見 [模擬工程](../engineering/SIMULATION_ENGINEERING.md)，本輪 [validation receipt](../../data/engineering/simulation_20261008/validation.json) 綁定 source hashes／run／config。
+
+當次2351 tests PASS／0 failed／0 skipped（required physical evidence），Ruff／strict mypy138 files PASS，36真HTTP及4events／12TypeScript replay PASS；只排除並行local research草稿，詳見receipt。
+
+目前 local run `data/engineering/local_run/simulation_v2`：2 cameras／102張5Hz RGB、89量測／6tracks、21association records、4canonical gaps／8routes。使用既有環境執行 `uv run --offline --no-sync python -m amidst.engineering serve --run data/engineering/local_run/simulation_v2 --port 8010`；瀏覽 `http://127.0.0.1:8010`。完整GT只在simulation/export與local evaluation/debug；photo入口只有獨立synthetic-lab-v1，沒有虛構school RGB tracking sequence。Office importer certificate僅為structured recovery partial，native BU不回寫，0.0247 m/BU顯式normalize。
+
+Pixel recall為83/129（64.34%，24px eligibility matching），mean contact error3.09px／ground error0.102m；這些是獨立fixture診斷，association identity accuracy及formal指標N/A。Same-camera為HOLD，overlap不偽造gap，全部歧義／incompatible alternatives均保留。兩模式使用相同照片，photos-only從pixels重算；未使用GT兜底或external model。
 
 原 `phase2/integration-hardening` 與 tag 保持 FROZEN；新增碼只在工程分支。不 merge `main`，不改原 Blender/source、locked inputs 或正式研究狀態；外部模型 API 與 token 兜底章節仍空白。
 
@@ -93,11 +99,11 @@ Case4 **DEFERRED**；Phase2 `phase2/integration-hardening / 5b51d2c` **FROZEN**�
 
 ## English
 
-The current engineering branch is `codex/simulation-engineering`, reusing the existing checkout and including documentation checkpoint `2c586b1`; the research baseline remains `phase1/finalization-sprint / 883204a`. Preview checkpoint `04c699d` was merged as `ded5572`. Compatible projection diagnostics and the frozen `5b51d2c` mock repository/API/replay/TypeScript adapters were imported selectively, preserving current core contracts and dependencies. See the integration document and current receipt above. This is **SYNTHETIC_MOCK_ONLY / NO_EXTERNAL_MODEL_CALLS**; API wiring and the token fallback algorithm remain empty.
+The current engineering branch is `codex/simulation-engineering`, reusing the existing checkout and including documentation checkpoint `2c586b1`; the research baseline remains `phase1/finalization-sprint / 883204a`. Preview checkpoint `04c699d` was merged as `ded5572`. Compatible projection diagnostics and the frozen `5b51d2c` mock repository/API/replay/TypeScript adapters were imported selectively, preserving current core contracts and dependencies. See the integration document and current receipt above. This is **SYNTHETIC_ENGINEERING_ONLY / NO_EXTERNAL_MODEL_CALLS**; API wiring and the token fallback algorithm remain empty.
 
-Subsequent M1/M2 checkpoints add a partial registry/reviewed-office importer, synthetic RGB measurements and stage guards. Full association, Agent tools, multi-event UI and the proposed research evaluations remain pending. The office structured certificate does not certify arbitrary corridor packages, RGB or Agent payloads. Keep source/clock/unit scope checks, the original Phase 2 branch/tag frozen and formal research gates independent; do not merge main.
+M1–M6 now provide an operating synthetic RGB-to-local-track-to-provisional-association-to-3D-event composition, strict typed tools, immutable repositories, a browser/MockAgent workflow and independent evaluation/reproduction. See the simulation engineering document and current validation receipt. The local run has 102 images, 89 measurements, six tracks, 21 association records and four canonical gaps with eight alternatives. The separate office certificate covers structured partial recovery only; school RGB, arbitrary corridor packages and formal gates remain uncertified.
 
-The linked local camera/event research handoff specifies indexed retrieval, provisional association, behavior-event cards and paired experiments. Concurrent M1/M2 work was committed during this review; its recorded tests were not rerun here. Recheck live status and preserve remaining drafts; all-pairs generation and catalog traversal must be replaced by scoped candidate lookup before claiming bounded retrieval.
+The linked R1–R8 local camera/event research is a separate concurrent continuation in new `local_*` modules. Its drafts and historical records are preserved. M1–M6 pairwise alternatives do not prove indexed-retrieval or behavior research acceptance. Original Phase 2 remains frozen; no main merge or external model integration is performed.
 
 Continue in the sprint worktree above. The human approved the exact corridor proposal and
 requests a new-chat continuation to finish one reproducible dataset, benchmark table and

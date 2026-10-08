@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "changed_documents": 6,
+  "links_examined": 172,
+  "introduced_missing_relative_links": 0,
+  "api_token_sections_empty": 4,
+  "sample_dto_boundary": "PASS"
+}

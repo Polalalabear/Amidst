@@ -16,7 +16,7 @@
     {
       "route": "/agent/v1/contract",
       "status": 200,
-      "sha256": "8b1ec49640d434f05550df29d87797222dd6f62e1e0b8939f55cdb31ffe1ce7f"
+      "sha256": "b2cbde21dc4ddcbe0d9922a98b88f98a667891783c3aa927902c91b3abc00981"
     },
     {
       "route": "/agent/v1/resolve_place",
@@ -41,12 +41,12 @@
     {
       "route": "/agent/v1/get_event_detail",
       "status": 200,
-      "sha256": "80b1ee9b3b829203139deb6677fa994866db46bc54f0176848b7d8dbd05550c7"
+      "sha256": "1a09319111d83f9b79eb3976243c95134d45cd049eae87767786811e54f57a71"
     },
     {
       "route": "/agent/v1/get_event_summary",
       "status": 200,
-      "sha256": "1c38e2e66432605ef3b11e0fc3ac7ed89a7d9972fec82fde295f7009702a4300"
+      "sha256": "b583bcbd24e5b26fe45f3b7419abc6b46bae67a49bd60f041d0e0fac7707e65f"
     },
     {
       "route": "/agent/v1/get_media",
@@ -56,7 +56,7 @@
     {
       "route": "/agent/v1/get_replay",
       "status": 200,
-      "sha256": "f5b60215243c53fe386c8e3f0b534e2f34644d44641663703d0f8a52ae810507"
+      "sha256": "879077f100343ceb75c22e0b00f5edbfbb616c93bdd8822f0b1d681be36074ae"
     },
     {
       "route": "/agent/v1/query_events",
@@ -121,12 +121,12 @@
     {
       "route": "/agent/v1/get_event_detail",
       "status": 200,
-      "sha256": "e860cf996f407ff69c694937d067dc9979be26974ce80078379eb1e2ac8849b7"
+      "sha256": "6e13e3d9be8c6cf1b437e6a9cda578aa58bc8b63a841f41a8f6f8426e7edc5ca"
     },
     {
       "route": "/agent/v1/get_event_summary",
       "status": 200,
-      "sha256": "be6ece1f715917ad764b9d0bf973be0af0143e3d32e5642c1bf83eb3e495f20b"
+      "sha256": "c51505ec194fa4ef1f4a4758a8823f131dadf8d8a2b8bd10b3642fc1d8257c0b"
     },
     {
       "route": "/agent/v1/get_media",
@@ -136,7 +136,7 @@
     {
       "route": "/agent/v1/get_replay",
       "status": 200,
-      "sha256": "3e9b29d0a76f1b0230fa52c43ea4d2ffd7d1f92e6f3e716dc4bd9b77b6cd0d24"
+      "sha256": "355cee139e3161ca0d1557958c7693b4820fa42bf3ca4176a8516c84845ed2b8"
     },
     {
       "route": "/agent/v1/query_events",

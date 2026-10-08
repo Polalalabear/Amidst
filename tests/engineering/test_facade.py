@@ -94,6 +94,18 @@ def test_plus_input_measurements_and_photos_remain_allowed(frozen: Path) -> None
     assert all("projected_positions" not in o and "region_ids" not in o for o in result["items"])
 
 
+@pytest.mark.parametrize("region", ["central", "west", "private-region-sentinel"])
+def test_plus_input_cannot_infer_hidden_regions_by_filter(frozen: Path, region: str) -> None:
+    original = load_facades(frozen)[1]
+    guard = SessionGuard(original.guard.binding)
+    facade = AgentFacade(original.store, original.scope, guard, original.snapshot,
+                         original.observations, original.events)
+    with pytest.raises(ToolFailure, match="STAGE_DENIED"):
+        facade.invoke("query_observations", {"session_ref": guard.session_ref,
+                       "time_range": [0, 10], "region_id": region})
+    assert region not in json.dumps(facade.logs)
+
+
 @pytest.mark.parametrize("extra", [
     {"decision_stage": "RESULTS"}, {"observation_mode": "photos_plus_observations"},
     {"run_id": "other"}, {"source_id": "private"}, {"sql": "select * from gt"},
@@ -120,6 +132,19 @@ def test_references_errors_logs_and_gt_do_not_leak(facade: AgentFacade) -> None:
     for forbidden in ("actor_identity", "blue-person-a", "blue-person-b", "recipe",
                       "source_video_reference", "simulation_export_path", "/Users/", "navmesh"):
         assert forbidden not in encoded
+
+
+def test_response_allowlist_rejects_internal_payload_injection(
+    facade: AgentFacade, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    sentinel = "/Users/private/GT_secret"
+    monkeypatch.setattr(facade, "_invoke", lambda tool, request: {
+        "scope": facade.context(), "items": [], "ambiguous": False,
+        "private_source_archive": sentinel,
+    })
+    with pytest.raises(ToolFailure, match="INVALID_OR_UNAVAILABLE"):
+        facade.invoke("resolve_place", {"session_ref": facade.guard.session_ref, "query": "lab"})
+    assert sentinel not in json.dumps(facade.logs)
 
 
 def test_actual_missing_media_and_snapshot_are_rejected(frozen: Path, tmp_path: Path) -> None:

@@ -1,0 +1,194 @@
+{
+  "binding": {
+    "algorithm_hashes": {
+      "engineering/association.py": "69ed18b7ea1fa28ec05b22045a2da9109864c0bcc535fc6e3dcf0e1b94cdec48",
+      "engineering/perception.py": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+      "engineering/synthetic.py": "3c100f7ff93bedda9a9da4fc252e80d9d64a86e48f1dd1d6660330e64216a6cd",
+      "graph/engine.py": "f0c9e018067f05666056217d65afdaeeff651dbb8bf6a62e5721245b919c0562",
+      "pipeline.py": "f6e75d3527eedeafcf8099a4a653072134bc9ce27c23f1934a66fa1abe34955d",
+      "reconstruction/blind_gap.py": "8338e8033ebe0d5035151974da938d3fd368ab36ca1ead17784a237f509a183f"
+    },
+    "config_sha256": "02729186cee74f3bc2f002ee76518557c35d22c5d5c01cdc406e45f00ccf791c",
+    "generator_config_sha256": "650fc17f7e91644d28fdf80a49649ef2afdcc06b12f124f289895671f474fef6",
+    "model_source_sha256": "1f7c5ea3030e3212e67d6a3d21afa9066d6f0cb4989fe101f9ecf2829da532ea",
+    "receipts": [
+      {
+        "binding": {
+          "clock_id": "synthetic-lab-seconds-v1",
+          "config_sha256": "02729186cee74f3bc2f002ee76518557c35d22c5d5c01cdc406e45f00ccf791c",
+          "dataset_sha256": "189bbb73e559ac9df8a8c3e3b5b92943fa85e915d45b7bb5998a82336d74de2a",
+          "media_sha256": "0e8155818ce45b187e354f29cc36dad0588eca527ccee41fe9dfb0e24420c46b",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_only",
+          "place_id": "synthetic-lab",
+          "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+          "registry_sha256": "c0cd5ef6346f4f1f6474100f0f4ed9988f020b2ec7ad68613aa1946d37ec3841",
+          "registry_version": "engineering.location-registry.v1",
+          "run_id": "simulation-v2",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        },
+        "inference_sha256": "8b31185fd2018a7440ba05e295383e8543eddb3aa8b180ce0a15629ace8c281b",
+        "measurement_sha256": "ac959b951b1602c944ffe5cea880cca3c66d15541e1517b8bab6653d31497657",
+        "receipt_sha256": "43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+        "schema_version": "simulation.freeze.v1"
+      },
+      {
+        "binding": {
+          "clock_id": "synthetic-lab-seconds-v1",
+          "config_sha256": "02729186cee74f3bc2f002ee76518557c35d22c5d5c01cdc406e45f00ccf791c",
+          "dataset_sha256": "189bbb73e559ac9df8a8c3e3b5b92943fa85e915d45b7bb5998a82336d74de2a",
+          "media_sha256": "0e8155818ce45b187e354f29cc36dad0588eca527ccee41fe9dfb0e24420c46b",
+          "model_id": "synthetic-lab-v1",
+          "model_revision": "1",
+          "observation_mode": "photos_plus_observations",
+          "place_id": "synthetic-lab",
+          "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+          "registry_sha256": "c0cd5ef6346f4f1f6474100f0f4ed9988f020b2ec7ad68613aa1946d37ec3841",
+          "registry_version": "engineering.location-registry.v1",
+          "run_id": "simulation-v2",
+          "source_ref": "source:4e0496ef87e31db019e7f762",
+          "spatial_context_id": "synthetic-lab-ground-v1"
+        },
+        "inference_sha256": "8b31185fd2018a7440ba05e295383e8543eddb3aa8b180ce0a15629ace8c281b",
+        "measurement_sha256": "ac959b951b1602c944ffe5cea880cca3c66d15541e1517b8bab6653d31497657",
+        "receipt_sha256": "94e7d7f4669290b178fbecb4e3d3a543b30fdc1807e7d5f4c57d984e978a8bb5",
+        "schema_version": "simulation.freeze.v1"
+      }
+    ],
+    "registry_sha256": "c0cd5ef6346f4f1f6474100f0f4ed9988f020b2ec7ad68613aa1946d37ec3841",
+    "run_manifest_sha256": "579cf42226c1289ba4f48c028dccccefad049e495673d2ef4579ae229d59e81e",
+    "scope": {
+      "clock_id": "synthetic-lab-seconds-v1",
+      "model_id": "synthetic-lab-v1",
+      "model_revision": "1",
+      "place_id": "synthetic-lab",
+      "run_id": "simulation-v2",
+      "source_id": "procedural-rgb-lab-v1",
+      "source_sha256": "1280cbee50dbe01e88c340bbbea26c15289b9a0153a1b29a6ede49ba0101e89d",
+      "spatial_context_id": "synthetic-lab-ground-v1",
+      "spatial_context_sha256": "c4d170fefaa88bd67565b88cab4930f5e5e26008fa50a6e123628adfca8ae3c0"
+    }
+  },
+  "boundaries": {
+    "api_and_token_sections": "EMPTY",
+    "case2_case3_full_gates": "BLOCKED",
+    "case4": "DEFERRED",
+    "formal_exhaustive_inventory_fresh_dataset_full_benchmark_and_clean_checkout_reproduction": "PENDING_INDEPENDENT_RESEARCH",
+    "formal_phase1_acceptance": false,
+    "full_gt_stored": "LOCAL_ONLY_SIMULATION_EXPORT_AND_EVALUATION_DEBUG",
+    "legacy_development_api_agent_allowlisted": false,
+    "new_sdk_live_provider_or_api_key_config": false,
+    "raw_images_snapshots_gt_rrd_png_in_git": false,
+    "reviewed_package_certification": "CERTIFIED_STRUCTURED_RECOVERY_PARTIAL_SCOPE_ONLY",
+    "runtime_external_model_calls": false,
+    "synthetic_lab_expands_school_authority": false
+  },
+  "branch": "codex/simulation-engineering",
+  "date": "2026-10-08",
+  "engineering_base_commit": "4271b2bdfb255aa15dcddb25cba31127a6890aa6",
+  "environment": {
+    "cross_platform_native_certification": false,
+    "existing_locked_environment_reused": true,
+    "machine": "arm64",
+    "pillow": "12.3.0",
+    "platform": "Darwin",
+    "pyproject_sha256": "7f2ed9299e78d24039040237f06ec8a14299179ec6fd33d9b82ff2d670201dfa",
+    "python": "3.12.12",
+    "uv_lock_sha256": "c2fa5d90c4333857c2f4b1fd53abe8b281da1062c68ec10b6884cd1159bef521"
+  },
+  "failure_and_boundary_coverage": [
+    "normal",
+    "empty query",
+    "ambiguous provisional alternatives",
+    "same-camera HOLD without handoff",
+    "overlapping visibility without fabricated gap",
+    "missing image/hash/reference",
+    "out-of-scope reference",
+    "mode/stage override rejected",
+    "cross-run/config/media/freeze mismatch",
+    "canonical endpoints preserved in narrow query",
+    "photos-only input answer reads denied",
+    "plus input region-filter inference denied",
+    "strict response allowlist rejects internal field injection",
+    "bad payload and unknown tool never echoed in logs",
+    "GT mutation/deletion cannot alter inference or normal tools",
+    "evaluation requires matching frozen scope before GT read"
+  ],
+  "preservation": {
+    "existing_core_and_integration_bytes_unchanged": true,
+    "history_rewritten": false,
+    "locked_inputs_historical_evidence_protocol_and_dependencies_unchanged": true,
+    "main_merged": false,
+    "original_phase2_branch_tag": "FROZEN",
+    "parallel_local_research_preserved_and_not_staged": true,
+    "protected_prior_checkpoint_files_verified": 30,
+    "school_scene_bytes": 468300506,
+    "school_scene_mtime_unchanged": true,
+    "school_scene_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e"
+  },
+  "recorded_at": "2026-10-08T06:16:50.967895+00:00",
+  "schema_version": "simulation.engineering-validation.v1",
+  "source_inventory_ref": "source_inventory.json",
+  "source_inventory_sha256": "2d99c802b6a3589462f8c36a76e92d58ba823f90d24e58e45a568ff30b25df65",
+  "source_tree_sha256": "a95c8aec51d900e8ea137cd8bf2e571fb6033efd7972f6d5280890685733bf3d",
+  "status": "M1_M6_OPERATIONAL_SYNTHETIC_ENGINEERING",
+  "validated_parent_commit": "1eb1ba018e8ea05aad094125e046d812a432d836",
+  "validation": {
+    "browser": {
+      "all_marker_provenance": "INFERRED_GAP",
+      "gt_overlay": false,
+      "hypotheses": 6,
+      "routes": 3,
+      "seek_timestamp": 8.79,
+      "status": "OPERATED_AND_VISUALLY_VERIFIED"
+    },
+    "documents_ref": "documents.json",
+    "evaluation_ref": "evaluation_summary.json",
+    "full_pytest": {
+      "command": "uv run --offline --no-sync pytest --require-physical-evidence --ignore-glob='tests/engineering/test_local*' -rs",
+      "errors": 0,
+      "failed": 0,
+      "junit_sha256": "b621319e7456d9a6173320939a271c55f97e0bac65e84694531026e25992d52f",
+      "parallel_research_tests_excluded": true,
+      "passed": 2351,
+      "physical_evidence_required": true,
+      "scope": "current M1-M6 source plus all prior tracked tests; independent unfinished local research drafts excluded",
+      "skipped": 0,
+      "wall_seconds": 192.26
+    },
+    "m1_m6_tests": 96,
+    "mock_agent": {
+      "fresh_transcript_sha256": "0ca16383a957ab7f593770dd3a9e6f6f831596f44f86a052e68105750a7bda85",
+      "modes": 2,
+      "status": "PASS",
+      "typed_tools_per_mode": 8
+    },
+    "mode_comparison_ref": "mode_comparison.json",
+    "presentation_ref": "presentation_manifest.json",
+    "real_http": {
+      "receipt": "http_smoke.json",
+      "requests": 36,
+      "status": "PASS"
+    },
+    "reproduction_ref": "reproduction.json",
+    "ruff": {
+      "command": "uv run --offline --no-sync ruff check src tests scripts --exclude 'local_*,research_scene.py,test_local*'",
+      "status": "PASS"
+    },
+    "sample_tools_ref": "sample_io.json",
+    "strict_mypy": {
+      "command": "uv run --offline --no-sync mypy --exclude 'src/amidst/engineering/(local_.*|research_scene)\\.py'",
+      "source_files": 138,
+      "status": "PASS"
+    },
+    "typescript_consumer": {
+      "all_ordering_nullable_fields_and_endpoints_preserved": true,
+      "canonical_events": 4,
+      "node_version": "v26.0.0",
+      "replay_samples": 12,
+      "status": "PASS"
+    }
+  }
+}

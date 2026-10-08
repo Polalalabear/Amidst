@@ -1,0 +1,23 @@
+{
+  "all_route_alternatives": true,
+  "artifacts": [
+    {
+      "relative_path": "presentation/inference.png",
+      "sha256": "c5bf22a6d07cd91d6207bf980205c8061102024e720866e3b93d186c00ecf840",
+      "size_bytes": 156823
+    },
+    {
+      "relative_path": "presentation/inference.rrd",
+      "sha256": "3f5951007604de730dee5a246bee9e6e2e6ea2b631030b60ad8daee91a0ff1d3",
+      "size_bytes": 69686
+    }
+  ],
+  "authority": "FROZEN_PIXEL_INFERENCE_WITH_CONFIGURED_GEOMETRY",
+  "freeze_sha256": "43ee664fdf488a75f021e92183be3a6f0cf0826a290f0856949880d61f49b9e2",
+  "gt_overlay": false,
+  "inference_sha256": "8b31185fd2018a7440ba05e295383e8543eddb3aa8b180ce0a15629ace8c281b",
+  "mode": "photos_only",
+  "origin": "SYNTHETIC",
+  "run_id": "simulation-v2",
+  "schema_version": "simulation.presentation.v1"
+}

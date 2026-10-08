@@ -1,0 +1,34 @@
+{
+  "camera_retrieval_difference": "NONE_SAME_CAMERA_FRAME_INDEX",
+  "decision_stage": "PIXEL_MEASUREMENT_THEN_PROVISIONAL_ASSOCIATION",
+  "external_model_calls": false,
+  "formal_quality_metrics": "N/A",
+  "modes": [
+    {
+      "association_hypothesis_count": 21,
+      "canonical_gap_count": 4,
+      "image_producer_rerun": true,
+      "inference_sha256": "8b31185fd2018a7440ba05e295383e8543eddb3aa8b180ce0a15629ace8c281b",
+      "input_image_count": 102,
+      "local_track_count": 6,
+      "measurement_count": 89,
+      "measurement_sha256": "ac959b951b1602c944ffe5cea880cca3c66d15541e1517b8bab6653d31497657",
+      "mode": "photos_only"
+    },
+    {
+      "association_hypothesis_count": 21,
+      "canonical_gap_count": 4,
+      "image_producer_rerun": false,
+      "inference_sha256": "8b31185fd2018a7440ba05e295383e8543eddb3aa8b180ce0a15629ace8c281b",
+      "input_image_count": 102,
+      "local_track_count": 6,
+      "measurement_count": 89,
+      "measurement_sha256": "ac959b951b1602c944ffe5cea880cca3c66d15541e1517b8bab6653d31497657",
+      "mode": "photos_plus_observations"
+    }
+  ],
+  "observation_mode_difference": "INPUT_STRUCTURED_RGB_MEASUREMENTS_PRESENT_ONLY_IN_PLUS",
+  "precision": "Independent local evaluation follows inference freeze.",
+  "receiver": "LOCAL_DETERMINISTIC_IMAGE_ASSOCIATION",
+  "same_photos_task_population_static_context": true
+}

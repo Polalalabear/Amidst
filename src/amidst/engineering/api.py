@@ -9,6 +9,7 @@ from typing import Any, cast
 from wsgiref.simple_server import WSGIRequestHandler, make_server
 
 from amidst.engineering.access import TOOLS, Tool
+from amidst.engineering.dto import RESPONSE_TYPES
 from amidst.engineering.facade import (
     AgentFacade,
     EventRequest,
@@ -50,7 +51,9 @@ class AgentApplication:
             }
             return respond("200 OK", {"version": "simulation.agent.v1", "tools": TOOLS,
                 "request_schemas": {name: cls.model_json_schema()
-                                    for name, cls in schemas.items()}})
+                                    for name, cls in schemas.items()},
+                "response_schemas": {name: cls.model_json_schema()
+                                     for name, cls in RESPONSE_TYPES.items()}})
         if not path.startswith("/agent/v1/") or path.removeprefix("/agent/v1/") not in TOOLS:
             return respond("404 Not Found", {"error": "ROUTE_UNAVAILABLE"})
         if method != "POST":
