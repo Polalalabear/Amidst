@@ -1,0 +1,27 @@
+{
+  "actual_frozen_import": {
+    "inserted": true,
+    "receipt_sha256": "4201761dd59188cf2fd39a40aa5e667a7312dac490a34385aba18d12d926cf1a",
+    "record_count": 82,
+    "run_ref": "run:78fe819278b151d28ce2d2ca"
+  },
+  "base_commit": "2db6709148f4927079370425c2562d8e3ac101fa",
+  "existing_phase2_integration_tests": 14,
+  "external_model_calls": false,
+  "formal_phase1_acceptance": false,
+  "milestone": "P7",
+  "new_tests": 35,
+  "original_source_records_modified": false,
+  "paged_event_count": 5,
+  "restart_page_equal": true,
+  "ruff": "PASS",
+  "schema_version": "product.milestone.v1",
+  "source_hashes": {
+    "src/amidst/product/contracts.py": "fd85cd498f7477695fb7fd37e1a41b500fe8cda46019d75d82af832e049e4a9e",
+    "src/amidst/product/store.py": "a8f8ff3199c37cba1e58049ca88a57ed592485a8cb27d46e20232da41e65a82e",
+    "tests/product/test_contracts.py": "5afa1d72a428b8be27593d18874913f2206ae0b4899da9da3dbc519ef61e6c5e",
+    "tests/product/test_store.py": "8f3f39427fe5d21c531b3d240fe2739dc8bdf92fe5d9b79998c01ad0fc106272"
+  },
+  "status": "IMPLEMENTED_LOCAL_SQLITE",
+  "strict_mypy": "PASS"
+}

@@ -2143,3 +2143,17 @@ English: A separate versioned local association composes genuine scoped interval
 同run替換及移除GT／recipe/reference，pixel／inference／behavior／tool hashes不变；另一empty output重建registry/media/config／兩種freeze／inference/events／evaluation hashes一致。Local package/manifest含locators，跨output其hash不同；wall-clock telemetry不進推論hash。此為synthetic fixture／當前environment重現，不宣稱原formal clean-checkout benchmark、appearance/place泛化、真camera或full Phase1 Exit。原formal Cases2/3/fullExit BLOCKED、Case4 DEFERRED、main／frozenPhase2／原Blender／locked/history資料不變，沒有外部model API。
 
 English: The operating E1 extension delivers genuine indexed local association, pixel-derived behavior hypotheses, actual multi-frame RGB cards and preserved 3D alternatives. Current full tests/lint/types, loopback/UI, same-run truth isolation and independent output reproduction pass. Low association precision, behavior false positives and N/A global/gap metrics are recorded without test tuning. Original source, v1 lab, concurrent work and formal/frozen gates remain unchanged.
+
+
+## 2026-10-08 — Local Phase 2 product P7
+
+在已發布E1 `2db6709` 上新增独立product SQLite read model與strict pixel/event DTO。
+實際匯入已核對freeze的18 observations／64 events（82records），按CORNER/time索引取5筆，
+重啟後page逐值一致。Immutable transactional import保存canonical IDs/payload/order，範圍cursor
+綁run/kind/filter；CASE／REPORT／REVIEW以optimistic append-only revision/hash chain另存。
+無任意SQL/檔案工具，GT/privatepath/secret禁止进入repository payload。
+
+當次35個新store/DTO tests、14既有Phase2 integration tests PASS；scoped Ruff／strict mypy
+PASS。Record/index/ledger corruption、rollback、conflict、cursor tamper與restart皆覆蓋。
+本機db排除Git；curated receipt見[data/product](../../data/product/checkpoint_20261008/p7.json)。
+此為新純模擬產品續作，不解鎖school/fullExit、live攝影機、外部模型或frozenPhase2。

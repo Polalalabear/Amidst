@@ -63,3 +63,7 @@ data/pilot/
 
 # Synthetic engineering RGB, complete GT, canonical runtime snapshots and debug stay local.
 /data/engineering/local_run/
+
+# Pinned local presentation dependencies; packages and generated videos are materialized locally.
+frontend/product/node_modules/
+/data/product/local_run/
