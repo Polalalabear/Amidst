@@ -1,0 +1,7 @@
+{
+  "name": "amidst-shared-workbench",
+  "private": true,
+  "type": "module",
+  "dependencies": {"three": "0.186.1"},
+  "scripts": {"test": "node --test *.test.mjs"}
+}

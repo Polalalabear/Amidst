@@ -26,6 +26,8 @@ class FakeScene:
             "uncertainty": "暫定", "evidence_state": "PROJECTED",
             "config_sha256": "b" * 64, "association_refs": ["internal"],
             "projected_path": [{"world_position": [1, 1, 0]}], "candidates": [],
+            "source_frames": [{"frame_ref": self.media_ref, "camera_id": "C1",
+                               "timestamp": 1.2, "private_field": "not-for-management"}],
         }
 
     def snapshot(self):
@@ -113,6 +115,8 @@ def test_manager_projection_and_issued_media(workbench):
     assert "records_read" not in result["retrieval"]
     assert "config_sha256" not in result["events"][0]
     assert "association_refs" not in result["events"][0]
+    assert result["events"][0]["source_frames"] == [
+        {"frame_ref": "alpha-media", "camera_id": "C1", "timestamp": 1.2}]
     assert workbench.media(token, "alpha", "alpha-media")[1] == b"verified-pixels"
     with pytest.raises(Denied):
         workbench.media(token, "beta", "alpha-media")

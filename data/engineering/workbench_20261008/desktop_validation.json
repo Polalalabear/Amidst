@@ -1,0 +1,106 @@
+{
+  "schema_version": "workbench.desktop-validation.v1",
+  "date": "2026-10-08",
+  "classification": "SYNTHETIC_ENGINEERING_ONLY",
+  "base_commit": "9c68fffac872b65720933d8c23562365c0c08437",
+  "backend_checkpoint": "7e17688af427d6d9a0ff9538a385e848036d7d40",
+  "checks": {
+    "protected_research_and_workbench": {
+      "command": "BLENDER_BIN=/Applications/Blender.app/Contents/MacOS/Blender AMIDST_PHYSICAL_SOURCE_SCENE=<canonical>/blender/school_v3.blend uv run --offline --no-sync pytest --require-physical-evidence --ignore=tests/product -rs",
+      "passed": 2487,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 213.71,
+      "junit_sha256": "ad62e38fbc1f6d87625f19159b1f343e9c97c3bf62fd2636d625c13e383fbed0",
+      "excluded": "tests/product is owned and validated independently by the parallel product chat"
+    },
+    "final_workbench_tests": 60,
+    "frontend_node_tests": 15,
+    "ruff_src_tests": "PASS",
+    "mypy_src_amidst": {
+      "result": "PASS",
+      "source_files": 164
+    },
+    "formal_acceptance": false,
+    "source_rendering_for_workbench": false
+  },
+  "browser": {
+    "engine": "Codex in-app browser",
+    "verified_viewport": [
+      1440,
+      900
+    ],
+    "horizontal_document_overflow": false,
+    "console_errors_or_warnings": 0,
+    "checks": [
+      "role selection without password",
+      "research and management dashboards",
+      "both independent scene adapters",
+      "actual RGB image loading with exact camera and source timestamp",
+      "Three.js local geometry and calibrated camera frusta",
+      "timeline 0 to 24 seconds",
+      "enter-door event selection and local query",
+      "query scope invalidates selected event and notes",
+      "management source evidence and handling note",
+      "management 3D and multicamera placeholder",
+      "isolated scene draft, diff, validate, explicit publish",
+      "annotation v1 persists across service restart",
+      "history v0 is read-only",
+      "export v1 annotation and receipt",
+      "display remains source baseline v0 after publishing v1",
+      "test, evaluation and logs panels"
+    ],
+    "screenshot": {
+      "path": "data/engineering/local_run/workbench_v1/workbench-desktop.png",
+      "sha256": "c10d003c506667bdf127017160744bac0f5de391f5f8253adcd6e5d096581c64",
+      "committed": false
+    }
+  },
+  "review_flow": {
+    "state": "isolated temporary SQLite; default operator state unmodified",
+    "test_reviewer": "UI integration test",
+    "formal_approval": false,
+    "export_sha256": "df4b717ffd394e54720f5ea1183c7f6871fb76638a8cb5b1a8173fae02598700",
+    "export_authority": "SYNTHETIC_REVIEW_ONLY",
+    "inference_rerun": "NOT_IMPLEMENTED; affected runs marked NEEDS_RERUN"
+  },
+  "preserved": [
+    "original Blender source",
+    "existing RGB tracks and registry",
+    "frozen inference and evaluation artifacts",
+    "original formal gates",
+    "frozen Phase 2",
+    "parallel product changes"
+  ],
+  "limitations": [
+    "desktop only",
+    "trusted local role choice is not authenticated identity",
+    "two synthetic scene adapters; new formats need adapters",
+    "configured review geometry, not complete Blender mesh",
+    "no automatic inference rerun from annotation overlay",
+    "management 3D area intentionally placeholder"
+  ],
+  "source_inventory": {
+    "configs/engineering/workbench_v1.json": "9271b0a8e34538ad9715996a92197ebcfdb27b036a033a450b0f25c9c2cca0a1",
+    "docs/engineering/SHARED_WORKBENCH.md": "c9f5d0fd6762f26838ddedf0f62436f5cb0a105cd8eefd3e3da84bc4597a12ef",
+    "src/amidst/workbench/__init__.py": "be100cca2f281ded6888825cd07811d4b561dadeafb9ce88f02a2bcdf168e93d",
+    "src/amidst/workbench/__main__.py": "f945658746922d9468dc3d6228ff6d536636b0e3aa552ba3195863c75078b558",
+    "src/amidst/workbench/reviews.py": "88e1b99714bf9f5b359a2618f84078f89c72385d78a52a4c7285251f53074e28",
+    "src/amidst/workbench/scenes.py": "3f85710afc345e070c54abed9b5a6fd4bcd6afb0be993ae91e08eac8d502c785",
+    "src/amidst/workbench/service.py": "0ae88b4f62f668a16c34115929e93facf126efaeec4e31aea62c05e08272f994",
+    "tests/workbench/test_reviews.py": "2549d3ff72dec9008395dce45109c9b20fd34d574432826b900ccb729c3474a1",
+    "tests/workbench/test_scenes.py": "bcd42927f39484cee106411bd92e4fc97aed71a77e903cf3fcc2c0a3742331f4",
+    "tests/workbench/test_service.py": "e54edb0c8f162782d1f014b27b8456af0cde1179e3deafed976e111d9677c561",
+    "frontend/workbench/app.mjs": "8401b04b1fdf323e25d4160f4f94ce8f1703137c9f0bae5706f885adcc0dcbbf",
+    "frontend/workbench/app.test.mjs": "fa4b0db8e73d6f26dbc8739fc2f03248b5075d6cc5eff0922ae543bb763b736c",
+    "frontend/workbench/geometry.mjs": "93e427f3cd623d7bb0aa44aeb1c7cd3f31380141a0ad485096c21e2007429ce3",
+    "frontend/workbench/geometry.test.mjs": "a62bf42fff9f8dda0e4ef70f530326d9ca312b4864cee2327f70bd8a1bb21092",
+    "frontend/workbench/index.html": "400f36f985cfed4bb683f76d7babd82280078c897544bae35d225253e07cf3dc",
+    "frontend/workbench/package-lock.json": "45dded11c774b2d198817b738025e90dc83cd50fd2d7df3a543fb85b371c9e31",
+    "frontend/workbench/package.json": "65ce470aacc2916856ab6abf651404f2b2400d2a4c3ded009e54f3dcd17d24c5",
+    "frontend/workbench/scene.mjs": "8e7a028a005702decf35beb36b8e7dc435801846f791f5157c88472be53de012",
+    "frontend/workbench/style.css": "fecb9910a7c185845314cbe2bf163aa235d6e4932dc173618a7bcfd0055e161d",
+    "frontend/workbench/.gitignore": "4d56952b0fb13bf8f9b6c13a6d4c34a075bac3af447636a1df4335d7576e2f97"
+  }
+}

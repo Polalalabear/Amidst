@@ -146,7 +146,21 @@ class Workbench:
 
     @staticmethod
     def _public_event(event: dict[str, Any]) -> dict[str, Any]:
-        return {key: event[key] for key in PUBLIC_EVENT_KEYS if key in event}
+        result = {key: event[key] for key in PUBLIC_EVENT_KEYS if key in event}
+        # Exact frame provenance is necessary to label evidence, even in a summary view.
+        result["source_frames"] = [
+            {key: frame[key] for key in ("frame_ref", "camera_id", "timestamp") if key in frame}
+            for frame in event.get("source_frames", [])
+            if frame.get("frame_ref") in event.get("media_refs", [])
+        ]
+        result["uncertainty"] = (
+            "此路線為盲區推論，保留多種可能；尚未確認人物身分或行為意圖。"
+            if event.get("evidence_state") == "INFERRED_GAP" else
+            "此為待確認的事件候選，請結合來源影像檢視；尚未確認人物身分或行為意圖。"
+        )
+        if event.get("missing_evidence"):
+            result["uncertainty"] += " 部分來源證據缺失。"
+        return result
 
     def _notes(self, scene_id: str, event_ref: str, role: Role) -> list[dict[str, Any]]:
         notes = self.reviews.state(scene_id).get("notes", [])
@@ -383,7 +397,8 @@ class Application:
                 return self.workbench.media(query["session_ref"][0], query["scene_id"][0],
                                             query["ref"][0])
             assets = {"/": "index.html", "/index.html": "index.html", "/style.css": "style.css",
-                      "/app.mjs": "app.mjs", "/scene.mjs": "scene.mjs"}
+                      "/app.mjs": "app.mjs", "/scene.mjs": "scene.mjs",
+                      "/geometry.mjs": "geometry.mjs"}
             if path in assets:
                 name = assets[path]
                 mime = "text/javascript" if name.endswith(".mjs") else (
