@@ -1977,6 +1977,14 @@ English: Imported seventeen byte-identical frozen mock source/config/frontend fi
 
 English: Rewrote the copyable prompt around the verified integrated baseline, real pixel-derived synthetic observations, provisional association bindings, server-owned stage authorization and a scoped Agent facade. Preserved blank API/token sections and independent formal obligations; this is a documentation revision, not M1–M6 implementation or a test rerun.
 
+## 2026-10-08 — 局部跨鏡頭與行為研究交接 / Local camera and behavior research plan
+
+依使用者要求查核 primary research（AAAI st-ReID／Deep SORT），整理 camera 可達拓樸＋clock/time＋pixel人物連續性的可行判斷、限制與 R1–R8 下一對話交接。以局部 indexed retrieval 與固定 candidate pool 的 association feature 消融分開評估；定義同色多人／不可達／轉角門口反例、長 gap、same-camera復現與缺失情境，以及檢索漏取／讀取量、association、behavior與geometry指標。主展示保留實際多影格、局部3D候選與不確定性，不把盲區唯一行為／意圖或未校準分數當已知答案。
+
+只讀指定規格與並行草稿；此時 src/configs/tests 的 engineering 目錄未提交，未修改／stage其內容或執行tests。讀到的全pair列舉／catalog遍歷限制以日期化觀察記入交接，下一個對話核對live狀態，先續接與補索引，不用本次文件或歷史2255 tests宣稱草稿PASS。僅新增一份operations研究交接、更新主prompt入口／current handoff與本紀錄；未跑實驗、未新增dataset／render／benchmark，formal gates與空API/token章節不變。
+
+English: Prepared a research-only handoff grounded in primary literature and bounded source reads. Separate indexed retrieval evaluation from fixed-pool association ablations, preserve ambiguous behavior hypotheses and define operational multi-frame event output. Concurrent uncommitted prototypes were preserved, not tested or certified. No new experiment, dataset or formal acceptance was produced.
+
 ## 2026-10-08 — Simulation engineering M1
 
 在 `codex/simulation-engineering` / `3117113` 上新增 source/context/model/run/clock 綁定的
@@ -1997,3 +2005,20 @@ English: M1 adds source-bound local resource indexing and independently certifie
 reviewed structured office recovery with explicit BU normalization. Thirty-six current tests,
 lint and strict types pass. Existing diagnostic media was verified and is insufficient as an
 unannotated tracking sequence. Formal research gates remain separate and blocked.
+
+## 2026-10-08 — Simulation engineering M2
+
+新增獨立 procedural synthetic lab：2 cameras、每鏡頭51張真實存在的5Hz PNG，沒有
+GT身分／路徑／bbox標註；完整GT／recipe另存 simulation/export。離線 pixel producer只讀
+SHA核對過的RGB bytes，使用temporal background/components與camera-local tracking，
+目前量得89 records／6 local tracks，漏檢、merged/partial、missing/hash/error均明示。
+新增server-owned mode/stage與綁定run/input/config/producer/registry/media的freeze契約；
+photos-only在freeze前不能查observation/event/detail/replay，plus僅准許量測入口。
+
+本次34 tests PASS（8 perception、12 access、14 Phase2 compatibility），scoped Ruff與
+strict mypy PASS。GT污染／刪除不改pixel輸出，固定輸入可重現，原場景、舊UV records與
+依賴鎖檔不變。低精度屬SYNTHETIC RGB measurement，不宣稱REAL_CV或formal驗收。
+
+English: M2 provides actual unannotated RGB sequences, pixel-derived local tracks and
+server-owned mode/stage freeze guards. Thirty-four current tests, lint and strict types pass;
+truth remains isolated and missing or uncertain measurements are retained.
