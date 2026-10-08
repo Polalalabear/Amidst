@@ -1,0 +1,135 @@
+{
+  "artifact_policy": "PUBLIC_ALLOWED_AGGREGATE_RECEIPT",
+  "authority": "CONFIGURED_ENGINEERING_DIAGNOSTIC_ONLY",
+  "bindings": {
+    "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+    "evaluation_summary_sha256": "47ec63c02e0b52dc3a8b7761d2f5e4484c9b6db75a610b88e3765fc59bea50a0",
+    "evaluator_policy_sha256": "1fd3169aa57f116284a304b02cee6752a36e3d9bfb480f81cf09b362a07a4e95",
+    "evaluator_sha256": "98d769e51b8d9e4b3ef47374c9a915db16b893158abe46fdfbd8d15a66d18d11",
+    "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+    "product_algorithm_inventory_sha256": "32bc46618c18387d49e721ce57dd5b65ff09ad802c622e6909174d4912b607d0",
+    "product_config_sha256": "48da56139d887471eb90f0232b225983d139e83bfd1d33f86348ffec7d5737bf",
+    "product_manifest_sha256": "d2d9aae41af0498e58b7f4ffb388614ed3fe71b4d78f1f032bf14ed6f4baf8ad",
+    "registry_sha256": "7da7c1aafda6397cd61f95a5a4db3835e7c627360bda9a4f428b71072d97f937",
+    "same_population_pool_sha256": "4b040ad981a06cc0a8ee4b86585d55b79b0ed50206fc66ce96341f7fbc9b46fd",
+    "same_rgb_media_sha256": "8961a1b5b4d5456a7fca387e69ccdc840844199d877886aab9871c9235b7bfbf",
+    "source_inference_config_sha256": "be9f1945782f15d77e93b6a5b170c1242c750f1b75b034b55a8719a4f4b83990",
+    "source_inference_sha256": "3875bf512dc3482477b4c3986e2ef744c03b217e82eb868b038a7a6e087789f9",
+    "source_manifest_sha256": "c0e35f18a17cafecdcc03b1875b99fc7ec7ff87e022bc091e92c2b1371c3c94e",
+    "static_context": {
+      "clock_id": "synthetic-seconds-v1",
+      "model_id": "synthetic-local-camera-v1",
+      "model_revision": "1",
+      "place_id": "synthetic-local-camera",
+      "run_id": "local-camera-test-v1",
+      "source_id": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+      "source_sha256": "91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+      "spatial_context_id": "context:synthetic-local-camera-v1",
+      "spatial_context_sha256": "e349eba8782b78937700b7bf1f83921c5fb458e62d8c3975e90bda0ee6fb0132"
+    }
+  },
+  "comparison_population": {
+    "conditional_track_identity_population": true,
+    "eligible_queries": 5,
+    "pool_query_count": 12,
+    "produced_local_tracks": 18,
+    "query_exclusion_counts": {
+      "NO_ELIGIBLE_SAME_IDENTITY_PRODUCED_TARGET": 7,
+      "UNRESOLVED_OR_IMPURE_QUERY": 6
+    },
+    "track_label_status_counts": {
+      "MIXED_KNOWN_IDENTITIES": 6,
+      "PURE_SUFFICIENTLY_LABELED": 12
+    },
+    "undetected_full_actor_recall": "N/A",
+    "unknown_or_impure_candidates_retained": true
+  },
+  "decision_stage": "RESULTS_AFTER_VERIFIED_SOURCE_AND_PRODUCT_FREEZE",
+  "external_model_calls": false,
+  "formal_phase1_acceptance": false,
+  "modes": {
+    "photos_only": {
+      "appearance_sha256": "e32934b363c2d1a693bb24ec140c23c70020e790c924002dba41f11f87998a89",
+      "input": "RGB photos and frame/time evidence refs",
+      "perception_sha256": "4ce3b998b7787b013adacad22234a77ed72bbd23d14c683150af3b62b5b6a36b",
+      "photos_only_pixels_recomputed": true,
+      "producer_execution": "Recomputed from RGB; frozen source outputs verify equality and freeze, not producer inputs",
+      "product_freeze_ref": "freeze:b16f4c263f88e3c32172f2c6",
+      "product_freeze_sha256": "5dd3e8aea64dff9ca3a1c9049c1873b44e6cc3a43049cff673801aef981cf8f5",
+      "source_freeze_receipt_sha256": "292d9a2068756a289776b4ff564ffcfe8c3571a64e588e045c953f3d58263468",
+      "stitch_sha256": "ffd34934a7e985b802bc5b8ccd081f5ebb155cbc790dcb6936dea7fbd5849c28"
+    },
+    "photos_plus_observations": {
+      "appearance_sha256": "e32934b363c2d1a693bb24ec140c23c70020e790c924002dba41f11f87998a89",
+      "input": "Same RGB photos with frozen true pixel-derived observations",
+      "perception_sha256": "4ce3b998b7787b013adacad22234a77ed72bbd23d14c683150af3b62b5b6a36b",
+      "photos_only_pixels_recomputed": false,
+      "producer_execution": "Existing frozen RGB-derived observations loaded and verified",
+      "product_freeze_ref": "freeze:81acae2de59581e4eb310a42",
+      "product_freeze_sha256": "c1c9ba84e96e4633fd578be6d3872476b81e9e73b9729feff40375f1afa7e497",
+      "source_freeze_receipt_sha256": "2effefbd9b4825c8241ffc8d446791df50b84d81a3850bd678dc70661bf3cf02",
+      "stitch_sha256": "ffd34934a7e985b802bc5b8ccd081f5ebb155cbc790dcb6936dea7fbd5849c28"
+    }
+  },
+  "origin": "SYNTHETIC",
+  "receiver": "FROZEN_APPEARANCE_INDEX_REACHABLE_CAMERA_LOCAL_POOL",
+  "receiver_scope_limits": {
+    "evaluation_pool": "Reachable camera local-track pool, directed at most 3 hops, query start through query end +12 seconds",
+    "public_tool": "search_person_appearance requires one camera_ref and explicit time_range, with server scope/stage and record budget",
+    "public_tool_metrics": "N/A: these Recall@K values evaluate the reachable-camera kernel pool, not public single-camera UI end-to-end quality",
+    "scores_are_probabilities": false,
+    "tie_handling": "All equal-distance alternatives at each K cutoff retained; mean returned counts recorded"
+  },
+  "results": {
+    "appearance_outputs_identical": true,
+    "camera_retrieval_quality": "N/A: camera catalogue/context are held fixed; no camera retrieval quality experiment",
+    "component_mean_rgb_same_pool_baseline": {
+      "cutoff_tie_extensions_at_k": {
+        "1": 0,
+        "3": 0,
+        "5": 0
+      },
+      "eligible_queries": 5,
+      "mean_returned_hits_at_k": {
+        "1": 1.0,
+        "3": 3.0,
+        "5": 4.8
+      },
+      "tie_aware_recall_at_k": {
+        "1": 0.2,
+        "3": 0.6,
+        "5": 0.8
+      }
+    },
+    "external_model_quality": "N/A",
+    "handcrafted": {
+      "cutoff_tie_extensions_at_k": {
+        "1": 0,
+        "3": 0,
+        "5": 0
+      },
+      "eligible_queries": 5,
+      "mean_returned_hits_at_k": {
+        "1": 1.0,
+        "3": 3.0,
+        "5": 4.8
+      },
+      "tie_aware_recall_at_k": {
+        "1": 0.4,
+        "3": 0.6,
+        "5": 0.8
+      }
+    },
+    "perception_outputs_identical": true,
+    "population_and_metrics_identical": true,
+    "stitch_outputs_identical": true
+  },
+  "same_rgb": {
+    "camera_count": 4,
+    "frame_count": 244,
+    "same_media_hash_verified": true
+  },
+  "schema_version": "product.curated-mode-comparison.v1",
+  "status": "LOCAL_FROZEN_PIXEL_PRODUCER_MODE_COMPARISON",
+  "task": "Retrieve produced local track alternatives using frozen pixel appearance evidence"
+}

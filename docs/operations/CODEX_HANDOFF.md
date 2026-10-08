@@ -18,6 +18,42 @@ artifacts，不在那裡實作或切換 branch。
 
 工程閉環與原正式研究驗收並行。下方既有 corridor／formal blockers 保持有效。
 
+### 本機 Phase 2 產品續作
+
+最新使用者決策：**frontend/workbench／8016 為唯一主要網頁入口**；既有與後續頁面能力
+都接入該工作台。frontend/product／8020 保留為已驗證工程lab／待遷移來源，勿繼續擴張
+另一套主要前端。Product後端／資料／typed tools可供工作台adapter使用；目前未完成遷移，
+不可把兩個獨立入口說成已統一。工作台相關規則／決策由並行工作階段另行更新。
+
+P7–P12 在同一工程分支接成可操作的 [本機產品](../engineering/LOCAL_PHASE2_PRODUCT.md)：
+SQLite immutable read model、RGB-crop appearance／provisional same-camera stitching、有限
+中英 intent→typed dynamic plans、多目標 inquiry／衝突與全部替代、四鏡頭影片／Three.js／
+soft-sync timeline、持久案例／stop-resume／報告／独立 operator review／HTML export。
+新 `product.run.v1` 以 source/dataset/config/producer/registry/media/algorithm/freeze hashes
+核對；GET／reload 不重跑推論、不讀 GT。原 M1–M6、E1 canonical IDs/fields/order 及素材保留。
+
+操作：`uv run --offline --no-sync python -m amidst.product serve --output data/product/local_run/operator_v2 --port 8020`，
+瀏覽 `http://127.0.0.1:8020`；依賴、build/demo/evaluate/HTTP驗證與新的 empty output 重現命令見產品指南。
+原 RGB source/CV 2.5Hz，15fps MP4 只重用實際影格；不是新增15Hz照片／observation。
+Agent 的13tools與operator views均受 server-bound scope/stage守門，無任意SQL／shell／archives。
+
+當次 **2592 tests PASS／0 failed／0 skipped**（required physical evidence、明確排除並行
+tests/workbench）；Ruff PASS、strict mypy159files PASS。前端13Node tests／actualbrowser、
+初次77＋process restart後69真HTTP PASS；新empty output11份fixed documents逐byte一致、
+4public query pairs相同。見 [validation](../../data/product/checkpoint_20261008/validation.json)。
+2592/159不包含正在獨立開發的workbench；其驗證與文件由該工作階段另存，不混入本次PASS。
+並行雙角色／場景切換／人審版本的 [共用工作台](../engineering/SHARED_WORKBENCH.md) 使用8016，
+其獨立 [desktop receipt](../../data/engineering/workbench_20261008/desktop_validation.json)
+與當次product測試相互排除，未把兩份PASS相加為新的full結果。
+最後共享branch另做無排除的實際full整合：**2652passed／0fail／0error／0skip，255.995s**，
+Ruff／mypy164files及兩前端28Node PASS。新增product test package namespace修正同名
+test_service collection failure；原失敗log保留。此新full結果不來自兩份局部PASS相加。
+
+五個 eligible pure-track appearance queries 的Recall@1/3/5=.4/.6/.8（同pool baseline=.2/.6/.8）；
+六個mixedtracks排除、stitch TP1/FP2、四組unknown保留，global IDF1 N/A。這是有限synthetic
+diagnostic。Full formal／新school攝影機／trainedReID／PostgreSQL或vector部署／external model
+仍未交付，原Cases2/3/fullExit BLOCKED、Case4 DEFERRED、原Phase2 branch/tag FROZEN。
+
 ### 局部跨鏡頭與行為研究續作
 
 [局部 pilot](../engineering/LOCAL_CAMERA_PILOT.md) 已依 [R1–R8 交接](LOCAL_CAMERA_EVENT_RESEARCH_HANDOFF.md) 完成可操作的 E1 synthetic extension；[protocol](../research/LOCAL_CAMERA_EVENT_PROTOCOL.md) 與 [curated receipt](../../data/engineering/local_camera_20261008/validation.json) 固定scope、版本、同run hashes及當次驗證。原 M1–M6 registry／RGB tracks／provisional v1／simulation-v2 不變，新 `local_association` 與 `local_behavior` 是外層版本化composition，不改原BoundGapEvent／Graph排序。
@@ -108,6 +144,23 @@ The current engineering branch is `codex/simulation-engineering`, reusing the ex
 M1–M6 now provide an operating synthetic RGB-to-local-track-to-provisional-association-to-3D-event composition, strict typed tools, immutable repositories, a browser/MockAgent workflow and independent evaluation/reproduction. See the simulation engineering document and current validation receipt. The local run has 102 images, 89 measurements, six tracks, 21 association records and four canonical gaps with eight alternatives. The separate office certificate covers structured partial recovery only; school RGB, arbitrary corridor packages and formal gates remain uncertified.
 
 R1–R8 now provides an operating, separately versioned indexed synthetic pilot. See the local pilot guide and curated receipt for current metrics, 2427 full passing tests and scoped photo/3D/replay operation. Low pair accuracy and behavior false positives remain explicit; the original lab, formal gates, main and frozen Phase 2 are preserved.
+
+P7–P12 now provide an operating [local synthetic Phase 2 product](../engineering/LOCAL_PHASE2_PRODUCT.md):
+durable scoped SQLite retrieval, handcrafted pixel appearance, provisional stitching, bounded
+intent-driven multi-subject plans, four-camera video/Three.js playback, saved cases, independent
+reviews and exported reports. The current 2592-test regression, lint, 159-file types, 13 frontend
+tests, 146 actual HTTP calls including process restart, browser operation and identical fresh-output
+reproduction have separate source/run-bound receipts. Concurrent workbench validation is excluded.
+Small conditional appearance/stitch populations and failures remain explicit. Original formal
+research, production/live capabilities, source assets and frozen branches are not promoted.
+
+The latest human decision selects frontend/workbench/8016 as the unified primary web UI.
+Preserve product/8020 as an engineering lab/migration source and integrate existing/future
+page capabilities into workbench. Backend adapters can use the product interfaces; the UI
+migration is not yet complete. Do not describe the independent entries as already unified.
+A subsequent actual full run with no exclusions passes 2652 tests in255.995s, with zero
+failures/errors/skips; lint, 164-file types and28 frontend tests pass. The product test
+package namespace fixes a collection collision; prior failed collection evidence is retained.
 
 Continue in the sprint worktree above. The human approved the exact corridor proposal and
 requests a new-chat continuation to finish one reproducible dataset, benchmark table and

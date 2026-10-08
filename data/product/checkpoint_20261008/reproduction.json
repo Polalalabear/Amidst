@@ -1,0 +1,42 @@
+{
+  "compared_document_sha256": {
+    "appearance_photos_only.json": "b53bd9e7e3ea23acc318023f89ef76557fb7d1b34104cde14136e7d7f8cf8211",
+    "appearance_photos_plus_observations.json": "b53bd9e7e3ea23acc318023f89ef76557fb7d1b34104cde14136e7d7f8cf8211",
+    "evaluation/receipt.json": "accd7e90cf5aba70cb1f6d7635026d4d7fb12c7e11f327be6a5fbf9d2a966122",
+    "evaluation/summary.json": "5fc18391468f93f968be6a8408c8a8ed7deb4223e3e3203fdb81f2619cc4ddd7",
+    "product_manifest.json": "66f637153eff9160489de1d9e4fe6f6cfc4bf6120839b26c2f61e83e8bee7894",
+    "record_set_photos_only.json": "e3b891188acb1a40f8c00031d2ef4c9ec0317e4afce72b30f1096b717ca474c1",
+    "record_set_photos_plus_observations.json": "3f2fcd90fac1f7f6ad0b880eed95d3adb112f6be3867333faacb71b2a5f8d183",
+    "stitch_photos_only.json": "cb2a851079ace330bc3c01db22ca8d4ca9100ae89f50e9e4ede4f34fa369b302",
+    "stitch_photos_plus_observations.json": "cb2a851079ace330bc3c01db22ca8d4ca9100ae89f50e9e4ede4f34fa369b302",
+    "video_manifest.json": "402c8fb2f13730f80836d91ef38e61287f286487aeee93ee61149c931a7f1954"
+  },
+  "formal_clean_checkout_reproduction": false,
+  "new_worktree_or_clone": false,
+  "public_queries": [
+    {
+      "equal": true,
+      "mode": "photos_only",
+      "tool": "query_observations"
+    },
+    {
+      "equal": true,
+      "mode": "photos_only",
+      "tool": "query_events"
+    },
+    {
+      "equal": true,
+      "mode": "photos_plus_observations",
+      "tool": "query_observations"
+    },
+    {
+      "equal": true,
+      "mode": "photos_plus_observations",
+      "tool": "query_events"
+    }
+  ],
+  "schema_version": "product.reproduction.v1",
+  "shared_rgb_materialization": true,
+  "shared_video_pool": true,
+  "status": "PASS_FRESH_OUTPUT_IDENTICAL"
+}

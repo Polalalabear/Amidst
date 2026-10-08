@@ -21,9 +21,16 @@ Amidst 是一個 Phase 1 研究原型：在已知 3D 場景、攝影機幾何與
 合成觀測下，以確定性的幾何、導航拓撲與時空限制，產生攝影機盲區期間物理
 可行的 Top-K 3D 軌跡候選。
 
-目前專案專注於研究管線與可驗證契約，不是正式監控產品。真實攝影機串流、
-Detection／Tracking／ReID、正式資料庫與操作介面屬於後續 Phase 2；Agent 語意
-排序是延後的 optional Phase 1 extension，完整 tool-calling Agent 才屬 Phase 2。
+目前專案專注於研究管線與可驗證契約。真實攝影機串流、trained Detection／Tracking／ReID、
+正式部署與 external model Agent 仍待後續 Phase 2；Agent 語意排序是延後的 optional
+Phase 1 extension。
+
+2026-10-08 工程續作已有独立 [本機 Phase 2 產品](docs/engineering/LOCAL_PHASE2_PRODUCT.md)：
+真正 RGB pixel tracks、provisional associations、SQLite scoped retrieval、有限意圖調查、
+四鏡頭影片／Three.js 回放、持久案例／人審／報告。來源皆為 synthetic，無 external model；
+正式 school/full Exit、真攝影機與 production deployment 維持獨立未完成。
+網頁主入口依最新決策統一為 [共用工作台](docs/engineering/SHARED_WORKBENCH.md)／8016；
+既有 product／8020 保留為工程lab與待遷移來源，頁面能力尚未完成接入。
 
 ### 目前完成範圍
 
@@ -153,11 +160,18 @@ cameras and partial synthetic 2D observations, it uses deterministic geometry,
 navigation topology and spatiotemporal constraints to generate physically
 feasible Top-K 3D trajectory candidates across camera blind gaps.
 
-The project currently focuses on a testable research pipeline and strict
-contracts, not a production monitoring product. Real camera ingestion,
-detection/tracking/ReID, production storage and operator UI remain Phase 2.
-Agent-based semantic ranking is a deferred optional Phase 1 extension; a full
-tool-calling Agent belongs to Phase 2.
+The project currently focuses on a testable research pipeline and strict contracts.
+Real camera ingestion, trained detection/tracking/ReID, production deployment and an
+external-model Agent remain future Phase 2 work. Semantic ranking is a deferred optional
+Phase 1 extension.
+
+The 2026-10-08 engineering continuation adds an operating
+[local synthetic Phase 2 product](docs/engineering/LOCAL_PHASE2_PRODUCT.md): genuine RGB
+pixel tracks, provisional associations, scoped SQLite retrieval, bounded investigations,
+four-camera video/Three.js playback, saved cases, reviews and reports. No external model
+is connected; formal school acceptance and production capabilities remain incomplete.
+The primary web UI is [shared workbench](docs/engineering/SHARED_WORKBENCH.md)/8016.
+Product/8020 remains a preserved engineering lab and migration source; integration is pending.
 
 ### Implemented scope
 

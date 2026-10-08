@@ -1,0 +1,503 @@
+{
+  "external_model_calls": false,
+  "modes": [
+    {
+      "alternatives": 47,
+      "appearance_hits": 3,
+      "events": 64,
+      "graph_complete": true,
+      "mode": "photos_only",
+      "plan_ref": "plan:043b943ecddcf56c97c4bbbf",
+      "product_freeze_ref": "freeze:b16f4c263f88e3c32172f2c6",
+      "report_sha256": "c46d4740a7debe147c63dc8896573781974d5b42677129d9e2e93fc1f14c0177",
+      "retrieval_complete": true,
+      "run_ref": "run:81abb7b38781e095d1ae1b55",
+      "state": "COMPLETED",
+      "subjects": 2,
+      "tool_calls": 19
+    },
+    {
+      "alternatives": 47,
+      "appearance_hits": 3,
+      "events": 64,
+      "graph_complete": true,
+      "mode": "photos_plus_observations",
+      "plan_ref": "plan:e0d345b5f29ee5ed2d96cded",
+      "product_freeze_ref": "freeze:81acae2de59581e4eb310a42",
+      "report_sha256": "275b006bd36cb4d947213a1db1880356cc5b8aa82964a55c9c218624dcde75db",
+      "retrieval_complete": true,
+      "run_ref": "run:a1ca794cd65c4254b6b10ae4",
+      "state": "COMPLETED",
+      "subjects": 2,
+      "tool_calls": 19
+    }
+  ],
+  "receipts": [
+    {
+      "bytes": 3028,
+      "response_sha256": "84cec4f967102898db24052ffea750f7729dc6a3081cc0c172006bc87c23b169",
+      "route": "contexts",
+      "status": 200
+    },
+    {
+      "bytes": 64409,
+      "response_sha256": "d85eb7ab4cb9301a4fe6d0ba6daf3984ec979f93527e7d5560092b277350b402",
+      "route": "contract",
+      "status": 200
+    },
+    {
+      "bytes": 1706,
+      "response_sha256": "abf997bf1d994a94ade6611742f5d4cced3baae651277b250a18fddd568e46e0",
+      "route": "list_cameras",
+      "status": 200
+    },
+    {
+      "bytes": 8640,
+      "response_sha256": "f4ed2e6f3d0a325c16cf31083f1c2ea9026e20d8e118c96e5fc3e6af70d079de",
+      "route": "query_observations",
+      "status": 200
+    },
+    {
+      "bytes": 6548,
+      "response_sha256": "3a61ddb4cc4b00151ace837bc01ebbc44f138759f8a3a7db45dd80d1ad4fae30",
+      "route": "query_observations",
+      "status": 200
+    },
+    {
+      "bytes": 76534,
+      "response_sha256": "cc523cf6fa9b709ea1c2b81ca9d941510f3da4e333824168f3baee000eff73eb",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 177025,
+      "response_sha256": "c64d427392adbae3ef6dfe120a2ae74469d9b0a290587af664f785d63847a524",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 120011,
+      "response_sha256": "7f413a1d74db1be24e5620a0fefdda6d295cb8adc21783e33705d64c9f5f8f3f",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 1250,
+      "response_sha256": "3b825134fb41fb9f5278aa19f6c8ed6689bd1f9e5af0ca69a518a61eb52fb319",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 13417,
+      "response_sha256": "70149b6b7f9105cdfb0a409d40a97becb543daa177d6f37c9417ae933a47a9f8",
+      "route": "get_event_detail",
+      "status": 200
+    },
+    {
+      "bytes": 4258,
+      "response_sha256": "003616ca2e37256ff34b5c952533fa6637cf8dffabd31990b1c96711a1dc2298",
+      "route": "get_replay",
+      "status": 200
+    },
+    {
+      "bytes": 3524,
+      "response_sha256": "4791c265a6397dde42bfb524df5acae3d76607b53b890a8ee00c1e0c584d9ae9",
+      "route": "get_observation_detail",
+      "status": 200
+    },
+    {
+      "bytes": 2632,
+      "response_sha256": "0564dc0cf350e4e28f6e33680e2e4fbdeb58e39e938d6fe795a61f13595aefe7",
+      "route": "search_person_appearance",
+      "status": 200
+    },
+    {
+      "bytes": 1500,
+      "response_sha256": "364b05eac4ec0fe8ae25664e577dd6549b270bc013eb77c6ab57de90ecaf8098",
+      "route": "get_stitch_hypotheses",
+      "status": 200
+    },
+    {
+      "bytes": 2327,
+      "response_sha256": "b43a154dff745d5839da768399a88f8dae5149130eefb8ec974b5d229f7b6770",
+      "route": "media:d83361cbc5d0ccd5986d444f",
+      "status": 200
+    },
+    {
+      "bytes": 927,
+      "response_sha256": "1b6d7f5decd4d6ce33001e342f776955bfcff822786163bb93565d8d0080d2a1",
+      "route": "scene",
+      "status": 200
+    },
+    {
+      "bytes": 10310,
+      "response_sha256": "3fe7854ed7af483f71b820c0186907f883c9debe9488871b8e3b687ae02d164e",
+      "route": "videos",
+      "status": 200
+    },
+    {
+      "bytes": 32,
+      "response_sha256": "b1c35f1e6d75af66f96c70ff2572346caa6812dee411ad1134cffb50e33fba5c",
+      "route": "video:c25a356adfb26c0a61a18062",
+      "status": 206
+    },
+    {
+      "bytes": 24,
+      "response_sha256": "6a5b56de4d35325a1000530bbb5e9b63515678338ebd44cd14039c935fe8e549",
+      "route": "video:c25a356adfb26c0a61a18062",
+      "status": 416
+    },
+    {
+      "bytes": 3986,
+      "response_sha256": "87385cb9d4b0bfa3c65b3ab3884a3ea5fcd1bafbface735039b1eb27b51b3a40",
+      "route": "timeline",
+      "status": 200
+    },
+    {
+      "bytes": 1867,
+      "response_sha256": "3fe67cb6ca140df13a360510562bb51537ccf6acc689f9ac7615aa8c067905d0",
+      "route": "intent",
+      "status": 200
+    },
+    {
+      "bytes": 1821,
+      "response_sha256": "93ef02ee01547f3fc6cb88b45863f29af4f39e03ab90e90ddea3297a3d6917f7",
+      "route": "plan",
+      "status": 200
+    },
+    {
+      "bytes": 9514,
+      "response_sha256": "f2970e470b516da7c1f199b81af9c0cbec3d73e0d19f46e3b13783c16fac16fe",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 9515,
+      "response_sha256": "1a02e3987deda082f07bd97783efad6717e3846abfe86a5c76eee2075dbc950b",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 47117,
+      "response_sha256": "51e3420653182892ff4fd008da2f93111d9895d40acaab82c546c271af1e8607",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 56624,
+      "response_sha256": "c11dd6651ab28b95684a888441518c1beed58834f262bae5f52d9203cc016aaa",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 58583,
+      "response_sha256": "b34570692e57e41b167f4fc9bd374723ab03baee7b409253c6b933fddd4fc807",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 58583,
+      "response_sha256": "b34570692e57e41b167f4fc9bd374723ab03baee7b409253c6b933fddd4fc807",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 23784,
+      "response_sha256": "0a8ec23c5b2b3f9dc430c044aedc2600daecffd01f170b6c285d8064410c63ed",
+      "route": "report",
+      "status": 200
+    },
+    {
+      "bytes": 529,
+      "response_sha256": "fd85c5a0bd1d8e814530b92544b4d74a67d5f36a5b8a4be9a8c04daed73dce1f",
+      "route": "review",
+      "status": 200
+    },
+    {
+      "bytes": 2335,
+      "response_sha256": "eddc7b24cbad02aeeb5c80429f6c44025090288a91ea340eca1389cfe870dff4",
+      "route": "export-report",
+      "status": 200
+    },
+    {
+      "bytes": 116,
+      "response_sha256": "7679a16f6d4f5c439353efcb1718f9ad492576e65a3dbe633d3b79a0405cf54f",
+      "route": "cases",
+      "status": 200
+    },
+    {
+      "bytes": 34,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906",
+      "route": "plan",
+      "status": 400
+    },
+    {
+      "bytes": 1251,
+      "response_sha256": "7a5ed080a7b3853e2fde9d2a2c47ab1f6d6badac1aee98887bb730d6be881811",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 33,
+      "response_sha256": "ae65d85cd7e5b394d40fba1a296780536f67ff28ae8e462fe9cb5ee1d56f6527",
+      "route": "query_events",
+      "status": 403
+    },
+    {
+      "bytes": 34,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906",
+      "route": "get_event_detail",
+      "status": 403
+    },
+    {
+      "bytes": 34,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906",
+      "route": "query_events",
+      "status": 403
+    },
+    {
+      "bytes": 23,
+      "response_sha256": "1f24fee0591492e86840757e23fa9a6aaaf71c34219fbbb64f565805450f849e",
+      "route": "shell",
+      "status": 403
+    },
+    {
+      "bytes": 1719,
+      "response_sha256": "5365892e64254f4ee0bf32f7a5113f7818392a18040285d7140835d6e47b1f47",
+      "route": "list_cameras",
+      "status": 200
+    },
+    {
+      "bytes": 8653,
+      "response_sha256": "dd4ff1e373c55fd52fe44eada879e0a50527fe914e79e0f87e33372aa4af2db6",
+      "route": "query_observations",
+      "status": 200
+    },
+    {
+      "bytes": 6561,
+      "response_sha256": "77b9156467db41a96ef41a8bbc1954ae4a906a18cd542c65478424afdaa024a4",
+      "route": "query_observations",
+      "status": 200
+    },
+    {
+      "bytes": 76547,
+      "response_sha256": "de3e74c954bee80e0fad50d7f04c57cf796c5e4d930d18f19c7e7a1f6d0e3643",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 177038,
+      "response_sha256": "0fef5a957ef6fec535529488c15a62c035c5c593c7c58bc21fde93f1082cb4bc",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 120024,
+      "response_sha256": "d80f3e4c22c4e911edf80504fd7687038aeefde296fb16072bf3b364a417a844",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 1263,
+      "response_sha256": "40541d599fee3ba74ed505f4801e69f514af92149de8d628d20d7104b38b759c",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 13430,
+      "response_sha256": "9e8beaae4f9f60cf9f1290704a4a03df705e0f591d33c151741a41a52c9484bd",
+      "route": "get_event_detail",
+      "status": 200
+    },
+    {
+      "bytes": 4258,
+      "response_sha256": "1c2b056ffdb94a95fc4234c5a7465db9c367abd9a05728abcd1ac0d9378c2ff5",
+      "route": "get_replay",
+      "status": 200
+    },
+    {
+      "bytes": 3537,
+      "response_sha256": "3cb3d9fe0e1eac1bade00c545d48662f5ebf50269e3ff5e16263add44815a0eb",
+      "route": "get_observation_detail",
+      "status": 200
+    },
+    {
+      "bytes": 2645,
+      "response_sha256": "45f532fcbb5816cc73f9b0e2f132c410228ac89708c908a8e1faba9f681b59c2",
+      "route": "search_person_appearance",
+      "status": 200
+    },
+    {
+      "bytes": 1513,
+      "response_sha256": "e4cb8961775c249a125cc882da438c328fd52cfbe360b31cefbf1a8ae9a622c5",
+      "route": "get_stitch_hypotheses",
+      "status": 200
+    },
+    {
+      "bytes": 2327,
+      "response_sha256": "b43a154dff745d5839da768399a88f8dae5149130eefb8ec974b5d229f7b6770",
+      "route": "media:d83361cbc5d0ccd5986d444f",
+      "status": 200
+    },
+    {
+      "bytes": 927,
+      "response_sha256": "e6341094a33bbdd1a0c5a8bc70395e93637252eb657eeb58909ce6d8bed24f1c",
+      "route": "scene",
+      "status": 200
+    },
+    {
+      "bytes": 10310,
+      "response_sha256": "3fe7854ed7af483f71b820c0186907f883c9debe9488871b8e3b687ae02d164e",
+      "route": "videos",
+      "status": 200
+    },
+    {
+      "bytes": 32,
+      "response_sha256": "b1c35f1e6d75af66f96c70ff2572346caa6812dee411ad1134cffb50e33fba5c",
+      "route": "video:c25a356adfb26c0a61a18062",
+      "status": 206
+    },
+    {
+      "bytes": 24,
+      "response_sha256": "6a5b56de4d35325a1000530bbb5e9b63515678338ebd44cd14039c935fe8e549",
+      "route": "video:c25a356adfb26c0a61a18062",
+      "status": 416
+    },
+    {
+      "bytes": 3986,
+      "response_sha256": "55d456219ee17dde61ef3d597bdcbfe630b7253f34e3ac4346d54fbe59617f85",
+      "route": "timeline",
+      "status": 200
+    },
+    {
+      "bytes": 1880,
+      "response_sha256": "f16f1ab511bcd23b2eb01b500f82a9232571fc4567b5414e01278b536f8c6799",
+      "route": "intent",
+      "status": 200
+    },
+    {
+      "bytes": 1834,
+      "response_sha256": "c80a40904d824d80444299c2a21895bec98f5dff028a7b8b277d6ff20c9689bf",
+      "route": "plan",
+      "status": 200
+    },
+    {
+      "bytes": 9527,
+      "response_sha256": "95182e79bcb89de436bd741036043cf5d5eeba166ea25b1db523a089f3d49cbe",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 9528,
+      "response_sha256": "7c8af62dbd812575d0cb1dda47d958071b4d3ff68df7cf433e674dfa1958957b",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 47130,
+      "response_sha256": "0a58026de115c2299ec893548d069ce7def24f08c13ca66fe8e686a71cb0c53e",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 56637,
+      "response_sha256": "ba707fb9517ea76d3132feff2355822190500078546578988e6caca10e14b61a",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 58596,
+      "response_sha256": "e3746bfe6f4081904a25c939f53e8e4f84f35c474b52aebbbe2ed262812f4772",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 58596,
+      "response_sha256": "e3746bfe6f4081904a25c939f53e8e4f84f35c474b52aebbbe2ed262812f4772",
+      "route": "execute",
+      "status": 200
+    },
+    {
+      "bytes": 23797,
+      "response_sha256": "b42a9336d9367d6069bb45e59e7d45d1c459c69508d144a71e99f555fa5257b5",
+      "route": "report",
+      "status": 200
+    },
+    {
+      "bytes": 529,
+      "response_sha256": "84f821057d67b6a608187bf279c6ed2bbf273a8ed64c370723bca294c33114ee",
+      "route": "review",
+      "status": 200
+    },
+    {
+      "bytes": 2348,
+      "response_sha256": "970af154619bd16498945fa9418ba081937581da402f57c90fca811663ad49af",
+      "route": "export-report",
+      "status": 200
+    },
+    {
+      "bytes": 116,
+      "response_sha256": "d80e931342efdcb4da7ee0fff71f6ee6c2794971ad0ee3b02bc2110c6b1e59f6",
+      "route": "cases",
+      "status": 200
+    },
+    {
+      "bytes": 34,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906",
+      "route": "plan",
+      "status": 400
+    },
+    {
+      "bytes": 1264,
+      "response_sha256": "2e3ef651aa8165c5a520f0e87e3dfd53edc44abc4dac52257bef7096d4017703",
+      "route": "query_events",
+      "status": 200
+    },
+    {
+      "bytes": 33,
+      "response_sha256": "ae65d85cd7e5b394d40fba1a296780536f67ff28ae8e462fe9cb5ee1d56f6527",
+      "route": "query_events",
+      "status": 403
+    },
+    {
+      "bytes": 34,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906",
+      "route": "get_event_detail",
+      "status": 403
+    },
+    {
+      "bytes": 34,
+      "response_sha256": "077a5acee993520c5698fb10643aaeacc7d1e9e7567626bb78aa924650912906",
+      "route": "query_events",
+      "status": 403
+    },
+    {
+      "bytes": 23,
+      "response_sha256": "1f24fee0591492e86840757e23fa9a6aaaf71c34219fbbb64f565805450f849e",
+      "route": "shell",
+      "status": 403
+    },
+    {
+      "bytes": 36,
+      "response_sha256": "f12cbb1822ec835e454addfe33ef42b10a50ff6c8adf7bbb8bc4f6d445c5d235",
+      "route": "contexts",
+      "status": 403
+    },
+    {
+      "bytes": 25,
+      "response_sha256": "0f5bf23aa966e134bcfd7b40a9f2bd83ddf0485e5f2353051bd4677c069f94ee",
+      "route": "contexts",
+      "status": 403
+    },
+    {
+      "bytes": 29,
+      "response_sha256": "62180dc2bc8a015515190d1b3cd90d8172066eecc5b114363d45427ca950da0f",
+      "route": "gt.json",
+      "status": 404
+    }
+  ],
+  "requests": 77,
+  "schema_version": "product.http-validation.v1",
+  "source_truth_read": false,
+  "status": "PASS"
+}

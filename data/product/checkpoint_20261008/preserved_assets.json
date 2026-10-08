@@ -1,0 +1,276 @@
+{
+  "allowed_dependency_and_materialization_changes": {
+    "baseline_runtime_dependencies_unchanged": true,
+    "external_model_sdk_added": false,
+    "gitignore_additions": [
+      "frontend/product/node_modules/",
+      "/data/product/local_run/"
+    ],
+    "new_locked_packages": [
+      [
+        "imageio-ffmpeg",
+        "0.6.0"
+      ]
+    ],
+    "optional_product_dependency": "imageio-ffmpeg==0.6.0",
+    "removed_locked_packages": []
+  },
+  "authorized_documentation_updates": [
+    {
+      "ref": "docs/README.md",
+      "status": "M"
+    },
+    {
+      "ref": "docs/engineering/AGENT_RETRIEVAL_BOUNDARY.md",
+      "status": "M"
+    },
+    {
+      "ref": "docs/history/WORK_LOG.md",
+      "status": "M"
+    }
+  ],
+  "baseline_commit": "2db6709148f4927079370425c2562d8e3ac101fa",
+  "branch": "codex/simulation-engineering",
+  "canonical_immutable_asset": {
+    "actual": {
+      "mtime_ns": 1791198236746106977,
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "size_bytes": 468300506
+    },
+    "asset_ref": "blender/school_v3.blend",
+    "asset_saved_or_modified": false,
+    "expected": {
+      "mtime_ns": 1791198236746106977,
+      "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "size_bytes": 468300506
+    },
+    "hash_size_mtime_identical": true
+  },
+  "comparison_scope": "baseline tracked bytes versus parent plus current working state; product source additions are independent",
+  "e1_frozen_source_inventory": {
+    "all_match_prior_published_hashes": true,
+    "files_verified": 14,
+    "inventory_sha256": "775f75141901c077556790f72fe0a38b249039b1a2a4d88f3450c657bfae8472",
+    "ref": "data/engineering/local_camera_20261008/validation.json",
+    "sha256": "37248dac42e4e8078868eaaf5f465ee96ca6af3096117ca70211b146d1b65adf"
+  },
+  "engineering_base_commit": "4271b2bdfb255aa15dcddb25cba31127a6890aa6",
+  "engineering_base_is_ancestor": true,
+  "formal_phase1_acceptance": false,
+  "independent_workbench_scope": {
+    "excluded_prefixes": [
+      "src/amidst/workbench/",
+      "tests/workbench/",
+      "configs/engineering/workbench_",
+      "data/engineering/workbench_",
+      "frontend/workbench/"
+    ],
+    "status": "EXCLUDED_AND_UNTOUCHED",
+    "unrelated_modifications_not_staged": true
+  },
+  "merge_commits_since_product_baseline": [],
+  "no_git_index_or_ref_mutation": true,
+  "no_source_or_locked_input_edits_by_audit": true,
+  "prior_protected_input_receipt": {
+    "all_match_prior_checkpoint": true,
+    "files_verified": 30,
+    "inventory_sha256": "48ef710630a42a64abc52256d00c35a7c787b1012039428b90e3f59f5458b8c9",
+    "ref": "data/finalization/recovery_checkpoint_20261008/validation.json",
+    "sha256": "5562059a472d3b629a3f2a2cf8173a582490a037701d0e5b6445eaad995ddf96"
+  },
+  "product_scoped_tracked_delta": [
+    {
+      "ref": ".gitignore",
+      "status": "M"
+    },
+    {
+      "ref": "data/product/checkpoint_20261008/p7.json",
+      "status": "A"
+    },
+    {
+      "ref": "data/product/checkpoint_20261008/p8.json",
+      "status": "A"
+    },
+    {
+      "ref": "data/product/checkpoint_20261008/p9.json",
+      "status": "A"
+    },
+    {
+      "ref": "pyproject.toml",
+      "status": "M"
+    },
+    {
+      "ref": "src/amidst/product/__init__.py",
+      "status": "A"
+    },
+    {
+      "ref": "src/amidst/product/appearance.py",
+      "status": "A"
+    },
+    {
+      "ref": "src/amidst/product/contracts.py",
+      "status": "A"
+    },
+    {
+      "ref": "src/amidst/product/investigation.py",
+      "status": "A"
+    },
+    {
+      "ref": "src/amidst/product/stitching.py",
+      "status": "A"
+    },
+    {
+      "ref": "src/amidst/product/store.py",
+      "status": "A"
+    },
+    {
+      "ref": "tests/product/test_appearance.py",
+      "status": "A"
+    },
+    {
+      "ref": "tests/product/test_contracts.py",
+      "status": "A"
+    },
+    {
+      "ref": "tests/product/test_investigation.py",
+      "status": "A"
+    },
+    {
+      "ref": "tests/product/test_stitching.py",
+      "status": "A"
+    },
+    {
+      "ref": "tests/product/test_store.py",
+      "status": "A"
+    },
+    {
+      "ref": "uv.lock",
+      "status": "M"
+    }
+  ],
+  "product_untracked_additions": [
+    "docs/engineering/LOCAL_PHASE2_PRODUCT.md",
+    "frontend/product/app.mjs",
+    "frontend/product/index.html",
+    "frontend/product/package-lock.json",
+    "frontend/product/package.json",
+    "frontend/product/style.css",
+    "frontend/product/timeline.mjs",
+    "frontend/product/timeline.test.mjs",
+    "scripts/validate_local_product.py",
+    "src/amidst/product/__main__.py",
+    "src/amidst/product/api.py",
+    "src/amidst/product/evaluation.py",
+    "src/amidst/product/operator.py",
+    "src/amidst/product/run.py",
+    "src/amidst/product/service.py",
+    "src/amidst/product/timeline.py",
+    "src/amidst/product/video.py",
+    "tests/product/test_api.py",
+    "tests/product/test_operator.py",
+    "tests/product/test_product_evaluation.py",
+    "tests/product/test_run.py",
+    "tests/product/test_service.py",
+    "tests/product/test_timeline.py"
+  ],
+  "protected_categories": {
+    "core_graph_projection_reconstruction_and_existing_services": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "dc19999d07d88586211c071f419ec3dd10fda81c995c99578745866c535fb379",
+      "current_inventory_sha256": "dc19999d07d88586211c071f419ec3dd10fda81c995c99578745866c535fb379",
+      "file_count": 95,
+      "mismatched_refs": []
+    },
+    "domain_source": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "619d769f532acc933b4c0b2b1c0ef5591590bd274edcbe909d7e4b21992c646e",
+      "current_inventory_sha256": "619d769f532acc933b4c0b2b1c0ef5591590bd274edcbe909d7e4b21992c646e",
+      "file_count": 20,
+      "mismatched_refs": []
+    },
+    "engineering_source": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "8fd5949c90f19fc6d55ff387caed2ed9e68a7bbb5be9d94f427e709273147509",
+      "current_inventory_sha256": "8fd5949c90f19fc6d55ff387caed2ed9e68a7bbb5be9d94f427e709273147509",
+      "file_count": 22,
+      "mismatched_refs": []
+    },
+    "existing_configs_including_inference_locks": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "c7710b43c331a7463b0da777253fb912e898bd541a9cec97584080cb246bf0ce",
+      "current_inventory_sha256": "c7710b43c331a7463b0da777253fb912e898bd541a9cec97584080cb246bf0ce",
+      "file_count": 25,
+      "mismatched_refs": []
+    },
+    "existing_human_review_authority_and_evidence": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "90bc1e7299513028eaec8a7a8e79708beb535ba66ca4c8f08f11a3f0dd225810",
+      "current_inventory_sha256": "90bc1e7299513028eaec8a7a8e79708beb535ba66ca4c8f08f11a3f0dd225810",
+      "file_count": 95,
+      "mismatched_refs": []
+    },
+    "existing_scripts": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "791321c72a5311d49d440d3b52818595b8f9135e7181b31c4e44ac896f8c0e45",
+      "current_inventory_sha256": "791321c72a5311d49d440d3b52818595b8f9135e7181b31c4e44ac896f8c0e45",
+      "file_count": 54,
+      "mismatched_refs": []
+    },
+    "existing_tests": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "560b9caf95a25e3a366342d0174d0ae92cbcc2622860292a2053876a1c7026b2",
+      "current_inventory_sha256": "560b9caf95a25e3a366342d0174d0ae92cbcc2622860292a2053876a1c7026b2",
+      "file_count": 168,
+      "mismatched_refs": []
+    },
+    "historical_curated_data": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "887f2c0204eed48035f747f6cffc50e9790c7cf86ab28acb3c4401854571eb07",
+      "current_inventory_sha256": "887f2c0204eed48035f747f6cffc50e9790c7cf86ab28acb3c4401854571eb07",
+      "file_count": 341,
+      "mismatched_refs": []
+    },
+    "integration_source": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "f7c2b1dde1de93d66cff2e99d1e15c2fd8ea11f68f91831ebd49141964a85c6a",
+      "current_inventory_sha256": "f7c2b1dde1de93d66cff2e99d1e15c2fd8ea11f68f91831ebd49141964a85c6a",
+      "file_count": 11,
+      "mismatched_refs": []
+    },
+    "legacy_frontend_consumers": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "c5472f6eee8f32879ffb0f5d432e501ec6f7fea349ccca96fcc0dd596a2f5cbc",
+      "current_inventory_sha256": "c5472f6eee8f32879ffb0f5d432e501ec6f7fea349ccca96fcc0dd596a2f5cbc",
+      "file_count": 2,
+      "mismatched_refs": []
+    },
+    "specifications_and_research_protocols": {
+      "all_bytes_match": true,
+      "baseline_inventory_sha256": "ca9556c846d64585145d83af6b310ae97cb2835446e1f07fb92651751571912f",
+      "current_inventory_sha256": "ca9556c846d64585145d83af6b310ae97cb2835446e1f07fb92651751571912f",
+      "file_count": 13,
+      "mismatched_refs": []
+    }
+  },
+  "protected_files_verified": 846,
+  "receipt_sha256": "d6c5e58ff51621f9596c2fdcf2c517f24232d8a1faa07e818f050857f84016d3",
+  "recorded_at": "2026-10-08T07:22:57.934056+00:00",
+  "remote_refs": {
+    "historical_main_ref_assertion": "OBSERVED_CURRENT_TRACKING_MATCH_ONLY",
+    "main_matches_local_remote_tracking": true,
+    "observed": {
+      "refs/heads/codex/docs-agent-handoff": "2c586b13f957b1b0d17675b4ff8aa89629681172",
+      "refs/heads/main": "83ca3f8f1021913079759339ffa248039d3cc6ef",
+      "refs/heads/phase1/finalization-sprint": "883204af854bed301506b39d63ccb33312b79ff2",
+      "refs/heads/phase2/integration-hardening": "5b51d2c67917ff434f53e12a8af8af3d711d2a19",
+      "refs/tags/phase2-integration-hardening-frozen-20261006": "841dd66e464557b4ba986c861ae3c0f694e6385f",
+      "refs/tags/phase2-integration-hardening-frozen-20261006^{}": "5b51d2c67917ff434f53e12a8af8af3d711d2a19"
+    },
+    "phase2_branch_and_peeled_tag_match_frozen_commit": true,
+    "research_and_docs_refs_match_requested_baselines": true,
+    "verification": "READ_ONLY_GIT_LS_REMOTE"
+  },
+  "schema_version": "product.preserved-assets.v1",
+  "status": "PASS_LOCAL_PRODUCT_ADDITIVE_SCOPE",
+  "validated_parent_commit": "9c68fffac872b65720933d8c23562365c0c08437"
+}

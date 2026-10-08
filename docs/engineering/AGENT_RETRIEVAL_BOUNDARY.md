@@ -10,6 +10,14 @@
 
 依據：[架構責任](../specs/SYSTEM_DESIGN.md#11-agent-arbitration-layer)、[摘要與 context](../specs/SYSTEM_DESIGN.md#29-token-and-context-control)、[資料契約](../specs/DATA_SCHEMA.md)。工程基底 `4271b2b` 已接入 [Phase 2 mock API/repository/replay](PHASE2_INTEGRATION.md)，低階 mock 契約仍保持內部隔離；外層已完成八個 strict Agent allowlist DTO。獨立 normalization adapter 只認證已核對的 office structured partial package，其他 finalization/corridor scope 未認證；原 frozen branch/tag 不變。
 
+本機產品續作另見 [Phase 2 產品契約](LOCAL_PHASE2_PRODUCT.md)。原八工具保留；RESULTS 增加
+五個 strict pixel-detail／reachable-camera／seed-proposal／appearance／stitch 工具，全部仍綁
+server-owned session、source/context/run/mode/stage/freeze。ProductContext 只加 opaque product
+run/freeze/operator refs 與 fixed local role。SQLite immutable evidence 與 append-only
+CASE/REPORT/REVIEW 分離；compiler 只接受有限中英 intent/typed parameters，不能由 caller
+提供任意工具步驟。Photos-only INPUT 不得經產品 summary/detail/media/video/replay/scene/
+case/report 或 errors/logs 取得已存答案；operator presentation/review 只在核對 freeze 後可用。
+
 影像 producer 從未加 GT 標註的 RGB pixels 量測，不讀 simulator object-index／segmentation／depth、GT bbox／身分／位置或 recipe/reference annotations。合成照片經影像演算法處理仍屬 SYNTHETIC 來源，另外保留量測 producer／版本／輸入 hashes；既有模擬 UV 不改稱影像量測。Local tracks 使用 model/run/camera namespace；跨鏡頭身分只形成 provisional hypotheses，adapter 保存原 records 映射，不把 GT actor ID 填入既有 target_id 或回寫 canonical records。
 
 ### 局部研究 extension
@@ -79,6 +87,13 @@ Agent-facing API/data-export 守門先驗證 mode、decision stage、source/cont
 ### Scope and implementation status
 
 The first version is **IMPLEMENTED / SYNTHETIC_ENGINEERING_ONLY**; see the [operating composition and current evidence](SIMULATION_ENGINEERING.md). No OpenAI or other external model API is connected. No images, summaries or source data are sent out; no live provider, SDK wiring or secret configuration is created. The API wiring and token fallback algorithm remain empty sections.
+
+The [local Phase 2 product](LOCAL_PHASE2_PRODUCT.md) preserves the original eight tools and
+adds five strict RESULTS-only pixel-detail, reachable-camera, seed-proposal, appearance and
+stitch tools. ProductContext adds only opaque product/freeze/operator refs and a fixed local
+role. Immutable evidence is separate from append-only CASE/REPORT/REVIEW state. Bounded
+intent compilation does not accept arbitrary tool steps or semantic reranking; INPUT cannot
+use product views, stored results, reports, media derivatives or errors/logs to bypass its freeze.
 
 Engineering baseline `4271b2b` includes the legacy mock adapters, with eight strict Agent request/response DTOs in an isolated facade. Separate reviewed import certification covers only the verified office structured partial package. Pixel-derived synthetic measurements retain producer/hash lineage and never substitute simulator truth channels. Camera-scoped local tracks feed provisional association hypotheses, preserving original record mappings without rewriting frozen identities.
 

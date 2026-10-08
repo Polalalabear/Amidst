@@ -1,0 +1,24 @@
+{
+  "actual_frame_callbacks": 1292,
+  "camera_media_skew_ms": {
+    "count": 968,
+    "mean": 20.523415289256196,
+    "p95": 66.6670000000007
+  },
+  "dropped_video_frames": null,
+  "dropped_video_frames_reason": "NOT_AVAILABLE_FROM_THIS_CLOCK",
+  "fallback_media_callbacks": 0,
+  "media_to_3d_skew_ms": {
+    "count": 321,
+    "mean": 100.31152959501529,
+    "p95": 133.33400000000051
+  },
+  "metric_source": "ACTUAL_MEDIA_CALLBACKS_AND_APPLIED_PRESENTATION_STATE",
+  "missing_frame_selections": 0,
+  "seek_recovery_ms": {
+    "count": 2,
+    "mean": 181.84999999962747,
+    "p95": 333.69999999925494
+  },
+  "synchronization": "SOFT_SYNCHRONIZATION"
+}

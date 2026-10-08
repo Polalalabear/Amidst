@@ -2203,3 +2203,59 @@ Ruff／strictmypy159sourcefiles與13Node／syntax PASS。77初次＋69restart真
 3D／video／history／report／review browser操作PASS。具體同run/code/config/hash見
 [p10/p11 receipt](../../data/product/checkpoint_20261008/p10_p11.json)，其餘curated P12證據另記。
 僅新增optional localFFmpeg與pinnedlocalThree dependency，無providerSDK／APIkey或外部模型。
+
+
+## 2026-10-08 — Local Phase 2 product P12
+
+同一E1 RGB／task／population／staticcontext的兩模式新product freeze綁dataset、config、
+producer、registry、media、appearance/stitch、canonicalreadmodel、14productalgorithm hashes。
+Actualsource244RGB／150measurements／18tracks／64events不重寫；新emptyoutput重建11份
+fixed product/evaluation documents逐byte一致，4publicquerypairs相同，重用RGB與單一MP4pool。
+
+Independentfreeze-before-GT evaluation：五個eligiblepurequeries的handcrafted Recall1/3/5
+=.4/.6/.8，identicalpoolmeanRGB=.2/.6/.8；六個mixedtracks排除、LOW/MEDIUMqualityN/A，
+stitchTP1/FP2、unknown4、唯一positive1。Public單camera工具與reachablecamera evaluation
+pool明列不同接收端，不宣稱trainedReID／泛化／漏檢人物recall或token降幅。Optional舊行為
+quote的recipe-confighash與inferenceconfighash分開核對，錯binding只回N/A。
+
+當次2592PASS／zero fail或skip、Ruff／mypy159、13Node、146真HTTP含restart、actualbrowser
+及GT污染/缺圖/錯reference/越界/mode/stage/crossscope測試有exactsource/config/run receipts。
+原846protectedfiles、30priorcheckpoint hashes、14E1sourcehashes與原BlenderSHA/size/mtime
+皆一致；原main／research／frozenPhase2 refs保留。见[validation](../../data/product/checkpoint_20261008/validation.json)
+及[操作／完整限制](../engineering/LOCAL_PHASE2_PRODUCT.md)。
+
+只publishcode/docs/locks/curatedaggregates；SQLite／fullfeatures／GT/debug／RGB／MP4／PNG／
+HTML留local，不複製raw／建立新worktree或venv。CODEX_HANDOFF／WORK_LOG／README／Agent
+契約／data inventory更新，四個API/token空章節保留空白。並行workbench有自身入口與
+獨立receipt，兩份排除scope的PASS不相加；它的修改全部保留。原fullformalExit仍BLOCKED、
+Case4DEFERRED、Phase2branch/tagFROZEN，沒有把本機產品命名為formalPhase1freeze。
+
+
+## 2026-10-08 — Independent shared workbench integration entry
+
+並行工作階段發布backend `7e17688`／UI `0acfe27`，本輪只接入操作導覽，不改其
+[desktop receipt](../../data/engineering/workbench_20261008/desktop_validation.json)或專屬
+[workbench文件](../engineering/SHARED_WORKBENCH.md)。其獨立2487pytest（exclude product）／
+60workbench／15Node、Ruff／mypy164、actualbrowser雙syntheticscenes／雙trustedlocalroles／
+版本化draft→validate→publish/history/export→restart與notes證據另存，已核對其sourceinventory。
+8016保留；trustedlocalrole不是authentication，管理3D為placeholder、annotationoverlay
+不會自動重跑inference，affectedruns標NEEDS_RERUN，不提升正式authority。Rootproduct8020
+維持獨立；兩份互補排除scope的測試不得相加稱新的fullPASS。
+
+
+## 2026-10-08 — Final full integration and unified web decision
+
+`c418455` product／`0acfe27` workbench皆穩定後，真正無排除full pytest首輪因两個
+unqualified test_service模組撞名而collection failure(exit2)，原log保留，不報PASS。
+只新增自有tests/product/__init__.py隔離namespace，不刪cache／改workbench。
+第二輪無排除required-physical-evidence完整JUnit為 **2652passed／0fail／0error／0skip，
+255.995s**，Ruff／mypy164sources、product13＋workbench15合計28Node實際同command PASS。
+這是新的完整運行，不把2592/2487等局部PASS相加。exactcode／JUnit／logs hashes另入
+[最終validation](../../data/product/checkpoint_20261008/validation.json)。
+
+最新用戶決策已經read_thread直接核對：frontend/workbench／8016為統一主要網頁入口，
+既有與後續頁面能力都接其上。frontend/product／8020保留既有lab／待遷移來源，不再擴張
+成主要前端；productbackend／資料／typedinterfaces可供adapter接入，遷移仍PARTIAL/PENDING。
+README／docsREADME／CODEX_HANDOFF／LOCAL_PHASE2_PRODUCT更新此決策；工作台專屬文件、
+DEVELOPMENT_RULES／ISSUES_AND_DECISIONS／SYSTEM_DESIGN由並行工作階段提交，不混stage。
+原historyreceipts/sourcebytes保留，新政策不假稱兩入口已整合或formalExit已完成。

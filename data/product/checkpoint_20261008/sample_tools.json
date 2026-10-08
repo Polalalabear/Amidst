@@ -1,0 +1,697 @@
+{
+  "schema_version": "product.samples.v1",
+  "items": [
+    {
+      "context": {
+        "session_ref": "session-c24e40c19be471f3b715a1fd",
+        "run_ref": "run:81abb7b38781e095d1ae1b55",
+        "context": {
+          "session_ref": "session-c24e40c19be471f3b715a1fd",
+          "place_id": "synthetic-local-camera",
+          "model_id": "synthetic-local-camera-v1",
+          "model_revision": "1",
+          "source_ref": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "spatial_context_id": "context:synthetic-local-camera-v1",
+          "run_id": "local-camera-test-v1",
+          "clock_id": "synthetic-seconds-v1",
+          "observation_mode": "photos_only",
+          "decision_stage": "RESULTS",
+          "registry_version": "local-camera-index.v1",
+          "resource_refs": [
+            "camera:12d704aac389b61432ccbe33",
+            "camera:7ff3500f86e5d9260791c035",
+            "camera:c2eb9920d19b3d87a4230681",
+            "camera:e82d652d52d0efecdaa47f22"
+          ],
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "origin": "SYNTHETIC",
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "freeze_ref": "freeze-292d9a2068756a289776b4ff564ffcfe8c3571a64e588e045c953f3d58263468"
+        },
+        "product_version": "local-product.v1",
+        "product_freeze_ref": "freeze:b16f4c263f88e3c32172f2c6",
+        "operator_ref": "operator:9437824a19b8dda46505fd78",
+        "role": "TRUSTED_LOCAL_OPERATOR",
+        "allowed_tools": [
+          "resolve_place",
+          "list_cameras",
+          "query_observations",
+          "query_events",
+          "get_event_summary",
+          "get_event_detail",
+          "get_media",
+          "get_replay",
+          "get_observation_detail",
+          "query_reachable_cameras",
+          "propose_feasible_trajectories",
+          "search_person_appearance",
+          "get_stitch_hypotheses"
+        ],
+        "external_model_calls": false
+      },
+      "input": {
+        "tool": "query_observations",
+        "session_ref": "session-c24e40c19be471f3b715a1fd",
+        "camera_ref": "camera:12d704aac389b61432ccbe33",
+        "time_range": [
+          0,
+          24
+        ],
+        "limit": 1
+      },
+      "output": {
+        "scope": {
+          "session_ref": "session-c24e40c19be471f3b715a1fd",
+          "place_id": "synthetic-local-camera",
+          "model_id": "synthetic-local-camera-v1",
+          "model_revision": "1",
+          "source_ref": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "spatial_context_id": "context:synthetic-local-camera-v1",
+          "run_id": "local-camera-test-v1",
+          "clock_id": "synthetic-seconds-v1",
+          "observation_mode": "photos_only",
+          "decision_stage": "RESULTS",
+          "registry_version": "local-camera-index.v1",
+          "resource_refs": [
+            "camera:12d704aac389b61432ccbe33",
+            "camera:7ff3500f86e5d9260791c035",
+            "camera:c2eb9920d19b3d87a4230681",
+            "camera:e82d652d52d0efecdaa47f22"
+          ],
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "origin": "SYNTHETIC",
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "freeze_ref": "freeze-292d9a2068756a289776b4ff564ffcfe8c3571a64e588e045c953f3d58263468"
+        },
+        "items": [
+          {
+            "observation_ref": "observation:9360ffa1e3488947b10b4483",
+            "local_track_ref": "track:7dcd95e6eaa01d877ba8f8bb",
+            "camera_refs": [
+              "camera:12d704aac389b61432ccbe33"
+            ],
+            "camera_ids": [
+              "WEST"
+            ],
+            "time_range": [
+              0.0,
+              2.8
+            ],
+            "media_refs": [
+              "media:d83361cbc5d0ccd5986d444f",
+              "media:8234cef4b8f73b43b0d47301",
+              "media:e9c8a8b58eccc473b0c480a5",
+              "media:86649ce5beea90b5bafb132c",
+              "media:1492069714f945942aca5632",
+              "media:207675232e92a729f03073d0",
+              "media:42bafb40221b0a7c3629fe08",
+              "media:fe0969bb6a2665d81c759d83"
+            ],
+            "measurements": [
+              {
+                "frame_ref": "media:d83361cbc5d0ccd5986d444f",
+                "timestamp": 0.0,
+                "bbox": [
+                  73.0,
+                  65.0,
+                  89.0,
+                  104.0
+                ],
+                "point_2d": [
+                  80.5,
+                  103.0
+                ],
+                "visible_features": [
+                  81.09354120267261,
+                  88.22048997772829,
+                  112.70378619153675
+                ]
+              },
+              {
+                "frame_ref": "media:8234cef4b8f73b43b0d47301",
+                "timestamp": 0.4,
+                "bbox": [
+                  86.0,
+                  65.0,
+                  102.0,
+                  105.0
+                ],
+                "point_2d": [
+                  93.5,
+                  104.0
+                ],
+                "visible_features": [
+                  77.17040358744394,
+                  88.28026905829596,
+                  118.21076233183857
+                ]
+              },
+              {
+                "frame_ref": "media:e9c8a8b58eccc473b0c480a5",
+                "timestamp": 0.8,
+                "bbox": [
+                  100.0,
+                  65.0,
+                  115.0,
+                  105.0
+                ],
+                "point_2d": [
+                  107.0,
+                  104.0
+                ],
+                "visible_features": [
+                  78.6322869955157,
+                  88.17264573991031,
+                  115.8542600896861
+                ]
+              },
+              {
+                "frame_ref": "media:86649ce5beea90b5bafb132c",
+                "timestamp": 1.2,
+                "bbox": [
+                  113.0,
+                  65.0,
+                  128.0,
+                  105.0
+                ],
+                "point_2d": [
+                  120.0,
+                  104.0
+                ],
+                "visible_features": [
+                  76.69103773584905,
+                  89.06367924528301,
+                  120.92216981132076
+                ]
+              },
+              {
+                "frame_ref": "media:1492069714f945942aca5632",
+                "timestamp": 1.6,
+                "bbox": [
+                  126.0,
+                  65.0,
+                  142.0,
+                  105.0
+                ],
+                "point_2d": [
+                  133.5,
+                  104.0
+                ],
+                "visible_features": [
+                  78.02460850111856,
+                  88.84116331096197,
+                  118.46085011185683
+                ]
+              },
+              {
+                "frame_ref": "media:207675232e92a729f03073d0",
+                "timestamp": 2.0,
+                "bbox": [
+                  139.0,
+                  74.0,
+                  142.0,
+                  87.0
+                ],
+                "point_2d": [
+                  140.0,
+                  86.0
+                ],
+                "visible_features": [
+                  181.51724137931035,
+                  130.13793103448276,
+                  94.79310344827586
+                ]
+              },
+              {
+                "frame_ref": "media:42bafb40221b0a7c3629fe08",
+                "timestamp": 2.4,
+                "bbox": [
+                  156.0,
+                  65.0,
+                  168.0,
+                  105.0
+                ],
+                "point_2d": [
+                  161.5,
+                  104.0
+                ],
+                "visible_features": [
+                  73.89873417721519,
+                  87.67088607594937,
+                  120.01898734177215
+                ]
+              },
+              {
+                "frame_ref": "media:fe0969bb6a2665d81c759d83",
+                "timestamp": 2.8,
+                "bbox": [
+                  165.0,
+                  65.0,
+                  182.0,
+                  105.0
+                ],
+                "point_2d": [
+                  173.0,
+                  104.0
+                ],
+                "visible_features": [
+                  76.6046511627907,
+                  85.84143763213531,
+                  112.60887949260042
+                ]
+              }
+            ],
+            "origin": "SYNTHETIC",
+            "image_measurement": true,
+            "authority": "RGB_PIXELS_WITH_SYNTHETIC_CONFIG",
+            "uncertainty": "Local IDs and RGB components may merge/swap; no GT correction.",
+            "region_ids": [
+              "west"
+            ],
+            "projected_path": [
+              [
+                0.7041909199170104,
+                1.886954234613361,
+                0.0
+              ],
+              [
+                1.3058951687174043,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                1.9142127242764624,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                2.5,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                3.108317555559058,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                3.572284782246369,
+                3.778660049627792,
+                0.0
+              ],
+              [
+                4.370013226348216,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                4.888209662565192,
+                1.7934306569343068,
+                0.0
+              ]
+            ]
+          }
+        ],
+        "retrieval": {
+          "records_read": 1,
+          "frames_read": 0,
+          "bytes_read": 0,
+          "index_entries_touched": 1,
+          "coverage": "EXACT_REGISTERED_BUCKET_WITHIN_WINDOW",
+          "time_range": [
+            0.0,
+            24.0
+          ],
+          "truncated": true,
+          "graph_complete": null,
+          "next_cursor": "p1.eyJ2ZXJzaW9uIjoicDEiLCJmaWx0ZXJfc2hhMjU2IjoiNGEwZjM3MGYwMTVjNjQxYjFlZDI2Zjg0ZWE3NjI1OWE3Njc5ZWRkNGVhOWY4NTY4OGY5ZDY3NGRmOGU5YWUwMyIsInN0YXJ0X3RpbWUiOjAuMCwiZW5kX3RpbWUiOjIuOCwicmVjb3JkX3JlZiI6Im9ic2VydmF0aW9uOjkzNjBmZmExZTM0ODg5NDdiMTBiNDQ4MyJ9.38d5dec9b37904ecbfca9306b73a2c3f42c30cfeca87a052183064d6ecd25fa3",
+          "record_set_receipt_sha256": "6f6e892acb3d20f1cd513c5fac1a017252e64351941be98718c60d1a9e5d00d5"
+        }
+      }
+    },
+    {
+      "context": {
+        "session_ref": "session-12a52e00145fd4d3f6605acd",
+        "run_ref": "run:a1ca794cd65c4254b6b10ae4",
+        "context": {
+          "session_ref": "session-12a52e00145fd4d3f6605acd",
+          "place_id": "synthetic-local-camera",
+          "model_id": "synthetic-local-camera-v1",
+          "model_revision": "1",
+          "source_ref": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "spatial_context_id": "context:synthetic-local-camera-v1",
+          "run_id": "local-camera-test-v1",
+          "clock_id": "synthetic-seconds-v1",
+          "observation_mode": "photos_plus_observations",
+          "decision_stage": "RESULTS",
+          "registry_version": "local-camera-index.v1",
+          "resource_refs": [
+            "camera:12d704aac389b61432ccbe33",
+            "camera:7ff3500f86e5d9260791c035",
+            "camera:c2eb9920d19b3d87a4230681",
+            "camera:e82d652d52d0efecdaa47f22"
+          ],
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "origin": "SYNTHETIC",
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "freeze_ref": "freeze-2effefbd9b4825c8241ffc8d446791df50b84d81a3850bd678dc70661bf3cf02"
+        },
+        "product_version": "local-product.v1",
+        "product_freeze_ref": "freeze:81acae2de59581e4eb310a42",
+        "operator_ref": "operator:229c4723698f756c843d1218",
+        "role": "TRUSTED_LOCAL_OPERATOR",
+        "allowed_tools": [
+          "resolve_place",
+          "list_cameras",
+          "query_observations",
+          "query_events",
+          "get_event_summary",
+          "get_event_detail",
+          "get_media",
+          "get_replay",
+          "get_observation_detail",
+          "query_reachable_cameras",
+          "propose_feasible_trajectories",
+          "search_person_appearance",
+          "get_stitch_hypotheses"
+        ],
+        "external_model_calls": false
+      },
+      "input": {
+        "tool": "query_observations",
+        "session_ref": "session-12a52e00145fd4d3f6605acd",
+        "camera_ref": "camera:12d704aac389b61432ccbe33",
+        "time_range": [
+          0,
+          24
+        ],
+        "limit": 1
+      },
+      "output": {
+        "scope": {
+          "session_ref": "session-12a52e00145fd4d3f6605acd",
+          "place_id": "synthetic-local-camera",
+          "model_id": "synthetic-local-camera-v1",
+          "model_revision": "1",
+          "source_ref": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "spatial_context_id": "context:synthetic-local-camera-v1",
+          "run_id": "local-camera-test-v1",
+          "clock_id": "synthetic-seconds-v1",
+          "observation_mode": "photos_plus_observations",
+          "decision_stage": "RESULTS",
+          "registry_version": "local-camera-index.v1",
+          "resource_refs": [
+            "camera:12d704aac389b61432ccbe33",
+            "camera:7ff3500f86e5d9260791c035",
+            "camera:c2eb9920d19b3d87a4230681",
+            "camera:e82d652d52d0efecdaa47f22"
+          ],
+          "allowed_tools": [
+            "resolve_place",
+            "list_cameras",
+            "query_observations",
+            "query_events",
+            "get_event_summary",
+            "get_event_detail",
+            "get_media",
+            "get_replay"
+          ],
+          "origin": "SYNTHETIC",
+          "authority": "CONFIGURED_ENGINEERING_ONLY",
+          "freeze_ref": "freeze-2effefbd9b4825c8241ffc8d446791df50b84d81a3850bd678dc70661bf3cf02"
+        },
+        "items": [
+          {
+            "observation_ref": "observation:9360ffa1e3488947b10b4483",
+            "local_track_ref": "track:7dcd95e6eaa01d877ba8f8bb",
+            "camera_refs": [
+              "camera:12d704aac389b61432ccbe33"
+            ],
+            "camera_ids": [
+              "WEST"
+            ],
+            "time_range": [
+              0.0,
+              2.8
+            ],
+            "media_refs": [
+              "media:d83361cbc5d0ccd5986d444f",
+              "media:8234cef4b8f73b43b0d47301",
+              "media:e9c8a8b58eccc473b0c480a5",
+              "media:86649ce5beea90b5bafb132c",
+              "media:1492069714f945942aca5632",
+              "media:207675232e92a729f03073d0",
+              "media:42bafb40221b0a7c3629fe08",
+              "media:fe0969bb6a2665d81c759d83"
+            ],
+            "measurements": [
+              {
+                "frame_ref": "media:d83361cbc5d0ccd5986d444f",
+                "timestamp": 0.0,
+                "bbox": [
+                  73.0,
+                  65.0,
+                  89.0,
+                  104.0
+                ],
+                "point_2d": [
+                  80.5,
+                  103.0
+                ],
+                "visible_features": [
+                  81.09354120267261,
+                  88.22048997772829,
+                  112.70378619153675
+                ]
+              },
+              {
+                "frame_ref": "media:8234cef4b8f73b43b0d47301",
+                "timestamp": 0.4,
+                "bbox": [
+                  86.0,
+                  65.0,
+                  102.0,
+                  105.0
+                ],
+                "point_2d": [
+                  93.5,
+                  104.0
+                ],
+                "visible_features": [
+                  77.17040358744394,
+                  88.28026905829596,
+                  118.21076233183857
+                ]
+              },
+              {
+                "frame_ref": "media:e9c8a8b58eccc473b0c480a5",
+                "timestamp": 0.8,
+                "bbox": [
+                  100.0,
+                  65.0,
+                  115.0,
+                  105.0
+                ],
+                "point_2d": [
+                  107.0,
+                  104.0
+                ],
+                "visible_features": [
+                  78.6322869955157,
+                  88.17264573991031,
+                  115.8542600896861
+                ]
+              },
+              {
+                "frame_ref": "media:86649ce5beea90b5bafb132c",
+                "timestamp": 1.2,
+                "bbox": [
+                  113.0,
+                  65.0,
+                  128.0,
+                  105.0
+                ],
+                "point_2d": [
+                  120.0,
+                  104.0
+                ],
+                "visible_features": [
+                  76.69103773584905,
+                  89.06367924528301,
+                  120.92216981132076
+                ]
+              },
+              {
+                "frame_ref": "media:1492069714f945942aca5632",
+                "timestamp": 1.6,
+                "bbox": [
+                  126.0,
+                  65.0,
+                  142.0,
+                  105.0
+                ],
+                "point_2d": [
+                  133.5,
+                  104.0
+                ],
+                "visible_features": [
+                  78.02460850111856,
+                  88.84116331096197,
+                  118.46085011185683
+                ]
+              },
+              {
+                "frame_ref": "media:207675232e92a729f03073d0",
+                "timestamp": 2.0,
+                "bbox": [
+                  139.0,
+                  74.0,
+                  142.0,
+                  87.0
+                ],
+                "point_2d": [
+                  140.0,
+                  86.0
+                ],
+                "visible_features": [
+                  181.51724137931035,
+                  130.13793103448276,
+                  94.79310344827586
+                ]
+              },
+              {
+                "frame_ref": "media:42bafb40221b0a7c3629fe08",
+                "timestamp": 2.4,
+                "bbox": [
+                  156.0,
+                  65.0,
+                  168.0,
+                  105.0
+                ],
+                "point_2d": [
+                  161.5,
+                  104.0
+                ],
+                "visible_features": [
+                  73.89873417721519,
+                  87.67088607594937,
+                  120.01898734177215
+                ]
+              },
+              {
+                "frame_ref": "media:fe0969bb6a2665d81c759d83",
+                "timestamp": 2.8,
+                "bbox": [
+                  165.0,
+                  65.0,
+                  182.0,
+                  105.0
+                ],
+                "point_2d": [
+                  173.0,
+                  104.0
+                ],
+                "visible_features": [
+                  76.6046511627907,
+                  85.84143763213531,
+                  112.60887949260042
+                ]
+              }
+            ],
+            "origin": "SYNTHETIC",
+            "image_measurement": true,
+            "authority": "RGB_PIXELS_WITH_SYNTHETIC_CONFIG",
+            "uncertainty": "Local IDs and RGB components may merge/swap; no GT correction.",
+            "region_ids": [
+              "west"
+            ],
+            "projected_path": [
+              [
+                0.7041909199170104,
+                1.886954234613361,
+                0.0
+              ],
+              [
+                1.3058951687174043,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                1.9142127242764624,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                2.5,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                3.108317555559058,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                3.572284782246369,
+                3.778660049627792,
+                0.0
+              ],
+              [
+                4.370013226348216,
+                1.7934306569343068,
+                0.0
+              ],
+              [
+                4.888209662565192,
+                1.7934306569343068,
+                0.0
+              ]
+            ]
+          }
+        ],
+        "retrieval": {
+          "records_read": 1,
+          "frames_read": 0,
+          "bytes_read": 0,
+          "index_entries_touched": 1,
+          "coverage": "EXACT_REGISTERED_BUCKET_WITHIN_WINDOW",
+          "time_range": [
+            0.0,
+            24.0
+          ],
+          "truncated": true,
+          "graph_complete": null,
+          "next_cursor": "p1.eyJ2ZXJzaW9uIjoicDEiLCJmaWx0ZXJfc2hhMjU2IjoiOTFmMDIzZTc5MWNlYzQ4M2RhNGNhZjIyZDAxMmQ3YjUzM2E0NWVhMDE0ODAxMTliMTc2YWQxOTEwOGYyNWM0ZSIsInN0YXJ0X3RpbWUiOjAuMCwiZW5kX3RpbWUiOjIuOCwicmVjb3JkX3JlZiI6Im9ic2VydmF0aW9uOjkzNjBmZmExZTM0ODg5NDdiMTBiNDQ4MyJ9.16739b83ee4723970a2e0ddd7bf92997fd077fbf10bc8aa1d67f0f36f6da248c",
+          "record_set_receipt_sha256": "34d81c58ff14b2aa1e518fd432e57091174dd54800c9aee07b2e965adda3f48b"
+        }
+      }
+    }
+  ]
+}

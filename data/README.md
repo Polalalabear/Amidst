@@ -1,5 +1,19 @@
 # Current data inventory / 目前資料盤點
 
+## 2026-10-08 local Phase 2 product
+
+[Product validation](product/checkpoint_20261008/validation.json), evaluation/mode comparison,
+HTTP/restart and reproduction receipts bind the current local control room to actual frozen
+source/config/producer/registry/media/algorithm hashes. Each mode imports326 immutable read-model
+records over the same244 RGB photos; 150appearance descriptors／18tracks／31stitch hypotheses
+remain local. The SQLite case/report/review ledger persists independently of original evidence.
+
+KEEP:code/docs/locks and curated counts/hashes/aggregate diagnostics only. LOCAL ONLY:
+`product/local_run/` SQLite／fullfeatures／frozen documents／MP4／HTML／evaluationdebug／UI PNG.
+The original E1 RGB/GT materialization is shared, with no new raw copies or worktrees. Operation:
+[local product](../docs/engineering/LOCAL_PHASE2_PRODUCT.md). Formal school/frozen Phase2 and
+concurrent workbench evidence remain separate.
+
 ## 2026-10-08 local camera research extension
 
 [Curated pilot validation](engineering/local_camera_20261008/validation.json) and
