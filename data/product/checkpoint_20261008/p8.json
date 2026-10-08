@@ -1,0 +1,26 @@
+{
+  "actual_rgb_measurement_descriptors": 150,
+  "actual_track_descriptors": 18,
+  "appearance_sha256": "e32934b363c2d1a693bb24ec140c23c70020e790c924002dba41f11f87998a89",
+  "canonical_records_modified": false,
+  "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+  "milestone": "P8",
+  "new_tests": 12,
+  "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+  "ruff": "PASS",
+  "schema_version": "product.milestone.v1",
+  "scoped_passed_tests": 38,
+  "scores_are_probabilities": false,
+  "search_hits": 5,
+  "source_hashes": {
+    "src/amidst/product/appearance.py": "e2d30ecad0a57b85b32449684a5322612226ce5a06d9359dca4e9c939a034f89",
+    "src/amidst/product/stitching.py": "a08aa6716cde7e57d5a81ace3091a7de3ea3aa50a9377a37f59efcf609846c7e",
+    "tests/product/test_appearance.py": "6a7a2ca32c56c3827f3da9ad983e64126060fc742b074040839ad61f84e8d7c6",
+    "tests/product/test_stitching.py": "4d34597dfe6b3bbb63811d7e81bd8673c612d3774c3e184a811174b6b1577eda"
+  },
+  "status": "PIXEL_APPEARANCE_AND_PROVISIONAL_STITCH_IMPLEMENTED",
+  "stitch_hypotheses": 31,
+  "stitch_sha256": "ffd34934a7e985b802bc5b8ccd081f5ebb155cbc790dcb6936dea7fbd5849c28",
+  "strict_mypy": "PASS",
+  "trained_reid": false
+}

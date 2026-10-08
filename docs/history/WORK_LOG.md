@@ -2157,3 +2157,16 @@ English: The operating E1 extension delivers genuine indexed local association, 
 PASS。Record/index/ledger corruption、rollback、conflict、cursor tamper與restart皆覆蓋。
 本機db排除Git；curated receipt見[data/product](../../data/product/checkpoint_20261008/p7.json)。
 此為新純模擬產品續作，不解鎖school/fullExit、live攝影機、外部模型或frozenPhase2。
+
+
+## 2026-10-08 — Local Phase 2 product P8
+
+新增34維handcrafted RGB-crop appearance、quality/代表照片refs、bounded同分Top-K retrieval與
+camera-local short-gap provisional stitching。實際E1 frozen pixels產生150 descriptors／18tracks，
+31 stitch hypotheses；保留所有eligible pairs、unmatched、overlap、不確定HOLD與缺失時間，
+不用GT、trainedReID或globalidentity，不寫原observations/events或虛构handoff。
+
+當次38 tests（12新product＋既有pixel/localassociation）PASS；Ruff／strict mypy PASS。
+RGB/hash/source/run/frame/track lineage、missing/partial、GT污染與alternatives mapping覆蓋。
+Actual hashes/counts見[p8 receipt](../../data/product/checkpoint_20261008/p8.json)；完整featurevectors
+與maps留local，publichits只返refs/quality與未校準similarity，不宣稱精度改善。
