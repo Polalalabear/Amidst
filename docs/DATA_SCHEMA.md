@@ -1,119 +1,17 @@
-# Phase 1 data contracts / Phase 1 資料契約
+# 文件入口 / Compatibility entry
 
-[English](#english) | [繁體中文](#繁體中文)
+正文已分類至 [docs/specs/DATA_SCHEMA.md](specs/DATA_SCHEMA.md)。請從 [文件導覽](README.md) 查找。
 
-## English
+The maintained document is [docs/specs/DATA_SCHEMA.md](specs/DATA_SCHEMA.md). This entry preserves existing links and producer paths.
 
-The authoritative schemas are Pydantic models in `src/amidst/domain/`. Models forbid unknown fields, require finite coordinates/times, retain nullable Phase 2 fields, and serialize enums as strings. Frozen models and tuple sequences prevent accidental in-place mutation.
+<a id="phase-1-data-contracts--phase-1-資料契約"></a>
 
-For the dated inventory of files that are actually materialized, tracked or local-only, see [`data/README.md`](../data/README.md). This document defines contracts; the inventory records current availability.
+[Phase 1 data contracts / Phase 1 資料契約](specs/DATA_SCHEMA.md#phase-1-data-contracts--phase-1-資料契約)
 
-| Model | Producer and permitted consumers | Key boundary |
-| --- | --- | --- |
-| `GroundTruthTrajectory` | Simulation/export; evaluation; debug visualization | `SYNTHETIC`, `GROUND_TRUTH`; never inference input |
-| `Camera` | Blender calibration; simulation and projection | Normalized world pose, pinhole intrinsics, top-left continuous pixels |
-| `Plane` | Explicit projection configuration | Finite point plus unit world normal; labels do not certify walkability |
-| `ObservationFrame` | Simulation; observation/projection services | OBSERVED has pixels; GAP has null pixels/provenance and a reason; no 3D truth |
-| `ProjectedPoint` | Projection; topology/graph/reconstruction | World position plus explicit `plane_id`; PROJECTED only |
-| `Observation` | Evidence aggregation; graph | Observed frames and/or projected path, explicit time window; no GAP frame as evidence |
-| `NavigationGraphConfig` / `NavigationPath` | Explicit walkable configuration; deterministic routing | Directed polylines, internal 3D distance, explicit cross-floor policy |
-| `CameraTopologyConfig` / `CameraTransition` | Camera adjacency and permitted direction | Separate from geometry; `RETURN_TRIP` is not a fixed edge |
-| `MovementConstraints` / `GraphSearchPolicy` | Deterministic graph configuration | Positive speed and finite candidate/node/length/time/branch/detour bounds |
-| `CandidateTrajectory` | Deterministic graph; reconstruction/evaluation | INFERRED_GAP only; polyline, corridor, distance/time/cost and feasibility flags |
-| `ReconstructionResult` / `Event` | Graph/reconstruction; storage/presentation | Alternatives and explicit termination; never ground-truth payloads |
-| `InferenceInput` / `ReconstructionPolicy` | Any synthetic producer; generic pipeline | Separate truth-free JSON; explicit search/movement/timing configs |
-| `TrajectoryHypothesis` / `TimedTrajectoryPoint` / `TrajectorySegment` | Reconstruction; evaluation/debug | Timed route, segment provenance, slack/dwell durations and uncertainty; no probability |
-| `EvaluationConfig` / `ConstraintConfig` / `EvaluationResult` | Evaluation/debug only | Explicit route K, ADE threshold, AABB geometry, metric counts and denominators |
+<a id="english"></a>
 
-`Event.trajectories` defaults to an empty tuple for backwards compatibility. Each timed
-hypothesis references an existing candidate, spans the single blind gap, and has strictly
-ordered points plus contiguous movement/dwell segments. Hypothesis/segment provenance is
-`INFERRED_GAP`; supplied projected boundary samples retain `PROJECTED`. Movement and dwell
-durations cover the gap, and `temporal_slack = gap - minimum_travel_time`. Hypotheses have
-no behavioral probability. `ReconstructionResult` retains the original bounded-search meaning.
+[English](specs/DATA_SCHEMA.md#english)
 
-Curated `data/mock/` stores separate strict `InferenceInput` and `GroundTruthTrajectory`
-JSON for four scenarios. Seed, movement/search/reconstruction policies and evaluation
-thresholds are fixed and reproducible. `constraints.json` supplies a synthetic wall AABB;
-the runner fills its configured navigation graph from the inference input. Evaluation
-counts consecutive timed-point pairs including dwell, tests continuous collisions against
-provided closed AABBs, and checks maximum speed and directed configured corridor membership.
-ADE/FDE use all truth timestamps; mismatched temporal extents fail. K counts distinct
-routes and their first timing hypothesis. Empty results yield null errors/rates, not zero.
+<a id="繁體中文"></a>
 
-Ground Truth JSON and CSV belong in `data/ground_truth/`. `sample_source=BLENDER_EVALUATED` means positions were read from an evaluated Blender proxy; `CONFIGURATION_SAMPLER` is the analytic test helper, not an authoritative Blender export. Configured velocities are piecewise-linear derivatives. Optional source asset SHA-256 binds school motion to calibration/visibility. Seeds are recorded; the baseline sampler itself uses no randomness.
-
-Simulation observation JSON has `{data_kind, scene_id, geometry_policy, frames}` and is stored separately in `data/observations/`. It contains no hidden 3D position or velocity. GAP reasons distinguish FOV/clipping, occlusion, uncertain geometry and budget limits. Geometry is a fixed-frame evaluated VIEWPORT Mesh snapshot; no rendered-image claim is made.
-
-M6 inverse projection binds one calibrated `Camera` to one explicit `Plane`. It rejects GAP evidence, camera mismatch, out-of-image pixels, invalid calibration, invalid planes, parallel/behind-camera intersections and clip violations. Every output records the plane identity and uses ray-plane incidence as a deterministic geometric conditioning quality in `[0, 1]`; this value is neither a probability nor Ground-Truth-derived projection error. Projection Error remains an evaluation-only calculation.
-
-M7 keeps Camera Topology and walkable navigation as separate contracts bound by `navigation_graph_id`, `spatial_context_id` and, for configured scene-derived data, the same source-asset SHA-256. Navigation nodes and directed polyline edges are explicit; reverse movement requires a second edge. Each Camera Transition cites its exact ordered navigation edge sequence rather than silently taking another route. Edge and path distance are recomputed from every 3D segment and never trusted from callers. Cross-floor movement defaults to `DISCONNECTED` and can only use explicit `STAIR_UP` / `STAIR_DOWN` parameterized paths. `SYNTHETIC_TEST_FIXTURE` labels synthetic branching and stair tests. Membership in a configured graph is a caller assertion of walkability, not school-scene certification or Ground Truth.
-
-M8 enumerates topology-authorized transition sequences by cumulative 3D distance. A candidate uses only the exact ordered navigation edges cited by those transitions; consecutive anchors and the two projected endpoint nodes must match, so the engine never inserts an uncited connector or substitutes a shorter route. Equal ordered edge corridors are one physical candidate even if several transition sequences cite them. Positive edge lengths plus `max_path_length_m`, speed feasibility and the other search bounds keep camera-return cycles finite. Same-camera/same-node endpoints have a canonical stationary candidate; different nodes in the same camera require an explicit leave-and-return transition cycle because M7 forbids fixed self-camera transitions. When the stationary route makes the shortest distance zero, `max_path_length_m` bounds those nonzero return cycles instead of a zero detour-ratio product. `complete` means exhaustive only within this configured bounded candidate space. `max_paths` is the caller's requested K and `GraphSearchPolicy.max_candidate_paths` is a hard safety cap; the smaller value applies. `MAX_PATHS_REACHED` is emitted only after a K+1 distinct feasible corridor is found. Search-node, branch and timeout limits remain explicitly incomplete.
-
-Phase 2 track IDs, stitching/fragment counts, appearance embeddings/labels/qualities, tracking quality, directions and video references remain nullable. They are schemas, not detector/tracker/ReID/database implementations. `projection_quality` is a geometric quality indicator, not a calibrated probability.
-
-The schema deliberately permits an empty `OBSERVED` shell so upstream aggregation can represent a declared interval before evidence is attached. That shell is not valid graph evidence. Projection and graph callers must require the projected endpoint(s) needed by their operation; M8 candidate generation must reject observations without projected endpoints.
-
-All time values are synthetic seconds. World coordinates use Blender's right-handed, Z-up
-convention. Existing domain/calibration, pilot and synthetic artifacts retain their historical
-one-unit/one-metre contract; they are not retroactively rescaled or relabelled. School-v3
-architectural scale is explicitly **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**, **1 BU = 0.0247 m**.
-The physical-unit adapter consistently converts new input coordinates and dimensional settings
-before existing metre-based consumers, retains native BU separately, and provides physical-unit
-reporting. Body dimensions, clearance, portal dimensions, contact tolerance, speed and ADE/FDE
-use the same conversion; no domain schema, Graph/Top-K or metric definition is changed.
-Mesh measurements are sanity evidence; scale approval does not approve floor/stair/collider
-or body-clearance authority. See the [scale review](SCHOOL_V3_SCALE_REVIEW.md).
-The caller must explicitly invoke normalization; existing runner/pilot flows retain their
-legacy contracts until that boundary is integrated, with no automatic conversion.
-Camera local axes are +X right, +Y up, -Z forward. Pixels use `0 <= u < width`, `0 <= v < height`;
-near/far clipping uses axial depth. Schema validation does not certify walkability;
-deterministic geometry/topology modules must do so.
-
-## 繁體中文
-
-正式欄位定義以 `src/amidst/domain/` 的 Pydantic models 為準。模型拒絕未知欄位、非有限座標／時間，保留 Phase 2 nullable 欄位；enum 序列化為字串，frozen model 與 tuple 防止原地修改。
-
-目前實際已物化、Git 追蹤或僅存本機的檔案盤點，請見 [`data/README.md`](../data/README.md)。本文件定義契約；盤點文件記錄當前可用狀態。
-
-Ground Truth 僅供 simulation/export、evaluation 與 debug visualization；`BLENDER_EVALUATED` 座標來自 Blender proxy 求值，解析測試取樣器另標為 `CONFIGURATION_SAMPLER`。速度是設定路徑的分段線性導數。基準取樣器不使用隨機性，但仍記錄 seed 與可用的來源資產 SHA-256。
-
-`InferenceInput` 是任何合成 producer 都能替換的無真值入口，保存完整 movement／search／
-reconstruction policies。四組 curated `data/mock/` fixtures 的 GT 另存。`Event.trajectories`
-預設為空 tuple，新增 typed hypothesis／timed point／contiguous segment 契約；每個假設引用
-既有 candidate，記錄 minimum time、slack、movement／dwell duration 與 uncertainty，沒有
-行為機率。Hypothesis／segment 是 `INFERRED_GAP`，實際提供的 projected endpoints 保留
-`PROJECTED`。Graph `ReconstructionResult` 的搜尋結果與 termination 契約不變。
-
-Evaluation 以全部 GT timestamps 線性插值計算 ADE／FDE，拒絕時間範圍不一致；K 計不同
-route 的第一個 timing。空結果回 null errors／rates。物理 metrics 的分母是 consecutive
-timed-point pairs（含 dwell），檢查顯式 AABB 的連續線段碰撞、最大速度與有方向 corridor。
-Fixture `constraints.json` 提供合成 wall box，不代表 school mesh／淨空已通過驗證。
-
-2D Observation 與 Ground Truth 分開儲存。OBSERVED 必須有像素與 OBSERVED provenance；GAP 必須沒有像素／provenance，並記錄 FOV、遮擋、不確定幾何或預算原因。輸出沒有隱藏世界座標或速度。可見性是固定 frame 的 VIEWPORT Mesh 點查詢，並非渲染影像結果。
-
-M6 反投影會把一個校正後 `Camera` 明確綁定至一個 `Plane`。GAP evidence、camera 不一致、超出影像範圍的 pixel、無效校正／平面、平行或位於 camera 後方的交點，以及 clip 違規都會 fail closed。每個輸出都記錄 plane identity，並以 ray-plane incidence 作為 `[0, 1]` 的確定性幾何條件品質；它不是機率，也不是由 Ground Truth 計算的 Projection Error。Projection Error 只屬於 evaluation 邊界。
-
-M7 將 Camera Topology 與可行走 navigation 維持為兩個獨立契約，並以 `navigation_graph_id`、`spatial_context_id`，以及 configured scene-derived data 的相同來源資產 SHA-256 綁定。Navigation node 與有方向的 polyline edge 都必須明確設定，反向移動需要另一條 edge；每個 Camera Transition 引用精確的 ordered navigation edge sequence，不會靜默改走其他路徑。Edge／path 距離由所有 3D segment 重新計算，不信任 caller 提供的長度。跨樓層預設為 `DISCONNECTED`，只能透過顯式 `STAIR_UP`／`STAIR_DOWN` 參數化路徑開啟；合成 branching／stair 測試明記 `SYNTHETIC_TEST_FIXTURE`。加入 configured graph 只是 caller 對 walkability 的宣告，不等於 school 場景認證或 Ground Truth。
-
-M8 依累積 3D 距離列舉 topology-authorized transition sequences。候選只能使用各 transition 明確引用的 ordered navigation edges；相鄰 transition anchors 與兩端 projected node 都必須銜接，不會自行補上未引用的 connector 或改走較短路徑。即使多個 transition sequences 引用相同 ordered edge corridor，也只算一個實體候選。正 edge length、`max_path_length_m`、速度可行性與其他搜尋限制共同使 camera-return cycle 有限。同 camera／同 node 有 canonical stationary candidate；同 camera 不同 node 因 M7 禁止固定 self-camera transition，必須有明確的離開／返回 transition cycle。Stationary route 使最短距離為零時，非零 return cycle 由 `max_path_length_m` 限制，不使用零乘 detour ratio。`complete` 只表示已窮盡這個 configured bounded candidate space。Caller 的 `max_paths` 是要求的 K，`GraphSearchPolicy.max_candidate_paths` 是 hard safety cap，實際採兩者較小值；只有找到第 K+1 條不同的可行 corridor 才回 `MAX_PATHS_REACHED`。Node、branch、timeout 限額終止一律維持 incomplete。
-
-ProjectedPoint 僅允許 PROJECTED；CandidateTrajectory 僅允許 INFERRED_GAP。Observation 可保留原始 observed frames 與 projected path，但不能把 GAP 當作直接證據。ReconstructionResult／Event 保留多解與停止原因，不接受 Ground Truth payload。
-
-Schema 明確允許空的 `OBSERVED` shell，讓上游 aggregation 表示尚未附加證據的宣告區間；但它不等於有效的 Graph Evidence。Projection／Graph caller 必須要求該操作所需的 projected endpoint；M8 候選生成必須拒絕缺少 projected endpoint 的 Observation。
-
-Tracking、stitching、appearance、quality、方向與 video reference 欄位維持 nullable，不代表已實作 Phase 2。Projection quality 是幾何品質指標，不是校準機率。
-
-時間是合成秒數；世界座標採 Blender 右手座標、Z 向上。既有 domain／calibration、pilot
-與 synthetic artifacts 保留歷史 1 unit = 1 公尺契約，不回寫或重新標示舊數值。
-School v3 architectural scale 是明確核准的 **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**、
-**1 BU = 0.0247 m**。Physical-unit adapter 一致換算新 input 座標與 dimensional settings，
-再交給既有 meter-based consumers；原始 BU 另保留並提供 physical-unit reporting。
-人體尺寸、clearance、門洞尺寸、contact tolerance、speed 與 ADE／FDE 共用此換算，
-domain schema、Graph／Top-K 與 metric 定義保持原樣。Mesh 量測只作 sanity evidence；
-尺度核准不批准 floor／stair／collider／body-clearance，見 [scale review](SCHOOL_V3_SCALE_REVIEW.md)。
-Caller 須明確接入 normalization；既有 runner／pilot 在接入前保留 legacy 契約，
-不會因新增 adapter 自動切換單位。
-Camera local 為 +X 右、+Y 上、-Z 前；像素左上為原點、採半開邊界；clip 使用軸向深度。
-Schema 驗證不等於可行走認證，仍需確定性的幾何與拓撲檢查。
+[繁體中文](specs/DATA_SCHEMA.md#繁體中文)

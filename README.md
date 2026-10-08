@@ -96,7 +96,7 @@ Blender 或所需本機資產時，相關 integration tests 可能跳過。
 
 ### 資料與資產
 
-- Git 追蹤 [`data/scene_audit/`](data/scene_audit/) 的唯讀場景／幾何稽核 bundle，
+- Git 追蹤 [`data/scene_audit/`](data/scene_audit) 的唯讀場景／幾何稽核 bundle，
   以及 [`configs/trajectory_fixture.json`](configs/trajectory_fixture.json) 合成 fixture
   設定。兩者都不是 Observation、Ground Truth、影像或 benchmark dataset。
 - 本機 `data/cameras/school_v2_cameras.json` 含 29 台研究用 `CAM_*`，標記為
@@ -113,7 +113,7 @@ Blender 或所需本機資產時，相關 integration tests 可能跳過。
   ADE／FDE reporting 透過一致的單位 adapter 換算，mesh 量測只作 sanity-check。
   既有 runner／pilot 保留 legacy 契約，須由 caller 顯式接入 normalization 才切換。
   Floor／stair／volume／body-clearance authority 仍各自待核准；見
-  [scale review](docs/SCHOOL_V3_SCALE_REVIEW.md)。只有 29 台
+  [scale review](docs/specs/SCHOOL_V3_SCALE_REVIEW.md)。只有 29 台
   `CAM_*` 可用於研究；imported SketchUp camera 因 lens 為非有限值而排除。
 
 精確檔案、雜湊、筆數與目前 materialization 狀態請見
@@ -139,18 +139,19 @@ docs/                   產品、設計、契約、決策與交接文件
 
 ### 文件導覽
 
-- [研究範圍與需求](docs/PRD.md)
-- [系統設計](docs/SYSTEM_DESIGN.md)
-- [資料契約](docs/DATA_SCHEMA.md)
-- [模組介面與 export 指令](docs/INTERFACES.md)
-- [Semantic validator 與人工審核入口](docs/SCENE_VALIDATION.md)
+- [分類文件總覽](docs/README.md)
+- [研究範圍與需求](docs/specs/PRD.md)
+- [系統設計](docs/specs/SYSTEM_DESIGN.md)
+- [資料契約](docs/specs/DATA_SCHEMA.md)
+- [模組介面與 export 指令](docs/specs/INTERFACES.md)
+- [Semantic validator 與人工審核入口](docs/specs/SCENE_VALIDATION.md)
 - [正式 Benchmark Protocol 與未決研究設定](docs/PHASE1_BENCHMARK_PROTOCOL.md)
-- [Benchmark runner 與 comparison reporting](docs/PHASE1_BENCHMARK.md)
-- [已確認決策與開放邊界](docs/ISSUES_AND_DECISIONS.md)
-- [開發與文件維護規則](docs/DEVELOPMENT_RULES.md)
-- [已完成工作紀錄](docs/WORK_LOG.md)
+- [Benchmark runner 與 comparison reporting](docs/research/PHASE1_BENCHMARK.md)
+- [已確認決策與開放邊界](docs/specs/ISSUES_AND_DECISIONS.md)
+- [開發與文件維護規則](docs/specs/DEVELOPMENT_RULES.md)
+- [已完成工作紀錄](docs/history/WORK_LOG.md)
 - [目前資料盤點](data/README.md)
-- [最新開發交接](docs/CODEX_HANDOFF.md)
+- [最新開發交接](docs/operations/CODEX_HANDOFF.md)
 
 ## English
 
@@ -245,7 +246,7 @@ local asset may skip.
 ### Data and assets
 
 - Git tracks the read-only scene/geometry audit bundle in
-  [`data/scene_audit/`](data/scene_audit/) and the synthetic fixture configuration
+  [`data/scene_audit/`](data/scene_audit) and the synthetic fixture configuration
   in [`configs/trajectory_fixture.json`](configs/trajectory_fixture.json).
   Neither is an Observation, Ground Truth, image or benchmark dataset.
 - The local `data/cameras/school_v2_cameras.json` contains 29 research `CAM_*`
@@ -264,7 +265,7 @@ local asset may skip.
   are sanity checks. Existing runner/pilot flows retain their legacy contracts until callers
   explicitly integrate normalization. Floor/stair/volume/body-clearance authorities remain
   pending; see
-  the [scale review](docs/SCHOOL_V3_SCALE_REVIEW.md). Only the 29 `CAM_*` cameras are
+  the [scale review](docs/specs/SCHOOL_V3_SCALE_REVIEW.md). Only the 29 `CAM_*` cameras are
   research-eligible; the imported SketchUp
   camera is excluded because its lens is non-finite.
 
@@ -291,15 +292,16 @@ docs/                   Product, design, contract, decision and handoff docs
 
 ### Documentation
 
-- [Research scope and requirements](docs/PRD.md)
-- [System design](docs/SYSTEM_DESIGN.md)
-- [Data contracts](docs/DATA_SCHEMA.md)
-- [Module interfaces and export commands](docs/INTERFACES.md)
-- [Semantic validation and human review](docs/SCENE_VALIDATION.md)
+- [Categorized documentation index](docs/README.md)
+- [Research scope and requirements](docs/specs/PRD.md)
+- [System design](docs/specs/SYSTEM_DESIGN.md)
+- [Data contracts](docs/specs/DATA_SCHEMA.md)
+- [Module interfaces and export commands](docs/specs/INTERFACES.md)
+- [Semantic validation and human review](docs/specs/SCENE_VALIDATION.md)
 - [Formal benchmark protocol and unresolved settings](docs/PHASE1_BENCHMARK_PROTOCOL.md)
-- [Benchmark runner and comparison reporting](docs/PHASE1_BENCHMARK.md)
-- [Accepted decisions and open boundaries](docs/ISSUES_AND_DECISIONS.md)
-- [Development and documentation rules](docs/DEVELOPMENT_RULES.md)
-- [Completed work log](docs/WORK_LOG.md)
+- [Benchmark runner and comparison reporting](docs/research/PHASE1_BENCHMARK.md)
+- [Accepted decisions and open boundaries](docs/specs/ISSUES_AND_DECISIONS.md)
+- [Development and documentation rules](docs/specs/DEVELOPMENT_RULES.md)
+- [Completed work log](docs/history/WORK_LOG.md)
 - [Current data inventory](data/README.md)
-- [Latest development handoff](docs/CODEX_HANDOFF.md)
+- [Latest development handoff](docs/operations/CODEX_HANDOFF.md)
