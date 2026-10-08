@@ -123,6 +123,86 @@ def test_stable_keyset_paging_preserves_equal_time_records(tmp_path: Path) -> No
         assert len({r.record_ref for r in collected}) == len(rows)
 
 
+@pytest.mark.parametrize("indexed", [False, True])
+def test_record_ref_allowlist_is_applied_before_paging(
+    tmp_path: Path, indexed: bool,
+) -> None:
+    binding = scope()
+    rows = tuple(record(binding, n, time_range=(n // 3, n // 3 + 2)) for n in range(180))
+    selected = rows[150:157] + rows[170:175]
+    query = RecordQuery(
+        run_ref=binding.run_ref, kind="EVENT", time_range=(0, 80), limit=3,
+        record_refs=tuple(row.record_ref for row in selected),
+        camera_id="CAM_A" if indexed else None,
+        region_id="west" if indexed else None,
+    )
+    with SQLiteProductStore(tmp_path / "store.sqlite") as store:
+        import_batch(store, binding, rows)
+        collected = []
+        while True:
+            page = store.query_records(query)
+            collected.extend(page.records)
+            if page.next_cursor is None:
+                assert page.query_complete
+                break
+            assert not page.query_complete
+            query = RecordQuery.model_validate(query.model_dump() | {"cursor": page.next_cursor})
+        assert tuple(collected) == tuple(sorted(
+            selected, key=lambda row: (*row.time_range, row.record_ref),
+        ))
+        assert len({row.record_ref for row in collected}) == len(selected)
+        # Explicitly absent refs do not widen the result or alter stored records.
+        absent = RecordQuery.model_validate(query.model_dump() | {
+            "cursor": None, "record_refs": (opaque_ref("event", "absent"),),
+        })
+        assert store.query_records(absent).records == ()
+        assert store.verify_run(binding.run_ref) == RecordSetReceipt.create(binding, rows)
+
+
+def test_record_ref_filter_binds_cursor_and_distinguishes_empty_from_all(tmp_path: Path) -> None:
+    binding = scope()
+    rows = tuple(record(binding, n, time_range=(n, n + 1)) for n in range(8))
+    query = RecordQuery(run_ref=binding.run_ref, kind="EVENT", time_range=(0, 20), limit=1,
+                        record_refs=tuple(row.record_ref for row in rows[3:6]))
+    path = tmp_path / "store.sqlite"
+    with SQLiteProductStore(path) as store:
+        import_batch(store, binding, rows)
+        first = store.query_records(query)
+        assert first.records == rows[3:4]
+        assert first.next_cursor is not None
+        cursor = first.next_cursor
+    with SQLiteProductStore(path) as store:
+        continued = RecordQuery.model_validate(query.model_dump() | {"cursor": cursor})
+        assert store.query_records(continued).records == rows[4:5]
+        for other_refs in (None, (), tuple(row.record_ref for row in rows[4:7]),
+                           tuple(reversed(query.record_refs or ()))):
+            changed = RecordQuery.model_validate(continued.model_dump() | {
+                "record_refs": other_refs,
+            })
+            with pytest.raises(StoreError, match="CURSOR_INVALID"):
+                store.query_records(changed)
+        empty_query = RecordQuery.model_validate(query.model_dump() | {"record_refs": ()})
+        empty = store.query_records(empty_query)
+        assert empty.records == () and empty.query_complete and empty.next_cursor is None
+        all_query = RecordQuery.model_validate(query.model_dump() | {
+            "record_refs": None, "limit": 50,
+        })
+        assert store.query_records(all_query).records == rows
+        assert empty_query.filter_sha256 != all_query.filter_sha256
+
+
+def test_record_ref_filter_is_bounded_and_rejects_duplicates() -> None:
+    values = {"run_ref": scope().run_ref, "kind": "EVENT", "time_range": (0, 20)}
+    with pytest.raises(ValidationError, match="RECORD_FILTER_DUPLICATE"):
+        RecordQuery.model_validate(values | {
+            "record_refs": (opaque_ref("event", "1"), opaque_ref("event", "1")),
+        })
+    with pytest.raises(ValidationError):
+        RecordQuery.model_validate(values | {
+            "record_refs": tuple(opaque_ref("event", str(n)) for n in range(4097)),
+        })
+
+
 def test_persistent_cursor_cannot_change_run_kind_or_filter(tmp_path: Path) -> None:
     path = tmp_path / "store.sqlite"
     binding, other = scope(), scope("other")
@@ -247,6 +327,77 @@ def test_revision_invalid_version_or_unknown_run_has_no_side_effect(tmp_path: Pa
             store.append_revision(scope("unknown").run_ref, "CASE", opaque_ref("case", "test"),
                                   {}, expected_version=0)
         assert store._db.execute("SELECT count(*) FROM revisions").fetchone()[0] == 0
+
+
+def test_latest_revisions_are_scoped_bounded_and_restart_with_latest_only(tmp_path: Path) -> None:
+    path = tmp_path / "store.sqlite"
+    binding, other = scope(), scope("other")
+    refs = sorted(opaque_ref("case", str(number)) for number in range(4))
+    with SQLiteProductStore(path) as store:
+        import_batch(store, binding, ())
+        import_batch(store, other, ())
+        assert store.list_latest_revisions(binding.run_ref, "CASE") == ()
+        expected = []
+        for ref in reversed(refs):
+            store.append_revision(binding.run_ref, "CASE", ref, {"status": "OPEN"},
+                                  expected_version=0)
+            store.append_revision(binding.run_ref, "CASE", ref, {"status": "REVIEWED"},
+                                  expected_version=1)
+            expected.append(store.append_revision(binding.run_ref, "CASE", ref,
+                                                  {"status": "CLOSED"}, expected_version=2))
+        foreign = store.append_revision(other.run_ref, "CASE", refs[0], {"status": "FOREIGN"},
+                                        expected_version=0)
+        report = store.append_revision(binding.run_ref, "REPORT", refs[0], {"status": "REPORT"},
+                                       expected_version=0)
+    with SQLiteProductStore(path) as store:
+        expected.sort(key=lambda revision: revision.entity_ref)
+        assert store.list_latest_revisions(binding.run_ref, "CASE") == tuple(expected)
+        assert store.list_latest_revisions(binding.run_ref, "CASE", limit=2) == tuple(expected[:2])
+        assert store.list_latest_revisions(other.run_ref, "CASE") == (foreign,)
+        assert store.list_latest_revisions(binding.run_ref, "REPORT") == (report,)
+        assert store.list_latest_revisions(binding.run_ref, "REVIEW") == ()
+        assert store.verify_run(binding.run_ref).records == ()
+        with pytest.raises(StoreError, match="RUN_UNAVAILABLE"):
+            store.list_latest_revisions(scope("absent").run_ref, "CASE")
+
+
+@pytest.mark.parametrize("limit", [True, False, 0, -1, 501, 1.5, "2"])
+def test_latest_revisions_reject_invalid_limits(tmp_path: Path, limit: object) -> None:
+    binding = scope()
+    with SQLiteProductStore(tmp_path / "store.sqlite") as store:
+        import_batch(store, binding, ())
+        with pytest.raises(StoreError, match="REVISION_LIMIT_INVALID"):
+            store.list_latest_revisions(binding.run_ref, "CASE", limit=limit)
+        with pytest.raises(StoreError, match="REVISION_KIND_INVALID"):
+            store.list_latest_revisions(binding.run_ref, "CASE' OR 1=1 --")
+
+
+@pytest.mark.parametrize("mutation", ["envelope", "previous", "row-version", "oldest"])
+def test_latest_revisions_reject_ledger_corruption(tmp_path: Path, mutation: str) -> None:
+    path = tmp_path / "store.sqlite"
+    binding = scope()
+    ref = opaque_ref("case", "tampered")
+    with SQLiteProductStore(path) as store:
+        import_batch(store, binding, ())
+        store.append_revision(binding.run_ref, "CASE", ref, {"status": "OPEN"}, expected_version=0)
+        store.append_revision(binding.run_ref, "CASE", ref, {"status": "REVIEWED"},
+                              expected_version=1)
+        store.append_revision(binding.run_ref, "CASE", ref, {"status": "CLOSED"},
+                              expected_version=2)
+    with sqlite3.connect(path) as corruptor:
+        if mutation in ("envelope", "oldest"):
+            corruptor.execute("DROP TRIGGER immutable_revisions_UPDATE")
+            corruptor.execute("UPDATE revisions SET revision_sha256=? WHERE version=?",
+                              ("f" * 64, 3 if mutation == "envelope" else 1))
+        elif mutation == "previous":
+            corruptor.execute("DROP TRIGGER immutable_revisions_DELETE")
+            corruptor.execute("DELETE FROM revisions WHERE version=1")
+        else:
+            corruptor.execute("DROP TRIGGER immutable_revisions_UPDATE")
+            corruptor.execute("UPDATE revisions SET version=4 WHERE version=3")
+    with SQLiteProductStore(path) as store:
+        with pytest.raises(StoreIntegrityError, match="REVISION_.*INTEGRITY_INVALID"):
+            store.list_latest_revisions(binding.run_ref, "CASE")
 
 
 @pytest.mark.parametrize("payload", [

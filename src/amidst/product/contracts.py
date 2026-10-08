@@ -1,8 +1,8 @@
 """Strict public presentation/retrieval contracts over verified synthetic records."""
 
-from typing import Literal
+from typing import Any, Literal
 
-from pydantic import Field
+from pydantic import Field, model_validator
 
 from amidst.domain.common import DomainModel, Timestamp, Vec3
 from amidst.domain.trajectory import CandidateTrajectory, TrajectoryHypothesis
@@ -86,6 +86,8 @@ class EventSummary(DomainModel):
     canonical_event_id: str | None
     termination_reason: str | None
     complete: bool | None
+    candidate_count: int = Field(ge=0, strict=True)
+    hypothesis_count: int = Field(ge=0, strict=True)
     detail_ref: ResourceRef
     replay_ref: ResourceRef | None
     origin: Literal["SYNTHETIC"]
@@ -99,6 +101,21 @@ class EventDetail(EventSummary):
     projected_path: tuple[ProjectedPoint, ...]
     candidates: tuple[CandidateTrajectory, ...]
     trajectories: tuple[TrajectoryHypothesis, ...]
+
+    @model_validator(mode="before")
+    @classmethod
+    def derived_counts(cls, value: Any) -> Any:
+        if isinstance(value, dict):
+            value = dict(value)
+            for field, source in (("candidate_count", "candidates"),
+                                  ("hypothesis_count", "trajectories")):
+                if isinstance(value.get(source), (list, tuple)):
+                    count = len(value[source])
+                    if field in value and (type(value[field]) is not int
+                                           or value[field] != count):
+                        raise ValueError("summary count differs from canonical detail")
+                    value[field] = count
+        return value
 
 
 class CameraSummary(DomainModel):
@@ -138,6 +155,8 @@ class ProductContext(DomainModel):
     context: TaskContext
     product_version: Literal["local-product.v1"] = "local-product.v1"
     product_freeze_ref: str
+    operator_ref: ResourceRef
+    role: Literal["TRUSTED_LOCAL_OPERATOR"] = "TRUSTED_LOCAL_OPERATOR"
     allowed_tools: tuple[str, ...]
     external_model_calls: Literal[False] = False
 
@@ -151,6 +170,9 @@ class Marker(DomainModel):
     interpolated: bool
     candidate_ref: str | None = None
     hypothesis_ref: str | None = None
+    camera_id: str | None = None
+    source_frame_ref: ResourceRef | None = None
+    sample_offset_seconds: float | None = None
 
 
 class FrameSelection(DomainModel):

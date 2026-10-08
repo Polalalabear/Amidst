@@ -1,0 +1,141 @@
+{
+  "algorithms": {
+    "api.py": "02538bd8dc13ca4c223f384a6fedbeb5a48ca4a5d5cef53c05a0a21216e5351c",
+    "appearance.py": "e2d30ecad0a57b85b32449684a5322612226ce5a06d9359dca4e9c939a034f89",
+    "contracts.py": "ac293beab6f7628302f29e1c660b1a738569af603c3f27ca30d86abd1807871f",
+    "evaluation.py": "98d769e51b8d9e4b3ef47374c9a915db16b893158abe46fdfbd8d15a66d18d11",
+    "investigation.py": "0bac7fb78e170e2a7fc6311bab60061ec03b31ba9e01fbe616c338a57768b0df",
+    "operator.py": "150a6e3080f2229352a3e1fa6ac7590b75da5763af8fbfcb432952d445ea3569",
+    "run.py": "3af5265b107d0a832269e002fb255d8791f821ff947e99995d19b602b434e482",
+    "service.py": "c74b20f691d28bc831101feff62c7e4bd65dee0c5fa73a50f33c3faf96c0fee6",
+    "stitching.py": "a08aa6716cde7e57d5a81ace3091a7de3ea3aa50a9377a37f59efcf609846c7e",
+    "store.py": "da38814fd063064b3a4d911b1dd0e37011238bd14662445e084bee8db4805b69",
+    "timeline.py": "f97f09022204a26f9bf25bc734b693a30c3516918eb66904624bd4efbc923fba",
+    "video.py": "fab9adcfdcc1ec5bd8d9450c06645a6e001bd3091ad2baec77ea2dd980027ced"
+  },
+  "external_model_calls": false,
+  "formal_phase1_acceptance": false,
+  "frontend_source_sha256": {
+    "frontend/product/app.mjs": "f16080036b5a54cfef7aed66fa1d83b6478a9416d6b3459767c5f8dd67d5ec1a",
+    "frontend/product/index.html": "5df546470e19c8af81eb49d968091c7602292d1caef131989b70cc5fc110a583",
+    "frontend/product/package-lock.json": "aeab72d5e5736a61182d090c86b2ee5efd38d6b7ff9117edb495bec2281bbd6e",
+    "frontend/product/package.json": "b8d1c9ae08469ddd424caa1cf50194e0ec960f89d7ecda6024b3e0ef97306103",
+    "frontend/product/style.css": "6fa0367882d0bc901f44462748462d8d98656637ac72d95148335bc843e385b0",
+    "frontend/product/timeline.mjs": "6fbe2446bb610382274069e541474529a61de884eb18689f708bdb2960efe909",
+    "frontend/product/timeline.test.mjs": "5ca86f4c5119203bf3ef2b4a9b347b8a1a9986536788cec1b2aebdad4d504aed"
+  },
+  "milestone": "P10-P11",
+  "mode_bindings": [
+    {
+      "canonical_records": 326,
+      "mode": "photos_only",
+      "product_freeze_ref": "freeze:b16f4c263f88e3c32172f2c6",
+      "record_set_receipt_sha256": "6f6e892acb3d20f1cd513c5fac1a017252e64351941be98718c60d1a9e5d00d5",
+      "scope": {
+        "config_sha256": "48da56139d887471eb90f0232b225983d139e83bfd1d33f86348ffec7d5737bf",
+        "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+        "freeze_sha256": "5dd3e8aea64dff9ca3a1c9049c1873b44e6cc3a43049cff673801aef981cf8f5",
+        "inference_sha256": "3875bf512dc3482477b4c3986e2ef744c03b217e82eb868b038a7a6e087789f9",
+        "media_sha256": "8961a1b5b4d5456a7fca387e69ccdc840844199d877886aab9871c9235b7bfbf",
+        "observation_mode": "photos_only",
+        "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+        "registry_sha256": "7da7c1aafda6397cd61f95a5a4db3835e7c627360bda9a4f428b71072d97f937",
+        "resource_scope": {
+          "clock_id": "synthetic-seconds-v1",
+          "model_id": "synthetic-local-camera-v1",
+          "model_revision": "1",
+          "place_id": "synthetic-local-camera",
+          "run_id": "local-camera-test-v1",
+          "source_id": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "source_sha256": "91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "spatial_context_id": "context:synthetic-local-camera-v1",
+          "spatial_context_sha256": "e349eba8782b78937700b7bf1f83921c5fb458e62d8c3975e90bda0ee6fb0132"
+        }
+      }
+    },
+    {
+      "canonical_records": 326,
+      "mode": "photos_plus_observations",
+      "product_freeze_ref": "freeze:81acae2de59581e4eb310a42",
+      "record_set_receipt_sha256": "34d81c58ff14b2aa1e518fd432e57091174dd54800c9aee07b2e965adda3f48b",
+      "scope": {
+        "config_sha256": "48da56139d887471eb90f0232b225983d139e83bfd1d33f86348ffec7d5737bf",
+        "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+        "freeze_sha256": "c1c9ba84e96e4633fd578be6d3872476b81e9e73b9729feff40375f1afa7e497",
+        "inference_sha256": "3875bf512dc3482477b4c3986e2ef744c03b217e82eb868b038a7a6e087789f9",
+        "media_sha256": "8961a1b5b4d5456a7fca387e69ccdc840844199d877886aab9871c9235b7bfbf",
+        "observation_mode": "photos_plus_observations",
+        "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+        "registry_sha256": "7da7c1aafda6397cd61f95a5a4db3835e7c627360bda9a4f428b71072d97f937",
+        "resource_scope": {
+          "clock_id": "synthetic-seconds-v1",
+          "model_id": "synthetic-local-camera-v1",
+          "model_revision": "1",
+          "place_id": "synthetic-local-camera",
+          "run_id": "local-camera-test-v1",
+          "source_id": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "source_sha256": "91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+          "spatial_context_id": "context:synthetic-local-camera-v1",
+          "spatial_context_sha256": "e349eba8782b78937700b7bf1f83921c5fb458e62d8c3975e90bda0ee6fb0132"
+        }
+      }
+    }
+  ],
+  "origin": "SYNTHETIC",
+  "presentation": {
+    "actual_cameras": 4,
+    "additional_observed_samples_created": false,
+    "annotated_video": false,
+    "source_rgb_and_cv_rate_hz": 2.5,
+    "video_presentation_rate_hz": 15
+  },
+  "product_config_sha256": "48da56139d887471eb90f0232b225983d139e83bfd1d33f86348ffec7d5737bf",
+  "product_manifest_sha256": "d2d9aae41af0498e58b7f4ffb388614ed3fe71b4d78f1f032bf14ed6f4baf8ad",
+  "production_deployment": false,
+  "schema_version": "product.milestone.v1",
+  "source_documents": {
+    "behavior_config.json": "9a4e656562397f1bcafa0d2f4452e0a9926d42d3f5a9fa23fcfb7acdcab62b86",
+    "events_photos_only.json": "2fc779497a458d90533b8e4675317c7716d58f88b0b5b206122e33030b2cda31",
+    "events_photos_plus_observations.json": "2fc779497a458d90533b8e4675317c7716d58f88b0b5b206122e33030b2cda31",
+    "inference_photos_only.json": "5651ff30e9c412db622ca9cf94536efcba5b3051db6ac6a3725cad4cb6a9629d",
+    "inference_photos_plus_observations.json": "5651ff30e9c412db622ca9cf94536efcba5b3051db6ac6a3725cad4cb6a9629d",
+    "manifest.json": "c0e35f18a17cafecdcc03b1875b99fc7ec7ff87e022bc091e92c2b1371c3c94e",
+    "package.json": "ff2697921c9e17799382714abb607266065cae3541f1487be5a7a6705ebcf5e4",
+    "perception_photos_only.json": "ea2aa2112b94896c66c0911775eacabb40e76fdb251a27bcac95e0ee8edeb7bc",
+    "perception_photos_plus_observations.json": "ea2aa2112b94896c66c0911775eacabb40e76fdb251a27bcac95e0ee8edeb7bc",
+    "registry.json": "2b8321487e95f751323cac80d446b4dfe15829eb11cf3685250b079b51daa9bf",
+    "runtime_config.json": "8a311c3710185f22969989dd9451973fab218f31d7a548c181bbe21eaa93345c",
+    "topology.json": "42211b7a69415aee71e752d72f7d9239fcb49b31ef0565715a749974b874020d"
+  },
+  "status": "OPERATING_LOCAL_SYNTHETIC_PRODUCT",
+  "validation": {
+    "actual_browser": [
+      "seed_selection",
+      "two_subject_plan",
+      "execution_report_review",
+      "RGB_and_all_3D_alternatives",
+      "video_clock_and_seek",
+      "saved_case_after_restart",
+      "local_HTML_download",
+      "mode_switch_clears_answers"
+    ],
+    "actual_initial_http_requests": 77,
+    "actual_restart_http_requests": 69,
+    "dependencies": {
+      "imageio-ffmpeg": "0.6.0",
+      "three": "0.186.1"
+    },
+    "excluded_concurrent_tests": [
+      "tests/workbench"
+    ],
+    "frontend_tests_passed": 13,
+    "ruff": "PASS",
+    "strict_mypy": "PASS",
+    "tests_failed": 0,
+    "tests_passed": 2592,
+    "tests_skipped": 0,
+    "typed_source_files": 159
+  },
+  "validation_parent_commit": "9c68fffac872b65720933d8c23562365c0c08437",
+  "video_manifest_sha256": "59c3bb9ceca01c4ef63a99b3863c4ebc193ef3b5fff79cf782eb8aacba4b08a5"
+}

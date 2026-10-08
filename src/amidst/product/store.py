@@ -176,6 +176,9 @@ class RecordQuery(RegistryModel):
     time_range: tuple[Timestamp, Timestamp]
     camera_id: str | None = Field(default=None, min_length=1)
     region_id: str | None = Field(default=None, min_length=1)
+    # Server-derived allowlist, applied before keyset paging. None selects all;
+    # an empty tuple selects none. Callers never supply a SQL predicate.
+    record_refs: tuple[ResourceRef, ...] | None = Field(default=None, max_length=4096)
     limit: int = Field(default=50, gt=0, le=500, strict=True)
     cursor: str | None = Field(default=None, min_length=1, max_length=4096)
 
@@ -183,6 +186,8 @@ class RecordQuery(RegistryModel):
     def ordered(self) -> Self:
         if self.time_range[1] < self.time_range[0]:
             raise ValueError("TIME_RANGE_INVALID")
+        if self.record_refs is not None and len(set(self.record_refs)) != len(self.record_refs):
+            raise ValueError("RECORD_FILTER_DUPLICATE")
         return self
 
     @property
@@ -529,6 +534,13 @@ class SQLiteProductStore:
                               "x.run_ref=r.run_ref AND x.kind=r.kind "
                               "AND x.record_ref=r.record_ref AND x.region_id=?)")
             parameters.append(query.region_id)
+        if query.record_refs is not None:
+            if query.record_refs:
+                placeholders = ",".join("?" for _ in query.record_refs)
+                conditions.append(f"r.record_ref IN ({placeholders})")
+                parameters.extend(query.record_refs)
+            else:
+                conditions.append("0")
         if cursor is not None:
             conditions.append("(r.start_time,r.end_time,r.record_ref)>(?,?,?)")
             parameters.extend((cursor.start_time, cursor.end_time, cursor.record_ref))
@@ -590,24 +602,30 @@ class SQLiteProductStore:
             version is not None and revision.version != version
         ):
             raise StoreIntegrityError("REVISION_INTEGRITY_INVALID")
-        if revision.version > 1:
-            previous_row = self._db.execute(
-                "SELECT revision_json,revision_sha256 FROM revisions "
-                "WHERE run_ref=? AND kind=? AND entity_ref=? AND version=?",
-                (run_ref, kind, entity_ref, revision.version - 1),
-            ).fetchone()
-            if previous_row is None or revision.previous_sha256 != previous_row[1]:
-                raise StoreIntegrityError("REVISION_CHAIN_INTEGRITY_INVALID")
+        expected_version = revision.version - 1
+        expected_hash = revision.previous_sha256
+        previous_rows = self._db.execute(
+            "SELECT revision_json,revision_sha256,version FROM revisions "
+            "WHERE run_ref=? AND kind=? AND entity_ref=? AND version<? ORDER BY version DESC",
+            (run_ref, kind, entity_ref, revision.version),
+        )
+        for previous_row in previous_rows:
             try:
                 previous = Revision.model_validate_json(previous_row[0])
             except ValueError:
                 raise StoreIntegrityError("REVISION_CHAIN_INTEGRITY_INVALID") from None
-            if previous.revision_sha256 != previous_row[1]:
-                raise StoreIntegrityError("REVISION_CHAIN_INTEGRITY_INVALID")
-            if (previous.run_ref, previous.kind, previous.entity_ref, previous.version) != (
-                run_ref, kind, entity_ref, revision.version - 1
+            if previous.revision_sha256 != previous_row[1] or (
+                previous_row[1] != expected_hash or previous_row[2] != expected_version
             ):
                 raise StoreIntegrityError("REVISION_CHAIN_INTEGRITY_INVALID")
+            if (previous.run_ref, previous.kind, previous.entity_ref, previous.version) != (
+                run_ref, kind, entity_ref, expected_version
+            ):
+                raise StoreIntegrityError("REVISION_CHAIN_INTEGRITY_INVALID")
+            expected_version -= 1
+            expected_hash = previous.previous_sha256
+        if expected_version != 0 or expected_hash is not None:
+            raise StoreIntegrityError("REVISION_CHAIN_INTEGRITY_INVALID")
         return revision
 
     def list_revisions(
@@ -626,4 +644,25 @@ class SQLiteProductStore:
                 raise StoreIntegrityError("REVISION_CHAIN_INTEGRITY_INVALID")
             result.append(revision)
             previous_hash = revision.revision_sha256
+        return tuple(result)
+
+    def list_latest_revisions(
+        self, run_ref: str, kind: EntityKind, *, limit: int = 101,
+    ) -> tuple[Revision, ...]:
+        """Read one verified revision per scoped entity, in stable ref order."""
+        self.get_scope(run_ref)
+        if kind not in ("CASE", "REPORT", "REVIEW"):
+            raise StoreError("REVISION_KIND_INVALID")
+        if type(limit) is not int or not 1 <= limit <= 500:
+            raise StoreError("REVISION_LIMIT_INVALID")
+        rows = tuple(self._db.execute(
+            "SELECT entity_ref,MAX(version) FROM revisions WHERE run_ref=? AND kind=? "
+            "GROUP BY entity_ref ORDER BY entity_ref LIMIT ?", (run_ref, kind, limit),
+        ))
+        result = []
+        for row in rows:
+            revision = self.get_revision(run_ref, kind, row[0], row[1])
+            if revision is None:
+                raise StoreIntegrityError("REVISION_INTEGRITY_INVALID")
+            result.append(revision)
         return tuple(result)

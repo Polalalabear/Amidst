@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amidst · 模擬調查控制室</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="/">AMIDST <span>研究控制室</span></a>
+<div class="source-badge"><i></i> 本機合成環境 <span>無外部模型</span></div></header>
+<div class="page-heading"><div><p class="eyebrow">LOCAL INVESTIGATION WORKSPACE</p><h1>從影像證據，追查可能的事件。</h1>
+<p class="lead">操作員選擇調查範圍；服務查找證據與路線。人物關聯和替代假說持續保留。</p></div>
+<div class="scope-box"><label for="session">輸入模式</label><select id="session" aria-label="輸入模式"></select>
+<p id="scopeLabel">正在定位資料來源…</p></div></div>
+<main class="workspace">
+<aside class="controls panel">
+<div class="section-heading"><span class="step">01</span><h2>調查範圍</h2></div>
+<label for="camera">起點鏡頭</label><select id="camera"></select>
+<div class="time-inputs"><label>開始秒數<input id="start" type="number" value="0" min="0" step="0.4"></label>
+<label>結束秒數<input id="end" type="number" value="24" min="0" step="0.4"></label></div>
+<div class="button-row"><button id="loadSeeds">查找人物片段</button><button id="queryEvents" class="secondary">查事件</button></div>
+<div class="section-heading spaced"><span class="step">02</span><h2>人物種子</h2></div>
+<p class="hint">相機內的像素追蹤片段，尚未確認跨鏡頭身分。比較時選兩個；多目標可選數個。</p>
+<div id="seeds" class="seed-list"><p class="empty">先選鏡頭及時間範圍。</p></div>
+<button id="appearance" class="secondary full">查找相似外觀</button>
+<div class="section-heading spaced"><span class="step">03</span><h2>調查意圖</h2></div>
+<label for="task">支援任務</label><select id="task"><option value="TRACE">追查單一種子</option>
+<option value="COMPARE">比較兩個種子</option><option value="BEHAVIOR">查詢局部行為證據</option>
+<option value="MULTI_TARGET">多目標歧義調查</option></select>
+<label for="intent">中文／英文模板（選填）</label><input id="intent" maxlength="160" placeholder="追查目標 / trace target">
+<p class="hint">支援「比較目標 / compare targets」、「查詢行為 / inspect behavior」、「多目標調查 / multi target」。時間與鏡頭由上方明列。</p>
+<button id="compile" class="primary full">建立安全調查計畫 <span>→</span></button>
+<div id="planSummary" class="plan-summary empty">尚未建立計畫。</div>
+<div class="button-row"><button id="execute" disabled>執行</button><button id="pause" class="secondary" disabled>停止</button>
+<button id="resume" class="secondary" disabled>續跑</button></div>
+<p class="hint">每次執行有限步數，可在保存的步驟邊界暫停。繼續執行沿用原 scope 與預算。</p>
+<div class="section-heading spaced"><span class="step">04</span><h2>保存的調查</h2></div>
+<label for="history">此 session 的計畫清單</label><select id="history" disabled><option value="">尚未載入</option></select>
+<div class="button-row"><button id="loadPlan" class="secondary" disabled>開啟保存計畫</button>
+<button id="reloadHistory" class="secondary" disabled>重新整理清單</button></div>
+<p id="historyStatus" class="hint">此 session 尚未取得保存計畫。開啟只讀取原計畫與 case，不重跑推論或調查。</p>
+<details class="raw"><summary>計畫與資源 references</summary><pre id="planRaw"></pre><pre id="contextRaw"></pre></details>
+</aside>
+<div class="main-column">
+<div id="status" class="status" role="status" aria-live="polite">載入控制室…</div>
+<section class="panel evidence-stage">
+<div class="section-heading"><div><p class="eyebrow">SYNCHRONIZED EVIDENCE</p><h2>照片來源與 3D 替代路線</h2></div>
+<span class="chip">SOFT SYNCHRONIZATION</span></div>
+<div class="playback-controls"><button id="play" disabled>▶ 播放</button><button id="pausePlayback" class="secondary">暫停</button>
+<label>速度<select id="speed"><option value="0.5">0.5×</option><option selected value="1">1×</option><option value="2">2×</option></select></label>
+<label>主時鐘<select id="masterCamera"></select></label><output id="clockTime">0.00 秒</output></div>
+<input id="seek" type="range" min="0" max="24" step="0.01" value="0" aria-label="全域時間軸">
+<div class="visual-stage"><div id="videos" class="video-grid"></div>
+<div class="scene-column"><div id="scene" class="scene"><p class="empty">正在載入 3D 服務結果…</p></div>
+<div class="legend"><span><i class="projected"></i>像素投影</span><span><i class="inferred"></i>不可見路線／呈現插值</span></div>
+<p class="hint">XYZ / 公尺 / Z 向上。拖曳旋轉、滾輪縮放。全部路線保留；3D 為推論證據。</p>
+<div id="frameStatus" class="frame-status">來源影格狀態尚未量測。</div></div></div>
+<div class="telemetry-strip"><span>媒體 → 3D <strong id="skewMetric">N/A</strong></span>
+<span>p95 <strong id="p95Metric">N/A</strong></span><span>Seek 恢復 <strong id="seekMetric">N/A</strong></span>
+<span>實際影格回呼 <strong id="frameMetric">0</strong></span></div>
+<details class="raw"><summary>同步量測與影片來源</summary><p class="hint">展示影片重用已存在的 RGB 影格；展示 fps 不等於新的影像量測頻率。</p>
+<pre id="telemetryRaw"></pre><pre id="videoRaw"></pre></details>
+</section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">ALTERNATIVES & EVIDENCE</p><h2>事件、相似外觀與未解關聯</h2></div><span id="eventCount" class="chip">尚未查詢</span></div>
+<div id="appearanceResults"></div><div id="events" class="event-grid"><p class="empty">調查結果會在此保留全部候選。</p></div></section>
+<section class="panel"><div class="section-heading"><div><p class="eyebrow">INVESTIGATION REPORT</p><h2>多目標工作區與操作員 review</h2></div>
+<div class="button-row"><button id="reportButton" class="secondary" disabled>取得報告</button>
+<button id="exportReport" class="secondary" disabled>下載 HTML 報告</button></div></div>
+<div id="caseSummary" class="empty">調查計畫尚未執行。</div><div id="subjects" class="subject-grid"></div>
+<div id="conflicts"></div><div id="reportSummary"></div>
+<div id="reviewPanel" class="review-panel" hidden><label>Review 操作<select id="reviewAction">
+<option value="PRESERVE_AMBIGUITY">保留歧義</option><option value="REQUEST_EVIDENCE">需要更多證據</option>
+<option value="SELECT_PRESENTATION">選擇候選呈現</option></select></label>
+<label>呈現候選<select id="reviewAlternative"></select></label><button id="review" class="secondary">保存獨立 review</button>
+<p class="hint">Review 綁定此報告；呈現選擇不確認人物身分，也不改寫 canonical 資料。</p><p id="reviewResult"></p></div>
+<details class="raw"><summary>完整 case、report 與工具紀錄</summary><pre id="caseRaw"></pre><pre id="reportRaw"></pre><pre id="logs"></pre></details>
+</section>
+</div>
+</main>
+<footer>SYNTHETIC 工程入口 · 有限量測精度 · 所有身分 provisional · GT 僅供獨立 evaluation/debug · 正式研究驗收另行記錄</footer>
+<script type="module" src="/app.mjs"></script></body></html>

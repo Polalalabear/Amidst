@@ -1,0 +1,7 @@
+{
+  "name": "amidst-local-control-room",
+  "private": true,
+  "type": "module",
+  "dependencies": {"three": "0.186.1"},
+  "scripts": {"test": "node --test timeline.test.mjs"}
+}

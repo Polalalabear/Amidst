@@ -2184,3 +2184,22 @@ Report分開 workflow／retrieval／Graph complete，操作員review只另存呈
 歧義及全部候選保留覆蓋。見[p9 receipt](../../data/product/checkpoint_20261008/p9.json)。
 本段為可調用本機engine，持久化HTTP／真RGB控制室接合另段實驗，沒有任意語言模型、
 外部provider或正式研究解鎖。
+
+
+## 2026-10-08 — Local Phase 2 product P10–P11
+
+接合獨立source／pixel／scope-bound product.run.v1、各模式326 SQLite read-model records、
+兩模式freeze與4支localH264影片、13strict tools、持久operator plans／cases／reports／reviews。
+Three.js顯示合法投影、原Graph全部route/timing alternatives與4HTML5鏡頭soft同步，
+nearest真正RGB sample保留原timestamp/ref/offset；15fps只是2.5Hz source影格重用。
+
+Bounded單／多目標UI、19-tool-call／2subject／47alternative report可分步stop/resume，
+server-ownedoperator review不改canonical；已存case／全部路線在process restart後恢復，
+HTML報告實際下載。INPUT、cursor/seed索引範圍、Host／Origin／loopback、byte ranges、
+strictcounts、full-prefix ledger與過期UI回覆守門覆蓋；mode切換後殘留eventCount亦清除。
+
+當次完整2592tests／0failed／0skipped（physical evidence required；獨立workbench排除）、
+Ruff／strictmypy159sourcefiles與13Node／syntax PASS。77初次＋69restart真HTTP、actualRGB／
+3D／video／history／report／review browser操作PASS。具體同run/code/config/hash見
+[p10/p11 receipt](../../data/product/checkpoint_20261008/p10_p11.json)，其餘curated P12證據另記。
+僅新增optional localFFmpeg與pinnedlocalThree dependency，無providerSDK／APIkey或外部模型。
