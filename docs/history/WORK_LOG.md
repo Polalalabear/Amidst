@@ -2170,3 +2170,17 @@ camera-local short-gap provisional stitching。實際E1 frozen pixels產生150 d
 RGB/hash/source/run/frame/track lineage、missing/partial、GT污染與alternatives mapping覆蓋。
 Actual hashes/counts見[p8 receipt](../../data/product/checkpoint_20261008/p8.json)；完整featurevectors
 與maps留local，publichits只返refs/quality與未校準similarity，不宣稱精度改善。
+
+
+## 2026-10-08 — Local Phase 2 product P9
+
+新增 bounded 中文／英文意圖模板與 typed dynamic investigation plans，服務依檢索結果安排
+局部鏡頭／摘要／必要細節／照片工具。單目標、比較、行為及多目標 inquiry 保留原種子、
+provisional track、shared-segment conflicts、全部替代 refs；Agent 不做 semantic reranking。
+有限呼叫／camera／detail／media budgets與可保存的 stop／resume不重置原預算。
+Report分開 workflow／retrieval／Graph complete，操作員review只另存呈現／歧義決策。
+
+當次17 tests PASS，Ruff／strict mypy PASS；fake-tool GT污染、錯stage／scope、失敗、
+歧義及全部候選保留覆蓋。見[p9 receipt](../../data/product/checkpoint_20261008/p9.json)。
+本段為可調用本機engine，持久化HTTP／真RGB控制室接合另段實驗，沒有任意語言模型、
+外部provider或正式研究解鎖。

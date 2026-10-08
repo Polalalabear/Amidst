@@ -1,0 +1,44 @@
+{
+  "schema_version": "product.milestone.v1",
+  "milestone": "P9",
+  "status": "IMPLEMENTED_LOCAL_DETERMINISTIC_INVESTIGATION",
+  "validation_parent_commit": "7e17688af427d6d9a0ff9538a385e848036d7d40",
+  "source_sha256": {
+    "src/amidst/product/investigation.py": "0bac7fb78e170e2a7fc6311bab60061ec03b31ba9e01fbe616c338a57768b0df",
+    "tests/product/test_investigation.py": "184633b28729886ac00ae39ea873ee13abae613f31d19beea5b8eaf9efd5d106"
+  },
+  "validation": {
+    "tests_passed": 17,
+    "tests_failed": 0,
+    "ruff": "PASS",
+    "strict_mypy": "PASS"
+  },
+  "policy": {
+    "policy_version": "local.investigation.policy.v1",
+    "max_tool_calls": 32,
+    "max_cameras": 4,
+    "max_hops": 3,
+    "max_details": 8,
+    "max_media": 4,
+    "max_subjects": 8
+  },
+  "tasks": [
+    "TRACE",
+    "COMPARE",
+    "BEHAVIOR",
+    "MULTI_TARGET"
+  ],
+  "engine": "BOUNDED_EXACT_ZH_EN_TEMPLATES_AND_TYPED_DYNAMIC_TOOL_PLAN",
+  "coverage": [
+    "alternative_retention",
+    "multiple_competing_seeds",
+    "pause_stop_resume",
+    "total_budget_preservation",
+    "tool_failure_safe_codes",
+    "truth_injection_independence",
+    "server_scope_and_stage",
+    "deterministic_reports_and_separate_review"
+  ],
+  "external_model_calls": false,
+  "formal_phase1_acceptance": false
+}
