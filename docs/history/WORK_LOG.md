@@ -4,6 +4,36 @@
 
 ## 繁體中文
 
+### 2026-10-08 — View-only synchronized preview workspace
+
+從已發佈 `883204af854bed301506b39d63ccb33312b79ff2` 建立隔離 branch
+`codex/phase1-preview-workspace`，新增 `human_review/playback/`。四格同屏呈現人物動畫、
+固定拓樸與 P(t)、source 模型／相機射線、側視人物高度；共用播放列、逐格、速度、
+循環、單格放大與全螢幕。非同步載圖完成後一起更新，過期請求不能覆蓋新影格。
+相機 4／5／9 秒 still 另列明確時間，不當作當前連續影格。
+
+目前狀態讀取八份 pinned checkpoint receipts，清楚顯示 4/4 決策已套用、Case1
+局部完成、Case2 blocked、Case3 僅時間分量完成，以及 PARTIAL_APPROVED／尚未 freeze。
+歷史 50 格診斷素材、舊 pending 標籤、原頁面與 decisions 保留原 bytes。未進行新審查、
+authority application、source 修改、render、GT／formal inference 或 benchmark。
+
+新 builder 驗證四份 display manifests 與 58 張原圖的 SHA256／大小；資料 deterministic
+生成為 local ignored `data.js`，small build/status manifests 入 Git。舊頁面其他 129 張
+ignored 圖片由原保存套件補回並逐檔比對，未改 tracked historical evidence。
+新播放 URL 為 `http://127.0.0.1:8768/playback/`；重建與使用說明見
+[playback README](../../human_review/playback/README.md)。
+
+本次實際驗證：12 focused tests PASS；Ruff、兩個新 builder strict mypy、JS syntax、
+diff check PASS。原生瀏覽器驗證 1280×720、825×720、390×844 均無頁面捲動，控制列
+可見；frame20／30／45 各圖與 marker 使用同一 loaded-frame，放大／返回、播放、
+代表 still 與狀態面板可用，console 無 error／warning。先前 1978-test 結果仍是 source
+checkpoint 紀錄，本次沒有宣稱重跑完整研究 suite。
+
+English: Added a view-only four-pane player with one shared timeline, atomic frame loading,
+focus mode and a bounded current-progress snapshot. Existing research and review evidence
+remain unchanged. Twelve focused tests and scoped quality checks passed; desktop/mobile
+browser checks confirmed synchronized views with always-accessible playback controls.
+
 ### 2026-10-08 — Persistent runtime recovery and actual revalidation
 
 舊 `/private/tmp` sprint/fresh worktrees 與歷史 bulk outputs 目前不存在；Git branch/origin

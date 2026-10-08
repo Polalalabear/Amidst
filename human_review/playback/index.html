@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>AMIDST · Phase 1 Playback Workspace</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="player.js" defer></script>
+</head>
+<body>
+  <div class="workspace" id="workspace">
+    <header class="app-header">
+      <a class="brand" href="#workspace" aria-label="AMIDST 播放工作區"><span class="brand-mark" aria-hidden="true">A</span><span>AMIDST<span class="brand-subtitle">PHASE 1 · PLAYBACK</span></span></a>
+      <div class="header-status"><span class="status-dot" aria-hidden="true"></span><span id="phase-status">載入目前狀態</span><span id="approval-status" class="subtle"></span></div>
+      <div class="header-actions"><button id="camera-stills" class="quiet-button"><span aria-hidden="true">▧</span> 相機代表影格</button><button id="open-status" class="quiet-button">專案狀態 <span aria-hidden="true">↗</span></button></div>
+    </header>
+    <section class="session-bar" aria-label="回放來源">
+      <div class="session-title"><span class="eyebrow">SOURCE MODEL / OFFICE</span><h1>同一時刻，四個視角</h1></div>
+      <p class="session-note"><span class="badge">DIAGNOSTIC</span>既有 10 秒影格 · 查看與播放<span class="wide-only"> · 圖中舊 pending 標籤保留產生時狀態</span></p>
+    </section>
+    <main class="view-grid" id="view-grid" aria-label="同步四視角" data-testid="view-grid">
+      <section class="view-panel" id="panel-motion" data-panel="motion">
+        <header class="panel-header"><div><span class="panel-number">01</span><h2>模型＋人物路徑</h2><span class="panel-subtitle">原始動畫／固定拓樸</span></div><button class="focus-button" data-focus="motion" aria-label="放大模型與人物路徑" title="放大此視角">⛶</button></header>
+        <div class="media-stage" id="motion-stage"><img id="motion-image" alt="既有模型行走影格"><svg id="motion-overlay" viewBox="0 0 960 600" aria-label="固定節點與邊，以及當前人物 P(t)"></svg><span class="stage-tag">960 × 600 · 原影格</span></div>
+        <footer class="panel-footer"><span id="motion-caption">影格載入中</span><span id="projection-caption" class="muted"></span></footer>
+      </section>
+      <section class="view-panel" id="panel-topology" data-panel="topology">
+        <header class="panel-header"><div><span class="panel-number">02</span><h2>拓樸＋當前位置</h2><span class="panel-subtitle">固定 nodes / vertices</span></div><button class="focus-button" data-focus="topology" aria-label="放大拓樸與當前位置" title="放大此視角">⛶</button></header>
+        <div class="media-stage topology-stage" id="topology-stage"><svg id="graph-overlay" viewBox="0 0 620 390" aria-label="同一時間的節點、邊與人物位置"></svg><div class="graph-key"><span><i class="key-node"></i>N1 / N2 節點</span><span><i class="key-vertex"></i>邊的轉折頂點</span><span><i class="key-person"></i>P(t) 當前位置</span></div></div>
+        <footer class="panel-footer"><span id="node-caption">人物定位載入中</span><span class="muted">P(t) 是位置標記</span></footer>
+      </section>
+      <section class="view-panel" id="panel-wide" data-panel="wide">
+        <header class="panel-header"><div><span class="panel-number">03</span><h2>模型＋鏡頭空間</h2><span class="panel-subtitle">FRONT / REAR</span></div><button class="focus-button" data-focus="wide" aria-label="放大模型與鏡頭空間" title="放大此視角">⛶</button></header>
+        <div class="media-stage" id="wide-stage"><img id="wide-image" alt="完整測試範圍的模型診斷導覽圖"><svg id="wide-overlay" viewBox="0 0 1920 1080" aria-label="同步人物、相機位置與既有求交射線"></svg><span class="stage-tag">1920 × 1080 · 切頂導覽</span></div>
+        <footer class="panel-footer"><span id="wide-caption">相機狀態載入中</span><span class="muted">射線使用完整 source mesh</span></footer>
+      </section>
+      <section class="view-panel" id="panel-side" data-panel="side">
+        <header class="panel-header"><div><span class="panel-number">04</span><h2>側視＋人物高度</h2><span class="panel-subtitle">landmark / floor contact</span></div><button class="focus-button" data-focus="side" aria-label="放大側視与人物高度" title="放大此視角">⛶</button></header>
+        <div class="media-stage" id="side-stage"><img id="side-image" alt="人物腳底與 landmark 的模型側視圖"><svg id="side-overlay" viewBox="0 0 1920 1080" aria-label="同步人物高度、landmark 與地板落點"></svg><span class="stage-tag">1920 × 1080 · 側視</span></div>
+        <footer class="panel-footer"><span id="side-caption">高度資訊載入中</span><span class="muted">Body 姿勢僅供顯示</span></footer>
+      </section>
+      <div class="loading-notice" id="load-state" role="status" aria-live="polite">載入同步畫面…</div>
+      <button id="exit-focus" class="exit-focus" hidden>← 回到四視角</button>
+    </main>
+    <footer class="transport" aria-label="四視角共同播放控制" data-testid="shared-transport">
+      <div class="transport-context"><span id="state-badge" class="state-badge">載入中</span><strong id="current-node">—</strong><span class="legend"><span><i class="dot cyan"></i>landmark</span><span><i class="dot amber"></i>人物／腳底</span><span><i class="dot red"></i>遮擋</span></span><span id="sync-status" class="sync-status">四畫面同步</span></div>
+      <div class="timeline-row"><span id="time-current" class="time-value">0.0 s</span><div class="timeline-wrap"><div class="timeline-phases" aria-hidden="true"><span class="observed-segment"></span><span class="gap-segment"></span><span class="recovered-segment"></span></div><input id="timeline" type="range" min="0" max="49" step="1" value="0" aria-label="四視角共同時間軸" aria-valuetext="0.0 秒"></div><span id="time-end" class="time-value">9.8 s</span></div>
+      <div class="transport-buttons"><div class="primary-controls"><button id="previous" class="icon-button" aria-label="上一影格" title="上一影格 · ←">❮</button><button id="play" class="play-button" aria-label="播放" aria-pressed="false"><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">播放</span></button><button id="next" class="icon-button" aria-label="下一影格" title="下一影格 · →">❯</button><span id="frame-counter" class="frame-counter">01 / 50</span></div><div class="secondary-controls"><label class="speed-label" for="speed">速度</label><select id="speed" aria-label="播放速度"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select><button id="loop" class="quiet-button" aria-label="循環播放" aria-pressed="false">↻ <span>循環</span></button><span class="keyboard-hint">Space 播放 · ← → 逐格</span><button id="fullscreen" class="quiet-button" aria-label="全螢幕播放">⛶ <span>全螢幕</span></button></div></div>
+    </footer>
+  </div>
+  <dialog id="status-dialog" class="status-dialog" aria-labelledby="status-title"><div class="dialog-header"><div><span class="eyebrow">PROJECT SNAPSHOT</span><h2 id="status-title">目前專案狀態</h2></div><button class="dialog-close icon-button" aria-label="關閉專案狀態">×</button></div><div id="status-content" class="dialog-content"></div><div class="dialog-footer">本工作區僅供查看與播放。既有審查決策與研究結果維持原紀錄。</div></dialog>
+  <dialog id="stills-dialog" class="stills-dialog" aria-labelledby="stills-title"><div class="dialog-header"><div><span class="eyebrow">SOURCE CAMERA / REPRESENTATIVE STILLS</span><h2 id="stills-title">相機代表影格</h2></div><button class="dialog-close icon-button" aria-label="關閉相機代表影格">×</button></div><div class="still-controls"><p>這些是指定時間的灰模診斷 still，與共同播放條的當前時間分開。</p><label for="still-time">代表時間</label><select id="still-time"><option value="20">4.0 s · frame 20</option><option value="25">5.0 s · frame 25</option><option value="45">9.0 s · frame 45</option></select></div><div id="still-grid" class="still-grid"></div><div id="still-load-state" class="dialog-footer" role="status"></div></dialog>
+</body>
+</html>
