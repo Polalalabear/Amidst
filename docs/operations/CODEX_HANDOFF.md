@@ -18,15 +18,21 @@ artifacts，不在那裡實作或切換 branch。
 
 工程閉環與原正式研究驗收並行。下方既有 corridor／formal blockers 保持有效。
 
+### 局部跨鏡頭與行為研究續作
+
+使用者指定以鄰近 camera／可達拓樸、時間與人物連續性做局部關聯，輸出數個實際畫面及進門／出門／轉角／可能遊蕩等事件，避免全域掃描。[研究交接與可複製 prompt](LOCAL_CAMERA_EVENT_RESEARCH_HANDOFF.md) 固定具體 R1–R8、局部索引、同 scope 檢索漏取實驗、固定候選 pool 的 feature 消融與多畫面交付；這是 RESEARCH_PLAN／NOT_RUN，未新增正式研究 PASS。
+
+最初核對時 engineering 目錄有未提交並行草稿；期間另一工作新增 M1 `0cb2f15`（registry／office structured partial importer）與 M2 `6a00541`（synthetic RGB／pixel tracks／stage guards），工作紀錄分別報36／34 tests PASS，本交接沒有重跑。Association／facade／UI等仍有並行工作；先核對live commits/status與receipt，續接而不覆寫，不以存在tests宣稱PASS。當時association仍全pair列舉、registry仍遍歷catalog；下一步先補真正scope/camera/time/ref index，不能把「不掃filesystem」當成「不全量掃records」。原2255測試綁定 `4271b2b`，不是這些增量或本研究的PASS。
+
 ### 已接入的工程能力與續作邊界
 
 `codex/phase1-preview-workspace / 04c699d` 已以 merge commit `ded5572` 接入目前工程分支；50 frames／58 verified images 的 view-only playback 可由原 exact inputs 重建。Projection branch `8f4055f` 的四個 model helpers 已在研究基底中；本次僅補相容的 comparison／surface-control／downstream／robustness 診斷工具，保留 sidecars，不改 Graph 權重或 domain schema。
 
 FROZEN Phase 2 checkpoint `5b51d2c` 的 repository、read-only API、legacy replay importer 與 TypeScript consumer 已選擇性接入。使用 [Phase 2 整合](../engineering/PHASE2_INTEGRATION.md) 的本機啟動命令與 [本次驗證 receipt](../../data/engineering/integration_20261008/compatibility.json)。這是 SYNTHETIC_MOCK_ONLY 接口：GET 讀固定 snapshot、保留 canonical observation/event IDs 與候選順序，不重跑 inference。
 
-本次完整測試 **2255 passed／0 failed／0 skipped**，含 Blender／physical evidence；Ruff PASS，strict mypy PASS（125 source files）。25次實際 loopback HTTP requests 與 Node consumer／replay 驗證通過，既有318個核心／腳本／測試檔、29 inputs、297 review records 及 immutable source 不變。
+工程基底 `4271b2b` 的完整測試 **2255 passed／0 failed／0 skipped**，含 Blender／physical evidence；Ruff PASS，strict mypy PASS（125 source files）。該checkpoint的25次實際loopback HTTP requests與Node consumer／replay驗證通過，既有318個核心／腳本／測試檔、29 inputs、297 review records及immutable source不變；這不是後續M1/M2或目前草稿的全測試重跑。
 
-可繼續工程操作，但尚未完成 LocationRegistry、兩種照片模式、image perception／跨鏡頭 association、Agent allowlist DTO／typed tools 或 MockAgent UI。低階 mock API 的 synthetic target IDs／座標／source references 不得直接交給 Agent。新 reviewed/finalization package 尚未接入此 importer；先完成 source／clock／unit bindings、明確 BU→metres normalization 及獨立 import certification，不能由 mock PASS 推定真實 package 相容。M1–M6 繼續按 prompt 推進。
+後續M1/M2已新增局部registry、RGB量測與stage契約，但完整跨鏡頭association／Agent typed tools／多事件UI與本研究消融尚待完成。低階mock API的synthetic target IDs／座標／source references不直接交給Agent。新獨立reviewed importer只對原office structured partial scope有certificate，不等於legacy importer支援所有finalization/corridor packages，也不是RGB／Agent輸出認證；來源、clock、unit、BU normalization及scope仍依certificate限制，不能從mock或partial PASS推定全部相容。M1–M6續作先核對最新狀態。
 
 原 `phase2/integration-hardening` 與 tag 保持 FROZEN；新增碼只在工程分支。不 merge `main`，不改原 Blender/source、locked inputs 或正式研究狀態；外部模型 API 與 token 兜底章節仍空白。
 
@@ -89,7 +95,9 @@ Case4 **DEFERRED**；Phase2 `phase2/integration-hardening / 5b51d2c` **FROZEN**�
 
 The current engineering branch is `codex/simulation-engineering`, reusing the existing checkout and including documentation checkpoint `2c586b1`; the research baseline remains `phase1/finalization-sprint / 883204a`. Preview checkpoint `04c699d` was merged as `ded5572`. Compatible projection diagnostics and the frozen `5b51d2c` mock repository/API/replay/TypeScript adapters were imported selectively, preserving current core contracts and dependencies. See the integration document and current receipt above. This is **SYNTHETIC_MOCK_ONLY / NO_EXTERNAL_MODEL_CALLS**; API wiring and the token fallback algorithm remain empty.
 
-LocationRegistry, observation modes, image perception/association, Agent allowlist DTOs/tools and the MockAgent interface remain to implement. The internal mock API is not an Agent payload. Reviewed/finalization packages need separate source/clock/unit normalization and import certification before use. Keep the original Phase 2 branch/tag frozen and formal research gates independent; do not merge main.
+Subsequent M1/M2 checkpoints add a partial registry/reviewed-office importer, synthetic RGB measurements and stage guards. Full association, Agent tools, multi-event UI and the proposed research evaluations remain pending. The office structured certificate does not certify arbitrary corridor packages, RGB or Agent payloads. Keep source/clock/unit scope checks, the original Phase 2 branch/tag frozen and formal research gates independent; do not merge main.
+
+The linked local camera/event research handoff specifies indexed retrieval, provisional association, behavior-event cards and paired experiments. Concurrent M1/M2 work was committed during this review; its recorded tests were not rerun here. Recheck live status and preserve remaining drafts; all-pairs generation and catalog traversal must be replaced by scoped candidate lookup before claiming bounded retrieval.
 
 Continue in the sprint worktree above. The human approved the exact corridor proposal and
 requests a new-chat continuation to finish one reproducible dataset, benchmark table and

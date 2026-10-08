@@ -2023,6 +2023,10 @@ English: M2 provides actual unannotated RGB sequences, pixel-derived local track
 server-owned mode/stage freeze guards. Thirty-four current tests, lint and strict types pass;
 truth remains isolated and missing or uncertain measurements are retained.
 
+### 局部研究交接的後續核對
+
+交接製作期間已有並行M1 `0cb2f15`／M2 `6a00541`提交；本次只讀其commit、工作紀錄與partial office certificate／media audit，未重跑36／34 tests。研究交接同步指出這些可重用增量及其範圍，剩餘association／facade／UI等工作仍以live狀態核對，原全pair／catalog掃描觀察不因草稿存在而宣稱已解決。文件diff／links與原protected evidence檢查通過，無新增失效引用，API/token空章節不變；本輪只提交研究交接及相關文件，不納入並行程式／test修改。
+
 ## 2026-10-08 — Simulation engineering M3
 
 新增pixel-derived ground projection／configured region membership與pairwise provisional
