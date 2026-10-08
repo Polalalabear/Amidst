@@ -1968,3 +1968,11 @@ English: Merged the view-only preview with ancestry preserved, then imported onl
 本 checkpoint 支援 mock 工程續作，不認證新 reviewed/finalization importer：固定 METRES 不能覆蓋 historical native BU，需獨立 source/context/clock/scale adapter與顯式normalization。低階 mock API 仍非 Agent allowlist DTO；LocationRegistry／照片模式／image perception／association／Agent tools與UI尚待M1–M6。原 formal Cases2／Case3和 full Exit保持 BLOCKED，Case4 DEFERRED。`main`、原 Phase2 frozen branch/tag 與8768原預覽服務沒有變動。完成 commit 後普通 push僅發佈 `codex/simulation-engineering`，不發布 canonical `c5956dc` LOCAL ONLY ancestor。
 
 English: Imported seventeen byte-identical frozen mock source/config/frontend files and scoped their tests without replacing current Phase 1 core or dependencies. The actual loopback API and TypeScript consumers passed, followed by2255 full tests with zero failures/skips, Ruff and strict mypy. Existing core, locks, inputs, review evidence, source assets and document layout were preserved; no new link failures or external model calls were introduced. Reviewed-package normalization/import certification and Agent-facing DTOs/tools remain pending. Original formal gates, main and frozen Phase 2 remain unchanged.
+
+## 2026-10-08 — 最終續作 prompt / Final continuation prompt
+
+依使用者要求重寫續作 prompt，固定已整合工程基底 `4271b2b` 與單一工程分支，移除回退文件 checkpoint／自動切換研究分支的歧義。明定真正 RGB 量測、SYNTHETIC 來源與舊模擬 UV 的區別、local track／association hypothesis／既有 target_id adapter 映射、服務端 mode/stage 與 freeze 認證，以及 GT 3D 與合法推論結果的邊界。Agent facade 與內部 legacy mock 契約分開，執行期資料外送限制不阻擋已授權且合規的 Git push；工程低精度可逐步改善，正式研究義務與 full Exit 保留獨立驗收。
+
+同步相同澄清至 Agent 工程契約，四個 OpenAI／token 空章節保持空白。只修改兩份文件與本紀錄，不執行 prompt 內 M1–M6、不改程式或資料、不重跑2255 tests。文件相對連結／anchors、diff 與既有 protected bytes 使用相稱檢查；歷史測試仍明確綁定原工程 checkpoint。
+
+English: Rewrote the copyable prompt around the verified integrated baseline, real pixel-derived synthetic observations, provisional association bindings, server-owned stage authorization and a scoped Agent facade. Preserved blank API/token sections and independent formal obligations; this is a documentation revision, not M1–M6 implementation or a test rerun.
