@@ -2022,3 +2022,20 @@ strict mypy PASS。GT污染／刪除不改pixel輸出，固定輸入可重現，
 English: M2 provides actual unannotated RGB sequences, pixel-derived local tracks and
 server-owned mode/stage freeze guards. Thirty-four current tests, lint and strict types pass;
 truth remains isolated and missing or uncertain measurements are retained.
+
+## 2026-10-08 — Simulation engineering M3
+
+新增pixel-derived ground projection／configured region membership與pairwise provisional
+association。保留original local pixel／segment／track IDs，另建每個hypothesis的provisional
+binding、canonical derived endpoints/events及映射。所有segment pairs與UNMATCHED alternatives
+均保存，不選GT actor身分。Cross-camera gap呼叫既有Graph／reconstructor，保留完整候選／
+時間假設／termination／complete；其complete僅屬明列有限lab route grammar。
+重疊可見段不虛構gap，same-camera recovery為source-bound HOLD，不偽造handoff。
+
+本次27 tests PASS（13 association + 14 Phase2 compatibility），Ruff／strict mypy PASS。
+Persisted bundle核對source/context/model/run／全部local與derived record lineage；GT污染
+不改inference hash。只使用獨立configured synthetic lab，不套用school或新corridor authority。
+
+English: M3 preserves provisional association alternatives and immutable local-to-canonical
+maps while reusing the existing Graph/reconstructor. Overlap and same-camera recovery are
+explicit unresolved results. Twenty-seven current tests, lint and strict types pass.
