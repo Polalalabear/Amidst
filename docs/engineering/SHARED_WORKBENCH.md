@@ -16,7 +16,13 @@
 freeze 及歷史證據繼續保留。主入口使用本機 8016；8010／8012／8020 的既有頁面
 與歷史驗證尚未全部遷入工作台，不能因入口決策而宣稱功能遷移已完成。
 
-遷移的對應位置：
+2026-10-08 實際網站／來源／素材盤點確認：**實驗展示尚未全部接入**。
+當前 catalog 僅有 E1／E0；產品調查、MP4、Office／Rerun、preview 及 projection 診斷仍需
+遷移或 source adapter。完整現況、素材存在／缺失及有效待修見
+[實驗展示覆蓋表](WORKBENCH_EXPERIMENT_COVERAGE.md) 與
+[本輪 audit receipt](../../data/engineering/workbench_20261008/website_audit.json)。
+
+以下是**待遷移的對應位置**，不是已實作功能清單：
 
 | 既有能力 | 工作台中的位置 |
 | --- | --- |
@@ -184,6 +190,9 @@ catalog 的 scene ID、名稱與說明只調整展示識別，來源 model/run/h
 dataset、相應 config 與 freeze receipt。缺少評估顯示 `UNAVAILABLE`；
 綁定失配顯示 `STALE`。E1 摘要中的 config hash 是 package config，
 與整體推論 effective config 的含義不同，另以逐模式 freeze receipt 核對同一次結果。
+目前以可展開 JSON 顯示，沒有完整 experiment／benchmark／reproduction runner 或 GT debug。
+現有 loader 尚缺 aggregate DTO allowlist／內容 digest 認證；UI 發布後的 cached test
+結果也待失效處理，詳見覆蓋表。本輪 sentinel-only audit 不代表現有資料已外洩。
 
 GT／recipe sidecar 仍留在原 generator／evaluator 邊界，工作台常規場景與展示工具
 不開啟它們。研究人的評估面板不擴張 Agent 的權限；原有 Agent 仍使用有限範圍、

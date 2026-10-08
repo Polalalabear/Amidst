@@ -31,6 +31,8 @@ Phase 1 extension。
 正式 school/full Exit、真攝影機與 production deployment 維持獨立未完成。
 網頁主入口依最新決策統一為 [共用工作台](docs/engineering/SHARED_WORKBENCH.md)／8016；
 既有 product／8020 保留為工程lab與待遷移來源，頁面能力尚未完成接入。
+實際主平台只有 E1／E0 的局部事件、RGB／3D 與既有評估；**實驗展示尚未全部集中**，
+已接入／未接入與素材現況見 [展示覆蓋表](docs/engineering/WORKBENCH_EXPERIMENT_COVERAGE.md)。
 
 ### 目前完成範圍
 
@@ -172,6 +174,9 @@ four-camera video/Three.js playback, saved cases, reviews and reports. No extern
 is connected; formal school acceptance and production capabilities remain incomplete.
 The primary web UI is [shared workbench](docs/engineering/SHARED_WORKBENCH.md)/8016.
 Product/8020 remains a preserved engineering lab and migration source; integration is pending.
+Only the E1/E0 event, RGB/local-3D and preexisting-evaluation views are registered.
+[Presentation coverage](docs/engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) distinguishes
+available local assets from completed workbench integration.
 
 ### Implemented scope
 

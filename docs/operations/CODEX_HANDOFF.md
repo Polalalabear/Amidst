@@ -23,7 +23,22 @@ artifacts，不在那裡實作或切換 branch。
 最新使用者決策：**frontend/workbench／8016 為唯一主要網頁入口**；既有與後續頁面能力
 都接入該工作台。frontend/product／8020 保留為已驗證工程lab／待遷移來源，勿繼續擴張
 另一套主要前端。Product後端／資料／typed tools可供工作台adapter使用；目前未完成遷移，
-不可把兩個獨立入口說成已統一。工作台相關規則／決策由並行工作階段另行更新。
+不可把兩個獨立入口說成已統一。工作台相關規則／決策已接入工程分支。
+
+2026-10-08 網站盤點見 [實驗展示覆蓋表](../engineering/WORKBENCH_EXPERIMENT_COVERAGE.md)。
+8016 實際 catalog 僅 E1／E0，固定讀 `photos_plus_observations/RESULTS`；實驗展示
+尚未全部接入。有效續作：
+
+- 把 product intent／typed plans／stop-resume／案例／appearance tools／報告與 MP4 同步
+  接入工作台 server-owned role/scope；現有 backend／資料可重用，主平台尚無相應操作。
+- 為 Office recovery benchmark／Rerun、歷史 preview／projection／downstream 展示補
+  source/context/clock/unit adapter；覆蓋表區分 checkout／canonical-only／缺失素材。
+  新 corridor 全案例正式成果尚未完成，不能用已有部分展示替代。
+- 補 evaluation aggregate DTO allowlist／內容 digest 認證（matching headers 仍可返回額外
+  JSON 欄位）；sentinel-only probe 未發現或聲稱真資料外洩。發布後使 cached test 結果失效，
+  並修正評估面板的 GT 文字；後端新檢查仍正確報 `NEEDS_RERUN`。
+
+本輪只有網站操作、十次 HTTP 核對、素材與文件盤點；下面 2652 等為歷史程式驗證。
 
 P7–P12 在同一工程分支接成可操作的 [本機產品](../engineering/LOCAL_PHASE2_PRODUCT.md)：
 SQLite immutable read model、RGB-crop appearance／provisional same-camera stitching、有限
@@ -158,6 +173,10 @@ The latest human decision selects frontend/workbench/8016 as the unified primary
 Preserve product/8020 as an engineering lab/migration source and integrate existing/future
 page capabilities into workbench. Backend adapters can use the product interfaces; the UI
 migration is not yet complete. Do not describe the independent entries as already unified.
+The [current presentation audit](../engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) confirms
+only E1/E0 are registered. Migrate product tools/video and add source-bound research adapters;
+keep missing assets and formal blockers explicit. Evaluation aggregate DTO/content validation,
+cached-test invalidation after publication and GT-panel wording are still open issues.
 A subsequent actual full run with no exclusions passes 2652 tests in255.995s, with zero
 failures/errors/skips; lint, 164-file types and28 frontend tests pass. The product test
 package namespace fixes a collection collision; prior failed collection evidence is retained.

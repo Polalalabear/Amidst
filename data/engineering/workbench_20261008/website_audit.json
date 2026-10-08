@@ -1,0 +1,393 @@
+{
+  "schema_version": "workbench.website-audit.v1",
+  "audit_date": "2026-10-08",
+  "audit_timezone": "Asia/Taipei",
+  "source_branch": "codex/simulation-engineering",
+  "source_checkpoint": "b484a8479461559942f42a5507132254d5c35b4d",
+  "primary_entry": "http://127.0.0.1:8016",
+  "status": "ADOPTED_MIGRATION_PARTIAL",
+  "all_presentations_integrated": false,
+  "registered_scene_ids": [
+    "local-camera",
+    "synthetic-lab"
+  ],
+  "source_inventory": {
+    "configs/engineering/workbench_v1.json": "9271b0a8e34538ad9715996a92197ebcfdb27b036a033a450b0f25c9c2cca0a1",
+    "src/amidst/workbench/scenes.py": "3f85710afc345e070c54abed9b5a6fd4bcd6afb0be993ae91e08eac8d502c785",
+    "src/amidst/workbench/service.py": "0ae88b4f62f668a16c34115929e93facf126efaeec4e31aea62c05e08272f994",
+    "src/amidst/workbench/reviews.py": "88e1b99714bf9f5b359a2618f84078f89c72385d78a52a4c7285251f53074e28",
+    "frontend/workbench/app.mjs": "8401b04b1fdf323e25d4160f4f94ce8f1703137c9f0bae5706f885adcc0dcbbf",
+    "frontend/workbench/scene.mjs": "8e7a028a005702decf35beb36b8e7dc435801846f791f5157c88472be53de012",
+    "frontend/workbench/index.html": "400f36f985cfed4bb683f76d7babd82280078c897544bae35d225253e07cf3dc",
+    "frontend/workbench/package-lock.json": "45dded11c774b2d198817b738025e90dc83cd50fd2d7df3a543fb85b371c9e31"
+  },
+  "http": {
+    "http_request_count": 10,
+    "checks": [
+      {
+        "method": "GET",
+        "route": "/api/bootstrap",
+        "status": 200,
+        "expected_status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/session",
+        "status": 200,
+        "expected_status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/session",
+        "status": 200,
+        "expected_status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/scene",
+        "status": 200,
+        "expected_status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/scene",
+        "status": 200,
+        "expected_status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/evaluation",
+        "status": 200,
+        "expected_status": 200
+      },
+      {
+        "method": "POST",
+        "route": "/api/evaluation",
+        "status": 403,
+        "expected_status": 403
+      },
+      {
+        "method": "POST",
+        "route": "/api/scene",
+        "status": 403,
+        "expected_status": 403
+      },
+      {
+        "method": "GET",
+        "route": "/api/video",
+        "status": 403,
+        "expected_status": 403
+      },
+      {
+        "method": "POST",
+        "route": "/api/intent",
+        "status": 403,
+        "expected_status": 403
+      }
+    ],
+    "scenes": [
+      {
+        "scene_id": "local-camera",
+        "run_id": "local-camera-test-v1",
+        "model_id": "synthetic-local-camera-v1",
+        "counts": {
+          "cameras": 4,
+          "frames": 244,
+          "observations": 18,
+          "events": 64
+        },
+        "capabilities": {
+          "images": true,
+          "video": false,
+          "local_3d": true,
+          "camera_pose": true,
+          "events": true,
+          "scene_review": true,
+          "result_review": true,
+          "evaluation": true,
+          "inference_execution": false
+        }
+      },
+      {
+        "scene_id": "synthetic-lab",
+        "run_id": "simulation-v2",
+        "model_id": "synthetic-lab-v1",
+        "counts": {
+          "cameras": 2,
+          "frames": 102,
+          "observations": 6,
+          "events": 21
+        },
+        "capabilities": {
+          "images": true,
+          "video": false,
+          "local_3d": true,
+          "camera_pose": false,
+          "events": true,
+          "scene_review": true,
+          "result_review": true,
+          "evaluation": true,
+          "inference_execution": false
+        }
+      }
+    ],
+    "evaluation_modes_readable": [
+      "photos_only",
+      "photos_plus_observations"
+    ],
+    "session_tokens_published": false,
+    "reviews_written": false
+  },
+  "initial_probe": {
+    "status": "RECORDER_FAILED_AFTER_BOOTSTRAP_READ",
+    "reason": "REQUEST_METHOD_ATTRIBUTE",
+    "corrected_probe_assertions": 10
+  },
+  "browser": {
+    "roles_checked": [
+      "research",
+      "management"
+    ],
+    "scene_switch_checked": true,
+    "e1_selected_event_seconds": [
+      2.8,
+      3.2
+    ],
+    "e1_camera_frames_loaded": [
+      "WEST",
+      "DOOR",
+      "CORNER",
+      "ISLAND"
+    ],
+    "frame_timestamp_s": 2.8,
+    "frame_dimensions_px": [
+      240,
+      180
+    ],
+    "selected_checks": [
+      {
+        "scene_id": "local-camera",
+        "camera_id": "WEST",
+        "time_range_s": [
+          0,
+          10
+        ],
+        "passed": 6,
+        "total": 6,
+        "events": 16,
+        "observations": 2
+      },
+      {
+        "scene_id": "synthetic-lab",
+        "camera_id": "CAM_A",
+        "time_range_s": [
+          0,
+          10
+        ],
+        "passed": 6,
+        "total": 6,
+        "events": 15,
+        "observations": 3
+      }
+    ],
+    "check_scope": "SELECTED_CAMERA_TIME_ONLY",
+    "evaluation_summaries_read": [
+      "local-camera",
+      "synthetic-lab"
+    ],
+    "management_multicamera_3d": "PLACEHOLDER",
+    "reviews_written": false,
+    "requests_counted": false,
+    "screenshot": {
+      "materialization": "LOCAL_IGNORED",
+      "relative_path": "data/engineering/local_run/workbench_v1/website_audit_20261008.png",
+      "sha256": "bd1221d9c5c28e80eb1bd63b42ccabcd414d58061ec93c6ff8ebc34589f66804"
+    }
+  },
+  "asset_inventory_method": "SCOPED_EXISTENCE_AND_PINNED_MANIFEST_REFERENCES_NO_GT_CONTENT_READ",
+  "presentation_families": [
+    {
+      "family": "simulation-v2",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "SCENE_INTEGRATED_ASSET_GALLERY_PENDING",
+      "observed_inventory": {
+        "rgb": 102,
+        "rrd": 1,
+        "png": 1
+      }
+    },
+    {
+      "family": "local-camera-test-v1",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "SCENE_INTEGRATED_ASSET_GALLERY_PENDING",
+      "observed_inventory": {
+        "rgb": 244,
+        "cards_png": 7
+      }
+    },
+    {
+      "family": "product-p7-p12",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED",
+      "observed_inventory": {
+        "mp4": 4
+      }
+    },
+    {
+      "family": "office-recovery-demos",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED",
+      "observed_inventory": {
+        "rrd": 2,
+        "png": 2,
+        "presentation_json": 2
+      }
+    },
+    {
+      "family": "office-recovery-benchmark-ablation",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED",
+      "observed_inventory": {
+        "baseline_rows": 27,
+        "ablation_rows": 45,
+        "baseline_png": 20,
+        "ablation_png": 17
+      }
+    },
+    {
+      "family": "reviewed-v5-history",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "PARTIAL_MATERIALIZATION_NOT_INTEGRATED",
+      "observed_inventory": {
+        "baseline_png": 20,
+        "missing_rrd": 2,
+        "missing_preview_png": 2
+      }
+    },
+    {
+      "family": "office-auditorium-corridor-diagnostics",
+      "materialization_checkout": "CANONICAL_READ_ONLY",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED",
+      "observed_inventory": {
+        "rrd": 6,
+        "png": 6
+      }
+    },
+    {
+      "family": "school-downstream-debug",
+      "materialization_checkout": "CANONICAL_READ_ONLY",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED_DEBUG_ONLY",
+      "observed_inventory": {
+        "rrd": 1,
+        "png": 1,
+        "html": 1
+      }
+    },
+    {
+      "family": "school-pilot-galleries",
+      "materialization_checkout": "CANONICAL_READ_ONLY",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED",
+      "observed_inventory": {}
+    },
+    {
+      "family": "human-review-preview",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED",
+      "observed_inventory": {
+        "manifest_png_present": 58,
+        "manifest_png_expected": 58,
+        "diagnostic_frames": 50
+      }
+    },
+    {
+      "family": "projection-upgrade-mitigation",
+      "materialization_checkout": "KNOWN_CHECKOUTS",
+      "workbench_status": "OUTPUT_NOT_MATERIALIZED_TOOLS_ONLY",
+      "observed_inventory": {}
+    },
+    {
+      "family": "native-mock-benchmark-plots",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED",
+      "observed_inventory": {
+        "native_png": 11,
+        "mock_png": 17
+      }
+    },
+    {
+      "family": "blocked-checkpoint-history",
+      "materialization_checkout": "ENGINEERING",
+      "workbench_status": "MATERIALIZED_NOT_INTEGRATED_HISTORY_ONLY",
+      "observed_inventory": {
+        "png": 8,
+        "json": 14,
+        "csv": 2,
+        "md": 1
+      }
+    },
+    {
+      "family": "legacy-four-case-rerun-api",
+      "materialization_checkout": "CANONICAL_READ_ONLY",
+      "workbench_status": "RRD_NOT_INTEGRATED_API_ONLY",
+      "observed_inventory": {
+        "rrd": 4
+      }
+    }
+  ],
+  "evaluation_summary_sha256": {
+    "local-camera": "bb5d4e28ef4672db0c10e377bd7066c3c74b1be29fafa939950d08b436cf6228",
+    "synthetic-lab": "35bb1bf1cebd201d5295a97802ff0c5e0642809d45d9e69cc85aeac6287f60ce"
+  },
+  "findings": [
+    {
+      "id": "EVALUATION_AGGREGATE_ALLOWLIST_DIGEST",
+      "status": "OPEN",
+      "method": "SENTINEL_ONLY_IN_MEMORY_COPIED_ADAPTER",
+      "real_data_leak_observed": false
+    },
+    {
+      "id": "CACHED_TEST_AFTER_PUBLICATION",
+      "status": "OPEN",
+      "method": "SOURCE_INSPECTION_NO_PUBLICATION_PERFORMED"
+    },
+    {
+      "id": "EVALUATION_GT_WORDING",
+      "status": "OPEN",
+      "method": "SOURCE_AND_RENDERED_UI_INSPECTION"
+    }
+  ],
+  "guarded_loader_audit": {
+    "gt_open_attempts": 0,
+    "raw_gt_contents_read": false
+  },
+  "not_rerun": [
+    "pytest",
+    "ruff",
+    "mypy",
+    "node_tests",
+    "render",
+    "inference",
+    "benchmark",
+    "reproduction"
+  ],
+  "historical_program_validation_ref": "data/product/checkpoint_20261008/validation.json",
+  "formal_phase1_acceptance": false,
+  "formal_status": {
+    "Cases2_3_full_Exit": "BLOCKED",
+    "Case4": "DEFERRED",
+    "original_Phase2_branch_tag": "FROZEN"
+  },
+  "publication_scope": "DOCUMENTATION_AND_CURATED_COUNTS_HASHES_STATUS_ONLY",
+  "raw_media_published": false,
+  "session_tokens_published": false,
+  "source_modified": false,
+  "documentation_validation": {
+    "method": "ADDED_LOCAL_LINK_EXISTENCE_DIFF_SOURCE_HASH_CHECK",
+    "markdown_files_checked": 7,
+    "local_link_occurrences_checked": 35,
+    "unique_local_targets": 25,
+    "status": "PASS",
+    "program_files_unchanged": true,
+    "reserved_api_token_documents_unchanged": true
+  }
+}

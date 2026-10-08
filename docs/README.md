@@ -15,6 +15,9 @@
 接入共用工作台；8020／frontend/product 保留既有工程證據及待遷移功能來源，不再擴張成
 另一個主要前端。Product 後端／資料／typed interfaces 可供接入，尚未宣稱遷移完成。
 
+[實驗展示覆蓋表](engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) 記錄本輪實際網站盤點：
+主平台只有 E1／E0；已有但未接入、缺少素材、formal BLOCKED 及待修項目分開列出。
+
 | 資料夾 | 內容 |
 | --- | --- |
 | [specs/](specs/) | 需求、架構、資料契約、決策與持續規則 |
@@ -36,5 +39,7 @@ local research/admin scene and review workspace.
 The user's latest decision makes workbench/8016 the unified primary web UI. Existing and
 future presentation capabilities belong there; product/8020 remains a preserved engineering
 lab and migration source. Backend interfaces are available; migration is not yet complete.
+[Experiment coverage](engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) records the actual
+two-scene UI, unmigrated presentations, local asset availability and actionable audit findings.
 
 The five folders separate specifications, engineering, research, operations and history. This is the only documentation index. The root retains the exact corridor review, the runtime checkpoint JSON and three symlinks required by locked protocol, review and geometry-report references; maintained text lives in the category folders.

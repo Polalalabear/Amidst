@@ -4,6 +4,40 @@
 
 ## 繁體中文
 
+### 2026-10-08 — Primary website and experiment presentation audit
+
+依使用者要求檢視目前網站／確認全部實驗展示覆蓋並更新文件，於工程 checkpoint
+`b484a8479461559942f42a5507132254d5c35b4d` 做唯讀程式／指定素材盤點及實際瀏覽器操作。
+8016 起初未運行，以既有 workbench loader 啟動兩個 verified scenes；無新增 render、
+推論、素材副本、GT overlay、人審發布或產品功能遷移。主平台只有 E1／E0，
+實驗展示尚未全部接入；14 個展示家族的已接入、部分覆蓋、C-only、缺 raw 與 BLOCKED
+分開記入 [覆蓋表](../engineering/WORKBENCH_EXPERIMENT_COVERAGE.md)。
+
+實際核對研究／管理入口、兩場景切換、E1 2.8–3.2s 候選、局部 3D 及四張同時刻 RGB
+（240×180 已載入）；E1 WEST 0–10s 與 E0 CAM_A 0–10s 各通過6/6局部資料／接口檢查，
+不是研究精度／formal驗收。兩場景可讀既有評估 JSON，管理 3D／多鏡頭明示未接入。
+十次 HTTP 預期核對含 research讀取、management evaluation拒絕、未知scene／video／intent
+拒絕；瀏覽器請求未計數。初次 audit 記錄器在已讀bootstrap後因 method attribute 錯誤
+中止，修正為get_method後十次核對完成；不把初次中止報PASS。
+
+源碼與 sentinel-only 檢查發現 evaluation 缺 aggregate DTO／內容 digest守門；假額外欄位
+在複製adapter的記憶體摘要可穿過，現有payload未發現污染，不聲稱真資料外洩。
+另記錄publish後cached test結果未失效與GT評估文字容易誤解；本輪未改程式修復它們，
+handoff保留有效待修。產品MP4／plans／reports、Office／Rerun／benchmark／preview與
+projection等仍需共用入口adapter；缺歷史raw不以receipt或helperPASS冒充存在。
+
+更新README／docs索引／SHARED_WORKBENCH／CODEX_HANDOFF／data inventory與本工作紀錄；
+新增curated [website audit receipt](../../data/engineering/workbench_20261008/website_audit.json)。
+截圖留ignored local_run，無raw／GT／SQLite／MP4發布。7份Markdown的35個新增本機連結、
+文件diff／source hash／內容一致性檢查通過；完整pytest／Ruff／mypy／Node／benchmark沒有重跑，2652結果仍為原
+historical checkpoint。原source、protocol、receipts、main與frozenPhase2不變，formal待辦保留。
+
+English: Audited the live primary UI and fourteen source-documented presentation families.
+Only E1/E0 scenes are integrated; product and legacy research displays, missing historical
+raw output and formal blockers remain explicit. Actual browser checks and ten HTTP assertions
+were completed. This documentation-only update adds curated coverage evidence, records three
+actionable findings and does not rerun or promote historical program/research validation.
+
 ### 2026-10-08 — View-only synchronized preview workspace
 
 從已發佈 `883204af854bed301506b39d63ccb33312b79ff2` 建立隔離 branch

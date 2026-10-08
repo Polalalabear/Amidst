@@ -1,5 +1,15 @@
 # Current data inventory / 目前資料盤點
 
+## 2026-10-08 primary website presentation audit
+
+[Website audit](engineering/workbench_20261008/website_audit.json) records actual 8016 browser
+operation, ten HTTP assertions and source-bound presentation coverage. Only E1/E0 are registered;
+available legacy/product media do not imply completed workbench integration. Scoped local asset
+availability and missing historical outputs are in the [coverage table](../docs/engineering/WORKBENCH_EXPERIMENT_COVERAGE.md).
+No render, benchmark, inference or program test suite was rerun. KEEP: curated inventory,
+counts/hashes/status only. LOCAL ONLY: audit screenshot under `engineering/local_run/workbench_v1/`.
+Historical validation receipts and all raw/GT/source bytes remain unchanged.
+
 ## 2026-10-08 local Phase 2 product
 
 [Product validation](product/checkpoint_20261008/validation.json), evaluation/mode comparison,
