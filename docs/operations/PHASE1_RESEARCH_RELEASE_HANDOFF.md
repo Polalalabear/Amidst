@@ -85,8 +85,8 @@ uv run --offline --no-sync python --version
 | Benchmark 結果表 | 同一 dataset 的 Case1–3 × A/B/C × K JSON/CSV/Markdown 與必要消融；原 accuracy/Coverage/recall/physical/projection/search/termination metrics；failed/BLOCKED/N/A 原因保留，不補值或跨 Case 偷換 population |
 | Rerun 3D demo | 同一 run 的來源校準、核准 geometry/body scope、observations、inferred candidates/timings；RRD、static PNG、reader/replay receipt 與使用說明；primary GT=false，GT 只在獨立 evaluation/debug partition |
 
-完整正式範圍與驗收仍依原 [post-approval Exit Gates](../PHASE1_POST_APPROVAL_HANDOFF.md#最終交付與-exit-gate)
-與 [benchmark protocol](../PHASE1_BENCHMARK_PROTOCOL.md)。三項展示不取代原 full Exit Gate；只有原
+完整正式範圍與驗收仍依原 [post-approval Exit Gates](../history/PHASE1_POST_APPROVAL_HANDOFF.md#最終交付與-exit-gate)
+與 [benchmark protocol](../research/PHASE1_BENCHMARK_PROTOCOL.md)。三項展示不取代原 full Exit Gate；只有原
 全部 gates 通過才建立 Phase1 validated/frozen checkpoint。每個 milestone 驗證後獨立
 commit，沿既有授權普通 push sprint branch，不 merge main。
 

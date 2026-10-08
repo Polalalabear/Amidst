@@ -411,7 +411,7 @@ prerequisite skips；Ruff、mypy92 source files、diff check通過。
 正式 Cases1–3 沒有執行，27 rows 明示 N/A/NOT_CERTIFIED。
 唯一 [human gate](../../human_review/README.md) pending；
 [final report](../research/PHASE1_FINAL_REPORT.md)／[experiment record](EXPERIMENT_LOG.md)
-保存具體數值與限制，[cleanup](../PHASE1_ARTIFACT_CLEANUP.md)只有inventory，沒有刪除。
+保存具體數值與限制，[cleanup](../operations/PHASE1_ARTIFACT_CLEANUP.md)只有inventory，沒有刪除。
 已準備任務限定 publication；不 merge main、Phase2保持FROZEN、不建立freeze tag。
 
 
@@ -978,7 +978,7 @@ authority、malformed/non-finite inputs、contact overlap、geometry budgets、s
 跨孔洞與 naming／collection ownership。Unsupported geometry、floor-plane authority、
 clearance／slab opening 維持 REVIEW；diagnostic adjacency 不建立 navigation 或 stair edges。
 
-[Protocol](../PHASE1_BENCHMARK_PROTOCOL.md) 固定問題、指標 populations／units、比較與缺值政策，
+[Protocol](../research/PHASE1_BENCHMARK_PROTOCOL.md) 固定問題、指標 populations／units、比較與缺值政策，
 正式 D／epsilon／K／時間政策、physical authority 與 final baselines 仍為
 `UNRESOLVED_RESEARCH_SETTING`／null，formal execution disabled；epsilon=0 仍拒絕。
 PRD targets 是 INITIAL_TARGET，六類 acceptance 分開列出，不宣稱 synthetic 驗收成功。
@@ -1901,6 +1901,18 @@ Historical committed evidence: M5 `1dcce12` records 106 tests in 23.82s and mypy
 
 第一個文件 checkpoint `8798bcc54f2226537f0d11cbf91e3612f20b68d0` 已推到 `codex/docs-agent-handoff`，並在 GitHub 建立同 SHA 的 `codex/simulation-engineering`。`codex/deterministic-downstream-scenarios / c0717ae7c3655799aa11e779248cec1e670387d1` 和 `phase1/pilot-robustness-validation / ce2974b25b31a8cb0ec9bc579a84d708d3356bf7` 的同名 remote refs 已建立。`git ls-remote` 實際核對相符；main 與 frozen Phase 2 未變動。其餘既有本機 commits 已由 remote ancestry 覆蓋。
 
-唯一未發布 commit 是 `phase1/physical-policy-approval / c5956dc825f669e28e2694578be0fed97432a786`，含50,897,608 bytes 新 blobs，其中四份 raw source/physical evidence 已由 [artifact inventory](../PHASE1_ARTIFACT_CLEANUP.md) 列為 LOCAL ONLY。Repository visibility 實查為 PUBLIC；該分支保持 HOLD，不因推送其他分支而發布原始證據，不改寫或刪除其本機歷史。完成上傳全部 commits 仍需對這份 LOCAL ONLY bundle 的明確發布例外。
+唯一未發布 commit 是 `phase1/physical-policy-approval / c5956dc825f669e28e2694578be0fed97432a786`，含50,897,608 bytes 新 blobs，其中四份 raw source/physical evidence 已由 [artifact inventory](../operations/PHASE1_ARTIFACT_CLEANUP.md) 列為 LOCAL ONLY。Repository visibility 實查為 PUBLIC；該分支保持 HOLD，不因推送其他分支而發布原始證據，不改寫或刪除其本機歷史。完成上傳全部 commits 仍需對這份 LOCAL ONLY bundle 的明確發布例外。
 
 English: Reused the existing checkout to classify 30 maintained documents, retain compatibility links and preserve six protected files/configs byte-for-byte. Added a planned local MockAgent retrieval contract and an expanded M1–M6 prompt. API wiring and token fallback sections remain empty; no external model call or code-test rerun occurred. Relative-link validation found no new failures. The documentation checkpoint and engineering startup branch were published and exact SHAs verified, together with the two missing historical branch refs. Main and frozen Phase 2 remained unchanged. Only `c5956dc` is unpublished: it contains raw evidence explicitly classified LOCAL ONLY in this public repository and remains HOLD pending a specific publication exception.
+
+## 2026-10-08 — 根目錄與導覽精簡 / Root and navigation cleanup
+
+本次承接 `32667254a0eb5bb1f3ad299eef9952145382c2c6`，依使用者指示移除30份 root 轉址正文與5份分類 README。`docs/README.md` 成為唯一索引，只列四個工作入口與五分類；專案 README 的文件導覽保留索引與交接兩個連結。Protocol 正文搬至 research、歷史 post-approval handoff 搬至 history、artifact inventory 搬至 operations；其他正文維持分類位置。
+
+Root 由36個檔案降至6個：索引、exact corridor review、hydration checkpoint JSON，以及 DEVELOPMENT_RULES／GEOMETRY_PROVIDER／benchmark protocol 三個必要 symlinks。Corridor question 的實際 manifest hash、原 checkpoint JSON、locked protocol config、其餘 tracked JSON 與 hash-bound Markdown 共298份 bytes 全部相符。歷史 checkpoint 內 protocol／handoff 的 SHA 記錄仍指當時版本；新位置只修連結，不把歷史文件 SHA 或歷史 PASS 當成本次 bytes／研究驗收。
+
+可維護的資料盤點、交接、prompt 與文件連結改為分類位置。三個 future report producers 只修文件輸出／連結路徑，避免重建後把文件重新寫回 root。沒有重跑或覆寫歷史 inventory／source／media。首頁同步修正已過期的「尚無 projection／baseline／ablation／rendered images」敘述，區分已存在的 office 局部結果與未完成的正式全案例驗收。
+
+本次驗證：15個既有 scale／hydration tests PASS；修改 producer 的 Ruff PASS；mypy 111 source files PASS。Inventory producer 在隔離的 temporary fixture 確認新輸出位置與 CSV 連結，scene-audit summary 確認分類後的決策連結。Actual historical hydration 再驗297份現存檔案、29 locked inputs，copied=0，沒有替換舊 inputs。相對連結與 anchors 無新增斷鏈，原16項失效引用未增加；三個 symlink 目標與四個 API／token 空章節驗證相符。完整1978測試仍是先前 recovery checkpoint 的紀錄，本次未重跑。
+
+English: Removed thirty redirect bodies and five category indexes, leaving one documentation index and six root files/aliases. Maintained text uses the five category folders. Kept 298 JSON/manifest-bound evidence files unchanged, preserved real corridor approval and runtime bindings, and updated only navigation in the moved historical documents. Three future report producers now emit category paths; existing historical artifacts were not regenerated or overwritten. Fifteen targeted tests, Ruff, mypy, isolated producer checks and exact 297-file/29-input hydration passed. No new relative-link failures or external model calls were introduced; API/token sections remain empty. Historical full-suite evidence is not a test rerun or new formal acceptance.

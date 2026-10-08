@@ -4,7 +4,7 @@
 
 Snapshot date: **2026-10-08**. This file records which artifacts are currently
 materialized. The authoritative data contracts remain in
-[`docs/DATA_SCHEMA.md`](../docs/DATA_SCHEMA.md).
+[`docs/specs/DATA_SCHEMA.md`](../docs/specs/DATA_SCHEMA.md).
 
 ### 2026-10-08 persistent recovery / 持久工作目錄恢復
 
@@ -21,7 +21,7 @@ The actual new office run is `finalization/reviewed_run_recovery_20261008/` with
 RRDs/PNGs and PASS ready-case reproduction. These bulk outputs are local/ignored;
 [small recovery evidence](finalization/recovery_checkpoint_20261008/validation.json) is tracked.
 The full original corridor union numerical verification was also rerun and passed.
-See [runtime rebuild instructions](../docs/PHASE1_RESTORED_RUNTIME.md).
+See [runtime rebuild instructions](../docs/operations/PHASE1_RESTORED_RUNTIME.md).
 Case2 and Case3 detour-growth, all-case dataset validation and freeze remain blocked.
 
 舊暫存連結已失效；本次重新運行輸出與交接放在持久目錄。原source、核准與locked inputs
@@ -36,7 +36,7 @@ clean-checkout regeneration, source/protected hashes and curated artifact invent
 [current checkpoint](finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json).
 Historical proposal/strict-preview/V5 packets retain their pre-approval bytes. No new corridor
 simulation dataset, all-case benchmark or Rerun demo is claimed by this physical checkpoint;
-Phase1 full Exit remains BLOCKED. See [release continuation](../docs/PHASE1_RESEARCH_RELEASE_HANDOFF.md).
+Phase1 full Exit remains BLOCKED. See [release continuation](../docs/operations/PHASE1_RESEARCH_RELEASE_HANDOFF.md).
 
 精確 corridor scope 已核准並套用六個 cells 的原數值證明，完整 union certificate 已物化；
 獨立重建證據另存 current checkpoint。原 review 與 committed 歷史證據保留；bulk raw 目前可用性見上方 recovery inventory。下一對話完成
@@ -121,11 +121,11 @@ eight obstacle/PORTAL conflict pairs, stair connectivity, openings and clearance
 review concerns. Overall physical/collision validity remains **PROVISIONAL**.
 
 This bundle is read-only diagnostic geometry, not an Observation/GT dataset or formal
-benchmark. The [provider](../docs/GEOMETRY_PROVIDER.md) requires explicit approved physical
+benchmark. The [provider](../docs/specs/GEOMETRY_PROVIDER.md) requires explicit approved physical
 scope before formal consumption; an empty inspection collider query cannot certify safety.
 原始及衍生 `.blend` 不變，保留已採用 1 BU = 1 m 計算換算；沒有修改 Graph、ranking、
 GT isolation、benchmark semantics 或開始 Phase 2。完整逐 patch 審查及重現指令見
-[geometry authority contract](../docs/GEOMETRY_AUTHORITY.md)。
+[geometry authority contract](../docs/specs/GEOMETRY_AUTHORITY.md)。
 
 ### 2026-10-05 historical addendum / 小型 downstream PILOT
 

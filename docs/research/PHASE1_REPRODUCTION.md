@@ -87,7 +87,7 @@ git diff --check
 正式輸入保持 locked/pending，見 [input lock](../../data/finalization/checkpoint/input_lock.json)
 和 [human gate](../../human_review/README.md)。核准前沒有正式 metric epsilon；不可替入
 pilot/regression epsilon。Case definitions、baseline A/B/C、metric formulas 沿用
-[既有 protocol](../PHASE1_BENCHMARK_PROTOCOL.md)。Case 4 DEFERRED，Phase 2 FROZEN。
+[既有 protocol](PHASE1_BENCHMARK_PROTOCOL.md)。Case 4 DEFERRED，Phase 2 FROZEN。
 Gate payload 經 source-bound certificate 重跑及正式設定版本化後，再建立新的 formal
 dataset version，執行正式 Cases、poison/replay/fresh gates；全部通過才建立 freeze tag。
 

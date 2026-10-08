@@ -15,7 +15,7 @@
 
 依序讀 docs/README.md、docs/specs/DEVELOPMENT_RULES.md、docs/operations/CODEX_HANDOFF.md、docs/engineering/AGENT_RETRIEVAL_BOUNDARY.md、docs/operations/PHASE1_RESTORED_RUNTIME.md、docs/operations/PHASE1_RESEARCH_RELEASE_HANDOFF.md、data/finalization/recovery_checkpoint_20261008/validation.json、data/finalization/reviewed_corridor_scope_checkpoint_v1/checkpoint.json；其餘文件按分類與本次問題讀取，不全目錄掃描。
 
-重用這個 checkout 和既有 environment。工程碼使用專用 codex/simulation-engineering 分支（以 GitHub 上該分支或最新已驗證文件 checkpoint 為起點）；codex/docs-agent-handoff 只供本次文件整理。正式研究仍使用 phase1/finalization-sprint。同一 checkout 在工作狀態已保存且 clean 時切換分支，驗證後普通 push 對應 GitHub branch；不要為每個 milestone 建一份新 worktree、clone、venv 或 raw dataset 副本。GitHub branch 是版本入口，本機重型 scene/media 保留單一 immutable 來源。GitHub remote 不能取代本機執行環境或未公開素材；用 manifest、hash、materialization 與 replay refs 接入。分支間文件位置可能不同，依該分支的分類 index 或 root 兼容入口讀取。
+重用這個 checkout 和既有 environment。工程碼使用專用 codex/simulation-engineering 分支（以 GitHub 上該分支或最新已驗證文件 checkpoint 為起點）；codex/docs-agent-handoff 只供本次文件整理。正式研究仍使用 phase1/finalization-sprint。同一 checkout 在工作狀態已保存且 clean 時切換分支，驗證後普通 push 對應 GitHub branch；不要為每個 milestone 建一份新 worktree、clone、venv 或 raw dataset 副本。GitHub branch 是版本入口，本機重型 scene/media 保留單一 immutable 來源。GitHub remote 不能取代本機執行環境或未公開素材；用 manifest、hash、materialization 與 replay refs 接入。分支間文件位置可能不同，依該分支的 docs/README.md 或實際正文路徑讀取。
 
 canonical checkout /Users/polalabear/Developer/amidst 只供應 immutable Blender scene/raw artifacts，不切換它的 branch。保留無關修改與原始資產，不清理／刪除既有 worktree 或 media。phase2/integration-hardening / 5b51d2c 保持 FROZEN；在目前工程分支核對後重用相容的 repository/API/replay/consumer，不直接在 frozen branch 開發，不 whole-branch merge，不 merge main。
 

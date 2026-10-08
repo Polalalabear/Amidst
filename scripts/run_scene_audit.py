@@ -55,7 +55,7 @@ def render_summary(report: dict[str, Any]) -> str:
         "",
         "These automated findings are an inventory snapshot, not current decision status. "
         "See [geometry follow-up](GEOMETRY.md) and "
-        "[approved decisions](../../docs/ISSUES_AND_DECISIONS.md).",
+        "[approved decisions](../../docs/specs/ISSUES_AND_DECISIONS.md).",
         "",
         "### Source and environment",
         "",
@@ -209,7 +209,7 @@ def render_summary(report: dict[str, Any]) -> str:
             "",
             "以下自動發現是盤點快照，不代表目前決策狀態。請另看"
             "[幾何補充分析](GEOMETRY.md)與"
-            "[已確認決策](../../docs/ISSUES_AND_DECISIONS.md)。",
+            "[已確認決策](../../docs/specs/ISSUES_AND_DECISIONS.md)。",
             "",
             "### 來源與環境",
             "",

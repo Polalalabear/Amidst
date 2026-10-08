@@ -375,7 +375,7 @@ records the earlier protocol scope and its research-setting boundaries.
 
 Problem: Reusable case and comparison definitions can be mistaken for approved school
 geometry, formal metric choices or an executed research benchmark. Decision: Separate the
-versioned [Phase 1 protocol](../PHASE1_BENCHMARK_PROTOCOL.md) from executable ExperimentConfig and
+versioned [Phase 1 protocol](../research/PHASE1_BENCHMARK_PROTOCOL.md) from executable ExperimentConfig and
 synthetic MetricConfig. Report geometric accuracy, physical validity, Top-K coverage,
 temporal validity, search behavior and runtime separately. Preserve PRD values only as
 `INITIAL_TARGET`. Keep formal execution disabled while research settings or scene authority

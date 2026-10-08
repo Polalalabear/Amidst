@@ -38,7 +38,7 @@ def main() -> None:
             add(path, "ARCHIVE" if draft else "REGENERABLE",
                 "retained pre-final diagnostic draft" if draft else
                 "local raw diagnostic package; summarized and hash-bound in Git",
-                "data/finalization/checkpoint", "see docs/PHASE1_REPRODUCTION.md")
+                "data/finalization/checkpoint", "see docs/research/PHASE1_REPRODUCTION.md")
     physical = root / "data/scene_audit/phase1_physical_policy_approval_20261006"
     for path in sorted(physical.glob("*.gz")):
         add(path, "REGENERABLE", "large approved evidence kept locally, excluded from Git",
@@ -76,13 +76,13 @@ def main() -> None:
     lines.extend("| " + " | ".join(str(row[key]).replace("|", "\\|") for key in rows[0])
                  + " |" for row in rows)
     lines.extend(["", "Detailed machine-readable inventory: "
-                  "[CSV](../data/finalization/checkpoint/artifact_inventory.csv).",
+                  "[CSV](../../data/finalization/checkpoint/artifact_inventory.csv).",
                   "", "Rebuild this inventory after reproduction:", "", "```sh",
                   "uv run python scripts/inventory_phase1_finalization_artifacts.py \\",
                   "  --local data/finalization/local_run \\",
                   "  --fresh /absolute/path/to/fresh-checkout/data/finalization/fresh_run",
                   "```", ""])
-    (root / "docs/PHASE1_ARTIFACT_CLEANUP.md").write_text("\n".join(lines))
+    (root / "docs/operations/PHASE1_ARTIFACT_CLEANUP.md").write_text("\n".join(lines))
 
 
 if __name__ == "__main__":

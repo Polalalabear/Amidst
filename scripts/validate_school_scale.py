@@ -197,7 +197,7 @@ def main() -> None:
         "原 0.28 BU doorway protection = 0.006916 m；沒有改變原始 BU 邊界或診斷門檻。",
         "", "[Approved geometry](geometry.json) · [Physical authority](physical_authority.json) ·",
         "[Measurement evidence](../school_v3_scale_calibration_20261006/measurements.md) ·",
-        "[Unit contract](../../../docs/GEOMETRY_PROVIDER.md)", "",
+        "[Unit contract](../../../docs/specs/GEOMETRY_PROVIDER.md)", "",
         "SI inputs must use source-bound adapters before the core. Legacy runner/pilot exports",
         "remain historical native inputs until explicitly normalized; no automatic migration.",
         "No Graph/Top-K/GT/metric semantics or historical benchmark artifacts changed.",

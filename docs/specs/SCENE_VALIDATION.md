@@ -162,7 +162,7 @@ coverage、islands、疑似 overlap／geometry；LOW 包含 naming 與 non-manif
 
 標記後先重跑 validator 並人工處理 queue；再核准 source-bound surfaces／colliders、
 floor／camera bindings、clearance／contact／ownership 與 explicit topology。正式 benchmark
-還須完成 [BENCHMARK_PROTOCOL](../PHASE1_BENCHMARK_PROTOCOL.md) 的 unresolved settings。Validator
+還須完成 [BENCHMARK_PROTOCOL](../research/PHASE1_BENCHMARK_PROTOCOL.md) 的 unresolved settings。Validator
 報告完成本身不啟動 school benchmark、Agent Ranking 或最終 presentation pipeline。
 
 ## English

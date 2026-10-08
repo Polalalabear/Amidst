@@ -25,8 +25,8 @@ three recordings/previews and historical drafts, are saved under the canonical r
 ignored `data/pilot/phase1_finalization_20261006/`. Source `.blend` and large physical
 evidence remain local. No dataset blob, RRD or large render is published.
 
-見 [final report](../../docs/PHASE1_FINAL_REPORT.md)、
-[reproduction](../../docs/PHASE1_REPRODUCTION.md)、
+見 [final report](../../docs/research/PHASE1_FINAL_REPORT.md)、
+[reproduction](../../docs/research/PHASE1_REPRODUCTION.md)、
 [human review](../../human_review/README.md)。Physical/local-navigation、camera-landmark/floor
 語意與正式研究容差須先經唯一 gate；agent 再計算 certificate/route/time inventory。
 Case4 DEFERRED，Phase2 FROZEN，blocked checkpoint 不建 freeze tag。

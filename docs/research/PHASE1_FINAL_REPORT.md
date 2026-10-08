@@ -361,7 +361,7 @@ Source changes 驗證後建立 milestone；後續僅補 report/docs/curated summ
 
 Raw datasets、RRD、PNG 和 drafts 另持久保存在 canonical repo 的 ignored
 `data/pilot/phase1_finalization_20261006/`；大型 scene/evidence 保持本機。
-[Cleanup inventory](../PHASE1_ARTIFACT_CLEANUP.md) 只分類 KEEP/ARCHIVE/REGENERABLE，
+[Cleanup inventory](../operations/PHASE1_ARTIFACT_CLEANUP.md) 只分類 KEEP/ARCHIVE/REGENERABLE，
 DELETE_CANDIDATE 尚未選取，**沒有刪除**。Published blocked checkpoint 保存 source/config/tests/docs、
 logs、summaries 和 hashes；不建立 `phase1-frozen-20261006`。
 

@@ -51,7 +51,7 @@ Main entrance 缺約 0.58043 m²、side entrance 約 0.19348 m²、2F office 約
 這些 uncovered 子域沒有批准。Local height variation 與其他高度來源保留，不強制壓平。
 見 [floor_authority_map.json](floor_authority_map.json) 及
 `floor_support_details.json.gz` 的完整 source-face evidence 依
-[materialization contract](../../../docs/PHYSICAL_EVIDENCE_MATERIALIZATION.md) 重建。
+[materialization contract](../../../docs/operations/PHYSICAL_EVIDENCE_MATERIALIZATION.md) 重建。
 
 一般 [scene validator](scene_validation.md) 仍保留原 annotation proxy 的 plane-offset
 與其餘語意診斷（98 HIGH / 208 MEDIUM / 69 LOW）；不能把一般 proxy warning 當成
@@ -75,7 +75,7 @@ shared-feature／non-adjacent self-intersection、floor/body-envelope 檢查。
 Movement/visibility ownership 僅由原 19 個 approved roles 與 exact source binding 承接。
 見 [component authority](obstacle_collider_authority.json)；完整 parent indices 在
 `obstacle_collider_details.json.gz`／`source_evidence.json.gz`，兩者依
-[materialization contract](../../../docs/PHYSICAL_EVIDENCE_MATERIALIZATION.md) 重建。
+[materialization contract](../../../docs/operations/PHYSICAL_EVIDENCE_MATERIALIZATION.md) 重建。
 
 ## Eight portal pairs / 八組門洞衝突
 
@@ -181,4 +181,4 @@ value; the receipt retains actual before/after fingerprints without changing the
 
 Source prerequisites、verify-only／獨立 report replay、missing-evidence test profiles
 與 collision runtime 比較邊界見
-[完整雙語 workflow](../../../docs/PHYSICAL_EVIDENCE_MATERIALIZATION.md)。
+[完整雙語 workflow](../../../docs/operations/PHYSICAL_EVIDENCE_MATERIALIZATION.md)。

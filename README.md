@@ -42,10 +42,11 @@ Detection／Tracking／ReID、正式資料庫與操作介面屬於後續 Phase 2
 - **Fake-data 後半段閉環：**四組固定 seed fixtures，具時間參數的 blind-gap hypotheses、
   ADE／FDE／Top-K Coverage、AABB／速度／corridor metrics 與 Rerun debug recording。
 
-尚未完成正式 school end-to-end dataset／benchmark、semantic ranking、Projection Error、
-baseline／ablation，以及正式 Phase 2 實作。
-School walkability、NavMesh、樓梯與跨樓層路徑也尚未核准；跨樓層預設維持
-`DISCONNECTED`。
+正式 school 全案例 dataset／benchmark 與 Phase 1 full Exit 尚未完成。已有受限 office
+局部結果、projection metrics、A/B/C baseline／ablation 與 Rerun 重現；目前範圍與未解項目
+見 [交接](docs/operations/CODEX_HANDOFF.md)。局部 source-bound 幾何核准不等於全校
+walkability／NavMesh 認證；樓梯與跨樓層權限仍未完成，跨樓層預設維持 `DISCONNECTED`。
+Semantic ranking 與正式 Phase 2 仍待後續工作。
 
 ### 核心資料流
 
@@ -106,7 +107,8 @@ Blender 或所需本機資產時，相關 integration tests 可能跳過。
 - [`data/mock/`](data/mock/README.md) 追蹤四組合成 fixture、8 個 PROJECTED Observations、
   4 個獨立 GT trajectories（252 samples）與完整 config，不代表 Blender scene 已驗證。
 - 本機 ignored 的 `data/candidates/fake_downstream_20261001/` 有四組 Event／metrics／Rerun
-  recordings；沒有正式 school dataset 或專案產生的 Blender rendered images。
+  recordings。正式 school 全案例 dataset 尚未完成；已有本機 Blender pilot 圖像與 office
+  局部 run，實際可用資料見 [資料盤點](data/README.md)。
 - 座標採 Blender 右手座標、Z 向上。School v3 architectural scale 已明確核准
   **1 BU = 0.0247 m**（`APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING`）；geometry 不縮放，
   原始 BU 與歷史 1 m/unit camera／pilot／synthetic artifacts 保留。新 physical inputs／
@@ -139,19 +141,8 @@ docs/                   產品、設計、契約、決策與交接文件
 
 ### 文件導覽
 
-- [分類文件總覽](docs/README.md)
-- [研究範圍與需求](docs/specs/PRD.md)
-- [系統設計](docs/specs/SYSTEM_DESIGN.md)
-- [資料契約](docs/specs/DATA_SCHEMA.md)
-- [模組介面與 export 指令](docs/specs/INTERFACES.md)
-- [Semantic validator 與人工審核入口](docs/specs/SCENE_VALIDATION.md)
-- [正式 Benchmark Protocol 與未決研究設定](docs/PHASE1_BENCHMARK_PROTOCOL.md)
-- [Benchmark runner 與 comparison reporting](docs/research/PHASE1_BENCHMARK.md)
-- [已確認決策與開放邊界](docs/specs/ISSUES_AND_DECISIONS.md)
-- [開發與文件維護規則](docs/specs/DEVELOPMENT_RULES.md)
-- [已完成工作紀錄](docs/history/WORK_LOG.md)
-- [目前資料盤點](data/README.md)
-- [最新開發交接](docs/operations/CODEX_HANDOFF.md)
+- [文件導覽](docs/README.md)
+- [目前交接與待辦](docs/operations/CODEX_HANDOFF.md)
 
 ## English
 
@@ -189,9 +180,12 @@ tool-calling Agent belongs to Phase 2.
 - **Fake-data downstream loop:** four fixed-seed fixtures, timed blind-gap hypotheses,
   ADE/FDE/route Coverage, AABB/speed/corridor metrics and Rerun debug recordings.
 
-Formal school end-to-end data/benchmark, semantic ranking, Projection Error,
-baselines/ablations and production Phase 2 are not implemented. School walkability, NavMesh, stairs and cross-floor routes are
-also unapproved; cross-floor movement remains `DISCONNECTED` by default.
+The full school dataset/benchmark and Phase 1 Exit Gates remain incomplete. Bounded office
+results include projection metrics, A/B/C baselines/ablations and Rerun reproduction; see the
+[current handoff](docs/operations/CODEX_HANDOFF.md) for scope and remaining work. Local
+source-bound geometry approvals do not certify whole-school walkability or NavMesh. Stair
+and cross-floor authority remain incomplete; cross-floor movement is `DISCONNECTED` by
+default. Semantic ranking and formal Phase 2 remain future work.
 
 ### Core data flow
 
@@ -257,7 +251,8 @@ local asset may skip.
   observations, four separate GT trajectories (252 samples) and full config.
   These do not certify a Blender scene.
 - Local ignored `data/candidates/fake_downstream_20261001/` contains four Event/metric/Rerun
-  output sets. No formal school dataset or project-generated Blender rendered images exist.
+  output sets. The formal all-case school dataset is incomplete; local Blender pilot images
+  and bounded office runs exist. See the [data inventory](data/README.md) for availability.
 - Coordinates use Blender's right-handed, Z-up world. School-v3 architectural scale is
   explicitly **APPROVED / USER_DEFINED_RESEARCH_MODEL_SETTING**, **1 BU = 0.0247 m**. Geometry is
   not scaled; native BU and historical 1 m/unit camera/pilot/synthetic artifacts remain.
@@ -292,16 +287,5 @@ docs/                   Product, design, contract, decision and handoff docs
 
 ### Documentation
 
-- [Categorized documentation index](docs/README.md)
-- [Research scope and requirements](docs/specs/PRD.md)
-- [System design](docs/specs/SYSTEM_DESIGN.md)
-- [Data contracts](docs/specs/DATA_SCHEMA.md)
-- [Module interfaces and export commands](docs/specs/INTERFACES.md)
-- [Semantic validation and human review](docs/specs/SCENE_VALIDATION.md)
-- [Formal benchmark protocol and unresolved settings](docs/PHASE1_BENCHMARK_PROTOCOL.md)
-- [Benchmark runner and comparison reporting](docs/research/PHASE1_BENCHMARK.md)
-- [Accepted decisions and open boundaries](docs/specs/ISSUES_AND_DECISIONS.md)
-- [Development and documentation rules](docs/specs/DEVELOPMENT_RULES.md)
-- [Completed work log](docs/history/WORK_LOG.md)
-- [Current data inventory](data/README.md)
-- [Latest development handoff](docs/operations/CODEX_HANDOFF.md)
+- [Documentation](docs/README.md)
+- [Current handoff and remaining work](docs/operations/CODEX_HANDOFF.md)

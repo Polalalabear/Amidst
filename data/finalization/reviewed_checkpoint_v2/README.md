@@ -40,5 +40,5 @@ Scientific charts and compact metrics/reports are committed under
 [`reviewed_run_v5/evaluation`](../reviewed_run_v5/evaluation/benchmark_table.md).
 Source `.blend`, raw physical evidence, raw datasets/inference, RRD and demo previews
 remain local and ignored. Rebuild them with the
-[reviewed reproduction commands](../../../docs/PHASE1_REVIEWED_REPRODUCTION.md).
+[reviewed reproduction commands](../../../docs/research/PHASE1_REVIEWED_REPRODUCTION.md).
 Case4 remains DEFERRED and Phase2 FROZEN. No freeze tag or main merge is permitted.

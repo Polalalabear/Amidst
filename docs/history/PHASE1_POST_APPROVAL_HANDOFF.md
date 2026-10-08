@@ -25,10 +25,10 @@ decision application, certify geometry, publish a freeze, or produce formal resu
 原 Sprint 授權 finalization commits 與 push 此 branch；不 merge main、rewrite history 或
 force push。只有原 Exit Gate 全部通過，才建立 annotated Phase 1 freeze tag。
 
-讀取 [DEVELOPMENT_RULES](DEVELOPMENT_RULES.md)、
-[benchmark protocol](PHASE1_BENCHMARK_PROTOCOL.md)、
-[decision application](../human_review/DECISION_APPLICATION.md) 與
-[approval summary](../human_review/APPROVALS.md)。規則沿用原文件；本交接不另訂 benchmark。
+讀取 [DEVELOPMENT_RULES](../specs/DEVELOPMENT_RULES.md)、
+[benchmark protocol](../research/PHASE1_BENCHMARK_PROTOCOL.md)、
+[decision application](../../human_review/DECISION_APPLICATION.md) 與
+[approval summary](../../human_review/APPROVALS.md)。規則沿用原文件；本交接不另訂 benchmark。
 紀錄寫入 WORK_LOG / EXPERIMENT_LOG，持續更新正式結果、reproduction、cleanup 與 handoff。
 
 ## 已完成與目前狀態
@@ -81,7 +81,7 @@ Output 必須不存在；若已存在，讀取並驗證既有 receipt，或使�
 Scale **1 BU = 0.0247 m**，不改／儲存／縮放原 scene。
 Blender executable `/Applications/Blender.app/Contents/MacOS/Blender`。
 本 worktree 已有 `.venv` 與 physical evidence；fresh checkout 仍須以現有 materializer
-重建，實際 CLI 見 [reproduction guide](PHASE1_REPRODUCTION.md)。Python 使用 uv。
+重建，實際 CLI 見 [reproduction guide](../research/PHASE1_REPRODUCTION.md)。Python 使用 uv。
 
 已核准完整 review 的持久副本：
 `/Users/polalabear/Developer/amidst/data/pilot/phase1_finalization_human_review_20261007/approvals_recorded/human_review/`。
@@ -162,7 +162,7 @@ status、projection policy、limitations、Case4/Phase2 deferred）。否則保�
 
 Approval checkpoint `10a3fcc`：177 review tests、repo Ruff、strict mypy 4 review tools、diff
 check 通過。早期 diagnostic checkpoint 已有 materialization/export/replay/GT poison/
-fresh evidence，見 [final report](PHASE1_FINAL_REPORT.md)；不取代正式 Case Exit Gate。
+fresh evidence，見 [final report](../research/PHASE1_FINAL_REPORT.md)；不取代正式 Case Exit Gate。
 本次交接只做 checkpoint/hash/文件一致性驗證，不執行 application 或 formal Cases。
 
 已核准的 metric profile 固定 5 Hz、source endpoints inclusive、piecewise-linear 到

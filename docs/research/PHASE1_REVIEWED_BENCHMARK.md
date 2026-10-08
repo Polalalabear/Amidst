@@ -1,7 +1,7 @@
 # Phase 1 reviewed local benchmark
 
 Date: 2026-10-07. This additive document preserves
-[the original protocol](../PHASE1_BENCHMARK_PROTOCOL.md) and its machine-readable
+[the original protocol](PHASE1_BENCHMARK_PROTOCOL.md) and its machine-readable
 bytes. The canonical fresh run is `reviewed_run_v5`, with the unchanged frozen
 V2 configuration and newly approved reference movement policy. Its dataset,
 primary inference, evaluation and ready-case reproduction checks are complete.

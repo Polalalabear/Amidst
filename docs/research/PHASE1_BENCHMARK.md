@@ -12,7 +12,7 @@ source-camera visibility；不是實際拍攝或 Blender actor animation。
 整體仍為 **PHASE1_FINALIZATION_BLOCKED**：Case1 與 Case3 temporal component 已執行，
 Case2 缺核准 branching scope，Case3 full detour/candidate-growth stress 仍未成立。
 已核准的 reference movement policy 使 V5 Travel-time Error 可計算；原
-[protocol](../PHASE1_BENCHMARK_PROTOCOL.md) 不變。以下既有內容保留為歷史 checkpoint
+[protocol](PHASE1_BENCHMARK_PROTOCOL.md) 不變。以下既有內容保留為歷史 checkpoint
 與 synthetic runner 說明；其舊 pending／N/A 敘述不取代上述 V5 現況。
 
 [繁體中文](#繁體中文) | [English](#english)
@@ -26,7 +26,7 @@ This checkpoint implements diagnostic baseline adapters without changing the for
 protocol definitions or relabeling old fake runs. Formal execution remains gated.
 
 正式 Case 1–4、metric／baseline／ablation 與分項 acceptance specification 見
-[BENCHMARK_PROTOCOL](../PHASE1_BENCHMARK_PROTOCOL.md)。該 protocol 尚有
+[BENCHMARK_PROTOCOL](PHASE1_BENCHMARK_PROTOCOL.md)。該 protocol 尚有
 `UNRESOLVED_RESEARCH_SETTING`，不能直接作為可執行的 ExperimentConfig。
 本頁說明既有 synthetic runner；comparison reporting 的入口為：
 
@@ -39,7 +39,7 @@ uv run python -m amidst.benchmark_report --input <benchmark-output-root> --outpu
 重排 method。既有 fake outputs 的圖表標記為 `SYNTHETIC REGRESSION`，人工建立的
 plotting fixture 標記為 `MOCK VALIDATION`，不能當作 Blender research result。
 
-The [formal protocol](../PHASE1_BENCHMARK_PROTOCOL.md) specifies Cases 1–4, metrics, baselines,
+The [formal protocol](PHASE1_BENCHMARK_PROTOCOL.md) specifies Cases 1–4, metrics, baselines,
 ablations and separate acceptance categories. It retains unresolved settings and is a
 specification, not an executable ExperimentConfig. The comparison command above reads
 existing benchmark outputs into a fresh report directory, writes separate PNGs and JSON/

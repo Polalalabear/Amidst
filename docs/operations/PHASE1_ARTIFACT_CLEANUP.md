@@ -3,13 +3,13 @@
 ## 2026-10-08 current reviewed artifact inventory / 目前 reviewed 分類
 
 Canonical `reviewed_run_v5` 的結果與重建方式見
-[reviewed benchmark](PHASE1_REVIEWED_BENCHMARK.md) 和
-[reviewed reproduction](PHASE1_REVIEWED_REPRODUCTION.md)；目前整體仍為
+[reviewed benchmark](../research/PHASE1_REVIEWED_BENCHMARK.md) 和
+[reviewed reproduction](../research/PHASE1_REVIEWED_REPRODUCTION.md)；目前整體仍為
 **PHASE1_FINALIZATION_BLOCKED**。本段只更新分類，沒有刪除或移動 artifact。
 
 | Category | Current artifacts and treatment |
 | --- | --- |
-| KEEP | Curated reports、frozen configs、code/tests/docs、human/reference approval receipts，以及 `data/finalization/reviewed_checkpoint_v2/` 的小型 manifest、freeze、evaluation/reproduction 與 fresh comparison receipts。入口為 [evaluation receipt](../data/finalization/reviewed_checkpoint_v2/local_evaluation_verification.json)、[reproduction receipt](../data/finalization/reviewed_checkpoint_v2/local_reproduction_verification.json) 與 [final fresh comparison](../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json)。 |
+| KEEP | Curated reports、frozen configs、code/tests/docs、human/reference approval receipts，以及 `data/finalization/reviewed_checkpoint_v2/` 的小型 manifest、freeze、evaluation/reproduction 與 fresh comparison receipts。入口為 [evaluation receipt](../../data/finalization/reviewed_checkpoint_v2/local_evaluation_verification.json)、[reproduction receipt](../../data/finalization/reviewed_checkpoint_v2/local_reproduction_verification.json) 與 [final fresh comparison](../../data/finalization/reviewed_checkpoint_v2/fresh_delivery_comparison_final.json)。 |
 | ARCHIVE | 既有 diagnostic/V3、partial V4、failed comparison/trial 與較早 blocked/pending 報告，連同各自 provenance 保留；不改稱目前正式結果。 |
 | LOCAL ONLY | 原始 Blender source、大型 raw physical/source evidence、raw datasets、RRD、frame images 與其他 raw media 留在本機並依既有 ignore policy 排除 Git；不刪除、不提交。可重建內容的命令與 source/hash binding 見 reviewed reproduction。 |
 
@@ -38,7 +38,7 @@ DELETE_CANDIDATE: none selected; no automatic deletion is authorized.
 REGENERABLE. Its separate manifest, HTML/template/builder, exact successful producer archive
 and current renderer are KEEP. Regeneration uses the archived producer staged at its original
 path in a fresh materialized checkout, then `uv run python human_review/build_spatial_guide.py`;
-see [review guide](../human_review/README.md). Original 57 images and all source/decision files
+see [review guide](../../human_review/README.md). Original 57 images and all source/decision files
 remain unchanged. Only this task's generated mypy/pytest caches were discarded after a
 storage error; no source, render, evidence or DELETE_CANDIDATE item was deleted.
 
@@ -51,27 +51,27 @@ storage error; no source, render, evidence or DELETE_CANDIDATE item was deleted.
 | docs | KEEP | 417549 | source/config/tests/docs or checkpoint evidence | this published finalization branch | git checkout <published-finalization-SHA> |
 | human_review | KEEP | 379737 | source/config/tests/docs or checkpoint evidence | this published finalization branch | git checkout <published-finalization-SHA> |
 | data/finalization/checkpoint | KEEP | 344150 | source/config/tests/docs or checkpoint evidence | this published finalization branch | git checkout <published-finalization-SHA> |
-| data/finalization/local_run/baseline_regression.json | REGENERABLE | 33402 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/dataset | REGENERABLE | 214602 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/dataset_provenance_draft | ARCHIVE | 214404 | retained pre-final diagnostic draft | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/diagnostics | REGENERABLE | 15860041 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/diagnostics.json | REGENERABLE | 26850 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/diagnostics.json_pre_preview | REGENERABLE | 26850 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/diagnostics.json_pre_reader | REGENERABLE | 26739 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/diagnostics_pre_preview | REGENERABLE | 15899573 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/diagnostics_pre_reader | REGENERABLE | 15899406 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/diagnostics_sidecar_draft | ARCHIVE | 11908099 | retained pre-final diagnostic draft | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/report_lf | REGENERABLE | 317856 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/verification.json | REGENERABLE | 54044 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/verification.json_pre_preview | REGENERABLE | 54044 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| data/finalization/local_run/verification.json_pre_reader | REGENERABLE | 53933 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/baseline_regression.json | REGENERABLE | 33402 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/dataset | REGENERABLE | 214602 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/diagnostics | REGENERABLE | 15859992 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/diagnostics.json | REGENERABLE | 26850 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/report | REGENERABLE | 317884 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/report_lf | REGENERABLE | 317856 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
-| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/verification.json | REGENERABLE | 54044 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/baseline_regression.json | REGENERABLE | 33402 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/dataset | REGENERABLE | 214602 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/dataset_provenance_draft | ARCHIVE | 214404 | retained pre-final diagnostic draft | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/diagnostics | REGENERABLE | 15860041 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/diagnostics.json | REGENERABLE | 26850 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/diagnostics.json_pre_preview | REGENERABLE | 26850 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/diagnostics.json_pre_reader | REGENERABLE | 26739 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/diagnostics_pre_preview | REGENERABLE | 15899573 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/diagnostics_pre_reader | REGENERABLE | 15899406 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/diagnostics_sidecar_draft | ARCHIVE | 11908099 | retained pre-final diagnostic draft | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/report_lf | REGENERABLE | 317856 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/verification.json | REGENERABLE | 54044 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/verification.json_pre_preview | REGENERABLE | 54044 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| data/finalization/local_run/verification.json_pre_reader | REGENERABLE | 53933 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/baseline_regression.json | REGENERABLE | 33402 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/dataset | REGENERABLE | 214602 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/diagnostics | REGENERABLE | 15859992 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/diagnostics.json | REGENERABLE | 26850 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/report | REGENERABLE | 317884 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/report_lf | REGENERABLE | 317856 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
+| /private/tmp/amidst-phase1-finalization-fresh/data/finalization/fresh_run/verification.json | REGENERABLE | 54044 | local raw diagnostic package; summarized and hash-bound in Git | data/finalization/checkpoint | see docs/research/PHASE1_REPRODUCTION.md |
 | data/scene_audit/phase1_physical_policy_approval_20261006/floor_support_details.json.gz | REGENERABLE | 469557 | large approved evidence kept locally, excluded from Git | data/scene_audit/phase1_physical_policy_approval_20261006/artifact_manifest.json | uv run python -m amidst.materialize_physical_evidence --source-scene <source> |
 | data/scene_audit/phase1_physical_policy_approval_20261006/geometry.json.gz | REGENERABLE | 2130611 | large approved evidence kept locally, excluded from Git | data/scene_audit/phase1_physical_policy_approval_20261006/artifact_manifest.json | uv run python -m amidst.materialize_physical_evidence --source-scene <source> |
 | data/scene_audit/phase1_physical_policy_approval_20261006/obstacle_collider_details.json.gz | REGENERABLE | 10448625 | large approved evidence kept locally, excluded from Git | data/scene_audit/phase1_physical_policy_approval_20261006/artifact_manifest.json | uv run python -m amidst.materialize_physical_evidence --source-scene <source> |
@@ -110,7 +110,7 @@ storage error; no source, render, evidence or DELETE_CANDIDATE item was deleted.
 | data/pilot/phase1_finalization_human_review_20261007/hr02_camera_audit/human_review/ | ARCHIVE | 130717159 manifest artifact bytes; original manifest retained | complete preapproval review package preserved independently | approvals_recorded/human_review/ verified durable package | preserve old copy; rebuild corrected diagnostics only in a fresh output path |
 | /private/tmp/amidst-review-clarity-qa-v1 | ARCHIVE | local diagnostic trial | unadopted flat-lighting map and its exact producer retained; no source/evidence deletion | final clarity renderer and manifest | initial producer only; intentionally stopped after first map, not canonical evidence |
 
-Detailed machine-readable inventory: [CSV](../data/finalization/checkpoint/artifact_inventory.csv).
+Detailed machine-readable inventory: [CSV](../../data/finalization/checkpoint/artifact_inventory.csv).
 The two later human-review supplements above have their own hash-bound manifests;
 their source/templates/scripts/small metadata are KEEP and raw renders remain local ignored.
 Only generated bytecode caches and an untracked fresh-validation mypy cache were removed

@@ -14,7 +14,7 @@ artifacts，不在那裡實作或切換 branch。
 
 使用者要求先準備 Agent 操作檢索系統的資源與角色：固定 TaskContext、LocationRegistry、typed tools、summary/detail/media/replay references 與輸出邊界，避免 Agent 掃描整個資料庫或 repository。本階段 **SYNTHETIC_MOCK_ONLY / NO_EXTERNAL_MODEL_CALLS**；OpenAI API 接線與 token 兜底演算法保留空章節，不自行填入。
 
-入口見 [Agent 檢索契約](../engineering/AGENT_RETRIEVAL_BOUNDARY.md) 與 [擴大工程續作 prompt](PHASE1_NEXT_CHAT_PROMPT.md)。可在同一 checkout 連續完成多個可執行 milestones，每段驗證、commit、普通 push 對應工程 branch；不為每段新增 worktree/clone/raw 副本。文件分類見 [導覽](../README.md)；根目錄兼容入口與 pinned 歷史 bytes 保留。
+入口見 [Agent 檢索契約](../engineering/AGENT_RETRIEVAL_BOUNDARY.md) 與 [擴大工程續作 prompt](PHASE1_NEXT_CHAT_PROMPT.md)。可在同一 checkout 連續完成多個可執行 milestones，每段驗證、commit、普通 push 對應工程 branch；不為每段新增 worktree/clone/raw 副本。文件分類見 [導覽](../README.md)；正文按分類存放；必要的機器路徑與不可變核准文件見該頁說明。
 
 工程閉環與原正式研究驗收並行。下方既有 corridor／formal blockers 保持有效；本次只完成文件分類、角色審查與 prompt 更新，沒有把新工程契約標成已實作或 formal PASS。
 

@@ -17,9 +17,11 @@
 | `WORK_LOG.md` | 日期／checkpoint 綁定的已完成工作與驗證證據 | 即時待辦清單、未完成工作冒充完成 |
 | `CODEX_HANDOFF.md` | 當前狀態、有效待修項目、續作入口及階段性暫緩項目 | 已完成細節、已解問題、過期環境問題、完整歷史與重複規則 |
 | `DATA_SCHEMA.md` / `INTERFACES.md` | 實際資料契約與模組介面 | 測試成功日誌 |
-| `../data/README.md` | 已物化資料的日期化盤點與發布邊界 | 尚未產生的 dataset 被當成既有資料 |
+| `../../data/README.md` | 已物化資料的日期化盤點與發布邊界 | 尚未產生的 dataset 被當成既有資料 |
 
 工作完成並驗證後，把結果記入工作紀錄；已解決或已失效的 handoff 項目移除，不留「已完成 TODO」。有效未解問題不能只因整理文件而消失；若被暫緩，標明暫緩，不標為解決。歷史紀錄使用當時日期／commit／證據，不能改寫成今天重新驗證的結果。
+
+文件正文放在 specs／engineering／research／operations／history；只由 `docs/README.md` 提供總索引，不另建每分類 README 或逐檔轉址文件。根目錄例外只保留實際 hash／runtime 綁定的檔案或必要路徑別名；新增文件直接使用分類路徑。
 
 ### 開發與 Git
 
@@ -55,6 +57,8 @@ git diff --check
 These are existing engineering and documentation rules, not new requirements. [PRD](PRD.md) owns research scope, [SYSTEM_DESIGN](SYSTEM_DESIGN.md) owns architecture, and [ISSUES_AND_DECISIONS](ISSUES_AND_DECISIONS.md) contains only core problems and adopted solutions. Ask before resolving major conflicts through design changes.
 
 Keep durable rules here, dated completed work/evidence in [WORK_LOG](../history/WORK_LOG.md), current unresolved/actionable state in [CODEX_HANDOFF](../operations/CODEX_HANDOFF.md), contracts in DATA_SCHEMA/INTERFACES, and materialized-data inventory in [data/README](../../data/README.md). Move verified completion into the log and remove resolved/stale handoff items. Deferred is not resolved. Preserve genuine open issues and bind historical checks to their original date/checkpoint.
+
+Store maintained text in the five category folders and use only `docs/README.md` as the index. Do not add category READMEs or per-document redirect pages. Root exceptions must serve an actual hash/runtime binding or required path alias; new documents use category paths directly.
 
 Verify workspace, Git status and branch before work; preserve unrelated changes. Use uv, pyproject.toml and uv.lock. Implement, validate and independently commit each milestone before the next. Stage narrowly; do not reset, force-push or rewrite user history. Publication requires explicit authorization. Code checks are listed above; documentation-only changes use proportionate diff/link/consistency checks and must not claim an old test run as new.
 
