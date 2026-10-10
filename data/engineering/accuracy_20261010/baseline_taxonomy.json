@@ -1,0 +1,421 @@
+{
+  "formal_acceptance": false,
+  "schema_version": "accuracy.error-taxonomy.v1",
+  "scope": "E1_FOUR_CAMERA_FROZEN_SOURCE",
+  "splits": {
+    "development": {
+      "counts": {
+        "ID_switches": 9,
+        "fragmented_tracks": 0,
+        "pixel_merged_or_partial": 1,
+        "wrong_known_provisional_pairs": 6
+      },
+      "dataset_sha256": "8c80f7e99e65909fa124ee19974677be6c0bdf39d260ee3ac09ee9a5fcd61316",
+      "fragmentation_evaluation_only": {
+        "condition": "Produced bounded-labeled tracks; mixed tracks counted for each known identity, not full actor recall",
+        "known_actor_track_multiplicity": {
+          "1": 1,
+          "3": 1,
+          "5": 1,
+          "10": 1
+        }
+      },
+      "inference_sha256": "fd62e5ba5c937da07d7aa848e248ebfc4b91d84829a6d5bba4199f90e0e8677c",
+      "pixels": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.9844961240310077,
+        "bounded_labeled_measurements": 127,
+        "eligible_visible_actor_contacts": 134,
+        "ground_contact_error_m": {
+          "maximum": 1.7420849817138944,
+          "mean": 0.23401468886395682,
+          "rms": 0.28862015183945977,
+          "samples": 127
+        },
+        "impure_segment_count": 4,
+        "measurement_count": 129,
+        "one_to_one_visible_contact_recall": 0.9477611940298507,
+        "pixel_contact_error_px": {
+          "maximum": 15.551250054682411,
+          "mean": 3.352601246938276,
+          "rms": 3.808665032912727,
+          "samples": 127
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 2,
+        "within_local_track_id_switches": 9
+      },
+      "source_freeze_sha256": "a6078d6fe5ae43aa92394f68c642653bbdcd6bf3be2c9a955f2b683f31bce4d7",
+      "source_manifest_sha256": "55da8a129ddc5965fd0e8dc77037c41fe72de7493a78b555e788051fb41b62e7",
+      "space_time_prior": {
+        "full": {
+          "candidate_pool_sha256": "486b8d5c160b432ce77bf480904ae06c68508dc81759d6dab00be26c08d336bd",
+          "eligible_query_count": 8,
+          "global_false_merge_count": "N/A: no global identity solver",
+          "global_false_split_count": "N/A: no global identity solver",
+          "hard_physics_preserved": true,
+          "identity_candidate_recall_at_k": {
+            "1": 0.875,
+            "3": 1.0,
+            "5": 1.0
+          },
+          "is_true_next_continuation_metric": false,
+          "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+          "pair_level_false_merge_count": 2,
+          "pair_level_missed_link_count": 10,
+          "predicted_link_count": 12,
+          "removed_feature": null,
+          "resolved_link_count": 9,
+          "same_identity_eligible_pair_precision": 0.7777777777777778,
+          "same_identity_eligible_pair_recall": 0.4117647058823529,
+          "scores_are_probabilities": false,
+          "true_link_count": 17,
+          "true_positive": 7,
+          "unresolved_link_count": 3
+        },
+        "without_appearance": {
+          "candidate_pool_sha256": "486b8d5c160b432ce77bf480904ae06c68508dc81759d6dab00be26c08d336bd",
+          "eligible_query_count": 8,
+          "global_false_merge_count": "N/A: no global identity solver",
+          "global_false_split_count": "N/A: no global identity solver",
+          "hard_physics_preserved": true,
+          "identity_candidate_recall_at_k": {
+            "1": 0.875,
+            "3": 1.0,
+            "5": 1.0
+          },
+          "is_true_next_continuation_metric": false,
+          "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+          "pair_level_false_merge_count": 2,
+          "pair_level_missed_link_count": 10,
+          "predicted_link_count": 12,
+          "removed_feature": "APPEARANCE",
+          "resolved_link_count": 9,
+          "same_identity_eligible_pair_precision": 0.7777777777777778,
+          "same_identity_eligible_pair_recall": 0.4117647058823529,
+          "scores_are_probabilities": false,
+          "true_link_count": 17,
+          "true_positive": 7,
+          "unresolved_link_count": 3
+        },
+        "without_space": {
+          "candidate_pool_sha256": "486b8d5c160b432ce77bf480904ae06c68508dc81759d6dab00be26c08d336bd",
+          "eligible_query_count": 8,
+          "global_false_merge_count": "N/A: no global identity solver",
+          "global_false_split_count": "N/A: no global identity solver",
+          "hard_physics_preserved": true,
+          "identity_candidate_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0
+          },
+          "is_true_next_continuation_metric": false,
+          "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+          "pair_level_false_merge_count": 2,
+          "pair_level_missed_link_count": 9,
+          "predicted_link_count": 12,
+          "removed_feature": "SPACE",
+          "resolved_link_count": 10,
+          "same_identity_eligible_pair_precision": 0.8,
+          "same_identity_eligible_pair_recall": 0.47058823529411764,
+          "scores_are_probabilities": false,
+          "true_link_count": 17,
+          "true_positive": 8,
+          "unresolved_link_count": 2
+        },
+        "without_time": {
+          "candidate_pool_sha256": "486b8d5c160b432ce77bf480904ae06c68508dc81759d6dab00be26c08d336bd",
+          "eligible_query_count": 8,
+          "global_false_merge_count": "N/A: no global identity solver",
+          "global_false_split_count": "N/A: no global identity solver",
+          "hard_physics_preserved": true,
+          "identity_candidate_recall_at_k": {
+            "1": 0.75,
+            "3": 1.0,
+            "5": 1.0
+          },
+          "is_true_next_continuation_metric": false,
+          "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+          "pair_level_false_merge_count": 2,
+          "pair_level_missed_link_count": 11,
+          "predicted_link_count": 12,
+          "removed_feature": "TIME",
+          "resolved_link_count": 8,
+          "same_identity_eligible_pair_precision": 0.75,
+          "same_identity_eligible_pair_recall": 0.35294117647058826,
+          "scores_are_probabilities": false,
+          "true_link_count": 17,
+          "true_positive": 6,
+          "unresolved_link_count": 4
+        }
+      },
+      "visible_behavior": {
+        "confusion": {
+          "CORNER->CORNER": 1,
+          "DWELL->DWELL": 1,
+          "ENTER->ENTER": 1,
+          "EXIT->EXIT": 1,
+          "NONE->CORNER": 1
+        },
+        "direction_error": "N/A: no calibrated direction-error reference",
+        "per_kind": {
+          "CORNER": {
+            "false_negative": 0,
+            "false_positive": 1,
+            "precision": 0.5,
+            "recall": 1.0,
+            "true_positive": 1,
+            "unresolved": 0
+          },
+          "DWELL": {
+            "false_negative": 0,
+            "false_positive": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "true_positive": 1,
+            "unresolved": 0
+          },
+          "ENTER": {
+            "false_negative": 1,
+            "false_positive": 0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "true_positive": 1,
+            "unresolved": 1
+          },
+          "EXIT": {
+            "false_negative": 1,
+            "false_positive": 0,
+            "precision": 1.0,
+            "recall": 0.5,
+            "true_positive": 1,
+            "unresolved": 2
+          },
+          "POSSIBLE_WANDERING": {
+            "false_negative": 1,
+            "false_positive": 0,
+            "precision": null,
+            "recall": 0.0,
+            "true_positive": 0,
+            "unresolved": 1
+          }
+        },
+        "prediction_count": 9,
+        "trigger_midpoint_error_s": {
+          "maximum": 0.8000000000000007,
+          "mean": 0.3047619047619049,
+          "rms": 0.42994488915412266,
+          "samples": 4
+        }
+      }
+    },
+    "test": {
+      "counts": {
+        "ID_switches": 8,
+        "fragmented_tracks": 0,
+        "pixel_merged_or_partial": 2,
+        "wrong_known_provisional_pairs": 13
+      },
+      "dataset_sha256": "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+      "fragmentation_evaluation_only": {
+        "condition": "Produced bounded-labeled tracks; mixed tracks counted for each known identity, not full actor recall",
+        "known_actor_track_multiplicity": {
+          "1": 3,
+          "2": 1,
+          "4": 1,
+          "6": 1,
+          "10": 1
+        }
+      },
+      "inference_sha256": "3875bf512dc3482477b4c3986e2ef744c03b217e82eb868b038a7a6e087789f9",
+      "pixels": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.96,
+        "bounded_labeled_measurements": 144,
+        "eligible_visible_actor_contacts": 160,
+        "ground_contact_error_m": {
+          "maximum": 1.8666173777897603,
+          "mean": 0.23562966186286335,
+          "rms": 0.3045108247382402,
+          "samples": 144
+        },
+        "impure_segment_count": 6,
+        "measurement_count": 150,
+        "one_to_one_visible_contact_recall": 0.9,
+        "pixel_contact_error_px": {
+          "maximum": 16.76720692530351,
+          "mean": 3.213221041313729,
+          "rms": 3.7199694370285434,
+          "samples": 144
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 4,
+        "within_local_track_id_switches": 8
+      },
+      "source_freeze_sha256": "292d9a2068756a289776b4ff564ffcfe8c3571a64e588e045c953f3d58263468",
+      "source_manifest_sha256": "dad2f75de8ae864777e509d4b1c6a14eaeeffc777483d28e9815869ef79dd920",
+      "space_time_prior": {
+        "full": {
+          "candidate_pool_sha256": "210e24bb7ce547730a86c0275a82b1ec8ddc1b2243324e660c217a53dedec043",
+          "eligible_query_count": 8,
+          "global_false_merge_count": "N/A: no global identity solver",
+          "global_false_split_count": "N/A: no global identity solver",
+          "hard_physics_preserved": true,
+          "identity_candidate_recall_at_k": {
+            "1": 0.375,
+            "3": 1.0,
+            "5": 1.0
+          },
+          "is_true_next_continuation_metric": false,
+          "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+          "pair_level_false_merge_count": 7,
+          "pair_level_missed_link_count": 12,
+          "predicted_link_count": 16,
+          "removed_feature": null,
+          "resolved_link_count": 10,
+          "same_identity_eligible_pair_precision": 0.3,
+          "same_identity_eligible_pair_recall": 0.2,
+          "scores_are_probabilities": false,
+          "true_link_count": 15,
+          "true_positive": 3,
+          "unresolved_link_count": 6
+        },
+        "without_appearance": {
+          "candidate_pool_sha256": "210e24bb7ce547730a86c0275a82b1ec8ddc1b2243324e660c217a53dedec043",
+          "eligible_query_count": 8,
+          "global_false_merge_count": "N/A: no global identity solver",
+          "global_false_split_count": "N/A: no global identity solver",
+          "hard_physics_preserved": true,
+          "identity_candidate_recall_at_k": {
+            "1": 0.375,
+            "3": 1.0,
+            "5": 1.0
+          },
+          "is_true_next_continuation_metric": false,
+          "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+          "pair_level_false_merge_count": 7,
+          "pair_level_missed_link_count": 12,
+          "predicted_link_count": 16,
+          "removed_feature": "APPEARANCE",
+          "resolved_link_count": 10,
+          "same_identity_eligible_pair_precision": 0.3,
+          "same_identity_eligible_pair_recall": 0.2,
+          "scores_are_probabilities": false,
+          "true_link_count": 15,
+          "true_positive": 3,
+          "unresolved_link_count": 6
+        },
+        "without_space": {
+          "candidate_pool_sha256": "210e24bb7ce547730a86c0275a82b1ec8ddc1b2243324e660c217a53dedec043",
+          "eligible_query_count": 8,
+          "global_false_merge_count": "N/A: no global identity solver",
+          "global_false_split_count": "N/A: no global identity solver",
+          "hard_physics_preserved": true,
+          "identity_candidate_recall_at_k": {
+            "1": 0.75,
+            "3": 1.0,
+            "5": 1.0
+          },
+          "is_true_next_continuation_metric": false,
+          "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+          "pair_level_false_merge_count": 5,
+          "pair_level_missed_link_count": 9,
+          "predicted_link_count": 16,
+          "removed_feature": "SPACE",
+          "resolved_link_count": 11,
+          "same_identity_eligible_pair_precision": 0.5454545454545454,
+          "same_identity_eligible_pair_recall": 0.4,
+          "scores_are_probabilities": false,
+          "true_link_count": 15,
+          "true_positive": 6,
+          "unresolved_link_count": 5
+        },
+        "without_time": {
+          "candidate_pool_sha256": "210e24bb7ce547730a86c0275a82b1ec8ddc1b2243324e660c217a53dedec043",
+          "eligible_query_count": 8,
+          "global_false_merge_count": "N/A: no global identity solver",
+          "global_false_split_count": "N/A: no global identity solver",
+          "hard_physics_preserved": true,
+          "identity_candidate_recall_at_k": {
+            "1": 0.625,
+            "3": 0.75,
+            "5": 0.875
+          },
+          "is_true_next_continuation_metric": false,
+          "metric_family": "SAME_IDENTITY_PHYSICALLY_ELIGIBLE_PRODUCED_SEGMENT_PAIRS",
+          "pair_level_false_merge_count": 6,
+          "pair_level_missed_link_count": 10,
+          "predicted_link_count": 16,
+          "removed_feature": "TIME",
+          "resolved_link_count": 11,
+          "same_identity_eligible_pair_precision": 0.45454545454545453,
+          "same_identity_eligible_pair_recall": 0.3333333333333333,
+          "scores_are_probabilities": false,
+          "true_link_count": 15,
+          "true_positive": 5,
+          "unresolved_link_count": 5
+        }
+      },
+      "visible_behavior": {
+        "confusion": {
+          "DWELL->DWELL": 1,
+          "NONE->CORNER": 5,
+          "NONE->POSSIBLE_WANDERING": 1
+        },
+        "direction_error": "N/A: no calibrated direction-error reference",
+        "per_kind": {
+          "CORNER": {
+            "false_negative": 1,
+            "false_positive": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "true_positive": 0,
+            "unresolved": 1
+          },
+          "DWELL": {
+            "false_negative": 0,
+            "false_positive": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "true_positive": 1,
+            "unresolved": 0
+          },
+          "ENTER": {
+            "false_negative": 3,
+            "false_positive": 0,
+            "precision": null,
+            "recall": 0.0,
+            "true_positive": 0,
+            "unresolved": 2
+          },
+          "EXIT": {
+            "false_negative": 2,
+            "false_positive": 0,
+            "precision": null,
+            "recall": 0.0,
+            "true_positive": 0,
+            "unresolved": 4
+          },
+          "POSSIBLE_WANDERING": {
+            "false_negative": 1,
+            "false_positive": 1,
+            "precision": 0.0,
+            "recall": 0.0,
+            "true_positive": 0,
+            "unresolved": 3
+          }
+        },
+        "prediction_count": 17,
+        "trigger_midpoint_error_s": {
+          "maximum": 0.7999999999999989,
+          "mean": 0.7999999999999989,
+          "rms": 0.7999999999999989,
+          "samples": 1
+        }
+      }
+    }
+  },
+  "version": "v2-baseline"
+}
