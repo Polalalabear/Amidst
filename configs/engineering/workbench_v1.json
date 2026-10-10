@@ -14,6 +14,13 @@
       "checkpoint": "data/engineering/local_run/simulation_v2",
       "label": "雙鏡頭基礎實驗室",
       "description": "E0 · 仿射地面投影與盲區候選診斷；無實體鏡頭姿態"
+    },
+    {
+      "scene_id": "local-camera-accuracy-v2",
+      "adapter": "local_camera_accuracy_v2",
+      "checkpoint": "data/engineering/local_run/accuracy_v2/test/final",
+      "label": "局部鏡頭精度研究 v2",
+      "description": "E1 同源 RGB · end_to_end v2；SUPPORTED／UNKNOWN／全部盲區替代"
     }
   ]
 }

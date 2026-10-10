@@ -1,0 +1,562 @@
+{
+  "schema_version": "amidst.workbench.http-validation.v1",
+  "date": "2026-10-10",
+  "requests": 63,
+  "checks": [
+    {
+      "route": "/api/bootstrap",
+      "status": 200,
+      "bytes": 661,
+      "sha256": "e420ba63176875d97da4742e471f8f5f455725c2cb84a2aeb72c14e7efb6a1fb"
+    },
+    {
+      "route": "/api/session",
+      "status": 200,
+      "bytes": 116,
+      "sha256": "52bae521a2cc08491e067ccb8d978ae7e8c4f4f7bd39b8e6921be57f1fbcc535"
+    },
+    {
+      "route": "/api/session",
+      "status": 200,
+      "bytes": 118,
+      "sha256": "a72c43c1438e9fbe08e5f2eb8760918c237f8c84e1ced10f164fda71429c26fe"
+    },
+    {
+      "route": "/api/scene",
+      "status": 200,
+      "bytes": 31916,
+      "sha256": "753c4359a17e182644bff6ae717980a0ab7ced0e9220a2ce32da9d986c1b3a81"
+    },
+    {
+      "route": "/api/query",
+      "status": 200,
+      "bytes": 49602,
+      "sha256": "00b6ffa343c03c0c9d568a43ac18948b55dbdaf81389f5fd56a4a516c3059c40"
+    },
+    {
+      "route": "/api/query",
+      "status": 200,
+      "bytes": 49602,
+      "sha256": "00b6ffa343c03c0c9d568a43ac18948b55dbdaf81389f5fd56a4a516c3059c40"
+    },
+    {
+      "route": "/api/evaluation",
+      "status": 200,
+      "bytes": 24891,
+      "sha256": "a8d3dcf4f9c76149b070ca6854a737f03eb50eb48776e3e3565f584430142596"
+    },
+    {
+      "route": "/api/evaluation",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/scene",
+      "status": 200,
+      "bytes": 15819,
+      "sha256": "242a6f7689aac8a060fdab1b4f69017fa3029ba5223c175c2f6479bc1015817c"
+    },
+    {
+      "route": "/api/query",
+      "status": 200,
+      "bytes": 99325,
+      "sha256": "71462b0482faa38cb417ff4705c696cacf97c5fe56178bb511551e6db0d0e30b"
+    },
+    {
+      "route": "/api/query",
+      "status": 200,
+      "bytes": 99325,
+      "sha256": "71462b0482faa38cb417ff4705c696cacf97c5fe56178bb511551e6db0d0e30b"
+    },
+    {
+      "route": "/api/evaluation",
+      "status": 200,
+      "bytes": 4103,
+      "sha256": "4fae38c33910b82c079127d01fbc5db1f15a2f8ae1c2391a21a8138f178190a0"
+    },
+    {
+      "route": "/api/evaluation",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/scene",
+      "status": 200,
+      "bytes": 32856,
+      "sha256": "b3224debaf3610b5825387107a0a45df37d8d373d0b76d35715c1044e2e28fa8"
+    },
+    {
+      "route": "/api/query",
+      "status": 200,
+      "bytes": 196138,
+      "sha256": "1ccf96ab4aca42c8e74f7bca3bb5b9e563e43fc8efa45db574016c58e037be21"
+    },
+    {
+      "route": "/api/query",
+      "status": 200,
+      "bytes": 196138,
+      "sha256": "1ccf96ab4aca42c8e74f7bca3bb5b9e563e43fc8efa45db574016c58e037be21"
+    },
+    {
+      "route": "/api/evaluation",
+      "status": 200,
+      "bytes": 80,
+      "sha256": "be245a330ff6c7c5bc30bd229c37d3f9abea2fb89b59085f0f553374580c28c5"
+    },
+    {
+      "route": "/api/evaluation",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/query",
+      "status": 200,
+      "bytes": 272949,
+      "sha256": "77f6e9995e150196f25cf2a21445604846a2c0bcf121776cc7136fb3c9ea2bdc"
+    },
+    {
+      "route": "/api/event",
+      "status": 200,
+      "bytes": 13161,
+      "sha256": "2e78cccc27dac12e150cbe8d9d8032fe56fca21d2bf100abdfad87e14071d89b"
+    },
+    {
+      "route": "/api/product_context",
+      "status": 200,
+      "bytes": 171,
+      "sha256": "d395890d9bc2faba640a133b69cb0a4624090873851caa433f8859c8eacbb02d"
+    },
+    {
+      "route": "/api/product_context",
+      "status": 200,
+      "bytes": 3840,
+      "sha256": "45d2a15bc4b71708051528e32e32453cd6036df9cd5bd7f3f68d42dac6bb3330"
+    },
+    {
+      "route": "/api/product_context",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_tool",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_intent",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_execute",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_plan",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_case",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_cases",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_report",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_review",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_videos",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_timeline",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_export_report",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_tool",
+      "status": 200,
+      "bytes": 8915,
+      "sha256": "2451a308e6fe80d244e3efda54e1c6f5426ceacee66d6d51c864f49fc1575dfb"
+    },
+    {
+      "route": "/api/product_tool",
+      "status": 200,
+      "bytes": 43393,
+      "sha256": "cb6ba227667cf720d2cac9d6e0f7d41effc5c47c391c5930593a66758870ed53"
+    },
+    {
+      "route": "/api/product_context",
+      "status": 403,
+      "bytes": 108,
+      "sha256": "dd82983658850b8e356cd005c4855b79d739837a958df7ad3c259f83f549e80b"
+    },
+    {
+      "route": "/api/product_context",
+      "status": 403,
+      "bytes": 108,
+      "sha256": "dd82983658850b8e356cd005c4855b79d739837a958df7ad3c259f83f549e80b"
+    },
+    {
+      "route": "/api/product_context",
+      "status": 200,
+      "bytes": 3814,
+      "sha256": "16054cdc4b14c6714f7c1f05488098e5580690b23655793c1936669804da5281"
+    },
+    {
+      "route": "/api/product_tool",
+      "status": 200,
+      "bytes": 8902,
+      "sha256": "5412874e79e4cbad22d939b4b29a837be485c54f7ba84e97e475a4f8821f61cc"
+    },
+    {
+      "route": "/api/product_context",
+      "status": 200,
+      "bytes": 3840,
+      "sha256": "45d2a15bc4b71708051528e32e32453cd6036df9cd5bd7f3f68d42dac6bb3330"
+    },
+    {
+      "route": "/api/product_tool",
+      "status": 200,
+      "bytes": 1879,
+      "sha256": "09f275361b41afef3f606f78d4f41784d4c0c05b7b7fe0c0b4358d0aa684d223"
+    },
+    {
+      "route": "/api/product_tool",
+      "status": 200,
+      "bytes": 1596,
+      "sha256": "30200499e638e5b41090638678772a81e41243954ecd9f819bac51ff3d318433"
+    },
+    {
+      "route": "/api/product_videos",
+      "status": 200,
+      "bytes": 10694,
+      "sha256": "fffb689bb2174a2ffac84e450856577fed7e5c99d0f923edf9b5a7f87b8e6619"
+    },
+    {
+      "route": "/api/product_video",
+      "status": 206,
+      "bytes": 128,
+      "sha256": "8722ed7cd8a5e52dd88d636fd7513c212cf641b335b97c2ce062f162e81a892e"
+    },
+    {
+      "route": "/api/product_video",
+      "status": 416,
+      "bytes": 24,
+      "sha256": "6a5b56de4d35325a1000530bbb5e9b63515678338ebd44cd14039c935fe8e549"
+    },
+    {
+      "route": "/api/product_video",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/product_timeline",
+      "status": 200,
+      "bytes": 1030,
+      "sha256": "a93298ae96e933aa5403aaef6551ac4d5e4a16bbd614914de8484f7af02caf7e"
+    },
+    {
+      "route": "/api/product_cases",
+      "status": 200,
+      "bytes": 217,
+      "sha256": "e29fcee10232daf2ae92cb1d99954b16675957a2107e7e09893423ad5c636582"
+    },
+    {
+      "route": "/api/product_plan",
+      "status": 200,
+      "bytes": 1938,
+      "sha256": "f8b0090658e99d0c66194463577a149e524b35cef55a2fb71a0fd931b5aadf5c"
+    },
+    {
+      "route": "/api/product_case",
+      "status": 200,
+      "bytes": 48259,
+      "sha256": "79323f5dbd6b2d11081468de8cdcf831332c67ec5dc8e6fa2f41f71f3202c6ac"
+    },
+    {
+      "route": "/api/product_report",
+      "status": 200,
+      "bytes": 20243,
+      "sha256": "93401bae482a343c8ab6cc817fd55bf1438b662edf52e189c0e7daa4b55df6ce"
+    },
+    {
+      "route": "/api/product_export_report",
+      "status": 200,
+      "bytes": 2059,
+      "sha256": "974c16ca4a56535d61cd68d1a64147503891dd185720ded4ca5a08bf2939e71b"
+    },
+    {
+      "route": "/api/gallery_list",
+      "status": 200,
+      "bytes": 12577,
+      "sha256": "fa4340e2096a9ad5ad1d3d92c7431fa83353a2ad209fd7774aa86c9663cff7a4"
+    },
+    {
+      "route": "/api/gallery_list",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/gallery_detail",
+      "status": 200,
+      "bytes": 7762,
+      "sha256": "34e483de700687b92cb6016a35b9dc1df7466ec9c2941773f4f8863dbb148ce0"
+    },
+    {
+      "route": "/api/gallery_media",
+      "status": 200,
+      "bytes": 185598,
+      "sha256": "7e416b447fcce3ceba94e2d21d656bd3225869e848afa7d0d7bd2bd131f723f0"
+    },
+    {
+      "route": "/api/gallery_media",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/gallery_detail",
+      "status": 403,
+      "bytes": 113,
+      "sha256": "6106bd716301da04ffba552207d598a4ec77564de8e889338a6873d350cb5e2e"
+    },
+    {
+      "route": "/api/presentations",
+      "status": 200,
+      "bytes": 2113,
+      "sha256": "e41c9d46d12794c4e4fea89c763fe47890f762e1b5c8a0c6fd2deec11f9ae549"
+    },
+    {
+      "route": "/api/presentation",
+      "status": 200,
+      "bytes": 68981,
+      "sha256": "78e99d9b81402fa97a43b3f8661b861ac184a48b74df007c178081482fdeb704"
+    },
+    {
+      "route": "/api/presentations",
+      "status": 403,
+      "bytes": 97,
+      "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+    },
+    {
+      "route": "/api/logs",
+      "status": 200,
+      "bytes": 2056,
+      "sha256": "ce0f74052199ece33c8e700279a46fde485b6ae2ac62f6303ef251ebc41019f8"
+    }
+  ],
+  "scenes": [
+    {
+      "scene_id": "local-camera",
+      "model_id": "synthetic-local-camera-v1",
+      "source_run_id": "local-camera-test-v1",
+      "experiment_id": null,
+      "config_sha256": "be9f1945782f15d77e93b6a5b170c1242c750f1b75b034b55a8719a4f4b83990",
+      "freeze_ref": "freeze-2effefbd9b4825c8241ffc8d446791df50b84d81a3850bd678dc70661bf3cf02",
+      "cameras": 4,
+      "query_event_count": 16,
+      "query_observation_count": 2
+    },
+    {
+      "scene_id": "synthetic-lab",
+      "model_id": "synthetic-lab-v1",
+      "source_run_id": "simulation-v2",
+      "experiment_id": null,
+      "config_sha256": "02729186cee74f3bc2f002ee76518557c35d22c5d5c01cdc406e45f00ccf791c",
+      "freeze_ref": "freeze-94e7d7f4669290b178fbecb4e3d3a543b30fdc1807e7d5f4c57d984e978a8bb5",
+      "cameras": 2,
+      "query_event_count": 15,
+      "query_observation_count": 3
+    },
+    {
+      "scene_id": "local-camera-accuracy-v2",
+      "model_id": "synthetic-local-camera-v1",
+      "source_run_id": "local-camera-test-v1",
+      "experiment_id": "accuracy-test-v2-final",
+      "config_sha256": "fbe9b7057f524d9b2dc93f314d9e6f9341a0e9519307fe656340f0e05f2afc40",
+      "freeze_ref": "freeze-7f291c07235400f4aa5566039206f643c3a4b883a4c5bb9a1333ebb0a03cad1c",
+      "cameras": 4,
+      "query_event_count": 68,
+      "query_observation_count": 6
+    }
+  ],
+  "product_binding": {
+    "run_ref": "run:a1ca794cd65c4254b6b10ae4",
+    "context": {
+      "place_id": "synthetic-local-camera",
+      "model_id": "synthetic-local-camera-v1",
+      "model_revision": "1",
+      "source_ref": "source:91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+      "spatial_context_id": "context:synthetic-local-camera-v1",
+      "run_id": "local-camera-test-v1",
+      "clock_id": "synthetic-seconds-v1",
+      "observation_mode": "photos_plus_observations",
+      "decision_stage": "RESULTS",
+      "registry_version": "local-camera-index.v1",
+      "resource_refs": [
+        "camera:12d704aac389b61432ccbe33",
+        "camera:7ff3500f86e5d9260791c035",
+        "camera:c2eb9920d19b3d87a4230681",
+        "camera:e82d652d52d0efecdaa47f22"
+      ],
+      "allowed_tools": [
+        "resolve_place",
+        "list_cameras",
+        "query_observations",
+        "query_events",
+        "get_event_summary",
+        "get_event_detail",
+        "get_media",
+        "get_replay"
+      ],
+      "origin": "SYNTHETIC",
+      "authority": "CONFIGURED_ENGINEERING_ONLY",
+      "freeze_ref": "freeze-2effefbd9b4825c8241ffc8d446791df50b84d81a3850bd678dc70661bf3cf02"
+    },
+    "product_version": "local-product.v1",
+    "product_freeze_ref": "freeze:81acae2de59581e4eb310a42",
+    "operator_ref": "operator:229c4723698f756c843d1218",
+    "role": "TRUSTED_LOCAL_OPERATOR",
+    "allowed_tools": [
+      "resolve_place",
+      "list_cameras",
+      "query_observations",
+      "query_events",
+      "get_event_summary",
+      "get_event_detail",
+      "get_media",
+      "get_replay",
+      "get_observation_detail",
+      "query_reachable_cameras",
+      "propose_feasible_trajectories",
+      "search_person_appearance",
+      "get_stitch_hypotheses"
+    ],
+    "external_model_calls": false
+  },
+  "gallery": {
+    "families": 15,
+    "images": 192,
+    "v2": {
+      "counts": {
+        "images": 7,
+        "tables": 1,
+        "rrd": 0,
+        "mp4": 0,
+        "missing": 0
+      },
+      "classification": "MEASURED_SYNTHETIC_RESEARCH_V2_WITH_TRADEOFFS",
+      "tables": 1
+    }
+  },
+  "source": {
+    "binding": {
+      "binding_ref": "binding:2655f251dc43f11fcc01da15",
+      "source_ref": "source:a5ccb5ee986b4456c605e898",
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "checkpoint": "883204af854bed301506b39d63ccb33312b79ff2",
+      "model_revision": "historical-office-diagnostic-v1",
+      "run_ref": "run:ca7cc1d7e20a52c118b7fa03",
+      "clock": "HISTORICAL_CONFIGURED_SYNTHETIC_SECONDS",
+      "units": {
+        "native_units": "NATIVE_BU",
+        "normalized_units": "METRES",
+        "metres_per_unit": 0.0247,
+        "normalization": "SCALE_TO_METRES",
+        "coordinate_frame": "RIGHT_HANDED_XYZ_Z_UP",
+        "authority": "APPROVED_SCHOOL_V3_SCALE"
+      },
+      "normalization_sha256": "d571bb05f1cbd50e2cf1a187a50965a7e30caabf29443e57acdedee39db7da1a",
+      "producer_sha256": "3082a49b125a4442b3a0f3d05bfca38c627181c1ad90cb363de79bdaae9989b6",
+      "inputs": [
+        {
+          "resource_ref": "source:dde2d7b024ac982b0bbfad1b",
+          "sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf"
+        },
+        {
+          "resource_ref": "source:bcdcdb07f1cb8035085de13d",
+          "sha256": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70"
+        },
+        {
+          "resource_ref": "source:cf4f0f1f934686697baf0443",
+          "sha256": "0212756864986ee5044313058144c7e3fcb56c72e68ebd30b7062e508b9c9b02"
+        },
+        {
+          "resource_ref": "source:d5005b51c5daad8584b91150",
+          "sha256": "0ebdb3762fe181c44ea25456b4525204aaa19dbe957a923c360f2bffdf5d6e48"
+        },
+        {
+          "resource_ref": "source:f6a5033da092641b0218635d",
+          "sha256": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0"
+        },
+        {
+          "resource_ref": "source:aaefbc06e6117c8af6efdb51",
+          "sha256": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c"
+        },
+        {
+          "resource_ref": "source:1c55ea5919d06768a63259b7",
+          "sha256": "e77628c145fceb42ae086a76f4de60741147ea525eb12d46e7f23d7ba83d7b69"
+        },
+        {
+          "resource_ref": "source:5175cb4cf911b659983fb524",
+          "sha256": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c"
+        }
+      ]
+    },
+    "geometry_presentation": {
+      "method": "SOURCE_TRIANGLE_SIX_PLANE_CLIP_NO_CAPS_V1",
+      "derivation_sha256": "1a07d257c3470ae39b72c58aeaf72747ffce0ba9ccc644fe2f70c950b2090585",
+      "historical_triangle_count": 110,
+      "display_triangle_count": 276,
+      "non_horizontal_triangle_count": 154,
+      "historical_manifest_unchanged": true,
+      "physical_authority_changed": false,
+      "semantic_classification_performed": false
+    }
+  },
+  "report": {
+    "sha256": "974c16ca4a56535d61cd68d1a64147503891dd185720ded4ca5a08bf2939e71b",
+    "identity_status": "UNRESOLVED_PROVISIONAL"
+  },
+  "curation": {
+    "session_references_omitted": true,
+    "response_hashes_preserved": true
+  }
+}

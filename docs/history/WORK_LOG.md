@@ -2327,3 +2327,31 @@ GT/recipe/reference虛擬replacement/removal無runtime讀取；兩fresh outputs�
 hashes一致，獨立evaluation comparison逐byte一致。僅stage研究code/config/docs/curated
 counts，raw/GT/descriptors/PNG/debug維持LOCAL ONLY。FormalCases2/3/fullExit BLOCKED、
 Case4DEFERRED、原Phase2/tag FROZEN不變。
+
+## 2026-10-10 — P15 unified workbench investigations and experiment gallery
+
+8016接入既有E1 product的十二個scoped actions、四鏡頭MP4／Range／source-offset、
+typed調查plan、有限batch停止／續跑、savedcases、人審及HTML報告；原product8020保留lab。
+Server-owned role/scene/mode/RESULTS/freeze bindings與opaque media refs守門，晚到UI回應
+不能換scope，query/plan完成不等於唯一身分或exhaustive inventory。Body/gait皆DISPLAY_ONLY。
+來源模型三條原候選以沿原points的tube提高可見性，保留landmark高度與原authority。
+
+第三個accuracy-v2 scene重用原E1 RGB／校正／source run，另綁experiment/config/freeze；
+29segments／165events保存5SUPPORTED、7UNKNOWN、153GAP_ALTERNATIVES。獨立aggregate
+未認證時evaluation入口UNAVAILABLE，既有三列photos_only比較與七cards走human gallery。
+展示庫固定15families／192verifiedPNG，RRD／GIF只顯示存在狀態，GT debug另設human入口。
+Projection results未物化、V5四缺項保持明示，沒有把檔案索引稱為全部實驗重跑。
+
+當次真正無排除required-physical-evidence full run **2873PASS／0failure/error/skip，
+JUnit308.146s**；Ruff src/tests、strictmypy183sources、45workbench＋13product Node PASS。
+63次真HTTP涵蓋三scene／兩mode／角色拒絕／reference與stage邊界／binaryRange／工具／
+來源／gallery。Actualbrowser雙seed MULTI_TARGET執行18工具後stop/resume/complete，
+保存42alternatives／9conflicts／UNRESOLVED_PROVISIONAL；四影片、seek/speed/master與
+HTMLexport、原模型50格播放、Recovery27/45列及v2三列七cards實際可操作。
+
+[整合receipt](../../data/engineering/workbench_20261010/integration_validation.json)綁Git tree、
+逐檔code/config、source/freeze、HTTP及localUI證據hash。先前兩次錯誤測試expectation、
+中間2849PASS與P14歷史receipt保留；沒有將局部數字相加當fullPASS。原Blender SHA/size/
+mtime不變，無externalmodelcall／新env／新worktree。只publishcode/docs/curatedreceipts；
+RGB/PNG/MP4/RRD/GT/archives/HTML留local。FormalCases2/3/fullExit BLOCKED、Case4DEFERRED、
+原Phase2branch/tagFROZEN；API/token空章節維持空白。README／CODEX_HANDOFF及平台契約更新。

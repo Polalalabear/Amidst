@@ -20,16 +20,28 @@ artifacts，不在那裡實作或切換 branch。
 
 ### 2026-10-10 主平台實作續作
 
-P14 已接原模型互動展示：[來源展示契約](../engineering/SOURCE_PRESENTATION_WORKBENCH.md)。
-8016 研究角色的「實驗展示」提供同來源局部 mesh、人形、50 格公開投影／盲區位置與全部
-三條候選；DISPLAY_ONLY 步態不是 CV skeleton。原 geometry／校正／scale／時間綁定各自
-核對，未擴大 semantic authority，沒有 GT overlay。評估 aggregate DTO／內容 digest 守門、
-發布後 test/evaluation cache 失效與評估說明已修復。
+8016 已接 [來源模型與行走](../engineering/SOURCE_PRESENTATION_WORKBENCH.md)、
+[人物調查與展示庫](../engineering/WORKBENCH_INVESTIGATION_GALLERY.md)。Source P14 的
+122workbench／19Node／16HTTP evidence綁c8c66e9，原receipt不回寫。後續integration
+加入E1 product12actions／四鏡頭MP4／case/report、三個獨立scenes與15family192PNG；
+[新receipt](../../data/engineering/workbench_20261010/integration_validation.json)綁當次code/config/
+source/freeze及完整回歸，不沿用歷史2652。缺失素材與status-only RRD仍分開標示。
+當次無排除required-physical-evidence **2873PASS／0fail／0error／0skip**；Ruff src/tests、
+strict mypy183sources、58Node、63真HTTP與actualbrowser操作通過。原BlenderSHA/size/mtime
+不變；raw／GT／192PNG／影片／RRD未stage。只發布code/docs/curatedreceipts。
 
-當次 [receipt](../../data/engineering/workbench_20261010/source_validation.json)：122 workbench
-Python、19 Node tests，Ruff／strict mypy、16 真 HTTP 與實際 browser 通過；尚未算全 repo
-regression。Product 調查／影片與歷史 gallery 正在下一個獨立 milestone 接入，未標完成。
-以下 2026-10-08 盤點與測試是保留的日期基線；其中三項評估／cache／文字待修已由 P14 解決。
+第三scene local-camera-accuracy-v2 是 end_to_end/plus/RESULTS；source run仍local-camera-test-v1，
+experiment accuracy-test-v2-final／namespace／config／freeze另綁。29segments165events保留
+5SUPPORTED／7UNKNOWN／153GAP_ALTERNATIVES，不借E1 evaluation digest；v2 scene評估入口
+UNAVAILABLE，已發表三列比較與7cards走human gallery。E1/E0及原productfreeze未替换。
+
+評估aggregate DTO／獨立內容digest、發布後test/evaluation cache、評估文字已修復。
+Typed plans的NEEDS_INPUT不殘留舊plan、晚到responses不換scope、有限batch stop/resume與
+原server markers/measurement timestamp保留；body/gait皆DISPLAY_ONLY。啟動：
+`uv run --offline --no-sync python -m amidst.workbench --port 8016`。
+研究輸出仍低精度／未定；不作formal Phase1驗收或外部模型／token證據。
+
+下方2026-10-08盤點／2652等測試保留日期基線；「待遷移」項目現況以本節與新覆蓋表為準。
 
 ### 本機 Phase 2 產品續作
 
@@ -195,6 +207,14 @@ reproduction have separate source/run-bound receipts. Concurrent workbench valid
 Small conditional appearance/stitch populations and failures remain explicit. Original formal
 research, production/live capabilities, source assets and frozen branches are not promoted.
 
+The 2026-10-10 workbench integration now registers three independently bound frozen scenes,
+source-model walking, E1 investigations/video/cases/reviews/reports, and a fifteen-family gallery
+with 192 verified PNGs. The new integration receipt binds a full 2873-test run with no exclusions,
+zero failures/errors/skips, lint, 183-file strict types, 58 Node tests and 63 actual HTTP requests.
+Missing assets, status-only RRD/GIF entries and formal gates remain explicit; the original source
+and all historical receipts are preserved. See the current coverage and investigation contracts above.
+
+The following 2026-10-08 migration audit and 2652-test result are historical baselines:
 The latest human decision selects frontend/workbench/8016 as the unified primary web UI.
 Preserve product/8020 as an engineering lab/migration source and integrate existing/future
 page capabilities into workbench. Backend adapters can use the product interfaces; the UI

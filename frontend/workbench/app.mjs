@@ -50,6 +50,7 @@ export function evidenceLabel(value, research = false) {
   if (research) return value ?? '候選事件 · 待檢視';
   return ({INFERRED_GAP:'盲區推論',PROJECTED:'可見投影',OBSERVED:'可見證據',UNKNOWN:'證據不足',UNRESOLVED:'待確認'})[value] ?? '候選事件 · 待檢視';
 }
+export const supportLabel=value=>({SUPPORTED:'可見證據支持此候選',UNKNOWN:'證據不足／未定',GAP_ALTERNATIVES:'保留盲區替代路徑'})[value]??'';
 const short = (value, length = 22) => String(value ?? '').length > length ? `${String(value).slice(0, length)}…` : String(value ?? '—');
 const technical = (label, value) => `<details class="technical"><summary>${h(label)}</summary><pre>${json(value)}</pre></details>`;
 const badge = (text, tone = '') => `<span class="badge ${tone}">${h(text)}</span>`;
@@ -60,7 +61,7 @@ const state = {
   resourceTab:'objects',events:[],observations:[],retrieval:null,frames:[],cameraId:null,cameraIds:[],start:0,end:0,timestamp:0,
   selectedObject:null,selectedEvent:null,event:null,notes:[],draft:null,validation:null,publication:null,previewVersion:null,draftPreview:false,
   test:null,evaluation:null,logs:null,loading:false,error:null,scopeMessage:null,reviewDecision:'UNKNOWN',
-  sceneEpoch:0,queryEpoch:0,eventEpoch:0,timelineEpoch:0,controller:null,playTimer:null,view:null,viewPose:null,toastTimer:null,panel:null,
+  sceneEpoch:0,queryEpoch:0,eventEpoch:0,timelineEpoch:0,controller:null,playTimer:null,view:null,viewPose:null,toastTimer:null,panel:null,presentationMode:'source',
 };
 export function invalidateEventState(target) {
   target.eventEpoch=(target.eventEpoch??0)+1;
@@ -93,7 +94,7 @@ async function api(action, payload = {}, options = {}) {
   });
   let result;
   try { result = await response.json(); } catch { throw new Error('服務回應無法讀取，請確認本機工作台服務。'); }
-  if (!response.ok || result.error) throw new Error(result.error?.message ?? `請求失敗 (${response.status})`);
+  if (!response.ok || result.error) {const error=new Error(result.error?.message ?? `請求失敗 (${response.status})`);error.code=result.error?.code;throw error;}
   return result;
 }
 function toast(message) {
@@ -212,7 +213,7 @@ function gateway() {
 }
 function sidebar() {
   const nav = [ ['dashboard','home','主控板','OVERVIEW'],['workspace','cube','共用工作區','WORKSPACE'],
-    ...(isResearch() ? [['presentations','play','實驗展示','PRESENTATIONS'],['review','review','人工審查','REVIEW'],['test','test','測試與評估','TEST']] : []) ];
+    ...(isResearch() ? [['investigation','event','人物調查','INVESTIGATION'],['presentations','play','實驗展示','PRESENTATIONS'],['review','review','人工審查','REVIEW'],['test','test','測試與評估','TEST']] : []) ];
   return `<aside class="sidebar"><div class="brand"><span class="brand-mark">A</span><div>AMIDST<small>SHARED WORKBENCH</small></div></div><div class="nav-label">WORKSPACE</div><nav class="side-nav">${nav.map(([id,glyph,label]) => `<button class="nav-button ${state.page === id ? 'active' : ''}" data-page="${id}">${icon(glyph)}<span>${label}</span>${state.page === id ? '<span class="tiny">●</span>' : ''}</button>`).join('')}</nav>
     <div class="sidebar-context"><div class="nav-label" style="padding:0">CURRENT SCENE</div><div class="context-title"><span class="status-dot"></span>${h(short(state.snapshot?.label ?? selectedScene()?.label ?? '載入中',20))}</div><div class="context-sub">${isResearch() ? `標註版本 v${h(sourceVersion(state))}<br>局部範圍 · 按需載入` : '事件與必要證據<br>精簡管理視圖'}</div></div>
     <div class="sidebar-bottom"><div class="role-current"><div class="avatar">${isResearch() ? '研' : '管'}</div><div><strong>${isResearch() ? '研究工作台' : '管理主控板'}</strong><small>${isResearch() ? 'Research · full workspace' : 'Management · overview'}</small></div></div><button class="role-switch" data-action="switch-role">${icon('switch')}切換身份</button></div></aside>`;
@@ -228,7 +229,7 @@ function eventRows(limit = 6) {
   if (!state.events.length) return empty('目前範圍沒有事件','可切換鏡頭或調整時間窗。','event');
   return `<div class="event-list">${state.events.slice(0,limit).map((event) => {
     const [start,end] = normalizeRange(event.time_range);
-    return `<button class="event-row ${event.event_ref === state.selectedEvent ? 'selected' : ''}" data-event="${h(event.event_ref)}"><span class="event-icon">${icon(event.kind === 'INFERRED_GAP_ALTERNATIVES' ? 'link' : 'event')}</span><span class="event-text"><strong>${h(eventLabel(event.kind))}</strong><small>${h(safeList(event.camera_ids).map(cameraName).join(' · '))}<br>${h(evidenceLabel(event.evidence_state,isResearch()))}</small></span><span>${fmt(start)}–${fmt(end)} s</span></button>`;
+    return `<button class="event-row ${event.event_ref === state.selectedEvent ? 'selected' : ''}" data-event="${h(event.event_ref)}"><span class="event-icon">${icon(event.kind === 'INFERRED_GAP_ALTERNATIVES' ? 'link' : 'event')}</span><span class="event-text"><strong>${h(eventLabel(event.kind))}</strong><small>${h(safeList(event.camera_ids).map(cameraName).join(' · '))}<br>${h(evidenceLabel(event.evidence_state,isResearch()))}${event.support_state?' · '+h(supportLabel(event.support_state)):''}</small></span><span>${fmt(start)}–${fmt(end)} s</span></button>`;
   }).join('')}</div>`;
 }
 function frameHTML(frame) {
@@ -268,10 +269,10 @@ function workspaceTabs() {
   return `<div class="tabs" role="tablist" aria-label="工作模式">${[['display','cube','展示'],['review','review','人審'],['test','test','測試']].map(([id,glyph,label]) => `<button class="tab ${state.mode===id?'active':''}" data-mode="${id}" role="tab" aria-selected="${state.mode===id}">${icon(glyph)}${label}</button>`).join('')}</div>`;
 }
 function resourceList() {
-  return `<aside class="resources"><div class="resource-head">場景資源 ${badge(state.resourceTab==='objects' ? objects().length : state.events.length)}</div><div class="resource-tabs"><button class="resource-tab ${state.resourceTab==='objects'?'active':''}" data-resource-tab="objects">物件</button><button class="resource-tab ${state.resourceTab==='events'?'active':''}" data-resource-tab="events">事件</button></div><div class="resource-items">${state.resourceTab === 'objects' ? objects().map((item) => `<button class="resource-item ${item.object_id === state.selectedObject?'selected':''}" data-object="${h(item.object_id)}">${icon(objectIcon(item.kind))}<span><strong>${h(item.label ?? item.object_id)}</strong><small>${h(objectLabel(item.kind))}</small></span></button>`).join('') || empty('沒有可選物件') : state.events.map((event) => `<button class="resource-item ${event.event_ref === state.selectedEvent?'selected':''}" data-event="${h(event.event_ref)}">${icon('event')}<span><strong>${h(eventLabel(event.kind))}</strong><small>${normalizeRange(event.time_range).map((v)=>fmt(v)).join('–')} s</small></span></button>`).join('') || empty('範圍內没有事件')}</div></aside>`;
+  return `<aside class="resources"><div class="resource-head">場景資源 ${badge(state.resourceTab==='objects' ? objects().length : state.events.length)}</div><div class="resource-tabs"><button class="resource-tab ${state.resourceTab==='objects'?'active':''}" data-resource-tab="objects">物件</button><button class="resource-tab ${state.resourceTab==='events'?'active':''}" data-resource-tab="events">事件</button></div><div class="resource-items">${state.resourceTab === 'objects' ? objects().map((item) => `<button class="resource-item ${item.object_id === state.selectedObject?'selected':''}" data-object="${h(item.object_id)}">${icon(objectIcon(item.kind))}<span><strong>${h(item.label ?? item.object_id)}</strong><small>${h(objectLabel(item.kind))}</small></span></button>`).join('') || empty('沒有可選物件') : state.events.map((event) => `<button class="resource-item ${event.event_ref === state.selectedEvent?'selected':''}" data-event="${h(event.event_ref)}">${icon('event')}<span><strong>${h(eventLabel(event.kind))}</strong><small>${normalizeRange(event.time_range).map((v)=>fmt(v)).join('–')} s${event.support_state?' · '+h(supportLabel(event.support_state)):''}</small></span></button>`).join('') || empty('範圍內没有事件')}</div></aside>`;
 }
 function viewport() {
-  return `<div class="viewport"><div class="viewport-overlay">${badge('局部 3D · 公尺','cyan')} ${badge(activeReview() ? state.draft && state.draftPreview ? '草案預覽 · 尚未發布' : `標註 v${previewVersion()} · 審查預覽` : '來源基線 · 凍結結果')}</div><div data-scene-stage style="height:100%"><div class="viewport-fallback">正在載入場景…</div></div><div class="viewport-help">拖曳旋轉 · Shift＋拖曳平移 · 滾輪縮放 · 點選物件</div><div class="viewport-controls"><button class="btn small ghost" data-action="reset-view" title="重設視角">${icon('reset')}</button></div></div><div class="legend"><span>區域</span><span class="teal">可行走面</span><span class="pink">門／通道</span><span class="amber">候選路線</span></div>`;
+  return `<div class="viewport"><div class="viewport-overlay">${badge('局部 3D · 公尺','cyan')} ${badge(activeReview() ? state.draft && state.draftPreview ? '草案預覽 · 尚未發布' : `標註 v${previewVersion()} · 審查預覽` : '來源基線 · 凍結結果')}</div><div data-scene-stage style="height:100%"><div class="viewport-fallback">正在載入場景…</div></div><div class="viewport-help">拖曳旋轉 · Shift＋拖曳平移 · 滾輪縮放 · 點選物件</div><div class="viewport-controls"><button class="btn small ghost" data-action="reset-view" title="重設視角">${icon('reset')}</button></div></div><p class="body-caption">人形是 local track 的展示示意；骨架與步態未量測，插值只屬 presentation。候選仍未確認身分。</p><div class="legend"><span>區域</span><span class="teal">可行走面</span><span class="pink">門／通道</span><span class="amber">候選路線</span></div>`;
 }
 function timeline() {
   const [start,end] = normalizeRange(state.snapshot.time_range);
@@ -307,7 +308,7 @@ function inspector() {
 }
 function eventInspector() {
   const event = state.event; const [start,end] = normalizeRange(event.time_range);
-  return `<aside class="inspector"><div class="inspector-head"><div class="eyebrow">EVENT EVIDENCE</div><h3>${h(eventLabel(event.kind))}</h3>${badge(evidenceLabel(event.evidence_state,isResearch()),'amber')}</div><div class="inspector-body"><div class="detail-grid"><div><span>時間範圍</span><strong>${fmt(start)}–${fmt(end)} s</strong></div><div><span>鏡頭</span><strong>${h(safeList(event.camera_ids).map(cameraName).join('、'))}</strong></div></div><div class="detail-line"><h4>行為摘要</h4><p>${h(event.summary ?? event.description ?? eventLabel(event.kind))}</p></div><div class="detail-line"><h4>判讀限制</h4><p>${h(uncertainty(event))}</p></div>
+  return `<aside class="inspector"><div class="inspector-head"><div class="eyebrow">EVENT EVIDENCE</div><h3>${h(eventLabel(event.kind))}</h3>${badge(evidenceLabel(event.evidence_state,isResearch()),'amber')}${event.support_state?badge(supportLabel(event.support_state),'amber'):''}</div><div class="inspector-body"><div class="detail-grid"><div><span>時間範圍</span><strong>${fmt(start)}–${fmt(end)} s</strong></div><div><span>鏡頭</span><strong>${h(safeList(event.camera_ids).map(cameraName).join('、'))}</strong></div></div><div class="detail-line"><h4>行為摘要</h4><p>${h(event.summary ?? event.description ?? eventLabel(event.kind))}</p></div><div class="detail-line"><h4>判讀限制</h4><p>${h(uncertainty(event))}</p></div>
     ${isResearch() ? `<div class="detail-line"><h4>研究結果審查</h4><p>人工判定另存，保留原始演算法候選。</p><div class="review-toggle">${[['SUPPORT','支持'],['REJECT','否定'],['UNKNOWN','未知'],['MORE_EVIDENCE','需要證據']].map(([value,label])=>`<button class="decision-button ${state.reviewDecision===value?'selected':''}" data-decision="${value}">${label}</button>`).join('')}</div><form id="result-review-form"><label class="field"><span>審查者</span><input name="reviewer" required placeholder="填寫名稱" maxlength="100"></label><label class="field"><span>判定理由</span><textarea name="reason" required maxlength="2000" placeholder="說明支持、衝突或缺少的證據"></textarea></label><button class="btn full-button" type="submit">儲存人工判定</button></form></div>` : ''}${notesForm()}${isResearch() ? technical('來源、候選與診斷資料',event) : ''}</div></aside>`;
 }
 export function eventMediaFrames(event) {
@@ -382,15 +383,36 @@ function render() {
   if (state.view) { state.viewPose = state.view.getPose(); state.view.dispose(); state.view = null; }
   const app = $('#app');
   if (!state.role) { app.innerHTML = gateway(); return; }
-  const content=!state.snapshot?'':state.page==='presentations'&&isResearch()?`${pageHead('SOURCE MODEL PRESENTATION','讓人物回到場景裡。','局部建築幾何、公開投影與盲區候選使用同一時間軸；來源與推論綁定分別顯示。')}<div data-presentation-panel></div>`:state.page==='dashboard'?dashboard():workspace();
+  const content=!state.snapshot?'':state.page==='investigation'&&isResearch()?`${pageHead('BOUNDED INVESTIGATION','從線索，逐步查到證據。','有限 typed plans、全部替代候選與實際影片共用本機來源綁定。')}<div data-investigation-panel></div>`:state.page==='presentations'&&isResearch()?`${pageHead('SOURCE MODEL PRESENTATION','讓人物回到場景裡。','局部建築幾何、公開投影與盲區候選使用同一時間軸；來源與推論綁定分別顯示。')}<div class="mode-tabs"><button class="btn ${state.presentationMode==='source'?'primary':''}" data-presentation-mode="source">模型與行走</button><button class="btn ${state.presentationMode==='gallery'?'primary':''}" data-presentation-mode="gallery">歷史圖表與展示库</button></div><div ${state.presentationMode==='source'?'data-presentation-panel':'data-gallery-panel'}></div>`:state.page==='dashboard'?dashboard():workspace();
   app.innerHTML = `<div class="shell">${sidebar()}<main class="main-scroll">${topbar()}${state.error ? `<div class="inline-error" style="margin-top:22px">${h(state.error)}</div>` : ''}${state.snapshot ? content : '<div class="initial-loading" style="height:65vh"><span class="brand-mark">A</span><p>正在載入場景資料…</p></div>'}<footer class="page-footer"><span>AMIDST · SHARED RESEARCH WORKBENCH</span><span>來源可追溯 · 判定可比較 · 版本可回看</span></footer></main>${state.loading?'<div class="loading-bar"></div>':''}</div>`;
   mountScene();
   mountPanel();
 }
 async function mountPanel(){
-  const container=$('[data-presentation-panel]');if(!container||!isResearch())return;
-  const {PresentationPanel}=await import('./presentation.mjs');if(!container.isConnected)return;
-  state.panel=new PresentationPanel(container,{call:(action,payload)=>api(action,payload),mediaURL:ref=>`/api/presentation_media?${new URLSearchParams({session_ref:state.session.session_ref,ref})}`});
+  if(!isResearch())return;
+  $$('[data-presentation-mode]').forEach(button=>button.onclick=()=>{state.presentationMode=button.dataset.presentationMode;render();});
+  const container=$('[data-presentation-panel],[data-gallery-panel],[data-investigation-panel]');if(!container)return;
+  const token=state.session.session_ref,sceneId=state.sceneId,epoch=state.sceneEpoch;
+  const current=()=>container.isConnected&&isResearch()&&state.session?.session_ref===token&&state.sceneEpoch===epoch;
+  const call=async(action,payload={})=>{if(!current())throw Error('SESSION_CHANGED');const result=await api(action,{...payload,session_ref:token});if(!current())throw Error('SESSION_CHANGED');return result;};
+  const binaryURL=(route,ref)=>`/api/${route}?${new URLSearchParams({session_ref:token,scene_id:sceneId,ref})}`;
+  try{
+    if(container.hasAttribute('data-investigation-panel')){
+      const {InvestigationPanel}=await import('./investigation.mjs');if(!current())return;
+      state.panel=new InvestigationPanel(container,{call:(action,payload)=>call('product_'+action,{...payload,scene_id:sceneId}),snapshot:state.snapshot,
+        mediaURL:ref=>binaryURL('product_media',ref),videoURL:ref=>binaryURL('product_video',ref),exportReport:async(ref,isCurrent=()=>true)=>{
+          const response=await fetch('/api/product_export_report',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session_ref:token,scene_id:sceneId,report_ref:ref})});
+          if(!response.ok)throw Error('REPORT_EXPORT_DENIED');const html=await response.blob();if(!current()||!isCurrent())throw Error('SESSION_CHANGED');
+          const url=URL.createObjectURL(html),link=document.createElement('a');link.href=url;link.download='amidst-investigation.html';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+        }});
+    }else if(container.hasAttribute('data-gallery-panel')){
+      const {GalleryPanel}=await import('./gallery.mjs');if(!current())return;
+      state.panel=new GalleryPanel(container,{call,mediaURL:ref=>`/api/gallery_media?${new URLSearchParams({session_ref:token,ref})}`});
+    }else{
+      const {PresentationPanel}=await import('./presentation.mjs');if(!current())return;
+      state.panel=new PresentationPanel(container,{call,mediaURL:ref=>`/api/presentation_media?${new URLSearchParams({session_ref:token,ref})}`});
+    }
+  }catch(error){if(current())container.innerHTML=`<div class="notice warning">${h(error.message)}</div>`;}
 }
 async function mountScene() {
   const container = $('[data-scene-stage]');

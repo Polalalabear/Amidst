@@ -148,3 +148,10 @@ P14 綁定 [source validation](../../data/engineering/workbench_20261010/source_
 Canonical source SHA／size／mtime、原 frozen records／historical pending labels 均保留。
 本段尚未重跑全 repository regression；後續主平台整合會另存當次 receipt，歷史 2652
 不視作本輪 PASS。未知的並行 research_accuracy 修改未纳入此 milestone。
+
+2026-10-10 後續 P15 整合另存
+[integration validation](../../data/engineering/workbench_20261010/integration_validation.json)：
+無排除完整 2873 tests、58 Node tests、Ruff／mypy 183 source files 與 63 次實際 HTTP 通過。
+前端用沿原 route points 的 0.018 m 半徑 tube 提高三候選可見性；這是 presentation 層，
+保留原 landmark 高度，不改成 body-base 路徑或新的導航證據。Office 獨立來源／公尺標示
+避免與 E1 context 混用。原 P14 數字及 receipt 仍是該 milestone 的歷史證據。

@@ -1,6 +1,6 @@
 import * as THREE from '/vendor/three.module.js';
 import {calibratedFrustum,planarPolygon} from './geometry.mjs';
-import {bodyMarkers} from './motion.mjs';
+import {bodyMarkers,serverBodyMarkers} from './motion.mjs';
 
 const finitePoint = (point) => Array.isArray(point) && point.length >= 3 && point.slice(0,3).every(Number.isFinite);
 const vector = (point) => new THREE.Vector3(...point.slice(0,3));
@@ -34,6 +34,17 @@ export class SceneView {
     grid.rotation.x=Math.PI/2;grid.position.copy(this.center);grid.position.z=-.04;grid.material.transparent=true;grid.material.opacity=.6;this.scene.add(grid);
     this.addAxes();objects.forEach((object)=>this.addObject(object,object.object_id===selectedId));
     this.addSourceMeshes(presentation?.meshes??[]);
+    for(const [index,route] of (presentation?.routes??[]).entries()){
+      const points=(route.points??[]).filter(finitePoint).map(vector);
+      if(points.length<2)continue;
+      const path=new THREE.CurvePath();for(let i=1;i<points.length;i++)path.add(new THREE.LineCurve3(points[i-1],points[i]));
+      const geometry=new THREE.TubeGeometry(path,Math.max(12,points.length*12),.018,5,false);
+      const mesh=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({color:[0xffc36b,0xb49cff,0x66d4c7][index%3],depthTest:false,transparent:true,opacity:.9}));
+      mesh.renderOrder=6;this.scene.add(mesh);
+    }
+    if(presentation)for(const camera of snapshot.cameras??[]){
+      if(finitePoint(camera.position))this.addObject({object_id:camera.camera_ref,kind:'CAMERA',geometry:{type:'point',points:[camera.position]}},false);
+    }
     this.addCalibratedCameras(objects.filter((object)=>object.kind==='CAMERA').map((object)=>({camera_id:object.object_id,position:object.geometry?.points?.[0]??null,properties:object.properties})));this.events.forEach(item=>this.addEvent(item));
     if(pose){this.target.fromArray(pose.target);this.yaw=pose.yaw;this.pitch=pose.pitch;this.distance=pose.distance;}
     this.updateCamera();this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);this.resize();
@@ -96,7 +107,7 @@ export class SceneView {
       if(indices.some(i=>!Number.isInteger(i)||i<0||i>=source.vertices.length))continue;
       const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(source.vertices.flat(),3));
       geometry.setIndex(indices);geometry.computeVertexNormals();
-      const mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0x71838b,roughness:.9,side:THREE.DoubleSide,transparent:true,opacity:.62}));
+      const mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0x71838b,roughness:.9,side:THREE.DoubleSide,transparent:true,opacity:.48,depthWrite:false}));
       this.scene.add(mesh);
       const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geometry,25),new THREE.LineBasicMaterial({color:0xa7bec9,transparent:true,opacity:.18}));this.scene.add(edges);
     }
@@ -114,7 +125,7 @@ export class SceneView {
     return root;
   }
   updateBodies(timestamp) {
-    let markers=bodyMarkers(this.observations,this.events,timestamp);
+    let markers=this.serverMarkers??bodyMarkers(this.observations,this.events,timestamp);
     if(this.presentation?.frames?.length){
       const frames=this.presentation.frames;const step=this.presentation.frame_step_s??.2;
       const frame=frames.slice().sort((a,b)=>Math.abs(a.timestamp-timestamp)-Math.abs(b.timestamp-timestamp))[0];
@@ -148,6 +159,7 @@ export class SceneView {
     if(eligible.length){eligible.sort((a,b)=>Math.abs(a.timestamp-timestamp)-Math.abs(b.timestamp-timestamp));this.timeMarker.position.copy(vector(eligible[0].world_position));this.timeMarker.position.z+=.1;}
     this.render();
   }
+  setMarkers(markers,timestamp){this.serverMarkers=serverBodyMarkers(markers);this.setTimestamp(timestamp);}
   updateCamera(){this.camera.position.set(this.target.x+this.distance*Math.cos(this.pitch)*Math.cos(this.yaw),this.target.y+this.distance*Math.cos(this.pitch)*Math.sin(this.yaw),this.target.z+this.distance*Math.sin(this.pitch));this.camera.lookAt(this.target);}
   resize(){if(this.disposed)return;const w=this.container.clientWidth,h=this.container.clientHeight;if(!w||!h)return;this.renderer.setSize(w,h,false);this.camera.aspect=w/h;this.camera.updateProjectionMatrix();this.render();}
   render(){if(!this.disposed)this.renderer.render(this.scene,this.camera);}

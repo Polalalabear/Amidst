@@ -1,9 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {escapeHTML, normalizeRange, eventLabel, evidenceLabel, changesForObject, eventMediaFrames, frameTimeLabel, invalidateEventState, eventRequestIsCurrent} from './app.mjs';
+import {escapeHTML, normalizeRange, eventLabel, evidenceLabel, supportLabel, changesForObject, eventMediaFrames, frameTimeLabel, invalidateEventState, eventRequestIsCurrent} from './app.mjs';
 
 test('untrusted source fields cannot become HTML markup',()=>{
   assert.equal(escapeHTML('<img src=x onerror="bad()">'), '&lt;img src=x onerror=&quot;bad()&quot;&gt;');
+});
+test('v2 visible support and unresolved behavior remain distinct',()=>{
+  assert.equal(supportLabel('UNKNOWN'),'證據不足／未定');
+  assert.equal(supportLabel('SUPPORTED'),'可見證據支持此候選');
+  assert.equal(supportLabel('GAP_ALTERNATIVES'),'保留盲區替代路徑');
+  assert.equal(supportLabel(undefined),'');
 });
 test('both scene range contracts normalize and invalid ranges fail closed',()=>{
   assert.deepEqual(normalizeRange([2,14]),[2,14]);

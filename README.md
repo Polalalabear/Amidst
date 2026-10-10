@@ -30,9 +30,11 @@ Phase 1 extension。
 四鏡頭影片／Three.js 回放、持久案例／人審／報告。來源皆為 synthetic，無 external model；
 正式 school/full Exit、真攝影機與 production deployment 維持獨立未完成。
 網頁主入口依最新決策統一為 [共用工作台](docs/engineering/SHARED_WORKBENCH.md)／8016；
-既有 product／8020 保留為工程lab與待遷移來源，頁面能力尚未完成接入。
-實際主平台只有 E1／E0 的局部事件、RGB／3D 與既有評估；**實驗展示尚未全部集中**，
-已接入／未接入與素材現況見 [展示覆蓋表](docs/engineering/WORKBENCH_EXPERIMENT_COVERAGE.md)。
+2026-10-10 已接入來源模型行走、人物調查、四鏡頭影片、案例／人審／報告與展示庫；
+既有 product／8020 保留為工程 lab。主平台註冊 E0、E1 與 accuracy-v2 三個獨立 frozen scenes，
+展示庫核對十五家族／192 PNG。缺失素材及 RRD／GIF 狀態另列，並非所有實驗都可互動重跑；
+現況見 [展示覆蓋表](docs/engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) 與
+[當次完整驗證](data/engineering/workbench_20261010/integration_validation.json)。
 
 ### 目前完成範圍
 
@@ -173,10 +175,13 @@ pixel tracks, provisional associations, scoped SQLite retrieval, bounded investi
 four-camera video/Three.js playback, saved cases, reviews and reports. No external model
 is connected; formal school acceptance and production capabilities remain incomplete.
 The primary web UI is [shared workbench](docs/engineering/SHARED_WORKBENCH.md)/8016.
-Product/8020 remains a preserved engineering lab and migration source; integration is pending.
-Only the E1/E0 event, RGB/local-3D and preexisting-evaluation views are registered.
-[Presentation coverage](docs/engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) distinguishes
-available local assets from completed workbench integration.
+The 2026-10-10 integration adds source-model walking, bounded investigations, four-camera video,
+cases, reviews, reports and a fifteen-family gallery with 192 verified PNGs. E0, E1 and accuracy-v2
+remain three independently bound frozen scenes; product/8020 is preserved as an engineering lab.
+[Presentation coverage](docs/engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) records missing assets
+and status-only RRD/GIF entries. These are not all interactive experiment reruns. The
+[current full validation](data/engineering/workbench_20261010/integration_validation.json) is separate
+from formal research acceptance.
 
 ### Implemented scope
 

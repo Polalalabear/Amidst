@@ -14,6 +14,7 @@ import secrets
 import time
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
+from http import HTTPStatus
 from pathlib import Path
 from typing import Any, Literal
 from urllib.parse import parse_qs, urlsplit
@@ -21,6 +22,15 @@ from wsgiref.simple_server import WSGIRequestHandler, make_server
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
+from amidst.product.run import load_product
+from amidst.workbench.presentation_gallery import Gallery, GalleryError
+from amidst.workbench.product_bridge import (
+    BinaryResponse,
+    BridgeDenied,
+    BridgeRequest,
+    ContextRequest,
+    ProductBridge,
+)
 from amidst.workbench.reviews import ReviewStore
 from amidst.workbench.scenes import SceneAdapter, load_catalog
 
@@ -28,8 +38,12 @@ VERSION = "amidst-workbench.v1"
 Role = Literal["research", "management"]
 PUBLIC_EVENT_KEYS = (
     "event_ref", "kind", "time_range", "camera_ids", "media_refs", "uncertainty",
-    "evidence_state", "missing_evidence",
+    "evidence_state", "missing_evidence", "support_state",
 )
+PRODUCT_ACTIONS = frozenset({
+    "context", "tool", "intent", "execute", "plan", "case", "cases", "report", "review",
+    "videos", "timeline", "export_report",
+})
 
 
 class Request(BaseModel):
@@ -62,6 +76,10 @@ class TimelineRequest(SceneRequest):
 
 class PresentationRequest(Request):
     presentation_ref: str = Field(min_length=1, max_length=160)
+
+
+class GalleryRequest(Request):
+    family_ref: str = Field(pattern=r"^gallery-family:[0-9a-f]{24}$", strict=True)
 
 
 class DraftRequest(SceneRequest):
@@ -115,15 +133,20 @@ class Denied(ValueError):
 class Workbench:
     def __init__(self, catalog: dict[str, SceneAdapter], reviews: ReviewStore, *,
                  presentation: Callable[[], dict[str, Any]] | None = None,
-                 presentation_media: Callable[[str], tuple[str, bytes]] | None = None) -> None:
+                 presentation_media: Callable[[str], tuple[str, bytes]] | None = None,
+                 product_bridge: ProductBridge | None = None,
+                 gallery: Gallery | None = None) -> None:
         self.catalog, self.reviews = catalog, reviews
         self.presentation_provider = presentation
         self.presentation_media_provider = presentation_media
+        self.product_bridge, self.gallery = product_bridge, gallery
         self.sessions: dict[str, Session] = {}
 
     def bootstrap(self) -> dict[str, Any]:
         return {"version": VERSION, "scenes": [
-            {"scene_id": s.scene_id, "label": s.label, "description": s.description}
+            {"scene_id": s.scene_id, "label": s.label, "description": s.description,
+             "product_available": self.product_bridge is not None
+             and self.product_bridge.scene.scene_id == s.scene_id}
             for s in self.catalog.values()
         ], "identity": "LOCAL_ROLE_SELECTION", "desktop_only": True}
 
@@ -168,6 +191,8 @@ class Workbench:
         )
         if event.get("missing_evidence"):
             result["uncertainty"] += " 部分來源證據缺失。"
+        if event.get("support_state") == "UNKNOWN":
+            result["uncertainty"] += " 可見證據不足，行為候選仍未定。"
         return result
 
     def _notes(self, scene_id: str, event_ref: str, role: Role) -> list[dict[str, Any]]:
@@ -188,6 +213,7 @@ class Workbench:
             "evaluation": SceneRequest, "logs": SceneRequest,
             "export": VersionRequest,
             "presentations": Request, "presentation": PresentationRequest,
+            "gallery_list": Request, "gallery_detail": GalleryRequest,
         }
         if action not in schemas:
             raise Denied("ACTION_DENIED")
@@ -209,6 +235,13 @@ class Workbench:
     def _invoke(self, action: str, request: Request, session: Session) -> dict[str, Any]:
         if action not in {"scene", "query", "event", "note"}:
             self._research(session)
+        if action in {"gallery_list", "gallery_detail"}:
+            if self.gallery is None:
+                return {"items": [], "status": "UNAVAILABLE", "reason": "NO_REGISTERED_GALLERY"}
+            if action == "gallery_list":
+                return self.gallery.list()
+            assert isinstance(request, GalleryRequest)
+            return {"family": self.gallery.detail(request.family_ref)}
         if action in {"presentations", "presentation"}:
             if self.presentation_provider is None:
                 return {"items": [], "status": "UNAVAILABLE"}
@@ -372,6 +405,62 @@ class Workbench:
         return self.presentation_media_provider(ref)
 
 
+    def gallery_media(self, token: str, ref: str) -> tuple[str, bytes]:
+        self._research(self._session(token))
+        if self.gallery is None:
+            raise RuntimeError("RESOURCE_UNAVAILABLE")
+        return self.gallery.media(ref)
+
+    def _product_access(self, payload: object) -> BridgeRequest:
+        if not isinstance(payload, dict):
+            raise ValueError("INVALID_REQUEST")
+        request = BridgeRequest.model_validate({key: payload.get(key)
+                                               for key in ("session_ref", "scene_id")})
+        session = self._session(request.session_ref)
+        self._research(session)
+        self._scene(session, request.scene_id)
+        return request
+
+    def product_call(self, action: str, payload: object) -> dict[str, Any] | BinaryResponse:
+        if action not in PRODUCT_ACTIONS:
+            raise Denied("ACTION_DENIED")
+        request = self._product_access(payload)
+        session, started = self._session(request.session_ref), time.perf_counter()
+        log = {"action": "product_" + action, "scene_id": request.scene_id, "status": "REJECTED"}
+        try:
+            if (self.product_bridge is None
+                or request.scene_id != self.product_bridge.scene.scene_id):
+                if action != "context":
+                    raise RuntimeError("RESOURCE_UNAVAILABLE")
+                # A missing optional product never replaces an existing scene.
+                ContextRequest.model_validate(payload)
+                result: dict[str, Any] | BinaryResponse = {
+                    "scene_id": request.scene_id, "status": "UNAVAILABLE",
+                    "reason": "NO_CERTIFIED_PRODUCT",
+                    "capabilities": {"investigation": False, "inference_execution": False}}
+            else:
+                result = self.product_bridge.call(action, payload)
+            log["status"] = "OK"
+            return result
+        finally:
+            session.logs.append({**log, "duration_ms": round(
+                (time.perf_counter() - started) * 1000, 3)})
+            session.logs[:] = session.logs[-200:]
+
+    def product_media(self, token: str, scene_id: str, ref: str) -> BinaryResponse:
+        self._product_access({"session_ref": token, "scene_id": scene_id})
+        if self.product_bridge is None:
+            raise RuntimeError("RESOURCE_UNAVAILABLE")
+        return self.product_bridge.media(token, scene_id, ref)
+
+    def product_video(self, token: str, scene_id: str, ref: str,
+                      range_header: str | None = None) -> BinaryResponse:
+        self._product_access({"session_ref": token, "scene_id": scene_id})
+        if self.product_bridge is None:
+            raise RuntimeError("RESOURCE_UNAVAILABLE")
+        return self.product_bridge.video(token, scene_id, ref, range_header)
+
+
 def _json(data: object) -> bytes:
     return json.dumps(data, ensure_ascii=False, allow_nan=False).encode("utf-8")
 
@@ -386,27 +475,44 @@ class Application:
     ) -> Iterable[bytes]:
         status = "200 OK"
         content_type = "application/json; charset=utf-8"
+        additional_headers: tuple[tuple[str, str], ...] = ()
         try:
-            content_type, body = self._dispatch(environ)
-        except Denied as error:
+            response = self._dispatch(environ)
+            if isinstance(response, BinaryResponse):
+                code = HTTPStatus(response.status)
+                if not 200 <= code.value <= 599:
+                    raise ValueError("INVALID_RESPONSE_STATUS")
+                status = f"{code.value} {code.phrase}"
+                content_type, body = response.mime_type, response.body
+                if any(name.lower() not in {"accept-ranges", "content-range", "content-disposition"}
+                       or "\r" in value or "\n" in value for name, value in response.headers):
+                    raise ValueError("INVALID_RESPONSE_HEADERS")
+                additional_headers = response.headers
+            else:
+                content_type, body = response
+        except (Denied, BridgeDenied, GalleryError) as error:
             status = "403 Forbidden"
+            content_type, additional_headers = "application/json; charset=utf-8", ()
             body = _json({"error": {"code": str(error),
                                     "message": "此操作或資料不在目前角色範圍內。"}})
         except (ValidationError, ValueError, TypeError, KeyError):
             status = "400 Bad Request"
+            content_type, additional_headers = "application/json; charset=utf-8", ()
             body = _json({"error": {"code": "INVALID_OR_STALE_REQUEST",
                                     "message": "資料無效或版本已更新，請重新載入並核對輸入。"}})
         except (OSError, RuntimeError):
             status = "503 Service Unavailable"
+            content_type, additional_headers = "application/json; charset=utf-8", ()
             body = _json({"error": {"code": "RESOURCE_UNAVAILABLE",
                                     "message": "所需資料目前無法讀取，請查看場景能力與來源狀態。"}})
         start_response(status, [("Content-Type", content_type), ("Content-Length", str(len(body))),
                                 ("Cache-Control", "no-store"),
                                 ("X-Content-Type-Options", "nosniff"),
-                                ("Referrer-Policy", "no-referrer"), ("X-Frame-Options", "DENY")])
+                                ("Referrer-Policy", "no-referrer"), ("X-Frame-Options", "DENY"),
+                                *additional_headers])
         return [body]
 
-    def _dispatch(self, environ: dict[str, Any]) -> tuple[str, bytes]:
+    def _dispatch(self, environ: dict[str, Any]) -> tuple[str, bytes] | BinaryResponse:
         host = environ.get("HTTP_HOST", "")
         parsed_host = urlsplit("//" + host)
         if (parsed_host.hostname not in {"127.0.0.1", "localhost"}
@@ -419,6 +525,21 @@ class Application:
         if method == "GET":
             if path == "/api/bootstrap":
                 return "application/json; charset=utf-8", _json(self.workbench.bootstrap())
+            if path in {"/api/product_media", "/api/product_video"}:
+                query = parse_qs(environ.get("QUERY_STRING", ""), strict_parsing=True)
+                if set(query) != {"session_ref", "scene_id", "ref"} or any(
+                    len(v) != 1 for v in query.values()
+                ):
+                    raise ValueError("INVALID_QUERY")
+                token, scene_id, ref = (query[key][0] for key in ("session_ref", "scene_id", "ref"))
+                if path == "/api/product_media":
+                    return self.workbench.product_media(token, scene_id, ref)
+                return self.workbench.product_video(token, scene_id, ref, environ.get("HTTP_RANGE"))
+            if path == "/api/gallery_media":
+                query = parse_qs(environ.get("QUERY_STRING", ""), strict_parsing=True)
+                if set(query) != {"session_ref", "ref"} or any(len(v) != 1 for v in query.values()):
+                    raise ValueError("INVALID_QUERY")
+                return self.workbench.gallery_media(query["session_ref"][0], query["ref"][0])
             if path == "/api/presentation_media":
                 query = parse_qs(environ.get("QUERY_STRING", ""), strict_parsing=True)
                 if set(query) != {"session_ref", "ref"} or any(len(v) != 1 for v in query.values()):
@@ -435,7 +556,9 @@ class Application:
             assets = {"/": "index.html", "/index.html": "index.html", "/style.css": "style.css",
                       "/app.mjs": "app.mjs", "/scene.mjs": "scene.mjs",
                       "/geometry.mjs": "geometry.mjs", "/motion.mjs": "motion.mjs",
-                      "/presentation.mjs": "presentation.mjs"}
+                      "/presentation.mjs": "presentation.mjs",
+                      "/investigation.mjs": "investigation.mjs", "/workflow.mjs": "workflow.mjs",
+                      "/gallery.mjs": "gallery.mjs"}
             if path == "/product/timeline.mjs":
                 return "text/javascript", (self.repo / "frontend/product/timeline.mjs").read_bytes()
             if path in assets:
@@ -462,6 +585,10 @@ class Application:
             raise Denied("REQUEST_SIZE_DENIED")
         payload = json.loads(environ["wsgi.input"].read(length))
         action = path.removeprefix("/api/")
+        if action.startswith("product_"):
+            result = self.workbench.product_call(action.removeprefix("product_"), payload)
+            return result if isinstance(result, BinaryResponse) else (
+                "application/json; charset=utf-8", _json(result))
         data = self.workbench.session(payload) if action == "session" else (
             self.workbench.call(action, payload))
         return "application/json; charset=utf-8", _json(data)
@@ -473,6 +600,27 @@ class QuietHandler(WSGIRequestHandler):
         pass
 
 
+def configure_extensions(
+    workbench: Workbench, repo: Path, *,
+    canonical_root: Path | None = None,
+) -> None:
+    """Server-owned fixed sources; invalid optional products fail closed independently."""
+    runtime = None
+    try:
+        scene = workbench.catalog.get("local-camera")
+        if scene is not None:
+            runtime = load_product(repo / "data/product/local_run/operator_v2")
+            workbench.product_bridge = ProductBridge(runtime, scene, workbench._session)
+    except (ValueError, OSError, KeyError, TypeError):
+        if runtime is not None:
+            runtime.close()
+        workbench.product_bridge = None
+    try:
+        workbench.gallery = Gallery(repo, canonical_root)
+    except (GalleryError, OSError, ValueError, TypeError):
+        workbench.gallery = None
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Amidst shared desktop workbench")
     parser.add_argument("--port", type=int, default=8016)
@@ -480,6 +628,8 @@ def main() -> None:
     parser.add_argument("--catalog", type=Path,
                         help="Server-owned scene catalog; browser callers cannot supply paths")
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[3])
+    parser.add_argument("--canonical-root", type=Path,
+                        help="Read-only historical gallery source; server configuration only")
     args = parser.parse_args()
     repo = args.repo.resolve()
     state = args.state or repo / "data/engineering/local_run/workbench_v1/reviews.sqlite3"
@@ -495,13 +645,21 @@ def main() -> None:
         load_source_presentation,
         source_presentation_media,
     )
-    app = Application(Workbench(catalog, reviews,
+    workbench = Workbench(catalog, reviews,
         presentation=lambda: load_source_presentation(repo),
-        presentation_media=lambda ref: source_presentation_media(repo, ref)), repo)
+        presentation_media=lambda ref: source_presentation_media(repo, ref))
+    canonical_root = args.canonical_root or (
+        repo.parent.parent if repo.parent.name == ".local-worktrees" else repo)
+    configure_extensions(workbench, repo, canonical_root=canonical_root)
+    app = Application(workbench, repo)
     print(f"Amidst workbench: http://127.0.0.1:{args.port} "
           f"({len(catalog)} verified scenes)", flush=True)
-    with make_server("127.0.0.1", args.port, app, handler_class=QuietHandler) as server:
-        server.serve_forever()
+    try:
+        with make_server("127.0.0.1", args.port, app, handler_class=QuietHandler) as server:
+            server.serve_forever()
+    finally:
+        if workbench.product_bridge is not None:
+            workbench.product_bridge.runtime.close()
 
 
 if __name__ == "__main__":

@@ -2,8 +2,19 @@
 
 這是 `codex/simulation-engineering` 的桌面版第一版工作台。研究與管理共用入口、
 場景切換及事件元件；研究角色另外提供局部 3D、場景人審、測試與評估。
-目前支援兩個已凍結的合成研究場景，重用既有影像、registry 與研究結果。
+目前支援三個分別綁定的已凍結合成研究場景，重用既有影像、registry 與研究結果。
 手機版不在本輪範圍內。
+
+## 2026-10-10 已接入增量
+
+同一8016導覽新增「人物調查」與「實驗展示」。前者重用原E1 frozen product的計畫／
+案例／報告／四鏡頭soft-sync影片；後者提供原Office局部mesh／人形／50格回放和15家族
+展示庫。精度v2為第三個獨立experiment scene，保留SUPPORTED／UNKNOWN／盲區替代。
+完整操作、角色／GT與source/clock/unit邊界見
+[來源模型展示](SOURCE_PRESENTATION_WORKBENCH.md)、
+[人物調查／展示庫](WORKBENCH_INVESTIGATION_GALLERY.md) 與
+[當次integration receipt](../../data/engineering/workbench_20261010/integration_validation.json)。
+下面的2026-10-08遷移表和測試屬歷史基線；不把新功能算作當年的驗證。
 
 ## 統一網頁入口
 
@@ -14,10 +25,11 @@
 
 既有 `frontend/product/` 控制室是可遷移的功能與驗證來源；其後端、資料契約、
 freeze 及歷史證據繼續保留。主入口使用本機 8016；8010／8012／8020 的既有頁面
-與歷史驗證尚未全部遷入工作台，不能因入口決策而宣稱功能遷移已完成。
+各自保留歷史驗證。2026-10-10 已接入下列核心操作；完整 research runner、缺失素材和
+status-only RRD／GIF 仍有明確限制，不能宣稱所有歷史展示都可互動重跑。
 
 2026-10-08 實際網站／來源／素材盤點確認：**實驗展示尚未全部接入**。
-當前 catalog 僅有 E1／E0；產品調查、MP4、Office／Rerun、preview 及 projection 診斷仍需
+該日 catalog 僅有 E1／E0；產品調查、MP4、Office／Rerun、preview 及 projection 診斷仍需
 遷移或 source adapter。完整現況、素材存在／缺失及有效待修見
 [實驗展示覆蓋表](WORKBENCH_EXPERIMENT_COVERAGE.md) 與
 [本輪 audit receipt](../../data/engineering/workbench_20261008/website_audit.json)。
@@ -78,15 +90,18 @@ uv run --offline --no-sync python -m amidst.workbench \
 [模擬工程操作文件](SIMULATION_ENGINEERING.md) 的原有流程建立獨立輸出，
 再以 catalog 指向經驗證的 checkpoint。不要把新的輸出覆寫到歷史 checkpoint。
 
-## 目前接入的兩個場景
+## 目前接入的三個場景
 
 | 場景 | 固定資料來源 | 共用畫面可用內容 |
 | --- | --- | --- |
 | 局部多鏡頭研究場景 `local-camera` | `local_camera_v1/test/checkpoints/final`；model `synthetic-local-camera-v1`，run `local-camera-test-v1` | E1 pinhole；4 鏡頭、244 張 RGB、11 個場景物件、局部行為及盲區候選 |
 | 雙鏡頭基礎實驗室 `synthetic-lab` | `simulation_v2`；model `synthetic-lab-v1`，run `simulation-v2` | E0 affine；2 鏡頭、102 張 RGB、6 個場景物件、人物片段及盲區候選 |
+| 局部鏡頭精度研究 v2 `local-camera-accuracy-v2` | `accuracy_v2/test/final`；原 E1 model／source run，experiment `accuracy-test-v2-final` | end_to_end／plus／RESULTS；29 segments、165 events，保留 SUPPORTED／UNKNOWN／GAP_ALTERNATIVES |
 
-上述來源路徑皆位於 `data/engineering/local_run/`。兩者是不同模型，
-不是同一模型的 development/test 分割。loader 在匯入時核對原有來源、演算法、
+上述來源路徑皆位於 `data/engineering/local_run/`。E0／E1 是不同模型，
+不是同一模型的 development/test 分割；v2 重用 E1 RGB 與校正，另綁 experiment/config/freeze。
+新環境的 v2 materialization 依 [研究報告](../research/LOCAL_CAMERA_ACCURACY_V2.md) 重現，
+不借用 E1 aggregate digest。loader 在匯入時核對原有來源、演算法、
 媒體與凍結結果綁定；查詢再使用已建立的局部索引。
 
 共用 3D 顯示的是來源明確提供的區域多邊形、門線段、可行走面、鏡頭與研究候選。
@@ -95,7 +110,7 @@ uv run --offline --no-sync python -m amidst.workbench \
 
 E1 提供實際配置的 pinhole 鏡頭位置與內參。E0 只有地面仿射校準，
 實體鏡頭姿態為 `UNKNOWN`，不會捏造位置或焦距，也不開放以不存在的 pose 編輯幾何。
-兩個場景都使用既有靜態 RGB 影格序列；時間軸回放不是新產生的影片。
+三個場景都使用既有靜態 RGB 影格序列；時間軸回放不增加 source frames。
 
 ## 操作流程
 
@@ -160,7 +175,7 @@ run、修改前後值、理由、操作者、時間、驗證與前一版本 hash
 }
 ```
 
-`adapter` 目前支援 `local_camera` 與 `synthetic_lab`；checkpoint 是 repository 內的
+`adapter` 目前支援 `local_camera`、`synthetic_lab` 與 `local_camera_accuracy_v2`；checkpoint 是 repository 內的
 相對路徑。scene ID 必須唯一，未知 adapter、絕對路徑、跳出 repository 的路徑及重複 ID
 會拒絕載入。尚未存在的 checkpoint 不加入目錄；存在但驗證失敗的 checkpoint 會使
 啟動失敗，不會降級成未驗證資料。catalog 是本機伺服器設定，瀏覽器不能傳入任意路徑。
@@ -190,9 +205,10 @@ catalog 的 scene ID、名稱與說明只調整展示識別，來源 model/run/h
 dataset、相應 config 與 freeze receipt。缺少評估顯示 `UNAVAILABLE`；
 綁定失配顯示 `STALE`。E1 摘要中的 config hash 是 package config，
 與整體推論 effective config 的含義不同，另以逐模式 freeze receipt 核對同一次結果。
-目前以可展開 JSON 顯示，沒有完整 experiment／benchmark／reproduction runner 或 GT debug。
-現有 loader 尚缺 aggregate DTO allowlist／內容 digest 認證；UI 發布後的 cached test
-結果也待失效處理，詳見覆蓋表。本輪 sentinel-only audit 不代表現有資料已外洩。
+此 action 以可展開 JSON 顯示認證摘要，沒有完整 experiment／benchmark／reproduction runner。
+P14 已實作 aggregate DTO allowlist／獨立內容 digest 認證與發布後 cached test/evaluation
+失效處理。v2 的獨立 aggregate 未認證時顯示 UNAVAILABLE；已發表比較走展示庫。
+GT debug 是 Gallery 的獨立人類研究分類，不屬此評估 action 或 Agent allowlist。
 
 GT／recipe sidecar 仍留在原 generator／evaluator 邊界，工作台常規場景與展示工具
 不開啟它們。研究人的評估面板不擴張 Agent 的權限；原有 Agent 仍使用有限範圍、

@@ -1,10 +1,23 @@
 # 工作台實驗展示覆蓋 / Workbench experiment coverage
 
-2026-10-10 P14 增量：8016「實驗展示」已加入原 Office 局部來源 mesh、人形與50格時間軸。
-評估 DTO／內容 digest、版本變更 cache 及 GT 文字問題已修复；操作與當次測試見
-[來源展示契約](SOURCE_PRESENTATION_WORKBENCH.md) 與
-[receipt](../../data/engineering/workbench_20261010/source_validation.json)。Product 調查、影片及
-其他歷史家族尚在後續接入。以下保留 2026-10-08 稽核，屬當日結果，不代表上述修復仍待辦。
+2026-10-10 目前主平台：**三個獨立 frozen 場景、15 個展示家族索引、192 張認證 PNG**。
+原模型互動 mesh／人形／50 格時間軸、人物調查／案例／stop-resume／HTML 報告與四鏡頭
+MP4 同步已接 8016。操作見 [來源展示](SOURCE_PRESENTATION_WORKBENCH.md) 與
+[調查／展示庫](WORKBENCH_INVESTIGATION_GALLERY.md)；當次結果另存
+[integration receipt](../../data/engineering/workbench_20261010/integration_validation.json)。
+
+| 目前入口 | 已實作 | 明確限制 |
+| --- | --- | --- |
+| 共用工作區 | E0、E1、精度 v2 的局部照片／量測／事件／3D／replay；v2 顯示 SUPPORTED／UNKNOWN／GAP_ALTERNATIVES | 固定結果讀取，不重跑 producer；v2 是獨立 experiment namespace，不替換 E1 |
+| 人物調查 | E1 兩種 frozen modes、local seeds、appearance／stitch、四種 typed intent、有限批次 stop/resume、案例／報告／三種結果 review／HTML | E0／v2 沒有此 E1 product binding，明示 UNAVAILABLE；人審不确认 global ID |
+| 模型與行走 | 同原模型／同 crop 的276面、historical110面對照、50格與三原候選、人形步態 | 原照片量測旗標仍 false；BODY DISPLAY_ONLY，裁切不擴大幾何權限 |
+| 歷史圖表與展示庫 | 原14家族＋精度v2；192PNG、Office27＋45列、v2三列同／異population比較 | projection raw 缺失、V5四項缺失；RRD／GIF／歷史MP4僅存在狀態，GT debug另選 |
+| 測試／評估 | 當前局部接口檢查、認證 E0/E1 aggregate DTO；發布使舊 cache 失效 | v2 scene evaluation 未認證則 UNAVAILABLE，使用展示庫的已發表比較；不是實驗 runner |
+
+15 家族的索引完整不等於所有實驗素材存在或全部 RRD 可在網頁執行。
+正式 Cases2/3／full Exit仍 BLOCKED、Case4DEFERRED、原 Phase2 branch/tag FROZEN。
+下面是 **2026-10-08 的原稽核記錄**，保留當時素材與未遷移狀態；其中已修復的評估／cache／
+文字問題及已接入功能以本節和新契約為準，不回寫當年的 receipts。
 
 2026-10-08 在 `codex/simulation-engineering`、checkpoint
 `b484a8479461559942f42a5507132254d5c35b4d` 盤點。**實驗展示尚未全部接入主平台。**

@@ -1,0 +1,192 @@
+{
+  "schema_version": "amidst.workbench.integrated-validation.v1",
+  "date": "2026-10-10",
+  "branch": "codex/simulation-engineering",
+  "baseline_commit": "a0cef96",
+  "publication_binding": "git tree containing receipt; exact executable hashes below",
+  "status": "LOCAL_SYNTHETIC_OPERATING_WORKBENCH",
+  "python": {
+    "tests": "2873",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "308.146",
+    "timestamp": "2026-10-10T14:48:49.372299+08:00"
+  },
+  "python_command": "uv run --offline --no-sync pytest --require-physical-evidence -rs",
+  "ruff": "PASS src/tests",
+  "mypy": {
+    "status": "PASS",
+    "source_files": 183
+  },
+  "node": {
+    "workbench_passed": 45,
+    "product_passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "http": {
+    "requests": 63,
+    "receipt_sha256": "82d016147f33f3fc0ce7a3cd4208825d24cea665efa8ede484bac4fe46fb70f4"
+  },
+  "browser": {
+    "source_mesh": 276,
+    "historical_triangles": 110,
+    "source_frames": 50,
+    "source_routes": 3,
+    "display_only_humanoid": true,
+    "visible_gap_colors": true,
+    "step_seek_play_speed_loop": true,
+    "product_multi_target": {
+      "seeds": 2,
+      "workflow_calls": 18,
+      "alternatives": 42,
+      "conflicts": 9,
+      "identity_status": "UNRESOLVED_PROVISIONAL",
+      "stop_state": "STOPPED",
+      "resume_state": "COMPLETED",
+      "html_download_verified": true
+    },
+    "videos": {
+      "count": 4,
+      "ready_state": 4,
+      "master_changed": "DOOR",
+      "speed": 2,
+      "seek_verified": true,
+      "telemetry": {
+        "synchronization": "SOFT_SYNCHRONIZATION",
+        "actual_frame_callbacks": 1253,
+        "media_to_3d_skew_ms": {
+          "count": 312,
+          "mean": 107.47862179487147,
+          "p95": 133.3340000000014
+        },
+        "camera_media_skew_ms": {
+          "count": 936,
+          "mean": 25.925923076923,
+          "p95": 66.66700000000247
+        },
+        "seek_recovery_ms": {
+          "count": 1,
+          "mean": 25.899999998509884,
+          "p95": 25.899999998509884
+        },
+        "missing_frame_selections": 0,
+        "fallback_media_callbacks": 0,
+        "dropped_video_frames": null,
+        "dropped_video_frames_reason": "NOT_AVAILABLE_FROM_THIS_CLOCK",
+        "metric_source": "ACTUAL_MEDIA_CALLBACKS_AND_APPLIED_PRESENTATION_STATE"
+      }
+    },
+    "gallery": {
+      "families": 15,
+      "png": 192,
+      "recovery_rows": [
+        27,
+        45
+      ],
+      "v2_comparison_rows": 3,
+      "gt_debug_separate": true
+    },
+    "third_scene": {
+      "experiment_id": "accuracy-test-v2-final",
+      "segments": 29,
+      "events": 165,
+      "supported": 5,
+      "unknown": 7,
+      "gap_alternatives": 153,
+      "evaluation": "UNAVAILABLE_NO_CERTIFIED_AGGREGATE"
+    },
+    "console_errors": 0
+  },
+  "immutable_source": {
+    "source_ref": "immutable-source:school-v3",
+    "sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+    "bytes": 468300506,
+    "mtime_ns": 1791198236746106977,
+    "matches_original": true
+  },
+  "reference_recording": {
+    "sha256": "fa69bb346f5894197e1fa47293ec83b7c2d704ee35df8a5cd53dc1ec91029f19",
+    "bytes": 9086854,
+    "usage": "VISUAL_REFERENCE_ONLY; never an instruction or inference input"
+  },
+  "prior_runs": [
+    {
+      "result": "FAILED_OLD_REVIEW_DTO_TEST_EXPECTATION",
+      "tests": 2846,
+      "failed": 1
+    },
+    {
+      "result": "PASS_BEFORE_ADDITIVE_V2_SCENE_GALLERY",
+      "tests": 2849,
+      "failed": 0
+    },
+    {
+      "result": "FAILED_STALE_GALLERY_COUNT_14",
+      "tests": 2873,
+      "failed": 1
+    }
+  ],
+  "publication_policy": {
+    "code_docs_curated_receipts_only": true,
+    "raw_rgb_png_mp4_rrd_gt_archives_not_staged": true,
+    "external_model_calls": 0,
+    "new_environment_or_worktree": false
+  },
+  "remaining": {
+    "projection_plots": "NOT_MATERIALIZED",
+    "historical_v5_missing": 4,
+    "historical_rrd_gif": "STATUS_ONLY",
+    "formal_cases2_3_full_exit": "BLOCKED",
+    "case4": "DEFERRED",
+    "original_phase2_branch_tag": "FROZEN",
+    "openai_token_sections": "EMPTY"
+  },
+  "code_sha256": {
+    "configs/engineering/workbench_v1.json": "aedae93bea945d1c9eb0b0b99789c4f4d86d7ca522dddefdef9102e1201543f2",
+    "src/amidst/workbench/scenes.py": "08d671760ed0ea770e68edaed4aa3940080cb7d40354c0dc07a11f650de097ec",
+    "src/amidst/workbench/service.py": "6266d5284a52c6426a91625b844d9273634007afa77dc35469cdfc80b7d26e60",
+    "src/amidst/workbench/source_presentation.py": "3082a49b125a4442b3a0f3d05bfca38c627181c1ad90cb363de79bdaae9989b6",
+    "src/amidst/workbench/presentation_gallery.py": "b4642b7d343eabdcb43fa6c28dd83e5d4c0d722eedd71682b5aad3ec14184e3d",
+    "src/amidst/workbench/product_bridge.py": "edc9839262eca42dd421b0fe816c9104681aeb875dbe04f33f5c9327318de91f",
+    "frontend/workbench/app.mjs": "01d39f860765e183d939fd9e43818b412bdce1cffd2b0ea8e25a5934992bd1e6",
+    "frontend/workbench/app.test.mjs": "59bf24fb3d0e4077214f83578c8394c730b75557cd445cdaece29bd70f277383",
+    "frontend/workbench/scene.mjs": "9c050a7ff70c79e0679759c82de3e43d9d51fca851a330d18f94a0de1ea553db",
+    "frontend/workbench/style.css": "b2ab1299d581741c7bea726e70639bf38635b1efc64ae43f6af9814744f2e590",
+    "frontend/workbench/motion.mjs": "57b576eba738fe5b0f5adff6d85666c8e8ffef1e2331d7eaad5680c95ab8a5f8",
+    "frontend/workbench/motion.test.mjs": "61e243bd420e4c0f6010de42449208c5ddd4c7a3c384977d91637cd5dc020abd",
+    "frontend/workbench/presentation.mjs": "b0995b91b20c20991a87fddc194694916c9155aedd4b8ceaafb1ce6f4456ee49",
+    "frontend/workbench/investigation.mjs": "2795591502d20bb9d55e2c1d8df3372735f797c77b6a389e7b4d4446d91d5a1d",
+    "frontend/workbench/investigation.test.mjs": "7ff632c3f13cc15446f55c94eaf8850fd691a4dd729a6e02eebf8517c5b6c606",
+    "frontend/workbench/gallery.mjs": "537a8c6d461fd0fcb7af2177d8e6fb5a5f87ab4ffdaf0822ed4a039546cef469",
+    "frontend/workbench/gallery.test.mjs": "867ff2cd8ae535f28f461dea7d95532cb1004c2c7948e2a4a6f59e8291900638",
+    "tests/workbench/test_product_application.py": "43b75a04a0ad127fe165d19635a32784451b85b565f8d68b1a675ef3faf76e77",
+    "tests/workbench/test_accuracy_scene.py": "33e23e09bb72e3fbcd36488747c7494d44d08af92ad21de1dc61f9b32aa98169",
+    "tests/workbench/test_presentation_gallery.py": "2cb11b685f69024a78ba01234e973470079147967ca14427ba9a0195012aed65",
+    "tests/workbench/test_product_bridge.py": "a2f1588d9b55057a43fe828d35057058e94ad62982fa29176911dfcd5cad66fc"
+  },
+  "local_evidence_sha256": {
+    "amidst-p15-full.log": "734b96b7009db676bc4825040dabd4c5beff7b0c1c046e42fe873b802be578ee",
+    "amidst-p15-full-final.log": "5ff28d07b2f9baf1a6fbdacdc23f3d75f56e134e3007b4b1956b5e6c9582c698",
+    "amidst-workbench-integrated-final.log": "f09c2687d46e2df75ff803d59a0034635c4bb393f3561ebf8b3a8de75df80813",
+    "amidst-workbench-release.log": "074968e837b2c2f12494e260cc5d973b7e7bd64b0d54f7e2f2f44825259c2590",
+    "amidst-workbench-release.xml": "b5e563bf3319875875bb1ad02bfb81d6a1ea72b215445a03bff35c7f72e84aef",
+    "amidst-workbench-release-node.log": "be38c4d5aac34adddd0e25f760e9f845af6fee69fed7f988833593e02f157ac6",
+    "amidst-p15-node-product.log": "6bb3a7f513a22a74855721ac2c6e6d5757d39b71ee1404724ac0babe1e58caa7"
+  },
+  "presentation_evidence": {
+    "source_scene.png": {
+      "local_reference": "data/engineering/local_run/workbench_20261010/source_scene.png",
+      "sha256": "aafcfa27d095bed7f772f4ba58aa4797d8c0c6f0810b37477d1e41a4f135e6f1"
+    },
+    "four_camera_video.png": {
+      "local_reference": "data/engineering/local_run/workbench_20261010/four_camera_video.png",
+      "sha256": "9b0bcb4bc41b52eb68bb0e4792cd7268abd70a71e9c432637b02d15a20482696"
+    },
+    "video_telemetry.json": {
+      "local_reference": "data/engineering/local_run/workbench_20261010/video_telemetry.json",
+      "sha256": "06f9ecc124814e8ae25973626729eee5788833dce22468e6b5b95e8cd3b84992"
+    }
+  }
+}

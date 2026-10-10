@@ -23,7 +23,7 @@ from amidst.engineering.association import SyntheticStaticContext
 from amidst.engineering.local_behavior import BehaviorConfig
 from amidst.engineering.local_index import CameraLink, CameraRegions, ScopedTopology
 from amidst.engineering.local_service import LocalPilotService
-from amidst.engineering.registry import CameraEntry, MediaFrame
+from amidst.engineering.registry import CameraEntry, MediaFrame, opaque_ref
 
 Json = dict[str, Any]
 
@@ -640,6 +640,73 @@ def load_local_camera(root: Path) -> SceneAdapter:
                             for s in services})
 
 
+def load_local_camera_accuracy_v2(root: Path) -> SceneAdapter:
+    """A distinct frozen experiment over original E1 RGB/static context, never GT."""
+    from amidst.research_accuracy.adapter import load_service
+    from amidst.research_accuracy.run import VERSION as accuracy_version
+    from amidst.research_accuracy.run import load
+
+    package, registry, manifest, _ = load(root)
+    service = load_service(root, variant="end_to_end", mode="photos_plus_observations",
+                           input_stage=False)
+    # This locator is owned by the verified server-side manifest, not a request.
+    source = Path(manifest["source_locator"]).resolve()
+    original = json.loads((source / "manifest.json").read_bytes())
+    behavior = BehaviorConfig.model_validate_json((source / "behavior_config.json").read_bytes())
+    model = next(m for m in registry.models if m.scope == service.scope)
+    support_states = ("SUPPORTED", "UNKNOWN", "GAP_ALTERNATIVES")
+    if (
+        manifest["version"] != accuracy_version
+        or manifest["unit"] != "METRES_SYNTHETIC_SECONDS"
+        or not isinstance(manifest["experiment_id"], str)
+        or re.fullmatch(r"[A-Za-z0-9_.-]{1,100}", manifest["experiment_id"]) is None
+        or digest(original) != manifest["source_manifest_sha256"]
+        or digest(behavior) != original["behavior_config_sha256"]
+        or service.store.registry.sha256 != registry.sha256
+        or service.guard.stage != "RESULTS"
+        or service.guard.binding.registry_version != accuracy_version
+        or service.guard.binding.observation_mode != "photos_plus_observations"
+        or model.coordinates.native_units != "METRES"
+        or model.coordinates.metres_per_unit != 1
+        or model.coordinates.normalization_policy != "IDENTITY"
+        or any(c.calibration is None or c.scope != service.scope
+               for c in service.cameras.values())
+        or any(e.get("support_state") not in support_states for e in service.events.values())
+    ):
+        raise ValueError("ACCURACY_SCENE_BINDING_MISMATCH")
+    scene = SceneAdapter(
+        scene_id="local-camera-accuracy-v2", label="局部鏡頭精度研究 v2",
+        description="E1 同源 RGB · accuracy v2 end_to_end；SUPPORTED／UNKNOWN／盲區替代分列",
+        service=service, context=package.context, evidence_level="E1_FROZEN_ACCURACY_V2_RGB",
+        behavior=behavior,
+    )
+    # No E1 content certificate is reused for the new aggregate schema. Human
+    # evaluation stays unavailable until it has an independent DTO/certificate.
+    scene._snapshot.update({
+        "experiment_id": manifest["experiment_id"], "experiment_version": accuracy_version,
+        "experiment_namespace": opaque_ref("experiment", manifest["experiment_id"],
+                                           "end_to_end", "photos_plus_observations",
+                                           service.guard.binding.config_sha256),
+        "source_run_id": manifest["source_run_id"], "variant": "end_to_end",
+        "observation_mode": "photos_plus_observations", "decision_stage": "RESULTS",
+        "research_manifest_sha256": digest(manifest),
+        "experiment_config_sha256": manifest["config_sha256"],
+        "explicit_support_states": list(support_states),
+        "support_state_counts": {state: sum(e["support_state"] == state
+                                           for e in service.events.values())
+                                 for state in support_states},
+        "evaluation_status": "UNAVAILABLE_UNCERTIFIED_ACCURACY_V2_AGGREGATE",
+        "limitations": [
+            "Same E1 synthetic RGB/static context; source run ID is retained.",
+            "Experiment/variant/config/freeze and event/track refs are separately bound.",
+            "UNKNOWN is not supported evidence; all GAP alternatives are retained.",
+            "Changed v2 tracking population is not the original fixed v1 population.",
+            "No formal school, real-camera or sealed-holdout acceptance.",
+        ],
+    })
+    return scene
+
+
 def load_synthetic_lab(root: Path) -> SceneAdapter:
     """Normalize E0 frozen results once; subsequent queries use the same interval index."""
     from amidst.engineering.run import load_facades
@@ -737,7 +804,8 @@ def load_catalog(repo: Path, overrides: Mapping[str, Path] | None = None,
     if overrides is not None:
         if not set(overrides) <= {entry["scene_id"] for entry in entries}:
             raise ValueError("UNKNOWN_SCENE_ADAPTER")
-    loaders = {"local_camera": load_local_camera, "synthetic_lab": load_synthetic_lab}
+    loaders = {"local_camera": load_local_camera, "synthetic_lab": load_synthetic_lab,
+               "local_camera_accuracy_v2": load_local_camera_accuracy_v2}
     catalog = {}
     for entry in entries:
         scene_id = entry["scene_id"]
@@ -773,7 +841,7 @@ def _catalog_entries(repo: Path, manifest: object) -> list[dict[str, str]]:
         if scene_id in known:
             raise ValueError("DUPLICATE_SCENE_ID")
         known.add(scene_id)
-        if row["adapter"] not in {"local_camera", "synthetic_lab"}:
+        if row["adapter"] not in {"local_camera", "synthetic_lab", "local_camera_accuracy_v2"}:
             raise ValueError("UNKNOWN_SCENE_ADAPTER")
         checkpoint = PurePosixPath(row["checkpoint"])
         if checkpoint.is_absolute() or ".." in checkpoint.parts or "\\" in row["checkpoint"]:

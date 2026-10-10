@@ -30,14 +30,20 @@ export function bodyMarkers(observations,events,timestamp) {
       evidence_state:'PROJECTED',origin:observation.origin,image_measurement:observation.image_measurement,
       joint_pose_authority:'DISPLAY_ONLY'}];
   });
-  const alternatives=events.flatMap(event=>(event?.detail??event)?.trajectories??[]).flatMap(hypothesis=>{
+  const alternatives=events.flatMap(event=>((event?.detail??event)?.trajectories??[]).flatMap(hypothesis=>{
     const sample=sampleCanonicalTrajectory(hypothesis,timestamp);
     if(!sample||!finitePosition(sample.world_position))return [];
     // A gap endpoint is still a provisional hypothesis marker, never a resolved person.
-    return [{...sample,ref:hypothesis.hypothesis_id,evidence_state:'INFERRED_GAP',
+    return [{...sample,ref:`${event.event_ref}:${hypothesis.hypothesis_id}`,evidence_state:sample.provenance,
       joint_pose_authority:'DISPLAY_ONLY',identity_confirmed:false}];
-  });
+  }));
   return [...visible,...alternatives];
+}
+export function serverBodyMarkers(markers){
+  return markers.filter(marker=>typeof marker.marker_ref==='string'&&finitePosition(marker.world_position)
+    &&['PROJECTED','INFERRED_GAP'].includes(marker.evidence_state)).map(marker=>({...marker,
+      world_position:[...marker.world_position],ref:marker.marker_ref,joint_pose_authority:'DISPLAY_ONLY',
+      presentation_only:true,identity_confirmed:false}));
 }
 export function invalidateVersionResults(target) {
   target.test=null;target.evaluation=null;

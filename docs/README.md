@@ -15,10 +15,12 @@
 
 使用者最新決策：**8016／frontend/workbench 為統一網頁主入口**。既有與後續頁面能力
 接入共用工作台；8020／frontend/product 保留既有工程證據及待遷移功能來源，不再擴張成
-另一個主要前端。Product 後端／資料／typed interfaces 可供接入，尚未宣稱遷移完成。
+另一個主要前端。Product 後端／資料／typed interfaces 已接人物調查／影片／案例；原 frozen lab保留。
 
 [實驗展示覆蓋表](engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) 記錄本輪實際網站盤點：
-主平台只有 E1／E0；已有但未接入、缺少素材、formal BLOCKED 及待修項目分開列出。
+目前三個獨立場景與15家族展示索引；缺少素材、status-only artifacts與formal BLOCKED分開列出。
+操作見 [來源模型與行走](engineering/SOURCE_PRESENTATION_WORKBENCH.md) 和
+[人物調查／展示庫](engineering/WORKBENCH_INVESTIGATION_GALLERY.md)。
 
 | 資料夾 | 內容 |
 | --- | --- |
@@ -42,8 +44,8 @@ behavior comparisons, failure evidence and the frozen research adapter.
 local research/admin scene and review workspace.
 The user's latest decision makes workbench/8016 the unified primary web UI. Existing and
 future presentation capabilities belong there; product/8020 remains a preserved engineering
-lab and migration source. Backend interfaces are available; migration is not yet complete.
+lab and migration source. The E1 product investigation, video, case and report interfaces are integrated.
 [Experiment coverage](engineering/WORKBENCH_EXPERIMENT_COVERAGE.md) records the actual
-two-scene UI, unmigrated presentations, local asset availability and actionable audit findings.
+three scoped scenes and fifteen presentation families, with missing assets and formal blockers explicit.
 
 The five folders separate specifications, engineering, research, operations and history. This is the only documentation index. The root retains the exact corridor review, the runtime checkpoint JSON and three symlinks required by locked protocol, review and geometry-report references; maintained text lives in the category folders.
