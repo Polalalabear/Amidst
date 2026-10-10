@@ -470,3 +470,15 @@ directed graph／speed contracts 的 collision／constraint rates=0，不等於 
 466,332,340 bytes，且來源 SHA-256 相同。Phase 1 已核准的 convention 是
 1 Blender unit = 1 metre；舊自動 audit 的 unit review finding 保留為歷史盤點
 脈絡。School walkability、NavMesh 與 stair connectivity 仍未核准。
+
+## 2026-10-10 accuracy v2 research artifacts
+
+[Curated receipt](engineering/accuracy_20261010/validation.json), development selection,
+baseline taxonomy and pixel ablations bind versioned counts/hashes and the
+[research report](../docs/research/LOCAL_CAMERA_ACCURACY_V2.md). Immutable frozen runs and
+actual RGB/3D/replay cards are LOCAL ONLY under
+`engineering/local_run/accuracy_v2/{development,test}/final`; original E1 raw is reused.
+KEEP: code/config/docs and curated aggregates. LOCAL ONLY: RGB, GT, descriptors,
+full evaluator labels, PNG/replay snapshots and telemetry logs. This is a synthetic
+accuracy experiment with explicit fragmentation, cost and behavior failures; formal
+gates remain unchanged.

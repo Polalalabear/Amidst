@@ -90,7 +90,14 @@ diagnostic。Full formal／新school攝影機／trainedReID／PostgreSQL或vecto
 
 可直接開啟loopback8012（原8010保留）查局部camera/time事件卡、3–5實際RGB、局部3D候選與replay；操作／重建命令見pilot文件。Final artifacts位於ignored `data/engineering/local_run/local_camera_v1/test/checkpoints/final`，同一RGB materialization被development/test各自新freeze重用。2427 full tests／Ruff／mypy145files、34真HTTP、378MockAgent calls、瀏覽器操作、同run GT poisoning與empty-output hash reproduction當次PASS；formal clean-checkout與school authority未因此解鎖。
 
-有效後續：以development改善pixel merges/ID switches、appearance與soft priors／可見行為precision，再用新frozen run评估；原Cases2/3、full Exit BLOCKED、Case4 DEFERRED及frozenPhase2繼續有效。原研究交接的NOT_RUN標頭是交接日期基線，實作狀態以本節與pilot checkpoint為準。
+2026-10-10 [研究精度 v2](../research/LOCAL_CAMERA_ACCURACY_V2.md) 已交付獨立 frozen runs、
+固定 pool／端到端比較、消融與只讀 typed adapter；當次 [receipt](../../data/engineering/accuracy_20261010/validation.json)
+綁 implementation `48bfd49` 與170項 scoped回歸，不是全repo PASS。原v1／P8與並行工作台保留；
+新output在 `data/engineering/local_run/accuracy_v2/{development,test}/final`，factory為
+`amidst.research_accuracy.adapter.load_service`。Consumer須保留 `SUPPORTED/UNKNOWN/GAP_ALTERNATIVES`。
+有效待續：追蹤碎片與讀取成本增加、融合不勝過所有消融、corner/wandering仍漏報、dwell新增誤報；
+不能直接混比producer改變後的pool／eligibility。原Cases2/3/full Exit BLOCKED、Case4 DEFERRED、
+Phase2 FROZEN仍有效。舊RESEARCH_PLAN/NOT_RUN標頭只屬歷史基線。
 
 ### 已接入的工程能力與續作邊界
 
@@ -172,6 +179,12 @@ The current engineering branch is `codex/simulation-engineering`, reusing the ex
 M1–M6 now provide an operating synthetic RGB-to-local-track-to-provisional-association-to-3D-event composition, strict typed tools, immutable repositories, a browser/MockAgent workflow and independent evaluation/reproduction. See the simulation engineering document and current validation receipt. The local run has 102 images, 89 measurements, six tracks, 21 association records and four canonical gaps with eight alternatives. The separate office certificate covers structured partial recovery only; school RGB, arbitrary corridor packages and formal gates remain uncertified.
 
 R1–R8 now provides an operating, separately versioned indexed synthetic pilot. See the local pilot guide and curated receipt for current metrics, 2427 full passing tests and scoped photo/3D/replay operation. Low pair accuracy and behavior false positives remain explicit; the original lab, formal gates, main and frozen Phase 2 are preserved.
+
+The [accuracy v2 research](../research/LOCAL_CAMERA_ACCURACY_V2.md) now has separate frozen
+experiments and a read-only typed adapter. Preserve UNKNOWN support states and distinguish the
+changed producer population. Fragmentation/read costs, non-dominant fusion and missed behaviors
+remain actionable; the [current receipt](../../data/engineering/accuracy_20261010/validation.json)
+reports 170 scoped regression tests, not a full-repository pass. Formal gates stay unchanged.
 
 P7–P12 now provide an operating [local synthetic Phase 2 product](../engineering/LOCAL_PHASE2_PRODUCT.md):
 durable scoped SQLite retrieval, handcrafted pixel appearance, provisional stitching, bounded

@@ -8,6 +8,8 @@
 
 持久調查、RGB 外觀查找、四鏡頭影片與 Three.js 回放、案例／人審／報告匯出的操作入口，見
 [本機 Phase 2 產品](engineering/LOCAL_PHASE2_PRODUCT.md)；當次結果與正式待辦分開記錄。
+版本化 pixel／外觀／關聯／行為比較、失敗證據與 frozen adapter 見
+[研究精度 v2](research/LOCAL_CAMERA_ACCURACY_V2.md)。
 並行的雙角色／場景 catalog／人審版本入口見 [共用工作台](engineering/SHARED_WORKBENCH.md)，
 它的本機8016及驗證 receipt 與產品8020分開。
 
@@ -34,6 +36,8 @@ Read the [current handoff](operations/CODEX_HANDOFF.md), use the [continuation p
 
 [Local Phase 2 product](engineering/LOCAL_PHASE2_PRODUCT.md) documents durable investigations,
 RGB appearance retrieval, four-camera video/Three.js playback, saved cases, reviews and reports.
+[Accuracy v2](research/LOCAL_CAMERA_ACCURACY_V2.md) documents versioned pixel, association and
+behavior comparisons, failure evidence and the frozen research adapter.
 [Shared workbench](engineering/SHARED_WORKBENCH.md) documents the independently validated
 local research/admin scene and review workspace.
 The user's latest decision makes workbench/8016 the unified primary web UI. Existing and

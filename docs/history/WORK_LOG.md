@@ -2310,3 +2310,20 @@ gallery）／19Node、ownedRuff／mypy8、16真HTTP及actualbrowser逐格／seek
 原formalCases2/3/fullExit BLOCKED、Case4DEFERRED、Phase2FROZEN。只stage自有code/docs/
 curatedreceipt；並行research_accuracy及所有不相關修改保留。下一milestone繼續調查／影片/
 gallery共同入口整合。
+
+## 2026-10-10 — Local camera accuracy v2
+
+研究 implementation `48bfd49685c7f6bbdc6a07c1c377abd0e3bb51cd` 重用E1 RGB並保留v1/P8
+bytes；pixel／association／behavior獨立milestones後完成八版本、兩模式freeze與post-freeze
+evaluation。[單一研究報告](../research/LOCAL_CAMERA_ACCURACY_V2.md)及
+[curated receipt](../../data/engineering/accuracy_20261010/validation.json)綁config／source／
+producer／inference／evaluation。Test固定pool Recall@1 .375→.625、P8同pool五queries
+.4→.8；end-to-end switches8→4但fragmented0→7、pairs115→327，另列eligibility與分母。
+Corner/wandering仍recall0，弱claims保留unknown；dwell新增FP1，未假造全面提升。
+
+當次單一清楚source snapshot的170 scoped tests／0failure/error/skip、Ruff、strictmypy16
+files、14typed negative checks與實際RGB/3D/replay PASS；排除並行workbench，不冒稱full。
+GT/recipe/reference虛擬replacement/removal無runtime讀取；兩fresh outputs所有16variant/mode
+hashes一致，獨立evaluation comparison逐byte一致。僅stage研究code/config/docs/curated
+counts，raw/GT/descriptors/PNG/debug維持LOCAL ONLY。FormalCases2/3/fullExit BLOCKED、
+Case4DEFERRED、原Phase2/tag FROZEN不變。
