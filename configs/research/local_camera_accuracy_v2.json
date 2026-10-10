@@ -1,0 +1,60 @@
+{
+  "association": {
+    "appearance_distance_scale": 0.15,
+    "appearance_mode": "ROBUST_CROP",
+    "appearance_weight": 1.0,
+    "crop_inset_fraction": 0.08,
+    "descriptor_version": "robust-chromatic-crop-v2",
+    "foreground_chroma_distance": 0.1,
+    "foreground_saturation": 0.15,
+    "max_crop_side": 128,
+    "max_measurements": 4096,
+    "outlier_distance": 0.22,
+    "representative_crops": 3,
+    "schema_version": "research.accuracy-association-config.v2",
+    "scores_are_probabilities": false,
+    "spatial_mode": "FEASIBILITY_RATIO",
+    "spatial_weight": 1.0,
+    "time_mode": "LEGACY_DIRECTION",
+    "time_speed_scale_m_s": 1.5,
+    "time_weight": 1.0
+  },
+  "behavior": {
+    "composer_version": "local-behavior-evidence-v2",
+    "corner_context_window_s": 2.4,
+    "corner_min_arm_displacement_m": 0.5,
+    "dwell_velocity_window_s": 0.8,
+    "portal_clearance_m": 0.15,
+    "portal_context_window_s": 1.2,
+    "region_clearance_m": 0.15,
+    "reversal_min_arm_displacement_m": 0.5,
+    "revisit_min_outside_clearance_m": 0.35,
+    "side_min_samples": 2
+  },
+  "pixel": {
+    "appearance_scale": 64.0,
+    "appearance_weight": 0.25,
+    "assignment": "global",
+    "config_version": "pixel-continuity-development-v2",
+    "max_gap_s": 1.21,
+    "max_prediction_error_px": 24.0,
+    "merge_contact_padding_px": 3.0,
+    "merge_quarantine": true,
+    "shape_weight": 0.1,
+    "unmatched_cost": 1.05,
+    "use_velocity": true
+  },
+  "schema_version": "accuracy.policy.v2",
+  "selection": "DEVELOPMENT_ONLY: fixed64pairs/8queries chose robustRGB+feasibility-space+legacy-direction; test previously used for integration",
+  "variants": [
+    "baseline",
+    "pixel_only",
+    "appearance_only",
+    "prior_only",
+    "features_full",
+    "behavior_only",
+    "motion_diagnostic",
+    "end_to_end"
+  ],
+  "version": "local-camera-accuracy-v2"
+}

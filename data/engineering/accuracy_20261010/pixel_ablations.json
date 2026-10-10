@@ -1,0 +1,462 @@
+{
+  "algorithms": {
+    "../graph/engine.py": "f0c9e018067f05666056217d65afdaeeff651dbb8bf6a62e5721245b919c0562",
+    "../pipeline.py": "f6e75d3527eedeafcf8099a4a653072134bc9ce27c23f1934a66fa1abe34955d",
+    "../reconstruction/blind_gap.py": "8338e8033ebe0d5035151974da938d3fd368ab36ca1ead17784a237f509a183f",
+    "access.py": "2a3ed4fc11c8741d82e997ce1d3fe0d5146bdf2d2e6f99818931af0601bc0b84",
+    "association.py": "69ed18b7ea1fa28ec05b22045a2da9109864c0bcc535fc6e3dcf0e1b94cdec48",
+    "facade.py": "68f13bb541a94a45750d8d4f2ffe57a57fea3ffe635dc19e43db17f0a8ed15e7",
+    "local_association.py": "1c008addf5391ad5aeca2be43e14e90cd18507b6b89ae9c1afc6a79a49440e20",
+    "local_behavior.py": "2eea10f22934bc39edcaae9e9dcb069d201472ebde994c3749af75fd0ad8e71c",
+    "local_evaluation.py": "f6e3d6575327cdbfe8e26d517018c0e1155dc9ba6ef465ff7e4823f447296929",
+    "local_index.py": "b88547a9cc546be4b2f0a8ca156981408bafcc455870226edef731f58a6ddfec",
+    "local_pilot.py": "de1ca8e31a5612d05853d129e102c074f76c229186632c8d1a0a6bdc2342426f",
+    "local_service.py": "725b05e167930aa4c796c89f488ecb59c89fd3bb4f83cb3f8adeceeaf6e28862",
+    "perception.py": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+    "registry.py": "fac6e8120ee1cdcff5dc78422373267e9063e39c88b94165fad0d67c59b296dc",
+    "research_accuracy/development_pixel.py": "bd25cee00297d4d3da5498d395dce8039987958c083638012477fea494e8a59e",
+    "research_accuracy/pixel.py": "0e0bf7510e6d782f0766f38f59eb6cf3af5177555366da1a4d2892d806c2cd34",
+    "research_scene.py": "e1b20d0dff5f3de3f98373bff4877a221a5b7543dffdffce8dff0d1a56e8c632"
+  },
+  "all_receipts_verified_before_gt": true,
+  "artifact_policy": "PUBLIC_ALLOWED_AGGREGATE_RECEIPT",
+  "clock_id": "synthetic-seconds-v1",
+  "config_sha256": "857f4a9ca5498e239f7dc01b6eca64110a0631ccdbe469a276ec65fd1f01b001",
+  "configs": {
+    "full": {
+      "appearance_scale": 64.0,
+      "appearance_weight": 0.25,
+      "assignment": "global",
+      "config_version": "pixel-continuity-development-v2",
+      "max_gap_s": 1.21,
+      "max_prediction_error_px": 24.0,
+      "merge_contact_padding_px": 3.0,
+      "merge_quarantine": true,
+      "shape_weight": 0.1,
+      "unmatched_cost": 1.05,
+      "use_velocity": true
+    },
+    "greedy": {
+      "appearance_scale": 64.0,
+      "appearance_weight": 0.25,
+      "assignment": "greedy",
+      "config_version": "pixel-continuity-development-v2",
+      "max_gap_s": 1.21,
+      "max_prediction_error_px": 24.0,
+      "merge_contact_padding_px": 3.0,
+      "merge_quarantine": true,
+      "shape_weight": 0.1,
+      "unmatched_cost": 1.05,
+      "use_velocity": true
+    },
+    "no_appearance": {
+      "appearance_scale": 64.0,
+      "appearance_weight": 0.0,
+      "assignment": "global",
+      "config_version": "pixel-continuity-development-v2",
+      "max_gap_s": 1.21,
+      "max_prediction_error_px": 24.0,
+      "merge_contact_padding_px": 3.0,
+      "merge_quarantine": true,
+      "shape_weight": 0.1,
+      "unmatched_cost": 1.05,
+      "use_velocity": true
+    },
+    "no_quarantine": {
+      "appearance_scale": 64.0,
+      "appearance_weight": 0.25,
+      "assignment": "global",
+      "config_version": "pixel-continuity-development-v2",
+      "max_gap_s": 1.21,
+      "max_prediction_error_px": 24.0,
+      "merge_contact_padding_px": 3.0,
+      "merge_quarantine": false,
+      "shape_weight": 0.1,
+      "unmatched_cost": 1.05,
+      "use_velocity": true
+    },
+    "no_shape": {
+      "appearance_scale": 64.0,
+      "appearance_weight": 0.25,
+      "assignment": "global",
+      "config_version": "pixel-continuity-development-v2",
+      "max_gap_s": 1.21,
+      "max_prediction_error_px": 24.0,
+      "merge_contact_padding_px": 3.0,
+      "merge_quarantine": true,
+      "shape_weight": 0.0,
+      "unmatched_cost": 1.05,
+      "use_velocity": true
+    },
+    "no_velocity": {
+      "appearance_scale": 64.0,
+      "appearance_weight": 0.25,
+      "assignment": "global",
+      "config_version": "pixel-continuity-development-v2",
+      "max_gap_s": 1.21,
+      "max_prediction_error_px": 24.0,
+      "merge_contact_padding_px": 3.0,
+      "merge_quarantine": true,
+      "shape_weight": 0.1,
+      "unmatched_cost": 1.05,
+      "use_velocity": false
+    }
+  },
+  "configs_sha256": "05c55daf147921002ebac0e461fe7ecd61b483b2a0f4e6a8550e365864779a09",
+  "context_sha256": "e349eba8782b78937700b7bf1f83921c5fb458e62d8c3975e90bda0ee6fb0132",
+  "dataset_sha256": "8c80f7e99e65909fa124ee19974677be6c0bdf39d260ee3ac09ee9a5fcd61316",
+  "detector_contact_population_sha256": "fa44badf9d2bd9503ad1f49ea7c0c533ed8346a067063b7801988ec9d50a0a4e",
+  "evaluation_truth_sha256": "8942b3655815ac23b28e63c6a595348aaa19be40fdc9fe82ef313ead6661da66",
+  "evaluator_policy": {
+    "ambiguous_assignment_score_margin": 0.08,
+    "behavior_time_tolerance_s": 1.2,
+    "contact_tolerance_px": 24.0,
+    "global_identity_metrics": "N/A: no global identity solver",
+    "minimum_bbox_iou": 0.1,
+    "minimum_visible_pixels": 28,
+    "reference_retrieval_max_hops": 3,
+    "reference_retrieval_window_s": 12.0,
+    "schema_version": "local.camera.evaluator-policy.v1",
+    "segment_known_identity_purity": 0.7,
+    "true_next_reference": "Conditional on GT-labeled produced segments; earliest later nonoverlap physically feasible same-actor segments; retain all earliest-start ties",
+    "true_next_uses_retrieval_window_hop_or_budget": false
+  },
+  "formal_phase1_acceptance": false,
+  "frame_count": 244,
+  "freeze_manifest_sha256": "10cc678db7cce0707f8b57c2b34d24a45af0271578cee74f6d03c1e6448b0dbc",
+  "full_actor_recall": "N/A",
+  "measurement_count": 129,
+  "parameter_selection": "UNCHANGED_GENERIC_DEFAULTS; no test truth read or tuning",
+  "run_id": "local-camera-development-v1",
+  "same_detector_contacts": true,
+  "schema_version": "accuracy.development-pixel-ablations.v2",
+  "source_manifest_sha256": "55da8a129ddc5965fd0e8dc77037c41fe72de7493a78b555e788051fb41b62e7",
+  "source_sha256": "91901288bb63187017036290ec71ff14eca61f01684cf5348697047e74ab02e7",
+  "source_versions": {
+    "continuity": "rgb-global-continuity-v2",
+    "detector": "rgb-temporal-components-v1"
+  },
+  "split": "development",
+  "units": "METRES_SYNTHETIC_SECONDS",
+  "variants": {
+    "full": {
+      "association_pair_count": 123,
+      "candidate_pool_sha256": "0c03ce04e9cdf69ae61d4ba09836ec359bf2361d1c3d4573a9fb633353410bc8",
+      "changed_candidate_pool": true,
+      "fragmented_track_count": 2,
+      "inference_sha256": "c6fc59a3e465e5399d132f5954f21b102dba304e5c62abf279acfc873a98d459",
+      "known_actor_produced_track_multiplicity": {
+        "1": 1,
+        "4": 1,
+        "7": 2
+      },
+      "merged_or_partial_measurement_count": 2,
+      "mixed_known_identity_track_count": 2,
+      "perception_sha256": "c1d72ad5737c3f94564f45a6f8ae1ccfdc3ae8d7731c00f951901931d9ae5c45",
+      "pixels_and_local_identity": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.9844961240310077,
+        "bounded_labeled_measurements": 127,
+        "eligible_visible_actor_contacts": 134,
+        "ground_contact_error_m": {
+          "maximum": 1.7420849817138944,
+          "mean": 0.23401468886395682,
+          "rms": 0.28862015183945977,
+          "samples": 127
+        },
+        "impure_segment_count": 2,
+        "measurement_count": 129,
+        "one_to_one_visible_contact_recall": 0.9477611940298507,
+        "pixel_contact_error_px": {
+          "maximum": 15.551250054682411,
+          "mean": 3.352601246938276,
+          "rms": 3.808665032912727,
+          "samples": 127
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 1,
+        "within_local_track_id_switches": 3
+      },
+      "producer_sha256": "6e4bc8a4812cd530725e1e4cb1a388314d5ea2b46649ba5ed5c0155d7f64d611",
+      "producer_version": "rgb-global-continuity-v2",
+      "receipt_sha256": "bfa3a55f0c6888a333220eaf6099147cc282fe64908e1b26cbf1440d174f5e01",
+      "single_measurement_track_count": 2,
+      "track_count": 17
+    },
+    "greedy": {
+      "association_pair_count": 123,
+      "candidate_pool_sha256": "0c03ce04e9cdf69ae61d4ba09836ec359bf2361d1c3d4573a9fb633353410bc8",
+      "changed_candidate_pool": true,
+      "fragmented_track_count": 2,
+      "inference_sha256": "bdd303e9b1276da0c8bdc40d7ff0435e762541bc8c91c8002cb89f3994ec711d",
+      "known_actor_produced_track_multiplicity": {
+        "1": 1,
+        "4": 1,
+        "7": 2
+      },
+      "merged_or_partial_measurement_count": 2,
+      "mixed_known_identity_track_count": 2,
+      "perception_sha256": "308106e8bee7a49ba2b4c7be8535614b5dcec3de890d8a9f46c0347f75257cfb",
+      "pixels_and_local_identity": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.9844961240310077,
+        "bounded_labeled_measurements": 127,
+        "eligible_visible_actor_contacts": 134,
+        "ground_contact_error_m": {
+          "maximum": 1.7420849817138944,
+          "mean": 0.23401468886395682,
+          "rms": 0.28862015183945977,
+          "samples": 127
+        },
+        "impure_segment_count": 2,
+        "measurement_count": 129,
+        "one_to_one_visible_contact_recall": 0.9477611940298507,
+        "pixel_contact_error_px": {
+          "maximum": 15.551250054682411,
+          "mean": 3.352601246938276,
+          "rms": 3.808665032912727,
+          "samples": 127
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 1,
+        "within_local_track_id_switches": 3
+      },
+      "producer_sha256": "cf2fac06f2414796bd4bb15e8ffcfff146e5937fee5ef712595523a290617abc",
+      "producer_version": "rgb-global-continuity-v2",
+      "receipt_sha256": "7bcdfd8efefd500c4bf12ae47694540cb08131bb4792d114bda4e5f28b8f89bb",
+      "single_measurement_track_count": 2,
+      "track_count": 17
+    },
+    "no_appearance": {
+      "association_pair_count": 123,
+      "candidate_pool_sha256": "0c03ce04e9cdf69ae61d4ba09836ec359bf2361d1c3d4573a9fb633353410bc8",
+      "changed_candidate_pool": true,
+      "fragmented_track_count": 2,
+      "inference_sha256": "184be447ed956178e6224e91661f9d14ad3e494cb6f7134397f55f04e555e34a",
+      "known_actor_produced_track_multiplicity": {
+        "1": 1,
+        "4": 1,
+        "7": 2
+      },
+      "merged_or_partial_measurement_count": 2,
+      "mixed_known_identity_track_count": 2,
+      "perception_sha256": "ce3b6016303e2c562be428d4082dea9cf14da3511d04f303c11cb7d8a285cd14",
+      "pixels_and_local_identity": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.9844961240310077,
+        "bounded_labeled_measurements": 127,
+        "eligible_visible_actor_contacts": 134,
+        "ground_contact_error_m": {
+          "maximum": 1.7420849817138944,
+          "mean": 0.23401468886395682,
+          "rms": 0.28862015183945977,
+          "samples": 127
+        },
+        "impure_segment_count": 2,
+        "measurement_count": 129,
+        "one_to_one_visible_contact_recall": 0.9477611940298507,
+        "pixel_contact_error_px": {
+          "maximum": 15.551250054682411,
+          "mean": 3.352601246938276,
+          "rms": 3.808665032912727,
+          "samples": 127
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 1,
+        "within_local_track_id_switches": 3
+      },
+      "producer_sha256": "1613a5f215c889f4bbfd4ec64e2b0fae564eb490afed7732bbad3818abb78e81",
+      "producer_version": "rgb-global-continuity-v2",
+      "receipt_sha256": "4131dc67c4def9d525d7e07671f630352974fc6300b4a95cb4dac2ee46f85607",
+      "single_measurement_track_count": 2,
+      "track_count": 17
+    },
+    "no_quarantine": {
+      "association_pair_count": 99,
+      "candidate_pool_sha256": "27e8f68542ed6f91490d61345036f4a6a0ec3080104438bece2ec7023f320e82",
+      "changed_candidate_pool": true,
+      "fragmented_track_count": 1,
+      "inference_sha256": "05c984a3b42a2e5174ccbbacec611e4009b8033304dc9915a73e89950d7654f8",
+      "known_actor_produced_track_multiplicity": {
+        "1": 1,
+        "4": 1,
+        "6": 1,
+        "7": 1
+      },
+      "merged_or_partial_measurement_count": 1,
+      "mixed_known_identity_track_count": 2,
+      "perception_sha256": "dbcfe0b66dac91cd10cd46d4a503736b341c4dffe03641cafdb89640e0741743",
+      "pixels_and_local_identity": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.9844961240310077,
+        "bounded_labeled_measurements": 127,
+        "eligible_visible_actor_contacts": 134,
+        "ground_contact_error_m": {
+          "maximum": 1.7420849817138944,
+          "mean": 0.23401468886395682,
+          "rms": 0.28862015183945977,
+          "samples": 127
+        },
+        "impure_segment_count": 2,
+        "measurement_count": 129,
+        "one_to_one_visible_contact_recall": 0.9477611940298507,
+        "pixel_contact_error_px": {
+          "maximum": 15.551250054682411,
+          "mean": 3.352601246938276,
+          "rms": 3.808665032912727,
+          "samples": 127
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 1,
+        "within_local_track_id_switches": 3
+      },
+      "producer_sha256": "f9fb554c3d6608ad7f75a8397ea402ba2d8dbd662c1d362080ea441dd14e11e9",
+      "producer_version": "rgb-global-continuity-v2",
+      "receipt_sha256": "3efebdabb0f21864290a9bd917bcd8804f36d4cb5045d160614257b0c5de568d",
+      "single_measurement_track_count": 1,
+      "track_count": 16
+    },
+    "no_shape": {
+      "association_pair_count": 123,
+      "candidate_pool_sha256": "0c03ce04e9cdf69ae61d4ba09836ec359bf2361d1c3d4573a9fb633353410bc8",
+      "changed_candidate_pool": true,
+      "fragmented_track_count": 2,
+      "inference_sha256": "bfc33154222cf3d744684dd35166e685e337c22afdcfa6d89e32ca1643ad719d",
+      "known_actor_produced_track_multiplicity": {
+        "1": 1,
+        "4": 1,
+        "7": 2
+      },
+      "merged_or_partial_measurement_count": 2,
+      "mixed_known_identity_track_count": 2,
+      "perception_sha256": "932b3a362477f641fce767b921e7c5ab2317ea3be40ca1b7b871674c5dd5fff9",
+      "pixels_and_local_identity": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.9844961240310077,
+        "bounded_labeled_measurements": 127,
+        "eligible_visible_actor_contacts": 134,
+        "ground_contact_error_m": {
+          "maximum": 1.7420849817138944,
+          "mean": 0.23401468886395682,
+          "rms": 0.28862015183945977,
+          "samples": 127
+        },
+        "impure_segment_count": 2,
+        "measurement_count": 129,
+        "one_to_one_visible_contact_recall": 0.9477611940298507,
+        "pixel_contact_error_px": {
+          "maximum": 15.551250054682411,
+          "mean": 3.352601246938276,
+          "rms": 3.808665032912727,
+          "samples": 127
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 1,
+        "within_local_track_id_switches": 3
+      },
+      "producer_sha256": "9be6bf968173d17129b09c43d359ec47913d9f1b03463644943fd9ddf95921c5",
+      "producer_version": "rgb-global-continuity-v2",
+      "receipt_sha256": "8370c2bb3075d3244b452af6ea440ca935f045f381461fd380421d77eb7cc750",
+      "single_measurement_track_count": 2,
+      "track_count": 17
+    },
+    "no_velocity": {
+      "association_pair_count": 77,
+      "candidate_pool_sha256": "36bf92373198aca0ec99cfa1966e6267a5fa6187088022dc199a4fb3179870cb",
+      "changed_candidate_pool": true,
+      "fragmented_track_count": 3,
+      "inference_sha256": "827efdee97eb67e63940a75409cfbc7798544c97534919a24f1ff2e527578956",
+      "known_actor_produced_track_multiplicity": {
+        "1": 1,
+        "2": 1,
+        "6": 1,
+        "8": 1
+      },
+      "merged_or_partial_measurement_count": 1,
+      "mixed_known_identity_track_count": 5,
+      "perception_sha256": "0afd17460e7620ea79d756dff3515e08c69e310c506fe700ecf64ec8d0aea0e6",
+      "pixels_and_local_identity": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.9844961240310077,
+        "bounded_labeled_measurements": 127,
+        "eligible_visible_actor_contacts": 134,
+        "ground_contact_error_m": {
+          "maximum": 1.7420849817138944,
+          "mean": 0.23401468886395682,
+          "rms": 0.28862015183945977,
+          "samples": 127
+        },
+        "impure_segment_count": 4,
+        "measurement_count": 129,
+        "one_to_one_visible_contact_recall": 0.9477611940298507,
+        "pixel_contact_error_px": {
+          "maximum": 15.551250054682411,
+          "mean": 3.352601246938276,
+          "rms": 3.808665032912727,
+          "samples": 127
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 2,
+        "within_local_track_id_switches": 8
+      },
+      "producer_sha256": "3fcee62f538a120183d30ab5cd88f32651a8d3dc9016e8488793f4f37f85b5a2",
+      "producer_version": "rgb-global-continuity-v2",
+      "receipt_sha256": "9db0020a2de10df52f251f0e56a730f1a027551ca59f517024800ce2f24a4901",
+      "single_measurement_track_count": 1,
+      "track_count": 12
+    },
+    "v1": {
+      "association_pair_count": 64,
+      "candidate_pool_sha256": "486b8d5c160b432ce77bf480904ae06c68508dc81759d6dab00be26c08d336bd",
+      "changed_candidate_pool": false,
+      "fragmented_track_count": 0,
+      "inference_sha256": "fd62e5ba5c937da07d7aa848e248ebfc4b91d84829a6d5bba4199f90e0e8677c",
+      "known_actor_produced_track_multiplicity": {
+        "1": 1,
+        "3": 1,
+        "5": 1,
+        "10": 1
+      },
+      "merged_or_partial_measurement_count": 1,
+      "mixed_known_identity_track_count": 4,
+      "perception_sha256": "fe622f479e6904906efab40e128e19ae06da527369d1d2d5a36490b11829710e",
+      "pixels_and_local_identity": {
+        "IDF1": "N/A: no global identity trajectory assignment is produced",
+        "assignment": "Evaluation-only IoU>=0.10 and contact<=24px; close alternatives unresolved",
+        "bounded_detection_precision": 0.9844961240310077,
+        "bounded_labeled_measurements": 127,
+        "eligible_visible_actor_contacts": 134,
+        "ground_contact_error_m": {
+          "maximum": 1.7420849817138944,
+          "mean": 0.23401468886395682,
+          "rms": 0.28862015183945977,
+          "samples": 127
+        },
+        "impure_segment_count": 4,
+        "measurement_count": 129,
+        "one_to_one_visible_contact_recall": 0.9477611940298507,
+        "pixel_contact_error_px": {
+          "maximum": 15.551250054682411,
+          "mean": 3.352601246938276,
+          "rms": 3.808665032912727,
+          "samples": 127
+        },
+        "segment_assignment": "Dominant known pixel identity purity>=0.70; unresolved retained",
+        "unresolved_segment_count": 2,
+        "within_local_track_id_switches": 9
+      },
+      "producer_sha256": "04863913ba01e282f1021a6bdd73d6368cc904bf6318261e12d0252d22323d3b",
+      "producer_version": "rgb-temporal-components-v1",
+      "receipt_sha256": "00708b6f2c9618939b5f92d7f0ef08e5cb408d1f9e1c1db929e393ce205b12f7",
+      "single_measurement_track_count": 1,
+      "track_count": 14
+    }
+  },
+  "version": "development-fixed-detector-pixel-ablations-v2"
+}
