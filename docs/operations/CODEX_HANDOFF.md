@@ -4,7 +4,7 @@
 
 ## 繁體中文
 
-日期：2026-10-08。重用 checkout：`/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization`。
+日期：2026-10-10。重用 checkout：`/Users/polalabear/Developer/amidst/.local-worktrees/phase1-finalization`。
 目前工程 branch 為 `codex/simulation-engineering`；文件整理基線 `codex/docs-agent-handoff / 2c586b1` 已包含在其中。研究基線仍是
 `phase1/finalization-sprint / 883204af854bed301506b39d63ccb33312b79ff2`，HEAD／origin 以實際 Git 為準。Canonical checkout
 `/Users/polalabear/Developer/amidst` 在另一個 physical branch，只供應 immutable scene/raw
@@ -17,6 +17,19 @@ artifacts，不在那裡實作或切換 branch。
 入口見 [Agent 檢索契約](../engineering/AGENT_RETRIEVAL_BOUNDARY.md) 與 [擴大工程續作 prompt](PHASE1_NEXT_CHAT_PROMPT.md)。可在同一 checkout 連續完成多個可執行 milestones，每段驗證、commit、普通 push 對應工程 branch；不為每段新增 worktree/clone/raw 副本。文件分類見 [導覽](../README.md)；正文按分類存放；必要的機器路徑與不可變核准文件見該頁說明。
 
 工程閉環與原正式研究驗收並行。下方既有 corridor／formal blockers 保持有效。
+
+### 2026-10-10 主平台實作續作
+
+P14 已接原模型互動展示：[來源展示契約](../engineering/SOURCE_PRESENTATION_WORKBENCH.md)。
+8016 研究角色的「實驗展示」提供同來源局部 mesh、人形、50 格公開投影／盲區位置與全部
+三條候選；DISPLAY_ONLY 步態不是 CV skeleton。原 geometry／校正／scale／時間綁定各自
+核對，未擴大 semantic authority，沒有 GT overlay。評估 aggregate DTO／內容 digest 守門、
+發布後 test/evaluation cache 失效與評估說明已修復。
+
+當次 [receipt](../../data/engineering/workbench_20261010/source_validation.json)：122 workbench
+Python、19 Node tests，Ruff／strict mypy、16 真 HTTP 與實際 browser 通過；尚未算全 repo
+regression。Product 調查／影片與歷史 gallery 正在下一個獨立 milestone 接入，未標完成。
+以下 2026-10-08 盤點與測試是保留的日期基線；其中三項評估／cache／文字待修已由 P14 解決。
 
 ### 本機 Phase 2 產品續作
 

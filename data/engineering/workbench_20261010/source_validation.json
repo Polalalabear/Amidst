@@ -1,0 +1,205 @@
+{
+  "schema_version": "amidst.workbench.source-validation.v1",
+  "date": "2026-10-10",
+  "status": "SYNTHETIC_ENGINEERING_ONLY",
+  "baseline_commit": "4e2271970d4609ae7fc860aed8a9b327b68e7915",
+  "code_binding": "git tree containing receipt; executable hashes below",
+  "python": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "122",
+    "time": "1.473",
+    "timestamp": "2026-10-10T14:18:56.525948+08:00"
+  },
+  "ruff": "PASS owned P14 files",
+  "mypy": "PASS 8 workbench source files",
+  "frontend": {
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0
+  },
+  "http": {
+    "requests": 16,
+    "checks": [
+      {
+        "route": "/api/bootstrap",
+        "status": 200,
+        "sha256": "c781761708de320da1fb3af142fe82e845bf919534099dd918f1374bca1f0a89"
+      },
+      {
+        "route": "/api/session",
+        "status": 200,
+        "sha256": "ffd0726b1913c173a89ed9c270de5dfce82242190cdb674125f4b026a3ee2fa8"
+      },
+      {
+        "route": "/api/session",
+        "status": 200,
+        "sha256": "3d0c825475e55f610a77b373d39d66973149d8dec58ce9a0f309cf46a349c333"
+      },
+      {
+        "route": "/api/presentations",
+        "status": 200,
+        "sha256": "e41c9d46d12794c4e4fea89c763fe47890f762e1b5c8a0c6fd2deec11f9ae549"
+      },
+      {
+        "route": "/api/presentation",
+        "status": 200,
+        "sha256": "78e99d9b81402fa97a43b3f8661b861ac184a48b74df007c178081482fdeb704"
+      },
+      {
+        "route": "/api/presentation",
+        "status": 200,
+        "sha256": "78e99d9b81402fa97a43b3f8661b861ac184a48b74df007c178081482fdeb704"
+      },
+      {
+        "route": "/api/presentations",
+        "status": 403,
+        "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+      },
+      {
+        "route": "/api/presentations",
+        "status": 403,
+        "sha256": "61849fdd4a282c4bda8dcf52e94395fd925904a2aa3bd44317b3eb361d6541ff"
+      },
+      {
+        "route": "/api/presentation",
+        "status": 403,
+        "sha256": "28777df982c13cffa45fcb73b0baace0ab7e87f061ee901867157416dba20605"
+      },
+      {
+        "route": "/api/presentation_media",
+        "status": 200,
+        "sha256": "902f9ef07c4c04f44110a7b6c7224ecae680670fe7601861b20b8920bf776894"
+      },
+      {
+        "route": "/api/presentation_media",
+        "status": 403,
+        "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+      },
+      {
+        "route": "/api/presentation_media",
+        "status": 400,
+        "sha256": "5e0c8f415a04b5b078e2d873fcb461bf5bd3f1c3d7cc5f5f2be50a535a98de6f"
+      },
+      {
+        "route": "/api/evaluation",
+        "status": 200,
+        "sha256": "a8d3dcf4f9c76149b070ca6854a737f03eb50eb48776e3e3565f584430142596"
+      },
+      {
+        "route": "/api/evaluation",
+        "status": 403,
+        "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+      },
+      {
+        "route": "/api/evaluation",
+        "status": 200,
+        "sha256": "4fae38c33910b82c079127d01fbc5db1f15a2f8ae1c2391a21a8138f178190a0"
+      },
+      {
+        "route": "/api/evaluation",
+        "status": 403,
+        "sha256": "f814747e4f2aa9dd87310bc590f7ab22f0994c67c043cff8e851672fbe3bb2f2"
+      }
+    ]
+  },
+  "source": {
+    "binding": {
+      "binding_ref": "binding:2655f251dc43f11fcc01da15",
+      "source_ref": "source:a5ccb5ee986b4456c605e898",
+      "source_sha256": "cd46fa03f1875145a047e7e5f882aa97e7b2376de637677bf083bdc671e6e84e",
+      "checkpoint": "883204af854bed301506b39d63ccb33312b79ff2",
+      "model_revision": "historical-office-diagnostic-v1",
+      "run_ref": "run:ca7cc1d7e20a52c118b7fa03",
+      "clock": "HISTORICAL_CONFIGURED_SYNTHETIC_SECONDS",
+      "units": {
+        "native_units": "NATIVE_BU",
+        "normalized_units": "METRES",
+        "metres_per_unit": 0.0247,
+        "normalization": "SCALE_TO_METRES",
+        "coordinate_frame": "RIGHT_HANDED_XYZ_Z_UP",
+        "authority": "APPROVED_SCHOOL_V3_SCALE"
+      },
+      "normalization_sha256": "d571bb05f1cbd50e2cf1a187a50965a7e30caabf29443e57acdedee39db7da1a",
+      "producer_sha256": "3082a49b125a4442b3a0f3d05bfca38c627181c1ad90cb363de79bdaae9989b6",
+      "inputs": [
+        {
+          "resource_ref": "source:dde2d7b024ac982b0bbfad1b",
+          "sha256": "7e3615a3b0b4485585da9c0f7beefb96955517f7a321910fc008c041f99a3eaf"
+        },
+        {
+          "resource_ref": "source:bcdcdb07f1cb8035085de13d",
+          "sha256": "56a131626b7c9382f260cb0d088abf6d38ff13127f76d3b5233dd2abdf87dc70"
+        },
+        {
+          "resource_ref": "source:cf4f0f1f934686697baf0443",
+          "sha256": "0212756864986ee5044313058144c7e3fcb56c72e68ebd30b7062e508b9c9b02"
+        },
+        {
+          "resource_ref": "source:d5005b51c5daad8584b91150",
+          "sha256": "0ebdb3762fe181c44ea25456b4525204aaa19dbe957a923c360f2bffdf5d6e48"
+        },
+        {
+          "resource_ref": "source:f6a5033da092641b0218635d",
+          "sha256": "6a37b041a368e3e576da4c3f3894708462c0504956f82ad599082acd816b23d0"
+        },
+        {
+          "resource_ref": "source:aaefbc06e6117c8af6efdb51",
+          "sha256": "6d30e591d6210707f2b6175bf96dc2fe2395fe0202b24bd0a6df7ee87a5d997c"
+        },
+        {
+          "resource_ref": "source:1c55ea5919d06768a63259b7",
+          "sha256": "e77628c145fceb42ae086a76f4de60741147ea525eb12d46e7f23d7ba83d7b69"
+        },
+        {
+          "resource_ref": "source:5175cb4cf911b659983fb524",
+          "sha256": "f6c4c9fef9dc80fd1717b6a751762b1a09d686b014c1394409b61cb0c9b22d0c"
+        }
+      ]
+    },
+    "meshes": 2,
+    "display_triangles": 276,
+    "historical_triangles": 110,
+    "frames": 50,
+    "visible_frames": 26,
+    "gap_frames": 24,
+    "routes": 3,
+    "derivation": {
+      "method": "SOURCE_TRIANGLE_SIX_PLANE_CLIP_NO_CAPS_V1",
+      "derivation_sha256": "1a07d257c3470ae39b72c58aeaf72747ffce0ba9ccc644fe2f70c950b2090585",
+      "historical_triangle_count": 110,
+      "display_triangle_count": 276,
+      "non_horizontal_triangle_count": 154,
+      "historical_manifest_unchanged": true,
+      "physical_authority_changed": false,
+      "semantic_classification_performed": false
+    }
+  },
+  "browser": {
+    "mesh_humanoid": true,
+    "next_frame": ".2s",
+    "tail_stop": "9.8s",
+    "seek": "5.0s INFERRED_GAP",
+    "speed": "2x",
+    "loop_control": true,
+    "gt_overlay": false
+  },
+  "full_regression": "NOT_RUN_FOR_P14; integrated milestone follows",
+  "formal": {
+    "Cases2_3": "BLOCKED",
+    "Case4": "DEFERRED",
+    "Phase2_original": "FROZEN"
+  },
+  "code_sha256": {
+    "src/amidst/workbench/scenes.py": "bec13dc59680b1850be292c4e8c8e4143677a01891dc332d83df952b9d036b00",
+    "src/amidst/workbench/service.py": "7b82c90f65708f6f703e7da939b1fbbddd265323bc2af2fe1884b196c736a465",
+    "src/amidst/workbench/source_presentation.py": "3082a49b125a4442b3a0f3d05bfca38c627181c1ad90cb363de79bdaae9989b6",
+    "frontend/workbench/app.mjs": "77fc34a4ce4984c08cfdf2b53c195db83e28d491695d9261d77a555c89b773ea",
+    "frontend/workbench/scene.mjs": "9c64c09e363fbc4705a41cb8a65f2884d2bce9fdd180eab1a74a9efaeab3709f",
+    "frontend/workbench/presentation.mjs": "5279773b14f7f9d609fccc4e8b3389b59ed60f00632d030cf5dc09ec4946e59e",
+    "frontend/workbench/motion.mjs": "a316b8ff20e0475850dc03057db7738e4609e57d4b9c6ade940ca2a681cf53fe",
+    "frontend/workbench/style.css": "b748a54783cf9f8dd8adabeea9509f1e7ddf841bb017fc2e45258b1a2f14d1a2"
+  }
+}

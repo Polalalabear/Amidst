@@ -1,5 +1,11 @@
 # 工作台實驗展示覆蓋 / Workbench experiment coverage
 
+2026-10-10 P14 增量：8016「實驗展示」已加入原 Office 局部來源 mesh、人形與50格時間軸。
+評估 DTO／內容 digest、版本變更 cache 及 GT 文字問題已修复；操作與當次測試見
+[來源展示契約](SOURCE_PRESENTATION_WORKBENCH.md) 與
+[receipt](../../data/engineering/workbench_20261010/source_validation.json)。Product 調查、影片及
+其他歷史家族尚在後續接入。以下保留 2026-10-08 稽核，屬當日結果，不代表上述修復仍待辦。
+
 2026-10-08 在 `codex/simulation-engineering`、checkpoint
 `b484a8479461559942f42a5507132254d5c35b4d` 盤點。**實驗展示尚未全部接入主平台。**
 8016 是已採用的主要網頁入口；目前只註冊 E1、E0 兩個合成場景的固定結果。

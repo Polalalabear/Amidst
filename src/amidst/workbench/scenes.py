@@ -10,11 +10,15 @@ from __future__ import annotations
 import copy
 import json
 import math
+import re
 from bisect import bisect_left
 from collections.abc import Mapping, Sequence
 from pathlib import Path, PurePosixPath
-from typing import Any
+from typing import Any, Self
 
+from pydantic import RootModel, model_validator
+
+from amidst.engineering.access import digest
 from amidst.engineering.association import SyntheticStaticContext
 from amidst.engineering.local_behavior import BehaviorConfig
 from amidst.engineering.local_index import CameraLink, CameraRegions, ScopedTopology
@@ -22,6 +26,309 @@ from amidst.engineering.local_service import LocalPilotService
 from amidst.engineering.registry import CameraEntry, MediaFrame
 
 Json = dict[str, Any]
+
+MAX_EVALUATION_BYTES = 256 * 1024
+_MODES = frozenset({"photos_only", "photos_plus_observations"})
+_KINDS = frozenset({"ENTER", "EXIT", "CORNER", "DWELL", "POSSIBLE_WANDERING"})
+_ASSOCIATION_KINDS = frozenset({
+    "CROSS_CAMERA_GAP", "OVERLAPPING_VISIBILITY", "SAME_CAMERA_RECOVERY", "UNMATCHED",
+})
+_LOOKUP_REASONS = frozenset({
+    "FINITE_LOOKUP_WINDOW_EXHAUSTED", "CAMERA_COVERAGE_UNKNOWN", "MAX_HOPS_REACHED",
+    "MAX_CAMERAS_REACHED", "TOPOLOGY_INCOMPLETE", "MAX_RECORDS_REACHED",
+    "ANCHOR_MISSING", "TOPOLOGY_MISSING", "CLOCK_MAPPING_MISMATCH",
+})
+_PRIVATE_LOCATOR = re.compile(r"(?:^|[\s\"'=:(])(?:/|[A-Za-z]:[\\/]|file://)|\.\./")
+
+# Canonical content certificates from the published, immutable engineering receipts:
+# local_camera_20261008/validation.json hashes.evaluation_sha256 and
+# simulation_20261008/evaluation_summary.json. New runs require an explicit server
+# certificate; deriving a certificate from the requested summary would bless tampering.
+_CERTIFIED_EVALUATIONS = {
+    ("synthetic-local-camera-v1", "local-camera-test-v1",
+     "76d25ef357fa0876cc4fbe00f994a92773c537a6ef3090014970e50aef1f5c6c",
+     "ed843f2916f4c25c5b5f42ff730349ba482356ec278ecd52df81a02264a0a73a"):
+        "7d3e3c88a32adb62fae9d7ad31f877637591bfe9a1264e072094727741104283",
+    ("synthetic-lab-v1", "simulation-v2",
+     "189bbb73e559ac9df8a8c3e3b5b92943fa85e915d45b7bb5998a82336d74de2a",
+     "02729186cee74f3bc2f002ee76518557c35d22c5d5c01cdc406e45f00ccf791c"):
+        "e24d61ff6f12be7d8eddb0da30a33fb1ce86a56d9cd00541573ba5084aaef126",
+}
+
+
+def _fields(names: str, rule: str) -> dict[str, str]:
+    return dict.fromkeys(names.split(), rule)
+
+
+# Every nested object has a declared field contract. Categorical maps have finite
+# key sets below; there is no arbitrary metadata, identity or diagnostic map.
+_CONTRACTS: dict[str, dict[str, str]] = {
+    "stats": {**_fields("maximum mean rms", "metric"), "samples": "count"},
+    "diagnostic": {
+        **_fields("run_id model_id status", "text"),
+        **_fields("dataset_sha256 config_sha256", "hash"),
+    },
+    "association": {
+        **_fields("global_false_merge_count global_false_split_count", "na"),
+        **_fields("pair_level_false_merge_count pair_level_missed_link_count predicted_link_count "
+                  "resolved_link_count true_link_count true_positive unresolved_link_count",
+                  "count"),
+        **_fields("same_identity_eligible_pair_precision same_identity_eligible_pair_recall",
+                  "ratio"),
+        "is_true_next_continuation_metric": "false", "metric_family": "text",
+    },
+    "behavior_metric": {
+        **_fields("false_negative false_positive true_positive unresolved", "metric"),
+        **_fields("precision recall", "ratio_or_na"),
+    },
+    "visible_behavior": {
+        "confusion": "confusion", "direction_error": "na", "per_kind": "behavior_kinds",
+        "prediction_count": "count", "trigger_midpoint_error_s": "stats",
+    },
+    "gap_behavior": {
+        **_fields("canonical_candidate_count canonical_gap_event_count "
+                  "canonical_timing_hypothesis_count hypothesis_event_count", "count"),
+        **_fields("confusion direction_error trigger_error_s", "na"),
+        **_fields("status uncertainty", "text"), "per_kind": "behavior_kinds",
+    },
+    "behavior": {
+        "expected_all_recipe_events": "count", "groups": "behavior_groups",
+        **_fields("note status", "text"), "time_tolerance_s": "number",
+    },
+    "policy": {
+        **_fields("ambiguous_assignment_score_margin minimum_bbox_iou "
+                  "segment_known_identity_purity", "ratio"),
+        **_fields("behavior_time_tolerance_s contact_tolerance_px "
+                  "reference_retrieval_window_s", "number"),
+        **_fields("minimum_visible_pixels reference_retrieval_max_hops", "count"),
+        **_fields("global_identity_metrics schema_version true_next_reference", "text"),
+        "true_next_uses_retrieval_window_hop_or_budget": "false",
+    },
+    "pixels": {
+        **_fields("IDF1 assignment segment_assignment", "text"),
+        **_fields("bounded_detection_precision one_to_one_visible_contact_recall", "ratio"),
+        **_fields("bounded_labeled_measurements eligible_visible_actor_contacts "
+                  "impure_segment_count measurement_count unresolved_segment_count "
+                  "within_local_track_id_switches", "count"),
+        **_fields("ground_contact_error_m pixel_contact_error_px", "stats"),
+    },
+    "geometry": {
+        **_fields("candidate_count hard_speed_violation_count outside_configured_region_count",
+                  "count"),
+        "formal_route_Coverage_at_K": "na", "projection_authority": "text",
+    },
+    "retrieval": {
+        **_fields("bytes_read crops_read expansions frames_read "
+                  "full_global_pair_count_for_comparison_only "
+                  "independent_complete_scope_candidate_count "
+                  "index_entries_touched pairs_considered "
+                  "records_read reference_retrieval_max_hops retrieved_pair_count "
+                  "retrieved_same_identity_eligible_pair_count "
+                  "retrieved_true_next_successor_pair_count same_identity_eligible_pair_count "
+                  "same_identity_eligible_pair_miss_count true_next_successor_miss_count "
+                  "true_next_successor_pair_count", "count"),
+        **_fields("complete_scope_pair_coverage same_identity_eligible_pair_retrieval_recall "
+                  "true_next_successor_retrieval_recall", "ratio"),
+        **_fields("inventory true_next_reference_condition", "text"),
+        **_fields("query_latency_ms undetected_full_actor_trajectory_recall", "na"),
+        **_fields("scope_completeness_is_formal_graph_proof "
+                  "true_next_reference_has_window_hop_or_record_budget", "false"),
+        "reference_retrieval_window_s": "number", "touched_camera_count_per_query": "counts",
+        **_fields("stop_reasons truncation_reasons", "lookup_counts"),
+    },
+    "e1": {
+        **_fields("config_sha256 dataset_sha256 evaluation_truth_sha256 "
+                  "evaluator_policy_sha256 evaluator_sha256 freeze_sha256 inference_sha256",
+                  "hash"),
+        **_fields("model_id origin run_id schema_version split status", "text"),
+        **_fields("external_model_calls formal_phase1_acceptance", "false"),
+        "behavior_bundle_binding_verified": "bool", "limitations": "texts",
+        "association_all_provisional_hypotheses": "association",
+        "association_by_kind": "association_kinds", "behavior": "behavior",
+        "evaluator_policy": "policy", "fixed_pool_feature_ablations": "ablations",
+        "geometry": "geometry", "pixels_and_local_identity": "pixels", "retrieval": "retrieval",
+    },
+    "eligibility": _fields("bbox contact error_matching "
+                           "merged_partial_measurements recall_matching", "text"),
+    "e0_mode": {
+        **_fields("association_identity_precision association_identity_recall detection_precision "
+                  "formal_research_metrics", "na"),
+        **_fields("candidate_count canonical_gap_count eligible_actor_contacts frame_count "
+                  "local_track_count measurement_count one_to_one_contact_matches_24px", "count"),
+        "eligible_detection_recall_24px": "ratio",
+        **_fields("best_unoccluded_bbox_iou nearest_eligible_pixel_contact_error_px "
+                  "same_nearest_contact_ground_error_m", "stats"),
+        "association_kind_counts": "association_counts", "association_status_counts": "statuses",
+        "frame_status_counts": "frame_counts", "measurement_status_counts": "measurement_counts",
+        "projection_status_counts": "projection_counts",
+    },
+    "e0": {
+        **_fields("config_sha256 dataset_sha256 evaluation_truth_sha256 registry_sha256", "hash"),
+        **_fields("authority model_id origin run_id schema_version status", "text"),
+        **_fields("external_model_calls formal_phase1_acceptance", "false"),
+        "eligibility": "eligibility", "freeze_receipt_sha256": "hashes", "limitations": "texts",
+        "modes": "e0_modes",
+    },
+}
+_CONTRACTS["ablation"] = {
+    **_CONTRACTS["association"], "candidate_pool_sha256": "hash", "eligible_query_count": "count",
+    "hard_physics_preserved": "true", "identity_candidate_recall_at_k": "recall_k",
+    "removed_feature": "removed_feature", "scores_are_probabilities": "false",
+}
+
+
+def _evaluation_map(value: object, keys: frozenset[str], rule: str,
+                    *, complete: bool = False) -> None:
+    if not isinstance(value, dict) or not set(value) <= keys or complete and set(value) != keys:
+        raise ValueError("INVALID_AGGREGATE_FIELDS")
+    for child in value.values():
+        _evaluation_field(child, rule)
+
+
+def _evaluation_field(value: object, rule: str) -> None:
+    if rule in _CONTRACTS:
+        fields = _CONTRACTS[rule]
+        optional = {"true_positive", "unresolved"} if rule == "behavior_metric" else set()
+        if not isinstance(value, dict) or not set(value) <= fields.keys() or (
+            not fields.keys() - optional <= value.keys()
+        ):
+            raise ValueError("INVALID_AGGREGATE_FIELDS")
+        for name, child in value.items():
+            _evaluation_field(child, fields[name])
+        return
+    categorical = {
+        "association_kinds": (_ASSOCIATION_KINDS - {"UNMATCHED"}, "association", True),
+        "association_counts": (_ASSOCIATION_KINDS, "count", False),
+        "behavior_kinds": (_KINDS, "behavior_metric", True),
+        "statuses": (frozenset({"HOLD", "INCOMPATIBLE", "PROVISIONAL", "UNMATCHED"}),
+                     "count", False),
+        "frame_counts": (frozenset({"MEASURED", "NO_DETECTION", "AMBIGUOUS_COMPONENT",
+                                    "MISSING_IMAGE", "INVALID_IMAGE", "HASH_MISMATCH"}),
+                         "count", False),
+        "measurement_counts": (frozenset({"DETECTED", "MERGED_OR_PARTIAL"}), "count", False),
+        "projection_counts": (frozenset({"PROJECTED", "OUTSIDE_STATIC_SCOPE", "UNCALIBRATED",
+                                         "INVALID_CONTACT", "NO_SURFACE_INTERSECTION"}),
+                              "count", False),
+        "lookup_counts": (_LOOKUP_REASONS, "count", False),
+        "recall_k": (frozenset({"1", "3", "5"}), "ratio", True),
+        "e0_modes": (_MODES, "e0_mode", True),
+        "ablations": (frozenset({"full", "without_appearance", "without_space", "without_time"}),
+                      "ablation", True),
+        "confusion": (frozenset(f"{a}->{b}" for a in _KINDS | {"NONE"}
+                               for b in _KINDS | {"NONE"}), "count", False),
+    }
+    if rule in categorical:
+        keys, child_rule, complete = categorical[rule]
+        _evaluation_map(value, keys, child_rule, complete=complete)
+        return
+    if rule == "behavior_groups":
+        if not isinstance(value, dict) or set(value) != {"visible_supported", "inferred_gap"}:
+            raise ValueError("INVALID_AGGREGATE_FIELDS")
+        _evaluation_field(value["visible_supported"], "visible_behavior")
+        _evaluation_field(value["inferred_gap"], "gap_behavior")
+        return
+    if rule in {"texts", "counts", "hashes"}:
+        if not isinstance(value, list) or len(value) > 128:
+            raise ValueError("INVALID_AGGREGATE_ARRAY")
+        for child in value:
+            _evaluation_field(child, {"texts": "text", "counts": "count", "hashes": "hash"}[rule])
+        return
+    if rule == "removed_feature":
+        if value not in (None, "SPACE", "TIME", "APPEARANCE"):
+            raise ValueError("INVALID_AGGREGATE_VALUE")
+        return
+    if rule in {"true", "false", "bool"}:
+        if type(value) is not bool or rule != "bool" and value != (rule == "true"):
+            raise ValueError("INVALID_AGGREGATE_VALUE")
+        return
+    if rule == "hash":
+        if not isinstance(value, str) or re.fullmatch(r"[0-9a-f]{64}", value) is None:
+            raise ValueError("INVALID_AGGREGATE_HASH")
+        return
+    if rule in {"text", "na"} or rule in {"metric", "ratio_or_na"} and isinstance(value, str):
+        if not isinstance(value, str) or not value or len(value) > 1024 or (
+            _PRIVATE_LOCATOR.search(value) or any(ord(char) < 32 for char in value)
+        ) or rule != "text" and not (value == "N/A" or value.startswith("N/A:")):
+            raise ValueError("INVALID_AGGREGATE_TEXT")
+        return
+    if rule in {"metric", "ratio", "ratio_or_na"} and value is None:
+        return
+    if rule == "count":
+        if type(value) is not int or not 0 <= value <= 10**15:
+            raise ValueError("INVALID_AGGREGATE_COUNT")
+        return
+    if rule in {"number", "metric", "ratio", "ratio_or_na"}:
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or (
+            not math.isfinite(value) or value < 0
+        ) or (
+            rule in {"ratio", "ratio_or_na"} and value > 1
+        ):
+            raise ValueError("INVALID_AGGREGATE_NUMBER")
+        return
+    raise ValueError("UNKNOWN_AGGREGATE_CONTRACT")
+
+
+class AggregateEvaluationDTO(RootModel[Json]):
+    """Exact E0/E1 aggregate contracts, preserving metrics and excluding raw labels."""
+
+    @model_validator(mode="after")
+    def aggregate_only(self) -> Self:
+        nodes = 0
+
+        def bounded(value: object, depth: int = 0) -> None:
+            nonlocal nodes
+            nodes += 1
+            if depth > 12 or nodes > 4096:
+                raise ValueError("AGGREGATE_COMPLEXITY_LIMIT")
+            if isinstance(value, dict):
+                if len(value) > 128:
+                    raise ValueError("AGGREGATE_COMPLEXITY_LIMIT")
+                for key, child in value.items():
+                    if not isinstance(key, str) or len(key) > 128:
+                        raise ValueError("INVALID_AGGREGATE_FIELDS")
+                    bounded(child, depth + 1)
+            elif isinstance(value, list):
+                if len(value) > 128:
+                    raise ValueError("AGGREGATE_COMPLEXITY_LIMIT")
+                for child in value:
+                    bounded(child, depth + 1)
+
+        bounded(self.root)
+        if self.root.get("status") == "SYNTHETIC_DIAGNOSTIC":
+            # Compatibility for metric-free legacy diagnostics; never accepts data maps.
+            _evaluation_field(self.root, "diagnostic")
+        elif self.root.get("schema_version") == "simulation.evaluation.v1":
+            _evaluation_field(self.root, "e0")
+            if self.root["status"] != "SYNTHETIC_ENGINEERING_MEASURED" or (
+                self.root["origin"] != "SYNTHETIC"
+                or self.root["authority"] != "ENGINEERING_FIXTURE_ONLY"
+                or len(self.root["freeze_receipt_sha256"]) != 2
+                or len(set(self.root["freeze_receipt_sha256"])) != 2
+            ):
+                raise ValueError("INVALID_AGGREGATE_SCHEMA")
+        else:
+            _evaluation_map(self.root, _MODES, "e1", complete=True)
+            for row in self.root.values():
+                if row["schema_version"] != "local.camera.evaluation.v1" or (
+                    row["status"] != "E1_SYNTHETIC_PILOT_MEASURED"
+                    or row["origin"] != "SYNTHETIC"
+                    or row["split"] not in {"development", "test"}
+                ):
+                    raise ValueError("INVALID_AGGREGATE_SCHEMA")
+        return self
+
+
+def _evaluation_pairs(pairs: list[tuple[str, Any]]) -> Json:
+    result: Json = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("DUPLICATE_AGGREGATE_FIELD")
+        result[key] = value
+    return result
+
+
+def _invalid_evaluation_constant(_: str) -> None:
+    raise ValueError("NONFINITE_AGGREGATE_VALUE")
 
 
 def _polygon(bounds: Sequence[float], z: float = 0.0) -> Json:
@@ -117,7 +424,8 @@ class SceneAdapter:
                  evidence_level: str, evaluation_path: Path | None = None,
                  behavior: BehaviorConfig | None = None,
                  evaluation_config_hash: str | None = None,
-                 evaluation_freeze_hashes: Mapping[str, str] | None = None) -> None:
+                 evaluation_freeze_hashes: Mapping[str, str] | None = None,
+                 evaluation_content_sha256: str | None = None) -> None:
         if (context.source_sha256 != service.scope.source_sha256
                 or context.context_sha256 != service.scope.spatial_context_sha256):
             raise ValueError("SCENE_SOURCE_MISMATCH")
@@ -129,6 +437,14 @@ class SceneAdapter:
         self._evaluation_path = evaluation_path
         self._evaluation_config_hash = evaluation_config_hash or service.guard.binding.config_sha256
         self._evaluation_freeze_hashes = dict(evaluation_freeze_hashes or {})
+        if evaluation_content_sha256 is not None and re.fullmatch(
+            r"[0-9a-f]{64}", evaluation_content_sha256
+        ) is None:
+            raise ValueError("INVALID_EVALUATION_CONTENT_CERTIFICATE")
+        binding = service.guard.binding
+        self._evaluation_content_sha256 = evaluation_content_sha256 or _CERTIFIED_EVALUATIONS.get(
+            (binding.model_id, self.run_id, binding.dataset_sha256, self._evaluation_config_hash)
+        )
         self._cameras = {camera.camera_id: camera for camera in service.cameras.values()}
         self._frame_buckets: dict[str, tuple[MediaFrame, ...]] = {}
         self._frame_times: dict[str, tuple[float, ...]] = {}
@@ -247,14 +563,26 @@ class SceneAdapter:
                                                 "frames_read": 0, "bytes_read": 0}}
 
     def evaluation(self) -> Json:
-        """Dedicated research endpoint only: preexisting aggregate evaluation, never GT."""
-        if self._evaluation_path is None or not self._evaluation_path.is_file():
-            return {"status": "UNAVAILABLE", "reason": "NO_PREEXISTING_EVALUATION"}
+        """Return only certified, bounded aggregates; never truth or free-form metadata."""
         try:
-            value: Json = json.loads(self._evaluation_path.read_text())
-        except (OSError, ValueError):
+            if self._evaluation_path is None or not self._evaluation_path.is_file():
+                return {"status": "UNAVAILABLE", "reason": "NO_PREEXISTING_EVALUATION"}
+            if self._evaluation_path.is_symlink() or (
+                self._evaluation_path.name == "ground_truth.json"
+            ):
+                return {"status": "UNAVAILABLE", "reason": "EVALUATION_REFERENCE_DENIED"}
+        except OSError:
             return {"status": "UNAVAILABLE", "reason": "INVALID_EVALUATION_SUMMARY"}
-        if not isinstance(value, dict):
+        try:
+            # Bound the read itself, not only the already allocated parsed result.
+            with self._evaluation_path.open("rb") as stream:
+                payload = stream.read(MAX_EVALUATION_BYTES + 1)
+            if len(payload) > MAX_EVALUATION_BYTES:
+                return {"status": "UNAVAILABLE", "reason": "EVALUATION_PAYLOAD_TOO_LARGE"}
+            parsed = json.loads(payload, object_pairs_hook=_evaluation_pairs,
+                                parse_constant=_invalid_evaluation_constant)
+            value = AggregateEvaluationDTO.model_validate(parsed).root
+        except (OSError, ValueError, RecursionError):
             return {"status": "UNAVAILABLE", "reason": "INVALID_EVALUATION_SUMMARY"}
         rows = {"aggregate": value} if "run_id" in value else value
         binding = self.service.guard.binding
@@ -282,6 +610,12 @@ class SceneAdapter:
                     break
         if not valid:
             return {"status": "STALE", "reason": "EVALUATION_BINDING_MISMATCH"}
+        if self._evaluation_content_sha256 is None:
+            if value.get("status") != "SYNTHETIC_DIAGNOSTIC":
+                return {"status": "UNAVAILABLE",
+                        "reason": "EVALUATION_CONTENT_CERTIFICATE_MISSING"}
+        elif digest(value) != self._evaluation_content_sha256:
+            return {"status": "STALE", "reason": "EVALUATION_CONTENT_HASH_MISMATCH"}
         return value
 
 

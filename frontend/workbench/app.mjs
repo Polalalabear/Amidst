@@ -1,3 +1,4 @@
+import {invalidateVersionResults} from './motion.mjs';
 const ICONS = {
   home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M9 21v-8h6v8"/>',
   layers:'<path d="m12 3 10 6-10 6L2 9Z"/><path d="m2 13 10 6 10-6M2 17l10 6 10-6"/>',
@@ -59,7 +60,7 @@ const state = {
   resourceTab:'objects',events:[],observations:[],retrieval:null,frames:[],cameraId:null,cameraIds:[],start:0,end:0,timestamp:0,
   selectedObject:null,selectedEvent:null,event:null,notes:[],draft:null,validation:null,publication:null,previewVersion:null,draftPreview:false,
   test:null,evaluation:null,logs:null,loading:false,error:null,scopeMessage:null,reviewDecision:'UNKNOWN',
-  sceneEpoch:0,queryEpoch:0,eventEpoch:0,timelineEpoch:0,controller:null,playTimer:null,view:null,viewPose:null,toastTimer:null,
+  sceneEpoch:0,queryEpoch:0,eventEpoch:0,timelineEpoch:0,controller:null,playTimer:null,view:null,viewPose:null,toastTimer:null,panel:null,
 };
 export function invalidateEventState(target) {
   target.eventEpoch=(target.eventEpoch??0)+1;
@@ -109,6 +110,7 @@ function stopPlayback() {
   if (button) { button.innerHTML = icon('play'); button.setAttribute('aria-label','開始回放'); }
 }
 function clearContext() {
+  state.panel?.dispose();state.panel=null;
   stopPlayback();
   state.controller?.abort();
   state.controller = new AbortController();
@@ -210,13 +212,13 @@ function gateway() {
 }
 function sidebar() {
   const nav = [ ['dashboard','home','主控板','OVERVIEW'],['workspace','cube','共用工作區','WORKSPACE'],
-    ...(isResearch() ? [['review','review','人工審查','REVIEW'],['test','test','測試與評估','TEST']] : []) ];
+    ...(isResearch() ? [['presentations','play','實驗展示','PRESENTATIONS'],['review','review','人工審查','REVIEW'],['test','test','測試與評估','TEST']] : []) ];
   return `<aside class="sidebar"><div class="brand"><span class="brand-mark">A</span><div>AMIDST<small>SHARED WORKBENCH</small></div></div><div class="nav-label">WORKSPACE</div><nav class="side-nav">${nav.map(([id,glyph,label]) => `<button class="nav-button ${state.page === id ? 'active' : ''}" data-page="${id}">${icon(glyph)}<span>${label}</span>${state.page === id ? '<span class="tiny">●</span>' : ''}</button>`).join('')}</nav>
     <div class="sidebar-context"><div class="nav-label" style="padding:0">CURRENT SCENE</div><div class="context-title"><span class="status-dot"></span>${h(short(state.snapshot?.label ?? selectedScene()?.label ?? '載入中',20))}</div><div class="context-sub">${isResearch() ? `標註版本 v${h(sourceVersion(state))}<br>局部範圍 · 按需載入` : '事件與必要證據<br>精簡管理視圖'}</div></div>
     <div class="sidebar-bottom"><div class="role-current"><div class="avatar">${isResearch() ? '研' : '管'}</div><div><strong>${isResearch() ? '研究工作台' : '管理主控板'}</strong><small>${isResearch() ? 'Research · full workspace' : 'Management · overview'}</small></div></div><button class="role-switch" data-action="switch-role">${icon('switch')}切換身份</button></div></aside>`;
 }
 function topbar() {
-  const title = ({dashboard:'主控板',workspace:'共用工作區',review:'人工審查',test:'測試與評估'})[state.page];
+  const title = ({dashboard:'主控板',workspace:'共用工作區',review:'人工審查',test:'測試與評估',presentations:'實驗展示',investigation:'人物調查'})[state.page];
   return `<header class="topbar"><div class="breadcrumb">工作台 ${icon('chevron')} <strong>${title}</strong></div><div class="topbar-tools"><label class="select-shell">${icon('layers')}<select id="scene-select" aria-label="切換場景">${safeList(state.bootstrap?.scenes).map((scene) => `<option value="${h(scene.scene_id)}" ${scene.scene_id === state.sceneId ? 'selected' : ''}>${h(scene.label ?? scene.scene_id)}</option>`).join('')}</select></label>${badge('本機資料','cyan')}</div></header>`;
 }
 function pageHead(eyebrow,title,description,actions = '') {
@@ -364,7 +366,7 @@ function publicationSummary() {
 function testMode() {
   const checks = safeList(state.test?.checks);
   return `${scopeBar()}<div class="test-grid"><section class="panel"><div class="panel-head"><div><h2>共用測試面板</h2><p>對目前場景與選定範圍執行可重現檢查</p></div>${badge('範圍檢查','purple')}</div><div class="panel-body"><div class="test-options"><div class="test-feature"><h3>場景與標註</h3><p>檢查場景資料、版本綁定與可用能力。</p></div><div class="test-feature"><h3>局部資料查詢</h3><p>檢查鏡頭、時間窗與回傳資料的來源。</p></div></div><button class="btn primary" data-action="run-test">${icon('test')}執行目前範圍檢查</button><p class="status-text">此處執行工作台的資料與接口檢查，結果不代表研究精度或 formal gates 通過。</p></div><div class="test-result">${state.test ? `<div class="notice">${icon('info')}<p>${h(typeof state.test.summary === 'string' ? state.test.summary : JSON.stringify(state.test.summary ?? '檢查完成'))}</p></div>${checks.map((check) => { const pass = check.passed === true || check.valid === true || ['PASS','PASSED'].includes(check.status); return `<div class="check-item ${pass?'':'fail'}">${icon(pass?'check':'info')}<div><strong>${h(check.label ?? check.name ?? check.check ?? '資料檢查')}</strong><p>${h(check.message ?? check.detail ?? (typeof check.details === 'string' ? check.details : JSON.stringify(check.details ?? {})))}</p></div>${badge(check.status ?? (pass?'PASS':'CHECK'))}</div>`; }).join('')}${technical('完整檢查結果',state.test)}` : empty('尚未執行檢查','檢查結果將綁定目前的場景與範圍。','test')}</div></section>
-    <section class="panel"><div class="panel-head"><div><h2>獨立評估區</h2><p>凍結研究結果與評估資料分開存取</p></div>${badge('RESEARCH')}</div><div class="panel-body"><div class="notice warning">${icon('info')}<p>GT 與 benchmark 僅用於此研究評估面板，不會加入展示工具或 Agent 的輸入。</p></div><button class="btn" data-action="load-evaluation">查看已凍結評估</button>${state.evaluation ? `<div class="wide-section">${evaluationDisplay()}</div>` : '<p class="status-text">由你主動開啟後，才讀取此場景可用的評估結果。</p>'}</div></section></div><section class="panel wide-section"><div class="panel-head"><div><h2>工具紀錄</h2><p>追溯目前 session 的工作台操作</p></div><button class="btn small ghost" data-action="load-logs">${icon('log')}載入紀錄</button></div><div class="panel-body">${state.logs ? technical('請求與操作紀錄',state.logs) : '<p class="status-text">紀錄保留在研究视圖；管理介面不提供技術 ID 與原始 log。</p>'}</div></section>`;
+    <section class="panel"><div class="panel-head"><div><h2>獨立評估區</h2><p>凍結研究結果與評估資料分開存取</p></div>${badge('RESEARCH')}</div><div class="panel-body"><div class="notice warning">${icon('info')}<p>此處只讀已認證的 aggregate 評估摘要；完整 GT debug 與實驗執行不在此入口，Agent 權限維持原範圍。</p></div><button class="btn" data-action="load-evaluation">查看已凍結評估</button>${state.evaluation ? `<div class="wide-section">${evaluationDisplay()}</div>` : '<p class="status-text">由你主動開啟後，才讀取此場景可用的評估結果。</p>'}</div></section></div><section class="panel wide-section"><div class="panel-head"><div><h2>工具紀錄</h2><p>追溯目前 session 的工作台操作</p></div><button class="btn small ghost" data-action="load-logs">${icon('log')}載入紀錄</button></div><div class="panel-body">${state.logs ? technical('請求與操作紀錄',state.logs) : '<p class="status-text">紀錄保留在研究视圖；管理介面不提供技術 ID 與原始 log。</p>'}</div></section>`;
 }
 function evaluationDisplay() {
   const evaluation = state.evaluation;
@@ -376,11 +378,19 @@ function workspace() {
   return `${pageHead('SHARED WORKSPACE',!isResearch()?'檢視事件與來源證據':mode==='review'?'讓每次修改，都有依據。':mode==='test'?'測試、比較與追溯。':'把畫面放回空間脈絡。',!isResearch()?'選取事件，查看必要影像、判讀限制與處理紀錄。':mode==='review'?'同一套審查流程，套用至不同場景的區域、門與鏡頭。':mode==='test'?'以當前版本與局部範圍檢查資料，獨立查看評估證據。':'選取物件或事件，同步檢視影像、時間與局部空間。')}${workspaceTabs()}${!isResearch() ? managementDisplay() : mode==='review' ? reviewMode() : mode==='test' ? testMode() : researchDisplay()}`;
 }
 function render() {
+  state.panel?.dispose();state.panel=null;
   if (state.view) { state.viewPose = state.view.getPose(); state.view.dispose(); state.view = null; }
   const app = $('#app');
   if (!state.role) { app.innerHTML = gateway(); return; }
-  app.innerHTML = `<div class="shell">${sidebar()}<main class="main-scroll">${topbar()}${state.error ? `<div class="inline-error" style="margin-top:22px">${h(state.error)}</div>` : ''}${state.snapshot ? state.page==='dashboard' ? dashboard() : workspace() : '<div class="initial-loading" style="height:65vh"><span class="brand-mark">A</span><p>正在載入場景資料…</p></div>'}<footer class="page-footer"><span>AMIDST · SHARED RESEARCH WORKBENCH</span><span>來源可追溯 · 判定可比較 · 版本可回看</span></footer></main>${state.loading?'<div class="loading-bar"></div>':''}</div>`;
+  const content=!state.snapshot?'':state.page==='presentations'&&isResearch()?`${pageHead('SOURCE MODEL PRESENTATION','讓人物回到場景裡。','局部建築幾何、公開投影與盲區候選使用同一時間軸；來源與推論綁定分別顯示。')}<div data-presentation-panel></div>`:state.page==='dashboard'?dashboard():workspace();
+  app.innerHTML = `<div class="shell">${sidebar()}<main class="main-scroll">${topbar()}${state.error ? `<div class="inline-error" style="margin-top:22px">${h(state.error)}</div>` : ''}${state.snapshot ? content : '<div class="initial-loading" style="height:65vh"><span class="brand-mark">A</span><p>正在載入場景資料…</p></div>'}<footer class="page-footer"><span>AMIDST · SHARED RESEARCH WORKBENCH</span><span>來源可追溯 · 判定可比較 · 版本可回看</span></footer></main>${state.loading?'<div class="loading-bar"></div>':''}</div>`;
   mountScene();
+  mountPanel();
+}
+async function mountPanel(){
+  const container=$('[data-presentation-panel]');if(!container||!isResearch())return;
+  const {PresentationPanel}=await import('./presentation.mjs');if(!container.isConnected)return;
+  state.panel=new PresentationPanel(container,{call:(action,payload)=>api(action,payload),mediaURL:ref=>`/api/presentation_media?${new URLSearchParams({session_ref:state.session.session_ref,ref})}`});
 }
 async function mountScene() {
   const container = $('[data-scene-stage]');
@@ -389,7 +399,8 @@ async function mountScene() {
   try {
     const {SceneView} = await import('./scene.mjs');
     if (epoch !== state.sceneEpoch || !container.isConnected) return;
-    state.view = new SceneView(container,{snapshot:state.snapshot,objects:renderedObjects(),event:activeReview()?null:state.event,selectedId:state.selectedObject,pose:state.viewPose,onSelect:(id)=>selectObject(id)});
+    state.view = new SceneView(container,{snapshot:state.snapshot,objects:renderedObjects(),event:activeReview()?null:state.event,observations:activeReview()?[]:state.observations,selectedId:state.selectedObject,pose:state.viewPose,onSelect:(id)=>selectObject(id)});
+    state.view.setTimestamp(state.timestamp);
   } catch (error) {
     if (container.isConnected) container.innerHTML = `<div class="viewport-fallback">${icon('cube')}<p>3D 顯示暫時無法載入。<br>你仍可由資源清單檢視物件與進行人審。</p><small>${h(error.message)}</small></div>`;
   }
@@ -467,7 +478,7 @@ async function handleSubmit(event) {
       if (!values.confirm || !validationPassed()) throw new Error('請先通過驗證，並確認已核對草案差異。');
       const result=await api('publish',{draft_id:state.draft.draft_id,expected_version:sourceVersion(state),reviewer:state.draft._reviewer ?? state.draft.reviewer,reason:state.draft._reason ?? state.draft.reason});
       if(epoch!==state.sceneEpoch)return;
-      state.publication=result.publication; state.review=result.review_state; state.previewVersion=null; state.draft=null; state.validation=null; state.draftPreview=false; render(); toast(`標註版本 v${sourceVersion(state)} 已發布。`);
+      state.publication=result.publication; state.review=result.review_state; state.previewVersion=null; state.draft=null; state.validation=null; state.draftPreview=false; invalidateVersionResults(state); render(); toast(`標註版本 v${sourceVersion(state)} 已發布。`);
     } else if(form.id==='note-form') {
       const result=await api('note',{scene_id:state.sceneId,event_ref:eventTicket.eventRef,status:values.status,note:values.note.trim(),reviewer:values.reviewer.trim()});
       if(!eventRequestIsCurrent(state,eventTicket))return;

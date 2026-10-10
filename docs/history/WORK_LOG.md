@@ -2293,3 +2293,20 @@ unqualified test_service模組撞名而collection failure(exit2)，原log保留�
 README／docsREADME／CODEX_HANDOFF／LOCAL_PHASE2_PRODUCT更新此決策；工作台專屬文件、
 DEVELOPMENT_RULES／ISSUES_AND_DECISIONS／SYSTEM_DESIGN由並行工作階段提交，不混stage。
 原historyreceipts/sourcebytes保留，新政策不假稱兩入口已整合或formalExit已完成。
+
+
+## 2026-10-10 — P14 source-bound interactive scene presentation
+
+依使用者參考影片重用原模型局部來源：兩物件／原crop，保留 historical110 面，另作同box
+六平面 triangle clipping 產生276 面／154非水平面，不補caps／牆或authority；0.0247m/BU
+顯式 normalization。50格26PROJECTED／24INFERRED_GAP與三原候選、opaque診斷PNG、
+DISPLAY_ONLY人體／步態接8016。原scene與歷史pending annotation不回寫。
+
+同時補 aggregate evaluation strict DTO＋matching-scope independent content digest，拒絕
+extra identity/path/nonfinite/duplicate contamination；合法E0/E1兩mode與四消融仍完整。
+發布後前端清cache；評估說明改為已認證摘要入口。當次122workbench（排除未整合bridge/
+gallery）／19Node、ownedRuff／mypy8、16真HTTP及actualbrowser逐格／seek／播放尾段
+通過。完整source/hash與限制見source_validation.json；未把歷史full2652作本輪PASS。
+原formalCases2/3/fullExit BLOCKED、Case4DEFERRED、Phase2FROZEN。只stage自有code/docs/
+curatedreceipt；並行research_accuracy及所有不相關修改保留。下一milestone繼續調查／影片/
+gallery共同入口整合。

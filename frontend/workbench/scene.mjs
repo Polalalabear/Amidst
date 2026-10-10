@@ -1,5 +1,6 @@
 import * as THREE from '/vendor/three.module.js';
 import {calibratedFrustum,planarPolygon} from './geometry.mjs';
+import {bodyMarkers} from './motion.mjs';
 
 const finitePoint = (point) => Array.isArray(point) && point.length >= 3 && point.slice(0,3).every(Number.isFinite);
 const vector = (point) => new THREE.Vector3(...point.slice(0,3));
@@ -7,6 +8,7 @@ const COLORS = {REGION:0x9487d3,PORTAL:0xd49bd2,WALKABLE:0x65c6c0,CAMERA:0x82b9d
 function boundsOf(snapshot, objects) {
   const bounds=snapshot.bounds;
   if(Array.isArray(bounds)&&bounds.length===4&&bounds.every(Number.isFinite))return [bounds[0],bounds[1],bounds[2],bounds[3]];
+  if(Array.isArray(bounds)&&bounds.length===2&&bounds.every(finitePoint))return [bounds[0][0],bounds[0][1],bounds[1][0],bounds[1][1]];
   if(bounds?.min&&bounds?.max)return [bounds.min[0],bounds.min[1],bounds.max[0],bounds.max[1]];
   const points=objects.flatMap((item)=>item.geometry?.points??[]).filter(finitePoint);
   if(!points.length)return [-1,-1,1,1];
@@ -14,9 +16,11 @@ function boundsOf(snapshot, objects) {
 }
 
 export class SceneView {
-  constructor(container,{snapshot,objects,event,selectedId,pose,onSelect}) {
+  constructor(container,{snapshot,objects,event,events=[],observations=[],presentation=null,selectedId,pose,onSelect}) {
     this.container=container;this.snapshot=snapshot;this.onSelect=onSelect;this.disposed=false;this.pickables=[];this.event=event;
     this.scene=new THREE.Scene();this.scene.background=new THREE.Color(0x121927);
+    this.events=events.length?events:[event].filter(Boolean);this.observations=observations;this.presentation=presentation;this.bodies=new THREE.Group();
+    this.scene.add(this.bodies);this.bodyInstances=new Map();
     this.camera=new THREE.PerspectiveCamera(43,1,.01,10000);this.camera.up.set(0,0,1);
     this.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'low-power'});
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));this.renderer.outputColorSpace=THREE.SRGBColorSpace;
@@ -29,7 +33,8 @@ export class SceneView {
     const gridSize=Math.ceil(this.span*1.35);const grid=new THREE.GridHelper(gridSize,Math.min(gridSize*2,80),0x37445a,0x222f43);
     grid.rotation.x=Math.PI/2;grid.position.copy(this.center);grid.position.z=-.04;grid.material.transparent=true;grid.material.opacity=.6;this.scene.add(grid);
     this.addAxes();objects.forEach((object)=>this.addObject(object,object.object_id===selectedId));
-    this.addCalibratedCameras(objects.filter((object)=>object.kind==='CAMERA').map((object)=>({camera_id:object.object_id,position:object.geometry?.points?.[0]??null,properties:object.properties})));this.addEvent(event);
+    this.addSourceMeshes(presentation?.meshes??[]);
+    this.addCalibratedCameras(objects.filter((object)=>object.kind==='CAMERA').map((object)=>({camera_id:object.object_id,position:object.geometry?.points?.[0]??null,properties:object.properties})));this.events.forEach(item=>this.addEvent(item));
     if(pose){this.target.fromArray(pose.target);this.yaw=pose.yaw;this.pitch=pose.pitch;this.distance=pose.distance;}
     this.updateCamera();this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);this.resize();
     this.pointerDown=this.onPointerDown.bind(this);this.pointerMove=this.onPointerMove.bind(this);this.pointerUp=this.onPointerUp.bind(this);this.wheel=this.onWheel.bind(this);this.contextMenu=(e)=>e.preventDefault();
@@ -79,12 +84,65 @@ export class SceneView {
     const candidates=detail.candidates??event.candidates??[];
     candidates.forEach((candidate,index)=>{
       const points=(candidate.polyline??[]).filter(finitePoint).map(vector);if(points.length<2)return;
-      const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineDashedMaterial({color:[0xddbc83,0xa59ce0,0x70bdb5,0xc996bf][index%4],dashSize:this.span*.025,gapSize:this.span*.015,transparent:true,opacity:.8}));line.position.z=.09+index*.006;line.computeLineDistances();this.scene.add(line);
+      const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineDashedMaterial({color:[0xddbc83,0xa59ce0,0x70bdb5,0xc996bf][index%4],dashSize:this.span*.025,gapSize:this.span*.015,transparent:true,opacity:.8,depthTest:false}));line.position.z=.09+index*.006;line.renderOrder=5;line.computeLineDistances();this.scene.add(line);
     });
     if(this.projected.length){this.timeMarker=new THREE.Mesh(new THREE.SphereGeometry(this.span*.018,14,10),new THREE.MeshBasicMaterial({color:0x80eadb}));this.timeMarker.position.copy(vector(this.projected[0].world_position));this.timeMarker.position.z+=.1;this.scene.add(this.timeMarker);}
   }
+  addSourceMeshes(meshes) {
+    for(const source of meshes){
+      if(!Array.isArray(source.vertices)||!Array.isArray(source.triangles))continue;
+      if(!source.vertices.every(finitePoint))continue;
+      const indices=source.triangles.flat();
+      if(indices.some(i=>!Number.isInteger(i)||i<0||i>=source.vertices.length))continue;
+      const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(source.vertices.flat(),3));
+      geometry.setIndex(indices);geometry.computeVertexNormals();
+      const mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0x71838b,roughness:.9,side:THREE.DoubleSide,transparent:true,opacity:.62}));
+      this.scene.add(mesh);
+      const edges=new THREE.LineSegments(new THREE.EdgesGeometry(geometry,25),new THREE.LineBasicMaterial({color:0xa7bec9,transparent:true,opacity:.18}));this.scene.add(edges);
+    }
+  }
+  makeBody(inferred) {
+    const root=new THREE.Group(),color=inferred?0xffc266:0x63dfdd;
+    const material=new THREE.MeshStandardMaterial({color,roughness:.5,transparent:inferred,opacity:inferred?.62:1});
+    const sphere=(radius,z)=>{const mesh=new THREE.Mesh(new THREE.SphereGeometry(radius,12,8),material);mesh.position.z=z;root.add(mesh);return mesh;};
+    sphere(.11,1.58);sphere(.13,.84);
+    const torso=new THREE.Mesh(new THREE.CapsuleGeometry(.14,.38,4,10),material);torso.rotation.x=Math.PI/2;torso.position.z=1.14;root.add(torso);
+    const limb=(x,z,length,radius)=>{const pivot=new THREE.Group();pivot.position.set(x,0,z);const mesh=new THREE.Mesh(new THREE.CapsuleGeometry(radius,length,3,8),material);mesh.rotation.x=Math.PI/2;mesh.position.z=-length/2; pivot.add(mesh);root.add(pivot);return pivot;};
+    root.userData.legs=[limb(-.09,.79,.68,.055),limb(.09,.79,.68,.055)];
+    root.userData.arms=[limb(-.22,1.33,.49,.045),limb(.22,1.33,.49,.045)];
+    const ring=new THREE.Mesh(new THREE.RingGeometry(.24,.27,24),new THREE.MeshBasicMaterial({color,transparent:true,opacity:.55,side:THREE.DoubleSide}));ring.position.z=.015;root.add(ring);
+    return root;
+  }
+  updateBodies(timestamp) {
+    let markers=bodyMarkers(this.observations,this.events,timestamp);
+    if(this.presentation?.frames?.length){
+      const frames=this.presentation.frames;const step=this.presentation.frame_step_s??.2;
+      const frame=frames.slice().sort((a,b)=>Math.abs(a.timestamp-timestamp)-Math.abs(b.timestamp-timestamp))[0];
+      if(frame&&Math.abs(frame.timestamp-timestamp)<=step/2+.00001)markers=[{ref:'source-display-body',world_position:frame.world_position,
+        evidence_state:frame.evidence_state,joint_pose_authority:'DISPLAY_ONLY',presentation_only:true}];
+    }
+    const active=new Set();
+    for(const marker of markers){
+      if(!finitePoint(marker.world_position))continue;
+      const inferred=marker.evidence_state==='INFERRED_GAP',key=marker.ref+':'+inferred;
+      active.add(key);let body=this.bodyInstances.get(key);
+      if(!body){body=this.makeBody(inferred);this.bodies.add(body);this.bodyInstances.set(key,body);}
+      body.visible=true;body.position.copy(vector(marker.world_position));
+      // Gait and anatomy are schematic presentation, never image-measured pose.
+      const previous=body.userData.previous;
+      const moved=previous?Math.hypot(marker.world_position[0]-previous[0],marker.world_position[1]-previous[1]):0;
+      if(moved>.0001)body.rotation.z=Math.atan2(-(marker.world_position[0]-previous[0]),marker.world_position[1]-previous[1]);
+      if(moved>.0001)body.userData.movingUntil=timestamp+.25;
+      const phase=Math.sin(timestamp*7),swing=timestamp<=(body.userData.movingUntil??-1)?phase*.24:0;
+      body.userData.legs.forEach((limb,i)=>limb.rotation.x=swing*(i?1:-1));
+      body.userData.arms.forEach((limb,i)=>limb.rotation.x=swing*(i?-1:1));
+      body.userData.previous=[...marker.world_position];
+    }
+    for(const [key,body] of this.bodyInstances)body.visible=active.has(key);
+  }
   setTimestamp(timestamp){
-    if(!this.timeMarker||!this.projected?.length)return;
+    this.updateBodies(timestamp);
+    if(!this.timeMarker||!this.projected?.length){this.render();return;}
     const eligible=this.projected.filter((point)=>Number.isFinite(point.timestamp)&&Math.abs(point.timestamp-timestamp)<=.6);
     this.timeMarker.visible=eligible.length>0;
     if(eligible.length){eligible.sort((a,b)=>Math.abs(a.timestamp-timestamp)-Math.abs(b.timestamp-timestamp));this.timeMarker.position.copy(vector(eligible[0].world_position));this.timeMarker.position.z+=.1;}

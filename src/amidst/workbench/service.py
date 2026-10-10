@@ -60,6 +60,10 @@ class TimelineRequest(SceneRequest):
     timestamp: float = Field(ge=0)
 
 
+class PresentationRequest(Request):
+    presentation_ref: str = Field(min_length=1, max_length=160)
+
+
 class DraftRequest(SceneRequest):
     object_id: str = Field(min_length=1, max_length=200)
     changes: dict[str, Any]
@@ -109,8 +113,12 @@ class Denied(ValueError):
 
 
 class Workbench:
-    def __init__(self, catalog: dict[str, SceneAdapter], reviews: ReviewStore) -> None:
+    def __init__(self, catalog: dict[str, SceneAdapter], reviews: ReviewStore, *,
+                 presentation: Callable[[], dict[str, Any]] | None = None,
+                 presentation_media: Callable[[str], tuple[str, bytes]] | None = None) -> None:
         self.catalog, self.reviews = catalog, reviews
+        self.presentation_provider = presentation
+        self.presentation_media_provider = presentation_media
         self.sessions: dict[str, Session] = {}
 
     def bootstrap(self) -> dict[str, Any]:
@@ -179,6 +187,7 @@ class Workbench:
             "result_review": ResultRequest, "note": NoteRequest, "test": QueryRequest,
             "evaluation": SceneRequest, "logs": SceneRequest,
             "export": VersionRequest,
+            "presentations": Request, "presentation": PresentationRequest,
         }
         if action not in schemas:
             raise Denied("ACTION_DENIED")
@@ -200,6 +209,22 @@ class Workbench:
     def _invoke(self, action: str, request: Request, session: Session) -> dict[str, Any]:
         if action not in {"scene", "query", "event", "note"}:
             self._research(session)
+        if action in {"presentations", "presentation"}:
+            if self.presentation_provider is None:
+                return {"items": [], "status": "UNAVAILABLE"}
+            try:
+                presentation = self.presentation_provider()
+            except (OSError, ValueError):
+                return {"items": [], "status": "UNAVAILABLE",
+                        "reason": "SOURCE_BINDING_UNAVAILABLE"}
+            if action == "presentations":
+                keys = ("presentation_ref", "label", "binding", "origin", "image_measurement",
+                        "authority")
+                return {"items": [{key: presentation[key] for key in keys}], "status": "AVAILABLE"}
+            assert isinstance(request, PresentationRequest)
+            if request.presentation_ref != presentation["presentation_ref"]:
+                raise Denied("REFERENCE_DENIED")
+            return {"presentation": presentation}
         if isinstance(request, ValidateRequest):
             scene_id = session.draft_scenes.get(request.draft_id)
             if scene_id is None:
@@ -340,6 +365,12 @@ class Workbench:
             raise Denied("MEDIA_DENIED")
         return scene.media(ref)
 
+    def presentation_media(self, token: str, ref: str) -> tuple[str, bytes]:
+        self._research(self._session(token))
+        if self.presentation_media_provider is None:
+            raise Denied("RESOURCE_UNAVAILABLE")
+        return self.presentation_media_provider(ref)
+
 
 def _json(data: object) -> bytes:
     return json.dumps(data, ensure_ascii=False, allow_nan=False).encode("utf-8")
@@ -388,6 +419,11 @@ class Application:
         if method == "GET":
             if path == "/api/bootstrap":
                 return "application/json; charset=utf-8", _json(self.workbench.bootstrap())
+            if path == "/api/presentation_media":
+                query = parse_qs(environ.get("QUERY_STRING", ""), strict_parsing=True)
+                if set(query) != {"session_ref", "ref"} or any(len(v) != 1 for v in query.values()):
+                    raise ValueError("invalid query")
+                return self.workbench.presentation_media(query["session_ref"][0], query["ref"][0])
             if path == "/api/media":
                 query = parse_qs(environ.get("QUERY_STRING", ""), strict_parsing=True)
                 if set(query) != {"session_ref", "scene_id", "ref"} or any(
@@ -398,7 +434,10 @@ class Application:
                                             query["ref"][0])
             assets = {"/": "index.html", "/index.html": "index.html", "/style.css": "style.css",
                       "/app.mjs": "app.mjs", "/scene.mjs": "scene.mjs",
-                      "/geometry.mjs": "geometry.mjs"}
+                      "/geometry.mjs": "geometry.mjs", "/motion.mjs": "motion.mjs",
+                      "/presentation.mjs": "presentation.mjs"}
+            if path == "/product/timeline.mjs":
+                return "text/javascript", (self.repo / "frontend/product/timeline.mjs").read_bytes()
             if path in assets:
                 name = assets[path]
                 mime = "text/javascript" if name.endswith(".mjs") else (
@@ -452,7 +491,13 @@ def main() -> None:
         key: {field: scene.snapshot()[field] for field in review_keys}
         for key, scene in catalog.items()
     })
-    app = Application(Workbench(catalog, reviews), repo)
+    from amidst.workbench.source_presentation import (
+        load_source_presentation,
+        source_presentation_media,
+    )
+    app = Application(Workbench(catalog, reviews,
+        presentation=lambda: load_source_presentation(repo),
+        presentation_media=lambda ref: source_presentation_media(repo, ref)), repo)
     print(f"Amidst workbench: http://127.0.0.1:{args.port} "
           f"({len(catalog)} verified scenes)", flush=True)
     with make_server("127.0.0.1", args.port, app, handler_class=QuietHandler) as server:
